@@ -4,7 +4,7 @@ import requests
 import http.client
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 
 # API_KEY = 'bc5c0860d9d43d604063b03b996ffa18'
 
@@ -22,9 +22,13 @@ CORS(app)
 
 # print(data.decode("utf-8"))
 
-@app.route('/')
-def home():
-    return '<div>Hello</div>'
+# @app.route('/')
+# def home():
+#     return '<div>Hello</div>'
+
+@app.route('/teams')
+def teams():
+    return {"teams": ['Manchester City', 'Real Madrid', 'Juventus', 'Borrusia Dortmund', 'PSG']}
 
 # def get_teams():
 #     url = f'https://api-football.com/v3/teams'
