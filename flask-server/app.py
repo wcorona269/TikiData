@@ -6,21 +6,21 @@ import http.client
 app = Flask(__name__)
 CORS(app)
 
-API_KEY = 'bc5c0860d9d43d604063b03b996ffa18'
+# API_KEY = 'bc5c0860d9d43d604063b03b996ffa18'
 
-conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+# conn = http.client.HTTPSConnection("v3.football.api-sports.io")
 
-headers = {
-    'x-rapidapi-host': "v3.football.api-sports.io",
-    'x-rapidapi-key': API_KEY
-}
+# headers = {
+#     'x-rapidapi-host': "v3.football.api-sports.io",
+#     'x-rapidapi-key': API_KEY
+# }
 
-conn.request("GET", "/{endpoint}", headers=headers)
+# conn.request("GET", "/{endpoint}", headers=headers)
 
-res = conn.getresponse()
-data = res.read()
+# res = conn.getresponse()
+# data = res.read()
 
-print(data.decode("utf-8"))
+# print(data.decode("utf-8"))
 
 @app.route('/')
 def home():
