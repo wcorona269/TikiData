@@ -1,27 +1,39 @@
 import React, { useState, useEffect } from 'react'
-import NavBar from './nav_bar/nav_bar'
+import { Link, Route, Routes, Switch } from 'react-router-dom';
+import NavBar from './nav_bar/nav_bar';
+import Footer from './footer/footer'
+import Home from './home/home'
+import Leagues from './home/leagues'
+import Nations from './home/nations'
+import MatchesTimeline from './matches/timeline';
 
 function App() {
   const [data, setData] = useState([{}])
 
-  useEffect(() => {
-    fetch("/teams").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-      }
-    )
-  }, [])
+  // useEffect(() => {
+  //   fetch("/teams").then(
+  //     res => res.json()
+  //   ).then(
+  //     data => {
+  //       setData(data)
+  //     }
+  //   )
+  // }, [])
 
-  return ( 
+  return (
     <>
       <NavBar/>
-      <div>
-        Hello
-      </div>
+      <Routes>
+        <Route path='/leagues' element={<Leagues/>}/> 
+        <Route path='/nations' element={<Nations/>}/>
+        <Route path='/matches/' element={<MatchesTimeline/>}/>
+        {/* <Route path='/clubs' element={}> */}
+        {/* <Route path='/leagues' element={<Leagues/>}></Route> */}
+      </Routes>
+      <Footer/>
     </>
   )
 }
 
 export default App
+

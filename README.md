@@ -5,3 +5,7 @@ Touchline Soccer is an in-depth stats dashboard for all things soccer. Sort thro
 
 ## Technologies Used
 Using a Python3 Flask backend paired with a React frontend, and data from the [API-SPORTS FOOTBALL-API](https://api-sports.io/).
+
+
+## Splash Page
+The splash page 

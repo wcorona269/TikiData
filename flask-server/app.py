@@ -4,38 +4,35 @@ import requests
 import http.client
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 
-# API_KEY = 'bc5c0860d9d43d604063b03b996ffa18'
+API_KEY = 'bc5c0860d9d43d604063b03b996ffa18'
 
-# conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+conn = http.client.HTTPSConnection("v3.football.api-sports.io")
 
-# headers = {
-#     'x-rapidapi-host': "v3.football.api-sports.io",
-#     'x-rapidapi-key': API_KEY
-# }
+headers = {
+    'x-rapidapi-host': "v3.football.api-sports.io",
+    'x-rapidapi-key': API_KEY
+}
 
-# conn.request("GET", "/{endpoint}", headers=headers)
+conn.request("GET", "/{endpoint}", headers=headers)
 
-# res = conn.getresponse()
-# data = res.read()
+res = conn.getresponse()
+data = res.read()
 
-# print(data.decode("utf-8"))
-
-# @app.route('/')
-# def home():
-#     return '<div>Hello</div>'
+print(data.decode("utf-8"))
 
 @app.route('/teams')
 def teams():
-    return {"teams": ['Manchester City', 'Real Madrid', 'Juventus', 'Borrusia Dortmund', 'PSG']}
+    url = 'https://api-football.com/v3/teams'
+    headers = {'x-rapidapi-host': 'api-football.com', 'x-rapidapi-key': API_KEY}
+    response = requests.get(url, headers=headers)
+    data = response.json()
+    return data
+    # return {"teams": ['Manchester City', 'Real Madrid', 'Juventus', 'Borrusia Dortmund', 'PSG']}
+
 
 # def get_teams():
-#     url = f'https://api-football.com/v3/teams'
-#     headers = {'x-rapidapi-host': 'api-football.com', 'x-rapidapi-key': API_KEY}
-#     response = requests.get(url, headers=headers)
-#     data = response.json()
-#     return jsonify(data['response'])
-
+	
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
