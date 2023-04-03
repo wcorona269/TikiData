@@ -20,7 +20,7 @@ const MatchesTimeline = () => {
 	}
 
 	return (
-		<div>
+		<div className='timeline'>
 			Matches Timeline
 			<ul>
 				{listMatches(matches)}

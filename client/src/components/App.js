@@ -21,17 +21,17 @@ function App() {
   // }, [])
 
   return (
-    <>
+    <body>
       <NavBar/>
       <Routes>
         <Route path='/leagues' element={<Leagues/>}/> 
         <Route path='/nations' element={<Nations/>}/>
         <Route path='/matches/' element={<MatchesTimeline/>}/>
-        {/* <Route path='/clubs' element={}> */}
         {/* <Route path='/leagues' element={<Leagues/>}></Route> */}
+        {/* <Route path='/clubs' element={}> */}
       </Routes>
       <Footer/>
-    </>
+    </body>
   )
 }
 

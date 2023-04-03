@@ -6,7 +6,7 @@ const NavBar = () => {
 	
 	return (
 		<div className='nav-bar-container'>
-			Total Football
+			touchline
 			<div className='nav-bar'>
 					<Link to='/matches'>matches</Link><br></br>
 					<Link to='/nations'>nations</Link><br></br>
