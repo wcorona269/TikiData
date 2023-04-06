@@ -15,6 +15,7 @@
 @import './styles/components/carousel.scss';
 @import './styles/components/cover.scss';
 @import './styles/components/dropdown.scss';
+@import './styles/components/modal.scss';
 
 @import './styles/pages/home.scss';
 @import './styles/pages/match.scss';
