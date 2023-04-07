@@ -7,6 +7,13 @@ name = "pypi"
 flask = "*"
 flask-cors = "*"
 requests = "*"
+flask-sqlalchemy = "*"
+"psycopg2-binary" = "*"
+flask-login = "*"
+flask-bcrypt = "*"
+flask-jwt-extended = "*"
+flask-migrate = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
