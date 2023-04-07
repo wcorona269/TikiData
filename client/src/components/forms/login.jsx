@@ -1,34 +1,31 @@
 // user auth: username, email, password. Thats it.
 
 import React, { useEffect, useState } from 'react'
+// import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+// import { loginUser } from '../redux/actions';
 
 const LoginForm = (props) => {
+	const dispatch = useDispatch();
+	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
-	const [user, setUser] = useState({
-		usernameOrEmail: '',
-		password: ''
-	})
-
-	useEffect(() => {
-		console.log(user)
-	}, [user])
-
-	const updateInfo = (e) => {
-		const {name, value} = e.target
-		setUser({ ...user, [name]: value })
-	}
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// dispatch(loginUser({ username, email, password }));
+	};
 
 	return (
-		<div className='modal-form-container'>
-			<form>
-				<p>username or email</p>
-				<input type='text' name='usernameOrEmail' onChange={updateInfo}/>
-				<p>password</p>
-				<input type='password' name='password' onChange={updateInfo}/>
-				<button type='submit'>log in</button>
-			</form>
-		</div>
-	)
+		<form 
+		onSubmit={handleSubmit}
+		>
+			<input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+			<input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+			<input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+			<button type="submit">Register</button>
+		</form>
+	);
 }
 
 export default LoginForm

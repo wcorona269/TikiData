@@ -4,9 +4,13 @@ import { combineReducers } from "redux";
 // import sessionReducer from "./session_reducer";
 // import uiReducer from "./ui_reducer";
 import counterReducer from './counter_reducer'
+import usersReducer from "./users_reducer";
+
 
 const rootReducer = {
-	counter: counterReducer
+	counter: counterReducer,
+	users: usersReducer
 };
+
 
 export default rootReducer;

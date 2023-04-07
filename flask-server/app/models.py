@@ -1,5 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import CheckConstraint
 from flask_login import UserMixin
 
 db = SQLAlchemy()
@@ -12,6 +13,11 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
     favorites = db.relationship('Favorite', back_populates='user')
+    
+    __table_args__ = (
+      CheckConstraint("length(password_hash) >= 8",
+      name="password_length_check"),
+    )
     
     def __repr__(self):
       return f"User('{self.username}', '{self.email}', '{self.favorites}')"
@@ -32,3 +38,4 @@ class Favorite(db.Model):
   
   def __repr__(self):
       return f"Favorite('{self.club}', '{self.user_id}')"
+    

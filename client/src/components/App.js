@@ -13,6 +13,7 @@ function App() {
   return (
     <>
     <NavBar/>
+    <Modal modal='signup'/>
     <Counter/>
       <Routes>
         <Route path='/leagues' element={<Leagues/>}/> 
