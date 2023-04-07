@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 // import errorsReducer from "./errors_reducer";
 // import sessionReducer from "./session_reducer";
 // import uiReducer from "./ui_reducer";
-import counterReducer from './counter'
+import counterReducer from './counter_reducer'
 
 const rootReducer = {
 	counter: counterReducer
