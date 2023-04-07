@@ -13,14 +13,14 @@ CORS(app)
 
 app.config.from_object(Config)
 
-
 app.register_blueprint(routes.main.bp)
 app.register_blueprint(routes.matches.bp)
 app.register_blueprint(routes.news.bp)
+app.register_blueprint(routes.auth.bp)
 
 db.init_app(app)
 
 # engine = create_engine(db_url)
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=True)
+    app.run(port=5000, debug=True)

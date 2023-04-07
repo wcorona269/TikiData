@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv(".flaskenv")
 
 from app import app, db
-from  app.models import User
+from  app.models import User, Favorite
 
 with app.app_context():
   db.drop_all()
@@ -16,4 +16,13 @@ with app.app_context():
   
   db.session.add(will)
   db.session.add(spencer)
+  
+  # create favorites
+  favorite = Favorite(club='Barcelona', user=will)
+  favorite2 = Favorite(club='Manchester City', user=will)
+  favorite3 = Favorite(club='Chelsea', user=spencer)
+  db.session.add(favorite)
+  db.session.add(favorite2)
+  db.session.add(favorite3)
   db.session.commit()
+  

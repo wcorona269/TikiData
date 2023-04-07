@@ -1,11 +1,15 @@
 
-from flask import Blueprint, redirect
+from flask import Blueprint, redirect, jsonify
+from ..models import User, Favorite
 
 bp = Blueprint('', __name__)
 
 @bp.route('/')
 def home():
-    return 'Flask app'
+    users = User.query.order_by(User.id).all()
+    favorites = Favorite.query.order_by(Favorite.user_id).all()
+    
+    return f'{users}, {favorites}'
 
 
 
