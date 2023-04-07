@@ -1,4 +1,15 @@
-from app import app
+
+from flask import Blueprint, redirect
+
+bp = Blueprint('', __name__)
+
+@bp.route('/')
+def home():
+    return 'Flask app'
+
+
+
+
 # establish API connection
 # url = "https://v3.football.api-sports.io/fixtures"
 
@@ -14,19 +25,3 @@ from app import app
 # response = requests.request("GET", url, headers=headers, data=payload)
 
 # print(response.text)
-
-@app.route('/')
-def home():
-    return 'Flask App'
-    # return data
-    
-@app.route('/matches')
-def matches():
-  return 'matches timeline backend'
-
-@app.route('/news')
-def fetchNews():
-  return 'news timeline'
-
-if __name__ == '__main__':
-    app.run(port=8000, debug=True)
