@@ -1,8 +1,24 @@
 import React, { useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom'
-
+import { showModal } from '../../actions/modal_actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const NavBar = () => {
+	const dispatch = useDispatch();
+	const modal = useSelector(state => state.ui.modal);
+	console.log(modal)
+
+
+	const loginModal = (e) => {
+		console.log('login button clicked')
+		dispatch(showModal('login'))
+	}
+
+	const signupModal = (e) => {
+		console.log('signup button clicked')
+		dispatch(showModal('signup'))
+	}
+
 	return (
 		<div className='nav-bar-container'>
 			touchline
@@ -12,8 +28,8 @@ const NavBar = () => {
 					<Link to='/leagues'>leagues</Link>
 			</div>
 			<div className='auth-buttons'>
-				<button>Log In</button>
-				<button>Sign Up</button>
+				<button onClick={() => loginModal()}>Log In</button>
+				<button onClick={() => signupModal()}>Sign Up</button>
 			</div>
 		</div>
 	)

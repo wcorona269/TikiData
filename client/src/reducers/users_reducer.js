@@ -15,7 +15,6 @@ const initialState = {
 	error: null
 };
 
-
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case REGISTER_USER_REQUEST:
