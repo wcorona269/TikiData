@@ -1,4 +1,5 @@
 FLASK_APP=app
 FLASK_ENV=development
 SECRET_KEY=rxKMR0MTqqhn5vybYnjLaekJm7aLMR
+JWT_SECRET_KEY=rMUZWWpD46Nyv1Do9uH3LAFFgDUfy61Nvkaxz62A
 DATABASE_URL=postgresql://touchline_admin:touchline_admin@localhost/touchline_dev

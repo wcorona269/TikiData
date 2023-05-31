@@ -2,7 +2,7 @@
 from flask import Blueprint, redirect, jsonify
 from ..models import User, Favorite
 
-bp = Blueprint('', __name__)
+bp = Blueprint('home', __name__)
 
 @bp.route('/')
 def home():

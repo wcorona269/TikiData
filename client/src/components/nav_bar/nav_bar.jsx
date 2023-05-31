@@ -6,16 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 const NavBar = () => {
 	const dispatch = useDispatch();
 	const modal = useSelector(state => state.ui.modal);
-	console.log(modal)
-
+	// console.log(modal)
 
 	const loginModal = (e) => {
-		console.log('login button clicked')
 		dispatch(showModal('login'))
 	}
 
 	const signupModal = (e) => {
-		console.log('signup button clicked')
 		dispatch(showModal('signup'))
 	}
 
