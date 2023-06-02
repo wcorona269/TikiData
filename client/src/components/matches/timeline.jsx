@@ -43,7 +43,7 @@ const MatchesTimeline = ({apiKey}) => {
 	return (
 		<div className='timeline'>
 			Matches Timeline
-			<ul>
+			<ul className='matches-timeline'>
 				{matches.map(match => (
 					<MatchListItem match={match} />
 				)

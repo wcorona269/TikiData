@@ -18,6 +18,7 @@
 @import './styles/components/modal.scss';
 
 @import './styles/pages/home.scss';
+@import './styles/pages/timeline.scss';
 @import './styles/pages/match.scss';
 @import './styles/pages/player.scss';
 @import './styles/pages/club.scss';

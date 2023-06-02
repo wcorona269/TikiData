@@ -1,0 +1,30 @@
+.matches-timeline {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.matches-timeline img {
+	height: 5rem;
+}
+
+.matches-timeline > li {
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+
+	div {
+		width: 100%;
+	}
+}
+
+.scoreline-bar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
