@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import MatchListItem from './matchListItem';
 import { withRouter } from 'react-router-dom'
 
 // array as a result of 'matches.response'
@@ -44,11 +45,7 @@ const MatchesTimeline = ({apiKey}) => {
 			Matches Timeline
 			<ul>
 				{matches.map(match => (
-					<li key={match.fixture.id}>
-							<span>
-								{match.teams.home.name} vs. {match.teams.away.name}
-							</span>
-					</li>
+					<MatchListItem match={match} />
 				)
 				)}
 			</ul>
