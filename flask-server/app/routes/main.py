@@ -1,6 +1,8 @@
 
 from flask import Blueprint, redirect, jsonify
 from ..models import User, Favorite
+import requests
+
 
 bp = Blueprint('home', __name__)
 
@@ -15,7 +17,7 @@ def home():
 
 
 # establish API connection
-# url = "https://v3.football.api-sports.io/fixtures"
+# url = "https://v3.football.api-sports.io/fixtures?live=all"
 
 # API_KEY = 'bc5c0860d9d43d604063b03b996ffa18'
 

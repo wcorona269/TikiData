@@ -1,29 +1,56 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom'
 
-const MatchesTimeline = () => {
+// array as a result of 'matches.response'
+import { response } from './response';
 
-	const matches = [
-		['Manchester United vs. Manchester City', '4:30PM', 'Old Trafford'],
-		['Real Madrid vs. Barcelona', '6:00PM', 'Bernabeu Stadium'],
-		['Juventus vs. Napoli', '9:00PM', 'Allianz Stadium']
-	]
+const MatchesTimeline = ({apiKey}) => {
+	const [matches, setMatches] = useState(response)
+	const [loading, setLoading] = useState(false)
 
-	const listMatches = (matches) => {
-		return (
-			matches.map((match, idx) => 
-					<li key={idx}>
-						{match[0]}, {match[1]}, {match[2]}
-					</li>
-			)
-		)
+	useEffect(() => {
+		// fetchMatches()
+		// console.log(matches)
+	}, [])
+
+	// const fetchMatches = async () => {
+	// 	try {
+	// 		const response = await fetch(`https://v3.football.api-sports.io/fixtures?live=all`, {
+	// 			method: 'GET',
+	// 			headers: {
+	// 				'x-rapidapi-host': 'v3.football.api-sports.io',
+	// 				'x-rapidapi-key': `${apiKey}`
+	// 			}
+	// 		});
+
+	// 		if (!response.ok) {
+	// 			throw new Error('Failed to fetch matches');
+	// 		}
+
+	// 		const data = await response.json();
+	// 		setMatches(data);
+	// 		setLoading(false);
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 		setLoading(false);
+	// 	}
+	// };
+
+	if (loading) {
+		return <div>Loading...</div>;
 	}
-
 	return (
 		<div className='timeline'>
 			Matches Timeline
 			<ul>
-				{listMatches(matches)}
+				{matches.map(match => (
+					<li key={match.fixture.id}>
+							<span>
+								{match.teams.home.name} vs. {match.teams.away.name}
+							</span>
+					</li>
+				)
+				)}
 			</ul>
 		</div>
 	)
