@@ -10,7 +10,6 @@ const SignupForm = (props) => {
 	const [confirmPassword, setConfirmPassword] = useState('')
 	const validatePasswordLength = (password.length >= 8)
 	const validatePasswordMatch = (password === confirmPassword)
-	console.log(validatePasswordMatch);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

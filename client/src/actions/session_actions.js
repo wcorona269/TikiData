@@ -15,7 +15,6 @@ export const loginUser = (userData) => {
 		dispatch({ type: LOGIN_USER_REQUEST });
 		axios.post('/auth/login', userData)
 			.then((response) => {
-				// console.log(response.data.access_token)
 				dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
 			})
 			.catch((error) => {

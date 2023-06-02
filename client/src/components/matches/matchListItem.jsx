@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import { withRouter } from 'react-router-dom';
-
+import TimelineEventsBar from './timelineEventsBar';
 
 const MatchListItem = ({match}) => {
-
+	
+	
 	// set variables for easy access
 	const id = match.fixture.id
 	const league = `${match.league.country} ${match.league.name} ${match.league.round}`
+	const events = match.events.length === 0 ? null : match.events
+
 	const homeTeam = match.teams.home.name
 	const awayTeam = match.teams.away.name
 	
@@ -17,19 +20,18 @@ const MatchListItem = ({match}) => {
 	const awayIcon = match.teams.away.logo;
 
 	// list each match individually
-	console.log(match)
 	return (
 		<li key={id}>
 			<div className='match-info-bar'>
 				{league}
 			</div>
-			<div className='scoreline-bar'>
+			<div className='timeline-scoreline-bar'>
 				<img src={homeIcon}/>
 				{homeGoals} - {awayGoals}
 				<img src={awayIcon}/>
 			</div>
-			<div className='match-summary-bar'>
-
+			<div className='timeline-events-bar'>
+				<TimelineEventsBar events={events}/>
 			</div>
 		</li>
 	)

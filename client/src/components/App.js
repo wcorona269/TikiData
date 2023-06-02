@@ -17,7 +17,6 @@ const getConfig = async () => {
     const response = await axios.get('/api/config');
     apiKey = response.data.api_key;
     // Use the API key in your frontend code
-    // console.log(apiKey);
   } catch (error) {
     console.error(error);
   }

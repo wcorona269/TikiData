@@ -11,7 +11,6 @@ const MatchesTimeline = ({apiKey}) => {
 
 	useEffect(() => {
 		// fetchMatches()
-		// console.log(matches)
 	}, [])
 
 	// const fetchMatches = async () => {
