@@ -1,32 +1,22 @@
 import React, { useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom'
-import { showModal } from '../../actions/modal_actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import LoggedInNav from './logged_in_nav';
+import LoggedOutNav from './logged_out_nav';
 
 const NavBar = () => {
-	const dispatch = useDispatch();
-	const modal = useSelector(state => state.ui.modal);
+	const currentUser = useSelector(state => state.session.user);
+	let component;
 
-	const loginModal = (e) => {
-		dispatch(showModal('login'))
-	}
+	useEffect(() => {
 
-	const signupModal = (e) => {
-		dispatch(showModal('signup'))
-	}
+	}, [currentUser, component])
+
+	currentUser === null ? component = <LoggedOutNav/> : component = <LoggedInNav/>
 
 	return (
 		<div className='nav-bar-container'>
 			touchline
-			<div className='nav-bar'>
-					<Link to='/matches'>matches</Link><br></br>
-					<Link to='/nations'>nations</Link><br></br>
-					<Link to='/leagues'>leagues</Link>
-			</div>
-			<div className='auth-buttons'>
-				<button onClick={() => loginModal()}>Log In</button>
-				<button onClick={() => signupModal()}>Sign Up</button>
-			</div>
+			{component}
 		</div>
 	)
 }

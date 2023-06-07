@@ -23,12 +23,12 @@ export const loginUser = (userData) => {
 	};
 };
 
-export const logoutUser = () => {
+export const logoutUser = (data) => {
 	return (dispatch) => {
 		dispatch({ type: LOGOUT_USER_REQUEST });
-		axios.post('/auth/logout')
-			.then(() => {
-				dispatch({ type: LOGOUT_USER_SUCCESS });
+		axios.post('/auth/logout', data)
+			.then((response) => {
+				dispatch({ type: LOGOUT_USER_SUCCESS, payload: response.data });
 			})
 			.catch((error) => {
 				dispatch({ type: LOGOUT_USER_FAILURE, payload: error.message });

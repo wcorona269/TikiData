@@ -18,7 +18,6 @@ const TimelineEventsBar = ({events}) => {
 	return (
 		<ul>
 			{relevantEvents.map((event, idx) => {
-				// console.log(event.type);
 				{console.log(event.type)}
 				if (event.type === 'Goal') {
 					return <GoalComponent key={idx} event={event}/>

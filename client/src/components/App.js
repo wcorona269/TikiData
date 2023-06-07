@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, Route, Routes, Switch } from 'react-router-dom';
+import ProtectedRoute from './util/route_util';
 import NavBar from './nav_bar/nav_bar';
 import Footer from './footer/footer'
 import Home from './home/home'
@@ -8,6 +9,7 @@ import Leagues from './home/leagues'
 import Nations from './home/nations'
 import MatchesTimeline from './matches/timeline';
 import Modal from './modal/modal';
+import Welcome from './home/welcome'
 
 import axios from 'axios'
 let apiKey;
@@ -16,7 +18,6 @@ const getConfig = async () => {
   try {
     const response = await axios.get('/api/config');
     apiKey = response.data.api_key;
-    // Use the API key in your frontend code
   } catch (error) {
     console.error(error);
   }
@@ -25,17 +26,16 @@ const getConfig = async () => {
 getConfig();
 
 function App() {
+
   return (
     <>
-    <NavBar/>
-    <Modal/>
-    {/* <Counter/> */}
+      <Modal/>
+      <NavBar />
       <Routes>
-        <Route path='/leagues' element={<Leagues apiKey={apiKey} />}/> 
-        <Route path='/nations' element={<Nations apiKey={apiKey} />}/>
-        <Route path='/matches/' element={<MatchesTimeline apiKey={apiKey} />}/>
-        {/* <Route path='/leagues' element={<Leagues/>}></Route> */}
-        {/* <Route path='/clubs' element={}> */}
+        <Route path='/'element={
+          <ProtectedRoute component={Home}/>
+        }/>
+        <Route path='/welcome' element={<Welcome/>}/>
       </Routes>
       <Footer/>
     </>

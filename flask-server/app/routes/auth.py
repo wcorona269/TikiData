@@ -1,8 +1,13 @@
 from flask import Blueprint, request, jsonify
 from ..models import db, User
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from datetime import timedelta
+
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
+
+# Create a set of revoked session tokens
+revoked_tokens = set()
 
 @bp.route('/register', methods=['POST'])
 def register():
@@ -30,7 +35,10 @@ def register():
 
 @bp.route('/login', methods=['POST'])
 def login():
+    # JSONify the request
     data = request.json
+    
+    # extract email and password
     email = data.get('email')
     password = data.get('password')
 
@@ -41,10 +49,26 @@ def login():
     
     if not user or not user.check_password(password):
         return jsonify({'message': 'Invalid email or password'}), 401
-
-    # TODO: Add code to generate and return JWT token for authenticated user
-    access_token = create_access_token(identity=user.id)
+    
+    # Generate and return JWT token for authenticated user
+    expires = timedelta(hours=1)  # Set the expiration time to 1 hour
+    access_token = create_access_token(identity=user.id, expires_delta=expires)
+    
     return jsonify({
         'message': 'User authenticated successfully',
         'access_token': access_token
     }), 200
+
+@bp.route('/logout', methods=['POST'])
+def logout():
+    data = request.json # JSONify request
+    
+    # extract JWT token and store it as a revoked token. This way, it cannot be reused
+    access_token = data.get('access_token')
+    
+    if access_token != 'null':
+        revoked_tokens.add(access_token)
+    
+    return jsonify({
+        'message': 'User Logged Out Successfully',
+    })
