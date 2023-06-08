@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 bcrypt = Bcrypt()
 db = SQLAlchemy()
 
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     

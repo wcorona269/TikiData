@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser, removeUserErrors } from '../../actions/user_actions';
 import { loginUser } from '../../actions/session_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 const SignupForm = (props) => {
 	const dispatch = useDispatch()
@@ -9,6 +10,7 @@ const SignupForm = (props) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+	const currentUser = useSelector(state => state.session.user);
 	const errorMessage = useSelector(state => state.users.error);
 	const [error, setError] = useState(null);
 	const validatePasswordLength = (password.length >= 8);
@@ -24,6 +26,12 @@ const SignupForm = (props) => {
 		dispatch(removeUserErrors())
 		setError(false)
 	}, [email, username, password, confirmPassword])
+
+	useEffect(() => {
+		if (currentUser !== null) {
+			dispatch(closeModal);
+		}
+	}, [currentUser])
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
