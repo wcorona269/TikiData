@@ -4,7 +4,8 @@ import {
 	LOGIN_USER_FAILURE,
 	LOGOUT_USER_REQUEST,
 	LOGOUT_USER_SUCCESS,
-	LOGOUT_USER_FAILURE
+	LOGOUT_USER_FAILURE,
+	REMOVE_SESSION_ERRORS
 } from '../actions/session_actions';
 
 const initialState = {
@@ -25,6 +26,8 @@ const sessionReducer = (state = initialState, action) => {
 		case LOGIN_USER_FAILURE:
 		case LOGOUT_USER_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
+		case REMOVE_SESSION_ERRORS:
+			return { ...state, isLoading: false, error: null }
 		default:
 			return state;
 	}

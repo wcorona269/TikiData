@@ -18,7 +18,8 @@ const SignupForm = (props) => {
 				username: username,
 				email: email,
 				password: password
-			}));
+			}))
+			// .then(() => dispatch(closeModa()))
 		}
 	};
 

@@ -43,12 +43,16 @@ def login():
     password = data.get('password')
 
     if not email or not password:
-        return jsonify({'message': 'Missing required fields'}), 400
+        return jsonify({
+            'message': 'Missing required fields'
+            }), 400
 
     user = User.query.filter_by(email=email).first()
     
     if not user or not user.check_password(password):
-        return jsonify({'message': 'Invalid email or password'}), 401
+        return jsonify({
+            'message': 'Invalid email or password'
+            }), 401
     
     # Generate and return JWT token for authenticated user
     expires = timedelta(hours=1)  # Set the expiration time to 1 hour
