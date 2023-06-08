@@ -11,7 +11,6 @@ export const LOGOUT_USER_FAILURE = 'LOGOUT_USER_FAILURE';
 
 export const REMOVE_SESSION_ERRORS = 'REMOVE_SESSION_ERRORS'
 
-
 export const removeSessionErrors = () => ({
 	type: REMOVE_SESSION_ERRORS
 })

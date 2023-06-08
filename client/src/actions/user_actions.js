@@ -9,12 +9,17 @@ export const FETCH_USER_REQUEST = 'FETCH_USER_REQUEST';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
 
+export const REMOVE_USER_ERRORS = 'REMOVE_USER_ERRORS'
+
+export const removeUserErrors = () => ({
+	type: REMOVE_USER_ERRORS
+});
 
 // Action creators
 export const registerUser = (userData) => {
 	return (dispatch) => {
 		dispatch({ type: REGISTER_USER_REQUEST });
-		axios.post('/auth/register', userData)
+		return axios.post('/auth/register', userData)
 			.then((response) => {
 				dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
 			})

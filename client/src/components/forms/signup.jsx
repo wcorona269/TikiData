@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { registerUser } from '../../actions/user_actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser, removeUserErrors } from '../../actions/user_actions';
+import { loginUser } from '../../actions/session_actions';
 
 const SignupForm = (props) => {
 	const dispatch = useDispatch()
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [confirmPassword, setConfirmPassword] = useState('')
-	const validatePasswordLength = (password.length >= 8)
-	const validatePasswordMatch = (password === confirmPassword)
+	const [confirmPassword, setConfirmPassword] = useState('');
+	const errorMessage = useSelector(state => state.users.error);
+	const [error, setError] = useState(null);
+	const validatePasswordLength = (password.length >= 8);
+	const validatePasswordMatch = (password === confirmPassword);
+	
+	useEffect(() => {
+		if (errorMessage !== null) {
+			setError(true)
+		}
+	}, [errorMessage])
+
+	useEffect(() => {
+		dispatch(removeUserErrors())
+		setError(false)
+	}, [email, username, password, confirmPassword])
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -19,7 +33,6 @@ const SignupForm = (props) => {
 				email: email,
 				password: password
 			}))
-			// .then(() => dispatch(closeModa()))
 		}
 	};
 
@@ -35,6 +48,7 @@ const SignupForm = (props) => {
 				<input type='password' placeholder='confirm password' name='confirmPassword' onChange={(e) => setConfirmPassword(e.target.value)} />
 				{!validatePasswordMatch && <p className='form-error-message'>Passwords do not match</p>}
 				<button type="submit">Register</button>
+				{error && <p className='form-error-message'>404 error</p>}
 			</form>
 		</div>
 	)

@@ -29,7 +29,6 @@ const LoginForm = (props) => {
 		}
 	}, [currentUser]);
 
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(loginUser({

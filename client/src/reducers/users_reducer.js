@@ -4,7 +4,8 @@ import {
 	REGISTER_USER_FAILURE,
 	FETCH_USER_REQUEST,
 	FETCH_USER_SUCCESS,
-	FETCH_USER_FAILURE
+	FETCH_USER_FAILURE,
+	REMOVE_USER_ERRORS
 } from '../actions/user_actions';
 
 
@@ -27,6 +28,8 @@ const usersReducer = (state = initialState, action) => {
 		case REGISTER_USER_FAILURE:
 		case FETCH_USER_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
+		case REMOVE_USER_ERRORS:
+			return { ...state, isLoading: false, error: null }
 		default:
 			return state;
 	}
