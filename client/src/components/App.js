@@ -26,26 +26,30 @@ function App() {
 
   return (
     <>
+    <div className='outer-body'>
       <Modal/>
-      <NavBar />
-      <Routes>
-        <Route path='/'element={
-          // <ProtectedRoute component={Home}/>
-          <Home/>
-        }/>
-        <Route path='/matches'
-          element={<MatchesTimeline/>}
-        />  
-        <Route path='/favorites'
-          element={<MatchesTimeline/>}
-        />
-        <Route path='/leagues'
-          element={<Leagues/>}
-        />  
-        
-      <Route path='/welcome' element={<Welcome/>}/>
-      </Routes>
-      <Footer/>
+      <div className='inner-body'>
+        <NavBar />
+        <Routes>
+          <Route path='/'element={
+            // <ProtectedRoute component={Home}/>
+            <Home/>
+          }/>
+          <Route path='/matches'
+            element={<MatchesTimeline apiKey={apiKey} />}
+          />  
+          <Route path='/favorites'
+            element={<MatchesTimeline apiKey={apiKey}/>}
+          />
+          <Route path='/leagues'
+            element={<Leagues/>}
+          />  
+          
+        <Route path='/welcome' element={<Welcome/>}/>
+        </Routes>
+        <Footer/>
+      </div>
+    </div>
     </>
   )
 }

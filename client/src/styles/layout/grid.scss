@@ -1,0 +1,13 @@
+
+.outer-body {
+	display: grid;
+	grid-template-columns: 1fr 60% 1fr;
+	grid-template-areas: 
+		'. main .'
+}
+
+.inner-body {
+	grid-area: main;
+	display: flex;
+	flex-direction: column;
+}
