@@ -8,7 +8,7 @@ const CardComponent = ({event, key}) => {
 	event.type === 'Red Card' ? (src = redCard) : (src = yellowCard)
 
 	return (
-		<li key={key}>
+		<li key={key} className='event-timeline-list-item'>
 			<img src={src}/>
 			<p>{event.player.name}</p>
 		</li>

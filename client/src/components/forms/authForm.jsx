@@ -1,14 +1,9 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-
-const AuthForm = ({fields, validationRules, onSubmit, error, errorMessage}) => {
-	const [formState, setFormState] = useState();
-
-	useEffect(() => {
-		setFormState({})
-		console.log(formState)
-	}, [])
+const AuthForm = ({fields, onSubmit, error, errorMessage}) => {
+	let [formState, setFormState] = useState({});
+	let [isValid, setIsValid] = useState(null);
+	let [errors, setErrors] = useState([])
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -16,23 +11,49 @@ const AuthForm = ({fields, validationRules, onSubmit, error, errorMessage}) => {
 	}
 
 	const handleSubmit = (e) => {
-		e.preventDefault;
-		const isValid = validateField();
-		if (isValid) {
+		e.preventDefault();
+		setErrors(validateFields);
+		if (isValid === true) {
 			onSubmit(formState);
 		}
 	}
 
-	const validateFields = () => {
-		let isValid = true;
-		for (let field of fields) {
-			if (validationRules[field] && !validationRules[field](formState[field])) {
-				isValid = false;
-			}
-		}
-		return isValid;
+	const isValidEmail = (email) =>  {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return emailRegex.test(email);
 	}
 
+	const validateFields = () => {
+		let result = []
+		
+		for (let field of fields) {
+
+			if (formState[field] === undefined) {
+				setIsValid(false);
+				result.push('All fields must be filled out');
+				break;
+			}
+
+			if (field === 'password' && formState[field] && !(formState[field].length >= 8)) {
+				setIsValid(false);
+				result.push('Password must be at least 8 characters')
+				break;
+			} 
+			
+			if (field === 'confirmPassword' && formState['password'] && formState[field] !== formState['password']) {
+				setIsValid(false);
+				result.push("Passwords don't match")
+				break;
+			}
+
+			if (field === 'email' && !isValidEmail(formState[field])) {
+				setIsValid(false);
+				result.push('All fields must be filled out')
+				break;
+			}
+		}
+		return result;
+	}
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -47,8 +68,18 @@ const AuthForm = ({fields, validationRules, onSubmit, error, errorMessage}) => {
 				/>
 			))
 		}
-		{error && <p>{errorMessage}</p>}
-		<button type="submit">Submit</button>
+		{errors.map((error) => (
+			<p className='auth-error-message' key={error}>
+				{error}
+			</p>
+		))}
+		<button
+
+			type="submit"
+			className={isValid === true ? 'auth-form-btn' : 'auth-form-btn error-btn' }
+		>
+			Submit
+		</button>
 		</form>
 	)
 }

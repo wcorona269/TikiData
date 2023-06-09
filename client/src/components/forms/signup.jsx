@@ -1,63 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser, removeUserErrors } from '../../actions/user_actions';
 import { loginUser } from '../../actions/session_actions';
 import { closeModal } from '../../actions/modal_actions';
+import AuthForm from './authForm';
 
-const SignupForm = (props) => {
+const SignupForm = () => {
 	const dispatch = useDispatch()
-	const [username, setUsername] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [confirmPassword, setConfirmPassword] = useState('');
 	const currentUser = useSelector(state => state.session.user);
 	const errorMessage = useSelector(state => state.users.error);
-	const [error, setError] = useState(null);
-	const validatePasswordLength = (password.length >= 8);
-	const validatePasswordMatch = (password === confirmPassword);
+
+	const fields = ['username', 'email', 'password', 'confirmPassword'];
 	
-	useEffect(() => {
-		if (errorMessage !== null) {
-			setError(true)
-		}
-	}, [errorMessage])
-
-	useEffect(() => {
-		dispatch(removeUserErrors())
-		setError(false)
-	}, [email, username, password, confirmPassword])
-
-	useEffect(() => {
-		if (currentUser !== null) {
-			dispatch(closeModal);
-		}
-	}, [currentUser])
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (validatePasswordLength && validatePasswordMatch) {
-			dispatch(registerUser({
-				username: username,
-				email: email,
-				password: password
-			}))
-		}
-	};
+	const onSubmit = (formData) => {
+		dispatch(registerUser(formData));
+	}
 
 	return (
 		<div className='modal-form-container'>
-			<form
-				onSubmit={handleSubmit}
-			>
-				<input type='text' placeholder='username' name='username' onChange={(e) => setUsername(e.target.value)} />
-				<input type='text' placeholder='email' name='email' onChange={(e) => setEmail(e.target.value)} />
-				<input type='password' placeholder='password' name='password' onChange={(e) => setPassword(e.target.value)} />
-				{!validatePasswordLength && <p className='form-error-message'>Password must be at least 8 Characters</p>}
-				<input type='password' placeholder='confirm password' name='confirmPassword' onChange={(e) => setConfirmPassword(e.target.value)} />
-				{!validatePasswordMatch && <p className='form-error-message'>Passwords do not match</p>}
-				<button type="submit">Register</button>
-				{error && <p className='form-error-message'>404 error</p>}
-			</form>
+			<AuthForm
+				fields={fields}
+				onSubmit={onSubmit}
+				error={errorMessage !== null}
+				errorMessage={'Invalid credentials'}
+			/>
 		</div>
 	)
 }
