@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
 
-const Nations = () => {
+const Favorites = () => {
 	
 	const nations = {
 		'Europe': ['England', 'France', 'Spain', 'Germany'],
@@ -34,4 +34,4 @@ const Nations = () => {
 	)
 }
 
-export default Nations
+export default Favorites

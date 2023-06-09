@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { closeModal } from './modal_actions';
 
 // Action types
 export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
@@ -22,6 +23,7 @@ export const loginUser = (userData) => {
 		return axios.post('/auth/login', userData)
 			.then((response) => {
 				dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
+				dispatch(closeModal());
 			})
 			.catch((error) => {
 			if (error.response && error.response.data && error.response.data.message) {

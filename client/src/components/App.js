@@ -4,14 +4,11 @@ import ProtectedRoute from './util/route_util';
 import NavBar from './nav_bar/nav_bar';
 import Footer from './footer/footer'
 import Home from './home/home'
-import Counter from './home/counter'
-import Leagues from './home/leagues'
-import Nations from './home/nations'
-import MatchesTimeline from './matches/timeline';
 import Modal from './modal/modal';
 import Welcome from './home/welcome'
-
+import Leagues from './home/leagues';
 import axios from 'axios'
+import MatchesTimeline from './matches/timeline';
 let apiKey;
 
 const getConfig = async () => {
@@ -33,9 +30,20 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/'element={
-          <ProtectedRoute component={Home}/>
+          // <ProtectedRoute component={Home}/>
+          <Home/>
         }/>
-        <Route path='/welcome' element={<Welcome/>}/>
+        <Route path='/matches'
+          element={<MatchesTimeline/>}
+        />  
+        <Route path='/favorites'
+          element={<MatchesTimeline/>}
+        />
+        <Route path='/leagues'
+          element={<Leagues/>}
+        />  
+        
+      <Route path='/welcome' element={<Welcome/>}/>
       </Routes>
       <Footer/>
     </>
