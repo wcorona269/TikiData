@@ -6,7 +6,7 @@ import { closeModal } from '../../actions/modal_actions';
 import AuthForm from './authForm';
 
 const SignupForm = () => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const currentUser = useSelector(state => state.session.user);
 	const errorMessage = useSelector(state => state.users.error);
 
@@ -17,12 +17,10 @@ const SignupForm = () => {
 	}
 
 	return (
-		<div className='modal-form-container'>
+		<div className='auth-form-container'>
 			<AuthForm
 				fields={fields}
 				onSubmit={onSubmit}
-				error={errorMessage !== null}
-				errorMessage={'Invalid credentials'}
 			/>
 		</div>
 	)
