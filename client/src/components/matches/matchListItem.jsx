@@ -4,7 +4,7 @@ import TimelineEventsBar from './timelineEventsBar';
 
 const MatchListItem = ({match}) => {
 	console.log(match);
-	// set variables for easy access
+
 	const id = match.fixture.id
 	const league = `${match.league.country} ${match.league.name} ${match.league.round}`
 	const events = match.events.length === 0 ? null : match.events
@@ -36,4 +36,4 @@ const MatchListItem = ({match}) => {
 	)
 }
 
-export default MatchListItem
+export default MatchListItem;

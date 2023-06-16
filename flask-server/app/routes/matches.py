@@ -24,7 +24,10 @@ def live():
       "season": "2023"
   }
   
-  conn.request("GET", "/fixtures?league=39&season=2023&round=Regular+Season+-+1", headers=headers)
+  conn.request("GET",
+              #  "/fixtures?league=39&season=2023&round=Regular+Season+-+1"
+               "/fixtures?live=all",
+                headers=headers)
   res = conn.getresponse()
   data = res.read()
   result = data.decode("utf-8")

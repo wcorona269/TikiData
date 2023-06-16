@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import MatchListItem from './matchListItem';
 import { withRouter } from 'react-router-dom'
+import { fetchMatches } from '../../actions/api_actions';
 // import response from './response';
 
 // array as a result of 'matches.response'
 import response from './response';
 
 const MatchesTimeline = ({apiKey}) => {
-	const [matches, setMatches] = useState(response)
+	const dispatch = useDispatch();
+	const matches = useSelector(state => state.matches.matches)
 	const [loading, setLoading] = useState(false);
-
+	
 	useEffect(() => {
-		// fetchMatches()
-	}, [])
-
-	const fetchMatches = async () => {
-		
-	};
-
-	if (loading) {
+		dispatch(fetchMatches())
+	}, []);
+	
+	if (!matches) {
 		return <div>Loading...</div>;
 	}
-
-	console.log(matches);
 
 	return (
 		<div className='timeline'>
