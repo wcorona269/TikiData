@@ -5,6 +5,26 @@
 	align-items: center;
 }
 
+.match-list-item {
+	margin: 2rem;
+}
+
+.match-info-bar {
+	color: gray;
+}
+
+.timeline-events-bar {
+	font-size:1rem;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 100%;
+	display: table-cell;
+
+	img {
+		height: 1rem;
+	}
+}
+
 .matches-timeline img {
 	height: 5rem;
 }

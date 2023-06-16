@@ -20,7 +20,7 @@ const MatchListItem = ({match}) => {
 
 	// list each match individually
 	return (
-		<li key={id}>
+		<li key={id} className='match-list-item'>
 			<div className='match-info-bar'>
 				{league}
 			</div>

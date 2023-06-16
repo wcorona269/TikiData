@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { loginUser } from './session_actions';
+import { closeModal } from './modal_actions';
 
 // Action types
 export const REGISTER_USER_REQUEST = 'REGISTER_USER_REQUEST';
@@ -25,6 +26,7 @@ export const registerUser = (userData) => {
 				dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
 				// Login user after successful registration
 				dispatch(loginUser(userData));
+				dispatch(closeModal());
 			})
 			.catch((error) => {
 				dispatch({ type: REGISTER_USER_FAILURE, payload: error.message });
