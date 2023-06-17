@@ -26,6 +26,7 @@ app.register_blueprint(routes.main.bp)
 app.register_blueprint(routes.matches.bp)
 app.register_blueprint(routes.news.bp)
 app.register_blueprint(routes.auth.bp)
+app.register_blueprint(routes.competition.bp)
 
 db.init_app(app)
 

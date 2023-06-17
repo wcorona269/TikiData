@@ -9,7 +9,10 @@ import Welcome from './home/welcome'
 import Leagues from './home/leagues/leagues';
 import axios from 'axios'
 import MatchesTimeline from './matches/timeline';
+import ClubProfile from './club/club';
+import LeagueProfile from './league/leagueProfile';
 let apiKey;
+
 
 const getConfig = async () => {
   try {
@@ -20,7 +23,9 @@ const getConfig = async () => {
   }
 };
 
+
 getConfig();
+
 
 function App() {
 
@@ -43,7 +48,13 @@ function App() {
           />
           <Route path='/leagues'
             element={<Leagues/>}
-          />  
+          />
+          <Route path='/club/:clubId'
+            element={<ClubProfile/>}
+          />
+          <Route path='/league-overview/:leagueId'
+            element={<LeagueProfile/>}
+          />
         <Route path='/welcome' element={<Welcome/>}/>
         </Routes>
         <Footer/>

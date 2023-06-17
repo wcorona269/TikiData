@@ -59,6 +59,7 @@ export const fetchMatches = () => {
 }
 
 export const fetchCompetition = (leagueId) => {
+	console.log(leagueId);
 	return (dispatch) => {
 		dispatch({ type: FETCH_COMPETITION_REQUEST });
 		return axios.get(`/competition/${leagueId}`)

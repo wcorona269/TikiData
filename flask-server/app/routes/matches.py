@@ -32,5 +32,5 @@ def live():
   data = res.read()
   result = data.decode("utf-8")
   json_data = json.loads(result)
-  fixtures = json_data["response"]
-  return fixtures
+  competition = json_data["response"]
+  return competition
