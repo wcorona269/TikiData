@@ -22,6 +22,8 @@
 @import './styles/pages/match.scss';
 @import './styles/pages/player.scss';
 @import './styles/pages/club.scss';
+@import './styles/pages/leagues.scss';
+
 
 @import './styles/themes/theme.scss';
 @import './styles/themes/admin.scss';

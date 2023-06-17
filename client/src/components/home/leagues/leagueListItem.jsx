@@ -17,7 +17,7 @@ const LeagueListItem = ({nation}) => {
 	// {console.log(info)}
 	return (
 		<div 
-			className='league-list-item'
+			className={`league-list-item ${isOpen ? 'open' : ''}`}
 			key={name} 
 			onMouseEnter={handleMouseHover}
 			onMouseLeave={handleMouseLeave}
