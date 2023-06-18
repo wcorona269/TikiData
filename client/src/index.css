@@ -23,6 +23,7 @@
 @import './styles/pages/player.scss';
 @import './styles/pages/club.scss';
 @import './styles/pages/leagues.scss';
+@import './styles/pages/leagueTable.scss';
 
 
 @import './styles/themes/theme.scss';

@@ -5,20 +5,37 @@ const LeagueTableDashboard = ({response}) => {
 	const standings = leagueInfo['standings'][0];
 	const columns = ['Position', 'Club', 'Played', 'Won', 'Drawn', 'Lost', 'GF', 'GC', 'GD', 'Points', 'Form'];
 
+
+	const displayForm = (form) => {
+		let icons = {
+			'W': '\u{1F7E2}',
+			'D': '\u{1F7E1}',
+			'L': '\u{1F534}'
+		};
+
+		return (
+			<p id='form-display'>
+				{form.split('').map((symbol, index) => (
+					<span key={index}>{icons[symbol]}</span>
+				))}
+			</p>
+		);
+	};
+
 	return (
-		<table>
+		<table className='league-table'>
 			<thead>
 				<tr>
 					{columns.map((column, idx) => (
-						<th key={idx} className={column}>{column}</th>
+						<th key={idx} className='league-table-header' id={column}>{column}</th>
 					))}
 				</tr>
 			</thead>
-			<tbody>
+			<tbody className='league-table-body'>
 				{standings.map((club, idx) => (
-					<tr key={idx}>
+					<tr key={idx} className='league-table-row'>
 						<td>{club['rank']}</td>
-						<td>{club['team']['name']} <img src={club['team']['logo']}/></td>
+						<td id='Club' >{club['team']['name']} <img src={club['team']['logo']}/></td>
 						{console.log(club['team'])}
 						<td>{club['all']['played']}</td>
 						<td>{club['all']['win']}</td>
@@ -28,11 +45,10 @@ const LeagueTableDashboard = ({response}) => {
 						<td>{club['all']['goals']['against']}</td>
 						<td>{club['goalsDiff']}</td>
 						<td>{club['points']}</td>
-						<td>{club['form']}</td>
+						<td>{displayForm(club['form'])}</td>
 					</tr>
 				))}
 			</tbody>
-
 		</table>
 	)
 }
