@@ -10,16 +10,14 @@ import response from './response';
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
 	const { leagueId } = useParams();
-	const competition = useSelector(state => state.competition.competition);
+	// const competition = useSelector(state => state.competition.competition);
 
 	useEffect(() => {
-		
-	}, []);
 
-	console.log(leagueId); 
+	}, []);
 	return (
 		<div>
-			<LeagueTableDashboard/>
+			<LeagueTableDashboard response={response}/>
 			<LeagueStatsDashboard/>
 			<LeagueFixturesDashboard/>
 		</div>
