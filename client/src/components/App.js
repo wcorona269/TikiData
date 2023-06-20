@@ -11,6 +11,7 @@ import axios from 'axios'
 import MatchesTimeline from './matches/timeline';
 import ClubProfile from './club/club';
 import LeagueProfile from './league/leagueProfile';
+import PlayerProfile from './player/playerProfile';
 let apiKey;
 
 
@@ -54,6 +55,10 @@ function App() {
           />
           <Route path='/league-overview/:leagueId'
             element={<LeagueProfile/>}
+          />
+          <Route
+            path='/player-profile/:playerId'
+            element={<PlayerProfile/>}
           />
         <Route path='/welcome' element={<Welcome/>}/>
         </Routes>
