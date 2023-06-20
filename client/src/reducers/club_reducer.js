@@ -16,7 +16,14 @@ const clubReducer = (state = initialState, action) => {
 		case FETCH_CLUB_REQUEST:
 			return { ...state, isLoading: true, error: null };
 		case FETCH_CLUB_SUCCESS:
-			return { ...state, club: action.payload, isLoading: false, error: null };
+			return {
+				...state,
+				club: action.payload['club'],
+				squad: action.payload['squad'],
+				fixtures: action.payload['fixtures'],
+				isLoading: false,
+				error: null
+			};
 		case FETCH_CLUB_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
 		default:

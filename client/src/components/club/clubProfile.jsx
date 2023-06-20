@@ -9,8 +9,6 @@ const ClubProfile = () => {
 	const { clubId } = useParams();
 	const dispatch = useDispatch();
 	// const club = useSelector(state => state.club);
-	// console.log(club['club']);
-	console.log(response);
 
 	useEffect(() => {
 		// dispatch(fetchClub(clubId));
@@ -24,7 +22,7 @@ const ClubProfile = () => {
 			</h2>
 			<p>Club Image</p>
 			</header>
-			<ClubInfoBar/>
+			<ClubInfoBar clubInfo={response}/>
 		</div>
 	)
 }

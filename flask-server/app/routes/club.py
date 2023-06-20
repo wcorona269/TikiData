@@ -17,9 +17,31 @@ def competitionInfo(clubId):
     'x-rapidapi-key': api_key
 	}
   
+  # Request club info
+  conn.request("GET", f"/teams?id={clubId}", headers=headers)
+  res = conn.getresponse()
+  data = res.read()
+  result = data.decode("utf-8")
+  club_info = json.loads(result)['response']
+  
+  # Request squad details
   conn.request("GET", f"/players/squads?team={clubId}", headers=headers)
   res = conn.getresponse()
   data = res.read()
   result = data.decode("utf-8")
-  club_data = json.loads(result)['response']
-  return club_data;
+  squad_data = json.loads(result)['response']
+  
+  # Request club fixtures (previous and upcoming)
+  conn.request("GET", f"/fixtures?team={clubId}&season=2022,2023",headers=headers)
+  res = conn.getresponse()
+  data = res.read()
+  result = data.decode("utf-8")
+  fixtures = json.loads(result)['response']
+  
+  combined_data = {
+		'club': club_info,
+		'squad': squad_data,
+		'fixtures': fixtures
+	}
+  
+  return combined_data

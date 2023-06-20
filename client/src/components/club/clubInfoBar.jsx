@@ -7,11 +7,15 @@ import ClubSquadDashboard from './clubSquadDashboard';
 import ClubStatsDashboard from './clubStatsDashboard';
 import ClubNews from './clubNews';
 
-const ClubInfoBar = () => {
+const ClubInfoBar = ({clubInfo}) => {
 	const [showSquad, setShowSquad] = useState(false);
 	const [showNews, setShowNews] = useState(false);
 	const [showFixtures, setShowFixtures] = useState(true);
 	const [showStats, setShowStats] = useState(true);
+
+	const fixtures = clubInfo['fixtures'];
+	const club = clubInfo['club'][0];
+	const squad = clubInfo['squad'][0]['players']
 
 	const handleChange = (e) => {
 		if (e.target.name === 'fixtures') {
@@ -45,8 +49,8 @@ const ClubInfoBar = () => {
 				<button name='squad' onClick={handleChange}>squad</button>
 				<button name='stats' onClick={handleChange}>stats</button>
 			</div>
-			{ showFixtures && <ClubScheduleDashboard/> }
-			{ showSquad && <ClubSquadDashboard/> }
+			{ showFixtures && <ClubScheduleDashboard fixtures={fixtures}/> }
+			{ showSquad && <ClubSquadDashboard squad={squad}/> }
 			{ showStats && <ClubStatsDashboard/> }
 			{ showNews &&  <ClubNews/> }
 		</div>
