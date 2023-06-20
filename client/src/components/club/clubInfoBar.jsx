@@ -1,11 +1,10 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import ClubScheduleDashboard from './clubScheduleDashboard';
 import ClubSquadDashboard from './clubSquadDashboard';
 import ClubStatsDashboard from './clubStatsDashboard';
 import ClubNews from './clubNews';
+import ClubFixturesDashboard from './clubFixturesDashboard';
 
 const ClubInfoBar = ({clubInfo}) => {
 	const [showSquad, setShowSquad] = useState(false);
@@ -15,7 +14,7 @@ const ClubInfoBar = ({clubInfo}) => {
 
 	const fixtures = clubInfo['fixtures'];
 	const club = clubInfo['club'][0];
-	const squad = clubInfo['squad'][0]['players']
+	const squad = clubInfo['squad'][0]['players'];
 
 	const handleChange = (e) => {
 		if (e.target.name === 'fixtures') {
@@ -49,7 +48,7 @@ const ClubInfoBar = ({clubInfo}) => {
 				<button name='squad' onClick={handleChange}>squad</button>
 				<button name='stats' onClick={handleChange}>stats</button>
 			</div>
-			{ showFixtures && <ClubScheduleDashboard fixtures={fixtures}/> }
+			{ showFixtures && <ClubFixturesDashboard fixtures={fixtures}/> }
 			{ showSquad && <ClubSquadDashboard squad={squad}/> }
 			{ showStats && <ClubStatsDashboard/> }
 			{ showNews &&  <ClubNews/> }

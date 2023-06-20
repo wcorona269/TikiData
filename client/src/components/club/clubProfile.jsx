@@ -8,7 +8,6 @@ import response from './response';
 const ClubProfile = () => {
 	const { clubId } = useParams();
 	const dispatch = useDispatch();
-	// const club = useSelector(state => state.club);
 
 	useEffect(() => {
 		// dispatch(fetchClub(clubId));

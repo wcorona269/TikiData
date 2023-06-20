@@ -32,7 +32,7 @@ def competitionInfo(clubId):
   squad_data = json.loads(result)['response']
   
   # Request club fixtures (previous and upcoming)
-  conn.request("GET", f"/fixtures?team={clubId}&season=2022,2023",headers=headers)
+  conn.request("GET", f"/fixtures?team={clubId}&season=2022",headers=headers)
   res = conn.getresponse()
   data = res.read()
   result = data.decode("utf-8")
