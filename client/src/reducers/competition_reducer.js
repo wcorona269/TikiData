@@ -16,7 +16,13 @@ const competitionReducer = (state = initialState, action) => {
 		case FETCH_COMPETITION_REQUEST:
 			return { ...state, isLoading: true, error: null };
 		case FETCH_COMPETITION_SUCCESS:
-			return { ...state, competition: action.payload, isLoading: false, error: null };
+			return { ...state, 
+				standings: action.payload['standings'],
+				top_scorers: action.payload['top scorers'],
+				top_assists: action.payload['top assists'],
+				isLoading: false, 
+				error: null 
+			};
 		case FETCH_COMPETITION_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
 		default:

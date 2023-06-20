@@ -1,10 +1,9 @@
 import React from 'react'
 
-const LeagueTableDashboard = ({response}) => {
-	let leagueInfo = [response][0][0]['league'];
+const LeagueTableDashboard = ({table}) => {
+	let leagueInfo = [table][0][0]['league'];
 	const standings = leagueInfo['standings'][0];
 	const columns = ['Position', 'Club', 'Played', 'Won', 'Drawn', 'Lost', 'GF', 'GC', 'GD', 'Points', 'Form'];
-
 
 	const displayForm = (form) => {
 		let icons = {
@@ -36,7 +35,6 @@ const LeagueTableDashboard = ({response}) => {
 					<tr key={idx} className='league-table-row'>
 						<td>{club['rank']}</td>
 						<td id='Club' >{club['team']['name']} <img src={club['team']['logo']}/></td>
-						{console.log(club['team'])}
 						<td>{club['all']['played']}</td>
 						<td>{club['all']['win']}</td>
 						<td>{club['all']['lose']}</td>

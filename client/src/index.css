@@ -24,6 +24,8 @@
 @import './styles/pages/club.scss';
 @import './styles/pages/leagues.scss';
 @import './styles/pages/leagueTable.scss';
+@import './styles/pages/leagueStats.scss';
+
 
 
 @import './styles/themes/theme.scss';
