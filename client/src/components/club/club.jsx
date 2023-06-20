@@ -2,6 +2,7 @@ import React from 'react';
 import ClubInfoBar from './clubInfoBar';
 
 const ClubProfile = () => {
+
 	return (
 		<div className='club-profile-container'>
 			<header>
@@ -10,7 +11,7 @@ const ClubProfile = () => {
 			</h2>
 			<p>Club Image</p>
 			</header>
-
+			<ClubInfoBar/>
 		</div>
 	)
 }
