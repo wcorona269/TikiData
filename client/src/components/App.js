@@ -9,7 +9,7 @@ import Welcome from './home/welcome'
 import Leagues from './home/leagues/leagues';
 import axios from 'axios'
 import MatchesTimeline from './matches/timeline';
-import ClubProfile from './club/club';
+import ClubProfile from './club/clubProfile';
 import LeagueProfile from './league/leagueProfile';
 import PlayerProfile from './player/playerProfile';
 let apiKey;

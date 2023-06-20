@@ -59,7 +59,6 @@ export const fetchMatches = () => {
 }
 
 export const fetchCompetition = (leagueId) => {
-	console.log(leagueId);
 	return (dispatch) => {
 		dispatch({ type: FETCH_COMPETITION_REQUEST });
 		return axios.get(`/competition/${leagueId}`)
@@ -74,6 +73,7 @@ export const fetchCompetition = (leagueId) => {
 
 
 export const fetchClub = (clubId) => {
+	console.log(clubId);
 	return (dispatch) => {
 		dispatch({ type: FETCH_CLUB_REQUEST });
 		return axios.get(`/clubs/${clubId}`)
