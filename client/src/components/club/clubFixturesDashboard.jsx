@@ -3,33 +3,40 @@ import ClubFixtureListItem from './clubFixtureListItem';
 import monthsOfYear from './monthsOfYear';
 
 const ClubFixturesDashboard = ({fixtures}) => {
-	console.log(fixtures);
 	const fixturesSortedByDate = fixtures.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date));
+	const monthsOfFixtures = new Set();
 
+	const determineNewMonth = (fixture) => {
+		const dateString = fixture.fixture.date;
+		const date = new Date(dateString);
+		const year = date.getFullYear();
+		const month = date.getMonth()
 
-	// for (let fixture of fixtures) {
-	// 	let dateString = fixture['fixture']['date'];
-	// 	const date = new Date(dateString);
-	// 	const year = date.getFullYear();
-	// 	const month = date.getMonth()
+		const monthOfMatch = `${monthsOfYear[month]} ${year}`
 
-	// 	const monthOfMatch = `${monthsOfYear[month]} ${year}`
-
-	// 	if (monthOfMatch in fixturesByMonth) {
-	// 		fixturesByMonth[monthOfMatch].push(fixture);
-	// 	} else {
-	// 		fixturesByMonth[monthOfMatch] = [fixture]
-	// 	}
-	// }
-
-	// console.log(fixturesByMonth)
+		if (monthsOfFixtures.has(monthOfMatch)) {
+			return [false, 'NA'];
+		} else {
+			monthsOfFixtures.add(monthOfMatch);
+			return [true, monthOfMatch];
+		}
+	}
+	
 
 	return (
 		<div className='club-fixtures-dashboard'>
 			<ul>
-				{fixtures.map((fixture, idx) => {
+				{fixturesSortedByDate.map((fixture, idx) => {
+
+					const [boolean, month] = determineNewMonth(fixture);
+
 					return (
-						<ClubFixtureListItem fixture={fixture} idx={idx} />
+						<ClubFixtureListItem 
+							fixture={fixture} 
+							idx={idx}
+							isNewMonth={boolean}
+							month={month}
+							/>
 					)
 			})}
 			</ul>

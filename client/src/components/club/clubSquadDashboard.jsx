@@ -1,6 +1,8 @@
 import React from 'react'
 
-const ClubSquadDashboard = () => {
+const ClubSquadDashboard = ({squad}) => {
+	squad.map((player) => console.log(player));
+	
 	return (
 		<div>ClubSquadDashboard</div>
 	)
