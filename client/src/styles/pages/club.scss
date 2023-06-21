@@ -3,3 +3,59 @@
 	flex-direction: row;
 	justify-content: space-between;
 }
+
+
+#club-squad-table {
+	font-family: calibri;
+	vertical-align: middle;
+	font-weight: lighter;
+	width: 100%;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+}
+
+#club-squad-table-head {
+	font-weight: bolder;
+	text-decoration: underline;
+}
+
+#club-squad-table tr {
+	border-bottom: 1px solid black;
+}
+
+#club-squad-table td {
+	text-align: center;
+	vertical-align: middle;
+	padding-bottom: .5rem;
+	padding-top: .5rem;
+	border-left: 1px solid black;
+}
+
+#Name {
+	text-align: left;
+}
+
+#center-align {
+	text-align: center;
+}
+
+#club-squad-table img {
+	height: 3rem;
+	border-radius: 50%;
+}
+
+#club-squad-table a {
+	height: 100%;
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border-radius: 10px;
+
+	transition: 0.15s background ease-in-out;
+
+	&:hover {
+		background-color: rgba(0,0,0, 0.1);
+	}
+}
