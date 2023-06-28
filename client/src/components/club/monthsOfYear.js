@@ -13,4 +13,19 @@ const monthsOfYear = [
 	"December"
 ];
 
+const shorthandMonthsOfYear = [
+	"Jan",
+	"Feb",
+	"Mar",
+	"Apr",
+	"May",
+	"June",
+	"July",
+	"Aug",
+	"Sep",
+	"Oct",
+	"Nov",
+	"Dec"
+];
+
 export default monthsOfYear;

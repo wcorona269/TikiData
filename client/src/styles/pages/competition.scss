@@ -1,0 +1,20 @@
+.fixture-nav-bar > ul {
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
+	width: 100%;
+}
+
+.fixture-nav-bar li {
+	min-width: fit-content;
+	padding: 1rem;
+}
+
+.event-card a {
+	text-decoration: none;
+}
+
+.event-card-info {
+	display: flex;
+	flex-direction: row;
+}

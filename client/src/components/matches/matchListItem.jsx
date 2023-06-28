@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom';
 import TimelineEventsBar from './timelineEventsBar';
 
 const MatchListItem = ({match}) => {
-	console.log(match);
-
 	const id = match.fixture.id
 	const league = `${match.league.country} ${match.league.name} ${match.league.round}`
 	const events = match.events.length === 0 ? null : match.events

@@ -14,7 +14,7 @@ const ClubSquadDashboard = ({squad}) => {
 
 	return (
 		<table id='club-squad-table'>
-			<thead>
+			<thead id='club-squad-table-head'>
 				<tr>
 					{columns.map((column, idx) => (
 						<th key={idx} className='club-squad-list-header' id={column}>{column}</th>

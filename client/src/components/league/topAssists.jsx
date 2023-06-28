@@ -14,7 +14,6 @@ const TopAssists = ({data}) => {
 			</thead>
 			<tbody className='stat-dashboard-body'>
 				{data.map((player, idx) => {
-					console.log(player)
 					let statistics = player['statistics'][0];
 					const club = statistics['team']['logo'];
 					const icon = player['player']['photo'];

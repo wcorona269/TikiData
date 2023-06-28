@@ -44,7 +44,7 @@ const LeagueTableDashboard = ({table}) => {
 					const form = club['form']
 
 					return (
-						<tr key={idx} className='league-table-row'>
+					<tr key={idx} className='league-table-row'>
 						<td>{club['rank']}</td>
 						<td id='Club' >
 							<Link to={`/club/${clubId}`}>

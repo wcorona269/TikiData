@@ -7,7 +7,7 @@ const LeagueListItem = ({nation}) => {
 	const leagueNames = Object.keys(info['leagues']);
 	const leaguesObject = info['leagues'];
 	const code = info['countryCode'];
-
+	
 	const handleMouseHover = () => {
 		setIsOpen(true)
 	}

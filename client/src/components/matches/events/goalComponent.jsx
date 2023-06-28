@@ -5,7 +5,6 @@ const GoalComponent = ({event, key}) => {
 
 	return (
 		<li key={key} className='event-timeline-list-item'>
-			{/* {console.log(event)} */}
 			<p><img src={ball}/> {event.player.name || 'Name Unavailable' } {event.time.elapsed}'</p>
 		</li>
 	)

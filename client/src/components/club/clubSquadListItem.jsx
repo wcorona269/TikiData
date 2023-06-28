@@ -20,4 +20,4 @@ const ClubSquadListItem = ({player, idx, isNewPos}) => {
 	)
 }
 
-export default ClubSquadListItem
+export default ClubSquadListItem;

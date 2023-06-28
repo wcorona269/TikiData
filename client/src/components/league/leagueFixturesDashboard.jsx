@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import FixtureNavBar from './fixtureNavBar';
+import FixturesDisplay from './fixturesDisplay';
 
-const LeagueFixturesDashboard = () => {
+const LeagueFixturesDashboard = ({fixtures}) => {
+	const uniqueDates = [...new Set(fixtures.map(fixture => fixture.fixture.date.split('T')[0]))].sort();
+	const [selectedDate, setSelectedDate] = useState(uniqueDates[0]);
+
+	useEffect(() => {
+		console.log(selectedDate);
+	}, [selectedDate])
+
+	const handleTabSelect = (date) => {
+		setSelectedDate(date);
+	}
+
+
 	return (
 		<div>
-			Fixtures Dashboard
+			<FixtureNavBar dates={uniqueDates} onTabSelect={handleTabSelect}/>
+			<FixturesDisplay fixtures={fixtures} selectedDate={selectedDate}/>
 		</div>
 	)
 }
+
 
 export default LeagueFixturesDashboard;

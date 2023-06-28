@@ -37,12 +37,19 @@ def competitionInfo(leagueId):
   result = data.decode("utf-8")
   top_assists_data = json.loads(result)["response"]
   
+  # Fixture data
+  conn.request("GET", f"/fixtures?season=2022&league={leagueId}", headers=headers)
+  res = conn.getresponse()
+  data = res.read()
+  result = data.decode("utf-8")
+  fixture_data = json.loads(result)["response"]
   
   # combine data and return to frontend
   combined_data = {
 		"standings": standings_data,
 		"top scorers": top_scorer_data,
-		"top assists": top_assists_data
+		"top assists": top_assists_data,
+    "fixtures": fixture_data
 	}
   
   return combined_data

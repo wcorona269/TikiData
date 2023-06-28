@@ -19,6 +19,7 @@ const LeagueProfile = () => {
 	const table = response['standings'];
 	const top_scorers = response['top_scorers'];
 	const top_assists = response['top_assists']; 
+	const fixtures = response['fixtures'];
 
 	useEffect(() => {
 		// dispatch(fetchCompetition(leagueId));
@@ -53,7 +54,7 @@ const LeagueProfile = () => {
 			</div>
 			{ showTable && <LeagueTableDashboard table={table}/>}
 			{ showStats && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists}/>}
-			{ showFixtures && <LeagueFixturesDashboard/>}
+			{ showFixtures && <LeagueFixturesDashboard fixtures={fixtures}/>}
 		</div>
 	)
 }
