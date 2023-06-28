@@ -15,6 +15,32 @@
 }
 
 .event-card-info {
+	display: grid;
+	grid-template-columns: 4fr 1fr 1fr;
+}
+
+.event-card-team-row {
 	display: flex;
 	flex-direction: row;
+	justify-content: flex-start;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.event-card-team-row p {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: left;
+}
+
+.event-card-team-row img {
+	height: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.event-card {
+	padding: 1rem;
 }
