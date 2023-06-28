@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const EventCard = ({fixture, idx}) => {
+const MatchCard = ({fixture, idx}) => {
 
 	const displayMatchStatus = (status) => {
 		if (status === 'FT') {
@@ -10,9 +10,10 @@ const EventCard = ({fixture, idx}) => {
 		}
 	}
 
+	
 	return (
 		<li className='event-card' key={idx}>
-			<Link>
+			<Link to={`/match-overview/${fixture.fixture.id}`}>
 				<div className='event-card-info'>
 					<div className='event-card-teams'>
 						<div className='event-card-team-row'>
@@ -35,4 +36,4 @@ const EventCard = ({fixture, idx}) => {
 	)
 }
 
-export default EventCard;
+export default MatchCard;

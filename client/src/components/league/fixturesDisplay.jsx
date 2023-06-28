@@ -1,5 +1,5 @@
 import React from 'react';
-import EventCard from './fixtureDisplay';
+import MatchCard from './match-card';
 
 // FIXTURE DISPLAY
 // Second component will show fixtures from selectedDate state variable
@@ -14,8 +14,8 @@ const FixturesDisplay = ({fixtures, selectedDate}) => {
 		<div className='fixtures-display'>
 			<ul>
 				{filteredFixtures.map((fixture, idx) => (
-					<EventCard fixture={fixture} idx={idx} />
-				))}
+					<MatchCard fixture={fixture} idx={idx}/>
+					))}
 			</ul>
 		</div>
 	)

@@ -12,6 +12,8 @@ import MatchesTimeline from './matches/timeline';
 import ClubProfile from './club/clubProfile';
 import LeagueProfile from './league/leagueProfile';
 import PlayerProfile from './player/playerProfile';
+import MatchOverview from './match/match-overview';
+
 let apiKey;
 
 
@@ -59,6 +61,10 @@ function App() {
           <Route
             path='/player-profile/:playerId'
             element={<PlayerProfile/>}
+          />
+          <Route
+            path='match-overview/:matchId'
+            element={<MatchOverview/>}
           />
         <Route path='/welcome' element={<Welcome/>}/>
         </Routes>
