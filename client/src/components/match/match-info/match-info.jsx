@@ -12,12 +12,11 @@ const MatchInfo = ({match}) => {
 		setSelectedTab(tab)
 	}
 
-	
 	useEffect(() => {
 		if (selectedTab === 'Events') {
 			setComponent(<EventsTimeline match={match} />)
 		} else if (selectedTab === 'Lineups') {
-			setComponent(<Lineups match={match}/>)
+			setComponent(<Lineups lineups={match.lineups}/>)
 		} else {
 			setComponent(<MatchStats match={match}/>)
 		}

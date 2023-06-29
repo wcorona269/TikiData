@@ -69,3 +69,28 @@
 	background-color: green;
 	color: white;
 }
+
+.lineups-tab {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 5rem;
+}
+
+.lineups-tab h2 {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.lineups-tab img {
+	height: 3rem;
+	margin-right: 1rem;
+}
+
+.lineups-tab p {
+	margin-bottom: 1rem;
+	font-weight: bold;
+}
