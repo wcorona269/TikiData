@@ -1,15 +1,33 @@
 import React from 'react'
 
-const ScoreDisplay = () => {
+const ScoreDisplay = ({match}) => {
+
+	const displayMatchStatus = (status) => {
+		if (status === 'FT') {
+			return 'Final'
+		}
+
+		return 'N/A'
+	}
+	
 	return (
 		<div className='match-overview-score-display'>
-			<div className='match-overview-team-bar'>
-				<p>Manchester City</p>
-				<p>4</p>
+			<div className='match-overview-teams'>
+				<div className='match-overview-team-bar'>
+					<img src={match.teams.home.logo}/>
+					<p>{match.teams.home.name}</p>
+				</div>
+				<div className='match-overview-team-bar'>
+					<img src={match.teams.away.logo}/>
+					<p>{match.teams.away.name}</p>
+				</div>
 			</div>
-			<div className='match-overview-team-bar'>
-				<p>Liverpool </p>
-				<p>1</p>
+			<div className='match-overview-scores'>
+				<p>{match.goals.home}</p>
+				<p>{match.goals.away}</p>
+			</div>
+			<div className='match-overview-details'>
+				{displayMatchStatus(match.fixture.status.short)}
 			</div>
 		</div>
 	)
