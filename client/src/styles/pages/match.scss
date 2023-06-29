@@ -94,3 +94,40 @@
 	margin-bottom: 1rem;
 	font-weight: bold;
 }
+
+.events-timeline img {
+	height: 2rem;
+}
+
+
+.events-timeline p { 
+	padding: .5rem;
+}
+
+.events-timeline img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.match-event-item {
+	display: grid;
+	grid-template-columns: 5fr 1fr 5fr;
+}
+
+.home-event-info {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.away-event-info {
+	display: flex;
+	flex-direction: row;
+}
+
+.timeline-event-image {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

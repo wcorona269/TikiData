@@ -8,19 +8,38 @@ import MatchInfo from './match-info/match-info';
 
 const MatchOverview = () => {
 	const dispatch = useDispatch();
-	// const match = useSelector(state => state.match.match);
-	const match = response[0];
-	console.log(match)
+	const match = response[0]
+	const [isLoading, setIsLoading] = useState(false)
 	const { matchId } = useParams();
 
-	useEffect(() => {
-		// dispatch(fetchMatch(matchId))
-	}, [])
+	// useEffect(()=> {
+	// 	dispatch(fetchMatch(matchId))
+	// 		.then(() => setIsLoading(false))
+	// 		.catch(error => {
+	// 			console.log('Error fetching match', error);
+	// 			setIsLoading(false)
+	// 		})
+	// }, [])
 
+	
+	if (isLoading) {
+		return (
+			<div>
+				Loading...
+			</div>
+		)
+	}
+
+	if (match === undefined) {
+		return <div>Error fetching match</div>
+	}
+
+	
 	return (
 		<div className='match-overview'>
 			<ScoreDisplay match={match}/>
 			<MatchInfo match={match}/>
+			Hello
 		</div>
 	)
 }
