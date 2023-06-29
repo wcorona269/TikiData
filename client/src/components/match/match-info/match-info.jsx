@@ -6,19 +6,20 @@ import EventsTimeline from './events-timeline';
 
 const MatchInfo = ({match}) => {
 	const [selectedTab, setSelectedTab] = useState('Events');
-	let component;
+	const [component, setComponent] = useState(<EventsTimeline match={match}/>)
 
 	const changeTab = (tab) => {
 		setSelectedTab(tab)
 	}
 
+	
 	useEffect(() => {
 		if (selectedTab === 'Events') {
-			component = <EventsTimeline match={match} />
+			setComponent(<EventsTimeline match={match} />)
 		} else if (selectedTab === 'Lineups') {
-			component = <Lineups match={match}/>
+			setComponent(<Lineups match={match}/>)
 		} else {
-			component = <MatchStats match={match}/>
+			setComponent(<MatchStats match={match}/>)
 		}
 	}, [selectedTab])
 
