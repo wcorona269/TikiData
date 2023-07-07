@@ -21,6 +21,10 @@ const MatchesTimeline = ({apiKey}) => {
 		return <div>Loading...</div>;
 	}
 
+	// refactor timeline to use event cards
+	// sort timeline by league, and then 'all' option for all matches
+	// next step is player cards and then club cards
+
 	return (
 		<div className='timeline'>
 			Matches Timeline

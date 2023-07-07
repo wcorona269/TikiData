@@ -41,6 +41,7 @@ const EventsTimeline = ({match}) => {
 							}
 						</div>
 						<div className='timeline-event-image'>
+							
 							<img src={determineEventImage(event)}/>
 						</div>
 						<div>
