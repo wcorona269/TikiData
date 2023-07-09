@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MatchListItem from './matchListItem';
+import TimelineMatchCard from './timeline-match-card';
 import { withRouter } from 'react-router-dom'
 import { fetchMatches } from '../../actions/api_actions';
-// import response from './response';
 
+// import response from './response';
 // array as a result of 'matches.response'
 import response from './response';
 
@@ -14,12 +15,12 @@ const MatchesTimeline = ({apiKey}) => {
 	const [loading, setLoading] = useState(false);
 	
 	useEffect(() => {
-		dispatch(fetchMatches())
+		// dispatch(fetchMatches())
 	}, []);
 	
-	if (!matches) {
-		return <div>Loading...</div>;
-	}
+	// if (!matches) {
+	// 	return <div>Loading...</div>;
+	// }
 
 	// refactor timeline to use event cards
 	// sort timeline by league, and then 'all' option for all matches
@@ -29,8 +30,8 @@ const MatchesTimeline = ({apiKey}) => {
 		<div className='timeline'>
 			Matches Timeline
 			<ul className='matches-timeline'>
-				{matches.map(match => (
-					<MatchListItem match={match} />
+				{response.map((match, idx) => (
+					<TimelineMatchCard match={match} idx={idx} />
 				)
 				)}
 			</ul>

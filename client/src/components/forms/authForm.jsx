@@ -49,7 +49,6 @@ const AuthForm = ({fields, onSubmit}) => {
 			}
 
 			if (field === 'email' && !isValidEmail(formState[field])) {
-				console.log(formState[field]);
 				setIsValid(false);
 				result.push('Please enter a valid email')
 				break;

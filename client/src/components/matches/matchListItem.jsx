@@ -27,9 +27,9 @@ const MatchListItem = ({match}) => {
 				{homeGoals} - {awayGoals}
 				<img src={awayIcon}/>
 			</div>
-			<div className='timeline-events-bar'>
+			{/* <div className='timeline-events-bar'>
 				<TimelineEventsBar events={events}/>
-			</div>
+			</div> */}
 		</li>
 	)
 }
