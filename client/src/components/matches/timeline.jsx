@@ -13,15 +13,17 @@ const MatchesTimeline = ({apiKey}) => {
 	const dispatch = useDispatch();
 	const matches = useSelector(state => state.matches.matches)
 	const [loading, setLoading] = useState(false);
+	const competitions = new Set();
 	
 	useEffect(() => {
-		// dispatch(fetchMatches())
+		dispatch(fetchMatches())
 	}, []);
 	
-	// if (!matches) {
-	// 	return <div>Loading...</div>;
-	// }
-
+	if (!matches) {
+		return <div>Loading...</div>;
+	}
+	
+	const sortedMatches = matches.sort((a, b) => a.league.id > b.league.id);
 	// refactor timeline to use event cards
 	// sort timeline by league, and then 'all' option for all matches
 	// next step is player cards and then club cards
@@ -30,9 +32,24 @@ const MatchesTimeline = ({apiKey}) => {
 		<div className='timeline'>
 			Matches Timeline
 			<ul className='matches-timeline'>
-				{response.map((match, idx) => (
-					<TimelineMatchCard match={match} idx={idx} />
-				)
+				{sortedMatches.map((match, idx) => {
+					if (!competitions.has(match.league.name)) {
+						competitions.add(match.league.name)
+
+						return (
+							<>
+								<p>
+									{match.league.name}
+								</p>
+								<TimelineMatchCard match={match} idx={idx}/>
+							</>
+						)
+					}
+
+					return (
+						<TimelineMatchCard match={match} idx={idx} />
+					)
+				}
 				)}
 			</ul>
 		</div>

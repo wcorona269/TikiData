@@ -29,6 +29,7 @@ app.register_blueprint(routes.news.bp)
 app.register_blueprint(routes.auth.bp)
 app.register_blueprint(routes.competition.bp)
 app.register_blueprint(routes.club.bp)
+app.register_blueprint(routes.player.bp)
 
 db.init_app(app)
 

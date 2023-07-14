@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom'
 
 const TimelineMatchCard = ({match, idx}) => {
 	const id = match.fixture.id
@@ -27,29 +28,33 @@ const TimelineMatchCard = ({match, idx}) => {
 	}
 
 	return (
-		<li key={idx}>
-			<div className='timeline-match-card'>
-				<div className='home-team-bar'>
-					<p>
-						{homeTeam}
-					</p>
-					<p>
-						{homeGoals}
-					</p>
+		<Link to={`/match-overview/${id}`}>
+			<li key={idx}>
+				<div className='timeline-match-card'>
+					<div className='home-team-bar'>
+						<p>
+							<img src={homeIcon}/>
+							{homeTeam}
+						</p>
+						<p>
+							{homeGoals}
+						</p>
+					</div>
+					<div className='away-team-bar'>
+						<p>
+							<img src={awayIcon}/>
+							{awayTeam}
+						</p>
+						<p>
+							{awayGoals}
+						</p>
+					</div>
+					<div className='status-area'>
+						{displayStatus(match.fixture.status)}
+					</div>
 				</div>
-				<div className='away-team-bar'>
-					<p>
-						{awayTeam}
-					</p>
-					<p>
-						{awayGoals}
-					</p>
-				</div>
-				<div className='status-area'>
-					{displayStatus(match.fixture.status)}
-				</div>
-			</div>
-		</li>
+			</li>
+		</Link>
 	)
 }
 

@@ -84,3 +84,16 @@ export const fetchClub = (clubId) => {
 		})
 	}
 }
+
+export const fetchPlayer = (playerId) => {
+	return (dispatch) => {
+		dispatch({ type: FETCH_PLAYER_REQUEST });
+		return axios.get(`/players/${playerId}`)
+		.then((response) => {
+			dispatch({ type: FETCH_PLAYER_SUCCESS, payload: response.data })
+		})
+		.catch((error) => {
+			dispatch({ type: FETCH_PLAYER_FAILURE, payload: error.message })
+		})
+	}
+}

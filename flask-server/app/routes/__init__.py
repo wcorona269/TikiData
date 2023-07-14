@@ -1,1 +1,1 @@
-from . import blog, competition, main, matches, nations, news, stats, auth, club, match
+from . import blog, competition, main, matches, nations, news, stats, auth, club, match, player

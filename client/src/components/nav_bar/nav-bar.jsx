@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import LoggedInNav from './logged_in_nav';
-import LoggedOutNav from './logged_out_nav';
+import LoggedInNav from './logged-in-nav';
+import LoggedOutNav from './logged-out-nav';
 
 const NavBar = () => {
 	const currentUser = useSelector(state => state.session.user);
@@ -14,11 +14,13 @@ const NavBar = () => {
 	currentUser === null ? component = <LoggedOutNav/> : component = <LoggedInNav/>
 
 	return (
-		<div className='nav-bar-container'>
-			touchline
+		<nav className='nav-bar-container'>
+			<button>
+				touchline
+			</button>
 			{component}
-		</div>
+		</nav>
 	)
 }
 
-export default NavBar
+export default NavBar;

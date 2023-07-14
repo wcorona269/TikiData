@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, Route, Routes, Switch } from 'react-router-dom';
 import ProtectedRoute from './util/route_util';
-import NavBar from './nav_bar/nav_bar';
+import NavBar from './nav_bar/nav-bar';
 import Footer from './footer/footer'
 import Home from './home/home'
 import Modal from './modal/modal';

@@ -1,0 +1,18 @@
+.player-profile-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.player-overview {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+}
+
+.player-profile-icon {
+	grid-column: 1;
+}
+
+.player-info {
+	grid-column: 2;
+}
