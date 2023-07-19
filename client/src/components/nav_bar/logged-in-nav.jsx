@@ -16,7 +16,7 @@ const LoggedInNav = () => {
 	return (
 		<div className='nav-bar'>
 			<Link to='/matches'>matches</Link><br></br>
-			<Link to='/favorites'>favorites</Link><br></br>
+			<Link to='/news'>news</Link><br></br>
 			<Link to='/leagues'>leagues</Link>
 			<button onClick={() => logoutFunction()}>
 				Logout

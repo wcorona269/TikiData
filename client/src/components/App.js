@@ -13,6 +13,7 @@ import ClubProfile from './club/clubProfile';
 import LeagueProfile from './league/leagueProfile';
 import PlayerProfile from './player/playerProfile';
 import MatchOverview from './match/match-overview';
+import NewsTimeline from './news/news-timeline';
 
 let apiKey;
 
@@ -46,6 +47,9 @@ function App() {
           <Route path='/matches'
             element={<MatchesTimeline apiKey={apiKey} />}
           />  
+          <Route path='/news'
+            element={<NewsTimeline/>}
+          />
           <Route path='/favorites'
             element={<MatchesTimeline apiKey={apiKey}/>}
           />
