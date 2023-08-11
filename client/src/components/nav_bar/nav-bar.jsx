@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LoggedInNav from './logged-in-nav';
 import LoggedOutNav from './logged-out-nav';
@@ -15,9 +16,9 @@ const NavBar = () => {
 
 	return (
 		<nav className='nav-bar-container'>
-			<button>
+			<Link to='/'>
 				touchline
-			</button>
+			</Link>
 			{component}
 		</nav>
 	)

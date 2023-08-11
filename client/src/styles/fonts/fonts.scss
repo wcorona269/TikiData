@@ -26,6 +26,14 @@
 	/* Add other font formats here if needed */
 }
 
-body, button {
+body {
 	font-family: 'Ubuntu', sans-serif;
+}
+
+.inner-body {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+button {
+	font-family: 'Ubuntu-Bold', sans-serif;
 }
