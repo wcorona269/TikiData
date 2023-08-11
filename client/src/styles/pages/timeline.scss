@@ -1,5 +1,6 @@
 .matches-timeline {
-	width: 100%;
+	width: fit-content;
+	margin: auto;
 	display: flex;
 	flex-direction: column;
 }
@@ -20,6 +21,14 @@
 
 .match-info-bar {
 	color: gray;
+}
+
+#competition-indicator {
+	color: darkgray;
+	font-size: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .timeline-events-bar {
@@ -114,5 +123,24 @@
 	overflow: hidden;
 	overflow-x: hidden;
 	overflow-y: hidden;
+}
+
+.timeline-nav-bar {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	margin: auto;
+	width: 50%;
+	overflow-x: scroll;
+	margin-bottom: 1rem;
+}
+
+.timeline-nav-bar button {
+	width: 6rem;
+	height: 3rem;
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 

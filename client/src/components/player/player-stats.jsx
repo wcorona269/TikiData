@@ -4,9 +4,6 @@ const PlayerStats = ({statistics}) => {
 	return (
 		<div className='player-stats-dashboard'>
 			<h3>Statistics</h3>
-			<table>
-
-			</table>
 		</div>
 	)
 }

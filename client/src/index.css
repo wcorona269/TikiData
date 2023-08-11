@@ -1,3 +1,5 @@
+
+@import './styles/fonts//fonts.scss';
 @import './styles/abstracts/variables.scss';
 @import './styles/abstracts/mixins.scss';
 
@@ -37,7 +39,7 @@
 }
 
 body {
-  background-color: ivory;
+  background-color: #f0ece6;
   height: 100%;
   width: 100%;
   /* justify-content: flex-start; */

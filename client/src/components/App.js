@@ -37,8 +37,8 @@ function App() {
     <>
     <div className='outer-body'>
       <Modal/>
+      <NavBar />
       <div className='inner-body'>
-        <NavBar />
         <Routes>
           <Route path='/'element={
             // <ProtectedRoute component={Home}/>

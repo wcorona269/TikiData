@@ -1,22 +1,23 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-const TimelineMatchCard = ({match, idx}) => {
+const TimelineMatchCard = ({match, idx, competitions}) => {
+	// const [showLeague, setShowLeague] = useState(false);
 	const id = match.fixture.id
 	const status = match.fixture.status;
-
+	
 	const league = `${match.league.country} ${match.league.name} ${match.league.round}`
 	const events = match.events.length === 0 ? null : match.events
-
+	
 	const homeTeam = match.teams.home.name
 	const awayTeam = match.teams.away.name
-
+	
 	const homeGoals = match.goals.home
 	const awayGoals = match.goals.away
-
+	
 	const homeIcon = match.teams.home.logo;
 	const awayIcon = match.teams.away.logo;
-
+	
 	const displayStatus = (status) => {
 		if (status.long === 'First Half' || status.long === "Second Half") {
 			return `${status.elapsed}'`
@@ -28,6 +29,7 @@ const TimelineMatchCard = ({match, idx}) => {
 	}
 
 	return (
+
 		<Link to={`/match-overview/${id}`}>
 			<li key={idx}>
 				<div className='timeline-match-card'>

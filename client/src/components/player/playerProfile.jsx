@@ -28,5 +28,4 @@ const PlayerProfile = () => {
 	)
 }
 
-
-export default PlayerProfile
+export default PlayerProfile;
