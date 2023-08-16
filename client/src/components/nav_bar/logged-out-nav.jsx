@@ -15,9 +15,9 @@ const LoggedOutNav = () => {
 	}
 
 	return (
-		<div className='auth-buttons'>
-			<button id='login-button' onClick={() => loginModal()}>log in</button>
-			<button id='signup-button' onClick={() => signupModal()}>sign up</button>
+		<div>
+			<button className='auth-button' id='login-button' onClick={() => loginModal()}>log in</button>
+			<button className='auth-button' id='signup-button' onClick={() => signupModal()}>sign up</button>
 		</div>
 	)
 }

@@ -1,0 +1,24 @@
+.league-table-header {
+  color: gray;
+  text-align: center;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+#Club, #Position {
+  text-align: left;
+}
+
+.league-table-row td {
+  border-left: 1px solid gray;
+  padding: 1rem;
+  text-align: center;
+}
+
+.league-table img {
+  height: 2rem;
+}
+
+#form-display {
+  font-size: 1rem;
+}/*# sourceMappingURL=leagueTable.css.map */

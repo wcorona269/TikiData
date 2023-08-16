@@ -1,5 +1,4 @@
-
-@import './styles/fonts//fonts.scss';
+@import './styles/typeface/fonts.scss';
 @import './styles/abstracts/variables.scss';
 @import './styles/abstracts/mixins.scss';
 

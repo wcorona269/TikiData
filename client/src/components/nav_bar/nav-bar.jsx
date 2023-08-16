@@ -15,7 +15,7 @@ const NavBar = () => {
 	currentUser === null ? component = <LoggedOutNav/> : component = <LoggedInNav/>
 
 	return (
-		<nav className='nav-bar-container'>
+		<nav className='nav-bar-container' id='nav-bar'>
 			<Link to='/'>
 				touchline
 			</Link>

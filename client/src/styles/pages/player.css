@@ -1,0 +1,53 @@
+.player-profile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-overview {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.player-profile-icon {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+}
+
+.player-profile-icon img {
+  margin: auto;
+  border-radius: 50%;
+}
+
+.player-info {
+  grid-column: 2;
+  display: grid;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+.player-info caption {
+  margin: 10px;
+  padding: 10px;
+  font-weight: bolder;
+  background-color: lightgray;
+}
+
+.player-info th {
+  font-weight: bolder;
+  text-align: left;
+  padding-right: 12px;
+  padding-bottom: 2px;
+}
+
+#table-caption {
+  padding: 12px;
+  text-align: center;
+  background-color: lightgray;
+}/*# sourceMappingURL=player.css.map */

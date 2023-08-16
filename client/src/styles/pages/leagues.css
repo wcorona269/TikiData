@@ -1,0 +1,38 @@
+.leagues-list-container {
+  border-top: 2px solid blue;
+}
+
+.league-list-item {
+  border-bottom: 1px solid blue;
+  font-size: 3rem;
+  overflow: hidden;
+  padding: 1rem;
+  border-radius: 10px;
+  max-height: 3rem;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease;
+}
+
+.league-list-item:hover {
+  max-height: 400px;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s;
+}
+
+.league-list-item h3 {
+  font-weight: 800;
+}
+
+.open {
+  transition: opacity 0.3s ease;
+  max-height: 400px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.league-list-item li {
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.league-list-item a {
+  text-decoration: none;
+  z-index: 1;
+}/*# sourceMappingURL=leagues.css.map */

@@ -1,0 +1,125 @@
+.match-overview-score-display {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  font-size: 4rem;
+  font-weight: bolder;
+}
+
+.match-overview-score-display img {
+  height: 5rem;
+  margin-right: 1rem;
+}
+
+.match-overview-teams {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  font-size: 4rem;
+  font-weight: bolder;
+}
+
+.match-overview-score {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.match-overview-team-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.match-overview-scores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.match-overview-details {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.match-overview-nav-bar ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 1px solid black;
+}
+
+.match-overview-nav-bar li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+}
+
+.match-overview-nav-bar .selected {
+  background-color: green;
+  color: white;
+}
+
+.lineups-tab {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5rem;
+}
+
+.lineups-tab h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.lineups-tab img {
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.lineups-tab p {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.events-timeline img {
+  height: 2rem;
+}
+
+.events-timeline p {
+  padding: 0.5rem;
+}
+
+.events-timeline img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match-event-item {
+  display: grid;
+  grid-template-columns: 5fr 1fr 5fr;
+}
+
+.home-event-info {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.away-event-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.timeline-event-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=match.css.map */

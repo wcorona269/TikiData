@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { HashRouter } from "react-router-dom";
 import store from './store/store'
 import App from './components/App';
-import './index.css'
+import './index.css';
 import "@fontsource/nova-round"
 import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
