@@ -1,3 +1,8 @@
+:root {
+  --green: rgb(0, 196, 154);
+  --white: #f0ece6;
+}
+
 @import './styles/typeface/fonts.scss';
 @import './styles/abstracts/variables.scss';
 @import './styles/abstracts/mixins.scss';

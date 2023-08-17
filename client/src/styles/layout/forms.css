@@ -2,13 +2,10 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  border: 4px solid green;
+  row-gap: 1rem;
   border-radius: 10px;
   padding: 10px;
-}
-
-form > p {
-  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif !important;
 }
 
 .form-error-message {
@@ -17,7 +14,13 @@ form > p {
   font-weight: 800;
 }
 
-.modal-body form {
+.modal-body input {
+  font-size: 2rem;
   width: 100%;
-  height: 100%;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 4px;
+}
+
+.modal-body button {
+  font-family: "Ubuntu-Bold", sans-serif;
 }/*# sourceMappingURL=forms.css.map */
