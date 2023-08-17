@@ -1,3 +1,5 @@
+@import '../abstracts/variables.scss';
+
 .nav-bar-container {
 	font-family: 'Ubuntu', sans-serif;
 	color: black;
@@ -35,8 +37,14 @@
 			/* Adjust the values as needed */
 }
 
-.nav-bar > a { 
-	margin-right: 10px;
+#login-button { 
+	margin-right: 8px;
+}
+
+.nav-bar a {
+	-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 }
 
 .auth-button {
@@ -58,6 +66,7 @@
 .more-dropdown {
 	position: relative;
 	display: inline-block;
+	margin-left: 1rem;
 }
 
 .dropdown-showing {
@@ -71,6 +80,10 @@
 	width: fit-content;
 	padding: .5rem;
 	font-size: 1.2rem;
+}
+
+.dropdown-button i {
+	margin-right: 8px;
 }
 
 .dropdown-content {
@@ -104,3 +117,10 @@
 	border-bottom-right-radius: 4px;
 }
 
+.inactive-link {
+	border-bottom: 2px solid transparent;
+}
+
+.active-link {
+	border-bottom: 2px solid black !important;
+}

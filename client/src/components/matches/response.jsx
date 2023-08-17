@@ -1,521 +1,801 @@
 const response = [
 	{
-		"fixture": {
-			"id": 1027744,
-			"referee": null,
-			"timezone": "UTC",
-			"date": "2023-06-09T22:00:00+00:00",
-			"timestamp": 1686348000,
-			"periods": {
-				"first": 1686348000,
-				"second": null
-			},
-			"venue": {
-				"id": 94,
-				"name": "Estadio República de Mataderos",
-				"city": "Capital Federal, Ciudad de Buenos Aires"
-			},
-			"status": {
-				"long": "First Half",
-				"short": "1H",
-				"elapsed": 26
-			}
-		},
-		"league": {
-			"id": 129,
-			"name": "Primera Nacional",
-			"country": "Argentina",
-			"logo": "https://media-1.api-sports.io/football/leagues/129.png",
-			"flag": "https://media-3.api-sports.io/flags/ar.svg",
-			"season": 2023,
-			"round": "Group A - 20"
-		},
-		"teams": {
-			"home": {
-				"id": 484,
-				"name": "Nueva Chicago",
-				"logo": "https://media-3.api-sports.io/football/teams/484.png",
-				"winner": true
-			},
-			"away": {
-				"id": 464,
-				"name": "All Boys",
-				"logo": "https://media-2.api-sports.io/football/teams/464.png",
-				"winner": false
-			}
-		},
-		"goals": {
-			"home": 1,
-			"away": 0
-		},
-		"score": {
-			"halftime": {
-				"home": 1,
-				"away": 0
-			},
-			"fulltime": {
-				"home": null,
-				"away": null
-			},
-			"extratime": {
-				"home": null,
-				"away": null
-			},
-			"penalty": {
-				"home": null,
-				"away": null
-			}
-		},
 		"events": [
 			{
-				"time": {
-					"elapsed": 7,
-					"extra": null
-				},
-				"team": {
-					"id": 464,
-					"name": "All Boys",
-					"logo": "https://media-2.api-sports.io/football/teams/464.png"
-				},
-				"player": {
-					"id": 75740,
-					"name": "M. Munoz"
-				},
 				"assist": {
 					"id": null,
 					"name": null
 				},
-				"type": "Card",
-				"detail": "Yellow Card",
-				"comments": null
+				"comments": null,
+				"detail": "Normal Goal",
+				"player": {
+					"id": null,
+					"name": "Y. H. Al Hudaifi"
+				},
+				"team": {
+					"id": 5337,
+					"logo": "https://media-3.api-sports.io/football/teams/5337.png",
+					"name": "Sur"
+				},
+				"time": {
+					"elapsed": 67,
+					"extra": null
+				},
+				"type": "Goal"
+			}
+		],
+		"fixture": {
+			"date": "2023-08-17T13:45:00+00:00",
+			"id": 1115708,
+			"periods": {
+				"first": 1692279900,
+				"second": 1692283500
+			},
+			"referee": null,
+			"status": {
+				"elapsed": 75,
+				"long": "Second Half",
+				"short": "2H"
+			},
+			"timestamp": 1692279900,
+			"timezone": "UTC",
+			"venue": {
+				"city": "Sur",
+				"id": 4024,
+				"name": "Sur Sports Complex"
+			}
+		},
+		"goals": {
+			"away": 0,
+			"home": 1
+		},
+		"league": {
+			"country": "Oman",
+			"flag": "https://media-2.api-sports.io/flags/om.svg",
+			"id": 406,
+			"logo": "https://media-1.api-sports.io/football/leagues/406.png",
+			"name": "Professional League",
+			"round": "Regular Season - 1",
+			"season": 2023
+		},
+		"score": {
+			"extratime": {
+				"away": null,
+				"home": null
+			},
+			"fulltime": {
+				"away": null,
+				"home": null
+			},
+			"halftime": {
+				"away": 0,
+				"home": 0
+			},
+			"penalty": {
+				"away": null,
+				"home": null
+			}
+		},
+		"teams": {
+			"away": {
+				"id": 5328,
+				"logo": "https://media-2.api-sports.io/football/teams/5328.png",
+				"name": "Al-Rustaq",
+				"winner": false
+			},
+			"home": {
+				"id": 5337,
+				"logo": "https://media-3.api-sports.io/football/teams/5337.png",
+				"name": "Sur",
+				"winner": true
+			}
+		}
+	},
+	{
+		"events": [
+			{
+				"assist": {
+					"id": null,
+					"name": null
+				},
+				"comments": null,
+				"detail": "Normal Goal",
+				"player": {
+					"id": 354936,
+					"name": "N. Canela"
+				},
+				"team": {
+					"id": 18687,
+					"logo": "https://media-3.api-sports.io/football/teams/18687.png",
+					"name": "Godoy Cruz Res."
+				},
+				"time": {
+					"elapsed": 48,
+					"extra": null
+				},
+				"type": "Goal"
+			}
+		],
+		"fixture": {
+			"date": "2023-08-17T14:00:00+00:00",
+			"id": 996588,
+			"periods": {
+				"first": 1692280800,
+				"second": 1692284400
+			},
+			"referee": null,
+			"status": {
+				"elapsed": 64,
+				"long": "Second Half",
+				"short": "2H"
+			},
+			"timestamp": 1692280800,
+			"timezone": "UTC",
+			"venue": {
+				"city": null,
+				"id": null,
+				"name": null
+			}
+		},
+		"goals": {
+			"away": 0,
+			"home": 1
+		},
+		"league": {
+			"country": "Argentina",
+			"flag": "https://media-1.api-sports.io/flags/ar.svg",
+			"id": 906,
+			"logo": "https://media-2.api-sports.io/football/leagues/906.png",
+			"name": "Reserve League",
+			"round": "2nd Phase - 1",
+			"season": 2023
+		},
+		"score": {
+			"extratime": {
+				"away": null,
+				"home": null
+			},
+			"fulltime": {
+				"away": null,
+				"home": null
+			},
+			"halftime": {
+				"away": 0,
+				"home": 0
+			},
+			"penalty": {
+				"away": null,
+				"home": null
+			}
+		},
+		"teams": {
+			"away": {
+				"id": 18684,
+				"logo": "https://media-1.api-sports.io/football/teams/18684.png",
+				"name": "Defensa y Justicia Res.",
+				"winner": false
+			},
+			"home": {
+				"id": 18687,
+				"logo": "https://media-2.api-sports.io/football/teams/18687.png",
+				"name": "Godoy Cruz Res.",
+				"winner": true
+			}
+		}
+	},
+	{
+		"events": [
+			{
+				"assist": {
+					"id": null,
+					"name": null
+				},
+				"comments": null,
+				"detail": "Normal Goal",
+				"player": {
+					"id": null,
+					"name": "B. Rakhmet"
+				},
+				"team": {
+					"id": 4559,
+					"logo": "https://media-1.api-sports.io/football/teams/4559.png",
+					"name": "Taraz"
+				},
+				"time": {
+					"elapsed": 52,
+					"extra": null
+				},
+				"type": "Goal"
 			},
 			{
+				"assist": {
+					"id": null,
+					"name": null
+				},
+				"comments": null,
+				"detail": "Normal Goal",
+				"player": {
+					"id": 111461,
+					"name": "Z. Kozhamberdy"
+				},
+				"team": {
+					"id": 4559,
+					"logo": "https://media-1.api-sports.io/football/teams/4559.png",
+					"name": "Taraz"
+				},
+				"time": {
+					"elapsed": 56,
+					"extra": null
+				},
+				"type": "Goal"
+			},
+			{
+				"assist": {
+					"id": null,
+					"name": null
+				},
+				"comments": null,
+				"detail": "Normal Goal",
+				"player": {
+					"id": 291879,
+					"name": "D. Kalybayev"
+				},
+				"team": {
+					"id": 18805,
+					"logo": "https://media-1.api-sports.io/football/teams/18805.png",
+					"name": "Khan Tengri"
+				},
+				"time": {
+					"elapsed": 57,
+					"extra": null
+				},
+				"type": "Goal"
+			}
+		],
+		"fixture": {
+			"date": "2023-08-17T14:00:00+00:00",
+			"id": 1016763,
+			"periods": {
+				"first": 1692280800,
+				"second": 1692284400
+			},
+			"referee": null,
+			"status": {
+				"elapsed": 62,
+				"long": "Second Half",
+				"short": "2H"
+			},
+			"timestamp": 1692280800,
+			"timezone": "UTC",
+			"venue": {
+				"city": "Taraz",
+				"id": 3449,
+				"name": "Ortalıq Stadion"
+			}
+		},
+		"goals": {
+			"away": 1,
+			"home": 2
+		},
+		"league": {
+			"country": "Kazakhstan",
+			"flag": "https://media-3.api-sports.io/flags/kz.svg",
+			"id": 388,
+			"logo": "https://media-3.api-sports.io/football/leagues/388.png",
+			"name": "1. Division",
+			"round": "Regular Season - 20",
+			"season": 2023
+		},
+		"score": {
+			"extratime": {
+				"away": null,
+				"home": null
+			},
+			"fulltime": {
+				"away": null,
+				"home": null
+			},
+			"halftime": {
+				"away": 0,
+				"home": 0
+			},
+			"penalty": {
+				"away": null,
+				"home": null
+			}
+		},
+		"teams": {
+			"away": {
+				"id": 18805,
+				"logo": "https://media-3.api-sports.io/football/teams/18805.png",
+				"name": "Khan Tengri",
+				"winner": false
+			},
+			"home": {
+				"id": 4559,
+				"logo": "https://media-1.api-sports.io/football/teams/4559.png",
+				"name": "Taraz",
+				"winner": true
+			}
+		}
+	},
+	{
+		"events": [
+			{
+				"assist": {
+					"id": 324763,
+					"name": "E. A. Pankov"
+				},
+				"comments": null,
+				"detail": "Substitution 1",
+				"player": {
+					"id": null,
+					"name": "M. Yakimenko"
+				},
+				"team": {
+					"id": 2014,
+					"logo": "https://media-3.api-sports.io/football/teams/2014.png",
+					"name": "Chertanovo Moscow"
+				},
+				"time": {
+					"elapsed": 46,
+					"extra": null
+				},
+				"type": "subst"
+			},
+			{
+				"assist": {
+					"id": null,
+					"name": null
+				},
+				"comments": null,
+				"detail": "Normal Goal",
+				"player": {
+					"id": null,
+					"name": "M. Yakimenko"
+				},
+				"team": {
+					"id": 2014,
+					"logo": "https://media-3.api-sports.io/football/teams/2014.png",
+					"name": "Chertanovo Moscow"
+				},
+				"time": {
+					"elapsed": 48,
+					"extra": null
+				},
+				"type": "Goal"
+			}
+		],
+		"fixture": {
+			"date": "2023-08-17T14:00:00+00:00",
+			"id": 1095578,
+			"periods": {
+				"first": 1692280800,
+				"second": 1692284400
+			},
+			"referee": null,
+			"status": {
+				"elapsed": 59,
+				"long": "Second Half",
+				"short": "2H"
+			},
+			"timestamp": 1692280800,
+			"timezone": "UTC",
+			"venue": {
+				"city": "Moskva",
+				"id": 1825,
+				"name": "Arena Chertanovo"
+			}
+		},
+		"goals": {
+			"away": 0,
+			"home": 1
+		},
+		"league": {
+			"country": "Russia",
+			"flag": "https://media-2.api-sports.io/flags/ru.svg",
+			"id": 1026,
+			"logo": "https://media-2.api-sports.io/football/leagues/1026.png",
+			"name": "Second League A - Fall Season Silver",
+			"round": "Fall Season Silver - 6",
+			"season": 2023
+		},
+		"score": {
+			"extratime": {
+				"away": null,
+				"home": null
+			},
+			"fulltime": {
+				"away": null,
+				"home": null
+			},
+			"halftime": {
+				"away": 0,
+				"home": 0
+			},
+			"penalty": {
+				"away": null,
+				"home": null
+			}
+		},
+		"teams": {
+			"away": {
+				"id": 3984,
+				"logo": "https://media-2.api-sports.io/football/teams/3984.png",
+				"name": "Tekstilshchik",
+				"winner": false
+			},
+			"home": {
+				"id": 2014,
+				"logo": "https://media-1.api-sports.io/football/teams/2014.png",
+				"name": "Chertanovo Moscow",
+				"winner": true
+			}
+		}
+	},
+	{
+		"events": [
+			{
+				"assist": {
+					"id": null,
+					"name": null
+				},
+				"comments": null,
+				"detail": "Normal Goal",
+				"player": {
+					"id": 42585,
+					"name": "B. Rusu"
+				},
+				"team": {
+					"id": 2592,
+					"logo": "https://media-1.api-sports.io/football/teams/2592.png",
+					"name": "Arges Pitesti"
+				},
 				"time": {
 					"elapsed": 21,
 					"extra": null
 				},
-				"team": {
-					"id": 484,
-					"name": "Nueva Chicago",
-					"logo": "https://media-3.api-sports.io/football/teams/484.png"
-				},
-				"player": {
-					"id": 323787,
-					"name": "F. Caceres"
-				},
+				"type": "Goal"
+			},
+			{
 				"assist": {
 					"id": null,
 					"name": null
 				},
-				"type": "Goal",
+				"comments": null,
 				"detail": "Normal Goal",
-				"comments": null
+				"player": {
+					"id": 42900,
+					"name": "V. Buhacianu"
+				},
+				"team": {
+					"id": 2592,
+					"logo": "https://media-3.api-sports.io/football/teams/2592.png",
+					"name": "Arges Pitesti"
+				},
+				"time": {
+					"elapsed": 45,
+					"extra": null
+				},
+				"type": "Goal"
 			}
-		]
-	},
-	{
+		],
 		"fixture": {
-			"id": 986987,
-			"referee": null,
-			"timezone": "UTC",
-			"date": "2023-06-09T21:00:00+00:00",
-			"timestamp": 1686344400,
+			"date": "2023-08-17T14:30:00+00:00",
+			"id": 1116719,
 			"periods": {
-				"first": 1686344400,
-				"second": 1686348000
+				"first": 1692282600,
+				"second": null
 			},
-			"venue": {
-				"id": 1900,
-				"name": "Estadio Parque del Guairá",
-				"city": "Villarrica"
-			},
+			"referee": null,
 			"status": {
-				"long": "Second Half",
-				"short": "2H",
-				"elapsed": 81
-			}
-		},
-		"league": {
-			"id": 250,
-			"name": "Division Profesional - Apertura",
-			"country": "Paraguay",
-			"logo": "https://media-3.api-sports.io/football/leagues/250.png",
-			"flag": "https://media-1.api-sports.io/flags/py.svg",
-			"season": 2023,
-			"round": "Apertura - 22"
-		},
-		"teams": {
-			"home": {
-				"id": 2138,
-				"name": "Guairena FC",
-				"logo": "https://media-1.api-sports.io/football/teams/2138.png",
-				"winner": false
+				"elapsed": 45,
+				"long": "First Half",
+				"short": "1H"
 			},
-			"away": {
-				"id": 1183,
-				"name": "Sportivo Luqueno",
-				"logo": "https://media-1.api-sports.io/football/teams/1183.png",
-				"winner": true
+			"timestamp": 1692282600,
+			"timezone": "UTC",
+			"venue": {
+				"city": "Colonești",
+				"id": 5446,
+				"name": "Stadionul Mircea Stan"
 			}
 		},
 		"goals": {
-			"home": 0,
-			"away": 1
+			"away": 2,
+			"home": 0
+		},
+		"league": {
+			"country": "Romania",
+			"flag": "https://media-3.api-sports.io/flags/ro.svg",
+			"id": 285,
+			"logo": "https://media-3.api-sports.io/football/leagues/285.png",
+			"name": "Cupa României",
+			"round": "3rd Round",
+			"season": 2023
 		},
 		"score": {
-			"halftime": {
-				"home": 0,
-				"away": 0
+			"extratime": {
+				"away": null,
+				"home": null
 			},
 			"fulltime": {
-				"home": null,
-				"away": null
+				"away": null,
+				"home": null
 			},
-			"extratime": {
-				"home": null,
-				"away": null
+			"halftime": {
+				"away": 2,
+				"home": 0
 			},
 			"penalty": {
-				"home": null,
-				"away": null
+				"away": null,
+				"home": null
 			}
 		},
+		"teams": {
+			"away": {
+				"id": 2592,
+				"logo": "https://media-2.api-sports.io/football/teams/2592.png",
+				"name": "Arges Pitesti",
+				"winner": true
+			},
+			"home": {
+				"id": 7493,
+				"logo": "https://media-2.api-sports.io/football/teams/7493.png",
+				"name": "Vediţa Coloneşti",
+				"winner": false
+			}
+		}
+	},
+	{
 		"events": [
 			{
-				"time": {
-					"elapsed": 46,
-					"extra": null
-				},
-				"team": {
-					"id": 1183,
-					"name": "Sportivo Luqueno",
-					"logo": "https://media-1.api-sports.io/football/teams/1183.png"
-				},
-				"player": {
-					"id": 95195,
-					"name": "D. Alegre"
-				},
-				"assist": {
-					"id": null,
-					"name": "S. E. Ruiz Diaz Ferreira"
-				},
-				"type": "subst",
-				"detail": "Substitution 1",
-				"comments": null
-			},
-			{
-				"time": {
-					"elapsed": 46,
-					"extra": null
-				},
-				"team": {
-					"id": 2138,
-					"name": "Guairena FC",
-					"logo": "https://media-3.api-sports.io/football/teams/2138.png"
-				},
-				"player": {
-					"id": 70592,
-					"name": "M. Maciel"
-				},
-				"assist": {
-					"id": null,
-					"name": "E. Caceres"
-				},
-				"type": "subst",
-				"detail": "Substitution 1",
-				"comments": null
-			},
-			{
-				"time": {
-					"elapsed": 49,
-					"extra": null
-				},
-				"team": {
-					"id": 1183,
-					"name": "Sportivo Luqueno",
-					"logo": "https://media-3.api-sports.io/football/teams/1183.png"
-				},
-				"player": {
-					"id": 70859,
-					"name": "R. Ferreira"
-				},
-				"assist": {
-					"id": 70594,
-					"name": "J. Mendoza"
-				},
-				"type": "Goal",
-				"detail": "Normal Goal",
-				"comments": null
-			},
-			{
-				"time": {
-					"elapsed": 61,
-					"extra": null
-				},
-				"team": {
-					"id": 2138,
-					"name": "Guairena FC",
-					"logo": "https://media-1.api-sports.io/football/teams/2138.png"
-				},
-				"player": {
-					"id": 65796,
-					"name": "J. Nunez"
-				},
-				"assist": {
-					"id": null,
-					"name": "E. D. Gonzalez Gonzalez"
-				},
-				"type": "subst",
-				"detail": "Substitution 2",
-				"comments": null
-			},
-			{
-				"time": {
-					"elapsed": 66,
-					"extra": null
-				},
-				"team": {
-					"id": 2138,
-					"name": "Guairena FC",
-					"logo": "https://media-1.api-sports.io/football/teams/2138.png"
-				},
-				"player": {
-					"id": 195792,
-					"name": "R. Toledo"
-				},
 				"assist": {
 					"id": null,
 					"name": null
 				},
-				"type": "Card",
-				"detail": "Yellow Card",
-				"comments": null
-			},
-			{
-				"time": {
-					"elapsed": 69,
-					"extra": null
+				"comments": null,
+				"detail": "Normal Goal",
+				"player": {
+					"id": 264645,
+					"name": "C. Ignat"
 				},
 				"team": {
-					"id": 2138,
-					"name": "Guairena FC",
-					"logo": "https://media-1.api-sports.io/football/teams/2138.png"
+					"id": 2594,
+					"logo": "https://media-2.api-sports.io/football/teams/2594.png",
+					"name": "CS Mioveni"
 				},
-				"player": {
-					"id": 359461,
-					"name": "A. Lezcano"
-				},
-				"assist": {
-					"id": 195792,
-					"name": "R. Toledo"
-				},
-				"type": "subst",
-				"detail": "Substitution 3",
-				"comments": null
-			},
-			{
 				"time": {
-					"elapsed": 72,
+					"elapsed": 3,
 					"extra": null
 				},
-				"team": {
-					"id": 1183,
-					"name": "Sportivo Luqueno",
-					"logo": "https://media-2.api-sports.io/football/teams/1183.png"
-				},
-				"player": {
-					"id": 26874,
-					"name": "M. Castro"
-				},
+				"type": "Goal"
+			},
+			{
 				"assist": {
 					"id": null,
-					"name": "M. Perez"
+					"name": null
 				},
-				"type": "subst",
-				"detail": "Substitution 2",
-				"comments": null
-			},
-			{
-				"time": {
-					"elapsed": 76,
-					"extra": null
-				},
-				"team": {
-					"id": 2138,
-					"name": "Guairena FC",
-					"logo": "https://media-2.api-sports.io/football/teams/2138.png"
-				},
-				"player": {
-					"id": 195797,
-					"name": "C. Duarte"
-				},
-				"assist": {
-					"id": null,
-					"name": "M. Cespedes"
-				},
-				"type": "subst",
-				"detail": "Substitution 4",
-				"comments": null
-			},
-			{
-				"time": {
-					"elapsed": 76,
-					"extra": null
-				},
-				"team": {
-					"id": 2138,
-					"name": "Guairena FC",
-					"logo": "https://media-1.api-sports.io/football/teams/2138.png"
-				},
+				"comments": null,
+				"detail": "Normal Goal",
 				"player": {
 					"id": null,
-					"name": "A. Mendez"
+					"name": "O. Dutan"
 				},
+				"team": {
+					"id": 2594,
+					"logo": "https://media-1.api-sports.io/football/teams/2594.png",
+					"name": "CS Mioveni"
+				},
+				"time": {
+					"elapsed": 25,
+					"extra": null
+				},
+				"type": "Goal"
+			},
+			{
 				"assist": {
-					"id": 70553,
-					"name": "J. Aguilar"
+					"id": null,
+					"name": null
 				},
-				"type": "subst",
-				"detail": "Substitution 5",
-				"comments": null
+				"comments": null,
+				"detail": "Normal Goal",
+				"player": {
+					"id": 42630,
+					"name": "V. Cosereanu"
+				},
+				"team": {
+					"id": 2594,
+					"logo": "https://media-3.api-sports.io/football/teams/2594.png",
+					"name": "CS Mioveni"
+				},
+				"time": {
+					"elapsed": 35,
+					"extra": null
+				},
+				"type": "Goal"
+			},
+			{
+				"assist": {
+					"id": null,
+					"name": null
+				},
+				"comments": null,
+				"detail": "Penalty",
+				"player": {
+					"id": 42630,
+					"name": "V. Cosereanu"
+				},
+				"team": {
+					"id": 2594,
+					"logo": "https://media-1.api-sports.io/football/teams/2594.png",
+					"name": "CS Mioveni"
+				},
+				"time": {
+					"elapsed": 45,
+					"extra": 2
+				},
+				"type": "Goal"
 			}
-		]
-	},
-	{
+		],
 		"fixture": {
-			"id": 1028886,
-			"referee": null,
-			"timezone": "UTC",
-			"date": "2023-06-09T21:00:00+00:00",
-			"timestamp": 1686344400,
+			"date": "2023-08-17T14:30:00+00:00",
+			"id": 1116720,
 			"periods": {
-				"first": 1686344400,
-				"second": 1686348000
+				"first": 1692282600,
+				"second": null
 			},
-			"venue": {
-				"id": 1213,
-				"name": "Estadio Antonio Aranda",
-				"city": "Ciudad del Este"
-			},
+			"referee": null,
 			"status": {
-				"long": "Second Half",
-				"short": "2H",
-				"elapsed": 80
-			}
-		},
-		"league": {
-			"id": 251,
-			"name": "Division Intermedia",
-			"country": "Paraguay",
-			"logo": "https://media-2.api-sports.io/football/leagues/251.png",
-			"flag": "https://media-1.api-sports.io/flags/py.svg",
-			"season": 2023,
-			"round": "Regular Season - 12"
-		},
-		"teams": {
-			"home": {
-				"id": 1188,
-				"name": "3 de Febrero",
-				"logo": "https://media-1.api-sports.io/football/teams/1188.png",
-				"winner": true
+				"elapsed": 45,
+				"long": "Halftime",
+				"short": "HT"
 			},
-			"away": {
-				"id": 2139,
-				"name": "Martin Ledesma",
-				"logo": "https://media-1.api-sports.io/football/teams/2139.png",
-				"winner": false
+			"timestamp": 1692282600,
+			"timezone": "UTC",
+			"venue": {
+				"city": "Râmnicu Vâlcea",
+				"id": 2826,
+				"name": "Stadionul Municipal"
 			}
 		},
 		"goals": {
-			"home": 2,
-			"away": 1
+			"away": 4,
+			"home": 0
+		},
+		"league": {
+			"country": "Romania",
+			"flag": "https://media-3.api-sports.io/flags/ro.svg",
+			"id": 285,
+			"logo": "https://media-3.api-sports.io/football/leagues/285.png",
+			"name": "Cupa României",
+			"round": "3rd Round",
+			"season": 2023
 		},
 		"score": {
-			"halftime": {
-				"home": 1,
-				"away": 0
+			"extratime": {
+				"away": null,
+				"home": null
 			},
 			"fulltime": {
-				"home": null,
-				"away": null
+				"away": null,
+				"home": null
 			},
-			"extratime": {
-				"home": null,
-				"away": null
+			"halftime": {
+				"away": 4,
+				"home": 0
 			},
 			"penalty": {
-				"home": null,
-				"away": null
+				"away": null,
+				"home": null
 			}
 		},
+		"teams": {
+			"away": {
+				"id": 2594,
+				"logo": "https://media-2.api-sports.io/football/teams/2594.png",
+				"name": "CS Mioveni",
+				"winner": true
+			},
+			"home": {
+				"id": 2616,
+				"logo": "https://media-1.api-sports.io/football/teams/2616.png",
+				"name": "CSM Ramnicu Valcea",
+				"winner": false
+			}
+		}
+	},
+	{
 		"events": [
 			{
-				"time": {
-					"elapsed": 22,
-					"extra": null
-				},
-				"team": {
-					"id": 1188,
-					"name": "3 de Febrero",
-					"logo": "https://media-3.api-sports.io/football/teams/1188.png"
-				},
-				"player": {
-					"id": 95273,
-					"name": "H. Sandoval"
-				},
 				"assist": {
-					"id": null,
-					"name": null
+					"id": 3081,
+					"name": "K. Musona"
 				},
-				"type": "Goal",
-				"detail": "Penalty",
-				"comments": null
-			},
-			{
-				"time": {
-					"elapsed": 61,
-					"extra": null
-				},
-				"team": {
-					"id": 2139,
-					"name": "Martin Ledesma",
-					"logo": "https://media-1.api-sports.io/football/teams/2139.png"
-				},
-				"player": {
-					"id": 6216,
-					"name": "P. Martinez"
-				},
-				"assist": {
-					"id": null,
-					"name": null
-				},
-				"type": "Goal",
-				"detail": "Penalty",
-				"comments": null
-			},
-			{
-				"time": {
-					"elapsed": 71,
-					"extra": null
-				},
-				"team": {
-					"id": 1188,
-					"name": "3 de Febrero",
-					"logo": "https://media-3.api-sports.io/football/teams/1188.png"
-				},
-				"player": {
-					"id": 70712,
-					"name": "D. Doldan"
-				},
-				"assist": {
-					"id": null,
-					"name": null
-				},
-				"type": "Goal",
+				"comments": null,
 				"detail": "Normal Goal",
-				"comments": null
+				"player": {
+					"id": 134764,
+					"name": "S. Al Abbas"
+				},
+				"team": {
+					"id": 10511,
+					"logo": "https://media-1.api-sports.io/football/teams/10511.png",
+					"name": "Al Riyadh"
+				},
+				"time": {
+					"elapsed": 12,
+					"extra": null
+				},
+				"type": "Goal"
 			}
-		]
+		],
+		"fixture": {
+			"date": "2023-08-17T15:00:00+00:00",
+			"id": 1074248,
+			"periods": {
+				"first": 1692284400,
+				"second": null
+			},
+			"referee": null,
+			"status": {
+				"elapsed": 22,
+				"long": "First Half",
+				"short": "1H"
+			},
+			"timestamp": 1692284400,
+			"timezone": "UTC",
+			"venue": {
+				"city": "Khamis Mushait",
+				"id": 19935,
+				"name": "Dhamak Club Stadium"
+			}
+		},
+		"goals": {
+			"away": 1,
+			"home": 0
+		},
+		"league": {
+			"country": "Saudi-Arabia",
+			"flag": "https://media-3.api-sports.io/flags/sa.svg",
+			"id": 307,
+			"logo": "https://media-2.api-sports.io/football/leagues/307.png",
+			"name": "Pro League",
+			"round": "Regular Season - 2",
+			"season": 2023
+		},
+		"score": {
+			"extratime": {
+				"away": null,
+				"home": null
+			},
+			"fulltime": {
+				"away": null,
+				"home": null
+			},
+			"halftime": {
+				"away": 1,
+				"home": 0
+			},
+			"penalty": {
+				"away": null,
+				"home": null
+			}
+		},
+		"teams": {
+			"away": {
+				"id": 10511,
+				"logo": "https://media-1.api-sports.io/football/teams/10511.png",
+				"name": "Al Riyadh",
+				"winner": true
+			},
+			"home": {
+				"id": 2956,
+				"logo": "https://media-1.api-sports.io/football/teams/2956.png",
+				"name": "Dhamk",
+				"winner": false
+			}
+		}
 	}
 ]
 

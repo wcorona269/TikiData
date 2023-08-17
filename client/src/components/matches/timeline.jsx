@@ -16,11 +16,14 @@ import response from './response';
 
 const MatchesTimeline = ({apiKey}) => {
 	const dispatch = useDispatch();
-	const matches = useSelector(state => state.matches.matches);
+	// const matches = useSelector(state => state.matches.matches);
+	const matches = response;
 	const competitions = new Set();
 	
 	useEffect(() => {
-		dispatch(fetchMatches())
+		if (!matches) {
+			dispatch(fetchMatches())
+		}
 	}, []);
 
 	
@@ -34,7 +37,6 @@ const MatchesTimeline = ({apiKey}) => {
 
 	const listOfNations = ['All', ...new Set(matches?.map(match => match.league.country))]
 	const [selectedNation, setSelectedNation] = useState(listOfNations[0])
-	
 	
 	const handleTabSelect = (nation) => {
 		setSelectedNation(nation);

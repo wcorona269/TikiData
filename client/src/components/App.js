@@ -72,8 +72,8 @@ function App() {
           />
         <Route path='/welcome' element={<Welcome/>}/>
         </Routes>
-        <Footer/>
       </div>
+      <Footer/>
     </div>
     </>
   )

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../actions/session_actions';
 
 const LoggedInNav = () => {
+	const location = useLocation();
 	const dispatch = useDispatch();
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const access_token = useSelector(state => state.session.user?.access_token ?? null);
+	const username = useSelector(state => state.session.user?.username ?? null);
 
 	const logoutFunction = () => {
 		dispatch(logoutUser({
@@ -21,12 +23,13 @@ const LoggedInNav = () => {
 	
 	return (
 		<div className='nav-bar'>
-			<Link to='/matches'>matches</Link><br></br>
-			<Link to='/news'>news</Link><br></br>
-			<Link to='/leagues'>leagues</Link>
+			<Link to='/matches' className={location.pathname === '/matches' ? 'active-link' : 'inactive-link'}><i class="fa-solid fa-futbol"></i> matches</Link><br></br>
+			<Link to='/news' className={location.pathname === '/news' ? 'active-link' : 'inactive-link'}><i class="fa-regular fa-newspaper"></i> news</Link><br></br>
+			<Link to='/leagues' className={location.pathname === '/leagues' ? 'active-link' : 'inactive-link'}><i class="fa-solid fa-magnifying-glass"></i> explore</Link>
 			<div className={`more-dropdown ${showDropdown ? 'dropdown-showing' : ''}`}>
 				<div onClick={() => toggleDropdown()} className='dropdown-button'>
-					username
+					<i class="fa-solid fa-circle-user"></i>
+					{username}
 				</div>
 				<div className={`dropdown-content ${showDropdown ? 'visible' : ''}`}>
             <Link to='/my-profile'>
