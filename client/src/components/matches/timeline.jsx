@@ -53,8 +53,7 @@ const MatchesTimeline = ({apiKey}) => {
 
 	return (
 		<>
-			<h3>Matches Timeline</h3>
-			<TimelineNavBar nations={listOfNations} onTabSelect={handleTabSelect}/>
+			<TimelineNavBar selectedNation={selectedNation} nations={listOfNations} onTabSelect={handleTabSelect}/>
 			<TimelineMatchDisplay sortedMatches={sortedMatches} competitions={competitions} selectedNation={selectedNation}/>
 		</>
 	)

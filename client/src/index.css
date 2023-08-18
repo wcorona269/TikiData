@@ -1,6 +1,21 @@
 :root {
-  --green: rgb(0, 196, 154);
+  --green: #00c49a;
+  --green-2: #00C480;
+  --green-light: #66E396;
+  --green-lighter: #7DFABE;
+  --green-dark: #007A60;
+  --green-darker: #003B2E;
+
   --white: #f0ece6;
+  --gray: #E0DDD7;
+  --darkgray: #7A7876;
+  --black: #3B3A38;
+
+  --red: #FA4000;
+  --dark-red: #AD2D00;
+
+  --yellow: #0CFA40;
+  --orange: #FA9519;
 }
 
 @import './styles/typeface/fonts.scss';
