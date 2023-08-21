@@ -29,12 +29,19 @@ const TimelineMatchCard = ({match, idx, competitions}) => {
 	}
 
 	return (
-
-		<Link to={`/match-overview/${id}`}>
+		<Link to={`/match-overview/${id}`} className='timeline-match-card-container'>
+			<div id='competition-indicator'>
+				<p>
+					{match.league.name}
+				</p>
+				<p>
+					{match.league.country}
+				</p>
+			</div>
 			<li key={idx}>
 				<div className='timeline-match-card'>
 					<div className='home-team-bar'>
-						<p>
+						<p className='team-name-display'>
 							<img src={homeIcon}/>
 							{homeTeam}
 						</p>
@@ -43,7 +50,7 @@ const TimelineMatchCard = ({match, idx, competitions}) => {
 						</p>
 					</div>
 					<div className='away-team-bar'>
-						<p>
+						<p className='team-name-display'>
 							<img src={awayIcon}/>
 							{awayTeam}
 						</p>

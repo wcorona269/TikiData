@@ -60,7 +60,8 @@ def login():
     
     return jsonify({
         'message': 'User authenticated successfully',
-        'access_token': access_token
+        'access_token': access_token,
+        'username': user.username
     }), 200
 
 @bp.route('/logout', methods=['POST'])

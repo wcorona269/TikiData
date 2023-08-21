@@ -5,6 +5,7 @@ html {
 
 .outer-body {
 	display: grid;
+	width: 100%;
 	grid-template-columns: 1fr 60% 1fr;
 	grid-template-rows: 8rem 1fr 15rem;
 	grid-template-areas: 
