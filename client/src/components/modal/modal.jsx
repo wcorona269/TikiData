@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Modal = () => {
 	const dispatch = useDispatch();
-	const modal = useSelector(state => state.ui.modal)
+	const modal = useSelector(state => state.ui.modal);
 	let component;
 
 	switch (modal.modal) {

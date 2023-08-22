@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchNews } from '../../actions/news_actions';
 
 const NewsTimeline = () => {
-	// setup web scraping in Python backend
+	const dispatch = useDispatch();
+	const news = useSelector(state => state.news)
 
-	const fetchNews = () => {
-		// function to fetch general football news
-	}
+	
+	useEffect(() => {
+		dispatch(fetchNews())
+	},[])
 
 	const fetchTailoredNews = () => {
 		// fetch news tailored to user's favorite clubs

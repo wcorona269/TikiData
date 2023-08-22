@@ -17,6 +17,9 @@ python-dotenv = "*"
 sqlalchemy = "*"
 pyjwt = "*"
 flask-jwt = "*"
+newspaper3k = "*"
+requests-html = "*"
+googlenews = "*"
 
 [dev-packages]
 
