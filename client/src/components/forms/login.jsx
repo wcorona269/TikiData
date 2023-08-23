@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, removeSessionErrors } from '../../actions/session_actions';
 import AuthForm from './authForm';
+import { showModal, closeModal } from '../../actions/modal_actions';
 
 const LoginForm = (props) => {
 	const dispatch = useDispatch();
@@ -14,12 +15,18 @@ const LoginForm = (props) => {
 		dispatch(loginUser(formData))
 	}
 
+	const changeFormType = () => {
+		dispatch(closeModal());
+		dispatch(showModal('signup'));
+	}
+
 	return (
 		<div className='auth-form-container'>
 			<AuthForm
 				fields={fields}
 				onSubmit={onSubmit}
 			/>
+			<div onClick={() => changeFormType()} className='form-switch-button'>Don't have an account? Sign up.</div>
 		</div>
 	);
 }

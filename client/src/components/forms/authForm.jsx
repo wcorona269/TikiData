@@ -71,17 +71,19 @@ const AuthForm = ({fields, onSubmit}) => {
 				/>
 			))
 		}
-		{errors.map((error) => (
-			<p className='auth-error-message' key={error}>
-				{error}
-			</p>
-		))}
+		<p className='auth-error-message'>
+			{errors.map((error) => (
+				<p className='auth-error-message' key={error}>
+					{error}
+				</p>
+			))}	
+		</p>
 		<button
 
 			type="submit"
 			className={isValid === true ? 'auth-form-btn' : 'auth-form-btn error-btn' }
 		>
-			Submit
+			submit
 		</button>
 		</form>
 	)
