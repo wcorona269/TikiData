@@ -1,6 +1,8 @@
 from flask import Blueprint, redirect
 from GoogleNews import GoogleNews
 import pandas as pd 
+import urllib.parse
+
 
 bp = Blueprint('news', __name__, url_prefix='/news')
 
@@ -9,12 +11,9 @@ def fetchNews():
   gNews = GoogleNews(period='2d')
   topics = ['latest professional soccer news', 
             'BBC sport football',
-            # 'Goal.com',
-            # 'ESPN FC',
-            # 'Marca',
-            # 'fourfourtwo',
-            # 'Football365',
-            # 'Transfermarkt',
+            'Goal.com',
+            'ESPN FC',
+            'Marca',
             ]
   # data = pd.DataFrame.from_dict(result)
   # data.head()
