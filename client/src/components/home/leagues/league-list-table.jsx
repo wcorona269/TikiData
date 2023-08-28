@@ -1,5 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Flag from 'react-world-flags';
+
 
 const LeagueListTable = ({ sortedLeaguesByCountry }) => {
 
@@ -7,7 +9,7 @@ const LeagueListTable = ({ sortedLeaguesByCountry }) => {
 		const [name, info ] = country;
 		console.log(info)
 		const result = [
-			<td>{name}</td>
+			<td>{name} <Flag code={info['countryCode']} height='16' /></td>
 		];
 
 		{Object.entries(info['leagues']).map(([league, id]) => {
