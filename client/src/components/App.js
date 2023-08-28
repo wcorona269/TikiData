@@ -6,7 +6,7 @@ import Footer from './footer/footer'
 import Home from './home/home'
 import Modal from './modal/modal';
 import Welcome from './home/welcome'
-import Leagues from './home/leagues/leagues';
+import Explore from './home/leagues/leagues';
 import axios from 'axios'
 import MatchesTimeline from './matches/timeline';
 import ClubProfile from './club/clubProfile';
@@ -53,8 +53,8 @@ function App() {
           <Route path='/favorites'
             element={<MatchesTimeline apiKey={apiKey}/>}
           />
-          <Route path='/leagues'
-            element={<Leagues/>}
+          <Route path='/explore'
+            element={<Explore/>}
           />
           <Route path='/club/:clubId'
             element={<ClubProfile/>}

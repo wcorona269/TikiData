@@ -58,6 +58,7 @@ const NewsTimeline = () => {
 
 	return (
 		<div className='news-timeline'>
+			<h1>Leaders</h1>
 			<NewsTimelineFrontpage leaders={leaders} printSubArticles={printSubArticles}/>
 			<SubArticlesTimeline subArticles={subArticles} printSubArticles={printSubArticles}/>
 		</div>
