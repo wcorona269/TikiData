@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchNews } from '../../actions/news_actions';
 import response from './response';
+import SubArticlesTimeline from './sub-articles-timeline';
+import NewsTimelineFrontpage from './news-timeline-frontpage';
 
 const NewsTimeline = () => {
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(true);
-	// const news = response;
-	const news = useSelector(state => state.news.news);
+	const news = response;
+	// const news = useSelector(state => state.news.news);
 	const leaders = news?.slice(0, 4);
 	const subArticles = news?.slice(4);
-
 
 	useEffect(() => {
 		if (!news) {
@@ -39,7 +40,7 @@ const NewsTimeline = () => {
 			let actualLink = urlParams.get('url');
 			
 			articles.push(
-				<article className='sub-article-container' id={side === true ? `side-story-container-${i}` : ''}>
+				<article key={i} className='sub-article-container' id={side === true ? `side-story-container-${i}` : ''}>
 					<a className='sub-article-hyperlink' id={side === true ? `side-story-${i}` : ''} target='_blank' href={actualLink}>
 					<span id='media'>{article['media']}</span>
 					<h3 id='title'>{article['title']}</h3>
@@ -57,24 +58,8 @@ const NewsTimeline = () => {
 
 	return (
 		<div className='news-timeline'>
-			<div className='news-timeline-frontpage'>
-				<article className='lead-story'>
-					<a>
-						<img src='https://media.istockphoto.com/id/1335247217/vector/loading-icon-vector-illustration.jpg?s=612x612&w=0&k=20&c=jARr4Alv-d5U3bCa8eixuX2593e1rDiiWnvJLgHCkQM='/>
-						<h3>
-							{leaders[0]['title']}
-						</h3>
-						<span>
-							<p>{leaders[0]['media']}</p>
-							<p>{leaders[0]['date']}</p>
-						</span>
-					</a>
-				</article>
-				{printSubArticles(leaders, true)}
-			</div>
-			<div className='sub-articles'>
-				{printSubArticles(subArticles)}
-			</div>
+			<NewsTimelineFrontpage leaders={leaders} printSubArticles={printSubArticles}/>
+			<SubArticlesTimeline subArticles={subArticles} printSubArticles={printSubArticles}/>
 		</div>
 	)
 }

@@ -8,7 +8,7 @@ bp = Blueprint('news', __name__, url_prefix='/news')
 
 @bp.route('/')
 def fetchNews():
-  gNews = GoogleNews(period='2d')
+  gNews = GoogleNews(period='1d')
   topics = ['latest professional soccer news', 
             'BBC sport football',
             'Goal.com',
