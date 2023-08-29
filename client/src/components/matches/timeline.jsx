@@ -28,22 +28,15 @@ const MatchesTimeline = ({apiKey}) => {
 	}, []);
 
 	const sortMatches = () => {
-		const sortedMatches = matches?.sort((a, b) => {
-			const dateA = new Date(a.fixture.timestamp * 1000);
-			const dateB = new Date(b.fixture.timestamp * 1000);
-
-			return dateA.getTime() - dateB.getTime()
-		});
-
 		let result = {};
 
-		for (let match of sortedMatches) {
-			let competition = `${match.league.country}:${match.league.name}`
-			if (competition in result) {
-				result[competition].push(match)
+		for (let match of matches) {
+			let country = `${match.league.country}`
+			if (country in result) {
+				result[country].push(match)
 			} else {
-				result[competition] = [];
-				result[competition].push(match);
+				result[country] = [];
+				result[country].push(match);
 			}
 		}
 		return result;

@@ -22,7 +22,7 @@ const MatchTimelineTable = ({competition, matches}) => {
 			</div>
 		)
 	}
-
+	
 	const displayScore = (match) => {
 		const status = match.fixture.status.short;
 
@@ -53,7 +53,6 @@ const MatchTimelineTable = ({competition, matches}) => {
 		return formattedTime;
 	}
 
-
 	const displayTime = (match) => {
 		
 		if (match.fixture.status.short == 'FT') {
@@ -74,14 +73,14 @@ const MatchTimelineTable = ({competition, matches}) => {
 				</p>
 			)
 		}
+
+		return <p>{match.fixture.status.short}</p>
 	}
 
 	const displayMatches = (matches) => {
 		let result = [];
 
 		for (let match of matches) {
-			const location = (match.fixture.venue.name !== null && match.fixture.venue.city !== null) ? `${match.fixture.venue.name}, ${match.fixture.venue.city}` : '-'
-
 			result.push(
 				<tr>
 					<td>
@@ -91,7 +90,7 @@ const MatchTimelineTable = ({competition, matches}) => {
 						{displayTime(match)}
 					</td>
 					<td id='location'>
-						{location}
+						{match.league.name}
 					</td>
 				</tr>
 			)
@@ -110,7 +109,7 @@ const MatchTimelineTable = ({competition, matches}) => {
 					<tr>
 						<th className='match-column'>Match</th>
 						<th className='time-column'>Time</th>
-						<th className='location-column'>Location</th>
+						<th className='location-column'>Competition</th>
 					</tr>
 				</thead>
 				<tbody>

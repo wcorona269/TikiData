@@ -1,5 +1,5 @@
 .matches-timeline {
-	width: 90%;
+	width: 100%;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -188,8 +188,11 @@
 }
 
 .match-timeline-table h2 {
-	font-size: 2rem;
-	margin-bottom: 1rem;
+		font-size: 2rem;
+		margin-bottom: 1rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--darkgray);
+		margin-top: 1rem;
 }
 
 .match-timeline-table table {
@@ -200,18 +203,17 @@
 }
 
 .match-timeline-table th, .match-timeline-table td {
-	padding: 0.5rem;
+	padding: .5rem;
 	text-align: center;
 }
 
 .match-timeline-table td {
-	border-top: 1px solid var(--darkgray);
-	border-bottom: 1px solid var(--darkgray);
+	border: 1px solid var(--darkgray);
 }
 
 .match-timeline-table th {
 	font-family: 'Ubuntu-Bold', sans-serif;
-	border-bottom: 2px solid var(--darkgray);
+	border: 1px solid var(--darkgray);
 }
 
 .match-timeline-table tbody > tr:hover {
@@ -259,6 +261,7 @@
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
+	font-family: 'Ubuntu-Bold', sans-serif;
 }
 
 .match-column {
