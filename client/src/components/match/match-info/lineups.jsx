@@ -3,8 +3,6 @@ import React from 'react'
 const Lineups = ({lineups}) => {
 	const homeLineup = lineups[0];
 	const awayLineup = lineups[1]
-
-	console.log(lineups)
 	return (
 		<div className='lineups-tab'>
 			{lineups.map((lineup, idx) => (

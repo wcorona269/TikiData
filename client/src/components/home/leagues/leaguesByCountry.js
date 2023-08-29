@@ -3,10 +3,37 @@
 // Country Codes are ISO-3166-1 standard. Used with country-flag-icons npm package
 
 const leaguesByCountry = {
+	'China': {
+		leagues: {
+			'Super League': 169,
+		},
+		countryCode: 'CN'
+	},
+	'Saudi Arabia': {
+		leagues: {
+			'Pro League': 307,
+		},
+		countryCode: 'SA'
+	},
+	'Japan': {
+		leagues: {
+			'J1 League': 98,
+			'J2 League': 99,
+		},
+		countryCode: 'JP'
+	},
+	'Argentina': {
+		leagues: {
+			'Liga Profesional Argentina': 128,
+			'Primera Nacional': 129,
+		},
+		countryCode: 'AR'
+	},
 	'England': {
 		leagues: {
 			'Premier League': 39,
-			'Championship': 40
+			'Championship': 40,
+			'League One': 41
 		},
 		countryCode: 'GB'
 	},
@@ -17,10 +44,17 @@ const leaguesByCountry = {
 		},
 		countryCode: 'ES'
 	},
+	'Brazil': {
+		leagues: {
+			'Serie A': 71,
+		},
+		countryCode: 'BR'
+	},
 	'Germany': {
 		leagues: {
 			'Bundesliga': 78,
-			'2. Bundesliga': 79
+			'2. Bundesliga': 79,
+			'3. Liga': 80
 		},
 		countryCode: 'DE'
 	},

@@ -7,7 +7,6 @@ const LeagueListTable = ({ sortedLeaguesByCountry }) => {
 
 	const displayTableRow = (country, idx) => {
 		const [name, info ] = country;
-		console.log(info)
 		const result = [
 			<td>{name} <Flag code={info['countryCode']} height='16' /></td>
 		];
@@ -24,7 +23,7 @@ const LeagueListTable = ({ sortedLeaguesByCountry }) => {
 		
 		while (result.length < 4) {
 			result.push(
-				<td>N/A</td>
+				<td>-</td>
 			)
 		}
 

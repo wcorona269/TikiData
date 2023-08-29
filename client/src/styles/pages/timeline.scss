@@ -1,5 +1,5 @@
 .matches-timeline {
-	width: 70%;
+	width: 90%;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -151,9 +151,11 @@
 	margin-right: auto;
 	margin-left: auto;
 	width: fit-content;
+	max-width: 100%;
 	overflow-x: scroll;
 	margin-bottom: 1rem;
-	height: 100px !important;
+	height: fit-content;
+	padding-bottom: 1rem;
 }
 
 .timeline-nav-bar button {
@@ -178,4 +180,101 @@
 .selected-nation {
 	background-color: var(--green) !important;
 	border-bottom: 4px solid var(--green-darker) !important;
+}
+
+.match-timeline-table {
+	width: 100%;
+	border-collapse: collapse;	
+}
+
+.match-timeline-table h2 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.match-timeline-table table {
+	font-size: 1rem;
+	margin-bottom: 1rem;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.match-timeline-table th, .match-timeline-table td {
+	padding: 0.5rem;
+	text-align: center;
+}
+
+.match-timeline-table td {
+	border-top: 1px solid var(--darkgray);
+	border-bottom: 1px solid var(--darkgray);
+}
+
+.match-timeline-table th {
+	font-family: 'Ubuntu-Bold', sans-serif;
+	border-bottom: 2px solid var(--darkgray);
+}
+
+.match-timeline-table tbody > tr:hover {
+	background-color: var(--green-lighter);
+	cursor: pointer;
+}
+
+.timeline-match-teams {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 10fr 1fr 10fr;
+	grid-auto-columns: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.team-indicator {
+	height: 100%;
+	width: 100%;
+	white-space: nowrap;
+	margin-top: auto;
+	margin-bottom: auto;
+	display: flex !important;
+	align-items: center;
+	vertical-align: middle;
+}
+
+.match-timeline-table img {
+	height: 2rem;
+	margin-right: 1rem;
+	margin-left: 1rem;
+}
+
+#away-team-indicator {
+	justify-content: flex-start;
+}
+
+#home-team-indicator {
+	justify-content: flex-end;
+}
+
+.versus {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+}
+
+.match-column {
+	width: 70%;
+}
+
+.time-column {
+	width: 10%;
+}
+
+.location-column {
+	width: 20%;
+}
+
+#location {
+	text-overflow:ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }

@@ -7,7 +7,6 @@ const LeagueFixturesDashboard = ({fixtures}) => {
 	const [selectedDate, setSelectedDate] = useState(uniqueDates[0]);
 
 	useEffect(() => {
-		console.log(selectedDate);
 	}, [selectedDate])
 
 	const handleTabSelect = (date) => {

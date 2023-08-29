@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import TimelineMatchCard from './timeline-match-card';
+import MatchTimelineTable from './match-timeline-table';
 
-const TimelineMatchDisplay = ({sortedMatches, competitions, selectedNation}) => {
+const TimelineMatchDisplay = ({matches, competitions, selectedNation}) => {
 	const [showAll, setShowAll] = useState(true)
 	let matchesList;
 
@@ -15,21 +16,29 @@ const TimelineMatchDisplay = ({sortedMatches, competitions, selectedNation}) => 
 
 
 	if (showAll === false) {
-		matchesList = sortedMatches?.filter(match => match.league.country === selectedNation)
+		matchesList = {};
+		for (let key in matches) {
+			if (key.includes(selectedNation)) {
+				matchesList[key] = matches[key];
+			}
+		}
 	} else {
-		matchesList = sortedMatches;
+		matchesList = matches;
+	}
+
+	const displayMatchesList = () => {
+		let result = []
+		for (let key in matchesList) {
+			result.push(<MatchTimelineTable competition={key} matches={matchesList[key]}/>)
+		}
+
+		return result;
 	}
 
 	return (
 		<div className='timeline'>
 			<ul className='matches-timeline'>
-				{matchesList.map((match, idx) => {
-					
-					return (
-						<TimelineMatchCard match={match} idx={idx} competitions={competitions} showAll={showAll} />
-					)
-				}
-				)}
+				{displayMatchesList()}
 			</ul>
 		</div>
 	)

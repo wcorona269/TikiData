@@ -26,7 +26,8 @@ def live():
   
   conn.request("GET",
               #  "/fixtures?league=39&season=2023&round=Regular+Season+-+1"
-               "/fixtures?live=all",
+              #  "/fixtures?live=all",
+               "/fixtures?date=2023-08-29",
                 headers=headers)
   res = conn.getresponse()
   data = res.read()

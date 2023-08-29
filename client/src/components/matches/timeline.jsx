@@ -7,6 +7,7 @@ import TimelineMatchCard from './timeline-match-card';
 import { withRouter } from 'react-router-dom'
 import { fetchMatches } from '../../actions/api_actions';
 import response from './response';
+import LoadingMessage from '../util/loading-screen';
 
 // import response from './response';
 // array as a result of 'matches.response'
@@ -26,35 +27,54 @@ const MatchesTimeline = ({apiKey}) => {
 		}
 	}, []);
 
+	const sortMatches = () => {
+		const sortedMatches = matches?.sort((a, b) => {
+			const dateA = new Date(a.fixture.timestamp * 1000);
+			const dateB = new Date(b.fixture.timestamp * 1000);
+
+			return dateA.getTime() - dateB.getTime()
+		});
+
+		let result = {};
+
+		for (let match of sortedMatches) {
+			let competition = `${match.league.country}:${match.league.name}`
+			if (competition in result) {
+				result[competition].push(match)
+			} else {
+				result[competition] = [];
+				result[competition].push(match);
+			}
+		}
+		return result;
+	}
 	
 	
-	const sortedMatches = matches?.sort((a, b) => {
-		const dateA = new Date(a.fixture.timestamp * 1000);
-		const dateB = new Date(b.fixture.timestamp * 1000);
-
-		return dateA.getTime() - dateB.getTime()
-	});
-
 	const listOfNations = ['All', ...new Set(matches?.map(match => match.league.country))]
 	const [selectedNation, setSelectedNation] = useState(listOfNations[0])
 	
+
 	const handleTabSelect = (nation) => {
 		setSelectedNation(nation);
 	}
+
 	
 	useEffect(() => {
-		console.log(selectedNation)
 	}, [selectedNation])
 	
+
 	if (!matches) {
-		return <div>Loading...</div>;
+		return (<LoadingMessage/>)
 	}
-	console.log(matches);
+
+
+	const sortedMatches = sortMatches();
+
 
 	return (
 		<>
 			<TimelineNavBar selectedNation={selectedNation} nations={listOfNations} onTabSelect={handleTabSelect}/>
-			<TimelineMatchDisplay sortedMatches={sortedMatches} competitions={competitions} selectedNation={selectedNation}/>
+			<TimelineMatchDisplay matches={sortedMatches} competitions={competitions} selectedNation={selectedNation}/>
 		</>
 	)
 }

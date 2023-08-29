@@ -5,6 +5,7 @@ import { fetchMatch } from '../../actions/api_actions';
 import response from './response';
 import ScoreDisplay from './score-display';
 import MatchInfo from './match-info/match-info';
+import LoadingMessage from '../util/loading-screen';
 
 const MatchOverview = () => {
 	const dispatch = useDispatch();
@@ -24,9 +25,7 @@ const MatchOverview = () => {
 	
 	if (isLoading) {
 		return (
-			<div>
-				Loading...
-			</div>
+			<LoadingMessage/>
 		)
 	}
 

@@ -6,6 +6,7 @@ import LeagueFixturesDashboard from './leagueFixturesDashboard'
 import LeagueStatsDashboard from './leagueStatsDashboard';
 import { fetchCompetition } from '../../actions/api_actions';
 import response from './response';
+import LoadingMessage from '../util/loading-screen';
 
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const LeagueProfile = () => {
 	}
 
 	if (competition === undefined) {
-		return <div>Loading...</div>
+		return <LoadingMessage/>
 	}
 
 	return (

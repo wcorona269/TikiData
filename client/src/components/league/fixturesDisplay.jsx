@@ -7,8 +7,7 @@ import MatchCard from './match-card';
 // need selectedDate variable passed on to filter fixtures
 
 const FixturesDisplay = ({fixtures, selectedDate}) => {
-	const filteredFixtures = fixtures.filter(fixture => fixture.fixture.date.split('T')[0] === selectedDate)
-	console.log(filteredFixtures)
+	const filteredFixtures = fixtures.filter(fixture => fixture.fixture.date.split('T')[0] === selectedDate);
 
 	return (
 		<div className='fixtures-display'>

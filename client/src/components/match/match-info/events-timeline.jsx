@@ -8,7 +8,6 @@ const EventsTimeline = ({match}) => {
 	const homeTeam = match.teams.home.name;
 	const awayTeam = match.teams.away.name;
 	const events = match.events;
-	console.log(events);
 
 	const determineEventImage = (event) => {
 		if (event.detail.includes('Goal')) {

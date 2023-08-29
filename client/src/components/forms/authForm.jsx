@@ -16,7 +16,6 @@ const AuthForm = ({fields, onSubmit}) => {
 		if (isValid === true) {
 			onSubmit(formState);
 		}
-		console.log(errors);
 	}
 
 	const isValidEmail = (email) =>  {

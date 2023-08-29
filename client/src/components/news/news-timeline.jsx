@@ -4,6 +4,7 @@ import { fetchNews } from '../../actions/news_actions';
 import response from './response';
 import SubArticlesTimeline from './sub-articles-timeline';
 import NewsTimelineFrontpage from './news-timeline-frontpage';
+import LoadingMessage from '../util/loading-screen';
 
 const NewsTimeline = () => {
 	const dispatch = useDispatch();
@@ -24,9 +25,7 @@ const NewsTimeline = () => {
 
 	if (isLoading) {
 		return (
-			<h2>
-				Loading...
-			</h2>
+			<LoadingMessage/>
 		)
 	}
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-const TimelineMatchCard = ({match, idx, competitions}) => {
+const TimelineMatchCard = ({match, matchesByCompetition, idx, competitions}) => {
 	// const [showLeague, setShowLeague] = useState(false);
 	const id = match.fixture.id
 	const status = match.fixture.status;
