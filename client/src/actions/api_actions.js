@@ -45,10 +45,10 @@ export const fetchMatch = (matchId) => {
 	}
 }
 
-export const fetchMatches = () => {
+export const fetchMatches = (date) => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_MATCHES_REQUEST });
-		return axios.get('/matches/live')
+		return axios.get(`/matches/${date}`)
 		.then((response) => {
 			dispatch({ type: FETCH_MATCHES_SUCCESS, payload: response.data })
 		})

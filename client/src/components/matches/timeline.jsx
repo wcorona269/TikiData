@@ -2,30 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TimelineNavBar from './timeline-nav-bar';
 import TimelineMatchDisplay from './timeline-match-display';
-import MatchListItem from './matchListItem';
-import TimelineMatchCard from './timeline-match-card';
-import { withRouter } from 'react-router-dom'
+import LoadingMessage from '../util/loading-screen';
+import TimelineCalendar from './timeline-calendar';
 import { fetchMatches } from '../../actions/api_actions';
 import response from './response';
-import LoadingMessage from '../util/loading-screen';
-
-// import response from './response';
-// array as a result of 'matches.response'
-// refactor timeline to use event cards
-// sort timeline by league, and then 'all' option for all matches
-// next step is player cards and then club cards
 
 const MatchesTimeline = ({apiKey}) => {
 	const dispatch = useDispatch();
 	// const matches = useSelector(state => state.matches.matches);
 	const matches = response;
 	const competitions = new Set();
+	const [date, setDate] = useState(new Date());
 	
 	useEffect(() => {
-		if (!matches) {
-			dispatch(fetchMatches())
-		}
-	}, []);
+		const month = (date.getMonth() + 1).toString().padStart(2, '0');
+		const year = (date.getFullYear()).toString()
+		const day = (date.getDate()).toString().padStart(2, '0');
+
+		const dateString = `${year}-${month}-${day}`
+
+		// dispatch(fetchMatches(dateString))
+	}, [date]);
 
 	const sortMatches = () => {
 		let result = {};
@@ -66,6 +63,7 @@ const MatchesTimeline = ({apiKey}) => {
 
 	return (
 		<>
+			<TimelineCalendar date={date} setDate={setDate}/>
 			<TimelineNavBar selectedNation={selectedNation} nations={listOfNations} onTabSelect={handleTabSelect}/>
 			<TimelineMatchDisplay matches={sortedMatches} competitions={competitions} selectedNation={selectedNation}/>
 		</>
