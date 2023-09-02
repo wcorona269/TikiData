@@ -8,17 +8,6 @@ const TimelineNavBar = ({selectedNation, nations, onTabSelect, date, setDate}) =
 			<TimelineCalendar date={date} setDate={setDate} />
 			<TimelineSelect nations={nations} onTabSelect={onTabSelect} selectedNation={selectedNation}/>
 		</div>
-			// <nav className='timeline-nav-bar'>
-			// 	{nations.map((nation) => (
-			// 		<li key={nation}>
-			// 			<button
-			// 				className={nation === selectedNation ? 'selected-nation' : ''}
-			// 				onClick={() => onTabSelect(nation)}>
-			// 					{nation}
-			// 			</button>
-			// 		</li>
-			// 	))}
-			// </nav>
 	)
 }
 
