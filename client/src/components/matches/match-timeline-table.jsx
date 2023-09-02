@@ -79,7 +79,7 @@ const MatchTimelineTable = ({nation, matches}) => {
 
 	const displayMatches = (matches) => {
 		let matchesByCompetition = {};
-		let result = []
+		let result = [];
 
 		for (let match of matches) {
 			if (match.league.name in matchesByCompetition) {
@@ -94,7 +94,7 @@ const MatchTimelineTable = ({nation, matches}) => {
 		for (let competition in matchesByCompetition) {
 			let competitionMatches = [];
 
-			for (let match in competitionMatches[competition]) {
+			for (let match of matchesByCompetition[competition]) {
 				competitionMatches.push(
 					<tr>
 						<td>
@@ -110,16 +110,23 @@ const MatchTimelineTable = ({nation, matches}) => {
 				)
 			}
 
-			// FIGURE OUT HOW TO PRESENT EACH COUNTRY'S MATCHES BY COMPETITION WITH SUBHEADING FOR COMPETITION
-
 			result.push(
-				...competitionMatches
-			)
-		}
-		
-		for (let match of matches) {
-			result.push(
-			)
+				<>
+					<h3>{competition}</h3>
+					<table>
+						<thead>
+							<tr>
+								<th className='match-column'>Match</th>
+								<th className='time-column'>Time</th>
+								<th className='location-column'>Competition</th>
+							</tr>
+						</thead>
+						<tbody>
+							{competitionMatches}
+						</tbody>
+					</table>
+				</>
+				)
 		}
 
 		return (
@@ -130,18 +137,7 @@ const MatchTimelineTable = ({nation, matches}) => {
 	return (
 		<div className='match-timeline-table'>
 			<h2>{nation}</h2>
-			<table>
-				<thead>
-					<tr>
-						<th className='match-column'>Match</th>
-						<th className='time-column'>Time</th>
-						<th className='location-column'>Competition</th>
-					</tr>
-				</thead>
-				<tbody>
-					{displayMatches(matches)}
-				</tbody>
-			</table>
+			{displayMatches(matches)}
 		</div>
 	)
 }

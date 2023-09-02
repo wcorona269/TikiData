@@ -29,7 +29,7 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation}) => {
 	const displayMatchesList = () => {
 		let result = []
 		for (let key in matchesList) {
-			result.push(<MatchTimelineTable competition={key} matches={matchesList[key]}/>)
+			result.push(<MatchTimelineTable nation={key} matches={matchesList[key]}/>)
 		}
 
 		return result;

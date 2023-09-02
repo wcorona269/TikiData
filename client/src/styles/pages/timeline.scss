@@ -144,33 +144,26 @@
 }
 
 .timeline-nav-bar {
-	background-color: var(--white);
+	background-color: var(--green);
 	display: flex;
 	flex-direction: row;
 	list-style: none;
-	margin-right: auto;
-	margin-left: auto;
-	width: fit-content;
+	width: 100%;
 	max-width: 100%;
 	overflow-x: scroll;
 	margin-bottom: 1rem;
 	height: fit-content;
-	padding-bottom: 1rem;
 }
 
-.timeline-nav-bar button {
-	background-color: var(--white);
+.timeline-nav-bar div {
 	z-index: 1;
-	width: 6rem;
+	width: 100%;
 	height: 3rem;
-	padding: 1rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: none;
-	border-bottom: 4px solid lightgray;
-	border-right: 1px solid lightgray;
-	border-top: 1px solid lightgray;
+	border: 1px solid var(--darkgray);
+	border-collapse: collapse;
 }
 
 .timeline-nav-bar button:hover {
@@ -280,4 +273,17 @@
 	text-overflow:ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
+}
+
+.matches-timeline h3 {
+	font-size: 1.5rem;
+	font-family: "Ubuntu-Italic", sans-serif;
+	margin-bottom: .5rem;
+}
+
+.timeline-calendar-container button {
+	border: 0px;
+	background: none;
+	width: 100%;
+	height: 100%;
 }

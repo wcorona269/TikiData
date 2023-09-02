@@ -36,35 +36,43 @@ const MatchesTimeline = ({apiKey}) => {
 				result[country].push(match);
 			}
 		}
-		return result;
+
+		const keysArray = Object.keys(result);
+
+		keysArray.sort();
+
+		const sortedResult = {};
+		for (const key of keysArray) {
+			sortedResult[key] = result[key];
+		}
+
+		return sortedResult;
 	}
 	
-	
-	const listOfNations = ['All', ...new Set(matches?.map(match => match.league.country))]
-	const [selectedNation, setSelectedNation] = useState(listOfNations[0])
-	
 
-	const handleTabSelect = (nation) => {
-		setSelectedNation(nation);
+	const sortedMatches = sortMatches();
+	const listOfNations = ['All', ...Object.keys(sortedMatches)];
+	const [selectedNation, setSelectedNation] = useState(listOfNations[0]);
+	
+	
+	const handleTabSelect = (e) => {
+		const selectedValue = e.target.value;
+		setSelectedNation(selectedValue);	
 	}
-
+	
 	
 	useEffect(() => {
 	}, [selectedNation])
 	
-
+	
 	if (!matches) {
 		return (<LoadingMessage/>)
 	}
 
 
-	const sortedMatches = sortMatches();
-
-
 	return (
 		<>
-			<TimelineCalendar date={date} setDate={setDate}/>
-			<TimelineNavBar selectedNation={selectedNation} nations={listOfNations} onTabSelect={handleTabSelect}/>
+			<TimelineNavBar selectedNation={selectedNation} nations={listOfNations} onTabSelect={handleTabSelect} date={date} setDate={setDate}/>
 			<TimelineMatchDisplay matches={sortedMatches} competitions={competitions} selectedNation={selectedNation}/>
 		</>
 	)

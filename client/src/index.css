@@ -41,6 +41,7 @@
 
 @import './styles/pages/home.scss';
 @import './styles/pages/timeline.scss';
+@import './styles/pages/timeline-select.scss';
 @import './styles/pages/match.scss';
 @import './styles/pages/player.scss';
 @import './styles/pages/club.scss';
@@ -63,8 +64,6 @@ body {
   background-color: #f0ece6;
   height: 100%;
   width: 100%;
-  /* justify-content: flex-start; */
-  /* justify-content: center; */
 }
 
 .App-logo {
