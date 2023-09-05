@@ -46,16 +46,35 @@ const LeagueProfile = () => {
 		return <LoadingMessage/>
 	}
 
+	const detectSelection = (e) => {
+		const isSelected = 'selected-dashboard'
+		if (e === 'table' && showTable === true) {
+			return isSelected
+		}
+
+		if (e === 'stats' && showStats === true) {
+			return isSelected
+		}
+
+		if (e === 'fixtures' && showFixtures === true) {
+			return isSelected
+		}
+
+		return ''
+	}
+
 	return (
 		<div>
 			<div className='league-profile-nav-bar'>
-				<button name='table' onClick={handleChange}>Table</button>
-				<button name='stats' onClick={handleChange}>Stats</button>
-				<button name='fixtures' onClick={handleChange}>Fixtures</button>
+				<button className={detectSelection('table')} name='table' onClick={handleChange}>Table</button>
+				<button className={detectSelection('stats')} name='stats' onClick={handleChange}>Stats</button>
+				<button className={detectSelection('fixtures')} name='fixtures' onClick={handleChange}>Fixtures</button>
 			</div>
-			{ showTable && <LeagueTableDashboard table={table}/>}
-			{ showStats && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists}/>}
-			{ showFixtures && <LeagueFixturesDashboard fixtures={fixtures}/>}
+			<div className='league-profile-dashboard-container'>
+				{ showTable && <LeagueTableDashboard table={table}/>}
+				{ showStats && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists}/>}
+				{ showFixtures && <LeagueFixturesDashboard fixtures={fixtures}/>}
+			</div>
 		</div>
 	)
 }

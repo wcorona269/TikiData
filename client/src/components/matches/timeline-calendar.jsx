@@ -20,7 +20,7 @@ const TimelineCalendar = ({date, setDate}) => {
 				{formatDate(date.toDateString())}
 			</button>
 			{showCalendar &&
-			<div className='calendar-container'>
+			<div className='calendar-container' onMouseLeave={() => setShowCalendar(false)}>
 				<Calendar onChange={setDate} date={date}/>
 			</div>
 			}
