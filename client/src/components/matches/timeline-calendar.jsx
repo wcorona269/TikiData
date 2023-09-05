@@ -5,13 +5,18 @@ import 'react-calendar/dist/Calendar.css';
 const TimelineCalendar = ({date, setDate}) => {
 	const [showCalendar, setShowCalendar] = useState(false);
 
+	useEffect(() => {
+		setShowCalendar(false);
+	}, [date])
+
 	const formatDate = (date) => {
 		return date.split(' ').slice(1, 3).join(' ');
 	}
 
 	return (
 		<div className='timeline-calendar-container'>
-			<button onClick={() => setShowCalendar(!showCalendar)}>
+			<button id='toggle-show-calendar' onClick={() => setShowCalendar(!showCalendar)}>
+				<i class="fa-regular fa-calendar"></i>
 				{formatDate(date.toDateString())}
 			</button>
 			{showCalendar &&

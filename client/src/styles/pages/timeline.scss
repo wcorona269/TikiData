@@ -5,6 +5,10 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-color: white;
+	padding: .5rem;
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
 }
 
 .matches-timeline:first-child {
@@ -144,32 +148,39 @@
 }
 
 .timeline-nav-bar {
-	background-color: var(--green);
-	display: flex;
-	position: relative;
-	flex-direction: row;
+	background-color: var(--white);
+	display: grid;
+	grid-template-columns: 1fr 1fr; 
+	grid-auto-rows: auto;
 	list-style: none;
 	width: 100%;
 	max-width: 100%;
-	overflow-x: scroll;
 	margin-bottom: 1rem;
 	height: fit-content;
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
 }
 
-.timeline-nav-bar div {
+.timeline-nav-bar > div {
 	position: relative;
+	font-size: .8rem;
 	z-index: 1;
-	width: 100%;
 	height: 3rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 1px solid var(--darkgray);
 	border-collapse: collapse;
 }
 
-.timeline-nav-bar button:hover {
-	background-color: var(--green-lighter);
+.timeline-nav-bar i {
+	margin-right: 1rem;
+}
+
+#toggle-show-calendar {
+	border-top-left-radius: 1rem;
+	border-bottom-left-radius: 1rem;
+}
+
+.timeline-nav-bar button:hover, .timeline-nav-bar select:hover {
+	background-color: var(--gray);
+
 }
 
 .selected-nation {
@@ -179,22 +190,28 @@
 
 .match-timeline-table {
 	width: 100%;
-	border-collapse: collapse;	
+	border-collapse: collapse;
+		
 }
 
 .match-timeline-table h2 {
-		font-size: 2rem;
-		margin-bottom: 1rem;
-		padding-bottom: 1rem;
-		border-bottom: 1px solid var(--darkgray);
+		font-size: 1.5rem;
+		margin-bottom: .5rem;
+		padding-bottom: .5rem;
 		margin-top: 1rem;
+		font-family: 'Ubuntu-Bold', sans-serif;
 }
 
 .match-timeline-table table {
-	font-size: 1rem;
+	font-size: .8rem;
 	margin-bottom: 1rem;
 	table-layout: fixed;
 	width: 100%;
+	
+}
+
+.match-timeline-table thead {
+	border-top: 1px solid var(--gray);
 }
 
 .match-timeline-table th, .match-timeline-table td {
@@ -203,12 +220,20 @@
 }
 
 .match-timeline-table td {
-	border: 1px solid var(--darkgray);
+	border-bottom: 1px solid var(--gray);
+}
+
+.match-timline-table tr {
+	display: table-row;
 }
 
 .match-timeline-table th {
 	font-family: 'Ubuntu-Bold', sans-serif;
-	border: 1px solid var(--darkgray);
+	border-bottom: 1px solid var(--gray);
+}
+
+.match-timeline-table tr:nth-child(even) {
+	background-color: var(--gray);
 }
 
 .match-timeline-table tbody > tr:hover {
@@ -238,9 +263,9 @@
 }
 
 .match-timeline-table img {
-	height: 2rem;
-	margin-right: 1rem;
-	margin-left: 1rem;
+	height: 1rem;
+	margin-right: .5rem;
+	margin-left: .5rem;
 }
 
 #away-team-indicator {
@@ -278,9 +303,26 @@
 }
 
 .matches-timeline h3 {
-	font-size: 1.5rem;
-	font-family: "Ubuntu-Italic", sans-serif;
+	font-size: 1rem;
+	font-family: "Ubuntu-Bold", sans-serif;
 	margin-bottom: .5rem;
+}
+
+.timeline-calendar-container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.calendar-container {
+	position: absolute;
+	top: 100%;
+	height: fit-content;
+	width: fit-content;
+	z-index: 1;
+	background-color: var(--white) !important;
+	box-shadow: var(--box-shadow)
 }
 
 .timeline-calendar-container button {
@@ -295,7 +337,12 @@
 	background: none;
 	text-align: center;
 	font-family: 'Ubuntu-Bold', sans-serif;
-	color: var(--white);
-	background-color: var(--green);
 	width: 100%;
+	outline: none;
+	border: none;
+	border-left: 1px solid var(--gray);
+}
+
+.timeline-select:focus {
+	outline: none;
 }

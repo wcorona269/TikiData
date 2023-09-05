@@ -6,8 +6,8 @@
   --green-dark: #007A60;
   --green-darker: #003B2E;
 
-  --white: #f0ece6;
-  --gray: #E0DDD7;
+  --white: #FFFFFF;
+  --gray: #edeef0;
   --darkgray: #7A7876;
   --black: #3B3A38;
 
@@ -16,6 +16,8 @@
 
   --yellow: #0CFA40;
   --orange: #FA9519;
+
+  --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 @import './styles/typeface/fonts.scss';

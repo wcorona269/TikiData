@@ -4,6 +4,7 @@ html {
 }
 
 .outer-body {
+	background-color: var(--gray);
 	display: grid;
 	width: 100%;
 	grid-template-columns: 1fr 60% 1fr;
