@@ -21,18 +21,51 @@ const ClubProfile = () => {
 	// 	return <LoadingMessage/>	
 	// }
 
-	const name = club.team.name
+	const name = club.team.name;
+	const logo = club.team.logo;
+	const city = club.venue.city;
+	const country = club.team.country;
+	const founded = club.team.founded;
+	const address = club.venue.address; 
+	const capacity = club.venue.capacity;
+	const stadium = club.venue.name;
+	const surface = club.venue.surface;
+
+	let clubDetails = {
+		'Founded': founded,
+		'Location': `${city}, ${country}`,
+		'Stadium': stadium,
+		'Capacity': capacity,
+		'Address': address,
+		'Surface': surface
+	}
+
+	const displayClubDetails = (clubDetails) => {
+		let result = [];
+
+		for (let key in clubDetails) {
+			result.push(
+				<tr>
+					<td className='club-details-header'>{key}</td>
+					<td className='club-details-detail'>{clubDetails[key]}</td>
+				</tr>
+			)
+		}
+
+		return result;
+	}
 	
 	return (
 		<div className='club-profile-container'>
 			<header>
-				<div>
-					<p>Club Image</p>
+				<div className='club-logo-area'>
+					<img src={logo} alt={name}/>
 					<h2>
 						{name}
 					</h2>
 				</div>
 				<div className='club-details'>
+					{displayClubDetails(clubDetails)}
 				</div>
 			</header>
 			<ClubInfoBar clubInfo={response}/>

@@ -40,18 +40,43 @@ const ClubInfoBar = ({clubInfo}) => {
 		}
 	}
 
+	const setClassName = (name) => {
+		if (
+			(name === 'fixtures' && showFixtures === true) ||
+			(name === 'news' && showNews === true) ||
+			(name === 'squad' && showSquad === true) ||
+			(name === 'stats' && showStats === true)
+		) {
+			return 'selected-tab'
+		}
+
+		return '';
+	}
+
+	const displayNavBar = () => {
+		const tabs = ['fixtures', 'news', 'squad', 'stats'];
+		let result = []
+
+		for (let tab of tabs) {
+			result.push(
+				<button className={setClassName(tab)} name={tab} onClick={handleChange}>{tab}</button>
+			)
+		}
+
+		return result
+	}
+
 	return (
 		<div>
 			<div className='club-profile-nav-bar'>
-				<button name='fixtures' onClick={handleChange}>Fixtures</button>
-				<button name='news' onClick={handleChange}>news</button>
-				<button name='squad' onClick={handleChange}>squad</button>
-				<button name='stats' onClick={handleChange}>stats</button>
+				{displayNavBar()}
 			</div>
-			{ showFixtures && <ClubFixturesDashboard fixtures={fixtures}/> }
-			{ showSquad && <ClubSquadDashboard squad={squad}/> }
-			{ showStats && <ClubStatsDashboard/> }
-			{ showNews &&  <ClubNews/> }
+			<div className='club-profile-main'>
+				{ showFixtures && <ClubFixturesDashboard fixtures={fixtures}/> }
+				{ showSquad && <ClubSquadDashboard squad={squad}/> }
+				{ showStats && <ClubStatsDashboard/> }
+				{ showNews &&  <ClubNews/> }
+			</div>
 		</div>
 	)
 }

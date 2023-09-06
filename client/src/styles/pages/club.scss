@@ -62,10 +62,90 @@
 
 .club-profile-container header {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 2fr;
 	grid-auto-columns: auto;
 	background-color: var(--white);
 	border-radius: 1rem;
 	padding: 1rem;
 	box-shadow: var(--box-shadow);
+}
+
+.club-details {
+	font-size: 1rem;
+	width: 100%;
+}
+
+.club-details td {
+	border-collapse: collapse;
+	border: 1px solid var(--darkgray);
+	padding: .5rem;
+}
+
+.club-details-header {
+	font-family: 'Ubuntu-Bold', sans-serif
+}
+
+.club-details-detail {
+	width: 100%;
+}
+
+.club-logo-area {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: left;
+}
+
+.club-logo-area img {
+	height: 10rem;
+	width: 10rem;
+	margin-bottom: 1rem;
+}
+
+.club-profile-nav-bar {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1rem;
+	background-color: var(--white);
+	box-shadow: var(--box-shadow);
+	border-radius: 1rem;
+}
+
+.club-profile-nav-bar button {
+	padding: 1rem;
+	width: 100%;
+	border: 1px solid var(--gray);
+	border-collapse: collapse;
+	background-color: var(--white);
+
+	&:first-child {
+		border-top-left-radius: 1rem;
+		border-bottom-left-radius: 1rem;;
+	}
+
+	&:last-child {
+		border-top-right-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.club-profile-nav-bar .selected-tab {
+	background-color: var(--green) !important;
+	color: var(--white) !important;
+	border: 1px solid var(--green);
+}
+
+.club-profile-main {
+	margin-top: 1rem;
+	padding: 1rem;
+	background-color: var(--white);
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+	font-size: 1rem;
 }
