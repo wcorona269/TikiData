@@ -16,7 +16,7 @@ const LeagueFixturesDashboard = ({fixtures}) => {
 
 	return (
 		<div>
-			<FixtureNavBar dates={uniqueDates} onTabSelect={handleTabSelect}/>
+			<FixtureNavBar selectedDate={selectedDate} dates={uniqueDates} onTabSelect={handleTabSelect}/>
 			<FixturesDisplay fixtures={fixtures} selectedDate={selectedDate}/>
 		</div>
 	)

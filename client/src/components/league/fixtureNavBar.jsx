@@ -6,7 +6,7 @@ import shorthandMonthsOfYear from './shorthandMonths';
 // create set with unique fixture dates
 // create a ul with a li for each date
 
-const FixtureNavBar = ({dates, onTabSelect}) => {
+const FixtureNavBar = ({selectedDate, dates, onTabSelect}) => {
 
 	return (
 		<nav className='fixture-nav-bar'>
@@ -18,6 +18,7 @@ const FixtureNavBar = ({dates, onTabSelect}) => {
 					return (
 						<li key={formattedDate}>
 							<button
+								class={date === selectedDate ? 'selected-date' : ''}
 								// href={`#${formattedDate}`} 
 								onClick={() => onTabSelect(date)}>
 								{formattedDate}

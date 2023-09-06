@@ -49,7 +49,7 @@ const LeagueTableDashboard = ({table}) => {
 						<td id='Club' >
 							<Link to={`/club/${clubId}`}>
 								<img src={club['team']['logo']} />
-								{clubName}
+								<span>{clubName}</span>
 							</Link>
 						</td>
 						<td>{clubData['played']}</td>

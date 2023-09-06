@@ -109,9 +109,6 @@
 }
 
 .league-profile-nav-bar, .league-profile-dashboard-container {
-	background-color: var(--white);
-	border-radius: 1rem;
-	box-shadow: var(--box-shadow);
 	font-size: 1rem;
 }
 
@@ -155,4 +152,7 @@
 
 .league-profile-nav-bar {
 	margin-bottom: 1rem;
+	background-color: var(--white);
+		border-radius: 1rem;
+		box-shadow: var(--box-shadow);
 }

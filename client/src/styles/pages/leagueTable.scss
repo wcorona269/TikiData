@@ -1,6 +1,14 @@
 .league-table {
 	width: 100%;
 	font-size: .8rem;
+	background-color: var(--white);
+		border-radius: 1rem;
+		box-shadow: var(--box-shadow);
+}
+
+.league-table td {
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .league-table thead {
@@ -14,10 +22,17 @@
 	padding: .5rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
+	
 }
 
 #Club {
 	text-align: left;
+}
+
+#Club a {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .league-table-row {

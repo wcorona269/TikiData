@@ -1,7 +1,89 @@
+.stat-dashboard {
+	width: 100%;
+	background-color: var(--white);
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+}
+
+.stat-dashboard tr {
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.stat-dashboard th {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.stat-dashboard thead {
+	border-bottom: 1px solid var(--gray);
+}
+
+
+.stat-dashboard-body {
+	font-size: .8rem;
+}
+
 .stat-dashboard-body img {
-	height: 2rem;
+	height: 1.5rem;
+	margin-right: 4px;
 }
 
 #Player {
+	display: flex;
+	align-items: center;
 	text-align: left;
+	vertical-align: middle;
 }
+
+#Player span {
+	height: 100%;
+	vertical-align: middle;
+}
+
+#Player img {
+	border-radius: 50%;
+}
+
+.league-stats-container {
+	background-color: var(--gray);
+}
+
+.league-stats-nav-bar {
+	background-color: var(--white);
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+}
+
+.league-stats-nav-bar button {
+	padding: 1rem;
+	background: none;
+	border: none;
+	width: 100%;
+	height: 100%;
+
+	&:nth-child(1) {
+		border-top-left-radius: 1rem;
+		border-bottom-left-radius: 1rem;
+	}
+
+	&:nth-child(2) {
+		border-top-right-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+	}
+
+	&:hover {
+		background-color: var(--gray);
+	}
+}
+
+.selected-stats-tab {
+	background-color: var(--green) !important;
+	color: var(--white);
+}
+
