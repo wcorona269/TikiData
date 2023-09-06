@@ -37,7 +37,7 @@ const ClubFixtureListItem = ({fixture, idx, isNewMonth, month}) => {
 	}
 
 	return (
-		<>
+		<div className='club-fixtures-list-row'>
 			{
 				isNewMonth &&
 				<p key={idx + 100} id='new-month-p'>
@@ -54,8 +54,7 @@ const ClubFixtureListItem = ({fixture, idx, isNewMonth, month}) => {
 					{displayResult()}
 				</p>
 			</li>
-		</>
-		
+		</div>
 	)
 }
 

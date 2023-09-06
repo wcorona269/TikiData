@@ -3,14 +3,12 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ClubSquadDashboard from './clubSquadDashboard';
 import ClubStatsDashboard from './clubStatsDashboard';
-import ClubNews from './clubNews';
 import ClubFixturesDashboard from './clubFixturesDashboard';
 
 const ClubInfoBar = ({clubInfo}) => {
-	const [showSquad, setShowSquad] = useState(false);
-	const [showNews, setShowNews] = useState(false);
 	const [showFixtures, setShowFixtures] = useState(true);
-	const [showStats, setShowStats] = useState(true);
+	const [showSquad, setShowSquad] = useState(false);
+	const [showStats, setShowStats] = useState(false);
 
 	const fixtures = clubInfo['fixtures'];
 	const club = clubInfo['club'][0];
@@ -18,7 +16,6 @@ const ClubInfoBar = ({clubInfo}) => {
 
 	const handleChange = (e) => {
 		if (e.target.name === 'fixtures') {
-			setShowNews(false);
 			setShowStats(false)
 			setShowSquad(false);
 			setShowFixtures(true)
@@ -26,15 +23,12 @@ const ClubInfoBar = ({clubInfo}) => {
 			setShowStats(false)
 			setShowFixtures(false);
 			setShowSquad(false);
-			setShowNews(true);
 		} else if (e.target.name === 'squad') {
 			setShowStats(false)
 			setShowFixtures(false);
-			setShowNews(false);
 			setShowSquad(true)
 		} else if (e.target.name === 'stats') {
 			setShowFixtures(false);
-			setShowNews(false);
 			setShowSquad(false);
 			setShowStats(true)
 		}
@@ -43,7 +37,6 @@ const ClubInfoBar = ({clubInfo}) => {
 	const setClassName = (name) => {
 		if (
 			(name === 'fixtures' && showFixtures === true) ||
-			(name === 'news' && showNews === true) ||
 			(name === 'squad' && showSquad === true) ||
 			(name === 'stats' && showStats === true)
 		) {
@@ -54,7 +47,7 @@ const ClubInfoBar = ({clubInfo}) => {
 	}
 
 	const displayNavBar = () => {
-		const tabs = ['fixtures', 'news', 'squad', 'stats'];
+		const tabs = ['fixtures', 'squad', 'stats'];
 		let result = []
 
 		for (let tab of tabs) {
@@ -75,7 +68,6 @@ const ClubInfoBar = ({clubInfo}) => {
 				{ showFixtures && <ClubFixturesDashboard fixtures={fixtures}/> }
 				{ showSquad && <ClubSquadDashboard squad={squad}/> }
 				{ showStats && <ClubStatsDashboard/> }
-				{ showNews &&  <ClubNews/> }
 			</div>
 		</div>
 	)
