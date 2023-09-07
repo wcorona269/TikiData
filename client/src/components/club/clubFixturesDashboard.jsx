@@ -31,9 +31,10 @@ const ClubFixturesDashboard = ({fixtures}) => {
 					const [boolean, month] = determineNewMonth(fixture);
 
 					return (
-						<ClubFixtureListItem 
+						<ClubFixtureListItem
 							fixture={fixture} 
 							idx={idx}
+							key={idx}
 							isNewMonth={boolean}
 							month={month}
 							/>

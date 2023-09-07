@@ -6,6 +6,7 @@ import PlayerOverview from './player-overview';
 import response from './response';
 import shorthandMonthsOfYear from '../league/shorthandMonths';
 import PlayerStats from './player-stats';
+import LoadingMessage from '../util/loading-screen';
 
 const PlayerProfile = () => {
 	// const player = useSelector(state => state.player.player);
@@ -14,11 +15,16 @@ const PlayerProfile = () => {
 	
 	const player = response[0];
 	const statistics = player.statistics;
+	console.log(statistics);
 	
 
 	useEffect(() => {
 		// dispatch(fetchPlayer(playerId))
 	}, [])
+
+	if (!player) {
+		return <LoadingMessage/>
+	}
 
 	return (
 		<div className='player-profile-container'>

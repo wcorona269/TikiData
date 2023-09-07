@@ -45,7 +45,7 @@ const ClubProfile = () => {
 
 		for (let key in clubDetails) {
 			result.push(
-				<tr>
+				<tr key={key}>
 					<td className='club-details-header'>{key}</td>
 					<td className='club-details-detail'>{clubDetails[key]}</td>
 				</tr>
@@ -54,7 +54,7 @@ const ClubProfile = () => {
 
 		return result;
 	}
-	
+
 	return (
 		<div className='club-profile-container'>
 			<header>
@@ -64,9 +64,11 @@ const ClubProfile = () => {
 						{name}
 					</h2>
 				</div>
-				<div className='club-details'>
-					{displayClubDetails(clubDetails)}
-				</div>
+				<table className='club-details'>
+					<tbody>
+						{displayClubDetails(clubDetails)}
+					</tbody>
+				</table>
 			</header>
 			<ClubInfoBar clubInfo={response}/>
 		</div>

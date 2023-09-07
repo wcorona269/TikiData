@@ -12,6 +12,8 @@ const PlayerOverview = ({player}) => {
 		return `${day} ${shorthandMonthsOfYear[Number(month)]} ${year}`
 	}
 
+	console.log(player)
+
 	return (
 		<div className='player-overview'>
 			<div className='player-profile-icon'>

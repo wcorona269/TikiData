@@ -5,14 +5,14 @@ import ClubSquadDashboard from './clubSquadDashboard';
 import ClubStatsDashboard from './clubStatsDashboard';
 import ClubFixturesDashboard from './clubFixturesDashboard';
 
-const ClubInfoBar = ({clubInfo}) => {
+const ClubInfoBar = ({ clubInfo }) => {
 	const [showFixtures, setShowFixtures] = useState(true);
 	const [showSquad, setShowSquad] = useState(false);
 	const [showStats, setShowStats] = useState(false);
 
 	const fixtures = clubInfo['fixtures'];
-	const club = clubInfo['club'][0];
 	const squad = clubInfo['squad'][0]['players'];
+	console.log(clubInfo)
 
 	const handleChange = (e) => {
 		if (e.target.name === 'fixtures') {
@@ -37,8 +37,8 @@ const ClubInfoBar = ({clubInfo}) => {
 	const setClassName = (name) => {
 		if (
 			(name === 'fixtures' && showFixtures === true) ||
-			(name === 'squad' && showSquad === true) ||
-			(name === 'stats' && showStats === true)
+			(name === 'squad' && showSquad === true)
+			// (name === 'stats' && showStats === true)
 		) {
 			return 'selected-tab'
 		}
@@ -47,12 +47,12 @@ const ClubInfoBar = ({clubInfo}) => {
 	}
 
 	const displayNavBar = () => {
-		const tabs = ['fixtures', 'squad', 'stats'];
+		const tabs = ['fixtures', 'squad'];
 		let result = []
 
 		for (let tab of tabs) {
 			result.push(
-				<button className={setClassName(tab)} name={tab} onClick={handleChange}>{tab}</button>
+				<button key={tab} className={setClassName(tab)} name={tab} onClick={handleChange}>{tab}</button>
 			)
 		}
 
@@ -65,9 +65,9 @@ const ClubInfoBar = ({clubInfo}) => {
 				{displayNavBar()}
 			</div>
 			<div className='club-profile-main'>
-				{ showFixtures && <ClubFixturesDashboard fixtures={fixtures}/> }
-				{ showSquad && <ClubSquadDashboard squad={squad}/> }
-				{ showStats && <ClubStatsDashboard/> }
+				{showFixtures && <ClubFixturesDashboard fixtures={fixtures} />}
+				{showSquad && <ClubSquadDashboard squad={squad} />}
+				{showStats && <ClubStatsDashboard />}
 			</div>
 		</div>
 	)

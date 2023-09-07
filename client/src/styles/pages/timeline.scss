@@ -176,11 +176,7 @@
 #toggle-show-calendar {
 	border-top-left-radius: 1rem;
 	border-bottom-left-radius: 1rem;
-}
-
-.timeline-nav-bar button:hover, .timeline-nav-bar select:hover {
-	background-color: var(--gray);
-
+	background-color: var(--green);
 }
 
 .selected-nation {
@@ -212,6 +208,7 @@
 
 .match-timeline-table thead {
 	border-top: 1px solid var(--gray);
+	background-color: var(--gray);
 }
 
 .match-timeline-table th, .match-timeline-table td {
@@ -331,6 +328,7 @@
 .timeline-select {
 	width: 100%;
 	background: none;
+	background-color: var(--green);
 	text-align: center;
 	font-family: 'Ubuntu-Bold', sans-serif;
 	width: 100%;
