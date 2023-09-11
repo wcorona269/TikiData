@@ -10,4 +10,4 @@ const LoadingMessage = () => {
 	)
 }
 
-export default LoadingMessage
+export default LoadingMessage;

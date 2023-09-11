@@ -7,7 +7,6 @@ import response from './response';
 import LoadingMessage from '../util/loading-screen';
 
 const ClubProfile = () => {
-	console.log(response.club[0])
 	const { clubId } = useParams();
 	const dispatch = useDispatch();
 	// const club = useSelector(state => state.club)

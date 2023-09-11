@@ -15,7 +15,6 @@ const PlayerProfile = () => {
 	
 	const player = response[0];
 	const statistics = player.statistics;
-	console.log(statistics);
 	
 
 	useEffect(() => {

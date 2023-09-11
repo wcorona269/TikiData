@@ -21,7 +21,7 @@
 
 #club-squad-table {
 	width: 100%;
-	font-size: 1rem;
+	font-size: .8rem;
 }
 
 .club-squad-list-row {
@@ -29,6 +29,11 @@
 
 	&:nth-child(even) {
 		background-color: var(--gray);
+	}
+
+	&:hover {
+		background-color: var(--gray);
+		cursor: pointer;
 	}
 }
 
@@ -39,7 +44,8 @@
 }
 
 #club-squad-table td, #club-squad-table tr {
-	padding: .5rem;
+	padding: .25rem;
+
 }
 
 #club-squad-table-head th {

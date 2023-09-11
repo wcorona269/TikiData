@@ -12,7 +12,6 @@ const ClubInfoBar = ({ clubInfo }) => {
 
 	const fixtures = clubInfo['fixtures'];
 	const squad = clubInfo['squad'][0]['players'];
-	console.log(clubInfo)
 
 	const handleChange = (e) => {
 		if (e.target.name === 'fixtures') {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const TimelineSelect = ({onTabSelect, nations, selectedNation}) => {
 	useEffect(() => {
-		console.log(selectedNation)
+		
 	}, [selectedNation]);
 
 	return (

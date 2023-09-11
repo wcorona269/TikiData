@@ -38,7 +38,6 @@ const MatchOverview = () => {
 		<div className='match-overview'>
 			<ScoreDisplay match={match}/>
 			<MatchInfo match={match}/>
-			Hello
 		</div>
 	)
 }

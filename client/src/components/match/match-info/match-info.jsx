@@ -25,7 +25,9 @@ const MatchInfo = ({match}) => {
 	return (
 		<div>
 			<MatchNavBar changeSelection={changeTab} selectedTab={selectedTab}/>
-			{component}
+			<div className='match-overview-component'>
+				{component}
+			</div>
 		</div>
 	)
 }
