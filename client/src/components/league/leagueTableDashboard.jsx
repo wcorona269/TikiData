@@ -1,7 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom';
+import NoDataMessage from '../util/no-data-message';
 
 const LeagueTableDashboard = ({table}) => {
+
+	useEffect(() => {
+
+	}, [table])
+
+	if (![table][0][0]['league'].length) return <NoDataMessage/>
+
 	let leagueInfo = [table][0][0]['league'];
 	const standings = leagueInfo['standings'][0];
 	const columns = ['Position', 'Club', 'Played', 'Won', 'Drawn', 'Lost', 'GF', 'GC', 'GD', 'Points', 'Form'];

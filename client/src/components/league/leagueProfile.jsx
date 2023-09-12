@@ -55,11 +55,11 @@ const LeagueProfile = () => {
 		return <LoadingMessage/>
 	}
 
-	if (!competition) {
+	if (!competition || !table || top_scorers || top_assists) {
 		return <NoDataMessage/>
 	}
 
-	const detectSelection = (e) => {
+	const changeTab = (e) => {
 		const isSelected = 'selected-dashboard'
 		if (e === 'table' && showTable === true) {
 			return isSelected
@@ -79,9 +79,9 @@ const LeagueProfile = () => {
 	return (
 		<div>
 			<div className='league-profile-nav-bar'>
-				<button className={detectSelection('table')} name='table' onClick={handleChange}>Table</button>
-				<button className={detectSelection('stats')} name='stats' onClick={handleChange}>Stats</button>
-				<button className={detectSelection('fixtures')} name='fixtures' onClick={handleChange}>Fixtures</button>
+				<button className={changeTab('table')} name='table' onClick={handleChange}>Table</button>
+				<button className={changeTab('stats')} name='stats' onClick={handleChange}>Stats</button>
+				<button className={changeTab('fixtures')} name='fixtures' onClick={handleChange}>Fixtures</button>
 			</div>
 			<div className='league-profile-dashboard-container'>
 				{ showTable && <LeagueTableDashboard table={table}/>}

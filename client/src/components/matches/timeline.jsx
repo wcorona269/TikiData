@@ -6,11 +6,12 @@ import LoadingMessage from '../util/loading-screen';
 import TimelineCalendar from './timeline-calendar';
 import { fetchMatches } from '../../actions/api_actions';
 import response from './response';
+import NoDataMessage from '../util/no-data-message';
 
 const MatchesTimeline = ({apiKey}) => {
 	const dispatch = useDispatch();
-	const matches = useSelector(state => state.matches.matches);
-	// const matches = response;
+	// const matches = useSelector(state => state.matches.matches);
+	const matches = response;
 	const competitions = new Set();
 	const [date, setDate] = useState(new Date());
 	
@@ -71,8 +72,10 @@ const MatchesTimeline = ({apiKey}) => {
 	if (!matches) {
 		return (<LoadingMessage />)
 	}
-	
 
+	if (matches.length === 0) {
+		return <NoDataMessage/>
+	}
 
 	return (
 		<>

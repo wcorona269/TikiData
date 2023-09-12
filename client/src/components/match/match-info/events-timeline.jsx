@@ -57,7 +57,8 @@ const EventsTimeline = ({match}) => {
 					const isHome = event.team.name === homeTeam;
 					const elapsed = event.time.elapsed;
 					const extraTime = event.time.extra;
-					const player = event.player.name;
+					const player = event.player.name || 'N/A';
+					const assist = event.assist.name || '';
 
 					return (
 						<>
@@ -69,8 +70,8 @@ const EventsTimeline = ({match}) => {
 								<td>
 									<img src={determineEventImage(event)}/>
 								</td>
-								<td id='player-name'>{event.player.name}</td>
-								<td id='assist-name'>{event.assist.name}</td>
+								<td id='player-name'>{player}</td>
+								<td id='assist-name'>{assist}</td>
 								<td></td>
 							</tr>
 						</>
