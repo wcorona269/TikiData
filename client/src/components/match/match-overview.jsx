@@ -6,21 +6,24 @@ import response from './response';
 import ScoreDisplay from './score-display';
 import MatchInfo from './match-info/match-info';
 import LoadingMessage from '../util/loading-screen';
+import NoDataMessage from '../util/no-data-message';
 
 const MatchOverview = () => {
 	const dispatch = useDispatch();
-	const match = response[0]
+	// const match = response[0]
 	const [isLoading, setIsLoading] = useState(false)
 	const { matchId } = useParams();
+	const match = useSelector(state => state.match.match);
 
-	// useEffect(()=> {
-	// 	dispatch(fetchMatch(matchId))
-	// 		.then(() => setIsLoading(false))
-	// 		.catch(error => {
-	// 			console.log('Error fetching match', error);
-	// 			setIsLoading(false)
-	// 		})
-	// }, [])
+	useEffect(()=> {
+		setIsLoading(true)
+		dispatch(fetchMatch(matchId))
+			.then(() => setIsLoading(false))
+			.catch(error => {
+				console.log('Error fetching match', error);
+				setIsLoading(false)
+			})
+	}, [])
 
 	
 	if (isLoading) {
@@ -29,15 +32,14 @@ const MatchOverview = () => {
 		)
 	}
 
-	if (match === undefined) {
-		return <div>Error fetching match</div>
+	if (!match) {
+		return <NoDataMessage/>
 	}
-
 	
 	return (
 		<div className='match-overview'>
-			<ScoreDisplay match={match}/>
-			<MatchInfo match={match}/>
+			<ScoreDisplay match={match[0]}/>
+			<MatchInfo match={match[0]}/>
 		</div>
 	)
 }

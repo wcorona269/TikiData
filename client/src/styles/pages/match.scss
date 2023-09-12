@@ -185,8 +185,8 @@
 	width: 100%;
 	align-items: center;
 	border-bottom: 1px solid var(--gray);
-	padding-top: .5rem;
-	padding-bottom: .5rem;
+	padding-top: .25rem;
+	padding-bottom: .25rem;
 }
 
 .match-event-item td {
@@ -250,8 +250,22 @@
 
 .match-overview-header p {
 	display: flex;
-	justify-content: center;
+	width: 33%;
 	align-items: center;
+
+	&:first-child {
+		justify-content: left;
+	}
+
+	&:nth-child(2) {
+		text-align: center;
+		justify-content: center;
+	}
+
+	&:last-child {
+		display: flex;
+		justify-content: right;
+	}
 }
 
 .match-overview-header img {

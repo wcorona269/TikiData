@@ -1,6 +1,11 @@
 import React from 'react'
+import NoDataMessage from '../../util/no-data-message';
 
 const Lineups = ({lineups}) => {
+
+	if (!lineups.length) {
+		return <NoDataMessage/>
+	}
 
 	return (
 		<div className='lineups-tab'>

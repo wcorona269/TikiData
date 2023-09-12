@@ -3,11 +3,17 @@ import YellowCard from '../../../images/yellow.png';
 import RedCard from '../../../images/red.png';
 import Substitution from '../../../images/sub.png';
 import Goal from '../../../images/goal.png';
+import NoDataMessage from '../../util/no-data-message';
 
 const EventsTimeline = ({match}) => {
 	const homeTeam = match.teams.home.name;
 	const awayTeam = match.teams.away.name;
 	const events = match.events;
+
+	if (!events.length) {
+		return <NoDataMessage/>
+	}
+
 	let periods = 0;
 
 	const determineEventImage = (event) => {

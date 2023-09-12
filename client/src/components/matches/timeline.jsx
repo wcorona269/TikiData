@@ -9,8 +9,8 @@ import response from './response';
 
 const MatchesTimeline = ({apiKey}) => {
 	const dispatch = useDispatch();
-	// const matches = useSelector(state => state.matches.matches);
-	const matches = response;
+	const matches = useSelector(state => state.matches.matches);
+	// const matches = response;
 	const competitions = new Set();
 	const [date, setDate] = useState(new Date());
 	
@@ -21,10 +21,11 @@ const MatchesTimeline = ({apiKey}) => {
 
 		const dateString = `${year}-${month}-${day}`
 
-		// dispatch(fetchMatches(dateString))
+		dispatch(fetchMatches(dateString))
 	}, [date]);
 
 	const sortMatches = () => {
+		if (!matches) return {}
 		let result = {};
 
 		for (let match of matches) {
@@ -48,6 +49,8 @@ const MatchesTimeline = ({apiKey}) => {
 
 		return sortedResult;
 	}
+
+	
 	
 
 	const sortedMatches = sortMatches();
@@ -64,10 +67,11 @@ const MatchesTimeline = ({apiKey}) => {
 	useEffect(() => {
 	}, [selectedNation])
 	
-	
+
 	if (!matches) {
-		return (<LoadingMessage/>)
+		return (<LoadingMessage />)
 	}
+	
 
 
 	return (

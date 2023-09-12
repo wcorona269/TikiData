@@ -4,7 +4,7 @@ import NoDataMessage from '../../util/no-data-message';
 const MatchStats = ({match}) => {
 	let stats = match.statistics;
 
-	if (!stats) {
+	if (!stats.length) {
 		return <NoDataMessage/>
 	}
 

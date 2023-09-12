@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MatchTimelineTable = ({nation, matches}) => {
 
@@ -7,9 +8,10 @@ const MatchTimelineTable = ({nation, matches}) => {
 		const homeTeamLogo = match.teams.home.logo;
 		const awayTeamName = match.teams.away.name;
 		const awayTeamLogo = match.teams.away.logo;
+		const id = match.fixture.id
 
 		return (
-			<div className='timeline-match-teams'>
+			<Link to={`/match-overview/${id}`} className='timeline-match-teams'>
 				<p className='team-indicator' id='home-team-indicator'>
 					{homeTeamName} <img src={homeTeamLogo} alt={homeTeamName}/>
 				</p>
@@ -19,7 +21,7 @@ const MatchTimelineTable = ({nation, matches}) => {
 				<p className='team-indicator' id='away-team-indicator'>
 					<img src={awayTeamLogo} alt={awayTeamName} />{awayTeamName} 
 				</p>
-			</div>
+			</Link>
 		)
 	}
 	

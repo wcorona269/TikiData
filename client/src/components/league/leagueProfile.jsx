@@ -7,23 +7,32 @@ import LeagueStatsDashboard from './leagueStatsDashboard';
 import { fetchCompetition } from '../../actions/api_actions';
 import response from './response';
 import LoadingMessage from '../util/loading-screen';
+import NoDataMessage from '../util/no-data-message';
 
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
 	const { leagueId } = useParams();
 	const competition = useSelector(state => state.competition);
+	// const competition = response
 
+	const [isLoading, setIsLoading] = useState(true)
 	const [showTable, setShowTable] = useState(true);
 	const [showStats, setShowStats] = useState(false);
 	const [showFixtures, setShowFixtures] = useState(false);
 
-	const table = response['standings'];
-	const top_scorers = response['top_scorers'];
-	const top_assists = response['top_assists']; 
-	const fixtures = response['fixtures'];
+	const table = competition['standings'];
+	const top_scorers = competition['top_scorers'];
+	const top_assists = competition['top_assists']; 
+	const fixtures = competition['fixtures'];
 
 	useEffect(() => {
-		// dispatch(fetchCompetition(leagueId));
+		setIsLoading(true)
+		dispatch(fetchCompetition(leagueId))
+		.then(() => setIsLoading(false))
+		.catch(error => {
+			console.log('Error fetching match', error);
+			setIsLoading(false)
+		})
 	}, []);
 
 	const handleChange = (e) => {
@@ -42,8 +51,12 @@ const LeagueProfile = () => {
 		}
 	}
 
-	if (competition === undefined) {
+	if (isLoading) {
 		return <LoadingMessage/>
+	}
+
+	if (!competition) {
+		return <NoDataMessage/>
 	}
 
 	const detectSelection = (e) => {
