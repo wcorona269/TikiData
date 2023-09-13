@@ -10,8 +10,8 @@ import NoDataMessage from '../util/no-data-message';
 
 const MatchesTimeline = ({apiKey}) => {
 	const dispatch = useDispatch();
-	// const matches = useSelector(state => state.matches.matches);
-	const matches = response;
+	const matches = useSelector(state => state.matches.matches);
+	// const matches = response;
 	const competitions = new Set();
 	const [date, setDate] = useState(new Date());
 	

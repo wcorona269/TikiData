@@ -7,6 +7,7 @@ import ScoreDisplay from './score-display';
 import MatchInfo from './match-info/match-info';
 import LoadingMessage from '../util/loading-screen';
 import NoDataMessage from '../util/no-data-message';
+import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 
 const MatchOverview = () => {
 	const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const MatchOverview = () => {
 		<div className='match-overview'>
 			<ScoreDisplay match={match[0]}/>
 			<MatchInfo match={match[0]}/>
+			<ScrollToTopOnLoad/>
 		</div>
 	)
 }

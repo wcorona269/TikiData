@@ -8,10 +8,11 @@ const LeagueTableDashboard = ({table}) => {
 
 	}, [table])
 
-	if (![table][0][0]['league'].length) return <NoDataMessage/>
+	console.log(table[0])
 
-	let leagueInfo = [table][0][0]['league'];
+	let leagueInfo = table[0]['league'];
 	const standings = leagueInfo['standings'][0];
+	console.log(standings);
 	const columns = ['Position', 'Club', 'Played', 'Won', 'Drawn', 'Lost', 'GF', 'GC', 'GD', 'Points', 'Form'];
 
 	const displayForm = (form) => {

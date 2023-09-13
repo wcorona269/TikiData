@@ -2,23 +2,32 @@ import React from 'react'
 import shorthandMonthsOfYear from '../league/shorthandMonths';
 
 const PlayerOverview = ({player}) => {
+	console.log(player)
 	const fullName = `${player.player.firstname} ${player.player.lastname}`
 
 	const displayBirthDate = (birthInfo) => {
-		// call with player.player.birth
-		let dateFormat;
+		if (birthInfo === 'N/A') return 'N/A'
 
 		let [year, month, day] = birthInfo.date.split('-');
 		return `${day} ${shorthandMonthsOfYear[Number(month)]} ${year}`
 	}
 
+	const name = player.player.name || 'Name Unavailable';
+	const photo = player.player.photo;
+	const age = player.player.age || 'N/A';
+	const nationality = player.player.nationality || 'N/A';
+	const birth = player.player.birth || 'N/A';
+	const birthPlace = `${player.player.birth.place}, ${player.player.birth.country}`
+	const height = player.player.height || 'N/A';
+	const weight = player.player.weight || 'NA';
+
 	return (
 		<div className='player-overview'>
 			<div className='player-profile-icon'>
 				<p>
-					{player.player.name}
+					{name}
 				</p>
-				<img src={player.player.photo} />
+				<img src={photo} />
 			</div>
 			<table className='player-info'>
 				<tbody>
@@ -31,29 +40,29 @@ const PlayerOverview = ({player}) => {
 					</tr>
 					<tr>
 						<th>Age</th>
-						<td>{player.player.age}</td>
+						<td>{age}</td>
 					</tr>
 					<tr>
 						<th>Nationality</th>
 						<td>
-							{player.player.nationality}
+							{nationality}
 						</td>
 					</tr>
 					<tr>
 						<th>Date of Birth</th>
-						<td>{displayBirthDate(player.player.birth)}</td>
+						<td>{displayBirthDate(birth)}</td>
 					</tr>
 					<tr>
 						<th>Place of Birth</th>
-						<td>{player.player.birth.place}, {player.player.birth.country}</td>
+						<td>{birthPlace}</td>
 					</tr>
 					<tr>
 						<th>Height</th>
-						<td>{player.player.height}</td>
+						<td>{height}</td>
 					</tr>
 					<tr>
 						<th>Weight</th>
-						<td>{player.player.weight}</td>
+						<td>{weight}</td>
 					</tr>
 				</tbody>
 			</table>

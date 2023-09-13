@@ -1,11 +1,14 @@
 import React from 'react'
+import NoDataMessage from '../util/no-data-message';
 
 const PlayerStats = ({statistics}) => {
 
-	const displayStats = (statistics) => {
-		// display statistics for each competition
-		// metrics: competition, team, appearances, goals, assists, passes, dribbles, tackles, interceptions, yellow card, red card
+	if (!statistics.length) {
+		return <NoDataMessage/>
+	}
 
+	const displayStats = (statistics) => {
+		
 		let result = [];
 
 		let totals = {
@@ -97,7 +100,9 @@ const PlayerStats = ({statistics}) => {
 					<th>Yellow</th>
 					<th>Red</th>
 				</thead>
-				{displayStats(statistics)}
+				<tbody>
+					{displayStats(statistics)}
+				</tbody>
 			</table>
 		</div>
 	)

@@ -55,9 +55,9 @@ const LeagueProfile = () => {
 		return <LoadingMessage/>
 	}
 
-	if (!competition || !table || top_scorers || top_assists) {
-		return <NoDataMessage/>
-	}
+	// if (!competition || !table || top_scorers || top_assists) {
+	// 	return <NoDataMessage/>
+	// }
 
 	const changeTab = (e) => {
 		const isSelected = 'selected-dashboard'
@@ -75,6 +75,8 @@ const LeagueProfile = () => {
 
 		return ''
 	}
+
+	console.log(competition);
 
 	return (
 		<div>

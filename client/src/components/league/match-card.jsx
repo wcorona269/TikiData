@@ -1,16 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DisplayTime from '../util/display-time';
 
 
-const MatchCard = ({fixture, idx}) => {
-
-	const displayMatchStatus = (status) => {
-		if (status === 'FT') {
-			return 'Final'
-		}
-	}
-
-	
+const MatchCard = ({fixture, idx}) => {	
 	return (
 		<li className='event-card' key={idx}>
 			<Link to={`/match-overview/${fixture.fixture.id}`}>
@@ -29,7 +22,7 @@ const MatchCard = ({fixture, idx}) => {
 							<p>{fixture.goals.home}</p>
 							<p>{fixture.goals.away}</p>
 					</div>
-					<div className='event-card-status'>{displayMatchStatus(fixture.fixture.status.short)}</div>
+					<div className='event-card-status'><DisplayTime match={fixture}/></div>
 				</div>
 			</Link>
 		</li>

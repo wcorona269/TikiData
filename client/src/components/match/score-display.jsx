@@ -1,13 +1,7 @@
-import React from 'react'
+import React from 'react';
+import DisplayTime from '../util/display-time';
 
 const ScoreDisplay = ({match}) => {
-	const displayMatchStatus = (status) => {
-		if (status === 'FT') {
-			return 'Final'
-		}
-
-		return 'N/A'
-	}
 	
 	return (
 		<>
@@ -41,7 +35,7 @@ const ScoreDisplay = ({match}) => {
 					<p>{match.goals.away}</p>
 				</div>
 				<div className='match-overview-details'>
-					{displayMatchStatus(match.fixture.status.short)}
+					<DisplayTime match={match}/>
 				</div>
 			</div>
 		</div>

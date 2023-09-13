@@ -61,7 +61,7 @@ const MatchStats = ({match}) => {
 			console.log({percentageHome}, {percentageAway});
 
 			const isHomeLeading = percentageHome > percentageAway;
-			const isNonZeroStat = (homeValue !== 0 && awayValue !== 0);
+			const isNonZeroStat = (homeValue !== 0 || awayValue !== 0);
 
 			result.push(
 				[
