@@ -12,10 +12,10 @@ import NoDataMessage from '../util/no-data-message';
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
 	const { leagueId } = useParams();
-	const competition = useSelector(state => state.competition);
-	// const competition = response
+	// const competition = useSelector(state => state.competition);
+	const competition = response;
 
-	const [isLoading, setIsLoading] = useState(true)
+	// const [isLoading, setIsLoading] = useState(true)
 	const [showTable, setShowTable] = useState(true);
 	const [showStats, setShowStats] = useState(false);
 	const [showFixtures, setShowFixtures] = useState(false);
@@ -26,13 +26,13 @@ const LeagueProfile = () => {
 	const fixtures = competition['fixtures'];
 
 	useEffect(() => {
-		setIsLoading(true)
-		dispatch(fetchCompetition(leagueId))
-		.then(() => setIsLoading(false))
-		.catch(error => {
-			console.log('Error fetching match', error);
-			setIsLoading(false)
-		})
+		// setIsLoading(true)
+		// dispatch(fetchCompetition(leagueId))
+		// .then(() => setIsLoading(false))
+		// .catch(error => {
+		// 	console.log('Error fetching match', error);
+		// 	setIsLoading(false)
+		// })
 	}, []);
 
 	const handleChange = (e) => {
@@ -51,9 +51,9 @@ const LeagueProfile = () => {
 		}
 	}
 
-	if (isLoading) {
-		return <LoadingMessage/>
-	}
+	// if (isLoading) {
+	// 	return <LoadingMessage/>
+	// }
 
 	// if (!competition || !table || top_scorers || top_assists) {
 	// 	return <NoDataMessage/>

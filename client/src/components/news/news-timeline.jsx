@@ -9,8 +9,9 @@ import LoadingMessage from '../util/loading-screen';
 const NewsTimeline = () => {
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(true);
-	const news = response;
-	// const news = useSelector(state => state.news.news);
+	// const news = response;
+	const news = useSelector(state => state.news.news);
+	console.log(news);
 	const leaders = news?.slice(0, 4);
 	const subArticles = news?.slice(4);
 
@@ -44,7 +45,7 @@ const NewsTimeline = () => {
 					<span id='media'>{article['media']}</span>
 					<h3 id='title'>{article['title']}</h3>
 					<span id='date'>{article['date']}</span>
-						<img src='https://media.istockphoto.com/id/1335247217/vector/loading-icon-vector-illustration.jpg?s=612x612&w=0&k=20&c=jARr4Alv-d5U3bCa8eixuX2593e1rDiiWnvJLgHCkQM='/>
+						<img src={article['img']}/>
 					</a>
 				</article>
 			)

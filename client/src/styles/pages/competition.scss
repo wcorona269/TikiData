@@ -1,5 +1,6 @@
 .fixture-nav-bar {
 	padding: 1rem;
+	width: 100%;
 	background-color: var(--white);
 	border-radius: 1rem;
 	box-shadow: var(--box-shadow)
@@ -34,24 +35,25 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	min-height: 40rem;
+	height: fit-content;
+}
+
+.fixtures-display ul {
+	width: 100%;
 }
 
 .event-card a {
 	text-decoration: none;
 	color: black;
 	font-family: 'Ubuntu', sans-serif;
-	width: 100%;
 }
 
 .event-card-info {
 	display: grid;
 	grid-template-columns: 4fr 1fr 1fr;
 	padding: 1rem;
-	width: 100%;
 	font-size: 1rem;
 	border-collapse: collapse;
 	border: 1px solid var(--gray);
@@ -87,7 +89,6 @@
 
 .event-card {
 	margin: auto;
-	width: 100%;
 }
 
 .event-card-scores, .event-card-teams {

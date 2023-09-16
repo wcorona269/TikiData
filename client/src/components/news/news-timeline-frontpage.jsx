@@ -1,23 +1,28 @@
 import React from 'react'
 
 const NewsTimelineFrontpage = ({leaders, printSubArticles}) => {
-
-	let urlParams = new URLSearchParams(leaders[0]['link']);
+	let leadStory = leaders[0];
+	let urlParams = new URLSearchParams(leadStory['link']);
 	let actualLink = urlParams.get('url');
+
+	const title = leadStory['title'];
+	const media = leadStory['media'];
+	const date = leadStory['date'];
+	const img = leadStory['img']; 
 
 	return (
 		<div className='news-timeline-frontpage'>
 			<article className='lead-story'>
 				<a target='_blank' href={actualLink}>
 					<div>
-						<img src='https://media.istockphoto.com/id/1335247217/vector/loading-icon-vector-illustration.jpg?s=612x612&w=0&k=20&c=jARr4Alv-d5U3bCa8eixuX2593e1rDiiWnvJLgHCkQM=' />
+						<img src={img} />
 						<h3>
-							{leaders[0]['title']}
+							{title}
 						</h3>
 					</div>
 					<span>
-						<p>{leaders[0]['media']}</p>
-						<p>{leaders[0]['date']}</p>
+						<p>{media}</p>
+						<p>{date}</p>
 					</span>
 				</a>
 			</article>
