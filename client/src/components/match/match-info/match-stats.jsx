@@ -12,7 +12,6 @@ const MatchStats = ({match}) => {
 
 	for (let team of stats) {
 		for (let category of team.statistics) {
-			console.log(team.statistics[category]);
 			if (category.type in combinedStats) {
 				combinedStats[category.type].push(category.value || 0);
 			} else {
@@ -57,8 +56,6 @@ const MatchStats = ({match}) => {
 				percentageHome = homeValue / (homeValue + awayValue) * 100
 				percentageAway = awayValue / (homeValue + awayValue) * 100
 			}
-
-			console.log({percentageHome}, {percentageAway});
 
 			const isHomeLeading = percentageHome > percentageAway;
 			const isNonZeroStat = (homeValue !== 0 || awayValue !== 0);

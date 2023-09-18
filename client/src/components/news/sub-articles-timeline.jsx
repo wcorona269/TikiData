@@ -14,7 +14,6 @@ const SubArticlesTimeline = ({subArticles, printSubArticles}) => {
 	const articlesByPage = splitArticleIntoPages(subArticles);
 	
 	const displayButtons = () => {
-		console.log(scrollPosition)
 		let buttons = []
 		for (let i = scrollPosition; i < scrollPosition + 5; i++) {
 			buttons.push(

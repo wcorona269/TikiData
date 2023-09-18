@@ -11,7 +11,6 @@ const NewsTimeline = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	// const news = response;
 	const news = useSelector(state => state.news.news);
-	console.log(news);
 	const leaders = news?.slice(0, 4);
 	const subArticles = news?.slice(4);
 

@@ -2,6 +2,7 @@ import {
 	FETCH_COMPETITION_REQUEST,
 	FETCH_COMPETITION_SUCCESS,
 	FETCH_COMPETITION_FAILURE,
+	REMOVE_COMPETITION
 } from '../actions/api_actions';
 
 const initialState = {
@@ -26,6 +27,8 @@ const competitionReducer = (state = initialState, action) => {
 			};
 		case FETCH_COMPETITION_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
+		case REMOVE_COMPETITION:
+			return { isLoading: false, error: null };
 		default:
 			return state;
 	}

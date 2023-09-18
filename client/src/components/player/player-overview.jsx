@@ -2,7 +2,6 @@ import React from 'react'
 import shorthandMonthsOfYear from '../league/shorthandMonths';
 
 const PlayerOverview = ({player}) => {
-	console.log(player)
 	const fullName = `${player.player.firstname} ${player.player.lastname}`
 
 	const displayBirthDate = (birthInfo) => {

@@ -4,18 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import LeagueTableDashboard from './leagueTableDashboard'
 import LeagueFixturesDashboard from './leagueFixturesDashboard'
 import LeagueStatsDashboard from './leagueStatsDashboard';
-import { fetchCompetition } from '../../actions/api_actions';
+import { fetchCompetition, removeCompetition } from '../../actions/api_actions';
 import response from './response';
 import LoadingMessage from '../util/loading-screen';
 import NoDataMessage from '../util/no-data-message';
+import LeagueProfileHeader from './league-profile-header'
 
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
 	const { leagueId } = useParams();
 	// const competition = useSelector(state => state.competition);
 	const competition = response;
+	const isLoading = useSelector(state => state.competition.isLoading);
 
-	// const [isLoading, setIsLoading] = useState(true)
 	const [showTable, setShowTable] = useState(true);
 	const [showStats, setShowStats] = useState(false);
 	const [showFixtures, setShowFixtures] = useState(false);
@@ -26,14 +27,20 @@ const LeagueProfile = () => {
 	const fixtures = competition['fixtures'];
 
 	useEffect(() => {
-		// setIsLoading(true)
 		// dispatch(fetchCompetition(leagueId))
-		// .then(() => setIsLoading(false))
 		// .catch(error => {
 		// 	console.log('Error fetching match', error);
-		// 	setIsLoading(false)
 		// })
+
+		return () => {
+			dispatch(removeCompetition())
+		}
 	}, []);
+
+	useEffect(() => {
+
+	}, [isLoading])
+
 
 	const handleChange = (e) => {
 		if (e.target.name === 'table') {
@@ -50,14 +57,14 @@ const LeagueProfile = () => {
 			setShowFixtures(true);
 		}
 	}
-
-	// if (isLoading) {
-	// 	return <LoadingMessage/>
-	// }
-
-	// if (!competition || !table || top_scorers || top_assists) {
-	// 	return <NoDataMessage/>
-	// }
+	
+	if (isLoading) {
+		return <LoadingMessage/>
+	}
+	
+	if (!competition || !table || !top_scorers || !top_assists) {
+		return <NoDataMessage/>
+	}
 
 	const changeTab = (e) => {
 		const isSelected = 'selected-dashboard'
@@ -76,10 +83,9 @@ const LeagueProfile = () => {
 		return ''
 	}
 
-	console.log(competition);
-
 	return (
 		<div>
+			<LeagueProfileHeader league={table}/>
 			<div className='league-profile-nav-bar'>
 				<button className={changeTab('table')} name='table' onClick={handleChange}>Table</button>
 				<button className={changeTab('stats')} name='stats' onClick={handleChange}>Stats</button>

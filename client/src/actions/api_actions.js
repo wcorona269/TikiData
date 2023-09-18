@@ -18,6 +18,7 @@ export const FETCH_MATCHES_FAILURE = 'FETCH_MATCHES_FAILURE';
 export const FETCH_COMPETITION_REQUEST = 'FETCH_COMPETITION_REQUEST'
 export const FETCH_COMPETITION_SUCCESS = 'FETCH_COMPETITION_SUCCESS'
 export const FETCH_COMPETITION_FAILURE = 'FETCH_COMPETITION_FAILURE'
+export const REMOVE_COMPETITION = 'REMOVE_COMPETITION';
 
 // Fetch club info
 export const FETCH_CLUB_SUCCESS = 'FETCH_CLUB_SUCCESS';
@@ -68,6 +69,12 @@ export const fetchCompetition = (leagueId) => {
 		.catch((error) => {
 			dispatch({ type: FETCH_COMPETITION_FAILURE, payload: error.message })
 		})
+	}
+}
+
+export const removeCompetition = () => {
+	return (dispatch) => {
+		dispatch({ type: REMOVE_COMPETITION })
 	}
 }
 
