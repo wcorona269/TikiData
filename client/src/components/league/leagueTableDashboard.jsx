@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import NoDataMessage from '../util/no-data-message';
+import MultiTableDashboard from './multi-table-dashboard';
 
 const LeagueTableDashboard = ({table}) => {
 
@@ -9,7 +10,15 @@ const LeagueTableDashboard = ({table}) => {
 	}, [table])
 
 	let leagueInfo = table[0]['league'];
-	const standings = leagueInfo['standings'][0];
+	let standings = leagueInfo['standings'];)
+
+	if (standings.length > 1) {
+		return <MultiTableDashboard standings={standings}/>
+	}
+
+	standings = leagueInfo['standings'][0];
+
+
 	const columns = ['Position', 'Club', 'Played', 'Won', 'Drawn', 'Lost', 'GF', 'GC', 'GD', 'Points', 'Form'];
 
 	const displayForm = (form) => {

@@ -13,8 +13,8 @@ import LeagueProfileHeader from './league-profile-header'
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
 	const { leagueId } = useParams();
-	// const competition = useSelector(state => state.competition);
-	const competition = response;
+	const competition = useSelector(state => state.competition);
+	// const competition = response;
 	const isLoading = useSelector(state => state.competition.isLoading);
 
 	const [showTable, setShowTable] = useState(true);
@@ -27,10 +27,10 @@ const LeagueProfile = () => {
 	const fixtures = competition['fixtures'];
 
 	useEffect(() => {
-		// dispatch(fetchCompetition(leagueId))
-		// .catch(error => {
-		// 	console.log('Error fetching match', error);
-		// })
+		dispatch(fetchCompetition(leagueId))
+		.catch(error => {
+			console.log('Error fetching match', error);
+		})
 
 		return () => {
 			dispatch(removeCompetition())
