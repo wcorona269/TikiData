@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPlayer } from '../../actions/api_actions';
@@ -14,19 +14,19 @@ const PlayerProfile = () => {
 	const { playerId }= useParams();
 	
 	// const player = response[0];
-	let player = useSelector(state => state.player.player);
-	const [isLoading, setIsLoading] = useState(true);
-	
+	const player = useSelector(state => state.player.player);
+	const isLoading = useSelector(state => state.player.isLoading);	
 	
 	useEffect(() => {
-		setIsLoading(true)
 		dispatch(fetchPlayer(playerId))
-		.then(() => setIsLoading(false))
 		.catch(error => {
-			console.log('Error fetching match', error);
-			setIsLoading(false)
+			console.log('Error fetching player', error);
 		})
 	}, [])
+
+	useEffect(() => {
+
+	}, [isLoading])
 	
 	if (isLoading) {
 		return <LoadingMessage/>
@@ -35,6 +35,7 @@ const PlayerProfile = () => {
 	if (!player) {
 		return <NoDataMessage/>
 	}
+
 
 	player = player[0];
 	const statistics = player.statistics;

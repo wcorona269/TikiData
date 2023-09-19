@@ -65,7 +65,7 @@ const PlayerStats = ({statistics}) => {
 
 		result.push(
 			<tr id='stats-totals'>
-				<td id='competition'>-</td>
+				<td id='competition'>All</td>
 				<td id='team'>-</td>
 				<td>{totals['apps']}</td>
 				<td>{totals['goals']}</td>
@@ -96,7 +96,7 @@ const PlayerStats = ({statistics}) => {
 					<th>Passes</th>
 					<th>Dribbles</th>
 					<th>Tackles</th>
-					<th>Interceptions</th>
+					<th>Int.</th>
 					<th>Yellow</th>
 					<th>Red</th>
 				</thead>

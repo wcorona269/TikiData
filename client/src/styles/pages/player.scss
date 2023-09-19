@@ -98,6 +98,8 @@
 
 .player-stats-table #competition, .player-stats-table #team {
 	text-align: left;
+	max-width: 120px;
+	text-overflow: ellipsis;
 }
 
 #stats-totals {

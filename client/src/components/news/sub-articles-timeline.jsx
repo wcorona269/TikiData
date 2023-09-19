@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const SubArticlesTimeline = ({subArticles, printSubArticles}) => {
+const SubArticlesTimeline = ({subArticles, printArticles}) => {
 	const [currentPage, setCurrentpage] = useState(0);
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const splitArticleIntoPages = (subArticles, articlesPerPage = 4) => {
@@ -29,17 +29,17 @@ const SubArticlesTimeline = ({subArticles, printSubArticles}) => {
 		<>
 			<div className='sub-articles'>
 				<h1>More News</h1>
-				{printSubArticles(articlesByPage[currentPage])}
+				{printArticles(articlesByPage[currentPage])}
 			</div>
 			<p id='page-selector'>
 				Page
 			</p>
 			<div className='news-timeline-page-buttons'>
-				{scrollPosition >= 2 && <button className='news-scroll-button' onClick={() => setScrollPosition(scrollPosition - 2)}><i class="fa-solid fa-caret-left"></i></button>}
+				{scrollPosition >= 2 && <button className='news-scroll-button' onClick={() => setScrollPosition(scrollPosition - 2)}><i className="fa-solid fa-caret-left"></i></button>}
 				<div id='news-timeline-pages'>
 					{displayButtons(scrollPosition)}
 				</div>
-				{scrollPosition <= articlesByPage.length - 2 && <button className='news-scroll-button' onClick={() => setScrollPosition(scrollPosition + 2)}><i class="fa-solid fa-caret-right"></i></button>}
+				{scrollPosition <= articlesByPage.length - 2 && <button className='news-scroll-button' onClick={() => setScrollPosition(scrollPosition + 2)}><i className="fa-solid fa-caret-right"></i></button>}
 			</div>
 		</>
 	)

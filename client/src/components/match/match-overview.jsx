@@ -12,25 +12,24 @@ import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 const MatchOverview = () => {
 	const dispatch = useDispatch();
 	// const match = response[0]
-	const [isLoading, setIsLoading] = useState(false)
+	const isLoading = useSelector(state => state.match.isLoading);
 	const { matchId } = useParams();
 	const match = useSelector(state => state.match.match);
 
 	useEffect(()=> {
-		setIsLoading(true)
 		dispatch(fetchMatch(matchId))
-			.then(() => setIsLoading(false))
 			.catch(error => {
 				console.log('Error fetching match', error);
-				setIsLoading(false)
 			})
 	}, [])
 
+	useEffect(() => {
+
+	}, [isLoading])
+
 	
 	if (isLoading) {
-		return (
-			<LoadingMessage/>
-		)
+		return <LoadingMessage/>
 	}
 
 	if (!match) {

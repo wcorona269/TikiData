@@ -1,32 +1,40 @@
 import React from 'react'
 
-const NewsTimelineFrontpage = ({leaders, printSubArticles}) => {
-	let leadStory = leaders[0];
-	let urlParams = new URLSearchParams(leadStory['link']);
-	let actualLink = urlParams.get('url');
+const NewsTimelineFrontpage = ({leaders}) => {
 
-	const title = leadStory['title'];
-	const media = leadStory['media'];
-	const date = leadStory['date'];
-	const img = leadStory['img']; 
+	const printArticles = (articles) => {
+		const result = [];
+		let i = 0
+
+		while (i < articles.length) {
+			let article = articles[i];
+			const media = article['media'];
+			const title = article['title'];
+			const date = article['date'];
+			const img = article['img'];
+			const link = `https://${article['link']}`;
+
+			result.push(
+				<article key={i} className='sub-article-container'>
+					<a className='sub-article-hyperlink' id='leader' href={link} target='_blank'>
+						<span id='media'>{media}</span>
+						<h3 id='title'>{title}</h3>
+						<span id='date'>{date}</span>
+						<img src={img} />
+					</a>
+				</article>
+			)
+
+			i += 1;
+		}
+
+		return result;
+	}
+
 
 	return (
 		<div className='news-timeline-frontpage'>
-			<article className='lead-story'>
-				<a target='_blank' href={actualLink}>
-					<div>
-						<img src={img} />
-						<h3>
-							{title}
-						</h3>
-					</div>
-					<span>
-						<p>{media}</p>
-						<p>{date}</p>
-					</span>
-				</a>
-			</article>
-			{printSubArticles(leaders, true)}
+			{printArticles(leaders)}
 		</div>
 	)
 }

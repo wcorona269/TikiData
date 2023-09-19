@@ -11,11 +11,11 @@ export const fetchNews = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_NEWS_REQUEST });
 		return axios.get(`/news`)
-			.then((response) => {
-				dispatch({ type: FETCH_NEWS_SUCCESS, payload: response.data });
-			})
-			.catch((error) => {
-				dispatch({ type: FETCH_NEWS_FAILURE, payload: error.message })
-			})
+		.then((response) => {
+			dispatch({ type: FETCH_NEWS_SUCCESS, payload: response.data });
+		})
+		.catch((error) => {
+			dispatch({ type: FETCH_NEWS_FAILURE, payload: error.message })
+		})
 	}
 }
