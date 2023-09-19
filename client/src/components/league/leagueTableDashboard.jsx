@@ -10,7 +10,7 @@ const LeagueTableDashboard = ({table}) => {
 	}, [table])
 
 	let leagueInfo = table[0]['league'];
-	let standings = leagueInfo['standings'];)
+	let standings = leagueInfo['standings'];
 
 	if (standings.length > 1) {
 		return <MultiTableDashboard standings={standings}/>
