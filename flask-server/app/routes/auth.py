@@ -77,3 +77,29 @@ def logout():
     return jsonify({
         'message': 'User Logged Out Successfully',
     })
+    
+
+@bp.route('/update', methods=['PUT'])
+@jwt_required()  # Requires authentication with a valid JWT token
+def update_user():
+    current_user_id = get_jwt_identity()
+    data = request.json
+
+    # Check if the user exists
+    user = User.query.get(current_user_id)
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+
+    # Update the user's information based on the data provided in the request
+    if 'username' in data:
+        new_username = data['username']
+        user.username = new_username
+
+    if 'password' in data:
+        new_password = data['password']
+        user.set_password(new_password)
+
+    # Commit the changes to the database
+    db.session.commit()
+
+    return jsonify({'message': 'User information updated successfully'})
