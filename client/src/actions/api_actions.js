@@ -59,10 +59,10 @@ export const fetchMatches = (date) => {
 	}
 }
 
-export const fetchCompetition = (leagueId) => {
+export const fetchCompetition = (leagueId, season) => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_COMPETITION_REQUEST });
-		return axios.get(`/competition/${leagueId}`)
+		return axios.get(`/competition/${leagueId}/${season}`)
 		.then((response) => {
 			dispatch({ type: FETCH_COMPETITION_SUCCESS, payload: response.data })
 		})

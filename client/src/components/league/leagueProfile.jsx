@@ -17,6 +17,9 @@ const LeagueProfile = () => {
 	// const competition = response;
 	const isLoading = useSelector(state => state.competition.isLoading);
 
+	const [season, setSeason] = useState('2023/24');
+	const [showSeason, setshowSeason] = useState(false);
+	
 	const [showTable, setShowTable] = useState(true);
 	const [showStats, setShowStats] = useState(false);
 	const [showFixtures, setShowFixtures] = useState(false);
@@ -27,15 +30,9 @@ const LeagueProfile = () => {
 	const fixtures = competition['fixtures'];
 
 	useEffect(() => {
-		dispatch(fetchCompetition(leagueId))
-		.catch(error => {
-			console.log('Error fetching match', error);
-		})
-
-		return () => {
-			dispatch(removeCompetition())
-		}
-	}, []);
+		let selectedSeason = season.split('/')[0];
+		dispatch(fetchCompetition(leagueId, selectedSeason))
+	}, [season]);
 
 	useEffect(() => {
 
@@ -83,9 +80,15 @@ const LeagueProfile = () => {
 		return ''
 	}
 
+	const handleSeasonChange = (e) => {
+		let year = e.target.getAttribute('value')
+		setshowSeason(false);
+		setSeason(year);
+	}
+
 	return (
 		<div>
-			<LeagueProfileHeader league={table}/>
+			<LeagueProfileHeader league={table} handleSeasonChange={handleSeasonChange} season={season} showSeason={showSeason} setshowSeason={setshowSeason}/>
 			<div className='league-profile-nav-bar'>
 				<button className={changeTab('table')} name='table' onClick={handleChange}>Table</button>
 				<button className={changeTab('stats')} name='stats' onClick={handleChange}>Stats</button>

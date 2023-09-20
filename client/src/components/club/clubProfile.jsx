@@ -9,16 +9,16 @@ import LoadingMessage from '../util/loading-screen';
 const ClubProfile = () => {
 	const { clubId } = useParams();
 	const dispatch = useDispatch();
-	// const club = useSelector(state => state.club)
-	const club = response.club[0];
+	const club = useSelector(state => state.club);
+	// const club = response.club[0];
 
 	useEffect(() => {
-		// dispatch(fetchClub(clubId));
+		dispatch(fetchClub(clubId));
 	}, [])
 
-	// if (!club) {
-	// 	return <LoadingMessage/>	
-	// }
+	if (!club) {
+		return <LoadingMessage/>	
+	}
 
 	const name = club.team.name;
 	const logo = club.team.logo;

@@ -9,6 +9,7 @@ const LeagueTableDashboard = ({table}) => {
 
 	}, [table])
 
+	
 	let leagueInfo = table[0]['league'];
 	let standings = leagueInfo['standings'];
 
