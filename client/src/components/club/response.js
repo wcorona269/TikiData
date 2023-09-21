@@ -1,4343 +1,4015 @@
 const response = {
-	"users": [],
-	"user": null,
-	"isLoading": false,
-	"error": null,
-	"club": [
-		{
-			"team": {
-				"code": "BAR",
-				"country": "Spain",
-				"founded": 1899,
-				"id": 529,
-				"logo": "https://media-1.api-sports.io/football/teams/529.png",
-				"name": "Barcelona",
-				"national": false
-			},
-			"venue": {
-				"address": "Carrer d&apos;Arístides Maillol",
-				"capacity": 99787,
-				"city": "Barcelona",
-				"id": 18630,
-				"image": "https://media-2.api-sports.io/football/venues/18630.png",
-				"name": "Spotify Camp Nou",
-				"surface": "grass"
-			}
-		}
-	],
-	"squad": [
-		{
-			"players": [
-				{
-					"age": 31,
-					"id": 127,
-					"name": "M. ter Stegen",
-					"number": 1,
-					"photo": "https://media-2.api-sports.io/football/players/127.png",
-					"position": "Goalkeeper"
-				},
-				{
-					"age": 24,
-					"id": 126,
-					"name": "Iñaki Peña",
-					"number": 13,
-					"photo": "https://media-2.api-sports.io/football/players/126.png",
-					"position": "Goalkeeper"
-				},
-				{
-					"age": 19,
-					"id": 336653,
-					"name": "Ander Astralaga",
-					"number": 31,
-					"photo": "https://media-3.api-sports.io/football/players/336653.png",
-					"position": "Goalkeeper"
-				},
-				{
-					"age": 22,
-					"id": 162473,
-					"name": "Arnau Tenas",
-					"number": 36,
-					"photo": "https://media-3.api-sports.io/football/players/162473.png",
-					"position": "Goalkeeper"
-				},
-				{
-					"age": 24,
-					"id": 101814,
-					"name": "R. Araujo",
-					"number": 4,
-					"photo": "https://media-1.api-sports.io/football/players/101814.png",
-					"position": "Defender"
-				},
-				{
-					"age": 27,
-					"id": 2282,
-					"name": "A. Christensen",
-					"number": 15,
-					"photo": "https://media-3.api-sports.io/football/players/2282.png",
-					"position": "Defender"
-				},
-				{
-					"age": 33,
-					"id": 2278,
-					"name": "Marcos Alonso",
-					"number": 17,
-					"photo": "https://media-1.api-sports.io/football/players/2278.png",
-					"position": "Defender"
-				},
-				{
-					"age": 34,
-					"id": 128,
-					"name": "Jordi Alba",
-					"number": 18,
-					"photo": "https://media-2.api-sports.io/football/players/128.png",
-					"position": "Defender"
-				},
-				{
-					"age": 31,
-					"id": 137,
-					"name": "Sergi Roberto",
-					"number": 20,
-					"photo": "https://media-2.api-sports.io/football/players/137.png",
-					"position": "Defender"
-				},
-				{
-					"age": 25,
-					"id": 1257,
-					"name": "J. Koundé",
-					"number": 23,
-					"photo": "https://media-2.api-sports.io/football/players/1257.png",
-					"position": "Defender"
-				},
-				{
-					"age": 22,
-					"id": 619,
-					"name": "Eric García",
-					"number": 24,
-					"photo": "https://media-2.api-sports.io/football/players/619.png",
-					"position": "Defender"
-				},
-				{
-					"age": 20,
-					"id": 161928,
-					"name": "Alejandro Balde",
-					"number": 28,
-					"photo": "https://media-2.api-sports.io/football/players/161928.png",
-					"position": "Defender"
-				},
-				{
-					"age": 20,
-					"id": 278898,
-					"name": "C. Riad",
-					"number": 35,
-					"photo": "https://media-2.api-sports.io/football/players/278898.png",
-					"position": "Defender"
-				},
-				{
-					"age": 22,
-					"id": 51051,
-					"name": "J. Araujo",
-					"number": null,
-					"photo": "https://media-2.api-sports.io/football/players/51051.png",
-					"position": "Defender"
-				},
-				{
-					"age": 17,
-					"id": 386859,
-					"name": "Héctor Fort",
-					"number": null,
-					"photo": "https://media-3.api-sports.io/football/players/386859.png",
-					"position": "Defender"
-				},
-				{
-					"age": 35,
-					"id": 144,
-					"name": "Sergio Busquets",
-					"number": 5,
-					"photo": "https://media-2.api-sports.io/football/players/144.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 21,
-					"id": 133609,
-					"name": "Pedri",
-					"number": 8,
-					"photo": "https://media-3.api-sports.io/football/players/133609.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 27,
-					"id": 1642,
-					"name": "F. Kessié",
-					"number": 19,
-					"photo": "https://media-2.api-sports.io/football/players/1642.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 26,
-					"id": 538,
-					"name": "F. de Jong",
-					"number": 21,
-					"photo": "https://media-1.api-sports.io/football/players/538.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 20,
-					"id": 329728,
-					"name": "Marc Casadó",
-					"number": 29,
-					"photo": "https://media-3.api-sports.io/football/players/329728.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 19,
-					"id": 296667,
-					"name": "Gavi",
-					"number": 30,
-					"photo": "https://media-1.api-sports.io/football/players/296667.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 20,
-					"id": 285909,
-					"name": "Pablo Torre",
-					"number": 32,
-					"photo": "https://media-1.api-sports.io/football/players/285909.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 19,
-					"id": 336557,
-					"name": "Aleix Garrido",
-					"number": 40,
-					"photo": "https://media-1.api-sports.io/football/players/336557.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 19,
-					"id": 348539,
-					"name": "Unai Hernández",
-					"number": 43,
-					"photo": "https://media-2.api-sports.io/football/players/348539.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 17,
-					"id": 396630,
-					"name": "Pau Prim",
-					"number": 46,
-					"photo": "https://media-1.api-sports.io/football/players/396630.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 18,
-					"id": 371912,
-					"name": "Dani Rodríguez",
-					"number": 47,
-					"photo": "https://media-2.api-sports.io/football/players/371912.png",
-					"position": "Midfielder"
-				},
-				{
-					"age": 26,
-					"id": 153,
-					"name": "O. Dembélé",
-					"number": 7,
-					"photo": "https://media-3.api-sports.io/football/players/153.png",
-					"position": "Attacker"
-				},
-				{
-					"age": 35,
-					"id": 521,
-					"name": "R. Lewandowski",
-					"number": 9,
-					"photo": "https://media-1.api-sports.io/football/players/521.png",
-					"position": "Attacker"
-				},
-				{
-					"age": 21,
-					"id": 135775,
-					"name": "Ansu Fati",
-					"number": 10,
-					"photo": "https://media-3.api-sports.io/football/players/135775.png",
-					"position": "Attacker"
-				},
-				{
-					"age": 23,
-					"id": 931,
-					"name": "Ferran Torres",
-					"number": 11,
-					"photo": "https://media-3.api-sports.io/football/players/931.png",
-					"position": "Attacker"
-				},
-				{
-					"age": 27,
-					"id": 1496,
-					"name": "Raphinha",
-					"number": 22,
-					"photo": "https://media-1.api-sports.io/football/players/1496.png",
-					"position": "Attacker"
-				},
-				{
-					"age": 19,
-					"id": 386827,
-					"name": "Ángel Alarcón",
-					"number": 38,
-					"photo": "https://media-2.api-sports.io/football/players/386827.png",
-					"position": "Attacker"
-				},
-				{
-					"age": 20,
-					"id": 336555,
-					"name": "Estanis",
-					"number": 39,
-					"photo": "https://media-3.api-sports.io/football/players/336555.png",
-					"position": "Attacker"
-				},
-				{
-					"age": 16,
-					"id": 386828,
-					"name": "Lamine Yamal",
-					"number": 41,
-					"photo": "https://media-3.api-sports.io/football/players/386828.png",
-					"position": "Attacker"
-				},
-				{
-					"age": 17,
-					"id": 392270,
-					"name": "Marc Guiu",
-					"number": 44,
-					"photo": "https://media-1.api-sports.io/football/players/392270.png",
-					"position": "Attacker"
-				},
-				{
-					"age": 19,
-					"id": 290740,
-					"name": "Ilias Akhomach",
-					"number": null,
-					"photo": "https://media-2.api-sports.io/football/players/290740.png",
-					"position": "Attacker"
-				}
-			],
-			"team": {
-				"id": 529,
-				"logo": "https://media-3.api-sports.io/football/teams/529.png",
-				"name": "Barcelona"
-			}
-		}
-	],
-	"fixtures": [
-		{
-			"fixture": {
-				"date": "2023-01-12T19:00:00+00:00",
-				"id": 868375,
-				"periods": {
-					"first": 1673550000,
-					"second": 1673553600
-				},
-				"referee": "Carlos del Cerro",
-				"status": {
-					"elapsed": 120,
-					"long": "Match Finished",
-					"short": "PEN"
-				},
-				"timestamp": 1673550000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Riyadh",
-					"id": null,
-					"name": "King Fahd International Stadium"
-				}
-			},
-			"goals": {
-				"away": 2,
-				"home": 2
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 556,
-				"logo": "https://media-1.api-sports.io/football/leagues/556.png",
-				"name": "Super Cup",
-				"round": "Semi-finals",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": 1,
-					"home": 1
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 1
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": 4,
-					"home": 2
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 543,
-					"logo": "https://media-3.api-sports.io/football/teams/543.png",
-					"name": "Real Betis",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-07-13T17:00:00+00:00",
-				"id": 869515,
-				"periods": {
-					"first": 1657731600,
-					"second": 1657735200
-				},
-				"referee": "Marc Sáez",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1657731600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Olot",
-					"id": 6504,
-					"name": "Camp Municipal d'Olot"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 1
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 667,
-				"logo": "https://media-3.api-sports.io/football/leagues/667.png",
-				"name": "Friendlies Clubs",
-				"round": "Club Friendlies 1",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 1
-				},
-				"halftime": {
-					"away": 1,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": null
-				},
-				"home": {
-					"id": 9403,
-					"logo": "https://media-3.api-sports.io/football/teams/9403.png",
-					"name": "Olot",
-					"winner": null
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-07-20T00:00:00+00:00",
-				"id": 869528,
-				"periods": {
-					"first": 1658275200,
-					"second": 1658278800
-				},
-				"referee": "R. Vazquez",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1658275200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Fort Lauderdale, Florida",
-					"id": 11976,
-					"name": "DRV PNK Stadium"
-				}
-			},
-			"goals": {
-				"away": 6,
-				"home": 0
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 667,
-				"logo": "https://media-3.api-sports.io/football/leagues/667.png",
-				"name": "Friendlies Clubs",
-				"round": "Club Friendlies 1",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 6,
-					"home": 0
-				},
-				"halftime": {
-					"away": 3,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 9568,
-					"logo": "https://media-3.api-sports.io/football/teams/9568.png",
-					"name": "Inter Miami",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-07-24T03:00:00+00:00",
-				"id": 869540,
-				"periods": {
-					"first": 1658631600,
-					"second": 1658635200
-				},
-				"referee": "M. Allatin",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1658631600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Las Vegas, Nevada",
-					"id": null,
-					"name": "Allegiant Stadium"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 0
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 667,
-				"logo": "https://media-3.api-sports.io/football/leagues/667.png",
-				"name": "Friendlies Clubs",
-				"round": "Club Friendlies 1",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 541,
-					"logo": "https://media-1.api-sports.io/football/teams/541.png",
-					"name": "Real Madrid",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-07-27T00:30:00+00:00",
-				"id": 869542,
-				"periods": {
-					"first": 1658881800,
-					"second": 1658885400
-				},
-				"referee": "E. Garcia",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1658881800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Dallas, Texas",
-					"id": null,
-					"name": "Cotton Bowl"
-				}
-			},
-			"goals": {
-				"away": 2,
-				"home": 2
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 667,
-				"logo": "https://media-3.api-sports.io/football/leagues/667.png",
-				"name": "Friendlies Clubs",
-				"round": "Club Friendlies 1",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 2,
-					"home": 2
-				},
-				"halftime": {
-					"away": 1,
-					"home": 2
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 496,
-					"logo": "https://media-1.api-sports.io/football/teams/496.png",
-					"name": "Juventus",
-					"winner": null
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": null
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-07-30T23:00:00+00:00",
-				"id": 869547,
-				"periods": {
-					"first": 1659222000,
-					"second": 1659225600
-				},
-				"referee": "E. Constantine",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1659222000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Harrison, New Jersey",
-					"id": 1619,
-					"name": "Red Bull Arena"
-				}
-			},
-			"goals": {
-				"away": 2,
-				"home": 0
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 667,
-				"logo": "https://media-3.api-sports.io/football/leagues/667.png",
-				"name": "Friendlies Clubs",
-				"round": "Club Friendlies 1",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 2,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 1602,
-					"logo": "https://media-3.api-sports.io/football/teams/1602.png",
-					"name": "New York Red Bulls",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-08-13T19:00:00+00:00",
-				"id": 877943,
-				"periods": {
-					"first": 1660417200,
-					"second": 1660420800
-				},
-				"referee": "Alejandro Hernández",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1660417200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 1",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 0
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 728,
-					"logo": "https://media-2.api-sports.io/football/teams/728.png",
-					"name": "Rayo Vallecano",
-					"winner": null
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": null
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-08-21T20:00:00+00:00",
-				"id": 877957,
-				"periods": {
-					"first": 1661112000,
-					"second": 1661115600
-				},
-				"referee": "José Munuera",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1661112000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Donostia-San Sebastián",
-					"id": 1491,
-					"name": "Reale Arena"
-				}
-			},
-			"goals": {
-				"away": 4,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 2",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 4,
-					"home": 1
-				},
-				"halftime": {
-					"away": 1,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 548,
-					"logo": "https://media-3.api-sports.io/football/teams/548.png",
-					"name": "Real Sociedad",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-08-28T17:30:00+00:00",
-				"id": 877962,
-				"periods": {
-					"first": 1661707800,
-					"second": 1661711400
-				},
-				"referee": "Ricardo De Burgos",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1661707800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 4
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 3",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 4
-				},
-				"halftime": {
-					"away": 0,
-					"home": 2
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 720,
-					"logo": "https://media-3.api-sports.io/football/teams/720.png",
-					"name": "Valladolid",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-09-03T19:00:00+00:00",
-				"id": 877975,
-				"periods": {
-					"first": 1662231600,
-					"second": 1662235200
-				},
-				"referee": "Antonio Mateu",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1662231600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Sevilla",
-					"id": 1494,
-					"name": "Estadio Ramón Sánchez Pizjuán"
-				}
-			},
-			"goals": {
-				"away": 3,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 4",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 3,
-					"home": 0
-				},
-				"halftime": {
-					"away": 2,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 536,
-					"logo": "https://media-3.api-sports.io/football/teams/536.png",
-					"name": "Sevilla",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-09-10T16:30:00+00:00",
-				"id": 877990,
-				"periods": {
-					"first": 1662827400,
-					"second": 1662831000
-				},
-				"referee": "Carlos del Cerro",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1662827400,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Cádiz",
-					"id": 11915,
-					"name": "Estadio Nuevo Mirandilla"
-				}
-			},
-			"goals": {
-				"away": 4,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 5",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 4,
-					"home": 0
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 724,
-					"logo": "https://media-1.api-sports.io/football/teams/724.png",
-					"name": "Cadiz",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-09-17T14:15:00+00:00",
-				"id": 877994,
-				"periods": {
-					"first": 1663424100,
-					"second": 1663427700
-				},
-				"referee": "Alejandro Muñiz",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1663424100,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 3
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 6",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 3
-				},
-				"halftime": {
-					"away": 0,
-					"home": 2
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 797,
-					"logo": "https://media-3.api-sports.io/football/teams/797.png",
-					"name": "Elche",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-10-01T19:00:00+00:00",
-				"id": 878007,
-				"periods": {
-					"first": 1664650800,
-					"second": 1664654400
-				},
-				"referee": "Jesús Gil",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1664650800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Palma de Mallorca",
-					"id": 12597,
-					"name": "Visit Mallorca Estadi"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 7",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 798,
-					"logo": "https://media-3.api-sports.io/football/teams/798.png",
-					"name": "Mallorca",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-10-09T19:00:00+00:00",
-				"id": 878013,
-				"periods": {
-					"first": 1665342000,
-					"second": 1665345600
-				},
-				"referee": "José Munuera",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1665342000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 8",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 538,
-					"logo": "https://media-1.api-sports.io/football/teams/538.png",
-					"name": "Celta Vigo",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-10-16T14:15:00+00:00",
-				"id": 878026,
-				"periods": {
-					"first": 1665929700,
-					"second": 1665933300
-				},
-				"referee": "José Sánchez",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1665929700,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Madrid",
-					"id": 1456,
-					"name": "Estadio Santiago Bernabéu"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 3
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 9",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 3
-				},
-				"halftime": {
-					"away": 0,
-					"home": 2
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				},
-				"home": {
-					"id": 541,
-					"logo": "https://media-1.api-sports.io/football/teams/541.png",
-					"name": "Real Madrid",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-10-20T19:00:00+00:00",
-				"id": 878033,
-				"periods": {
-					"first": 1666292400,
-					"second": 1666296000
-				},
-				"referee": "Carlos del Cerro",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1666292400,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 3
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 10",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 3
-				},
-				"halftime": {
-					"away": 0,
-					"home": 3
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 533,
-					"logo": "https://media-1.api-sports.io/football/teams/533.png",
-					"name": "Villarreal",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-10-23T19:00:00+00:00",
-				"id": 878045,
-				"periods": {
-					"first": 1666551600,
-					"second": 1666555200
-				},
-				"referee": "Juan Martínez",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1666551600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 4
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 11",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 4
-				},
-				"halftime": {
-					"away": 0,
-					"home": 3
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 531,
-					"logo": "https://media-3.api-sports.io/football/teams/531.png",
-					"name": "Athletic Club",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-10-29T19:00:00+00:00",
-				"id": 878057,
-				"periods": {
-					"first": 1667070000,
-					"second": 1667073600
-				},
-				"referee": "Ricardo De Burgos",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1667070000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Valencia",
-					"id": 1497,
-					"name": "Estadio de Mestalla"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 12",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 0
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 532,
-					"logo": "https://media-1.api-sports.io/football/teams/532.png",
-					"name": "Valencia",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-11-05T20:00:00+00:00",
-				"id": 878071,
-				"periods": {
-					"first": 1667678400,
-					"second": 1667682000
-				},
-				"referee": "Pablo González",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1667678400,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 2
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 13",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 2
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 723,
-					"logo": "https://media-1.api-sports.io/football/teams/723.png",
-					"name": "Almeria",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-11-08T20:30:00+00:00",
-				"id": 878077,
-				"periods": {
-					"first": 1667939400,
-					"second": 1667943000
-				},
-				"referee": "Jesús Gil",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1667939400,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Iruñea",
-					"id": 1486,
-					"name": "Estadio El Sadar"
-				}
-			},
-			"goals": {
-				"away": 2,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 14",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 2,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 727,
-					"logo": "https://media-2.api-sports.io/football/teams/727.png",
-					"name": "Osasuna",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-12-31T13:00:00+00:00",
-				"id": 878083,
-				"periods": {
-					"first": 1672491600,
-					"second": 1672495200
-				},
-				"referee": "Antonio Mateu",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1672491600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 15",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 540,
-					"logo": "https://media-2.api-sports.io/football/teams/540.png",
-					"name": "Espanyol",
-					"winner": null
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": null
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-01-08T20:00:00+00:00",
-				"id": 878093,
-				"periods": {
-					"first": 1673208000,
-					"second": 1673211600
-				},
-				"referee": "José Munuera",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1673208000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Madrid",
-					"id": 19217,
-					"name": "Estádio Cívitas Metropolitano"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 16",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 530,
-					"logo": "https://media-2.api-sports.io/football/teams/530.png",
-					"name": "Atletico Madrid",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-02-01T20:00:00+00:00",
-				"id": 878108,
-				"periods": {
-					"first": 1675281600,
-					"second": 1675285200
-				},
-				"referee": "Ricardo De Burgos",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1675281600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Sevilla",
-					"id": 1489,
-					"name": "Estadio Benito Villamarín"
-				}
-			},
-			"goals": {
-				"away": 2,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 17",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 2,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 543,
-					"logo": "https://media-1.api-sports.io/football/teams/543.png",
-					"name": "Real Betis",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-01-22T17:30:00+00:00",
-				"id": 878114,
-				"periods": {
-					"first": 1674408600,
-					"second": 1674412200
-				},
-				"referee": "Javier Iglesias",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1674408600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 18",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 546,
-					"logo": "https://media-3.api-sports.io/football/teams/546.png",
-					"name": "Getafe",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-01-28T15:15:00+00:00",
-				"id": 878127,
-				"periods": {
-					"first": 1674918900,
-					"second": 1674922500
-				},
-				"referee": "Alejandro Muñiz",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1674918900,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Girona",
-					"id": 1478,
-					"name": "Estadi Municipal de Montilivi"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 19",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 0
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 547,
-					"logo": "https://media-1.api-sports.io/football/teams/547.png",
-					"name": "Girona",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-02-05T20:00:00+00:00",
-				"id": 878134,
-				"periods": {
-					"first": 1675627200,
-					"second": 1675630800
-				},
-				"referee": "José Sánchez",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1675627200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 3
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 20",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 3
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 536,
-					"logo": "https://media-2.api-sports.io/football/teams/536.png",
-					"name": "Sevilla",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-02-12T20:00:00+00:00",
-				"id": 878148,
-				"periods": {
-					"first": 1676232000,
-					"second": 1676235600
-				},
-				"referee": "Alejandro Hernández",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1676232000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Villarreal",
-					"id": 1498,
-					"name": "Estadio de la Cerámica"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 21",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 533,
-					"logo": "https://media-2.api-sports.io/football/teams/533.png",
-					"name": "Villarreal",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-02-19T20:00:00+00:00",
-				"id": 878152,
-				"periods": {
-					"first": 1676836800,
-					"second": 1676840400
-				},
-				"referee": "Pablo González",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1676836800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 2
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 22",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 2
-				},
-				"halftime": {
-					"away": 0,
-					"home": 2
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 724,
-					"logo": "https://media-3.api-sports.io/football/teams/724.png",
-					"name": "Cadiz",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-02-26T17:30:00+00:00",
-				"id": 878166,
-				"periods": {
-					"first": 1677432600,
-					"second": 1677436200
-				},
-				"referee": "Miguel Ortiz",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1677432600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Almería",
-					"id": 19216,
-					"name": "Power Horse Stadium – Estadio de los Juegos Mediterráneos"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 23",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				},
-				"home": {
-					"id": 723,
-					"logo": "https://media-1.api-sports.io/football/teams/723.png",
-					"name": "Almeria",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-03-05T15:15:00+00:00",
-				"id": 878173,
-				"periods": {
-					"first": 1678029300,
-					"second": 1678032900
-				},
-				"referee": "Javier Alberola",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1678029300,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 24",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 532,
-					"logo": "https://media-2.api-sports.io/football/teams/532.png",
-					"name": "Valencia",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-03-12T20:00:00+00:00",
-				"id": 878182,
-				"periods": {
-					"first": 1678651200,
-					"second": 1678654800
-				},
-				"referee": "Jesús Gil",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1678651200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Bilbao",
-					"id": 1460,
-					"name": "San Mamés Barria"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 25",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 531,
-					"logo": "https://media-1.api-sports.io/football/teams/531.png",
-					"name": "Athletic Club",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-03-19T20:00:00+00:00",
-				"id": 878193,
-				"periods": {
-					"first": 1679256000,
-					"second": 1679259600
-				},
-				"referee": "Ricardo De Burgos",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1679256000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 2
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 26",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 2
-				},
-				"halftime": {
-					"away": 1,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 541,
-					"logo": "https://media-2.api-sports.io/football/teams/541.png",
-					"name": "Real Madrid",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-04-01T19:00:00+00:00",
-				"id": 878207,
-				"periods": {
-					"first": 1680375600,
-					"second": 1680379200
-				},
-				"referee": "Carlos del Cerro",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1680375600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Elche",
-					"id": 1473,
-					"name": "Estadio Manuel Martínez Valero"
-				}
-			},
-			"goals": {
-				"away": 4,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 27",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 4,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 797,
-					"logo": "https://media-2.api-sports.io/football/teams/797.png",
-					"name": "Elche",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-04-10T19:00:00+00:00",
-				"id": 878212,
-				"periods": {
-					"first": 1681153200,
-					"second": 1681156800
-				},
-				"referee": "Antonio Mateu",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1681153200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 28",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 0
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 547,
-					"logo": "https://media-1.api-sports.io/football/teams/547.png",
-					"name": "Girona",
-					"winner": null
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": null
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-04-16T14:15:00+00:00",
-				"id": 878227,
-				"periods": {
-					"first": 1681654500,
-					"second": 1681658100
-				},
-				"referee": "Juan Pulido",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1681654500,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Getafe",
-					"id": 1476,
-					"name": "Coliseum Alfonso Pérez"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 29",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 0
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": null
-				},
-				"home": {
-					"id": 546,
-					"logo": "https://media-1.api-sports.io/football/teams/546.png",
-					"name": "Getafe",
-					"winner": null
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-04-23T14:15:00+00:00",
-				"id": 878235,
-				"periods": {
-					"first": 1682259300,
-					"second": 1682262900
-				},
-				"referee": "José Sánchez",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1682259300,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 30",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 530,
-					"logo": "https://media-3.api-sports.io/football/teams/530.png",
-					"name": "Atletico Madrid",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-04-26T20:00:00+00:00",
-				"id": 878249,
-				"periods": {
-					"first": 1682539200,
-					"second": 1682542800
-				},
-				"referee": "Jesús Gil",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1682539200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Madrid",
-					"id": 1488,
-					"name": "Estadio de Vallecas"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 2
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 31",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 2
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				},
-				"home": {
-					"id": 728,
-					"logo": "https://media-1.api-sports.io/football/teams/728.png",
-					"name": "Rayo Vallecano",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-04-29T19:00:00+00:00",
-				"id": 878252,
-				"periods": {
-					"first": 1682794800,
-					"second": 1682798400
-				},
-				"referee": "Carlos del Cerro",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1682794800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 4
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 32",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 4
-				},
-				"halftime": {
-					"away": 0,
-					"home": 3
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 543,
-					"logo": "https://media-3.api-sports.io/football/teams/543.png",
-					"name": "Real Betis",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-05-02T17:30:00+00:00",
-				"id": 878264,
-				"periods": {
-					"first": 1683048600,
-					"second": 1683052200
-				},
-				"referee": "Javier Iglesias",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1683048600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 33",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 727,
-					"logo": "https://media-2.api-sports.io/football/teams/727.png",
-					"name": "Osasuna",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-05-14T19:00:00+00:00",
-				"id": 878276,
-				"periods": {
-					"first": 1684090800,
-					"second": 1684094400
-				},
-				"referee": "Ricardo De Burgos",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1684090800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Cornella de Llobregat",
-					"id": 1474,
-					"name": "RCDE Stadium"
-				}
-			},
-			"goals": {
-				"away": 4,
-				"home": 2
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 34",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 4,
-					"home": 2
-				},
-				"halftime": {
-					"away": 3,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 540,
-					"logo": "https://media-2.api-sports.io/football/teams/540.png",
-					"name": "Espanyol",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-05-20T19:00:00+00:00",
-				"id": 878284,
-				"periods": {
-					"first": 1684609200,
-					"second": 1684612800
-				},
-				"referee": "Javier Alberola",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1684609200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 2,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 35",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 2,
-					"home": 1
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 548,
-					"logo": "https://media-1.api-sports.io/football/teams/548.png",
-					"name": "Real Sociedad",
-					"winner": true
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-05-23T20:00:00+00:00",
-				"id": 878298,
-				"periods": {
-					"first": 1684872000,
-					"second": 1684875600
-				},
-				"referee": "César Soto",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1684872000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Valladolid",
-					"id": 1492,
-					"name": "Estadio Municipal José Zorrilla"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 3
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 36",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 3
-				},
-				"halftime": {
-					"away": 0,
-					"home": 2
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				},
-				"home": {
-					"id": 720,
-					"logo": "https://media-1.api-sports.io/football/teams/720.png",
-					"name": "Valladolid",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-05-28T17:00:00+00:00",
-				"id": 878304,
-				"periods": {
-					"first": 1685293200,
-					"second": 1685296800
-				},
-				"referee": "Jorge Figueroa",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1685293200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 3
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 37",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 3
-				},
-				"halftime": {
-					"away": 0,
-					"home": 2
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 798,
-					"logo": "https://media-1.api-sports.io/football/teams/798.png",
-					"name": "Mallorca",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-06-04T19:00:00+00:00",
-				"id": 878317,
-				"periods": {
-					"first": 1685905200,
-					"second": 1685908800
-				},
-				"referee": "Juan Pulido",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1685905200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Vigo",
-					"id": 1467,
-					"name": "Abanca-Balaídos"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 2
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 140,
-				"logo": "https://media-1.api-sports.io/football/leagues/140.png",
-				"name": "La Liga",
-				"round": "Regular Season - 38",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 2
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				},
-				"home": {
-					"id": 538,
-					"logo": "https://media-3.api-sports.io/football/teams/538.png",
-					"name": "Celta Vigo",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-08-24T19:30:00+00:00",
-				"id": 889918,
-				"periods": {
-					"first": 1661369400,
-					"second": 1661373000
-				},
-				"referee": "José Sánchez",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1661369400,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 3,
-				"home": 3
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 667,
-				"logo": "https://media-3.api-sports.io/football/leagues/667.png",
-				"name": "Friendlies Clubs",
-				"round": "Club Friendlies 1",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 3,
-					"home": 3
-				},
-				"halftime": {
-					"away": 1,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 50,
-					"logo": "https://media-2.api-sports.io/football/teams/50.png",
-					"name": "Manchester City",
-					"winner": null
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": null
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-09-07T19:00:00+00:00",
-				"id": 946862,
-				"periods": {
-					"first": 1662577200,
-					"second": 1662580800
-				},
-				"referee": "L. Visser",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1662577200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 5
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 2,
-				"logo": "https://media-1.api-sports.io/football/leagues/2.png",
-				"name": "UEFA Champions League",
-				"round": "Group C - 1",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 5
-				},
-				"halftime": {
-					"away": 1,
-					"home": 3
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 567,
-					"logo": "https://media-1.api-sports.io/football/teams/567.png",
-					"name": "Plzen",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-09-13T19:00:00+00:00",
-				"id": 946871,
-				"periods": {
-					"first": 1663095600,
-					"second": 1663099200
-				},
-				"referee": "D. Makkelie",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1663095600,
-				"timezone": "UTC",
-				"venue": {
-					"city": "München",
-					"id": 700,
-					"name": "Allianz Arena"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 2
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 2,
-				"logo": "https://media-1.api-sports.io/football/leagues/2.png",
-				"name": "UEFA Champions League",
-				"round": "Group C - 2",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 2
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				},
-				"home": {
-					"id": 157,
-					"logo": "https://media-3.api-sports.io/football/teams/157.png",
-					"name": "Bayern Munich",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-10-04T19:00:00+00:00",
-				"id": 946887,
-				"periods": {
-					"first": 1664910000,
-					"second": 1664913600
-				},
-				"referee": "S. Vinčić",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1664910000,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Milano",
-					"id": 907,
-					"name": "Stadio Giuseppe Meazza"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 1
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 2,
-				"logo": "https://media-1.api-sports.io/football/leagues/2.png",
-				"name": "UEFA Champions League",
-				"round": "Group C - 3",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				},
-				"home": {
-					"id": 505,
-					"logo": "https://media-1.api-sports.io/football/teams/505.png",
-					"name": "Inter",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-10-12T19:00:00+00:00",
-				"id": 946909,
-				"periods": {
-					"first": 1665601200,
-					"second": 1665604800
-				},
-				"referee": "S. Marciniak",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1665601200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 3,
-				"home": 3
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 2,
-				"logo": "https://media-1.api-sports.io/football/leagues/2.png",
-				"name": "UEFA Champions League",
-				"round": "Group C - 4",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 3,
-					"home": 3
-				},
-				"halftime": {
-					"away": 0,
-					"home": 1
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 505,
-					"logo": "https://media-1.api-sports.io/football/teams/505.png",
-					"name": "Inter",
-					"winner": null
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": null
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-10-26T19:00:00+00:00",
-				"id": 946926,
-				"periods": {
-					"first": 1666810800,
-					"second": 1666814400
-				},
-				"referee": "A. Taylor",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1666810800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 3,
-				"home": 0
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 2,
-				"logo": "https://media-1.api-sports.io/football/leagues/2.png",
-				"name": "UEFA Champions League",
-				"round": "Group C - 5",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 3,
-					"home": 0
-				},
-				"halftime": {
-					"away": 2,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 157,
-					"logo": "https://media-3.api-sports.io/football/teams/157.png",
-					"name": "Bayern Munich",
-					"winner": true
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2022-11-01T20:00:00+00:00",
-				"id": 946934,
-				"periods": {
-					"first": 1667332800,
-					"second": 1667336400
-				},
-				"referee": "R. Petrescu",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1667332800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Plzeň",
-					"id": 438,
-					"name": "Doosan Aréna"
-				}
-			},
-			"goals": {
-				"away": 4,
-				"home": 2
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 2,
-				"logo": "https://media-1.api-sports.io/football/leagues/2.png",
-				"name": "UEFA Champions League",
-				"round": "Group C - 6",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 4,
-					"home": 2
-				},
-				"halftime": {
-					"away": 2,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 567,
-					"logo": "https://media-3.api-sports.io/football/teams/567.png",
-					"name": "Plzen",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-02-16T17:45:00+00:00",
-				"id": 971761,
-				"periods": {
-					"first": 1676569500,
-					"second": 1676573100
-				},
-				"referee": "M. Mariani",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1676569500,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 2,
-				"home": 2
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 3,
-				"logo": "https://media-1.api-sports.io/football/leagues/3.png",
-				"name": "UEFA Europa League",
-				"round": "Knockout Round Play-offs",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 2,
-					"home": 2
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 33,
-					"logo": "https://media-1.api-sports.io/football/teams/33.png",
-					"name": "Manchester United",
-					"winner": null
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": null
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-02-23T20:00:00+00:00",
-				"id": 971762,
-				"periods": {
-					"first": 1677182400,
-					"second": 1677186000
-				},
-				"referee": "C. Turpin",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1677182400,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Manchester",
-					"id": 556,
-					"name": "Old Trafford"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 2
-			},
-			"league": {
-				"country": "World",
-				"flag": null,
-				"id": 3,
-				"logo": "https://media-1.api-sports.io/football/leagues/3.png",
-				"name": "UEFA Europa League",
-				"round": "Knockout Round Play-offs",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 2
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				},
-				"home": {
-					"id": 33,
-					"logo": "https://media-3.api-sports.io/football/teams/33.png",
-					"name": "Manchester United",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-01-04T20:00:00+00:00",
-				"id": 982784,
-				"periods": {
-					"first": 1672862400,
-					"second": 1672866000
-				},
-				"referee": "Valentín Pizarro",
-				"status": {
-					"elapsed": 120,
-					"long": "Match Finished",
-					"short": "AET"
-				},
-				"timestamp": 1672862400,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Alicante",
-					"id": 3517,
-					"name": "Estadio José Rico Pérez"
-				}
-			},
-			"goals": {
-				"away": 4,
-				"home": 3
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 143,
-				"logo": "https://media-2.api-sports.io/football/leagues/143.png",
-				"name": "Copa del Rey",
-				"round": "Round of 32",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": 1,
-					"home": 0
-				},
-				"fulltime": {
-					"away": 3,
-					"home": 3
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 8160,
-					"logo": "https://media-1.api-sports.io/football/teams/8160.png",
-					"name": "Intercity",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-01-19T19:00:00+00:00",
-				"id": 986139,
-				"periods": {
-					"first": 1674154800,
-					"second": 1674158400
-				},
-				"referee": "Juan Martínez",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1674154800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Ceuta",
-					"id": 3969,
-					"name": "Estadio Municipal Alfonso Murube"
-				}
-			},
-			"goals": {
-				"away": 5,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 143,
-				"logo": "https://media-2.api-sports.io/football/leagues/143.png",
-				"name": "Copa del Rey",
-				"round": "Round of 16",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 5,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 10139,
-					"logo": "https://media-1.api-sports.io/football/teams/10139.png",
-					"name": "AD Ceuta FC",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-01-15T19:00:00+00:00",
-				"id": 987660,
-				"periods": {
-					"first": 1673809200,
-					"second": 1673812800
-				},
-				"referee": "Ricardo De Burgos",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1673809200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Riyadh",
-					"id": null,
-					"name": "King Fahd International Stadium"
-				}
-			},
-			"goals": {
-				"away": 3,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 556,
-				"logo": "https://media-1.api-sports.io/football/leagues/556.png",
-				"name": "Super Cup",
-				"round": "Final",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 3,
-					"home": 1
-				},
-				"halftime": {
-					"away": 2,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-1.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 541,
-					"logo": "https://media-3.api-sports.io/football/teams/541.png",
-					"name": "Real Madrid",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-01-25T20:00:00+00:00",
-				"id": 992756,
-				"periods": {
-					"first": 1674676800,
-					"second": 1674680400
-				},
-				"referee": "Jesús Gil",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1674676800,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 0,
-				"home": 1
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 143,
-				"logo": "https://media-2.api-sports.io/football/leagues/143.png",
-				"name": "Copa del Rey",
-				"round": "Quarter-finals",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 0,
-					"home": 1
-				},
-				"halftime": {
-					"away": 0,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 548,
-					"logo": "https://media-3.api-sports.io/football/teams/548.png",
-					"name": "Real Sociedad",
-					"winner": false
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-2.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-03-02T20:00:00+00:00",
-				"id": 997738,
-				"periods": {
-					"first": 1677787200,
-					"second": 1677790800
-				},
-				"referee": "José Munuera",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1677787200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Madrid",
-					"id": 1456,
-					"name": "Estadio Santiago Bernabéu"
-				}
-			},
-			"goals": {
-				"away": 1,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 143,
-				"logo": "https://media-2.api-sports.io/football/leagues/143.png",
-				"name": "Copa del Rey",
-				"round": "Semi-finals",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 1,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": true
-				},
-				"home": {
-					"id": 541,
-					"logo": "https://media-3.api-sports.io/football/teams/541.png",
-					"name": "Real Madrid",
-					"winner": false
-				}
-			}
-		},
-		{
-			"fixture": {
-				"date": "2023-04-05T19:00:00+00:00",
-				"id": 997739,
-				"periods": {
-					"first": 1680721200,
-					"second": 1680724800
-				},
-				"referee": "Juan Martínez",
-				"status": {
-					"elapsed": 90,
-					"long": "Match Finished",
-					"short": "FT"
-				},
-				"timestamp": 1680721200,
-				"timezone": "UTC",
-				"venue": {
-					"city": "Barcelona",
-					"id": 18630,
-					"name": "Spotify Camp Nou"
-				}
-			},
-			"goals": {
-				"away": 4,
-				"home": 0
-			},
-			"league": {
-				"country": "Spain",
-				"flag": "https://media-3.api-sports.io/flags/es.svg",
-				"id": 143,
-				"logo": "https://media-2.api-sports.io/football/leagues/143.png",
-				"name": "Copa del Rey",
-				"round": "Semi-finals",
-				"season": 2022
-			},
-			"score": {
-				"extratime": {
-					"away": null,
-					"home": null
-				},
-				"fulltime": {
-					"away": 4,
-					"home": 0
-				},
-				"halftime": {
-					"away": 1,
-					"home": 0
-				},
-				"penalty": {
-					"away": null,
-					"home": null
-				}
-			},
-			"teams": {
-				"away": {
-					"id": 541,
-					"logo": "https://media-1.api-sports.io/football/teams/541.png",
-					"name": "Real Madrid",
-					"winner": true
-				},
-				"home": {
-					"id": 529,
-					"logo": "https://media-3.api-sports.io/football/teams/529.png",
-					"name": "Barcelona",
-					"winner": false
-				}
-			}
-		}
-	]
+    "users": [],
+    "user": null,
+    "isLoading": false,
+    "error": null,
+    "club": [
+        {
+            "team": {
+                "code": "TOT",
+                "country": "England",
+                "founded": 1882,
+                "id": 47,
+                "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                "name": "Tottenham",
+                "national": false
+            },
+            "venue": {
+                "address": "Bill Nicholson Way, 748 High Road",
+                "capacity": 62850,
+                "city": "London",
+                "id": 593,
+                "image": "https://media-4.api-sports.io/football/venues/593.png",
+                "name": "Tottenham Hotspur Stadium",
+                "surface": "grass"
+            }
+        }
+    ],
+    "squad": [
+        {
+            "players": [
+                {
+                    "age": 37,
+                    "id": 159,
+                    "name": "H. Lloris",
+                    "number": 1,
+                    "photo": "https://media-4.api-sports.io/football/players/159.png",
+                    "position": "Goalkeeper"
+                },
+                {
+                    "age": 27,
+                    "id": 31354,
+                    "name": "G. Vicario",
+                    "number": 13,
+                    "photo": "https://media-4.api-sports.io/football/players/31354.png",
+                    "position": "Goalkeeper"
+                },
+                {
+                    "age": 35,
+                    "id": 18932,
+                    "name": "F. Forster",
+                    "number": 20,
+                    "photo": "https://media-4.api-sports.io/football/players/18932.png",
+                    "position": "Goalkeeper"
+                },
+                {
+                    "age": 24,
+                    "id": 156428,
+                    "name": "B. Austin",
+                    "number": 40,
+                    "photo": "https://media-4.api-sports.io/football/players/156428.png",
+                    "position": "Goalkeeper"
+                },
+                {
+                    "age": 25,
+                    "id": 161,
+                    "name": "A. Whiteman",
+                    "number": 41,
+                    "photo": "https://media-4.api-sports.io/football/players/161.png",
+                    "position": "Goalkeeper"
+                },
+                {
+                    "age": 24,
+                    "id": 1566,
+                    "name": "Emerson Royal",
+                    "number": 12,
+                    "photo": "https://media-4.api-sports.io/football/players/1566.png",
+                    "position": "Defender"
+                },
+                {
+                    "age": 29,
+                    "id": 175,
+                    "name": "E. Dier",
+                    "number": 15,
+                    "photo": "https://media-4.api-sports.io/football/players/175.png",
+                    "position": "Defender"
+                },
+                {
+                    "age": 25,
+                    "id": 30776,
+                    "name": "C. Romero",
+                    "number": 17,
+                    "photo": "https://media-4.api-sports.io/football/players/30776.png",
+                    "position": "Defender"
+                },
+                {
+                    "age": 24,
+                    "id": 47519,
+                    "name": "Pedro Porro",
+                    "number": 23,
+                    "photo": "https://media-4.api-sports.io/football/players/47519.png",
+                    "position": "Defender"
+                },
+                {
+                    "age": 30,
+                    "id": 164,
+                    "name": "B. Davies",
+                    "number": 33,
+                    "photo": "https://media-4.api-sports.io/football/players/164.png",
+                    "position": "Defender"
+                },
+                {
+                    "age": 18,
+                    "id": 301281,
+                    "name": "A. Phillips",
+                    "number": 35,
+                    "photo": "https://media-4.api-sports.io/football/players/301281.png",
+                    "position": "Defender"
+                },
+                {
+                    "age": 22,
+                    "id": 152849,
+                    "name": "M. van de Ven",
+                    "number": 37,
+                    "photo": "https://media-4.api-sports.io/football/players/152849.png",
+                    "position": "Defender"
+                },
+                {
+                    "age": 21,
+                    "id": 204039,
+                    "name": "D. Udogie",
+                    "number": 73,
+                    "photo": "https://media-4.api-sports.io/football/players/204039.png",
+                    "position": "Defender"
+                },
+                {
+                    "age": 23,
+                    "id": 180,
+                    "name": "O. Skipp",
+                    "number": 4,
+                    "photo": "https://media-4.api-sports.io/football/players/180.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 28,
+                    "id": 2735,
+                    "name": "P. Højbjerg",
+                    "number": 5,
+                    "photo": "https://media-4.api-sports.io/football/players/2735.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 27,
+                    "id": 18968,
+                    "name": "Y. Bissouma",
+                    "number": 8,
+                    "photo": "https://media-4.api-sports.io/football/players/18968.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 27,
+                    "id": 18784,
+                    "name": "J. Maddison",
+                    "number": 10,
+                    "photo": "https://media-4.api-sports.io/football/players/18784.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 34,
+                    "id": 207,
+                    "name": "I. Perišić",
+                    "number": 14,
+                    "photo": "https://media-4.api-sports.io/football/players/207.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 27,
+                    "id": 1578,
+                    "name": "G. Lo Celso",
+                    "number": 18,
+                    "photo": "https://media-4.api-sports.io/football/players/1578.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 23,
+                    "id": 19032,
+                    "name": "R. Sessegnon",
+                    "number": 19,
+                    "photo": "https://media-4.api-sports.io/football/players/19032.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 23,
+                    "id": 30435,
+                    "name": "D. Kulusevski",
+                    "number": 21,
+                    "photo": "https://media-4.api-sports.io/football/players/30435.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 21,
+                    "id": 237129,
+                    "name": "P. Sarr",
+                    "number": 29,
+                    "photo": "https://media-4.api-sports.io/football/players/237129.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 26,
+                    "id": 863,
+                    "name": "R. Bentancur",
+                    "number": 30,
+                    "photo": "https://media-4.api-sports.io/football/players/863.png",
+                    "position": "Midfielder"
+                },
+                {
+                    "age": 31,
+                    "id": 186,
+                    "name": "Son Heung-Min",
+                    "number": 7,
+                    "photo": "https://media-4.api-sports.io/football/players/186.png",
+                    "position": "Attacker"
+                },
+                {
+                    "age": 26,
+                    "id": 2413,
+                    "name": "Richarlison",
+                    "number": 9,
+                    "photo": "https://media-4.api-sports.io/football/players/2413.png",
+                    "position": "Attacker"
+                },
+                {
+                    "age": 22,
+                    "id": 2061,
+                    "name": "Bryan Gil",
+                    "number": 11,
+                    "photo": "https://media-4.api-sports.io/football/players/2061.png",
+                    "position": "Attacker"
+                },
+                {
+                    "age": 20,
+                    "id": 311344,
+                    "name": "A. Véliz",
+                    "number": 36,
+                    "photo": "https://media-4.api-sports.io/football/players/311344.png",
+                    "position": "Attacker"
+                },
+                {
+                    "age": 24,
+                    "id": 697,
+                    "name": "M. Solomon",
+                    "number": 72,
+                    "photo": "https://media-4.api-sports.io/football/players/697.png",
+                    "position": "Attacker"
+                },
+                {
+                    "age": 22,
+                    "id": 129711,
+                    "name": "B. Johnson",
+                    "number": null,
+                    "photo": "https://media-4.api-sports.io/football/players/129711.png",
+                    "position": "Attacker"
+                }
+            ],
+            "team": {
+                "id": 47,
+                "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                "name": "Tottenham"
+            }
+        }
+    ],
+    "fixtures": [
+        {
+            "fixture": {
+                "date": "2022-08-06T14:00:00+00:00",
+                "id": 867952,
+                "periods": {
+                    "first": 1659794400,
+                    "second": 1659798000
+                },
+                "referee": "A. Marriner",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1659794400,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 4
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 1",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 4
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 2
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 41,
+                    "logo": "https://media-4.api-sports.io/football/teams/41.png",
+                    "name": "Southampton",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-08-14T15:30:00+00:00",
+                "id": 867960,
+                "periods": {
+                    "first": 1660491000,
+                    "second": 1660494600
+                },
+                "referee": "A. Taylor",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1660491000,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 519,
+                    "name": "Stamford Bridge"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 2",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                },
+                "home": {
+                    "id": 49,
+                    "logo": "https://media-4.api-sports.io/football/teams/49.png",
+                    "name": "Chelsea",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-08-20T11:30:00+00:00",
+                "id": 867974,
+                "periods": {
+                    "first": 1660995000,
+                    "second": 1660998600
+                },
+                "referee": "S. Hooper",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1660995000,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 3",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 39,
+                    "logo": "https://media-4.api-sports.io/football/teams/39.png",
+                    "name": "Wolves",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-08-28T15:30:00+00:00",
+                "id": 867983,
+                "periods": {
+                    "first": 1661700600,
+                    "second": 1661704200
+                },
+                "referee": "C. Pawson",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1661700600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Nottingham, Nottinghamshire",
+                    "id": 566,
+                    "name": "The City Ground"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 0
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 4",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                },
+                "home": {
+                    "id": 65,
+                    "logo": "https://media-4.api-sports.io/football/teams/65.png",
+                    "name": "Nottingham Forest",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-08-31T18:45:00+00:00",
+                "id": 867991,
+                "periods": {
+                    "first": 1661971500,
+                    "second": 1661975100
+                },
+                "referee": "P. Bankes",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1661971500,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 598,
+                    "name": "London Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 5",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                },
+                "home": {
+                    "id": 48,
+                    "logo": "https://media-4.api-sports.io/football/teams/48.png",
+                    "name": "West Ham",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-09-03T14:00:00+00:00",
+                "id": 868004,
+                "periods": {
+                    "first": 1662213600,
+                    "second": 1662217200
+                },
+                "referee": "S. Attwell",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1662213600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 6",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 36,
+                    "logo": "https://media-4.api-sports.io/football/teams/36.png",
+                    "name": "Fulham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-01-19T20:00:00+00:00",
+                "id": 868013,
+                "periods": {
+                    "first": 1674158400,
+                    "second": 1674162000
+                },
+                "referee": "S. Hooper",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1674158400,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Manchester",
+                    "id": 555,
+                    "name": "Etihad Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 4
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 7",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 4
+                },
+                "halftime": {
+                    "away": 2,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 50,
+                    "logo": "https://media-4.api-sports.io/football/teams/50.png",
+                    "name": "Manchester City",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-09-17T16:30:00+00:00",
+                "id": 868024,
+                "periods": {
+                    "first": 1663432200,
+                    "second": 1663435800
+                },
+                "referee": "S. Hooper",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1663432200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 6
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 8",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 6
+                },
+                "halftime": {
+                    "away": 2,
+                    "home": 2
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 46,
+                    "logo": "https://media-4.api-sports.io/football/teams/46.png",
+                    "name": "Leicester",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-10-01T11:30:00+00:00",
+                "id": 868027,
+                "periods": {
+                    "first": 1664623800,
+                    "second": 1664627400
+                },
+                "referee": "A. Taylor",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1664623800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 494,
+                    "name": "Emirates Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 3
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 9",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 3
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 42,
+                    "logo": "https://media-4.api-sports.io/football/teams/42.png",
+                    "name": "Arsenal",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-10-08T16:30:00+00:00",
+                "id": 868038,
+                "periods": {
+                    "first": 1665246600,
+                    "second": 1665250200
+                },
+                "referee": "T. Harrington",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1665246600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Falmer, East Sussex",
+                    "id": 508,
+                    "name": "The American Express Community Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 0
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 10",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                },
+                "home": {
+                    "id": 51,
+                    "logo": "https://media-4.api-sports.io/football/teams/51.png",
+                    "name": "Brighton",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-10-15T16:30:00+00:00",
+                "id": 868054,
+                "periods": {
+                    "first": 1665851400,
+                    "second": 1665855000
+                },
+                "referee": "P. Tierney",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1665851400,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 11",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 45,
+                    "logo": "https://media-4.api-sports.io/football/teams/45.png",
+                    "name": "Everton",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-10-19T19:15:00+00:00",
+                "id": 868065,
+                "periods": {
+                    "first": 1666206900,
+                    "second": 1666210500
+                },
+                "referee": "S. Hooper",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1666206900,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Manchester",
+                    "id": 556,
+                    "name": "Old Trafford"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 12",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 33,
+                    "logo": "https://media-4.api-sports.io/football/teams/33.png",
+                    "name": "Manchester United",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-10-23T15:30:00+00:00",
+                "id": 868073,
+                "periods": {
+                    "first": 1666539000,
+                    "second": 1666542600
+                },
+                "referee": "J. Gillett",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1666539000,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 13",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 2,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 34,
+                    "logo": "https://media-4.api-sports.io/football/teams/34.png",
+                    "name": "Newcastle",
+                    "winner": true
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-10-29T14:00:00+00:00",
+                "id": 868076,
+                "periods": {
+                    "first": 1667052000,
+                    "second": 1667055600
+                },
+                "referee": "A. Taylor",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1667052000,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Bournemouth, Dorset",
+                    "id": 504,
+                    "name": "Vitality Stadium"
+                }
+            },
+            "goals": {
+                "away": 3,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 14",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 3,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                },
+                "home": {
+                    "id": 35,
+                    "logo": "https://media-4.api-sports.io/football/teams/35.png",
+                    "name": "Bournemouth",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-11-06T16:30:00+00:00",
+                "id": 868093,
+                "periods": {
+                    "first": 1667752200,
+                    "second": 1667755800
+                },
+                "referee": "A. Madley",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1667752200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 15",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 2,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 40,
+                    "logo": "https://media-4.api-sports.io/football/teams/40.png",
+                    "name": "Liverpool",
+                    "winner": true
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-11-12T15:00:00+00:00",
+                "id": 868103,
+                "periods": {
+                    "first": 1668265200,
+                    "second": 1668268800
+                },
+                "referee": "M. Salisbury",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1668265200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 3,
+                "home": 4
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 16",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 3,
+                    "home": 4
+                },
+                "halftime": {
+                    "away": 2,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 63,
+                    "logo": "https://media-4.api-sports.io/football/teams/63.png",
+                    "name": "Leeds",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-12-26T12:30:00+00:00",
+                "id": 868108,
+                "periods": {
+                    "first": 1672057800,
+                    "second": 1672061400
+                },
+                "referee": "D. Coote",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1672057800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Brentford, Middlesex",
+                    "id": 10503,
+                    "name": "Gtech Community Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 17",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                },
+                "home": {
+                    "id": 55,
+                    "logo": "https://media-4.api-sports.io/football/teams/55.png",
+                    "name": "Brentford",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-01-01T14:00:00+00:00",
+                "id": 868123,
+                "periods": {
+                    "first": 1672581600,
+                    "second": 1672585200
+                },
+                "referee": "J. Brooks",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1672581600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 0
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 18",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 66,
+                    "logo": "https://media-4.api-sports.io/football/teams/66.png",
+                    "name": "Aston Villa",
+                    "winner": true
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-01-04T20:00:00+00:00",
+                "id": 868130,
+                "periods": {
+                    "first": 1672862400,
+                    "second": 1672866000
+                },
+                "referee": "M. Oliver",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1672862400,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 525,
+                    "name": "Selhurst Park"
+                }
+            },
+            "goals": {
+                "away": 4,
+                "home": 0
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 19",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 4,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                },
+                "home": {
+                    "id": 52,
+                    "logo": "https://media-4.api-sports.io/football/teams/52.png",
+                    "name": "Crystal Palace",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-01-15T16:30:00+00:00",
+                "id": 868144,
+                "periods": {
+                    "first": 1673800200,
+                    "second": 1673803800
+                },
+                "referee": "C. Pawson",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1673800200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 0
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 20",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 2,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 42,
+                    "logo": "https://media-4.api-sports.io/football/teams/42.png",
+                    "name": "Arsenal",
+                    "winner": true
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-01-23T20:00:00+00:00",
+                "id": 868149,
+                "periods": {
+                    "first": 1674504000,
+                    "second": 1674507600
+                },
+                "referee": "P. Tierney",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1674504000,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 535,
+                    "name": "Craven Cottage"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 0
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 21",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                },
+                "home": {
+                    "id": 36,
+                    "logo": "https://media-4.api-sports.io/football/teams/36.png",
+                    "name": "Fulham",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-02-05T16:30:00+00:00",
+                "id": 868164,
+                "periods": {
+                    "first": 1675614600,
+                    "second": 1675618200
+                },
+                "referee": "A. Madley",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1675614600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 22",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 50,
+                    "logo": "https://media-4.api-sports.io/football/teams/50.png",
+                    "name": "Manchester City",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-02-11T15:00:00+00:00",
+                "id": 868171,
+                "periods": {
+                    "first": 1676127600,
+                    "second": 1676131200
+                },
+                "referee": "M. Salisbury",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1676127600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Leicester, Leicestershire",
+                    "id": 547,
+                    "name": "King Power Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 4
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 23",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 4
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 3
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 46,
+                    "logo": "https://media-4.api-sports.io/football/teams/46.png",
+                    "name": "Leicester",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-02-19T16:30:00+00:00",
+                "id": 868184,
+                "periods": {
+                    "first": 1676824200,
+                    "second": 1676827800
+                },
+                "referee": "M. Oliver",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1676824200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 24",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 48,
+                    "logo": "https://media-4.api-sports.io/football/teams/48.png",
+                    "name": "West Ham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-02-26T13:30:00+00:00",
+                "id": 868194,
+                "periods": {
+                    "first": 1677418200,
+                    "second": 1677421800
+                },
+                "referee": "S. Attwell",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1677418200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 25",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 49,
+                    "logo": "https://media-4.api-sports.io/football/teams/49.png",
+                    "name": "Chelsea",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-03-04T15:00:00+00:00",
+                "id": 868205,
+                "periods": {
+                    "first": 1677942000,
+                    "second": 1677945600
+                },
+                "referee": "T. Robinson",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1677942000,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Wolverhampton, West Midlands",
+                    "id": 600,
+                    "name": "Molineux Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 26",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 39,
+                    "logo": "https://media-4.api-sports.io/football/teams/39.png",
+                    "name": "Wolves",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-03-11T15:00:00+00:00",
+                "id": 868214,
+                "periods": {
+                    "first": 1678546800,
+                    "second": 1678550400
+                },
+                "referee": "C. Pawson",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1678546800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 3
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 27",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 3
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 2
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 65,
+                    "logo": "https://media-4.api-sports.io/football/teams/65.png",
+                    "name": "Nottingham Forest",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-03-18T15:00:00+00:00",
+                "id": 868224,
+                "periods": {
+                    "first": 1679151600,
+                    "second": 1679155200
+                },
+                "referee": "S. Hooper",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1679151600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Southampton, Hampshire",
+                    "id": 585,
+                    "name": "St. Mary's Stadium"
+                }
+            },
+            "goals": {
+                "away": 3,
+                "home": 3
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 28",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 3,
+                    "home": 3
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                },
+                "home": {
+                    "id": 41,
+                    "logo": "https://media-4.api-sports.io/football/teams/41.png",
+                    "name": "Southampton",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-04-03T19:00:00+00:00",
+                "id": 868231,
+                "periods": {
+                    "first": 1680548400,
+                    "second": 1680552000
+                },
+                "referee": "D. Coote",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1680548400,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Liverpool",
+                    "id": 8560,
+                    "name": "Goodison Park"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 29",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                },
+                "home": {
+                    "id": 45,
+                    "logo": "https://media-4.api-sports.io/football/teams/45.png",
+                    "name": "Everton",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-04-08T14:00:00+00:00",
+                "id": 868244,
+                "periods": {
+                    "first": 1680962400,
+                    "second": 1680966000
+                },
+                "referee": "S. Attwell",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1680962400,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 30",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 51,
+                    "logo": "https://media-4.api-sports.io/football/teams/51.png",
+                    "name": "Brighton",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-04-15T14:15:00+00:00",
+                "id": 868253,
+                "periods": {
+                    "first": 1681568100,
+                    "second": 1681571700
+                },
+                "referee": "A. Madley",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1681568100,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 3,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 31",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 3,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 35,
+                    "logo": "https://media-4.api-sports.io/football/teams/35.png",
+                    "name": "Bournemouth",
+                    "winner": true
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-04-23T13:00:00+00:00",
+                "id": 868265,
+                "periods": {
+                    "first": 1682254800,
+                    "second": 1682258400
+                },
+                "referee": "D. Coote",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1682254800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Newcastle upon Tyne",
+                    "id": 562,
+                    "name": "St. James' Park"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 6
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 32",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 6
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 5
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 34,
+                    "logo": "https://media-4.api-sports.io/football/teams/34.png",
+                    "name": "Newcastle",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-04-27T19:15:00+00:00",
+                "id": 868269,
+                "periods": {
+                    "first": 1682622900,
+                    "second": 1682626500
+                },
+                "referee": "A. Taylor",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1682622900,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 33",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 2,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 33,
+                    "logo": "https://media-4.api-sports.io/football/teams/33.png",
+                    "name": "Manchester United",
+                    "winner": null
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-04-30T15:30:00+00:00",
+                "id": 868283,
+                "periods": {
+                    "first": 1682868600,
+                    "second": 1682872200
+                },
+                "referee": "P. Tierney",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1682868600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Liverpool",
+                    "id": 550,
+                    "name": "Anfield"
+                }
+            },
+            "goals": {
+                "away": 3,
+                "home": 4
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 34",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 3,
+                    "home": 4
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 3
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 40,
+                    "logo": "https://media-4.api-sports.io/football/teams/40.png",
+                    "name": "Liverpool",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-05-06T14:00:00+00:00",
+                "id": 868293,
+                "periods": {
+                    "first": 1683381600,
+                    "second": 1683385200
+                },
+                "referee": "D. England",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1683381600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 35",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 52,
+                    "logo": "https://media-4.api-sports.io/football/teams/52.png",
+                    "name": "Crystal Palace",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-05-13T14:00:00+00:00",
+                "id": 868297,
+                "periods": {
+                    "first": 1683986400,
+                    "second": 1683990000
+                },
+                "referee": "P. Bankes",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1683986400,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Birmingham",
+                    "id": 495,
+                    "name": "Villa Park"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 36",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 66,
+                    "logo": "https://media-4.api-sports.io/football/teams/66.png",
+                    "name": "Aston Villa",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-05-20T11:30:00+00:00",
+                "id": 868313,
+                "periods": {
+                    "first": 1684582200,
+                    "second": 1684585800
+                },
+                "referee": "J. Gillett",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1684582200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 3,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 37",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 3,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 55,
+                    "logo": "https://media-4.api-sports.io/football/teams/55.png",
+                    "name": "Brentford",
+                    "winner": true
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-05-28T15:30:00+00:00",
+                "id": 868322,
+                "periods": {
+                    "first": 1685287800,
+                    "second": 1685291400
+                },
+                "referee": "A. Taylor",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1685287800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Leeds, West Yorkshire",
+                    "id": 546,
+                    "name": "Elland Road"
+                }
+            },
+            "goals": {
+                "away": 4,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 39,
+                "logo": "https://media-4.api-sports.io/football/leagues/39.png",
+                "name": "Premier League",
+                "round": "Regular Season - 38",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 4,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                },
+                "home": {
+                    "id": 63,
+                    "logo": "https://media-4.api-sports.io/football/teams/63.png",
+                    "name": "Leeds",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-07-16T11:00:00+00:00",
+                "id": 869519,
+                "periods": {
+                    "first": 1657969200,
+                    "second": 1657972800
+                },
+                "referee": "Ko Hyung-Jin",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1657969200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Suwon",
+                    "id": 1018,
+                    "name": "Suwon World Cup Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 1
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 667,
+                "logo": "https://media-4.api-sports.io/football/leagues/667.png",
+                "name": "Friendlies Clubs",
+                "round": "Club Friendlies 1",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 536,
+                    "logo": "https://media-4.api-sports.io/football/teams/536.png",
+                    "name": "Sevilla",
+                    "winner": null
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-07-23T14:00:00+00:00",
+                "id": 869537,
+                "periods": {
+                    "first": 1658584800,
+                    "second": 1658588400
+                },
+                "referee": "J. Beaton",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1658584800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Glasgow",
+                    "id": 1401,
+                    "name": "Ibrox Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 1
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 667,
+                "logo": "https://media-4.api-sports.io/football/leagues/667.png",
+                "name": "Friendlies Clubs",
+                "round": "Club Friendlies 1",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                },
+                "home": {
+                    "id": 257,
+                    "logo": "https://media-4.api-sports.io/football/teams/257.png",
+                    "name": "Rangers",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-07-30T18:15:00+00:00",
+                "id": 869544,
+                "periods": {
+                    "first": 1659204900,
+                    "second": 1659208500
+                },
+                "referee": "I. Frid",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1659204900,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Haifa",
+                    "id": 868,
+                    "name": "Sammy Ofer Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 0
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 667,
+                "logo": "https://media-4.api-sports.io/football/leagues/667.png",
+                "name": "Friendlies Clubs",
+                "round": "Club Friendlies 1",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 497,
+                    "logo": "https://media-4.api-sports.io/football/teams/497.png",
+                    "name": "AS Roma",
+                    "winner": true
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-11-09T19:45:00+00:00",
+                "id": 945933,
+                "periods": {
+                    "first": 1668023100,
+                    "second": 1668026700
+                },
+                "referee": "P. Bankes",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1668023100,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Nottingham, Nottinghamshire",
+                    "id": 566,
+                    "name": "The City Ground"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 2
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 48,
+                "logo": "https://media-4.api-sports.io/football/leagues/48.png",
+                "name": "League Cup",
+                "round": "3rd Round",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 65,
+                    "logo": "https://media-4.api-sports.io/football/teams/65.png",
+                    "name": "Nottingham Forest",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-09-07T19:00:00+00:00",
+                "id": 946864,
+                "periods": {
+                    "first": 1662577200,
+                    "second": 1662580800
+                },
+                "referee": "S. Vinčić",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1662577200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 2
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 2,
+                "logo": "https://media-4.api-sports.io/football/leagues/2.png",
+                "name": "UEFA Champions League",
+                "round": "Group D - 1",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 81,
+                    "logo": "https://media-4.api-sports.io/football/teams/81.png",
+                    "name": "Marseille",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-09-13T16:45:00+00:00",
+                "id": 946866,
+                "periods": {
+                    "first": 1663087500,
+                    "second": 1663091100
+                },
+                "referee": "S. Jovanović",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1663087500,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Lisboa",
+                    "id": 1293,
+                    "name": "Estádio José Alvalade"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 2
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 2,
+                "logo": "https://media-4.api-sports.io/football/leagues/2.png",
+                "name": "UEFA Champions League",
+                "round": "Group D - 2",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 2
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 228,
+                    "logo": "https://media-4.api-sports.io/football/teams/228.png",
+                    "name": "Sporting CP",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-10-04T19:00:00+00:00",
+                "id": 946888,
+                "periods": {
+                    "first": 1664910000,
+                    "second": 1664913600
+                },
+                "referee": "D. Orsato",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1664910000,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Frankfurt am Main",
+                    "id": 10491,
+                    "name": "Deutsche Bank Park"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 0
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 2,
+                "logo": "https://media-4.api-sports.io/football/leagues/2.png",
+                "name": "UEFA Champions League",
+                "round": "Group D - 3",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                },
+                "home": {
+                    "id": 169,
+                    "logo": "https://media-4.api-sports.io/football/teams/169.png",
+                    "name": "Eintracht Frankfurt",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-10-12T19:00:00+00:00",
+                "id": 946911,
+                "periods": {
+                    "first": 1665601200,
+                    "second": 1665604800
+                },
+                "referee": "Carlos del Cerro",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1665601200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 3
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 2,
+                "logo": "https://media-4.api-sports.io/football/leagues/2.png",
+                "name": "UEFA Champions League",
+                "round": "Group D - 4",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 3
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 3
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 169,
+                    "logo": "https://media-4.api-sports.io/football/teams/169.png",
+                    "name": "Eintracht Frankfurt",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-10-26T19:00:00+00:00",
+                "id": 946927,
+                "periods": {
+                    "first": 1666810800,
+                    "second": 1666814400
+                },
+                "referee": "D. Makkelie",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1666810800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 1
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 2,
+                "logo": "https://media-4.api-sports.io/football/leagues/2.png",
+                "name": "UEFA Champions League",
+                "round": "Group D - 5",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 1,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 228,
+                    "logo": "https://media-4.api-sports.io/football/teams/228.png",
+                    "name": "Sporting CP",
+                    "winner": null
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-11-01T20:00:00+00:00",
+                "id": 946936,
+                "periods": {
+                    "first": 1667332800,
+                    "second": 1667336400
+                },
+                "referee": "S. Marciniak",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1667332800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Marseille",
+                    "id": 12678,
+                    "name": "Stade Orange Vélodrome"
+                }
+            },
+            "goals": {
+                "away": 2,
+                "home": 1
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 2,
+                "logo": "https://media-4.api-sports.io/football/leagues/2.png",
+                "name": "UEFA Champions League",
+                "round": "Group D - 6",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 2,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                },
+                "home": {
+                    "id": 81,
+                    "logo": "https://media-4.api-sports.io/football/teams/81.png",
+                    "name": "Marseille",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-02-14T20:00:00+00:00",
+                "id": 971793,
+                "periods": {
+                    "first": 1676404800,
+                    "second": 1676408400
+                },
+                "referee": "S. Schärer",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1676404800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Milano",
+                    "id": 907,
+                    "name": "Stadio Giuseppe Meazza"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 1
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 2,
+                "logo": "https://media-4.api-sports.io/football/leagues/2.png",
+                "name": "UEFA Champions League",
+                "round": "Round of 16",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 489,
+                    "logo": "https://media-4.api-sports.io/football/teams/489.png",
+                    "name": "AC Milan",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-03-08T20:00:00+00:00",
+                "id": 971794,
+                "periods": {
+                    "first": 1678305600,
+                    "second": 1678309200
+                },
+                "referee": "C. Turpin",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1678305600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 0
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 2,
+                "logo": "https://media-4.api-sports.io/football/leagues/2.png",
+                "name": "UEFA Champions League",
+                "round": "Round of 16",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 489,
+                    "logo": "https://media-4.api-sports.io/football/teams/489.png",
+                    "name": "AC Milan",
+                    "winner": null
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-01-07T12:30:00+00:00",
+                "id": 976466,
+                "periods": {
+                    "first": 1673094600,
+                    "second": 1673098200
+                },
+                "referee": "T. Bramall",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1673094600,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 45,
+                "logo": "https://media-4.api-sports.io/football/leagues/45.png",
+                "name": "FA Cup",
+                "round": "3rd Round",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 1355,
+                    "logo": "https://media-4.api-sports.io/football/teams/1355.png",
+                    "name": "Portsmouth",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-12-09T13:00:00+00:00",
+                "id": 979491,
+                "periods": {
+                    "first": 1670590800,
+                    "second": 1670594400
+                },
+                "referee": "D. England",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1670590800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Chigwell, Essex",
+                    "id": null,
+                    "name": "Tottenham Hotspur Academy Spurs Lodge"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 4
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 667,
+                "logo": "https://media-4.api-sports.io/football/leagues/667.png",
+                "name": "Friendlies Clubs",
+                "round": "Club Friendlies 1",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 4
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 3
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 256,
+                    "logo": "https://media-4.api-sports.io/football/teams/256.png",
+                    "name": "Motherwell",
+                    "winner": false
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2022-12-21T19:00:00+00:00",
+                "id": 979500,
+                "periods": {
+                    "first": 1671649200,
+                    "second": 1671652800
+                },
+                "referee": "S. Hooper",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1671649200,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "London",
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium"
+                }
+            },
+            "goals": {
+                "away": 1,
+                "home": 1
+            },
+            "league": {
+                "country": "World",
+                "flag": null,
+                "id": 667,
+                "logo": "https://media-4.api-sports.io/football/leagues/667.png",
+                "name": "Friendlies Clubs",
+                "round": "Club Friendlies 1",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 1,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 84,
+                    "logo": "https://media-4.api-sports.io/football/teams/84.png",
+                    "name": "Nice",
+                    "winner": null
+                },
+                "home": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-01-28T18:00:00+00:00",
+                "id": 986108,
+                "periods": {
+                    "first": 1674928800,
+                    "second": 1674932400
+                },
+                "referee": "P. Bankes",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1674928800,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Preston",
+                    "id": 574,
+                    "name": "Deepdale"
+                }
+            },
+            "goals": {
+                "away": 3,
+                "home": 0
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 45,
+                "logo": "https://media-4.api-sports.io/football/leagues/45.png",
+                "name": "FA Cup",
+                "round": "4th Round",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 3,
+                    "home": 0
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": true
+                },
+                "home": {
+                    "id": 59,
+                    "logo": "https://media-4.api-sports.io/football/teams/59.png",
+                    "name": "Preston",
+                    "winner": false
+                }
+            }
+        },
+        {
+            "fixture": {
+                "date": "2023-03-01T19:55:00+00:00",
+                "id": 1004841,
+                "periods": {
+                    "first": 1677700500,
+                    "second": 1677704100
+                },
+                "referee": "J. Brooks",
+                "status": {
+                    "elapsed": 90,
+                    "long": "Match Finished",
+                    "short": "FT"
+                },
+                "timestamp": 1677700500,
+                "timezone": "UTC",
+                "venue": {
+                    "city": "Sheffield",
+                    "id": 581,
+                    "name": "Bramall Lane"
+                }
+            },
+            "goals": {
+                "away": 0,
+                "home": 1
+            },
+            "league": {
+                "country": "England",
+                "flag": "https://media-4.api-sports.io/flags/gb.svg",
+                "id": 45,
+                "logo": "https://media-4.api-sports.io/football/leagues/45.png",
+                "name": "FA Cup",
+                "round": "5th Round",
+                "season": 2022
+            },
+            "score": {
+                "extratime": {
+                    "away": null,
+                    "home": null
+                },
+                "fulltime": {
+                    "away": 0,
+                    "home": 1
+                },
+                "halftime": {
+                    "away": 0,
+                    "home": 0
+                },
+                "penalty": {
+                    "away": null,
+                    "home": null
+                }
+            },
+            "teams": {
+                "away": {
+                    "id": 47,
+                    "logo": "https://media-4.api-sports.io/football/teams/47.png",
+                    "name": "Tottenham",
+                    "winner": false
+                },
+                "home": {
+                    "id": 62,
+                    "logo": "https://media-4.api-sports.io/football/teams/62.png",
+                    "name": "Sheffield Utd",
+                    "winner": true
+                }
+            }
+        }
+    ]
 }
 
 export default response;

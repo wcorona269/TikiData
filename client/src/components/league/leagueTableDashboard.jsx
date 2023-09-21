@@ -9,7 +9,11 @@ const LeagueTableDashboard = ({table}) => {
 
 	}, [table])
 
-	
+
+	if (!table.length) {
+		return <NoDataMessage/>
+	}
+
 	let leagueInfo = table[0]['league'];
 	let standings = leagueInfo['standings'];
 
@@ -18,6 +22,10 @@ const LeagueTableDashboard = ({table}) => {
 	}
 
 	standings = leagueInfo['standings'][0];
+
+	if (!standings.length) {
+		return <NoDataMessage/>
+	}
 
 
 	const columns = ['Position', 'Club', 'Played', 'Won', 'Drawn', 'Lost', 'GF', 'GC', 'GD', 'Points', 'Form'];
@@ -37,6 +45,10 @@ const LeagueTableDashboard = ({table}) => {
 			</p>
 		);
 	};
+
+	if (!standings.length) {
+		return <NoDataMessage/>
+	}
 
 
 	return (

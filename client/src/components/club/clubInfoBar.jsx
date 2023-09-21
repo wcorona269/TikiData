@@ -5,13 +5,12 @@ import ClubSquadDashboard from './clubSquadDashboard';
 import ClubStatsDashboard from './clubStatsDashboard';
 import ClubFixturesDashboard from './clubFixturesDashboard';
 
-const ClubInfoBar = ({ clubInfo }) => {
+const ClubInfoBar = ({ fixtures, squad }) => {
 	const [showFixtures, setShowFixtures] = useState(true);
 	const [showSquad, setShowSquad] = useState(false);
 	const [showStats, setShowStats] = useState(false);
-
-	const fixtures = clubInfo['fixtures'];
-	const squad = clubInfo['squad'][0]['players'];
+	
+	squad = squad[0]['players'];
 
 	const handleChange = (e) => {
 		if (e.target.name === 'fixtures') {
@@ -66,7 +65,7 @@ const ClubInfoBar = ({ clubInfo }) => {
 			<div className='club-profile-main'>
 				{showFixtures && <ClubFixturesDashboard fixtures={fixtures} />}
 				{showSquad && <ClubSquadDashboard squad={squad} />}
-				{showStats && <ClubStatsDashboard />}
+				{/* {showStats && <ClubStatsDashboard />} */}
 			</div>
 		</div>
 	)

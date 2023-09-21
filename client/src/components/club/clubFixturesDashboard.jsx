@@ -4,6 +4,7 @@ import monthsOfYear from './monthsOfYear';
 
 const ClubFixturesDashboard = ({fixtures}) => {
 	const fixturesSortedByDate = fixtures.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date));
+	console.log(fixturesSortedByDate);
 	const monthsOfFixtures = new Set();
 
 	const determineNewMonth = (fixture) => {

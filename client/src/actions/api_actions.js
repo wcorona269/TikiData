@@ -20,10 +20,20 @@ export const FETCH_COMPETITION_SUCCESS = 'FETCH_COMPETITION_SUCCESS'
 export const FETCH_COMPETITION_FAILURE = 'FETCH_COMPETITION_FAILURE'
 export const REMOVE_COMPETITION = 'REMOVE_COMPETITION';
 
+// Fetch club seasons
+export const FETCH_CLUB_SEASONS_SUCCESS = 'FETCH_CLUB_SEASONS_SUCCESS';
+export const FETCH_CLUB_SEASONS_REQUEST = 'FETCH_CLUB_SEASONS_REQUEST';
+export const FETCH_CLUB_SEASONS_FAILURE = 'FETCH_CLUB_SEASONS_FAILURE';
+
 // Fetch club info
 export const FETCH_CLUB_SUCCESS = 'FETCH_CLUB_SUCCESS';
 export const FETCH_CLUB_REQUEST = 'FETCH_CLUB_REQUEST';
 export const FETCH_CLUB_FAILURE = 'FETCH_CLUB_FAILURE';
+
+// Fetch club STATS
+export const FETCH_CLUB_STATS_SUCCESS = 'FETCH_CLUB_STATS_SUCCESS';
+export const FETCH_CLUB_STATS_REQUEST = 'FETCH_CLUB_STATS_REQUEST';
+export const FETCH_CLUB_STATS_FAILURE = 'FETCH_CLUB_STATS_FAILURE';
 
 // Fetch player info
 export const FETCH_PLAYER_REQUEST = 'FETCH_PLAYER_REQUEST';
@@ -78,16 +88,46 @@ export const removeCompetition = () => {
 	}
 }
 
-
-export const fetchClub = (clubId) => {
+export const fetchClub = (clubId, season) => {
+	console.log(clubId, season);
 	return (dispatch) => {
 		dispatch({ type: FETCH_CLUB_REQUEST });
-		return axios.get(`/clubs/${clubId}`)
+		return axios.get(`/clubs/info/${clubId}/${season}`)
 		.then((response) => {
 			dispatch({ type: FETCH_CLUB_SUCCESS, payload: response.data })
 		})
 		.catch((error) => {
 			dispatch({ type: FETCH_CLUB_FAILURE, payload: error.message })
+		})
+	}
+}
+
+
+export const fetchClubSeasons = (clubId) => {
+	console.log(clubId);
+	return (dispatch) => {
+		dispatch({ type: FETCH_CLUB_SEASONS_REQUEST });
+		return axios.get(`/clubs/seasons/${clubId}`)
+		.then((response) => {
+			dispatch({ type: FETCH_CLUB_SEASONS_SUCCESS, payload: response.data })
+		})
+		.catch((error) => {
+			dispatch({ type: FETCH_CLUB_SEASONS_FAILURE, payload: error.message })
+		})
+	}
+}
+
+
+export const fetchClubStats = (clubId, season, competitions) => {
+	console.log(competitions);
+	return (dispatch) => {
+		dispatch({ type: FETCH_CLUB_STATS_REQUEST });
+		return axios.post(`/clubs/stats/${clubId}/${season}`, { competitions })
+		.then((response) => {
+			dispatch({ type: FETCH_CLUB_STATS_SUCCESS, payload: response.data })
+		})
+		.catch((error) => {
+			dispatch({ type: FETCH_CLUB_STATS_FAILURE, payload: error.message })
 		})
 	}
 }

@@ -2,74 +2,44 @@ import React, { useEffect, useState } from 'react';
 import ClubInfoBar from './clubInfoBar';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchClub } from '../../actions/api_actions';
+import { fetchClub, fetchClubSeasons, fetchClubStats } from '../../actions/api_actions';
 import response from './response';
 import LoadingMessage from '../util/loading-screen';
+import ClubProfileHeader from './club-profile-header';
 
 const ClubProfile = () => {
 	const { clubId } = useParams();
 	const dispatch = useDispatch();
-	const club = useSelector(state => state.club);
-	// const club = response.club[0];
+
+	const [season, setSeason] = useState('2023/24');
+	const [showSeason, setShowSeason] = useState(false);
+
+	let club = useSelector(state => state.club.club);
+	let fixtures = useSelector(state => state.club.fixtures);
+	let squad = useSelector(state => state.club.squad);
+	console.log({club}, {fixtures}, {squad})
 
 	useEffect(() => {
-		dispatch(fetchClub(clubId));
-	}, [])
+		let formattedSeason = season.split('/')[0]
+		// dispatch(fetchClubSeasons(clubId));
+		dispatch(fetchClub(clubId, formattedSeason));
+		// dispatch(fetchClubStats(clubId, 2022, [39]))
+	}, [clubId, season]);
 
 	if (!club) {
 		return <LoadingMessage/>	
 	}
 
-	const name = club.team.name;
-	const logo = club.team.logo;
-	const city = club.venue.city;
-	const country = club.team.country;
-	const founded = club.team.founded;
-	const address = club.venue.address; 
-	const capacity = club.venue.capacity;
-	const stadium = club.venue.name;
-	const surface = club.venue.surface;
-
-	let clubDetails = {
-		'Founded': founded,
-		'Location': `${city}, ${country}`,
-		'Stadium': stadium,
-		'Capacity': capacity,
-		'Address': address,
-		'Surface': surface
-	}
-
-	const displayClubDetails = (clubDetails) => {
-		let result = [];
-
-		for (let key in clubDetails) {
-			result.push(
-				<tr key={key}>
-					<td className='club-details-header'>{key}</td>
-					<td className='club-details-detail'>{clubDetails[key]}</td>
-				</tr>
-			)
-		}
-
-		return result;
+	const handleSeasonChange = (e) => {
+		let year = e.target.getAttribute('value')
+		setShowSeason(false);
+		setSeason(year);
 	}
 
 	return (
 		<div className='club-profile-container'>
-			<header>
-				<div className='club-logo-area'>
-					<img src={logo} alt={name}/>
-					<h2>
-						{name}
-					</h2>
-				</div>
-				<table className='club-details'>
-					<tbody>
-						{displayClubDetails(clubDetails)}
-					</tbody>
-				</table>
-			</header>
-			<ClubInfoBar clubInfo={response}/>
+			<ClubProfileHeader club={club} handleSeasonChange={handleSeasonChange} season={season} showSeason={showSeason} setShowSeason={setShowSeason}/>
+			<ClubInfoBar fixtures={fixtures} squad={squad}/>
 		</div>
 	)
 }

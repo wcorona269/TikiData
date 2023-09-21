@@ -18,7 +18,7 @@ const LeagueProfile = () => {
 	const isLoading = useSelector(state => state.competition.isLoading);
 
 	const [season, setSeason] = useState('2023/24');
-	const [showSeason, setshowSeason] = useState(false);
+	const [showSeason, setShowSeason] = useState(false);
 	
 	const [showTable, setShowTable] = useState(true);
 	const [showStats, setShowStats] = useState(false);
@@ -82,13 +82,13 @@ const LeagueProfile = () => {
 
 	const handleSeasonChange = (e) => {
 		let year = e.target.getAttribute('value')
-		setshowSeason(false);
+		setShowSeason(false);
 		setSeason(year);
 	}
 
 	return (
 		<div>
-			<LeagueProfileHeader league={table} handleSeasonChange={handleSeasonChange} season={season} showSeason={showSeason} setshowSeason={setshowSeason}/>
+			<LeagueProfileHeader league={table} handleSeasonChange={handleSeasonChange} season={season} showSeason={showSeason} setShowSeason={setShowSeason}/>
 			<div className='league-profile-nav-bar'>
 				<button className={changeTab('table')} name='table' onClick={handleChange}>Table</button>
 				<button className={changeTab('stats')} name='stats' onClick={handleChange}>Stats</button>

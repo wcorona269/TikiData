@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FixtureNavBar from './fixtureNavBar';
 import FixturesDisplay from './fixturesDisplay';
+import NoDataMessage from '../util/no-data-message';
 
 const LeagueFixturesDashboard = ({fixtures}) => {
 	const uniqueDates = [...new Set(fixtures.map(fixture => fixture.fixture.date.split('T')[0]))].sort();
@@ -11,6 +12,11 @@ const LeagueFixturesDashboard = ({fixtures}) => {
 
 	const handleTabSelect = (date) => {
 		setSelectedDate(date);
+	}
+
+	
+	if (!fixtures.length) {
+		return <NoDataMessage/>
 	}
 
 

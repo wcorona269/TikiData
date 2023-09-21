@@ -1,8 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import NoDataMessage from '../util/no-data-message';
 
 const TopAssists = ({data}) => {
 	const columns = ['Rank', 'Player', 'Club', 'Nationality', 'Assists'];
+
+	if (!data.length) {
+		return <NoDataMessage/>
+	}
 
 	return ( 
 		<table className='stat-dashboard'>
