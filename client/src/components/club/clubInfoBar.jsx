@@ -5,11 +5,11 @@ import ClubSquadDashboard from './clubSquadDashboard';
 import ClubStatsDashboard from './clubStatsDashboard';
 import ClubFixturesDashboard from './clubFixturesDashboard';
 
-const ClubInfoBar = ({ fixtures, squad }) => {
+const ClubInfoBar = ({ fixtures, squad, competitions }) => {
 	const [showFixtures, setShowFixtures] = useState(true);
 	const [showSquad, setShowSquad] = useState(false);
 	const [showStats, setShowStats] = useState(false);
-	
+
 	squad = squad[0]['players'];
 
 	const handleChange = (e) => {
@@ -35,8 +35,8 @@ const ClubInfoBar = ({ fixtures, squad }) => {
 	const setClassName = (name) => {
 		if (
 			(name === 'fixtures' && showFixtures === true) ||
-			(name === 'squad' && showSquad === true)
-			// (name === 'stats' && showStats === true)
+			(name === 'squad' && showSquad === true) ||
+			(name === 'stats' && showStats === true)
 		) {
 			return 'selected-tab'
 		}
@@ -45,7 +45,7 @@ const ClubInfoBar = ({ fixtures, squad }) => {
 	}
 
 	const displayNavBar = () => {
-		const tabs = ['fixtures', 'squad'];
+		const tabs = ['fixtures', 'squad', 'stats'];
 		let result = []
 
 		for (let tab of tabs) {
@@ -65,7 +65,7 @@ const ClubInfoBar = ({ fixtures, squad }) => {
 			<div className='club-profile-main'>
 				{showFixtures && <ClubFixturesDashboard fixtures={fixtures} />}
 				{showSquad && <ClubSquadDashboard squad={squad} />}
-				{/* {showStats && <ClubStatsDashboard />} */}
+				{showStats && <ClubStatsDashboard/>}
 			</div>
 		</div>
 	)

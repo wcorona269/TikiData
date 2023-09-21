@@ -17,14 +17,12 @@ const ClubProfile = () => {
 	let club = useSelector(state => state.club.club);
 	let fixtures = useSelector(state => state.club.fixtures);
 	let squad = useSelector(state => state.club.squad);
-	console.log({club}, {fixtures}, {squad})
+	console.log({fixtures})
 
 	useEffect(() => {
 		let formattedSeason = season.split('/')[0]
-		// dispatch(fetchClubSeasons(clubId));
 		dispatch(fetchClub(clubId, formattedSeason));
-		// dispatch(fetchClubStats(clubId, 2022, [39]))
-	}, [clubId, season]);
+	}, [season]);
 
 	if (!club) {
 		return <LoadingMessage/>	
@@ -34,6 +32,19 @@ const ClubProfile = () => {
 		let year = e.target.getAttribute('value')
 		setShowSeason(false);
 		setSeason(year);
+	}
+
+	
+	const listCompetitions = (fixtures) => {
+		let competitions = {}
+	
+		for (let fixture of fixtures) {
+			if (!(fixture.league.name in competitions)) {
+				competitions[fixture.league.name] = fixture.league.id;
+			}
+		}
+	
+		return competitions;
 	}
 
 	return (

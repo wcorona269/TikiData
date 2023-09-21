@@ -19,6 +19,13 @@ headers = {
 def club_info(clubId, season):
   conn = http.client.HTTPSConnection("v3.football.api-sports.io")
   
+  # Request club seasons
+  conn.request("GET", f"/teams/seasons?team={clubId}", headers=headers)
+  res = conn.getresponse()
+  data = res.read()
+  result = data.decode("utf-8")
+  club_seasons = json.loads(result)['response']
+  
   # Request club info
   conn.request("GET", f"/teams?id={clubId}", headers=headers)
   res = conn.getresponse()
@@ -40,49 +47,31 @@ def club_info(clubId, season):
   result = data.decode("utf-8")
   fixtures = json.loads(result)['response']
   
-  combined_data = {
-		'club': club_info,
-		'squad': squad_data,
-		'fixtures': fixtures
-	}
+  # Get all competitions for season
+  competitions = {} 
+  for fixture in fixtures:
+    if fixture['league']['name'] not in competitions:
+      competitions[fixture['league']['name']] = fixture['league']['id']
   
-  return combined_data;
-
-
-@bp.route('/seasons/<clubId>', methods=['GET'])
-def club_seasons(clubId):
-  conn = http.client.HTTPSConnection("v3.football.api-sports.io")
-  print(clubId)
-
-  # Request club seasons
-  conn.request("GET", f"/teams/seasons?team={clubId}", headers=headers)
-  res = conn.getresponse()
-  data = res.read()
-  result = data.decode("utf-8")
-  club_seasons = json.loads(result)['response']
-  return club_seasons
-
-
-@bp.route('/stats/<clubId>/<season>/', methods=['POST', 'GET'])
-def club_stats(clubId, season):
-  conn = http.client.HTTPSConnection("v3.football.api-sports.io")
-
-  # retrieve competition ID list from request body
-  competitions = request.json.get('competitions', [])
-  print(competitions)
+  # request stats for each competition from that season
+  # compile competitions into club_stats
+  club_stats = []
+  competition_ids = list(competitions.values())
   
-  club_stats = [];
-  
-  # iterate through competition IDs and compile club stats
-  for competition_id in competitions:
+  for competition_id in competition_ids:
     conn.request("POST", f"/teams/statistics?team={clubId}&season={season}&league={competition_id}", headers=headers)
     res = conn.getresponse()
     data = res.read()
     result = data.decode("utf-8")
-    print(result)
     competition_stats = json.loads(result)['response']
     club_stats.append(competition_stats)
-    
   
-  return club_stats
-
+  combined_data = {
+		'club': club_info,
+		'squad': squad_data,
+		'fixtures': fixtures,
+    'seasons': club_seasons,
+    'stats': club_stats
+	}
+  
+  return combined_data;
