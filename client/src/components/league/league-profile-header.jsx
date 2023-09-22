@@ -11,7 +11,7 @@ const LeagueProfileHeader = ({ league, season, handleSeasonChange, showSeason, s
 
 	return (
 		<div className='league-profile-header'>
-			<img src={logo}/>
+			<img src={logo} alt=''/>
 			<div>
 				<p>{name}</p>
 			</div>

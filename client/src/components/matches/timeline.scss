@@ -1,14 +1,19 @@
 .matches-timeline {
 	width: 100%;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	background-color: white;
-	padding: .5rem;
-	border-radius: 1rem;
+	border-radius: .5rem;
 	box-shadow: var(--box-shadow);
+}
+
+.matches-timeline > ul {
+	padding: 1rem;
 }
 
 .matches-timeline a {
@@ -19,3 +24,4 @@
 		text-decoration: underline;
 	}
 }
+

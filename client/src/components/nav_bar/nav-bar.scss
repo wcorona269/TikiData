@@ -1,6 +1,41 @@
+.nav-bar-wrapper {
+	width: 100%;
+	grid-area: nav;;
+	background-color: var(--green);
+}
+
+.logged-out-nav, .logged-in-nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.logged-in-nav i {
+	margin-right: 4px;
+	height: 100%;
+}
+
+.logged-out-nav a, .logged-in-nav a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: .5rem;
+	font-size: 1rem !important;
+}
+
 .nav-bar-container {
+	width: 50%;
 	font-family: 'Ubuntu', sans-serif;
 	color: black;
+	height: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 2rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .nav-bar-container a {
@@ -8,41 +43,23 @@
 	text-decoration: none;
 }
 
-.nav-bar-container,
-.nav-bar {
-	grid-area: nav;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+.nav-bar-container > a {
+	font-size: 2rem;
+	text-decoration: none;
 }
 
 .nav-bar-container button {
 	font-size: 1.2rem;
 }
 
-.nav-bar-container a {
-	font-size: 2rem;
-	text-decoration: none;
-
-}
-
-.nav-bar-container {
-	height: 100%;
-	padding-right: 20%;
-	padding-left: 20%;
-	margin-bottom: 2rem;
-	background-color: var(--green);
-}
-
-#login-button {
+#login-button { 
 	margin-right: 8px;
 }
 
 .nav-bar a {
 	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 }
 
 .auth-button {
@@ -74,12 +91,15 @@
 	border-top-right-radius: 4px;
 }
 
-.dropdown-button,
-.nav-bar>a {
+.dropdown-button, .nav-bar > a {
 	cursor: pointer;
 	width: fit-content;
 	padding: .5rem;
-	font-size: 1.2rem;
+	font-size: 1rem;
+}
+
+#my-profile-link {
+	padding: 0px !important;
 }
 
 .dropdown-button i {
@@ -99,12 +119,12 @@
 .dropdown-content div {
 	border-bottom: 1px solid lightgray;
 	padding: .5rem;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	background-color: var(--white);
+	text-align: center;
 }
 
-.dropdown-content div:hover,
-.dropdown-content a:hover {
+.dropdown-content div:hover, .dropdown-content a:hover {
 	cursor: pointer;
 	background-color: lightgray;
 }

@@ -23,9 +23,9 @@ const MatchListItem = ({match}) => {
 				{league}
 			</div>
 			<div className='timeline-scoreline-bar'>
-				<img src={homeIcon}/>
+				<img src={homeIcon} alt=''/>
 				{homeGoals} - {awayGoals}
-				<img src={awayIcon}/>
+				<img src={awayIcon} alt=''/>
 			</div>
 			{/* <div className='timeline-events-bar'>
 				<TimelineEventsBar events={events}/>

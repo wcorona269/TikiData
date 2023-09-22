@@ -22,7 +22,7 @@ const MatchTimelineTable = ({nation, matches}) => {
 					{displayScore(match)}
 				</p>
 				<p className='team-indicator' id='away-team-indicator'>
-					<img src={awayTeamLogo} alt={awayTeamName} />{awayTeamName} 
+					<img src={awayTeamLogo} alt={awayTeamName}/>{awayTeamName} 
 				</p>
 			</Link>
 		)
@@ -84,7 +84,7 @@ const MatchTimelineTable = ({nation, matches}) => {
 			result.push(
 				<>
 					<div id='new-league-indicator'>
-						<img src={flag}/>
+						<img src={flag} alt=''/>
 						<h3>{nation} - {competition}</h3>
 					</div>				
 					<table>

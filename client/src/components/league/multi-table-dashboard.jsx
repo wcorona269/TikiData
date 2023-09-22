@@ -38,7 +38,7 @@ const MultiTableDashboard = ({standings}) => {
 								<td>{rank}</td>
 								<td id='Club' >
 									<Link to={`/club/${clubId}`}>
-										<img src={club['team']['logo']} />
+										<img src={club['team']['logo']} alt=''/>
 										<span>{clubName}</span>
 									</Link>
 								</td>

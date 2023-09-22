@@ -6,7 +6,7 @@ const LoadingMessage = () => {
 	return (
 		<div className='loading-screen'>
 			<h1>Loading...</h1>
-			<img src={loadingGif}/>
+			<img src={loadingGif} alt=''/>
 		</div>
 	)
 }

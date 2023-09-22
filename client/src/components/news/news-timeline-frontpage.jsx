@@ -20,7 +20,7 @@ const NewsTimelineFrontpage = ({leaders}) => {
 						<span id='media'>{media}</span>
 						<h3 id='title'>{title}</h3>
 						<span id='date'>{date}</span>
-						<img src={img} />
+						<img src={img} alt=''/>
 					</a>
 				</article>
 			)

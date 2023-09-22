@@ -31,8 +31,8 @@ const TopAssists = ({data}) => {
 					return (
 						<tr key={idx} className='league-table-row'>
 							<td>{idx + 1}</td>
-							<td id='Player'><img src={icon} /><Link to={`/player-profile/${id}`}>{name}</Link></td>
-							<td id='Club'><img src={club} /></td>
+							<td id='Player'><img src={icon} alt=''/><Link to={`/player-profile/${id}`}>{name}</Link></td>
+							<td id='Club'><img src={club} alt=''/></td>
 							<td>{nation}</td>
 							<td>{goals}</td>
 						</tr>

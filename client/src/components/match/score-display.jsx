@@ -10,7 +10,7 @@ const ScoreDisplay = ({match}) => {
 
 			<div className='match-overview-header'>
 				<p>
-					<img src={match.league.logo}/>
+					<img src={match.league.logo} alt='' />
 					{match.league.name}
 				</p>
 				<p>
@@ -23,11 +23,11 @@ const ScoreDisplay = ({match}) => {
 			<div className='match-overview-score-display'>
 				<div className='match-overview-teams'>
 					<div className='match-overview-team-bar'>
-						<img src={match.teams.home.logo}/>
+						<img src={match.teams.home.logo} alt='' />
 						<p>{match.teams.home.name}</p>
 					</div>
 					<div className='match-overview-team-bar'>
-						<img src={match.teams.away.logo}/>
+						<img src={match.teams.away.logo} alt=''/>
 						<p>{match.teams.away.name}</p>
 					</div>
 				</div>

@@ -69,7 +69,7 @@ const EventsTimeline = ({match}) => {
 									{extraTime === null ? `${elapsed}'` : `${elapsed} + ${extraTime}`}
 								</td>
 								<td>
-									<img src={determineEventImage(event)}/>
+									<img src={determineEventImage(event)} alt=''/>
 								</td>
 								<td id='player-name'>{player}</td>
 								<td id='assist-name'>{assist}</td>

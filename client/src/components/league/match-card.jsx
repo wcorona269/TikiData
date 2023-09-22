@@ -10,11 +10,11 @@ const MatchCard = ({fixture, idx}) => {
 				<div className='event-card-info'>
 					<div className='event-card-teams'>
 						<div className='event-card-team-row'>
-							<img src={fixture.teams.home.logo}/>
+							<img src={fixture.teams.home.logo} alt=''/>
 							<p>{fixture.teams.home.name}</p>
 						</div>
 						<div className='event-card-team-row'>
-							<img src={fixture.teams.away.logo}/>
+							<img src={fixture.teams.away.logo} alt=''/>
 							<p>{fixture.teams.away.name}</p>
 						</div>
 					</div>

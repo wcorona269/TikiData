@@ -15,7 +15,7 @@ const LoggedOutNav = () => {
 	}
 
 	return (
-		<div>
+		<div className='logged-out-nav'>
 			<button className='auth-button' id='login-button' onClick={() => loginModal()}>log in</button>
 			<button className='auth-button' id='signup-button' onClick={() => signupModal()}>sign up</button>
 		</div>

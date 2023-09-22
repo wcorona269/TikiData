@@ -15,10 +15,17 @@ const TimelineCalendar = ({date, setDate}) => {
 
 	return (
 		<div className='timeline-calendar-container'>
-			<button id='toggle-show-calendar' onClick={() => setShowCalendar(!showCalendar)}>
-				<i class="fa-regular fa-calendar"></i>
-				{formatDate(date.toDateString())}
-			</button>
+			<div className='calendar-button-container'>
+				<div id='toggle-show-calendar' onClick={() => setShowCalendar(!showCalendar)}>
+					<div>
+						Filter by Date
+					</div>
+					<p>
+						{formatDate(date.toDateString())}
+					</p>
+				</div>
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
 			{showCalendar &&
 			<div className='calendar-container' onMouseLeave={() => setShowCalendar(false)}>
 				<Calendar onChange={setDate} date={date}/>
