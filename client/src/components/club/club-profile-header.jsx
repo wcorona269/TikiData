@@ -1,5 +1,6 @@
+import './club-profile-header.scss';
 import React from 'react'
-import SeasonSelect from '../util/season-select';
+import SeasonSelect from '../util/season-select/season-select';
 
 const ClubProfileHeader = ({club, season, showSeason, setShowSeason, handleSeasonChange, availableSeasons}) => {
 	const clubInfo = club[0];

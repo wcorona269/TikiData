@@ -1,5 +1,5 @@
 import React from 'react'
-import NoDataMessage from '../util/no-data-message';
+import NoDataMessage from '../util/no-data/no-data-message';
 
 const PlayerStats = ({statistics}) => {
 

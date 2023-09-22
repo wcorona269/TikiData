@@ -1,0 +1,30 @@
+.fixture-nav-bar {
+	padding: 1rem;
+	background-color: var(--white);
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow)
+}
+
+.fixture-nav-bar>ul {
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
+	width: 100%;
+}
+
+.fixture-nav-bar li {
+	min-width: fit-content;
+}
+
+.fixture-nav-bar button {
+	background-color: none;
+	border: 1px solid var(--gray);
+	padding: 1rem;
+	border-collapse: collapse;
+	background-color: var(--white);
+}
+
+.fixture-nav-bar .selected-date {
+	background-color: var(--green) !important;
+	color: var(--white);
+}

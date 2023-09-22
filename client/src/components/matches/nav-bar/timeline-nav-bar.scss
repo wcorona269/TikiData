@@ -1,0 +1,75 @@
+.timeline-nav-bar {
+	background-color: var(--white);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: auto;
+	list-style: none;
+	width: 100%;
+	max-width: 100%;
+	height: fit-content;
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+}
+
+.timeline-nav-bar>div {
+	position: relative;
+	font-size: .8rem;
+	z-index: 1;
+	height: 3rem;
+	border-collapse: collapse;
+}
+
+.timeline-nav-bar i {
+	margin-right: 1rem;
+}
+
+.timeline-calendar-container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.calendar-container {
+	position: absolute;
+	top: 100%;
+	height: fit-content;
+	width: fit-content;
+	z-index: 1;
+	background-color: var(--white) !important;
+	box-shadow: var(--box-shadow)
+}
+
+#toggle-show-calendar {
+	border-top-left-radius: 1rem;
+	border-bottom-left-radius: 1rem;
+	background-color: var(--green);
+}
+
+.timeline-calendar-container button {
+	border: 0px;
+	background: none;
+	width: 100%;
+	height: 100%;
+}
+
+.timeline-select {
+	width: 100%;
+	background: none;
+	background-color: var(--green);
+	text-align: center;
+	font-family: 'Ubuntu-Bold', sans-serif;
+	width: 100%;
+	outline: none;
+	border: none;
+	border-left: 1px solid var(--gray);
+}
+
+.timeline-select:focus {
+	outline: none;
+}
+
+.selected-nation {
+	background-color: var(--green) !important;
+	border-bottom: 4px solid var(--green-darker) !important;
+}

@@ -1,3 +1,4 @@
+import './modal.scss';
 import React, { useEffect } from 'react';
 import LoginForm from '../forms/login';
 import SignupForm from '../forms/signup';

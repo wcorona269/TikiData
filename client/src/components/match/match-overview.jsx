@@ -1,12 +1,12 @@
+import './match-overview.scss';
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchMatch } from '../../actions/api_actions';
-import response from './response';
 import ScoreDisplay from './score-display';
 import MatchInfo from './match-info/match-info';
-import LoadingMessage from '../util/loading-screen';
-import NoDataMessage from '../util/no-data-message';
+import LoadingMessage from '../util/loading/loading-screen';
+import NoDataMessage from '../util/no-data/no-data-message';
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 
 const MatchOverview = () => {

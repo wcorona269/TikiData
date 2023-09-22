@@ -1,0 +1,82 @@
+.events-timeline {
+	font-size: 1rem;
+	width: 100%;
+}
+
+.events-timeline tr:nth-child(even) {
+	background-color: var(--gray);
+}
+
+.events-timeline tbody {
+	width: 100%;
+}
+
+.events-timeline img {
+	height: 2rem;
+}
+
+
+.events-timeline p {
+	padding: .5rem;
+}
+
+.events-timeline img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.match-event-item {
+	width: 100%;
+	align-items: center;
+	border-bottom: 1px solid var(--gray);
+	padding-top: .25rem;
+	padding-bottom: .25rem;
+}
+
+.match-event-item td {
+	padding: .2rem;
+}
+
+.match-event-item img {
+	height: 1rem;
+	width: 1rem;
+}
+
+#new-period td {
+	font-family: 'Ubuntu-Bold';
+	padding: .5rem;
+	background-color: var(--green);
+	color: var(--white);
+	align-items: center;
+	text-align: center;
+}
+
+#player-name {
+	font-family: 'Ubuntu-Bold', sans-serif;
+}
+
+#assist-name {
+	padding-left: .5rem;
+	padding-right: .5rem;
+}
+
+#home-event-info {
+	display: flex;
+	flex-direction: row;
+}
+
+#away-event-info {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+#elapsed {
+	font-family: 'Ubuntu-Bold', sans-serif;
+}
+
+.timeline-event-image {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

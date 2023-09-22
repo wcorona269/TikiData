@@ -1,0 +1,53 @@
+#club-squad-table {
+	width: 100%;
+	font-size: .8rem;
+}
+
+.club-squad-list-row {
+	border-bottom: 1px solid var(--gray);
+
+	&:nth-child(even) {
+		background-color: var(--gray);
+	}
+
+	&:hover {
+		background-color: var(--gray);
+		cursor: pointer;
+	}
+}
+
+#club-squad-table img {
+	height: 1.5rem;
+	margin-right: .5rem;
+	border-radius: 50%;
+}
+
+#club-squad-table td,
+#club-squad-table tr {
+	padding: .25rem;
+
+}
+
+#club-squad-table-head th {
+	font-family: 'Ubuntu-Bold', sans-serif;
+	border-bottom: 1px solid var(--gray);
+
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+	color: var(--darkgray)
+}
+
+.club-squad-list-row a {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+#Name {
+	text-align: left;
+}
+
+#center-align {
+	text-align: center;
+}

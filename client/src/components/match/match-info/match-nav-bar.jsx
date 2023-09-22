@@ -1,3 +1,4 @@
+import './match-nav-bar.scss';
 import React from 'react'
 
 const MatchNavBar = ({changeSelection, selectedTab}) => {

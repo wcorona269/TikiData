@@ -1,9 +1,10 @@
+import './events-timeline.scss';
 import React, { useState } from 'react'
 import YellowCard from '../../../images/yellow.png';
 import RedCard from '../../../images/red.png';
 import Substitution from '../../../images/sub.png';
 import Goal from '../../../images/goal.png';
-import NoDataMessage from '../../util/no-data-message';
+import NoDataMessage from '../../util/no-data/no-data-message';
 
 const EventsTimeline = ({match}) => {
 	const homeTeam = match.teams.home.name;

@@ -1,0 +1,21 @@
+.matches-timeline {
+	width: 100%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	padding: .5rem;
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+}
+
+.matches-timeline a {
+	text-decoration: none;
+	color: black;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

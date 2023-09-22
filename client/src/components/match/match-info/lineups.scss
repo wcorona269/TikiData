@@ -1,0 +1,35 @@
+.lineups-tab {
+	display: flex;
+	flex-direction: row;
+}
+
+.lineups-tab table {
+	font-size: 1rem;
+	width: 100%;
+	text-align: center;
+
+	&:last-child {
+		border-left: 1px solid var(--gray);
+	}
+}
+
+.lineups-tab tr {
+	border-bottom: 1px solid var(--gray);
+
+	&:nth-child(odd) {
+		background-color: var(--gray);
+	}
+}
+
+.lineups-tab td {
+	padding: .25rem;
+}
+
+#lineup-header td {
+	font-family: 'Ubuntu-Bold';
+	padding: 0.5rem;
+	background-color: var(--green);
+	color: var(--white);
+	align-items: center;
+	text-align: center;
+}

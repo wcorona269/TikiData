@@ -1,10 +1,11 @@
+import './news-timeline.scss';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchNews } from '../../actions/news_actions';
 import response from './response';
 import SubArticlesTimeline from './sub-articles-timeline';
 import NewsTimelineFrontpage from './news-timeline-frontpage';
-import LoadingMessage from '../util/loading-screen';
+import LoadingMessage from '../util/loading/loading-screen';
 
 const NewsTimeline = () => {
 	const dispatch = useDispatch();

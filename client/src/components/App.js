@@ -9,9 +9,9 @@ import Welcome from './home/welcome'
 import Explore from './home/leagues/leagues';
 import axios from 'axios'
 import MatchesTimeline from './matches/timeline';
-import ClubProfile from './club/clubProfile';
-import LeagueProfile from './league/leagueProfile';
-import PlayerProfile from './player/playerProfile';
+import ClubProfile from './club/club-profile';
+import LeagueProfile from './league/league-profile';
+import PlayerProfile from './player/player-profile';
 import MatchOverview from './match/match-overview';
 import NewsTimeline from './news/news-timeline';
 

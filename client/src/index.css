@@ -21,43 +21,9 @@
 }
 
 @import './styles/typeface/fonts.scss';
-@import './styles/abstracts/variables.scss';
-@import './styles/abstracts/mixins.scss';
-
 @import './styles/base/reset.scss';
-@import './styles/base/typography.scss';
-
-@import './styles/layout/navigation.scss';
 @import './styles/layout/grid.scss';
-@import './styles/layout/header.scss';
-@import './styles/layout/footer.scss';
-@import './styles/layout/sidebar.scss';
-@import './styles/layout/forms.scss';
 
-@import './styles/components/buttons.scss';
-@import './styles/components/carousel.scss';
-@import './styles/components/cover.scss';
-@import './styles/components/dropdown.scss';
-@import './styles/components/modal.scss';
-@import './styles/components/loading.scss';
-@import './styles/components/util.scss';
-
-@import './styles/pages/home.scss';
-@import './styles/pages/timeline.scss';
-@import './styles/pages/timeline-select.scss';
-@import './styles/pages/match.scss';
-@import './styles/pages/player.scss';
-@import './styles/pages/club.scss';
-@import './styles/pages/leagues.scss';
-@import './styles/pages/leagueTable.scss';
-@import './styles/pages/leagueStats.scss';
-@import './styles/pages/competition.scss';
-@import './styles/pages/news.scss';
-
-
-
-@import './styles/themes/theme.scss';
-@import './styles/themes/admin.scss';
 
 .App {
   text-align: center;

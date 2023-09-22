@@ -1,3 +1,4 @@
+import './auth-form.scss';
 import React, { useEffect, useState } from 'react';
 
 const AuthForm = ({fields, onSubmit}) => {

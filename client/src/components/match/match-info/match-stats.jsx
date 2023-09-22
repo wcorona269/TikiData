@@ -1,5 +1,6 @@
+import './match-stats.scss';
 import React from 'react';
-import NoDataMessage from '../../util/no-data-message';
+import NoDataMessage from '../../util/no-data/no-data-message';
 
 const MatchStats = ({match}) => {
 	let stats = match.statistics;

@@ -1,3 +1,4 @@
+import './score-display.scss';
 import React from 'react';
 import DisplayTime from '../util/display-time';
 

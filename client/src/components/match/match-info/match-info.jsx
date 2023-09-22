@@ -1,3 +1,4 @@
+import './match-info.scss';
 import React, { useState, useEffect } from 'react'
 import MatchNavBar from './match-nav-bar';
 import Lineups from './lineups';

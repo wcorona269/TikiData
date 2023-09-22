@@ -1,0 +1,24 @@
+.league-profile-header {
+	padding: 1rem;
+	background-color: var(--white);
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.league-profile-header>div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	font-size: 1rem;
+}
+
+.league-profile-header p {
+	color: var(--darkgray);
+	margin: .5rem;
+}

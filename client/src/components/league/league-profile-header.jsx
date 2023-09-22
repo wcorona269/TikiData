@@ -1,5 +1,6 @@
+import './league-profile-header.scss';
 import React, { useState } from 'react'
-import SeasonSelect from '../util/season-select';
+import SeasonSelect from '../util/season-select/season-select';
 
 const LeagueProfileHeader = ({ league, season, handleSeasonChange, showSeason, setShowSeason }) => {
 	const leagueInfo = league[0]?.league;
