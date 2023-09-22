@@ -21,7 +21,7 @@ const ClubFixtureListItem = ({fixture, idx, isNewMonth, month}) => {
 	}
 
 	const displayResult = () => {		
-		if (homeGoals === 'undefined' || awayGoals === 'undefined') {
+		if (!homeGoals || !awayGoals) {
 			return '-'
 		}
 

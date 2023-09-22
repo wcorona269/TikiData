@@ -14,7 +14,7 @@ export const FETCH_MATCHES_REQUEST = 'FETCH_MATCHES_REQUEST';
 export const FETCH_MATCHES_SUCCESS = 'FETCH_MATCHES_SUCCESS';
 export const FETCH_MATCHES_FAILURE = 'FETCH_MATCHES_FAILURE';
 
-// Fetch competition info (standings, top scorers, top assists)
+// Fetch competition info (standings, top scforers, top assists)
 export const FETCH_COMPETITION_REQUEST = 'FETCH_COMPETITION_REQUEST'
 export const FETCH_COMPETITION_SUCCESS = 'FETCH_COMPETITION_SUCCESS'
 export const FETCH_COMPETITION_FAILURE = 'FETCH_COMPETITION_FAILURE'
@@ -24,6 +24,7 @@ export const REMOVE_COMPETITION = 'REMOVE_COMPETITION';
 export const FETCH_CLUB_SUCCESS = 'FETCH_CLUB_SUCCESS';
 export const FETCH_CLUB_REQUEST = 'FETCH_CLUB_REQUEST';
 export const FETCH_CLUB_FAILURE = 'FETCH_CLUB_FAILURE';
+export const REMOVE_CLUB = 'REMOVE_CLUB';
 
 // Fetch player info
 export const FETCH_PLAYER_REQUEST = 'FETCH_PLAYER_REQUEST';
@@ -72,11 +73,13 @@ export const fetchCompetition = (leagueId, season) => {
 	}
 }
 
+
 export const removeCompetition = () => {
 	return (dispatch) => {
 		dispatch({ type: REMOVE_COMPETITION })
 	}
 }
+
 
 export const fetchClub = (clubId, season) => {
 	console.log(clubId, season);
@@ -91,6 +94,14 @@ export const fetchClub = (clubId, season) => {
 		})
 	}
 }
+
+
+export const removeClub = () => {
+	return (dispatch) => {
+		dispatch({ type: REMOVE_CLUB })
+	}
+}
+
 
 export const fetchPlayer = (playerId) => {
 	return (dispatch) => {

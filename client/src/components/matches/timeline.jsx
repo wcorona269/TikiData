@@ -13,6 +13,7 @@ const MatchesTimeline = ({apiKey}) => {
 	const matches = useSelector(state => state.matches.matches);
 	// const matches = response;
 	const competitions = new Set();
+	const isLoading = useSelector(state => state.matches.isLoading);
 	const [date, setDate] = useState(new Date());
 	
 	useEffect(() => {
@@ -69,7 +70,7 @@ const MatchesTimeline = ({apiKey}) => {
 	}, [selectedNation])
 	
 
-	if (!matches) {
+	if (isLoading || !matches) {
 		return (<LoadingMessage />)
 	}
 

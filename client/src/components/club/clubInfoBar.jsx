@@ -5,7 +5,7 @@ import ClubSquadDashboard from './clubSquadDashboard';
 import ClubStatsDashboard from './clubStatsDashboard';
 import ClubFixturesDashboard from './clubFixturesDashboard';
 
-const ClubInfoBar = ({ fixtures, squad, competitions }) => {
+const ClubInfoBar = ({ fixtures, squad, stats }) => {
 	const [showFixtures, setShowFixtures] = useState(true);
 	const [showSquad, setShowSquad] = useState(false);
 	const [showStats, setShowStats] = useState(false);
@@ -65,7 +65,7 @@ const ClubInfoBar = ({ fixtures, squad, competitions }) => {
 			<div className='club-profile-main'>
 				{showFixtures && <ClubFixturesDashboard fixtures={fixtures} />}
 				{showSquad && <ClubSquadDashboard squad={squad} />}
-				{showStats && <ClubStatsDashboard/>}
+				{showStats && <ClubStatsDashboard stats={stats}/>}
 			</div>
 		</div>
 	)

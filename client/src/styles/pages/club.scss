@@ -75,45 +75,47 @@
 }
 
 .club-profile-container header {
-	display: grid;
-	grid-template-columns: 1fr 2fr;
-	grid-auto-columns: auto;
 	background-color: var(--white);
 	border-radius: 1rem;
 	padding: 1rem;
 	box-shadow: var(--box-shadow);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1rem;
+}
+
+.club-profile-container header > div {
+	display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-evenly;
 }
 
 .club-details {
-	font-size: 1rem;
-	width: 100%;
+	font-size: .8rem;
+	width: fit-content;
+	height: 10rem;
 }
 
-.club-details td {
+.club-details td, .club-details th {
 	border-collapse: collapse;
 	border: 1px solid var(--darkgray);
-	padding: .5rem;
+	padding: .25rem;
+	vertical-align: middle;
 }
 
-.club-details-header {
+.club-details th {
+	background-color: var(--gray);
 	font-family: 'Ubuntu-Bold', sans-serif
 }
 
-.club-details-detail {
-	width: 100%;
-}
-
-.club-logo-area {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: left;
-}
-
-.club-logo-area img {
-	height: 10rem;
-	width: 10rem;
-	margin-bottom: 1rem;
+.club-details tr:first-child {
+	background-color: var(--gray);
+	text-align: center;
+	font-size: 1.25rem;
+	font-family: 'Ubuntu-Bold', sans-serif;
 }
 
 .club-profile-nav-bar {
@@ -162,4 +164,70 @@
 	border-radius: 1rem;
 	box-shadow: var(--box-shadow);
 	font-size: 1rem;
+}
+
+.club-stats-table {
+	width: 100%;
+}
+
+.club-stats-table th:first-child {
+	text-align: left;
+}
+
+.club-stats-table thead {
+	background-color: var(--gray);
+	font-family: 'Ubuntu-Bold', sans-serif;
+}
+
+.club-stats-table td, .club-stats-table th {
+	border-collapse: collapse;
+	border: 1px solid var(--darkgray);
+	padding: .5rem;
+	text-align: center;
+}
+
+.club-stats-table td:first-child {
+	font-family: 'Ubuntu-Bold', sans-serif;
+	text-align: left;
+}
+
+.club-stats-table tr:nth-child(even) {
+	background-color: var(--gray);
+}
+
+.club-stats-table tr:last-child {
+	background-color: var(--green);
+	font-family: 'Ubuntu-Bold', sans-serif;
+}
+
+.club-logo-table {
+	height: 10rem;
+}
+
+.club-logo-table img {
+	height: 6rem;
+	width: 6rem;
+}
+
+.club-logo-table td {
+	border-collapse: collapse;
+	border: 1px solid var(--darkgray);
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.club-logo tr {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.club-logo-table tr:last-child {
+	background-color: var(--gray);
+	font-size: .8rem;
+	text-align: center;
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ClubInfoBar from './clubInfoBar';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchClub, fetchClubSeasons, fetchClubStats } from '../../actions/api_actions';
+import { fetchClub, fetchClubSeasons, fetchClubStats, removeClub } from '../../actions/api_actions';
 import response from './response';
 import LoadingMessage from '../util/loading-screen';
 import ClubProfileHeader from './club-profile-header';
@@ -13,18 +13,29 @@ const ClubProfile = () => {
 
 	const [season, setSeason] = useState('2023/24');
 	const [showSeason, setShowSeason] = useState(false);
+	const isLoading = useSelector(state => state.club.isLoading);
 
-	let club = useSelector(state => state.club.club);
-	let fixtures = useSelector(state => state.club.fixtures);
-	let squad = useSelector(state => state.club.squad);
-	console.log({fixtures})
+	const club = useSelector(state => state.club.club);
+	const fixtures = useSelector(state => state.club.fixtures);
+	const squad = useSelector(state => state.club.squad);
+	const stats = useSelector(state => state.club.stats);
+	const seasons = useSelector(state => state.club.seasons)
 
 	useEffect(() => {
 		let formattedSeason = season.split('/')[0]
-		dispatch(fetchClub(clubId, formattedSeason));
+
+		if (!isLoading) {
+			dispatch(fetchClub(clubId, formattedSeason));
+		}
 	}, [season]);
 
-	if (!club) {
+	// useEffect(() => {
+	// 	return () => {
+	// 		dispatch(removeClub());
+	// 	}
+	// }, []);
+
+	if (isLoading || !club) {
 		return <LoadingMessage/>	
 	}
 
@@ -49,8 +60,8 @@ const ClubProfile = () => {
 
 	return (
 		<div className='club-profile-container'>
-			<ClubProfileHeader club={club} handleSeasonChange={handleSeasonChange} season={season} showSeason={showSeason} setShowSeason={setShowSeason}/>
-			<ClubInfoBar fixtures={fixtures} squad={squad}/>
+			<ClubProfileHeader club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} showSeason={showSeason} setShowSeason={setShowSeason} availableSeasons={seasons}/>
+			<ClubInfoBar fixtures={fixtures} squad={squad} stats={stats}/>
 		</div>
 	)
 }

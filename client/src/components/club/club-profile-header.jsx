@@ -1,7 +1,7 @@
 import React from 'react'
 import SeasonSelect from '../util/season-select';
 
-const ClubProfileHeader = ({club, season, showSeason, setShowSeason, handleSeasonChange}) => {
+const ClubProfileHeader = ({club, season, showSeason, setShowSeason, handleSeasonChange, availableSeasons}) => {
 	const clubInfo = club[0];
 
 	let name = clubInfo.team.name || 'N/A';
@@ -31,8 +31,8 @@ const ClubProfileHeader = ({club, season, showSeason, setShowSeason, handleSeaso
 		for (let key in clubDetails) {
 			result.push(
 				<tr key={key}>
-					<td className='club-details-header'>{key}</td>
-					<td className='club-details-detail'>{clubDetails[key]}</td>
+					<th>{key}</th>
+					<td>{clubDetails[key]}</td>
 				</tr>
 			)
 		}
@@ -42,20 +42,33 @@ const ClubProfileHeader = ({club, season, showSeason, setShowSeason, handleSeaso
 
 
 	return (
-		<header>
-			<div className='club-logo-area'>
-				<img src={logo} alt={name} />
-				<h2>
-					{name}
-				</h2>
-			</div>
-			<table className='club-details'>
-				<tbody>
-					{displayClubDetails(clubDetails)}
-				</tbody>
-			</table>
-			<SeasonSelect season={season} showSeason={showSeason} setShowSeason={setShowSeason} handleSeasonChange={handleSeasonChange}/>
-		</header>
+		<>
+			<header>
+				<div>
+				<table className='club-details'>
+					<tbody>
+						<tr><td colSpan={2}>{name}</td></tr>
+						{displayClubDetails(clubDetails)}
+					</tbody>
+				</table>
+				<table className='club-logo-table'>
+					<tbody>
+						<tr>
+							<td>
+								<img src={logo} alt={name} />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Club Logo
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			<SeasonSelect season={season} showSeason={showSeason} setShowSeason={setShowSeason} handleSeasonChange={handleSeasonChange} availableSeasons={availableSeasons}/>
+			</header>
+		</>
 	)
 }
 

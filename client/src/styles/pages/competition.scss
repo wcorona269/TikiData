@@ -147,6 +147,20 @@
 	cursor: pointer;
 }
 
+#selected-season {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: .5rem;
+}
+
+#selected-season p {
+	font-size: .75rem;
+	color: var(--darkgray);
+	margin-bottom: .5rem;
+}
+
 /* Styles for the selected option */
 #selected-option {
 	background-color: #f0f0f0;

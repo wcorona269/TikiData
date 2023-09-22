@@ -1,7 +1,8 @@
 import {
 	FETCH_CLUB_REQUEST,
 	FETCH_CLUB_SUCCESS,
-	FETCH_CLUB_FAILURE
+	FETCH_CLUB_FAILURE,
+	REMOVE_CLUB
 } from '../actions/api_actions';
 
 const initialState = {
@@ -20,7 +21,7 @@ const clubReducer = (state = initialState, action) => {
 				...state,
 				club: action.payload['club'],
 				squad: action.payload['squad'],
-				fixtures: action.payload['fixtures'],
+				fixtures: [...action.payload['fixtures']], // Create a new array
 				seasons: action.payload['seasons'],
 				stats: action.payload['stats'],
 				isLoading: false,
@@ -28,6 +29,8 @@ const clubReducer = (state = initialState, action) => {
 			};
 		case FETCH_CLUB_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
+		case REMOVE_CLUB:
+			return { ...state, isLoading: false, error: null }
 		default:
 			return state;
 	}

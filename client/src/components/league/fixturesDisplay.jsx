@@ -13,7 +13,7 @@ const FixturesDisplay = ({fixtures, selectedDate}) => {
 		<div className='fixtures-display'>
 			<ul>
 				{filteredFixtures.map((fixture, idx) => (
-					<MatchCard fixture={fixture} idx={idx}/>
+					<MatchCard key={idx} fixture={fixture} idx={idx}/>
 					))}
 			</ul>
 		</div>
