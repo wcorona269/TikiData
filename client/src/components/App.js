@@ -1,3 +1,7 @@
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import React from 'react'
 import { Link, Route, Routes, Switch } from 'react-router-dom';
 import ProtectedRoute from './util/route_util';
@@ -14,6 +18,20 @@ import LeagueProfile from './league/league-profile';
 import PlayerProfile from './player/player-profile';
 import MatchOverview from './match/match-overview';
 import NewsTimeline from './news/news-timeline';
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#00c49a',
+      light: '#66E396',
+      dark: '#007A60'
+    }
+  },
+  typography: {
+    fontFamily: 'Ubuntu-Bold',
+  }
+})
 
 let apiKey;
 
@@ -35,46 +53,47 @@ function App() {
 
   return (
     <>
-    <div className='outer-body'>
-      <Modal/>
-      <NavBar />
-      <div className='inner-body'>
-        <Routes>
-          <Route path='/'element={
-            // <ProtectedRoute component={Home}/>
-            <Home/>
-          }/>
-          <Route path='/matches'
-            element={<MatchesTimeline apiKey={apiKey} />}
-          />  
-          <Route path='/news'
-            element={<NewsTimeline/>}
-          />
-          <Route path='/favorites'
-            element={<MatchesTimeline apiKey={apiKey}/>}
-          />
-          <Route path='/explore'
-            element={<Explore/>}
-          />
-          <Route path='/club/:clubId'
-            element={<ClubProfile/>}
-          />
-          <Route path='/league-overview/:leagueId'
-            element={<LeagueProfile/>}
-          />
-          <Route
-            path='/player-profile/:playerId'
-            element={<PlayerProfile/>}
-          />
-          <Route
-            path='match-overview/:matchId'
-            element={<MatchOverview/>}
-          />
-        <Route path='/welcome' element={<Welcome/>}/>
-        </Routes>
+    <ThemeProvider theme={theme}>
+      <div className='outer-body'>
+        <Modal/>
+        <NavBar />
+        <div className='inner-body'>
+          <Routes>
+            <Route path='/'
+            element={<Home/>}
+            />
+            <Route path='/matches'
+              element={<MatchesTimeline apiKey={apiKey} />}
+            />  
+            <Route path='/news'
+              element={<NewsTimeline/>}
+            />
+            <Route path='/favorites'
+              element={<MatchesTimeline apiKey={apiKey}/>}
+            />
+            <Route path='/explore'
+              element={<Explore/>}
+            />
+            <Route path='/club/:clubId'
+              element={<ClubProfile/>}
+            />
+            <Route path='/league-overview/:leagueId'
+              element={<LeagueProfile/>}
+            />
+            <Route
+              path='/player-profile/:playerId'
+              element={<PlayerProfile/>}
+            />
+            <Route
+              path='match-overview/:matchId'
+              element={<MatchOverview/>}
+            />
+          <Route path='/welcome' element={<Welcome/>}/>
+          </Routes>
+        </div>
+        <Footer/>
       </div>
-      <Footer/>
-    </div>
+    </ThemeProvider>
     </>
   )
 }

@@ -8,6 +8,11 @@ import MatchInfo from './match-info/match-info';
 import LoadingMessage from '../util/loading/loading-screen';
 import NoDataMessage from '../util/no-data/no-data-message';
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
+import { 
+	AppBar,
+	Tab,
+	Tabs,
+ } from '@mui/material';
 
 const MatchOverview = () => {
 	const dispatch = useDispatch();
