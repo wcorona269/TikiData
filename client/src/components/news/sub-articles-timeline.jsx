@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 const SubArticlesTimeline = ({subArticles, printArticles}) => {
-	const [currentPage, setCurrentpage] = useState(0);
+	const [page, setPage] = useState(1);
 	const [scrollPosition, setScrollPosition] = useState(0);
+
+
 	const splitArticleIntoPages = (subArticles, articlesPerPage = 4) => {
 		const result = [];
 		for (let i = 0; i < subArticles.length; i+= articlesPerPage) {
@@ -10,37 +14,27 @@ const SubArticlesTimeline = ({subArticles, printArticles}) => {
 		}
 		return result;
 	}
+
+	
+	const handleChange = (event, newValue) => {
+		setPage(newValue);
+	}
+
 	
 	const articlesByPage = splitArticleIntoPages(subArticles);
-	
-	const displayButtons = () => {
-		let buttons = []
-		for (let i = scrollPosition; i < scrollPosition + 5; i++) {
-			buttons.push(
-				<button className={currentPage === i ? 'current-page' : 'other-page'} key={i} onClick={() => setCurrentpage(i)}>
-					{i + 1}
-				</button>
-			)
-		}
-		return buttons;
-	}
 
 	return (
 		<>
 			<div className='sub-articles'>
 				<h1>More News</h1>
-				{printArticles(articlesByPage[currentPage])}
+				{printArticles(articlesByPage[page])}
 			</div>
 			<p id='page-selector'>
 				Page
 			</p>
-			<div className='news-timeline-page-buttons'>
-				{scrollPosition >= 2 && <button className='news-scroll-button' onClick={() => setScrollPosition(scrollPosition - 2)}><i className="fa-solid fa-caret-left"></i></button>}
-				<div id='news-timeline-pages'>
-					{displayButtons(scrollPosition)}
-				</div>
-				{scrollPosition <= articlesByPage.length - 2 && <button className='news-scroll-button' onClick={() => setScrollPosition(scrollPosition + 2)}><i className="fa-solid fa-caret-right"></i></button>}
-			</div>
+			<Stack spacing={2}>
+				<Pagination count={articlesByPage.length - 1} page={page} onChange={handleChange} variant="outlined" shape="rounded"/>
+			</Stack>
 		</>
 	)
 } 
