@@ -11,20 +11,20 @@ const LeagueTableDashboard = ({table}) => {
 	}, [table])
 
 
-	if (!table.length) {
+	if (!table?.length) {
 		return <NoDataMessage/>
 	}
 
 	let leagueInfo = table[0]['league'];
 	let standings = leagueInfo['standings'];
 
-	if (standings.length > 1) {
+	if (standings?.length > 1) {
 		return <MultiTableDashboard standings={standings}/>
 	}
 
 	standings = leagueInfo['standings'][0];
 
-	if (!standings.length) {
+	if (!standings?.length) {
 		return <NoDataMessage/>
 	}
 
@@ -47,7 +47,7 @@ const LeagueTableDashboard = ({table}) => {
 		);
 	};
 
-	if (!standings.length) {
+	if (!standings?.length) {
 		return <NoDataMessage/>
 	}
 

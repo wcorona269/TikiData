@@ -19,7 +19,6 @@ const MatchesTimeline = ({apiKey}) => {
 		const month = (date.getMonth() + 1).toString().padStart(2, '0');
 		const year = (date.getFullYear()).toString()
 		const day = (date.getDate()).toString().padStart(2, '0');
-
 		const dateString = `${year}-${month}-${day}`
 
 		dispatch(fetchMatches(dateString))
@@ -59,10 +58,10 @@ const MatchesTimeline = ({apiKey}) => {
 	const sortedMatches = sortMatches();
 	const listOfNations = ['All', ...Object.keys(sortedMatches)];
 	const [selectedNation, setSelectedNation] = useState(listOfNations[0]);
+	const [filter, setFilter] = useState('');
 	
 	const handleTabSelect = (e) => {
-		const selectedValue = e.target.getAttribute('value');
-		console.log(selectedValue);
+		const selectedValue = e.target.value
 		setSelectedNation(selectedValue);	
 	}
 	
@@ -81,7 +80,16 @@ const MatchesTimeline = ({apiKey}) => {
 
 	return (
 		<div className='matches-timeline'>
-			<TimelineNavBar selectedNation={selectedNation} nations={listOfNations} onTabSelect={handleTabSelect} date={date} setDate={setDate} resetFilters={resetFilters}/>
+			<TimelineNavBar 
+				selectedNation={selectedNation}
+				nations={listOfNations}
+				onTabSelect={handleTabSelect}
+				date={date}
+				setDate={setDate}
+				resetFilters={resetFilters}
+				filter={filter}
+				setFilter={setFilter}
+			/>
 			<TimelineMatchDisplay matches={sortedMatches} competitions={competitions} selectedNation={selectedNation}/>
 		</div>
 	)

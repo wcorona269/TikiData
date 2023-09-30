@@ -10,75 +10,63 @@ import LoadingMessage from '../util/loading/loading-screen';
 import NoDataMessage from '../util/no-data/no-data-message';
 import LeagueProfileHeader from './league-profile-header'
 
+
+
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
 	const { leagueId } = useParams();
 	const competition = useSelector(state => state.competition);
-	// const competition = response;
 	const isLoading = useSelector(state => state.competition.isLoading);
 
-	const [season, setSeason] = useState('2023/24');
-	const [showSeason, setShowSeason] = useState(false);
-	
-	const [showTable, setShowTable] = useState(true);
-	const [showStats, setShowStats] = useState(false);
-	const [showFixtures, setShowFixtures] = useState(false);
 
 	const table = competition['standings'];
 	const top_scorers = competition['top_scorers'];
 	const top_assists = competition['top_assists']; 
 	const fixtures = competition['fixtures'];
 
+
+	const [season, setSeason] = useState('2023/24');
+	const [showSeason, setShowSeason] = useState(false);
+	const [selectedTab, setSelectedTab] = useState(0)
+	const [component, setComponent] = useState(<LeagueTableDashboard table={table}/>);
+
+
 	useEffect(() => {
 		let selectedSeason = season.split('/')[0];
 		dispatch(fetchCompetition(leagueId, selectedSeason))
 	}, [season]);
 
-	useEffect(() => {
 
+	useEffect(() => {
 	}, [isLoading])
 
 
-	const handleChange = (e) => {
-		if (e.target.name === 'table') {
-			setShowStats(false);
-			setShowFixtures(false)
-			setShowTable(true);
-		} else if (e.target.name === 'stats') {
-			setShowTable(false);
-			setShowFixtures(false);
-			setShowStats(true);
-		} else if (e.target.name === 'fixtures') {
-			setShowStats(false);
-			setShowTable(false);
-			setShowFixtures(true);
+	useEffect(() => {
+		if (selectedTab  === 0) {
+			setComponent(<LeagueTableDashboard table={table}/>)
+		} else if (selectedTab === 1) {
+			setComponent(<LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists}/>)
+		} else {
+			setComponent(<LeagueFixturesDashboard fixtures={fixtures} />)
 		}
+		console.log(component);
+	}, [selectedTab])
+
+
+	const handleChange = (event, newValue) => {
+		setSelectedTab(newValue);
 	}
+
 	
 	if (isLoading) {
 		return <LoadingMessage/>
 	}
+
 	
 	if (!competition || !table || !top_scorers || !top_assists) {
 		return <NoDataMessage/>
 	}
 
-	const changeTab = (e) => {
-		const isSelected = 'selected-dashboard'
-		if (e === 'table' && showTable === true) {
-			return isSelected
-		}
-
-		if (e === 'stats' && showStats === true) {
-			return isSelected
-		}
-
-		if (e === 'fixtures' && showFixtures === true) {
-			return isSelected
-		}
-
-		return ''
-	}
 
 	const handleSeasonChange = (e) => {
 		let year = e.target.getAttribute('value')
@@ -86,18 +74,21 @@ const LeagueProfile = () => {
 		setSeason(year);
 	}
 
+
 	return (
 		<div>
-			<LeagueProfileHeader league={table} handleSeasonChange={handleSeasonChange} season={season} showSeason={showSeason} setShowSeason={setShowSeason}/>
-			<div className='league-profile-nav-bar'>
-				<button className={changeTab('table')} name='table' onClick={handleChange}>Table</button>
-				<button className={changeTab('stats')} name='stats' onClick={handleChange}>Stats</button>
-				<button className={changeTab('fixtures')} name='fixtures' onClick={handleChange}>Fixtures</button>
-			</div>
+			<LeagueProfileHeader
+			 league={table} 
+			 handleSeasonChange={handleSeasonChange} 
+			 season={season} 
+			 showSeason={showSeason} 
+			 setShowSeason={setShowSeason}
+			 selectedTab={selectedTab}
+			 handleChange={handleChange}
+			/>
 			<div className='league-profile-dashboard-container'>
-				{ showTable && <LeagueTableDashboard table={table}/>}
-				{ showStats && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists}/>}
-				{ showFixtures && <LeagueFixturesDashboard fixtures={fixtures}/>}
+				
+				{component}
 			</div>
 		</div>
 	)

@@ -1,38 +1,32 @@
-import './league-stats.scss';
 import React, { useState, useEffect } from 'react';
+import { Tabs, Tab } from '@mui/material';
+import './league-stats.scss';
 
 import TopScorers from './topScorers';
 import TopAssists from './topAssists';
 
 const LeagueStatsDashboard = ({top_scorers, top_assists}) => {
-	const [showGoals, setShowGoals] = useState(true);
+	const [selectedTab, setSelectedTab] = useState(0);
 
-	useEffect(() => {
-
-	}, [showGoals])
-
-	const buttonDisplay = (button) => {
-		if (button === 'goals' && showGoals === true) {
-			return 'selected-stats-tab'
-		}
-
-		if (button === 'assists' && showGoals === false) {
-			return 'selected-stats-tab'
-		}
-
-		return ''
+	
+	const handleChange = (event, newValue) => {
+		setSelectedTab(newValue)
 	}
 
 	
 	return (
 		<div className='league-stats-container'>
-			<div className='league-stats-nav-bar'>
+			{/* <div className='league-stats-nav-bar'>
 				<button className={buttonDisplay('goals')} onClick={() => setShowGoals(true)}>Top Scorers</button>
 				<button className={buttonDisplay('assists')} onClick={() => setShowGoals(false)}>Top Assist</button>
-			</div>
+			</div> */}
+			<Tabs value={selectedTab} onChange={handleChange} className='league-stats-nav-bar'>
+				<Tab label='Goals'/>
+				<Tab label='Assists'/>
+			</Tabs>
 			<div className='league-stats-table-container'>
 				{
-				showGoals === true ? 
+				selectedTab === 0 ? 
 					<TopScorers data={top_scorers} /> :
 					<TopAssists data={top_assists} />
 				}

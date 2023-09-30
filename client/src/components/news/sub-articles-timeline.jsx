@@ -32,7 +32,7 @@ const SubArticlesTimeline = ({subArticles, printArticles}) => {
 			<p id='page-selector'>
 				Page
 			</p>
-			<Stack spacing={2}>
+			<Stack spacing={2} className='news-pagination'>
 				<Pagination count={articlesByPage.length - 1} page={page} onChange={handleChange} variant="outlined" shape="rounded"/>
 			</Stack>
 		</>

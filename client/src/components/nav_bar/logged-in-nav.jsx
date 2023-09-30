@@ -23,9 +23,9 @@ const LoggedInNav = () => {
 	
 	return (
 		<div className='logged-in-nav'>
-			<Link to='/news' className={location.pathname === '/news' ? 'active-link' : 'inactive-link'}><i className="fa-regular fa-newspaper"></i> news</Link><br></br>
-			<Link to='/matches' className={location.pathname === '/matches' ? 'active-link' : 'inactive-link'}><i className="fa-solid fa-futbol"></i> matches</Link><br></br>
-			<Link to='/explore' className={location.pathname === '/explore' ? 'active-link' : 'inactive-link'}><i className="fa-solid fa-globe"></i> explore</Link>
+			<Link to='/news' className={location.pathname === '/news' ? 'active-link' : 'inactive-link'}><i className="fa-regular fa-newspaper"></i></Link><br></br>
+			<Link to='/matches' className={location.pathname === '/matches' ? 'active-link' : 'inactive-link'}><i className="fa-solid fa-futbol"></i></Link><br></br>
+			<Link to='/explore' className={location.pathname === '/explore' ? 'active-link' : 'inactive-link'}><i className="fa-solid fa-globe"></i></Link>
 			<div className={`more-dropdown ${showDropdown ? 'dropdown-showing' : ''}`} onMouseLeave={() => setShowDropdown(false)}>
 				<div onClick={() => toggleDropdown()} className='dropdown-button'>
 					<i className="fa-solid fa-circle-user"></i>

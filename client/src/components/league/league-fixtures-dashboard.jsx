@@ -5,13 +5,14 @@ import NoDataMessage from '../util/no-data/no-data-message';
 
 const LeagueFixturesDashboard = ({fixtures}) => {
 	const uniqueDates = [...new Set(fixtures.map(fixture => fixture.fixture.date.split('T')[0]))].sort();
-	const [selectedDate, setSelectedDate] = useState(uniqueDates[0]);
+	const [selectedDate, setSelectedDate] = useState(0);
 
 	useEffect(() => {
 	}, [selectedDate])
 
-	const handleTabSelect = (date) => {
+	const handleChange = (event, date) => {
 		setSelectedDate(date);
+		console.log(selectedDate);
 	}
 
 	
@@ -22,8 +23,8 @@ const LeagueFixturesDashboard = ({fixtures}) => {
 
 	return (
 		<div>
-			<FixtureNavBar selectedDate={selectedDate} dates={uniqueDates} onTabSelect={handleTabSelect}/>
-			<FixturesDisplay fixtures={fixtures} selectedDate={selectedDate}/>
+			<FixtureNavBar selectedDate={selectedDate} dates={uniqueDates} handleChange={handleChange} setSelectedDate={setSelectedDate}/>
+			<FixturesDisplay fixtures={fixtures} selectedDate={uniqueDates[selectedDate]}/>
 		</div>
 	)
 }

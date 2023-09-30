@@ -1,6 +1,7 @@
 import './fixtures-display.scss';
-import React from 'react';
+import React, {useEffect} from 'react';
 import MatchCard from './match-card';
+
 
 // FIXTURE DISPLAY
 // Second component will show fixtures from selectedDate state variable
@@ -8,6 +9,9 @@ import MatchCard from './match-card';
 // need selectedDate variable passed on to filter fixtures
 
 const FixturesDisplay = ({fixtures, selectedDate}) => {
+	useEffect(() => {
+	}, [selectedDate])
+
 	const filteredFixtures = fixtures.filter(fixture => fixture.fixture.date.split('T')[0] === selectedDate);
 
 	return (
