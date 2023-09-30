@@ -12,16 +12,25 @@ const LeagueProfileHeader = ({ league, season, handleSeasonChange, showSeason, s
 
 	return (
 		<div className='league-profile-header'>
-			<img src={logo} alt=''/>
-			<div>
+			<div className='league-logo-bar'>
+				<img src={logo} alt=''/>
 				<p>{name}</p>
+				<p>
+				|
+				</p>
+				<p>{country}</p>
+				<img src={flag}/>
 			</div>
-			<SeasonSelect season={season} showSeason={showSeason} setShowSeason={setShowSeason} handleSeasonChange={handleSeasonChange}/>
-			<Tabs value={selectedTab} onChange={handleChange}>
-				<Tab label='Table' />
-				<Tab label='Stats' />
-				<Tab label='Fixtures' />
-			</Tabs>
+			<div>
+				<Tabs value={selectedTab} onChange={handleChange}>
+					<Tab label='Table' />
+					<Tab label='Stats' />
+					<Tab label='Fixtures' />
+				</Tabs>
+			</div>
+			<div>
+				<SeasonSelect season={season} showSeason={showSeason} setShowSeason={setShowSeason} handleSeasonChange={handleSeasonChange}/>
+			</div>
 		</div>
 	)
 }

@@ -68,10 +68,9 @@ const LeagueProfile = () => {
 	}
 
 
-	const handleSeasonChange = (e) => {
-		let year = e.target.getAttribute('value')
+	const handleSeasonChange = (event, newValue) => {
 		setShowSeason(false);
-		setSeason(year);
+		setSeason(newValue.props.value);
 	}
 
 

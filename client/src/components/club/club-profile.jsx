@@ -22,6 +22,7 @@ const ClubProfile = () => {
 	const seasons = useSelector(state => state.club.seasons)
 
 	useEffect(() => {
+		console.log(season);
 		let formattedSeason = season.split('/')[0]
 
 		if (!isLoading) {
