@@ -22,13 +22,6 @@ const LeagueProfileHeader = ({ league, season, handleSeasonChange, showSeason, s
 				<img src={flag}/>
 			</div>
 			<div>
-				<Tabs value={selectedTab} onChange={handleChange}>
-					<Tab label='Table' />
-					<Tab label='Stats' />
-					<Tab label='Fixtures' />
-				</Tabs>
-			</div>
-			<div>
 				<SeasonSelect season={season} showSeason={showSeason} setShowSeason={setShowSeason} handleSeasonChange={handleSeasonChange}/>
 			</div>
 		</div>

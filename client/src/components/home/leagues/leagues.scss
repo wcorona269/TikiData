@@ -105,23 +105,3 @@
 	text-align: left;
 	border: 1px solid var(--darkgray);
 }
-
-.league-profile-dashboard-container {
-	background-color: var(--white);
-	border-radius: .5rem;
-	box-shadow: var(--box-shadow);
-	
-}
-
-.selected-dashboard {
-	background-color: var(--green) !important;
-	color: var(--white)
-}
-
-.multi-table-dashboard h2 {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-	padding-left: 1rem;
-	font-family: 'Ubuntu-Bold', sans-serif;
-	color: var(--darkgray)
-}
