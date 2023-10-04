@@ -1,8 +1,11 @@
 import json
+import math
+from datetime import datetime
 import os
 from flask import Blueprint
 import http.client
 from dotenv import load_dotenv
+from GoogleNews import GoogleNews
 load_dotenv(".flaskenv")
 api_key = os.getenv("API_KEY");
 
@@ -44,12 +47,29 @@ def competitionInfo(leagueId, season):
   result = data.decode("utf-8")
   fixture_data = json.loads(result)["response"]
   
+  # fetch competition news
+  country = standings_data[0]['league']['country']
+  name = standings_data[0]['league']['name']
+  news_topic = f'{country} {name}'
+  gNews = GoogleNews(period='20d')
+  gNews.get_news(news_topic)
+  competition_news = gNews.results()
+  print(competition_news)
+
+  cleaned_news = []
+  for article in competition_news:
+      # Create a new dictionary excluding the 'datetime' key
+      cleaned_article = {key: value for key,
+                        value in article.items() if key != 'datetime'}
+      cleaned_news.append(cleaned_article)
+          
   # combine data and return to frontend
   combined_data = {
 		"standings": standings_data,
 		"top scorers": top_scorer_data,
 		"top assists": top_assists_data,
-    "fixtures": fixture_data
+    "fixtures": fixture_data,
+    "news": cleaned_news,
 	}
   
   return combined_data

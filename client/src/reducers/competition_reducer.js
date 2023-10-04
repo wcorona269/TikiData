@@ -22,6 +22,7 @@ const competitionReducer = (state = initialState, action) => {
 				top_scorers: action.payload['top scorers'],
 				top_assists: action.payload['top assists'],
 				fixtures: action.payload['fixtures'],
+				news: action.payload['news'],
 				isLoading: false, 
 				error: null 
 			};

@@ -18,8 +18,8 @@ import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
 	const { leagueId } = useParams();
-	// const competition = useSelector(state => state.competition);
-	const competition = response;
+	const competition = useSelector(state => state.competition);
+	// const competition = response;
 	const isLoading = useSelector(state => state.competition.isLoading);
 
 	const tableRef = useRef(null);
@@ -38,7 +38,7 @@ const LeagueProfile = () => {
 
 	useEffect(() => {
 		let selectedSeason = season.split('/')[0];
-		// dispatch(fetchCompetition(leagueId, selectedSeason))
+		dispatch(fetchCompetition(leagueId, selectedSeason))
 	}, [season]);
 
 
