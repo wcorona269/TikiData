@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import DisplayTime from '../util/display-time';
 
 
-const MatchCard = ({fixture, idx}) => {	
+const MatchCard = ({fixture, key}) => {	
 	return (
-		<li className='event-card' key={idx}>
+		<li className='event-card' key={key}>
 			<Link to={`/match-overview/${fixture.fixture.id}`}>
 				<div className='event-card-info'>
 					<div className='event-card-teams'>

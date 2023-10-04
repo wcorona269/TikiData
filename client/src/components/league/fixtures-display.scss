@@ -10,8 +10,16 @@
 	min-height: 30rem;
 }
 
+.fixtures-display h6 {
+	width: 100%;
+	padding-left: 2rem;
+	padding-top: 1rem;
+}
+
 .fixtures-display ul {
 	width: 100%;
+	border-top: 2px solid var(--gray);
+	border-bottom: 2px solid var(--gray)
 }
 
 .event-card a {

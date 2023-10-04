@@ -23,7 +23,7 @@ const LeagueFixturesDashboard = ({fixtures}) => {
 				Fixtures
 			</Typography>
 			<FixtureNavBar selectedDate={selectedDate} dates={uniqueDates} handleChange={handleChange} setSelectedDate={setSelectedDate}/>
-			<FixturesDisplay fixtures={fixtures} selectedDate={uniqueDates[selectedDate]}/>
+			<FixturesDisplay fixtures={fixtures} selectedDate={selectedDate} uniqueDates={uniqueDates}/>
 		</div>
 	)
 }

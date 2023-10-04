@@ -1,24 +1,19 @@
-
-.fixture-nav-bar>ul {
-	display: flex;
-	flex-direction: row;
-	overflow-x: scroll;
-	width: 100%;
+.fixture-nav-bar {
+	border-bottom: 2px solid var(--gray);
+	margin-bottom: 1rem;
 }
 
-.fixture-nav-bar li {
-	min-width: fit-content;
+.fixture-nav-bar .selected {
+	background-color: var(--green) !important;
+	color: var(--white) !important;
+}
+
+.fixture-nav-bar > div {
+	&:first-child, &:last-child {
+		background-color: var(--gray);
+	}
 }
 
 .fixture-nav-bar button {
-	background-color: none;
-	border: 1px solid var(--gray);
-	padding: 1rem;
-	border-collapse: collapse;
-	background-color: var(--white);
-}
-
-.fixture-nav-bar .selected-date {
-	background-color: var(--green) !important;
-	color: var(--white);
+	border-right: 1px solid var(--gray)
 }

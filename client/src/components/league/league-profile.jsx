@@ -36,7 +36,7 @@ const LeagueProfile = () => {
 
 	useEffect(() => {
 		let selectedSeason = season.split('/')[0];
-		// dispatch(fetchCompetition(leagueId, selectedSeason))
+		dispatch(fetchCompetition(leagueId, selectedSeason))
 	}, [season]);
 
 

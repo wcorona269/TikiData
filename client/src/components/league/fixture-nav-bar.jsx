@@ -11,6 +11,7 @@ const FixtureNavBar = ({selectedDate, dates, handleChange, setSelectedDate}) => 
 		<Tabs
 			value={selectedDate}
 			onChange={handleChange}
+			className='fixture-nav-bar'
 			variant="scrollable"
 			scrollButtons="auto"
 			aria-label="scrollable auto tabs example"
@@ -33,25 +34,11 @@ const FixtureNavBar = ({selectedDate, dates, handleChange, setSelectedDate}) => 
 			const formattedDate = `${shorthandMonthsOfYear[Number(dateInfo[1]) - 1]} ${dateInfo[2]}`
 
 			return (
-				<Tab label={formattedDate}/>
+				<Tab label={formattedDate} className={idx === selectedDate ? 'selected' : ''}/>
 			)
 		})}
 		</Tabs>
 	);
 }
-
-
-
-
-// const FixtureNavBar = ({selectedDate, dates, onTabSelect}) => {
-
-// 	return (
-// 		<nav className='fixture-nav-bar'>
-// 			<ul>
-
-// 			</ul>
-// 		</nav>
-// 	)
-// }
 
 export default FixtureNavBar;
