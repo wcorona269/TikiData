@@ -46,6 +46,18 @@ const LeagueProfile = () => {
 	}, [isLoading]);
 
 	useEffect(() => {
+		updateTabOnScroll(); // Call the function once on initial render
+
+		// Attach scroll event listener
+		window.addEventListener('scroll', updateTabOnScroll);
+
+		// Clean up event listener on component unmount
+		return () => {
+			window.removeEventListener('scroll', updateTabOnScroll);
+		};
+	}, []); 
+
+	const updateTabOnScroll = () => {
 		const observerOptions = {
 			root: null, // use the viewport as the root
 			rootMargin: '0px', // no margin
@@ -92,7 +104,7 @@ const LeagueProfile = () => {
 				observer.unobserve(fixturesRef.current);
 			}
 		};
-	}, []); // empty dependency array ensures the effect runs once after the initial render
+	}
 
 	const handleChange = (newValue) => {
 		setSelectedTab(newValue);
@@ -146,7 +158,7 @@ const LeagueProfile = () => {
 			 />
 			<div className='league-profile-dashboard-container'>
 				<div class='league-profile-nav-bar'>
-					<Tabs value={selectedTab} onChange={handleChange}>
+					<Tabs value={selectedTab}>
 						<Tab label='Table' onClick={() => handleChange(0)} />
 						<Tab label='Stats' onClick={() => handleChange(1)} />
 						<Tab label='Fixtures' onClick={() => handleChange(2)} />
