@@ -4,7 +4,7 @@ html {
 }
 
 .outer-body {
-	background-color: var(--gray);
+	background: linear-gradient(to bottom, #006400, #00FF00);
 	display: grid;
 	width: 100%;
 	grid-template-columns: 1fr 50% 1fr;

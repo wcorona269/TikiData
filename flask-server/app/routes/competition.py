@@ -54,7 +54,6 @@ def competitionInfo(leagueId, season):
   gNews = GoogleNews(period='20d')
   gNews.get_news(news_topic)
   competition_news = gNews.results()
-  print(competition_news)
 
   cleaned_news = []
   for article in competition_news:

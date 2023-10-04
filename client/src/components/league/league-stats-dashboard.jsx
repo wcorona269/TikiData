@@ -14,11 +14,15 @@ const LeagueStatsDashboard = ({top_scorers, top_assists}) => {
 		setSelectedTab(newValue)
 	}
 
+	const leagueName = top_scorers[0].statistics[0].league.name
+	const leagueLogo = top_scorers[0].statistics[0].league.logo;
+
 	
 	return (
 		<div>
 			<Typography variant="h5" gutterBottom className='section-heading'>
-				Stats
+				<img src={leagueLogo} />
+				{leagueName} Stats
 			</Typography>
 			<div className='league-stats-container'>
 				{/* <div className='league-stats-nav-bar'>

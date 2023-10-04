@@ -1,4 +1,3 @@
-import './fixtures-display.scss';
 import React, { useState, useEffect } from 'react';
 import MatchCard from './match-card';
 import shorthandMonthsOfYear from './shorthandMonths';
@@ -54,7 +53,7 @@ const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 		return result;
 	}
 
-	console.log(fixturesByDate);
+	// console.log(fixturesByDate);
 
 	return (
 		<div className='fixtures-display'>

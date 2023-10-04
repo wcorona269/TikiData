@@ -11,6 +11,9 @@ const LeagueTableDashboard = ({table}) => {
 
 	}, [table])
 
+	const leagueName = table[0].league.name
+	const leagueLogo = table[0].league.logo
+
 
 	if (!table?.length) {
 		return <NoDataMessage/>
@@ -56,7 +59,8 @@ const LeagueTableDashboard = ({table}) => {
 	return (
 		<div>
 			<Typography variant="h5" gutterBottom className='section-heading'>
-				Table
+				<img src={leagueLogo}/>
+				{leagueName} Table
 			</Typography>
 			<table className='league-table'>
 				<thead>

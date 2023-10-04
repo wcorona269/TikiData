@@ -1,3 +1,4 @@
+import './league-fixtures.scss'
 import React, { useState, useEffect } from 'react';
 import FixtureNavBar from './fixture-nav-bar';
 import FixturesDisplay from './fixtures-display';
@@ -10,17 +11,20 @@ const LeagueFixturesDashboard = ({fixtures}) => {
 
 	const handleChange = (event, date) => {
 		setSelectedDate(date);
-		console.log(selectedDate);
 	}
 	
 	if (!fixtures.length) {
 		return <NoDataMessage/>
 	}
 
+	const leagueName = fixtures[0].league.name
+	const leagueLogo = fixtures[0].league.logo
+
 	return (
 		<div>
 			<Typography variant="h5" gutterBottom className='section-heading'>
-				Fixtures
+				<img src={leagueLogo}/>
+				{leagueName} Fixtures
 			</Typography>
 			<FixtureNavBar selectedDate={selectedDate} dates={uniqueDates} handleChange={handleChange} setSelectedDate={setSelectedDate}/>
 			<FixturesDisplay fixtures={fixtures} selectedDate={selectedDate} uniqueDates={uniqueDates}/>

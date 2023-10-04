@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './league-profile.scss';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import LeagueHomeDashboard from './home/league-home-dashboard';
 import LeagueTableDashboard from './league-table-dashboard'
 import LeagueFixturesDashboard from './league-fixtures-dashboard'
 import LeagueStatsDashboard from './league-stats-dashboard';
@@ -28,6 +29,7 @@ const LeagueProfile = () => {
 	const top_scorers = competition['top_scorers'];
 	const top_assists = competition['top_assists']; 
 	const fixtures = competition['fixtures'];
+	const news = competition['news'];
 
 	const [season, setSeason] = useState('2023/24');
 	const [showSeason, setShowSeason] = useState(false);
@@ -39,25 +41,18 @@ const LeagueProfile = () => {
 		dispatch(fetchCompetition(leagueId, selectedSeason))
 	}, [season]);
 
-
 	useEffect(() => {
 	}, [isLoading]);
 
 	const handleChange = (newValue) => {
 		setSelectedTab(newValue);
 	}
-
-	
 	if (isLoading) {
 		return <LoadingMessage/>
 	}
-
-	
 	if (!competition || !table || !top_scorers || !top_assists) {
 		return <NoDataMessage/>
 	}
-
-
 	const handleSeasonChange = (event, newValue) => {
 		setShowSeason(false);
 		setSeason(newValue.props.value);
@@ -83,6 +78,8 @@ const LeagueProfile = () => {
 						<Tab label='Fixtures' onClick={() => handleChange(3)} />
 					</Tabs>
 				</div>
+
+					{selectedTab === 0 && <LeagueHomeDashboard news={news} fixtures={fixtures} table={table} top_scorers={top_scorers} />}
 				{ selectedTab === 1 && <LeagueTableDashboard table={table}  />}
 				{selectedTab === 2 && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />}
 				{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} />}
