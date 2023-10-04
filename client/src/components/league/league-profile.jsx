@@ -21,20 +21,16 @@ const LeagueProfile = () => {
 	// const competition = response;
 	const isLoading = useSelector(state => state.competition.isLoading);
 
-	const tableRef = useRef(null);
-	const statsRef = useRef(null);
-	const fixturesRef = useRef(null);
-
 	const table = competition['standings'];
 	const top_scorers = competition['top_scorers'];
 	const top_assists = competition['top_assists']; 
 	const fixtures = competition['fixtures'];
+	fixtures?.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date))
+	const uniqueDates = [...new Set(fixtures?.map(fixture => fixture.fixture.date.split('T')[0]))];
 	const news = competition['news'];
-
 	const [season, setSeason] = useState('2023/24');
 	const [showSeason, setShowSeason] = useState(false);
 	const [selectedTab, setSelectedTab] = useState(0);
-
 
 	useEffect(() => {
 		let selectedSeason = season.split('/')[0];
@@ -79,10 +75,10 @@ const LeagueProfile = () => {
 					</Tabs>
 				</div>
 
-					{selectedTab === 0 && <LeagueHomeDashboard news={news} fixtures={fixtures} table={table} top_scorers={top_scorers} />}
+					{selectedTab === 0 && <LeagueHomeDashboard news={news} fixtures={fixtures} uniqueDates={uniqueDates} table={table} top_scorers={top_scorers} />}
 				{ selectedTab === 1 && <LeagueTableDashboard table={table}  />}
 				{selectedTab === 2 && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />}
-				{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} />}
+				{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} uniqueDates={uniqueDates} />}
 			</div>
 		</div>
 		<ScrollToTopOnLoad/>

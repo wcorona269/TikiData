@@ -1,9 +1,12 @@
 import './league-home.scss'
-import { Paper, Typography } from '@mui/material'
-import React from 'react'
+import { Paper, Typography, Grid } from '@mui/material';
+import LeagueHomeFixtures from './league-home-fixtures';
+import LeagueHomeNews from './league-home-news';
+import LeagueHomeStats from './league-home-stats';
+import LeagueHomeTable from './league-home-table';
+import React from 'react';
 
-const LeagueHomeDashboard = ({ news, fixtures, table, top_scorers }) => {
-
+const LeagueHomeDashboard = ({ news, fixtures, uniqueDates, table, top_scorers }) => {
 
 	const leagueName = table[0].league.name
 	const leagueLogo = table[0].league.logo
@@ -14,13 +17,18 @@ const LeagueHomeDashboard = ({ news, fixtures, table, top_scorers }) => {
 				<img src={leagueLogo} />
 				{leagueName} Home
 			</Typography>
-			<div className='league-home-dashboard'>
-				<Paper className='league-home-fixtures'>
-					<Typography variant="h6" gutterBottom className='section-heading' >
-						Fixtures
-					</Typography>
-				</Paper>
-			</div>
+			<Grid container className='league-home-dashboard'>
+				<Grid item xs={4}>
+					<LeagueHomeFixtures fixtures={fixtures} uniqueDates={uniqueDates}/>
+				</Grid>
+				<Grid item xs={5}>
+					<LeagueHomeNews news={news} />
+				</Grid>
+				<Grid item xs={3}>
+					<LeagueHomeTable table={table} />
+					<LeagueHomeStats top_scorers={top_scorers} />
+				</Grid>
+			</Grid>
 		</div>
 	)
 }

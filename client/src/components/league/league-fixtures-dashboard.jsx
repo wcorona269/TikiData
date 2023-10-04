@@ -5,8 +5,8 @@ import FixturesDisplay from './fixtures-display';
 import NoDataMessage from '../util/no-data/no-data-message';
 import Typography from '@mui/material/Typography';
 
-const LeagueFixturesDashboard = ({fixtures}) => {
-	const uniqueDates = [...new Set(fixtures.map(fixture => fixture.fixture.date.split('T')[0]))].sort();
+const LeagueFixturesDashboard = ({fixtures, uniqueDates}) => {
+	
 	const [selectedDate, setSelectedDate] = useState(0);
 
 	const handleChange = (event, date) => {

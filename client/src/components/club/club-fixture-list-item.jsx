@@ -2,6 +2,14 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import monthsOfYear from './monthsOfYear';
 
+export const formatDate = (date) => {
+	const dateString = new Date(date)
+	const month = dateString.getMonth();
+	const day = dateString.getDate();
+	const abbreviatedMonth = monthsOfYear[month].slice(0, 3)
+	return `${abbreviatedMonth} ${day}`;
+}
+
 const ClubFixtureListItem = ({fixture, idx, isNewMonth, month}) => {
 	const { clubId } = useParams();
 	const isAway = Number(clubId) === fixture.teams.away.id;
@@ -12,13 +20,6 @@ const ClubFixtureListItem = ({fixture, idx, isNewMonth, month}) => {
 	const awayGoals = fixture.goals.away;
 
 
-	const formatDate = (date) => {
-		const dateString = new Date(date)
-		const month = dateString.getMonth();
-		const day = dateString.getDate();
-		const abbreviatedMonth = monthsOfYear[month].slice(0, 3)
-		return `${abbreviatedMonth} ${day}`;
-	}
 
 	const displayResult = () => {		
 		if (!homeGoals || !awayGoals) {
