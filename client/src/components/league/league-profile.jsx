@@ -13,8 +13,6 @@ import NoDataMessage from '../util/no-data/no-data-message';
 import LeagueProfileHeader from './league-profile-header'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 
-
-
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
 	const { leagueId } = useParams();
@@ -38,95 +36,15 @@ const LeagueProfile = () => {
 
 	useEffect(() => {
 		let selectedSeason = season.split('/')[0];
-		dispatch(fetchCompetition(leagueId, selectedSeason))
+		// dispatch(fetchCompetition(leagueId, selectedSeason))
 	}, [season]);
 
 
 	useEffect(() => {
 	}, [isLoading]);
 
-	useEffect(() => {
-		updateTabOnScroll(); // Call the function once on initial render
-
-		// Attach scroll event listener
-		window.addEventListener('scroll', updateTabOnScroll);
-
-		// Clean up event listener on component unmount
-		return () => {
-			window.removeEventListener('scroll', updateTabOnScroll);
-		};
-	}, []); 
-
-	const updateTabOnScroll = () => {
-		const observerOptions = {
-			root: null, // use the viewport as the root
-			rootMargin: '0px', // no margin
-			threshold: 0.5, // when 50% of the element is visible
-		};
-
-		const handleIntersection = (entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					// update the selected tab based on the observed element
-					if (entry.target === tableRef.current) {
-						setSelectedTab(0);
-					} else if (entry.target === statsRef.current) {
-						setSelectedTab(1);
-					} else if (entry.target === fixturesRef.current) {
-						setSelectedTab(2);
-					}
-				}
-			});
-		};
-
-		const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
-		// observe the elements
-		if (tableRef.current) {
-			observer.observe(tableRef.current);
-		}
-		if (statsRef.current) {
-			observer.observe(statsRef.current);
-		}
-		if (fixturesRef.current) {
-			observer.observe(fixturesRef.current);
-		}
-
-		// cleanup observer on component unmount
-		return () => {
-			if (tableRef.current) {
-				observer.unobserve(tableRef.current);
-			}
-			if (statsRef.current) {
-				observer.unobserve(statsRef.current);
-			}
-			if (fixturesRef.current) {
-				observer.unobserve(fixturesRef.current);
-			}
-		};
-	}
-
 	const handleChange = (newValue) => {
 		setSelectedTab(newValue);
-		if (newValue === 0 && tableRef.current) {
-			const rect = tableRef.current.getBoundingClientRect();
-			window.scrollTo({
-				top: window.pageYOffset + rect.top - 50,
-				behavior: 'smooth'
-			});
-		} else if (newValue === 1 && statsRef.current) {
-			const rect = statsRef.current.getBoundingClientRect();
-			window.scrollTo({
-				top: window.pageYOffset + rect.top - 50,
-				behavior: 'smooth'
-			});
-		} else if (newValue === 2 && fixturesRef.current) {
-			const rect = fixturesRef.current.getBoundingClientRect();
-			window.scrollTo({
-				top: window.pageYOffset + rect.top - 50,
-				behavior: 'smooth'
-			});
-		}
 	}
 
 	
@@ -159,20 +77,15 @@ const LeagueProfile = () => {
 			<div className='league-profile-dashboard-container'>
 				<div class='league-profile-nav-bar'>
 					<Tabs value={selectedTab}>
-						<Tab label='Table' onClick={() => handleChange(0)} />
-						<Tab label='Stats' onClick={() => handleChange(1)} />
-						<Tab label='Fixtures' onClick={() => handleChange(2)} />
+						<Tab label='Home' onClick={() => handleChange(0)} />
+						<Tab label='Table' onClick={() => handleChange(1)} />
+						<Tab label='Stats' onClick={() => handleChange(2)} />
+						<Tab label='Fixtures' onClick={() => handleChange(3)} />
 					</Tabs>
 				</div>
-				<div ref={tableRef}>
-					<LeagueTableDashboard table={table}  />
-				</div>
-				<div ref={statsRef} >
-					<LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />
-				</div>
-				<div ref={fixturesRef}>
-					<LeagueFixturesDashboard fixtures={fixtures} />
-				</div>
+				{ selectedTab === 1 && <LeagueTableDashboard table={table}  />}
+				{selectedTab === 2 && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />}
+				{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} />}
 			</div>
 		</div>
 		<ScrollToTopOnLoad/>
