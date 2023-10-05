@@ -125,8 +125,25 @@
 	align-items: center;
 }
 
+.news-item-title h6 {
+	font-family: 'Ubuntu', sans-serif !important;
+}
+
 .league-home-news-item {
 	border-bottom: 2px solid var(--gray);
+}
+
+.league-home-news-item > div { 
+	height: 6rem;
+}
+
+#league-home-news a {
+	text-decoration: none !important;
+	z-index: 100;
+	
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 #league-home-table {
