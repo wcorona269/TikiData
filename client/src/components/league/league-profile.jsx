@@ -17,20 +17,22 @@ import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 const LeagueProfile = () => {
 	const dispatch = useDispatch();
 	const { leagueId } = useParams();
+
 	const competition = useSelector(state => state.competition);
-	// const competition = response;
 	const isLoading = useSelector(state => state.competition.isLoading);
+
+	const [season, setSeason] = useState('2023/24');
+	const [showSeason, setShowSeason] = useState(false);
+	const [selectedTab, setSelectedTab] = useState(0);
 
 	const table = competition['standings'];
 	const top_scorers = competition['top_scorers'];
 	const top_assists = competition['top_assists']; 
 	const fixtures = competition['fixtures'];
+	const news = competition['news'];
+
 	fixtures?.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date))
 	const uniqueDates = [...new Set(fixtures?.map(fixture => fixture.fixture.date.split('T')[0]))];
-	const news = competition['news'];
-	const [season, setSeason] = useState('2023/24');
-	const [showSeason, setShowSeason] = useState(false);
-	const [selectedTab, setSelectedTab] = useState(0);
 
 	useEffect(() => {
 		let selectedSeason = season.split('/')[0];
@@ -54,12 +56,18 @@ const LeagueProfile = () => {
 		setSeason(newValue.props.value);
 	}
 
+	const leagueInfo = table[0]?.league;
+	const country = leagueInfo?.country;
+	const flag = leagueInfo?.flag;
+	const logo = leagueInfo?.logo;
+	const name = leagueInfo?.name;
+
 
 	return (
 		<>
 		<div>
 			<LeagueProfileHeader
-			 league={table} 
+			 table={table} 
 			 handleSeasonChange={handleSeasonChange} 
 			 season={season} 
 			 showSeason={showSeason} 
@@ -73,10 +81,18 @@ const LeagueProfile = () => {
 						<Tab label='Stats' onClick={() => handleChange(2)} />
 						<Tab label='Fixtures' onClick={() => handleChange(3)} />
 					</Tabs>
+					<div className='league-logo-bar'>
+						<img src={logo} alt='' />
+						<p>{name}</p>
+						<p>
+							|
+						</p>
+						<p>{country}</p>
+						<img src={flag} />
+					</div>
 				</div>
-
-					{selectedTab === 0 && <LeagueHomeDashboard news={news} fixtures={fixtures} uniqueDates={uniqueDates} table={table} top_scorers={top_scorers} />}
-				{ selectedTab === 1 && <LeagueTableDashboard table={table}  />}
+				{selectedTab === 0 && <LeagueHomeDashboard news={news} fixtures={fixtures} uniqueDates={uniqueDates} table={table} top_scorers={top_scorers} />}
+				{selectedTab === 1 && <LeagueTableDashboard table={table}  />}
 				{selectedTab === 2 && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />}
 				{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} uniqueDates={uniqueDates} />}
 			</div>

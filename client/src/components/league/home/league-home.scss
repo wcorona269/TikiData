@@ -8,7 +8,11 @@
 }
 
 .league-home-dashboard {
-	width: 100% !important;
+	margin-top: 1rem;
+}
+
+.league-home-paper th {
+	padding: .1rem;
 }
 
 .league-home-dashboard > div {
@@ -19,10 +23,9 @@
 }
 
 .league-home-paper {
-	width: 90%;
-	padding: .5rem;
-	margin: .5rem;
+	width: 95%;
 	border-radius: rem !important;
+	margin-bottom: 1rem;
 }
 
 .league-home-paper > div {
@@ -47,7 +50,7 @@
 }
 
 .home-fixture-li > div {
-	margin-top: 1rem;
+	margin-top: .2rem;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -56,11 +59,12 @@
 	white-space: nowrap;
 }
 
-.home-fixture-li h6 {
+.home-fixture-li p {
 	width: fit-content;
 	max-width: 100% !important;
 	overflow-x: hidden;
 	text-overflow: ellipsis;
+	font-family: 'Ubuntu', sans-serif !important;
 }
 
 .home-fixture-li img {
@@ -81,7 +85,8 @@
 }
 
 .home-fixture-li #time-element {
-	color: var(--darkgray)
+	color: var(--darkgray);
+	font-family: 'Ubuntu', sans-serif;
 }
 
 #sticky-paper {
@@ -90,7 +95,8 @@
 	top: 4rem !important;
 	height: fit-content;
 	max-height: 40rem;
-	overflow: scroll;
+	overflow: hidden;
+
 }
 
 .home-fixture-li #goal-display {
@@ -122,4 +128,61 @@
 .league-home-news-item {
 	border-bottom: 2px solid var(--gray);
 }
- 
+
+#league-home-table {
+	height: fit-content;
+	max-height: 400rem;
+	transition: height .3s ease-in-out;
+}
+
+#league-home-table img {
+	height: 1rem;
+	width: 1rem;
+	margin-right: 2px;
+}
+
+#league-home-table table {
+	width: 90%;
+}
+
+#league-home-table #team-name {
+	font-family: 'Ubuntu', sans-serif !important;
+	width: 180px !important;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#league-home-table .show-more-button {
+	width: 100%;
+	color: var(--darkgray);
+	background-color: var(--gray);
+}
+
+
+.league-home-stats-column {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	position: sticky;
+	top: 4rem !important;
+}
+
+.league-home-stats-column > div {
+	&:last-child {
+		margin-top: 0px;
+	}
+}
+
+#league-home-fixture-ul {
+	overflow: scroll;
+	max-height: 100%;
+}
+
+#league-home-fixture-ul a {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

@@ -3,8 +3,8 @@ import { Tabs, Tab } from '@mui/material';
 import SeasonSelect from '../util/season-select/season-select';
 import './league-profile-header.scss';
 
-const LeagueProfileHeader = ({ league, season, handleSeasonChange, showSeason, setShowSeason, selectedTab, handleChange }) => {
-	const leagueInfo = league[0]?.league;
+const LeagueProfileHeader = ({ table, season, handleSeasonChange, showSeason, setShowSeason, selectedTab, handleChange }) => {
+	const leagueInfo = table[0]?.league;
 	const country = leagueInfo?.country;
 	const flag = leagueInfo?.flag;
 	const logo = leagueInfo?.logo;

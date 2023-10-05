@@ -34,7 +34,7 @@ const LeagueHomeNews = ({news}) => {
 		return result;
 	}
 
-	const articlesByPage = splitArticleIntoPages(news, 20);
+	const articlesByPage = splitArticleIntoPages(news, 12);
 
 	return (
 		<Paper

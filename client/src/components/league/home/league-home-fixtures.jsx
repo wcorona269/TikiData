@@ -2,6 +2,7 @@ import React from 'react'
 import DisplayTime from '../../util/display-time';
 import { formatDate } from '../../club/club-fixture-list-item';
 import monthsOfYear from '../../club/monthsOfYear';
+import { Link } from 'react-router-dom';
 import { 
 	Box,
 	Paper, 
@@ -11,7 +12,6 @@ import {
 	ListItem,
 	ListItemButton,
 	ListItemText,
-	Link
  } from '@mui/material'
 
 
@@ -34,9 +34,11 @@ const LeagueHomeFixtures = ({fixtures, uniqueDates}) => {
 							<img src={team_logo} />
 					</Grid>
 					<Grid item xs={9}>
-						<Typography variant='subtitle1' className={winner === true ? 'winning-team' : ''}>
-							{team_name}
-						</Typography>
+						<Link to={`/club/${team_id}`}>
+							<Typography variant='body2' className={winner === true ? 'winning-team' : ''}>
+								{team_name}
+							</Typography>
+						</Link>
 					</Grid>
 					<Grid item xs={1}>
 						<Typography id='goal-display' variant='h6'>
@@ -70,7 +72,7 @@ const LeagueHomeFixtures = ({fixtures, uniqueDates}) => {
 				let NewSectionHeading;
 				if (!match_dates.has(match_date.split('T')[0])) {
 					NewSectionHeading = (
-						<Typography variant="h6" gutterBottom className='new-date-heading'>
+						<Typography variant="subtitle1" gutterBottom className='new-date-heading'>
 							{day_name}, {formatDate(match_date)}
 						</Typography>
 					)
@@ -82,7 +84,7 @@ const LeagueHomeFixtures = ({fixtures, uniqueDates}) => {
 						<ListItem disablePadding className='home-fixture-li-container'>
 							<ListItemButton>
 								<Box className='home-fixture-li'>
-									<Typography id='time-element'>
+									<Typography id='time-element' variant='body2'>
 										<DisplayTime match={fixture}/>
 									</Typography>
 									{displayTeams(fixture)}
@@ -107,7 +109,7 @@ const LeagueHomeFixtures = ({fixtures, uniqueDates}) => {
 			<Typography variant="h6" gutterBottom className='section-heading'>
 				Upcoming Fixtures
 			</Typography>
-			<List>
+			<List id='league-home-fixture-ul'>
 				{displayUpcomingFixtures(fixtures)}
 			</List>
 		</Paper>

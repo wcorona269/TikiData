@@ -3,7 +3,10 @@
 	top: 0;
 	background-color: var(--white);
 	z-index: 1000;
-	border-bottom: 2px solid var(--gray)
+	border-bottom: 2px solid var(--gray);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .section-heading {

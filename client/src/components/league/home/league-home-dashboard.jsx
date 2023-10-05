@@ -18,15 +18,17 @@ const LeagueHomeDashboard = ({ news, fixtures, uniqueDates, table, top_scorers }
 				{leagueName} Home
 			</Typography>
 			<Grid container className='league-home-dashboard'>
-				<Grid item xs={4}>
+				<Grid item xs={3.5}>
 					<LeagueHomeFixtures fixtures={fixtures} uniqueDates={uniqueDates}/>
 				</Grid>
 				<Grid item xs={5}>
 					<LeagueHomeNews news={news} />
 				</Grid>
-				<Grid item xs={3}>
-					<LeagueHomeTable table={table} />
-					<LeagueHomeStats top_scorers={top_scorers} />
+				<Grid item xs={3.5}>
+					<div className='league-home-stats-column'>
+						<LeagueHomeTable table={table} />
+						<LeagueHomeStats top_scorers={top_scorers} />
+					</div>
 				</Grid>
 			</Grid>
 		</div>
