@@ -25,6 +25,16 @@
 	border-radius: rem !important;
 }
 
+.league-home-paper > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.league-home-paper ul {
+	margin-bottom: 1rem;
+}
+
 .home-fixture-li-container {
 	border-bottom: 2px solid var(--gray);
 }
@@ -76,7 +86,8 @@
 
 #sticky-paper {
 	position: sticky !important;
-	top: 100px !important;
+	display: block;
+	top: 4rem !important;
 	height: fit-content;
 	max-height: 40rem;
 	overflow: scroll;
@@ -87,6 +98,13 @@
 	align-items: center;
 	justify-content: right;
 	width: 100%;
+}
+
+
+#league-home-news ul {
+	height: fit-content;
+	max-height: 80vw;
+	overflow: hidden;
 }
 
 #league-home-news img {
@@ -104,3 +122,4 @@
 .league-home-news-item {
 	border-bottom: 2px solid var(--gray);
 }
+ 

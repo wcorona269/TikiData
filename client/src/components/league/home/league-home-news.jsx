@@ -1,8 +1,13 @@
-import { Box, Grid, List, ListItem, ListItemButton, Paper, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
+import { Box, Grid, List, ListItem, ListItemButton, Pagination, Paper, Stack, Typography } from '@mui/material';
+import { splitArticleIntoPages } from '../../news/sub-articles-timeline';
 
 const LeagueHomeNews = ({news}) => {
-	console.log(news);
+	const [page, setPage] = useState(1);
+
+	const handleChange = (event, newValue) => {
+		setPage(newValue);
+	}
 
 	const displayNews = (news) => {
 		let result = [];
@@ -29,6 +34,8 @@ const LeagueHomeNews = ({news}) => {
 		return result;
 	}
 
+	const articlesByPage = splitArticleIntoPages(news, 20);
+
 	return (
 		<Paper
 			className='league-home-paper'
@@ -39,8 +46,12 @@ const LeagueHomeNews = ({news}) => {
 				News
 			</Typography>
 			<List>
-				{displayNews(news)}
+				{displayNews(articlesByPage[page])}
 			</List>
+			<Stack spacing={2} className='news-pagination'>
+				<Typography>Page</Typography>
+				<Pagination count={articlesByPage.length - 1} page={page} onChange={handleChange} variant="outlined" shape="rounded" />
+			</Stack>
 		</Paper>
 	)
 }
