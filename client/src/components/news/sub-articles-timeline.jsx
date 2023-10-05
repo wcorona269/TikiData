@@ -2,19 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
+export const splitArticleIntoPages = (subArticles, articlesPerPage = 4) => {
+	const result = [];
+	for (let i = 0; i < subArticles.length; i+= articlesPerPage) {
+		result.push(subArticles.slice(i, i + articlesPerPage))
+	}
+	return result;
+}
+
 const SubArticlesTimeline = ({subArticles, printArticles}) => {
 	const [page, setPage] = useState(1);
-	const [scrollPosition, setScrollPosition] = useState(0);
-
-
-	const splitArticleIntoPages = (subArticles, articlesPerPage = 4) => {
-		const result = [];
-		for (let i = 0; i < subArticles.length; i+= articlesPerPage) {
-			result.push(subArticles.slice(i, i + articlesPerPage))
-		}
-		return result;
-	}
-
 	
 	const handleChange = (event, newValue) => {
 		setPage(newValue);
