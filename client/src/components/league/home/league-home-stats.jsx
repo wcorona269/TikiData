@@ -19,9 +19,8 @@ const LeagueHomeStats = ({top_scorers}) => {
 
 	const displayTable = (top_scorers) => {
 		let result = [];
-		let table_size = !showMore ? 6 : 10
 
-		for (let i = 0; i < table_size; i++) {
+		for (let i = 0; i < top_scorers.length; i++) {
 			const id = top_scorers[i].player.id;
 			const name = top_scorers[i].player.name;
 			const photo = top_scorers[i].player.photo;
@@ -47,23 +46,33 @@ const LeagueHomeStats = ({top_scorers}) => {
 	}
 
 	return (
-		<Paper className='league-home-paper' id='league-home-table' elevation={6} sx={{ my: 2 }}>
+		<Paper className='league-home-paper' id='league-home-table' elevation={6}>
 			<Typography variant='h6' gutterBottom className='section-heading' >
 				Top Scorers
 			</Typography>
-			<TableContainer>
-				<Table size='small' aria-label='a dense table'>
-					<TableHead>
-						<TableRow>
-							<TableCell align='left'>Player</TableCell>
-							<TableCell align='right'>Goals</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{displayTable(top_scorers)}
-					</TableBody>
-				</Table>
-			</TableContainer>
+			<div
+				style={{
+					height: showMore ? '600px' : '250px',
+					overflow: 'hidden',
+					transition: 'height 0.3s ease-in-out',
+					display: 'flex',
+					alignItems: 'flex-start'
+				}}
+			>
+				<TableContainer>
+					<Table size='small' aria-label='a dense table'>
+						<TableHead>
+							<TableRow>
+								<TableCell align='left'>Player</TableCell>
+								<TableCell align='right'>Goals</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{displayTable(top_scorers)}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</div>
 			<Button variant="outlined" startIcon={!showMore ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />} onClick={handleChange} className='show-more-button'>
 				{!showMore ? 'Show More' : 'Show Less'}
 			</Button>

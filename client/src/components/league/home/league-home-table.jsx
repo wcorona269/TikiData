@@ -58,20 +58,31 @@ const LeagueHomeTable = ({table}) => {
 			<Typography variant='h6' gutterBottom className='section-heading'>
 				Table
 			</Typography>
-			<TableContainer>
-				<Table size='small' aria-label='a dense table'>
-					<TableHead>
-						<TableRow>
-							<TableCell align='left'>Team</TableCell>
-							<TableCell align='center'>MP</TableCell>
-							<TableCell align='center'>P</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{displayTable(table)}
-					</TableBody>
-				</Table>
-			</TableContainer>
+			<div
+				style={{
+					height: showMore ? '700px' : '250px',
+					overflow: 'hidden',
+					transition: 'height 0.3s ease-in-out',
+					display: 'flex',
+					alignItems: 'flex-start',
+					justifyContent: 'center'
+				}}
+			>
+				<TableContainer>
+					<Table size='small' aria-label='a dense table'>
+						<TableHead>
+							<TableRow>
+								<TableCell align='left'>Team</TableCell>
+								<TableCell align='center'>MP</TableCell>
+								<TableCell align='center'>P</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{displayTable(table)}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</div>
 			<Button variant="outlined" startIcon={!showMore ? <ArrowDropDownIcon/> : <ArrowDropUpIcon/>} onClick={handleChange} className='show-more-button'>
 				{!showMore ? 'Show More' : 'Show Less'}
 			</Button>

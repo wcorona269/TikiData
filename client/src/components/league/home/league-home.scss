@@ -13,6 +13,10 @@
 
 .league-home-paper th {
 	padding: .1rem;
+
+	&:first-child {
+		padding-left: 1rem;
+	}
 }
 
 .league-home-dashboard > div {
@@ -24,8 +28,9 @@
 
 .league-home-paper {
 	width: 95%;
-	border-radius: rem !important;
+	border-radius: .5rem !important;
 	margin-bottom: 1rem;
+	transition: height 0.5s ease-in-out;
 }
 
 .league-home-paper > div {
@@ -126,6 +131,7 @@
 }
 
 .news-item-title h6 {
+	line-height: 1.25 !important;
 	font-family: 'Ubuntu', sans-serif !important;
 }
 
@@ -148,7 +154,6 @@
 
 #league-home-table {
 	height: fit-content;
-	max-height: 400rem;
 	transition: height .3s ease-in-out;
 }
 
