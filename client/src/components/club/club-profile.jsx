@@ -59,7 +59,7 @@ const ClubProfile = () => {
 		<div className='club-profile-container'>
 			<Paper
 				className='home-paper'
-				sx={{width: '100%'}}
+				sx={{ width: '100%', height: 'fit-content' }}
 			>
 				<ClubProfileNavBar club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
 				<div>
@@ -71,7 +71,7 @@ const ClubProfile = () => {
 				{ selectedTab === 0 && <ClubHomeDashboard club={club} fixtures={fixtures} squad={squad} news={news} /> }
 				{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures}/> }
 				{ selectedTab === 2 && <ClubStatsDashboard stats={stats} /> }
-				{ selectedTab === 3 && <ClubSquadDashboard squad={squad}  /> }
+				{ selectedTab === 3 && <ClubSquadDashboard squad={squad[0].players}  /> }
 			</Paper>
 		</div>
 	)

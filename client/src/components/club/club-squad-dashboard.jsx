@@ -1,33 +1,63 @@
 import './club-squad.scss';
 import React from 'react';
 import ClubSquadListItem from './club-squad-list-item';
+import { Avatar, Grid, Paper, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const ClubSquadDashboard = ({squad}) => {
-	let columns = ['Name', 'Age', 'Pos']
-	const sortedSquad = squad.sort((a, b) => {
-		if (a.position > b.position) {
-			return -1
-		} else if (a.position > b.position) {
-			return 1
-		} 
-		return 0;
+	let columns = ['Name', 'Age', 'Pos'];
+
+	let squadPositions = {
+
+	}
+
+	squad.map(player => {
+		const position = player.position
+		if (!(position in squadPositions)) {
+			squadPositions[position] = [];
+		}
+		squadPositions[position].push(player);
 	})
 
+	const displaySquad = (squadPositions) => {
+		let result = []
+		for (let key in squadPositions) {
+			result.push(
+				<Typography variant='h5'>{key}s</Typography>
+			)
+			
+			let grid_items = []
+			let grid = <Grid container >{grid_items}</Grid>
+
+			for (let player of squadPositions[key]) {
+				console.log(player)
+				grid_items.push(
+					<Grid item xs={2} key={player.name} className='club-squad-grid-item' >
+						<Paper id='club-squad-paper' elevation={6}>
+							<Link to={`/player-profile/${player.id}`}>
+								<img src={player.photo}/>
+								<Typography variant='subtitle2'>
+									{player.name}
+								</Typography>
+								<Typography variant='caption' className='player-age'>
+									age: {player.age}
+								</Typography>
+							</Link>
+						</Paper>
+					</Grid>
+				)
+			}
+
+			result.push(grid);
+		}
+
+		return result;
+	}
+
 	return (
-		<table id='club-squad-table'>
-			<thead id='club-squad-table-head'>
-				<tr>
-					{columns.map((column, idx) => (
-						<th key={idx} className='club-squad-list-header' id={column}>{column}</th>
-					))}
-				</tr>
-			</thead>
-			<tbody className='club-squad-list-body'>
-				{sortedSquad.map((player, idx) => (
-					<ClubSquadListItem player={player} idx={idx} key={idx} />
-				))}
-			</tbody>
-		</table>
+		<div className='club-squad-dashboard'>
+			{displaySquad(squadPositions)}
+		</div>
 	)
 }
 
