@@ -41,7 +41,7 @@ const LeagueHomeNews = ({news}) => {
 
 	return (
 		<Paper
-			className='league-home-paper'
+			className='home-paper'
 			id='league-home-news'
 			elevation={6}
 		>

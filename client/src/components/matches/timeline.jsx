@@ -1,12 +1,11 @@
 import './timeline.scss';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import TimelineNavBar from './nav-bar/timeline-nav-bar';
 import TimelineMatchDisplay from './table/timeline-match-display';
 import LoadingMessage from '../util/loading/loading-screen';
 import { fetchMatches } from '../../actions/api_actions';
 import NoDataMessage from '../util/no-data/no-data-message';
-import ResetFilters from './nav-bar/reset-filters';
+import { Grid, Paper } from '@mui/material';
 
 const MatchesTimeline = ({apiKey}) => {
 	const dispatch = useDispatch();
@@ -57,6 +56,7 @@ const MatchesTimeline = ({apiKey}) => {
 
 	const sortedMatches = sortMatches();
 	const listOfNations = ['All', ...Object.keys(sortedMatches)];
+	const nationsSet = new Set(listOfNations);
 	const [selectedNation, setSelectedNation] = useState(listOfNations[0]);
 	const [filter, setFilter] = useState('');
 	
@@ -80,17 +80,22 @@ const MatchesTimeline = ({apiKey}) => {
 
 	return (
 		<div className='matches-timeline'>
-			<TimelineNavBar 
-				selectedNation={selectedNation}
-				nations={listOfNations}
-				onTabSelect={handleTabSelect}
-				date={date}
-				setDate={setDate}
-				resetFilters={resetFilters}
-				filter={filter}
-				setFilter={setFilter}
-			/>
-			<TimelineMatchDisplay matches={sortedMatches} competitions={competitions} selectedNation={selectedNation}/>
+					<Paper
+						className='home-paper'
+						elevation={6}
+					>
+						<TimelineMatchDisplay 
+							matches={sortedMatches} 
+							competitions={competitions}
+							selectedNation={selectedNation}
+							setSelectedNation={setSelectedNation}
+							nations={listOfNations}
+							nationsSet={nationsSet}
+							onTabSelect={handleTabSelect}
+							setDate={setDate}
+							date={date}
+							/>
+					</Paper>
 		</div>
 	)
 }

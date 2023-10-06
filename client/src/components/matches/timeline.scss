@@ -7,9 +7,10 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: white;
+	background-color: var(--gray);
 	border-radius: .5rem;
 	box-shadow: var(--box-shadow);
+	padding: 1rem;
 }
 
 .matches-timeline > ul {
@@ -25,3 +26,6 @@
 	}
 }
 
+.matches-timeline ul {
+	padding: .5rem;
+}

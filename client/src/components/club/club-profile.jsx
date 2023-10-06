@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchClub, fetchClubSeasons, fetchClubStats, removeClub } from '../../actions/api_actions';
 import response from './response';
 import LoadingMessage from '../util/loading/loading-screen';
-import ClubProfileHeader from './club-profile-header';
+import ClubProfileNavBar from './club-profile-nav-bar';
+import { Box, Paper, Typography } from '@mui/material';
 
 const ClubProfile = () => {
 	const { clubId } = useParams();
@@ -14,18 +15,19 @@ const ClubProfile = () => {
 	const [season, setSeason] = useState('2023/24');
 	const [showSeason, setShowSeason] = useState(false);
 	const isLoading = useSelector(state => state.club.isLoading);
+	const [selectedTab, setSelectedTab] = useState(0);
 
 	const club = useSelector(state => state.club.club);
 	const fixtures = useSelector(state => state.club.fixtures);
 	const squad = useSelector(state => state.club.squad);
 	const stats = useSelector(state => state.club.stats);
-	const seasons = useSelector(state => state.club.seasons)
+	const seasons = useSelector(state => state.club.seasons);
 
 	useEffect(() => {
 		let formattedSeason = season.split('/')[0]
 
 		if (!isLoading) {
-			dispatch(fetchClub(clubId, formattedSeason));
+			// dispatch(fetchClub(clubId, formattedSeason));
 		}
 	}, [season]);
 
@@ -54,14 +56,39 @@ const ClubProfile = () => {
 				competitions[fixture.league.name] = fixture.league.id;
 			}
 		}
-	
+		
 		return competitions;
+	}
+
+	const clubInfo = club[0];
+
+	let name = clubInfo.team.name || 'N/A';
+	let logo = clubInfo.team.logo || 'N/A';
+	let city = clubInfo.venue.city || 'N/A';
+	let country = clubInfo.team.country || 'N/A';
+
+
+	let clubDetails = {
+		'Founded': clubInfo.team.founded || 'N/A',
+		'Location': `${city}, ${country}`,
+		'Stadium': clubInfo.venue.name || 'N/A',
+		'Capacity': clubInfo.venue.capacity || 'N/A',
+		'Address': clubInfo.venue.address || 'N/A',
+		'Surface': clubInfo.venue.surface || 'N/A'
 	}
 
 	return (
 		<div className='club-profile-container'>
-			<ClubProfileHeader club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} showSeason={showSeason} setShowSeason={setShowSeason} availableSeasons={seasons}/>
-			<ClubInfoBar fixtures={fixtures} squad={squad} stats={stats}/>
+			<Paper
+				className='home-paper'
+			>
+				<Box
+					sx={{display: 'flex', flexDirection: 'column', width: '100%'}}
+				>
+					<ClubProfileNavBar club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
+					<ClubInfoBar fixtures={fixtures} squad={squad} stats={stats} selectedTab={selectedTab} />
+				</Box>
+			</Paper>
 		</div>
 	)
 }

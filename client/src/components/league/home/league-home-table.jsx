@@ -54,7 +54,7 @@ const LeagueHomeTable = ({table}) => {
 
 	
 	return (
-		<Paper className='league-home-paper' id='league-home-table' elevation={6}>
+		<Paper className='home-paper' id='league-home-table' elevation={6}>
 			<Typography variant='h6' gutterBottom className='section-heading'>
 				Table
 			</Typography>

@@ -1,18 +1,26 @@
 .timeline-nav-bar {
 	position: sticky;
 	top: 0;
-	/* Stick to the top of the container when scrolling */
-	width: 100%;
+	width: 95%;
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 	background-color: var(--white);
-	border-top-left-radius: .5rem;
-	border-top-right-radius: .5rem;
+	border-radius: .5rem;
+	padding: .5rem;
 }
 
 .timeline-nav-bar > div {
 	display: flex;
-	flex-direction: row;
-	padding: 1rem;
-	// justify-content: center;
+	flex-direction: column;
+
+	
+	&:last-child {
+		width: 80%;
+	}
+}
+
+.reset-filters {
+	background-color: var(--gray) !important;
+	color: var(--darkgray) !important;
+	width: 100%;
 }

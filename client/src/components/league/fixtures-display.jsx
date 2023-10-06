@@ -53,8 +53,6 @@ const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 		return result;
 	}
 
-	// console.log(fixturesByDate);
-
 	return (
 		<div className='fixtures-display'>
 			{displayFixturesByDate(fixturesByDate)}

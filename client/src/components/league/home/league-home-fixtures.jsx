@@ -102,7 +102,7 @@ const LeagueHomeFixtures = ({fixtures, uniqueDates}) => {
 
 	return (
 		<Paper 
-			className='league-home-paper'
+			className='home-paper'
 			id='sticky-paper'
 			elevation={6}
 		>

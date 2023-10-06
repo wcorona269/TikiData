@@ -6,7 +6,6 @@ import DisplayTime from '../../util/display-time';
 const MatchTimelineTable = ({nation, matches}) => {
 
 	const displayMatch = (match) => {
-		console.log(match);
 		const homeTeamName = match.teams.home.name;
 		const homeTeamLogo = match.teams.home.logo;
 		const awayTeamName = match.teams.away.name;
