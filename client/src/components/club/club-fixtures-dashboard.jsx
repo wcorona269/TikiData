@@ -2,6 +2,7 @@ import './club-fixtures.scss';
 import React from 'react'
 import ClubFixtureListItem from './club-fixture-list-item';
 import monthsOfYear from './monthsOfYear';
+import { Grid } from '@mui/material';
 
 const ClubFixturesDashboard = ({fixtures}) => {
 	const fixturesSortedByDate = fixtures.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date));
@@ -11,7 +12,7 @@ const ClubFixturesDashboard = ({fixtures}) => {
 		const dateString = fixture.fixture.date;
 		const date = new Date(dateString);
 		const year = date.getFullYear();
-		const month = date.getMonth()
+		const month = date.getMonth();
 
 		const monthOfMatch = `${monthsOfYear[month]} ${year}`
 
@@ -26,7 +27,7 @@ const ClubFixturesDashboard = ({fixtures}) => {
 
 	return (
 		<div className='club-fixtures-dashboard'>
-			<ul>
+			<Grid container>
 				{fixturesSortedByDate.map((fixture, idx) => {
 
 					const [boolean, month] = determineNewMonth(fixture);
@@ -41,7 +42,7 @@ const ClubFixturesDashboard = ({fixtures}) => {
 							/>
 					)
 			})}
-			</ul>
+			</Grid>
 		</div>
 	)
 }

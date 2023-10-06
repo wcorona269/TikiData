@@ -1,20 +1,24 @@
-.club-fixture-list-item {
+#club-fixture-list-item {
+	padding: .5rem;
+	width: 80%;
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+	flex-direction: column;
 }
 
-#new-month-p {
-	margin-top: .5rem;
-	margin-bottom: 4px;
-	font-family: 'Ubuntu-Bold', sans-serif;
+#club-fixture-grid-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#club-fixture-list-item img {
+	height: 1rem;
+	width: 1rem;
+}
+
+.club-fixture-li-header {
+	display: flex !important;
+	flex-direction: row !important;
+	justify-content: space-between !important;
 	width: 100%;
-	text-align: left;
-	border-bottom: 1px solid var(--gray);
-	color: var(--darkgray);
-	padding-bottom: 4px;
-}
-
-.club-fixtures-list-row {
-	padding: .2rem;
 }

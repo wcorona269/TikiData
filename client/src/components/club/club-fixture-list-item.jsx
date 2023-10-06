@@ -1,6 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import monthsOfYear from './monthsOfYear';
+import { Box, Grid, Paper, Typography } from '@mui/material';
+import HomeFixturesComponent from '../league/home/league-home-fixtures';
 
 export const formatDate = (date) => {
 	const dateString = new Date(date)
@@ -20,7 +22,6 @@ const ClubFixtureListItem = ({fixture, idx, isNewMonth, month}) => {
 	const awayGoals = fixture.goals.away;
 
 
-
 	const displayResult = () => {		
 		if (!homeGoals || !awayGoals) {
 			return '-'
@@ -36,26 +37,28 @@ const ClubFixtureListItem = ({fixture, idx, isNewMonth, month}) => {
 
 		return `L ${homeGoals} - ${awayGoals}`
 	}
+	{console.log(fixture)}
 
 	return (
-		<div className='club-fixtures-list-row'>
+		<>
 			{
 				isNewMonth &&
-				<p key={idx + 100} id='new-month-p'>
+				<Grid item xs={12} key={idx + 100}>
 					{month}
-				</p>}
-			<li key={idx} className='club-fixture-list-item'>
-				<p className='club-fixture-li-date'>
-					{formatDate(fixture.fixture.date)}
-				</p>
-				<p className='club-fixture-li-opponent'>
-					{versus} {opponent}
-				</p>
-				<p className='club-fixture-li-result'>
-					{displayResult()}
-				</p>
-			</li>
-		</div>
+				</Grid>}
+			<Grid item xs={3} key={idx} id='club-fixture-grid-item' >
+				<Paper className='home-paper' id='club-fixture-list-item' >
+					<Grid>
+						<Box className='club-fixture-li-header'>
+							<Typography variant='subtitle2'>
+								{formatDate(fixture.fixture.date)}
+							</Typography>
+							<img src={fixture.league.logo}/>
+						</Box>
+					</Grid>
+				</Paper>
+			</Grid>
+			</>
 	)
 }
 
