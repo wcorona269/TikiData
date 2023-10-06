@@ -24,6 +24,7 @@ const clubReducer = (state = initialState, action) => {
 				fixtures: [...action.payload['fixtures']], // Create a new array
 				seasons: action.payload['seasons'],
 				stats: action.payload['stats'],
+				news: action.payload['news'],
 				isLoading: false,
 				error: null
 			};

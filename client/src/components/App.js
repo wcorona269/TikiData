@@ -30,6 +30,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: 'Ubuntu-Bold',
+    ubuntu: 'Ubuntu',
+    light: 'Ubuntu-Light',
+    regular: 'Ubuntu-Regular'
   }
 })
 

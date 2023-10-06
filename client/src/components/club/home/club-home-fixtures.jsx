@@ -2,19 +2,19 @@ import React from 'react'
 import DisplayTime from '../../util/display-time';
 import { formatDate } from '../../club/club-fixture-list-item';
 import { Link } from 'react-router-dom';
-import { 
+import {
 	Box,
-	Paper, 
+	Paper,
 	Grid,
-	Typography, 
+	Typography,
 	List,
 	ListItem,
 	ListItemButton,
 	ListItemText,
- } from '@mui/material'
+} from '@mui/material'
 
 
-const HomeFixturesComponent = ({fixtures}) => {
+const ClubHomeFixtures = ({ fixtures }) => {
 
 	const displayTeams = (fixture) => {
 		let result = [];
@@ -30,7 +30,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 			result.unshift(
 				<Grid container className={winner === true ? 'winning team' : ''}>
 					<Grid item xs={2}>
-							<img src={team_logo} />
+						<img src={team_logo} />
 					</Grid>
 					<Grid item xs={9}>
 						<Link to={`/club/${team_id}`}>
@@ -66,8 +66,8 @@ const HomeFixturesComponent = ({fixtures}) => {
 			const day_of_week = new Date(fixture.fixture.date).getDay();
 			const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 			const day_name = days[day_of_week];
-			
-			if (new Date(match_date) > today ) {
+
+			if (new Date(match_date) > today) {
 				let NewSectionHeading;
 				if (!match_dates.has(match_date.split('T')[0])) {
 					NewSectionHeading = (
@@ -84,7 +84,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 							<ListItemButton>
 								<Box className='home-fixture-li'>
 									<Typography id='time-element' variant='body2'>
-										<DisplayTime match={fixture}/>
+										<DisplayTime match={fixture} />
 									</Typography>
 									{displayTeams(fixture)}
 								</Box>
@@ -100,7 +100,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 
 
 	return (
-		<Paper 
+		<Paper
 			className='home-paper'
 			id='sticky-paper'
 			elevation={6}
@@ -115,4 +115,4 @@ const HomeFixturesComponent = ({fixtures}) => {
 	)
 }
 
-export default HomeFixturesComponent;
+export default ClubHomeFixtures;

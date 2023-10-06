@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import ClubInfoBar from './club-info-bar';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchClub, fetchClubSeasons, fetchClubStats, removeClub } from '../../actions/api_actions';
 import response from './response';
 import LoadingMessage from '../util/loading/loading-screen';
 import ClubProfileNavBar from './club-profile-nav-bar';
+import ClubFixturesDashboard from './club-fixtures-dashboard';
+import ClubSquadDashboard from './club-squad-dashboard';
+import ClubStatsDashboard from './club-stats-dashboard';
+import ClubHomeDashboard from './home/club-home-dashboard';
 import { Box, Paper, Typography } from '@mui/material';
 
 const ClubProfile = () => {
@@ -22,12 +25,13 @@ const ClubProfile = () => {
 	const squad = useSelector(state => state.club.squad);
 	const stats = useSelector(state => state.club.stats);
 	const seasons = useSelector(state => state.club.seasons);
+	const news = useSelector(state => state.club.news);
 
 	useEffect(() => {
 		let formattedSeason = season.split('/')[0]
 
 		if (!isLoading) {
-			// dispatch(fetchClub(clubId, formattedSeason));
+			dispatch(fetchClub(clubId, formattedSeason))
 		}
 	}, [season]);
 
@@ -47,47 +51,27 @@ const ClubProfile = () => {
 		setSeason(year);
 	}
 
-	
-	const listCompetitions = (fixtures) => {
-		let competitions = {}
-	
-		for (let fixture of fixtures) {
-			if (!(fixture.league.name in competitions)) {
-				competitions[fixture.league.name] = fixture.league.id;
-			}
-		}
-		
-		return competitions;
-	}
-
 	const clubInfo = club[0];
-
 	let name = clubInfo.team.name || 'N/A';
 	let logo = clubInfo.team.logo || 'N/A';
-	let city = clubInfo.venue.city || 'N/A';
-	let country = clubInfo.team.country || 'N/A';
-
-
-	let clubDetails = {
-		'Founded': clubInfo.team.founded || 'N/A',
-		'Location': `${city}, ${country}`,
-		'Stadium': clubInfo.venue.name || 'N/A',
-		'Capacity': clubInfo.venue.capacity || 'N/A',
-		'Address': clubInfo.venue.address || 'N/A',
-		'Surface': clubInfo.venue.surface || 'N/A'
-	}
 
 	return (
 		<div className='club-profile-container'>
 			<Paper
 				className='home-paper'
+				sx={{width: '100%'}}
 			>
-				<Box
-					sx={{display: 'flex', flexDirection: 'column', width: '100%'}}
-				>
-					<ClubProfileNavBar club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
-					<ClubInfoBar fixtures={fixtures} squad={squad} stats={stats} selectedTab={selectedTab} />
-				</Box>
+				<ClubProfileNavBar club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
+				<div>
+					<Typography variant='h5' className='section-heading' sx={{width: '100%', justifyContent: 'left'}} >
+						<img src={logo} />
+						{name}
+					</Typography>
+				</div>
+				{ selectedTab === 0 && <ClubHomeDashboard club={club} fixtures={fixtures} squad={squad} news={news} /> }
+				{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures}/> }
+				{ selectedTab === 2 && <ClubStatsDashboard stats={stats} /> }
+				{ selectedTab === 3 && <ClubSquadDashboard squad={squad}  /> }
 			</Paper>
 		</div>
 	)

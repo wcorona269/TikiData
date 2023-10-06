@@ -56,7 +56,7 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 	}
 
 	const filter_options = ['All', 'World', 'China', 'England', 'France', 'Germany', 'Portugal', 'Spain', 'USA']
-	console.log({nationsSet})
+
 	return (
 		<>
 			<Box

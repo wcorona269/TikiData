@@ -1,6 +1,6 @@
 import './league-home.scss'
 import { Paper, Typography, Grid } from '@mui/material';
-import LeagueHomeFixtures from './league-home-fixtures';
+import HomeFixturesComponent from './league-home-fixtures';
 import LeagueHomeNews from './league-home-news';
 import LeagueHomeStats from './league-home-stats';
 import LeagueHomeTable from './league-home-table';
@@ -19,7 +19,7 @@ const LeagueHomeDashboard = ({ news, fixtures, uniqueDates, table, top_scorers }
 			</Typography>
 			<Grid container className='league-home-dashboard'>
 				<Grid item xs={3.5}>
-					<LeagueHomeFixtures fixtures={fixtures} uniqueDates={uniqueDates}/>
+					<HomeFixturesComponent fixtures={fixtures} uniqueDates={uniqueDates}/>
 				</Grid>
 				<Grid item xs={5}>
 					<LeagueHomeNews news={news} />
