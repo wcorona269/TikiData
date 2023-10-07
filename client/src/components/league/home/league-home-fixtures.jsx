@@ -1,6 +1,6 @@
 import React from 'react'
 import DisplayTime from '../../util/display-time';
-import { formatDate } from '../../club/club-fixture-list-item';
+import { formatDate } from '../../club/club-fixtures-table';
 import { Link } from 'react-router-dom';
 import { 
 	Box,
