@@ -13,48 +13,6 @@
 	width: 100%;
 }
 
-#club-squad-paper {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	width: 80%;
-	background-color: var(--white);
-	border-radius: .5rem;
-	margin-bottom: 1rem;
-	border: 1px solid var(--darkgray);
-	transition: all .3s ease-in-out;
-
-	&:hover {
-		transform: translateY(-4px);
-		background-color: var(--gray);
-		box-shadow: var(--box-shadow)
-	}
-}
-
-.player-age {
-	color: var(--darkgray);
-	text-decoration: none !important;
-	font-family: 'Ubuntu' !important;
-}
-
-#club-squad-paper a {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	color: black;
-	text-decoration: none;
-}
-
-#club-squad-paper img {
-	border-radius: .5rem;
-	height: 70%;
-	width: 70%;
-	margin-bottom: .5rem;
-}
-
 .club-squad-grid-item {
 	display: flex;
 	justify-content: center;

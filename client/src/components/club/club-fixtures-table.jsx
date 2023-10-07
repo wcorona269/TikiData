@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import monthsOfYear from './monthsOfYear';
 import { Box, Grid, Paper, TableBody, TableCell, TableRow, ThemeProvider, Typography, createTheme } from '@mui/material';
 import HomeFixturesComponent from '../league/home/league-home-fixtures';
@@ -21,6 +21,11 @@ const theme = createTheme({
 
 const ClubFixturesTable = ({fixtures}) => {
 	const { clubId } = useParams();
+	const navigate = useNavigate();
+
+	const handleClick = (id) => {
+		navigate(`/match-overview/${id}`);
+	}
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -33,7 +38,7 @@ const ClubFixturesTable = ({fixtures}) => {
 					let score = [fixture.goals.home || 0, fixture.goals.away || 0];
 
 					return (
-						<TableRow>
+						<TableRow onClick={() => handleClick(fixture.fixture.id)} >
 							<TableCell sx={{width: '50px'}}>
 								{formatDate(fixture.fixture.date)}
 							</TableCell>
@@ -43,11 +48,13 @@ const ClubFixturesTable = ({fixtures}) => {
 								</Link>
 							</TableCell>
 							<TableCell align='center' sx={{width: '100px'}}>
-								<Box sx={{ margin: 'auto', width: '75px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
-									<img src={logos[0]}/>
-									{score[0]} - {score[1]}
-									<img src={logos[1]}/>
-								</Box>
+								<Link to={`/match-overview/${fixture.fixture.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+									<Box sx={{ margin: 'auto', width: '75px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
+										<img src={logos[0]}/>
+										{score[0]} - {score[1]}
+										<img src={logos[1]}/>
+									</Box>
+								</Link>
 							</TableCell>
 							<TableCell sx={{width: '150px', whiteSpace: 'nowrap', overflow: 'hidden'}}>
 								<Link to={`/club/${ids[1]}`}>

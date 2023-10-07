@@ -1,23 +1,29 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-const ClubSquadListItem = ({player, idx, isNewPos}) => {
+const ClubSquadListItem = ({player}) => {
 	return (
-		<tr key={idx} className='club-squad-list-row'>
-			<td>
-				<Link to={`/player-profile/${player.id}`}>
-					<img src={player.photo} alt={player.name}/>
+		<Card sx={{ width: '100%', height: 'fit-content', margin: '.5rem' }}>
+			<img src={player.photo} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}/>
+			<CardContent>
+				<Typography gutterBottom variant="subtitle1" component="div">
 					{player.name}
-				</Link>
-			</td>
-			<td id='center-align'>
-				{player.age}
-			</td>
-			<td id="center-align">
-				{player.position}
-			</td>
-		</tr>
-	)
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					Age: {player.age}
+					<br></br>
+					No: {player.number}
+				</Typography>
+			</CardContent>
+			<CardActions>
+			</CardActions>
+		</Card>
+	);
 }
 
 export default ClubSquadListItem;

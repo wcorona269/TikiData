@@ -33,17 +33,7 @@ const ClubSquadDashboard = ({squad}) => {
 				console.log(player)
 				grid_items.push(
 					<Grid item xs={2} key={player.name} className='club-squad-grid-item' >
-						<Paper id='club-squad-paper' elevation={6}>
-							<Link to={`/player-profile/${player.id}`}>
-								<img src={player.photo}/>
-								<Typography variant='subtitle2'>
-									{player.name}
-								</Typography>
-								<Typography variant='caption' className='player-age'>
-									age: {player.age}
-								</Typography>
-							</Link>
-						</Paper>
+						<ClubSquadListItem player={player} />
 					</Grid>
 				)
 			}

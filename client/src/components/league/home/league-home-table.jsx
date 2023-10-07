@@ -23,10 +23,10 @@ const LeagueHomeTable = ({table}) => {
 	const displayTable = (table) => {
 		let result = [];
 		let standings = table[0].league.standings[0];
-		let table_size = !showMore ? 6 : standings.length
+		let table_size = !showMore ? 6 : standings.length;
+
 
 		for (let i = 0; i < table_size; i++) {
-			const rank = standings[i].rank;
 			const logo = standings[i].team.logo;
 			const team_id = standings[i].team.id;
 			const team = standings[i].team.name;
@@ -50,6 +50,10 @@ const LeagueHomeTable = ({table}) => {
 		}
 
 		return result;
+	}
+
+	if (table[0].league.standings[0]?.team?.logo === undefined) {
+		return;
 	}
 
 	
