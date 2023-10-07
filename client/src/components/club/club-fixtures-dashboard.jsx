@@ -42,14 +42,14 @@ const ClubFixturesDashboard = ({fixtures}) => {
 
 				return (
 					<>
-						<Box sx={{width: '100%', backgroundColor: 'var(--gray)'}}>
+						<Box sx={{width: '100%', backgroundColor: 'var(--white)'}}>
 							<Typography variant='subtitle1' sx={{padding: '1rem'}}>
 								{month}
 							</Typography>
 						</Box>
 						<TableContainer>
 							<Table>
-								<TableHead>
+								<TableHead sx={{backgroundColor: 'var(--gray)'}}>
 									<TableRow>
 										<TableCell align='left' sx={{padding: '16px !important'}}>
 											Date

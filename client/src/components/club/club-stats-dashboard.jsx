@@ -1,8 +1,11 @@
-import './club-stats.scss';
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchClubStats } from '../../actions/api_actions';
+import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow } from '@mui/material';
+import YellowCard from '../../images/yellow.png';
+import RedCard from '../../images/red.png';
 
 const ClubStatsDashboard = ({ stats }) => {
 	let totals = {}
@@ -56,62 +59,68 @@ const ClubStatsDashboard = ({ stats }) => {
 			totals['clean_sheets'] += cleanSheets;
 
 			result.push(
-				<tr key={competition}>
-					<td>{competition}</td>
-					<td>{played}</td>
-					<td>{wins}</td>
-					<td>{losses}</td>
-					<td>{draws}</td>
-					<td>{goalsForced}</td>
-					<td>{goalsConceded}</td>
-					<td>{goalDifference}</td>
-					<td>{yellowCards}</td>
-					<td>{redCards}</td>
-					<td>{cleanSheets}</td>
-				</tr>
+				<TableRow key={competition}>
+					<TableCell sx={{borderRight: '1px solid var(--gray)', display: 'flex', alignItems: 'center'}}>
+						<img src={logo} style={{ width: '1rem', height: '1rem', marginRight: '.5rem'}}/>
+						{competition}
+					</TableCell>
+					<TableCell>{played}</TableCell>
+					<TableCell>{wins}</TableCell>
+					<TableCell>{draws}</TableCell>
+					<TableCell>{losses}</TableCell>
+					<TableCell>{goalsForced}</TableCell>
+					<TableCell>{goalsConceded}</TableCell>
+					<TableCell>{goalDifference}</TableCell>
+					<TableCell>{yellowCards}</TableCell>
+					<TableCell>{redCards}</TableCell>
+					<TableCell>{cleanSheets}</TableCell>
+				</TableRow>
 			)
 		}
 
 		result.push(
-			<tr key={totals} id='totals'>
-				<td>All</td>
-				<td>{totals['played']}</td>
-				<td>{totals['wins']}</td>
-				<td>{totals['losses']}</td>
-				<td>{totals['draws']}</td>
-				<td>{totals['goals_forced']}</td>
-				<td>{totals['goals_conceded']}</td>
-				<td>{totals['goals_forced'] - totals['goals_conceded']}</td>
-				<td>{totals['yellow_cards']}</td>
-				<td>{totals['red_cards']}</td>
-				<td>{totals['clean_sheets']}</td>
-			</tr>
+			<TableRow key={totals} id='totals' sx={{ backgroundColor: 'var(--gray)' }}>
+				<TableCell>All</TableCell>
+				<TableCell>{totals['played']}</TableCell>
+				<TableCell>{totals['wins']}</TableCell>
+				<TableCell>{totals['draws']}</TableCell>
+				<TableCell>{totals['losses']}</TableCell>
+				<TableCell>{totals['goals_forced']}</TableCell>
+				<TableCell>{totals['goals_conceded']}</TableCell>
+				<TableCell>{totals['goals_forced'] - totals['goals_conceded']}</TableCell>
+				<TableCell>{totals['yellow_cards']}</TableCell>
+				<TableCell>{totals['red_cards']}</TableCell>
+				<TableCell>{totals['clean_sheets']}</TableCell>
+			</TableRow>
 		)
 		return result;
 	}
 
 
 	return (
-		<table className='club-stats-table'>
-			<thead>
-				<tr>
-					<th>Competition</th>
-					<th>Played</th>
-					<th>Wins</th>
-					<th>Losses</th>
-					<th>Draws</th>
-					<th>GF</th>
-					<th>GC</th>
-					<th>GD</th>
-					<th>Yellow Cards</th>
-					<th>Red Cards</th>
-					<th>Clean Sheets</th>
-				</tr>
-			</thead>
+		<TableContainer>
+		<Table>
+			<TableHead>
+				<TableRow sx={{backgroundColor: 'var(--gray)'}}>
+					<TableCell sx={{ padding: '16px !important' }}>Competition</TableCell>
+					<TableCell sx={{ padding: '16px !important' }}>MP</TableCell>
+					<TableCell sx={{ padding: '16px !important' }}>W</TableCell>
+					<TableCell sx={{ padding: '16px !important' }}>D</TableCell>
+					<TableCell sx={{ padding: '16px !important' }}>L</TableCell>
+					<TableCell sx={{ padding: '16px !important' }}>GF</TableCell>
+					<TableCell sx={{ padding: '16px !important' }}>GC</TableCell>
+					<TableCell sx={{ padding: '16px !important' }}>GD</TableCell>
+					<TableCell sx={{ padding: '16px !important' }}><img src={YellowCard} style={{ width: '1rem', height: '1rem'}}/></TableCell>
+						<TableCell sx={{ padding: '16px !important' }}><img src={RedCard} style={{ width: '1rem', height: '1rem' }} /></TableCell>
+					<TableCell sx={{ padding: '16px !important' }}>Clean Sheets</TableCell>
+				</TableRow>
+			</TableHead>
 			<tbody>
 				{displayTeamStats(stats)}
 			</tbody>
-		</table>
+		</Table>
+
+		</TableContainer>
 	)
 }
 
