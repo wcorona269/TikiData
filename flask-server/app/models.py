@@ -1,3 +1,4 @@
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import CheckConstraint
 from flask_login import UserMixin
@@ -9,6 +10,7 @@ bcrypt = Bcrypt()
 db = SQLAlchemy()
 
 
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     
@@ -17,6 +19,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     favorites = db.relationship('Favorite', back_populates='user')
+    posts = db.relationship('Post', back_populates='user')
     
     # Methods required by Flask-Login
     def get_id(self):
@@ -53,3 +56,18 @@ class Favorite(db.Model):
   def __repr__(self):
       return f"Favorite('{self.club}', '{self.user_id}')"
     
+
+class Post(db.Model):
+  __tablename__ = 'posts'
+  
+  id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
+  text = db.Column(db.String(200), nullable=False)
+  parent_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+  user = db.relationship('User', back_populates='posts')
+
+  # Establishing a relationship with the parent post
+  parent_post = db.relationship('Post', remote_side=[id])
+
+  def __repr__(self):
+      return f'<Post {self.id}>'

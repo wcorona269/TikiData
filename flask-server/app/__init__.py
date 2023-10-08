@@ -1,15 +1,18 @@
 from flask import Flask, jsonify
 from flask_caching import Cache
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from sqlalchemy import create_engine
 from .config import Config
 from app import routes
 from flask_cors import CORS
 from .models import db
+from database import seed_database
 import os
 
 app = Flask(__name__)
+migrate = Migrate(app, db)
 jwt = JWTManager(app)
 CORS(app)
 app.config.from_object(Config)
@@ -32,6 +35,7 @@ app.register_blueprint(routes.club.bp)
 app.register_blueprint(routes.player.bp)
 
 db.init_app(app)
+seed_database(app)
 
 # engine = create_engine(db_url)
 
