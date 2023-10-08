@@ -70,6 +70,17 @@ class Post(db.Model):
 
   # Establishing a relationship with the parent post
   parent_post = db.relationship('Post', remote_side=[id])
+  
+  def to_dict(self):
+      return {
+          'id': self.id,
+          'user_id': self.user_id,
+          'text': self.text,
+          'parent_id': self.parent_id,
+          # Convert datetime to string
+          'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S')
+          # Add other fields as needed
+      }
 
   def __repr__(self):
       return f'<Post {self.id}>'

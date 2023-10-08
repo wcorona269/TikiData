@@ -76,7 +76,7 @@ def logout():
     
     return jsonify({
         'message': 'User Logged Out Successfully',
-    })
+    }), 200 
     
 
 @bp.route('/update', methods=['PUT'])
@@ -102,4 +102,4 @@ def update_user():
     # Commit the changes to the database
     db.session.commit()
 
-    return jsonify({'message': 'User information updated successfully'})
+    return jsonify({'message': 'User information updated successfully'}), 200

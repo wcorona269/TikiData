@@ -33,6 +33,7 @@ app.register_blueprint(routes.auth.bp)
 app.register_blueprint(routes.competition.bp)
 app.register_blueprint(routes.club.bp)
 app.register_blueprint(routes.player.bp)
+app.register_blueprint(routes.post.bp)
 
 db.init_app(app)
 seed_database(app)
