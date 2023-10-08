@@ -64,6 +64,8 @@ class Post(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
   text = db.Column(db.String(200), nullable=False)
   parent_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+  # Add this line for the timestamp
+  created_at = db.Column(db.DateTime, default=datetime.utcnow)
   user = db.relationship('User', back_populates='posts')
 
   # Establishing a relationship with the parent post
