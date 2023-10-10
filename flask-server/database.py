@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv(".flaskenv")
-from  app.models import db, User, Favorite, Post, Like
+from  app.models import db, User, Favorite, Post, PostLike, CommentLike
 
 def seed_database(app):
   with app.app_context():

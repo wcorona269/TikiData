@@ -12,8 +12,9 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(255), nullable=False)
     favorites = db.relationship('Favorite', back_populates='user')
     posts = db.relationship('Post', back_populates='user')
-    likes = db.relationship('Like', back_populates='user')
-
+    likes = db.relationship('PostLike', back_populates='user')
+    comments = db.relationship('Comment', back_populates='user')
+    
     # Methods required by Flask-Login
     def get_id(self):
       return str(self.id)
