@@ -15,13 +15,13 @@ const MatchTimelineTable = ({nation, matches}) => {
 		return (
 			<Link to={`/match-overview/${id}`} className='timeline-match-teams'>
 				<p className='team-indicator' id='home-team-indicator'>
-					{homeTeamName} <img src={homeTeamLogo} alt={homeTeamName}/>
+					{homeTeamName} <img src={homeTeamLogo} />
 				</p>
 				<p className='versus'>
 					{displayScore(match)}
 				</p>
 				<p className='team-indicator' id='away-team-indicator'>
-					<img src={awayTeamLogo} alt={awayTeamName}/>{awayTeamName} 
+					<img src={awayTeamLogo}/>{awayTeamName} 
 				</p>
 			</Link>
 		)

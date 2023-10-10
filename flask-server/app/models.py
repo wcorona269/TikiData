@@ -10,7 +10,6 @@ bcrypt = Bcrypt()
 db = SQLAlchemy()
 
 
-
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     
@@ -20,6 +19,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(255), nullable=False)
     favorites = db.relationship('Favorite', back_populates='user')
     posts = db.relationship('Post', back_populates='user')
+    likes = db.relationship('Like', back_populates='user')
     
     # Methods required by Flask-Login
     def get_id(self):
@@ -67,6 +67,7 @@ class Post(db.Model):
   # Add this line for the timestamp
   created_at = db.Column(db.DateTime, default=datetime.utcnow)
   user = db.relationship('User', back_populates='posts')
+  likes = db.relationship('Like', back_populates='post')
 
   # Establishing a relationship with the parent post
   parent_post = db.relationship('Post', remote_side=[id])
@@ -84,3 +85,32 @@ class Post(db.Model):
 
   def __repr__(self):
       return f'<Post {self.id}>'
+    
+
+
+class Like(db.Model):
+    __tablename__ = 'likes'
+
+    id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), index=True, nullable=False)
+
+    # Establish a relationship with users and posts
+    user = db.relationship('User', back_populates='likes')
+    post = db.relationship('Post', back_populates='likes')
+    
+    def add_like(user_id, post_id):
+      new_like = Like(user_id=user_id, post_id=post_id)
+      db.session.add(new_like)
+      db.session.commit()
+      
+    def delete_like(user_id, post_id):
+      like_to_delete = Like.query.filter_by(
+      user_id=user_id, post_id=post_id).first()
+      
+      if like_to_delete:
+        db.session.delete(like_to_delete)
+        db.session.commit()
+        return True  # Indicates successful deletion
+      else:
+        return False  # Indicates like not found, not deleted

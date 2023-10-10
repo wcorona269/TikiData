@@ -21,6 +21,7 @@ const NavBar = () => {
 				<Link to='/'>
 					touchline
 				</Link>
+				<Link to={'/home'}>Home</Link>
 				{component}
 			</nav>
 		</div>

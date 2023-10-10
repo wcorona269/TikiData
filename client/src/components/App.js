@@ -12,7 +12,7 @@ import Modal from './modal/modal';
 import Welcome from './home/welcome'
 import Explore from './home/leagues/leagues';
 import axios from 'axios'
-import MatchesTimeline from './matches/timeline';
+import MatchesTimeline from './matches/matches-timeline';
 import ClubProfile from './club/club-profile';
 import LeagueProfile from './league/league-profile';
 import PlayerProfile from './player/player-profile';
@@ -62,7 +62,7 @@ function App() {
         <NavBar />
         <div className='inner-body'>
           <Routes>
-            <Route path='/'
+            <Route path='/home'
             element={<Home/>}
             />
             <Route path='/matches'

@@ -3,8 +3,8 @@ import { Link, withRouter } from 'react-router-dom'
 import Counter from './counter'
 import Leagues from './leagues/leagues'
 import Favorites from './favorites'
-import MatchesTimeline from '../matches/timeline';
-import { Tab, Tabs, Typography, AppBar } from '@mui/material';
+import MatchesTimeline from '../matches/matches-timeline';
+import { Tab, Tabs, Typography, AppBar, Container } from '@mui/material';
 import { css } from '@emotion/css'
 
 const Home = () => {
@@ -15,19 +15,9 @@ const Home = () => {
 	}
 
 	return (
-		<div className='Home'>
-			{/* <AppBar position='static'> */}
-				<Tabs
-					value={value} 
-					onChange={handleChange}
-				>
-					<Tab label='news'/>
-					<Tab label='scores'/>
-					<Tab label='stats'/>
-				</Tabs>
-			{/* </AppBar> */}
-			<p>{value}</p>
-		</div>
+		<Container>
+			Hello
+		</Container>
 	)
 }
 
