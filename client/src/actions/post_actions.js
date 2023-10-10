@@ -56,12 +56,37 @@ export const createPost = (postData) => {
 };
 
 // create post like
-export const CREATE_LIKE_REQUEST = 'CREATE_LIKE_REQUEST'
-export const CREATE_LIKE_SUCCESS = 'CREATE_LIKE_SUCCESS'
-export const CREATE_LIKE_FAILURE = 'CREATE_LIKE_FAILURE'
+export const CREATE_LIKE_REQUEST = 'CREATE_LIKE_REQUEST';
+export const CREATE_LIKE_SUCCESS = 'CREATE_LIKE_SUCCESS';
+export const CREATE_LIKE_FAILURE = 'CREATE_LIKE_FAILURE';
+
+export const createLike = (likeData) => {
+	return (dispatch) => {
+		dispatch({ type: CREATE_LIKE_REQUEST });
+		return axios.post('/likes/create', likeData)
+			.then((response) => {
+				dispatch({ type: CREATE_LIKE_SUCCESS, payload: response.data });
+			})
+			.catch((error) => {
+				dispatch({ type: CREATE_LIKE_FAILURE, payload: error.message });
+			});
+	};
+}
 
 // remove post like
 export const DELETE_LIKE_REQUEST = 'DELETE_LIKE_REQUEST'
 export const DELETE_LIKE_SUCCESS = 'DELETE_LIKE_SUCCESS'
 export const DELETE_LIKE_FAILURE = 'DELETE_LIKE_FAILURE'
 
+export const deleteLike = (likeData) => {
+	return (dispatch) => {
+		dispatch({ type: DELETE_LIKE_REQUEST });
+		return axios.post('/likes/delete', likeData)
+			.then((response) => {
+				dispatch({ type: DELETE_LIKE_SUCCESS, payload: response.data });
+			})
+			.catch((error) => {
+				dispatch({ type: DELETE_LIKE_FAILURE, payload: error.message });
+			});
+	};
+}

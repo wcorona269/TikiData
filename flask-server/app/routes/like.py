@@ -5,7 +5,7 @@ from ..models import Like
 bp = Blueprint('likes', __name__, url_prefix='/likes')
 
 @bp.route('/create', methods=['POST'])
-def create_like(postId, userId):
+def create_like():
   data = request.json
   user_id = data.get('user_id')
   post_id = data.get('post_id')
