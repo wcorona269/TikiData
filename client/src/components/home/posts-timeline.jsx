@@ -2,9 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
 import { Box, Container, Grid, ListItem, Paper, Typography } from '@mui/material'
+import LoadingMessage from '../util/loading/loading-screen';
 
 const PostsTimeline = ({posts}) => {
-	console.log(posts)
+
+	if (!posts.posts) {
+		return <LoadingMessage/>
+	}
 
 	const timeAgo = ({ date }) => {
 		const timeAgo = formatDistanceToNow(new Date(date), { addSuffix: true });
@@ -38,7 +42,7 @@ const PostsTimeline = ({posts}) => {
 	return (
 		<Paper className='home-paper'>
 			<Box>
-				{/* {displayPosts(posts.posts)} */}
+				{displayPosts(posts.posts)}
 			</Box>
 		</Paper>
 	)

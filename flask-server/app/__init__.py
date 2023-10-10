@@ -7,7 +7,7 @@ from sqlalchemy import create_engine
 from .config import Config
 from app import routes
 from flask_cors import CORS
-from .models import db
+from .models.db import db
 from database import seed_database
 import os
 
