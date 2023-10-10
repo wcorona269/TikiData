@@ -9,13 +9,14 @@ bp = Blueprint('posts', __name__, url_prefix='/posts')
 def create_post():
   data = request.json
   user_id = data.get('user_id')
+  username=data.get('username')
   text = data.get('text')
   parent_id = data.get('parent_id')
   
   if not text:
     return jsonify({'message': 'Missing required text field'}), 400
   
-  post = Post(user_id=user_id, text=text, parent_id=parent_id)
+  post = Post(user_id=user_id, text=text, parent_id=parent_id, username=username)
   db.session.add(post)
   db.session.commit()
   

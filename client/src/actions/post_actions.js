@@ -8,7 +8,7 @@ export const FETCH_ALL_POSTS_FAILURE = 'FETCH_ALL_POSTS_FAILURE'
 export const fetchPosts = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_ALL_POSTS_REQUEST });
-		return axios.get('/posts/all')
+		return axios.get('/posts/fetch/all')
 			.then((response) => {
 				dispatch({ type: FETCH_ALL_POSTS_SUCCESS, payload: response.data })
 			})
@@ -27,7 +27,7 @@ export const FETCH_USER_POSTS_FAILURE = 'FETCH_USER_POSTS_FAILURE'
 export const fetchUserPosts = (userId) => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_USER_POSTS_REQUEST });
-		return axios.get(`/posts/${userId}`)
+		return axios.get(`/posts/fetch/${userId}`)
 		.then((response) => {
 			dispatch({ type: FETCH_USER_POSTS_SUCCESS })
 		})

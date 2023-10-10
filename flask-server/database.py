@@ -18,7 +18,7 @@ def seed_database(app):
     db.session.add(spencer)
     db.session.commit()
     
-    test_post = Post(text='Test Post', user_id = will.id)
+    test_post = Post(text='Test Post', user_id = will.id, username=will.username)
     db.session.add(test_post)
     db.session.commit()
     

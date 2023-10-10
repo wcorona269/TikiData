@@ -62,6 +62,7 @@ class Post(db.Model):
   
   id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
+  username = db.Column(db.String, nullable=False)
   text = db.Column(db.String(200), nullable=False)
   parent_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
   # Add this line for the timestamp
@@ -76,6 +77,7 @@ class Post(db.Model):
       return {
           'id': self.id,
           'user_id': self.user_id,
+          'username': self.username,
           'text': self.text,
           'parent_id': self.parent_id,
           # Convert datetime to string
@@ -93,14 +95,15 @@ class Like(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
+    username = db.Column(db.String, nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), index=True, nullable=False)
 
     # Establish a relationship with users and posts
     user = db.relationship('User', back_populates='likes')
     post = db.relationship('Post', back_populates='likes')
     
-    def add_like(user_id, post_id):
-      new_like = Like(user_id=user_id, post_id=post_id)
+    def add_like(user_id, post_id, username):
+      new_like = Like(user_id=user_id, post_id=post_id, username=username)
       db.session.add(new_like)
       db.session.commit()
       
