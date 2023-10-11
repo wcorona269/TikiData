@@ -16,7 +16,6 @@ class Comment(db.Model):
 	parent_comment = db.relationship('Comment', remote_side=[id], back_populates='replies')
 	replies = db.relationship('Comment', back_populates='parent_comment')
 	comment_likes = db.relationship('CommentLike', back_populates='comment')
- 
 
 	def add_comment(user_id, post_id, text, parent_id):
 		new_comment = Comment(user_id, post_id, text, parent_id) 

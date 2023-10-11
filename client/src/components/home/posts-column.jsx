@@ -1,10 +1,12 @@
+import './posts-column.scss'
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
-import { Box, Container, Grid, ListItem, Paper, Typography } from '@mui/material'
+import { Box, Button, Container, Grid, ListItem, Paper, TextField, Typography } from '@mui/material'
 import LoadingMessage from '../util/loading/loading-screen';
+import CreatePost from './create-post';
 
-const PostsTimeline = ({posts}) => {
+const PostsColumn = ({posts}) => {
 
 	if (!posts.posts) {
 		return <LoadingMessage/>
@@ -20,7 +22,7 @@ const PostsTimeline = ({posts}) => {
 
 		for (let post of posts) {
 			result.push(
-				<Box sx={{border: '1px solid var(--darkgray)', padding: '1rem'}}>
+				<Box sx={{border: '1px solid var(--darkgray)', padding: '1rem', width: '100%'}}>
 					<Link>
 						<Typography variant='body1' sx={{marginBottom: '.25rem'}}>
 							{post.username}
@@ -40,12 +42,15 @@ const PostsTimeline = ({posts}) => {
 	}
 
 	return (
-		<Paper className='home-paper'>
-			<Box>
-				{displayPosts(posts.posts)}
-			</Box>
-		</Paper>
+		<>
+			<CreatePost/>
+			<Paper className='home-paper'>
+				<Box>
+					{displayPosts(posts.posts)}
+				</Box>
+			</Paper>
+		</>
 	)
 }
 
-export default PostsTimeline
+export default PostsColumn;

@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv(".flaskenv")
-from  app.models import db, User, Favorite, Post, PostLike, CommentLike
+from  app.models import db, User, Favorite, Post, PostLike, CommentLike, Comment
 
 def seed_database(app):
   with app.app_context():
@@ -20,6 +20,9 @@ def seed_database(app):
     db.session.add(test_post)
     db.session.commit()
     
+    test_comment = Comment(user_id=spencer.id, post_id=test_post.id, text='Test Comment')
+    db.session.add(test_comment)
+    db.session.commit()
     
     # create favorites
     favorite = Favorite(club='Barcelona', user=will)
