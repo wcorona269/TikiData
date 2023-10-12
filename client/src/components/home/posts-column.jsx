@@ -2,7 +2,7 @@ import './posts-column.scss'
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
-import { Box, Button, Container, Grid, ListItem, Paper, TextField, Typography } from '@mui/material'
+import { Avatar, Box, Button, Container, Grid, ListItem, Paper, TextField, Typography } from '@mui/material'
 import LoadingMessage from '../util/loading/loading-screen';
 import CreatePost from './create-post';
 
@@ -12,29 +12,41 @@ const PostsColumn = ({posts}) => {
 		return <LoadingMessage/>
 	}
 
-	const timeAgo = ({ date }) => {
+	const timeAgo = (date) => {
 		const timeAgo = formatDistanceToNow(new Date(date), { addSuffix: true });
 		return <span>{timeAgo}</span>;
 	};
 
 	const displayPosts = (posts) => {
 		let result = [];
-
+		
 		for (let post of posts) {
 			result.push(
-				<Box sx={{border: '1px solid var(--darkgray)', padding: '1rem', width: '100%'}}>
-					<Link>
-						<Typography variant='body1' sx={{marginBottom: '.25rem'}}>
+				<Paper className='timeline-paper'>
+					<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem'}}>
+						<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'top'}}>
+						<Avatar sx={{marginRight: '.5rem'}}/>
+						<Typography variant='body1'>
 							{post.username}
 						</Typography>
-					</Link>
+						</Box>
+						<Typography variant='caption' sx={{color: 'var(--darkgray)'}}>
+							{timeAgo(post.created_at)}
+						</Typography>
+					</Box>
 					<Typography variant='body1'>
 						{post.text}
 					</Typography>
-					<Typography variant='caption'>
-						{/* {timeAgo(post.created_at)} */}
-					</Typography>
-				</Box>
+					<Box className='post-comment-section' sx={{marginTop: '1rem'}}>
+						<TextField
+							sx={{width: '100%'}}
+							variant='outlined'
+							id="outlined-multiline-flexible"
+							label="Leave a comment..."
+							multiline
+						/>
+					</Box>
+				</Paper>
 			)
 		}
 
@@ -44,11 +56,7 @@ const PostsColumn = ({posts}) => {
 	return (
 		<>
 			<CreatePost/>
-			<Paper className='home-paper'>
-				<Box>
-					{displayPosts(posts.posts)}
-				</Box>
-			</Paper>
+			{displayPosts(posts.posts)}
 		</>
 	)
 }
