@@ -1,4 +1,5 @@
 from .db import db
+from .user_model import User
 
 class PostLike(db.Model):
 	__tablename__ = 'post_likes'
@@ -6,12 +7,11 @@ class PostLike(db.Model):
 	id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
 	post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), index=True, nullable=False)
-	username = db.Column(db.String, nullable=False)
 	user = db.relationship('User', back_populates='likes')
 	post = db.relationship('Post', back_populates='likes')
 	
-	def add_like(user_id, post_id, username):
-		new_like = PostLike(user_id=user_id, post_id=post_id, username=username)
+	def add_like(user_id, post_id):
+		new_like = PostLike(user_id=user_id, post_id=post_id)
 		db.session.add(new_like)
 		db.session.commit()
 
@@ -24,6 +24,16 @@ class PostLike(db.Model):
 			return True
 		else:
 			return False
+ 
+	def to_dict(self):
+		user_instance = User.query.get(self.user_id)
+		user_data = User.to_dict(user_instance) if user_instance else None
+		return {
+			'id': self.id,
+			'user_id': self.user_id,
+			'username': user_data['username'],
+			'post_id': self.post_id
+		}
 
 
 class CommentLike(db.Model):
@@ -48,3 +58,14 @@ class CommentLike(db.Model):
 			return True
 		else:
 			return False
+ 
+	def to_dict(self):
+		user_instance = User.query.get(self.user_id)
+		user_data = User.to_dict(user_instance) if user_instance else None
+  
+		return {
+			'id': self.id,
+			'user_id': self.user_id ,
+			'username': user_data.username,
+			'comment_id': self.comment_id
+		}

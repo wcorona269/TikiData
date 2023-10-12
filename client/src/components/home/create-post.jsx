@@ -31,13 +31,13 @@ const CreatePost = () => {
 		<Paper className='timeline-paper' elevation={6}>
 			<TextField
 				id="outlined-multiline-flexible"
-				label="chat footy here..."
+				placeholder='talk footy...'
 				multiline
 				value={post}
 				onChange={handleChange}
 			/>
-			<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '1rem'}}>
-				<Box sx={{ position: 'relative', display: 'inline-flex' }}>
+			<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'right', marginTop: '1rem'}}>
+				<Box sx={{ position: 'relative', display: 'inline-flex', marginRight: '1rem' }}>
 					<CircularProgress variant="determinate" value={postLength} />
 					<Box
 						sx={{
@@ -52,7 +52,9 @@ const CreatePost = () => {
 						}}
 					>
 						<Typography variant="caption" component="div" color="text.secondary">
-							{displayPostLength && 200 - post.length}
+							{
+							// displayPostLength && 
+							200 - post.length }
 						</Typography>
 					</Box>
 				</Box>

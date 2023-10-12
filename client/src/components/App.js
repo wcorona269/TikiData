@@ -29,8 +29,8 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: 'Ubuntu-Bold',
-    ubuntu: 'Ubuntu',
+    fontFamily: 'Ubuntu',
+    bold: 'Ubuntu-Bold',
     light: 'Ubuntu-Light',
     regular: 'Ubuntu-Regular'
   }
@@ -69,7 +69,7 @@ function App() {
               element={<MatchesTimeline apiKey={apiKey} />}
             />  
             <Route path='/news'
-              element={<NewsTimeline/>}
+              element={<ProtectedRoute component={<NewsTimeline/>}/>}
             />
             <Route path='/favorites'
               element={<MatchesTimeline apiKey={apiKey}/>}

@@ -16,14 +16,35 @@ def seed_database(app):
     db.session.add(spencer)
     db.session.commit()
     
-    test_post = Post(text='Test Post', user_id = will.id, username=will.username)
-    db.session.add(test_post)
+   # Creating posts
+    post1 = Post(text='Who will win the World Cup this year?', user_id=will.id)
+    post2 = Post(text='Thoughts on the recent match between Team A and Team B?', user_id=spencer.id)
+
+    db.session.add(post1)
+    db.session.add(post2)
+    db.session.commit()
+
+    # Creating comments
+    comment1 = Comment(user_id=spencer.id, post_id=post1.id, text='I think Team C has a strong chance!')
+    comment2 = Comment(user_id=will.id, post_id=post1.id, text='Team B has a solid lineup as well.')
+    comment3 = Comment(user_id=will.id, post_id=post2.id, text='It was an intense match!')
+    comment4 = Comment(user_id=will.id, post_id=post2.id, text='I agree! So intense!', parent_id=comment3.id)
+
+    db.session.add(comment1)
+    db.session.add(comment2)
+    db.session.add(comment3)
+    db.session.add(comment4)
+    db.session.commit()
+
+    # Creating post likes and comment likes
+    post_like = PostLike(user_id=will.id, post_id=post1.id)
+    comment_like = CommentLike(user_id=will.id, comment_id=comment1.id)
+    db.session.add(post_like)
+    db.session.add(comment_like)
     db.session.commit()
     
-    test_comment = Comment(user_id=spencer.id, post_id=test_post.id, text='Test Comment')
-    db.session.add(test_comment)
-    db.session.commit()
     
+      
     # create favorites
     favorite = Favorite(club='Barcelona', user=will)
     favorite2 = Favorite(club='Manchester City', user=will)

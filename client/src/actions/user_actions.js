@@ -35,10 +35,10 @@ export const registerUser = (userData) => {
 };
 
 
-export const fetchUser = (userId) => {
+export const fetchCurrentUser = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_USER_REQUEST });
-		axios.get(`/users/${userId}`)
+		axios.get(`/protected`)
 			.then((response) => {
 				dispatch({ type: FETCH_USER_SUCCESS, payload: response.data });
 			})

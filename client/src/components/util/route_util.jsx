@@ -3,29 +3,25 @@ import { BrowserRouter as Router, Route, Navigate, redirect } from 'react-router
 import jwt_decode from 'jwt-decode';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../actions/session_actions';
+import { fetchCurrentUser } from '../../actions/user_actions';
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = ({ component, ...rest }) => {
 	const dispatch = useDispatch();
-	const token = useSelector(state => state.session.user?.access_token ?? null);
-
+	const username = useSelector(state => state.users.user?.username ?? null);
+	
 	useEffect(() => {
-		if (token === null) {
-			dispatch(logoutUser())
-		} else {
-			const decodedToken = jwt_decode(token);
-			const tokenExpiration = decodedToken.exp ? decodedToken.exp : 0
-			const isTokenExpired = (Date.now() / 1000) >= tokenExpiration;
-			if (isTokenExpired === true) {
-				dispatch(logoutUser())
-			}
-		}
+		dispatch(fetchCurrentUser())
 	}, [])
 
-	if (token === null) {
-		return <Navigate to='/welcome' />
-	}
+	useEffect(() => {
+	}, [username])
 
-	return <Component/>;
+
+	return username !== null ? (
+		[component]
+	) : (
+		<Navigate to="/welcome" />
+	);
 }
 
-export default ProtectedRoute
+export default ProtectedRoute;
