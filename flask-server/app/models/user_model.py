@@ -64,6 +64,7 @@ class User(UserMixin, db.Model):
 			return False, {'message': 'Invalid Credentials'}
 		else:
 			user_data = {
+				'id': user.id,
 				'email': user.email,
 				'username': user.username
 			}

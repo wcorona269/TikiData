@@ -5,23 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../actions/session_actions';
 import { fetchCurrentUser } from '../../actions/user_actions';
 
-const ProtectedRoute = ({ component, ...rest }) => {
-	const dispatch = useDispatch();
-	const username = useSelector(state => state.users.user?.username ?? null);
-	
+const ProtectedRoute = ({ component, currentUser }) => {
 	useEffect(() => {
-		dispatch(fetchCurrentUser())
-	}, [])
+	}, [currentUser])
 
-	useEffect(() => {
-	}, [username])
-
-
-	return username !== null ? (
-		[component]
-	) : (
-		<Navigate to="/welcome" />
-	);
+	return currentUser !== null ? (
+		[component] ) : ( <Navigate to="/welcome" /> );
 }
 
 export default ProtectedRoute;

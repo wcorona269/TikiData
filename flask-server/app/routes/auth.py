@@ -32,10 +32,10 @@ def login():
 
   email = data.get('email')
   password = data.get('password')
-    
+  
   status, message = User.login_user(email, password)
   if status == True:
-    token = jwt.encode({'email': email, 'username': message['username'], 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=6)}, Config.SECRET_KEY, algorithm='HS256')
+    token = jwt.encode({'email': email, 'username': message['username'], 'id': message['id'], 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=6)}, Config.SECRET_KEY, algorithm='HS256')
     response = make_response(jsonify({'message': 'Login successful'}))
     response.set_cookie('access_token', token, httponly=True, secure=True)
     return response, 200
@@ -43,17 +43,13 @@ def login():
     return jsonify(message)
 
 @bp.route('/logout', methods=['POST'])
+
+
 def logout():
-  data = request.json
-    
-  access_token = data.get('access_token')
-    
-  if access_token != 'null':
-    revoked_tokens.add(access_token)
-  
-  return jsonify({
-    'message': 'User Logged Out Successfully',
-  }), 200 
+  response = make_response(jsonify({'message': 'Logout successful'}))
+  response.set_cookie('access_token', '', expires=0, httponly=True, secure=True)
+  return response, 200
+
 
 @bp.route('/update', methods=['PUT'])
 @jwt_required()

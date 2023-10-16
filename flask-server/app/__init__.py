@@ -36,12 +36,14 @@ def protected_route():
       decoded_token = jwt.decode(
       access_token_cookie, app.config['SECRET_KEY'], algorithms=['HS256'])
       username = decoded_token.get('username')
+      id = decoded_token.get('id')
       print(username)
 
       # Authentication successful, respond with data from the protected endpoint
       return jsonify({
           'message': 'Welcome! This is a protected route.',
-          'username': username
+          'username': username,
+          'id': id
         }), 200
     except jwt.ExpiredSignatureError:
       # Token has expired, respond with unauthorized status code

@@ -1,11 +1,13 @@
 import { Box, Button, CircularProgress, Container, Paper, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { createPost } from '../../actions/post_actions';
 
 const CreatePost = () => {
+	const dispatch = useDispatch()
 	const [post, setPost] = useState('');
 	const [isValidPost, setIsValidPost] = useState(false);
 	const [postLength, setPostLength] = useState(0);
-	const [displayPostLength, setDisplayPostLength] = useState(false);
 
 	useEffect(() => {
 		if (post.length === 0) setIsValidPost(false)
@@ -15,13 +17,12 @@ const CreatePost = () => {
 			setIsValidPost(false)
 		}
 
-		setPostLength((post.length / 200) * 100)
-		if (post.length > 170) {
-			setDisplayPostLength(true)
-		} else {
-			setDisplayPostLength(false)
-		}
+		setPostLength((post.length / 200) * 100);
 	}, [post])
+	
+	const handleSubmit = () => {
+		dispatch(createPost(post))
+	}
 
 	const handleChange = (event) => {
 		setPost(event.target.value)
@@ -52,9 +53,7 @@ const CreatePost = () => {
 						}}
 					>
 						<Typography variant="caption" component="div" color="text.secondary">
-							{
-							// displayPostLength && 
-							200 - post.length }
+							{ 200 - post.length }
 						</Typography>
 					</Box>
 				</Box>
@@ -63,6 +62,7 @@ const CreatePost = () => {
 					<Button 
 						className='create-post-btn' 
 						variant='contained' 
+						onClick={handleSubmit}
 						sx={{width: '25%'}}>Post
 					</Button> :
 					<Button 

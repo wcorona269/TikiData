@@ -8,13 +8,10 @@ const LoggedInNav = () => {
 	const dispatch = useDispatch();
 	const [showDropdown, setShowDropdown] = useState(false);
 
-	const access_token = useSelector(state => state.session.user?.access_token ?? null);
-	const username = useSelector(state => state.session.user?.username ?? null);
+	const username = useSelector(state => state.users?.user?.username ?? null);
 
-	const logoutFunction = () => {
-		dispatch(logoutUser({
-			access_token: access_token === null ? 'null' : access_token
-		}))
+	const handleClick = () => { 
+		dispatch(logoutUser())
 	}
 
 	const toggleDropdown = () => {
@@ -37,7 +34,7 @@ const LoggedInNav = () => {
 								profile
 							</div>
 						</Link>
-            <div>log out</div>
+            <div onClick={handleClick}>log out</div>
         </div>
 			</div>
 		</div>
