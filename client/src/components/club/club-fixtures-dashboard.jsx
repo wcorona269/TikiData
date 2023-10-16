@@ -42,7 +42,7 @@ const ClubFixturesDashboard = ({fixtures}) => {
 
 				return (
 					<>
-						<Box sx={{width: '100%', backgroundColor: 'var(--white)'}}>
+						<Box sx={{width: '100%'}}>
 							<Typography variant='subtitle1' sx={{padding: '1rem'}}>
 								{month}
 							</Typography>

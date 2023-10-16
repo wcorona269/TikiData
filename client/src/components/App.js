@@ -18,17 +18,23 @@ import LeagueProfile from './league/league-profile';
 import PlayerProfile from './player/player-profile';
 import MatchOverview from './match/match-overview';
 import NewsTimeline from './news/news-timeline';
-import { createTheme, ThemeProvider } from '@mui/material';
+import { Paper, createTheme, ThemeProvider, Container } from '@mui/material';
 import { fetchCurrentUser } from '../actions/user_actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
-      main: '#00c49a',
-      light: '#66E396',
-      dark: '#007A60'
+      main: '#00a672',
+      light: '#00c49a',
+      dark: '#005a2c'
+    },
+    secondary: {
+      main: '#18ade5',
+      light: '#84d6f0',
+      dark: '#005c8f'
     }
   },
   typography: {
@@ -61,47 +67,45 @@ function App() {
   useEffect(() => { dispatch(fetchCurrentUser()) }, []);
   useEffect(() => {}, [ currentUser ]);
 
-
+  
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <div className='outer-body'>
-          <Modal/>
-          <NavBar currentUser={currentUser} />
-          <div className='inner-body'>
-            <Routes>
-              <Route path='/home'
-                element={<ProtectedRoute currentUser={currentUser} component={<Home/>}/>}
-              />
-              <Route path='/matches'
-                element={<ProtectedRoute currentUser={currentUser} component={<MatchesTimeline apiKey={apiKey} />} />}
-              />  
-              <Route path='/news'
-                element={<ProtectedRoute currentUser={currentUser} component={<NewsTimeline/>}/>}
-              />
-              <Route path='/explore'
-                element={<ProtectedRoute currentUser={currentUser} component={<Explore />} />}
-              />
-              <Route path='/club/:clubId'
-                element={<ProtectedRoute currentUser={currentUser} component={<ClubProfile/>} />}
-              />
-              <Route path='/league-overview/:leagueId'
-                element={<ProtectedRoute currentUser={currentUser} component={<LeagueProfile />} />}
-              />
-              <Route path='/player-profile/:playerId'
-                element={<ProtectedRoute currentUser={currentUser} component={<PlayerProfile />} />}
-              />
-              <Route
-                path='match-overview/:matchId'
-                element={<ProtectedRoute currentUser={currentUser} component={<MatchOverview />} />}
-              />
-            <Route path='/welcome' element={<Welcome/>}/>
-            </Routes>
-          </div>
-          <Footer/>
-        </div>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <Paper sx={{height: 'fit-content', minHeight: '150vh'}}>
+        <Modal/>
+        <NavBar currentUser={currentUser} />
+        <Container sx={{paddingTop: '6rem'}} >
+          <Routes>
+            <Route path='/home'
+              element={<ProtectedRoute currentUser={currentUser} component={<Home/>}/>}
+            />
+            <Route path='/matches'
+              element={<ProtectedRoute currentUser={currentUser} component={<MatchesTimeline apiKey={apiKey} />} />}
+            />  
+            <Route path='/news'
+              element={<ProtectedRoute currentUser={currentUser} component={<NewsTimeline/>}/>}
+            />
+            <Route path='/explore'
+              element={<ProtectedRoute currentUser={currentUser} component={<Explore />} />}
+            />
+            <Route path='/club/:clubId'
+              element={<ProtectedRoute currentUser={currentUser} component={<ClubProfile/>} />}
+            />
+            <Route path='/league-overview/:leagueId'
+              element={<ProtectedRoute currentUser={currentUser} component={<LeagueProfile />} />}
+            />
+            <Route path='/player-profile/:playerId'
+              element={<ProtectedRoute currentUser={currentUser} component={<PlayerProfile />} />}
+            />
+            <Route
+              path='match-overview/:matchId'
+              element={<ProtectedRoute currentUser={currentUser} component={<MatchOverview />} />}
+            />
+          <Route path='/welcome' element={<Welcome/>}/>
+          </Routes>
+        </Container>
+      </Paper>
+      <Footer/>
+    </ThemeProvider>
   )
 }
 

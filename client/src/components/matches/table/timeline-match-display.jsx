@@ -63,7 +63,6 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 				sx={{
 					position: 'sticky',
 					top: '0',
-					backgroundColor: 'white',
 					display: 'flex',
 					flexDirection: 'column',
 				}}

@@ -1,7 +1,6 @@
 .league-table {
 	width: 100%;
 	font-size: .8rem;
-	background-color: var(--white);
 }
 
 .league-table td {
@@ -35,14 +34,6 @@
 
 .league-table-row {
 	border-bottom: 1px solid var(--gray);
-
-	&:nth-child(even) {
-		background-color: var(--gray);
-	}
-
-	&:hover {
-		background-color: var(--gray);
-	}
 }
 
 .league-table-row td {

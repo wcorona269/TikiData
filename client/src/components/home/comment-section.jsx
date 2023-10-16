@@ -1,16 +1,14 @@
 import { Avatar, Box, IconButton, TextField, Typography } from '@mui/material';
 import React from 'react'
 
-import { useTheme } from '@mui/material/styles';
 import CreateComment from './create-comment';
 import CommentContainer from './comment-container';
 
-const CommentSection = ({ comments }) => {
-	const theme = useTheme();
+const CommentSection = ({ comments, post_id }) => {
 
 	return (
 		<Box className='post-comment-section' sx={{ marginTop: '1rem' }}>
-			<CreateComment/>
+			<CreateComment post_id={post_id} />
 			{comments.map((comment, idx) => {
 				return (
 					<CommentContainer comment={comment}/>

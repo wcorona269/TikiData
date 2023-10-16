@@ -16,6 +16,7 @@ export const removeSessionErrors = () => ({
 	type: REMOVE_SESSION_ERRORS
 });
 
+
 // Action creators
 export const loginUser = (userData) => {
 	return (dispatch) => {
@@ -33,6 +34,7 @@ export const loginUser = (userData) => {
 		}});
 	};
 };
+
 
 export const logoutUser = (data) => {
 	return (dispatch) => {

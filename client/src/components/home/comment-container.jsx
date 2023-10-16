@@ -14,7 +14,7 @@ const CommentContainer = ({ comment }) => {
 		<Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '.5rem' }}>
 			<Avatar />
 			<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '.5rem' }}>
-				<Paper elevation={2} sx={{  backgroundColor: 'var(--gray)', padding: '.5rem', borderRadius: '.5rem' }}>
+				<Paper elevation={10} sx={{ padding: '.5rem', borderRadius: '.5rem' }}>
 					<Typography variant='body2' sx={{ marginBottom: '.5rem', fontFamily: theme.typography.bold }}>
 						{comment.username}
 					</Typography>

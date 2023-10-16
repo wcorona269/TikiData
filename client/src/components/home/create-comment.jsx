@@ -1,12 +1,22 @@
 import { Avatar, Box, Button, Container, IconButton, TextField, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
+import { useDispatch, useSelector } from 'react-redux';
+import { createComment } from '../../actions/comment_actions';
+import { fetchPosts } from '../../actions/post_actions'
 
 const CreateComment = ({ post_id, parent_id }) => {
-	const theme = useTheme()
+	const dispatch = useDispatch();
+	const theme = useTheme();
 	const [comment, setComment] = useState('');
-
 	const [isValid, setIsValid] = useState(false);
+	const userId = useSelector(state => state.users.user.id)
+
+	const comment_data = {
+		'user_id': userId,
+		'post_id': post_id,
+		'text': comment
+	}
 
 	useEffect(() => {
 		if (comment.length > 0 && comment.length < 1000) {
@@ -18,6 +28,12 @@ const CreateComment = ({ post_id, parent_id }) => {
 
 	const handleChange = (event) => {
 		setComment(event.target.value)
+	}
+	
+	const handleSubmit = (comment_data) => {
+		setComment('');
+		dispatch(createComment(comment_data));
+		dispatch(fetchPosts())
 	}
  
 	return (
@@ -33,7 +49,15 @@ const CreateComment = ({ post_id, parent_id }) => {
 					value={comment}
 					onChange={handleChange}
 					/>
-				<IconButton variant='contained' size='small' sx={{ bgcolor: isValid ? 'var(--green)' : 'white', color: isValid ? 'white' : 'var(--green)', borderRadius: '.5rem', marginLeft: '.5rem', height: '2rem', fontFamily: 'Ubuntu-Bold', marginTop: '.5rem'}}>
+				<IconButton variant='outlined' size='small' 
+					onClick={() => handleSubmit(comment_data)}
+					disabled={!isValid}
+					sx={{ 
+						color: theme.palette.primary.main,
+						borderRadius: '.5rem', marginLeft: '.5rem',
+						height: '2rem', fontFamily: 'Ubuntu-Bold',
+						marginTop: '.5rem'
+					}}>
 					<SendIcon/>
 				</IconButton>
 			</Box>

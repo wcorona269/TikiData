@@ -21,7 +21,7 @@ const PostContainer = ({ post }) => {
 
 
 	const buttons = [
-		<Button aria-label="favorite" size="large" sx={{ width: '100%' }} onClick={() => setShowComments(true)}>
+		<Button aria-label="favorite" size="large" sx={{ width: '100%' }} onClick={() => setShowComments(!showComments)}>
 			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />
 			{post.comments.length}
 		</Button>,
@@ -36,7 +36,7 @@ const PostContainer = ({ post }) => {
 	];
 
 	return (
-		<Paper className='timeline-paper'>
+		<Paper className='timeline-paper' elevation={3}>
 			<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
 				<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'top' }}>
 					<Avatar sx={{ marginRight: '.5rem' }} />
@@ -62,10 +62,10 @@ const PostContainer = ({ post }) => {
 			<Typography variant='body1'>
 				{post.text}
 			</Typography>
-			<ButtonGroup variant='text' size="large" aria-label="text button group" sx={{ width: '100%', marginTop: '1rem', marginBottom: '.5rem', border: '1px solid var(--gray)'}}>
+			<ButtonGroup variant='text' size="large" aria-label="text button group" sx={{ width: '100%', marginTop: '2rem', marginBottom: '.5rem'}}>
 				{buttons}
 			</ButtonGroup>
-			{showComments && <CommentSection comments={post.comments} />}
+			{showComments && <CommentSection comments={post.comments} post_id={post.id} />}
 		</Paper>
 	)
 }

@@ -10,7 +10,7 @@ class Comment(db.Model):
 	post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), index=True, nullable=False)  # Define foreign key to 'posts.id'
 	text = db.Column(db.String(200), nullable=False)
 	created_at = db.Column(db.DateTime, default=datetime.utcnow)
-	parent_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
+	parent_id = db.Column(db.Integer, db.ForeignKey('comments.id'), default=None)
  
 	user = db.relationship('User', back_populates='comments')
 	post = db.relationship('Post', back_populates='comments', foreign_keys=[post_id])
@@ -32,12 +32,7 @@ class Comment(db.Model):
 			'parent_id': self.parent_id,
 			# Add other fields as needed
 		}
-
-
-	def add_comment(user_id, post_id, text, parent_id):
-		new_comment = Comment(user_id, post_id, text, parent_id) 
-		db.session.add(new_comment)
-		db.session.commit()
+    
   
 	def delete_comment(id):
 		comment_to_delete = Comment.query.filter_by(id=id).first()

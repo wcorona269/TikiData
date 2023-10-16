@@ -1,7 +1,9 @@
 .timeline-paper {
+	margin-bottom: .5rem;
 	display: flex;
 	flex-direction: column;
-	margin-bottom: .5rem;
 	padding: 1rem;
-	border-radius: .5rem;
+	padding-bottom: 0px;
+	border-radius: 0px !important;
+	border-bottom: 1px solid var(--darkgray)
 }

@@ -1,17 +1,13 @@
 from sqlalchemy import desc
 from flask import Blueprint, request, jsonify
-from ..models import Comment
-
-success_message = jsonify({
-		'message': 'Comment created successfully'
-	}), 200
+from ..models import  db, Comment
 
 bp = Blueprint('comments', __name__, url_prefix='/comments')
-
 
 @bp.route('/create', methods=['POST'])
 def create_comment():
   data = request.json
+  print(data)
   user_id = data.get('user_id')
   post_id = data.get('post_id')
   text = data.get('text')
@@ -23,12 +19,20 @@ def create_comment():
 		}), 400
     
   if user_id and post_id and text and not parent_id:
-    Comment.add_comment(user_id, post_id, text)
-    return success_message
+    new_comment = Comment(user_id=user_id, post_id=post_id, text=text, parent_id=None)
+    db.session.add(new_comment)
+    db.session.commit()
+    return jsonify({
+        'message': 'Comment created successfully'
+    }), 200
     
   if user_id and post_id and text and parent_id:
-    Comment.add_comment(user_id, post_id, text, parent_id)
-    return success_message
+    new_comment = Comment(user_id=user_id, post_id=post_id, text=text, parent_id=parent_id)
+    db.session.add(new_comment)
+    db.session.commit()
+    return jsonify({
+        'message': 'Comment created successfully'
+    }), 200
   
   return ({
 		'message': 'Invalid request data'

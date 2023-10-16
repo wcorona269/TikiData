@@ -21,7 +21,6 @@
 
 .match-timeline-table thead {
 	border-top: 1px solid var(--gray);
-	background-color: var(--gray);
 }
 
 .match-timeline-table th,
@@ -37,15 +36,6 @@
 .match-timeline-table th {
 	font-family: 'Ubuntu-Bold', sans-serif;
 	border-bottom: 1px solid var(--gray);
-}
-
-.match-timeline-table tr:nth-child(even) {
-	background-color: var(--gray);
-}
-
-.match-timeline-table tbody>tr:hover {
-	background-color: lightgray;
-	cursor: pointer;
 }
 
 .timeline-match-teams {

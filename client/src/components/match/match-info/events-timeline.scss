@@ -3,9 +3,6 @@
 	width: 100%;
 }
 
-.events-timeline tr:nth-child(even) {
-	background-color: var(--gray);
-}
 
 .events-timeline tbody {
 	width: 100%;
@@ -46,7 +43,6 @@
 #new-period td {
 	font-family: 'Ubuntu-Bold';
 	padding: .5rem;
-	background-color: var(--green);
 	color: var(--white);
 	align-items: center;
 	text-align: center;

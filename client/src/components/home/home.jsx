@@ -17,6 +17,10 @@ const Home = () => {
 		dispatch(fetchPosts());
 	}, [])
 
+	useEffect(() => {
+		
+	}, [posts])
+
 	return (
 		<Container className='home-container'>
 			<Grid container alignItems='flex-start' spacing={2}>

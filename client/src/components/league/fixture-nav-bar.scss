@@ -4,14 +4,7 @@
 }
 
 .fixture-nav-bar .selected {
-	background-color: var(--green) !important;
 	color: var(--white) !important;
-}
-
-.fixture-nav-bar > div {
-	&:first-child, &:last-child {
-		background-color: var(--gray);
-	}
 }
 
 .fixture-nav-bar button {

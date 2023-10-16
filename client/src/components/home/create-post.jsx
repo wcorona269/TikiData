@@ -1,13 +1,20 @@
 import { Box, Button, CircularProgress, Container, Paper, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { createPost } from '../../actions/post_actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPost, fetchPosts } from '../../actions/post_actions';
 
 const CreatePost = () => {
 	const dispatch = useDispatch()
 	const [post, setPost] = useState('');
+	const userId = useSelector(state => state.users.user.id)
+	console.log(userId)
 	const [isValidPost, setIsValidPost] = useState(false);
 	const [postLength, setPostLength] = useState(0);
+
+	const postData = {
+		'user_id': userId,
+		'text': post
+	}
 
 	useEffect(() => {
 		if (post.length === 0) setIsValidPost(false)
@@ -21,7 +28,9 @@ const CreatePost = () => {
 	}, [post])
 	
 	const handleSubmit = () => {
-		dispatch(createPost(post))
+		dispatch(createPost(postData));
+		dispatch(fetchPosts());
+		setPost('');
 	}
 
 	const handleChange = (event) => {
@@ -29,7 +38,7 @@ const CreatePost = () => {
 	}
 
 	return (
-		<Paper className='timeline-paper' elevation={6}>
+		<Paper className='timeline-paper' elevation={6} sx={{paddingBottom: '1rem'}}>
 			<TextField
 				id="outlined-multiline-flexible"
 				placeholder='talk footy...'
@@ -57,21 +66,13 @@ const CreatePost = () => {
 						</Typography>
 					</Box>
 				</Box>
-
-				{isValidPost === true ? 
 					<Button 
 						className='create-post-btn' 
 						variant='contained' 
+						disabled={!isValidPost}
 						onClick={handleSubmit}
 						sx={{width: '25%'}}>Post
-					</Button> :
-					<Button 
-						className='create-post-btn' 
-						variant='contained' 
-						disabled
-						sx={{width: '25%'}}>Post
 					</Button>
-				}
 			</Box>
 		</Paper>
 	)

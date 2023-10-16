@@ -17,7 +17,6 @@
 
 .match-stats-container thead {
 	font-family: 'Ubuntu-Bold', sans-serif;
-	background-color: var(--green);
 	color: white;
 }
 
@@ -66,16 +65,6 @@
 	}
 }
 
-.match-stats-container .leading-col {
-	background-color: var(--green);
-	color: var(--white);
-}
-
-.match-stats-container .losing-col {
-	background-color: var(--red);
-	color: var(--white);
-}
-
 .match-stats-container .losing-col,
 .match-stats-container .leading-col {
 	padding-top: .5rem;
@@ -87,6 +76,4 @@
 	height: 100%;
 	padding-top: .5rem;
 	padding-bottom: .5rem;
-	background-color: var(--gray);
-	color: black;
 }
