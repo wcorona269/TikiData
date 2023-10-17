@@ -14,42 +14,44 @@ import {
 } from '@mui/material'
 
 
+export const displayTeams = (fixture) => {
+	let result = [];
+	let teams = fixture.teams;
+
+	for (let team of Object.keys(teams)) {
+		const team_name = teams[team].name;
+		const team_logo = teams[team].logo;
+		const team_id = teams[team].id;
+		const winner = teams[team].winner;
+		const num_goals = fixture.goals[team] || '-'
+
+		result.unshift(
+			<Grid container className={winner === true ? 'winning team' : ''}>
+				<Grid item xs={2}>
+					<img src={team_logo} />
+				</Grid>
+				<Grid item xs={9}>
+					<Link to={`/club/${team_id}`}>
+						<Typography variant='body2' className={winner === true ? 'winning-team' : ''}>
+							{team_name}
+						</Typography>
+					</Link>
+				</Grid>
+				<Grid item xs={1}>
+					<Typography id='goal-display' variant='h6'>
+						{num_goals}
+					</Typography>
+				</Grid>
+			</Grid>
+		)
+	}
+
+	return result;
+}
+
+
 const ClubHomeFixtures = ({ fixtures }) => {
 
-	const displayTeams = (fixture) => {
-		let result = [];
-		let teams = fixture.teams;
-
-		for (let team of Object.keys(teams)) {
-			const team_name = teams[team].name;
-			const team_logo = teams[team].logo;
-			const team_id = teams[team].id;
-			const winner = teams[team].winner;
-			const num_goals = fixture.goals[team] || '-'
-
-			result.unshift(
-				<Grid container className={winner === true ? 'winning team' : ''}>
-					<Grid item xs={2}>
-						<img src={team_logo} />
-					</Grid>
-					<Grid item xs={9}>
-						<Link to={`/club/${team_id}`}>
-							<Typography variant='body2' className={winner === true ? 'winning-team' : ''}>
-								{team_name}
-							</Typography>
-						</Link>
-					</Grid>
-					<Grid item xs={1}>
-						<Typography id='goal-display' variant='h6'>
-							{num_goals}
-						</Typography>
-					</Grid>
-				</Grid>
-			)
-		}
-
-		return result;
-	}
 
 	const displayUpcomingFixtures = (fixtures) => {
 		const match_dates = new Set()

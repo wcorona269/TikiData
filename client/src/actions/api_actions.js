@@ -60,6 +60,26 @@ export const fetchMatches = (date) => {
 	}
 }
 
+
+// Fetch live matches
+export const FETCH_LIVE_MATCHES_REQUEST = 'FETCH_LIVE_MATCHES_REQUEST';
+export const FETCH_LIVE_MATCHES_SUCCESS = 'FETCH_LIVE_MATCHES_SUCCESS';
+export const FETCH_LIVE_MATCHES_FAILURE = 'FETCH_LIVE_MATCHES_FAILURE';
+
+export const fetchLiveMatches = () => {
+	return (dispatch) => {
+		dispatch({ type: FETCH_LIVE_MATCHES_REQUEST });
+		return axios.get(`/matches/live`)
+			.then((response) => {
+				dispatch({ type: FETCH_LIVE_MATCHES_SUCCESS, payload: response.data })
+			})
+			.catch((error) => {
+				dispatch({ type: FETCH_LIVE_MATCHES_FAILURE, payload: error.message })
+			})
+	}
+}
+
+
 export const fetchCompetition = (leagueId, season) => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_COMPETITION_REQUEST });

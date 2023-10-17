@@ -62,7 +62,7 @@ const PostContainer = ({ post }) => {
 				<FavoriteIcon sx={{ marginRight: '.25rem' }} fontSize='medium' ></FavoriteIcon> :
 				<FavoriteBorderIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />
 			}
-			{post.likes.length}
+			{isLiked ? post.likes.length + 1 : post.likes.length}
 		</Button>,
 	];
 

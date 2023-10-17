@@ -29,3 +29,20 @@ def matches(date):
   json_data = json.loads(result)
   matches_of_the_day = json_data["response"]
   return matches_of_the_day
+
+
+@bp.route('/live', methods=['GET'])
+def liveMatches():
+  conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+  headers = {
+      'x-rapidapi-host': "v3.football.api-sports.io",
+      'x-rapidapi-key': api_key
+  }
+
+  conn.request("GET", "/fixtures?live=all",headers=headers)
+  res = conn.getresponse()
+  data = res.read()
+  result = data.decode("utf-8")
+  json_data = json.loads(result)
+  live_matches = json_data["response"]
+  return live_matches

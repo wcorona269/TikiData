@@ -7,7 +7,7 @@ import CommentContainer from './comment-container';
 const CommentSection = ({ comments, post_id }) => {
 
 	return (
-		<Box className='post-comment-section' sx={{ marginTop: '1rem' }}>
+		<Box className='post-comment-section' sx={{ marginTop: '1rem', paddingBottom: '1rem' }}>
 			<CreateComment post_id={post_id} />
 			{comments.map((comment, idx) => {
 				return (
