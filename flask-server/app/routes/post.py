@@ -44,7 +44,6 @@ def fetch_all_posts():
       
     posts_data = [post.to_dict() for post in posts]
 
-
     return jsonify({
         'message': 'All posts retrieved successfully',
         'posts': posts_data

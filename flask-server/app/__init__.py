@@ -37,7 +37,6 @@ def protected_route():
       access_token_cookie, app.config['SECRET_KEY'], algorithms=['HS256'])
       username = decoded_token.get('username')
       id = decoded_token.get('id')
-      print(username)
 
       # Authentication successful, respond with data from the protected endpoint
       return jsonify({
@@ -56,17 +55,23 @@ def protected_route():
     return jsonify({'message': 'Access token not found'}), 401
 
 
-app.register_blueprint(routes.main.bp)
-app.register_blueprint(routes.matches.bp)
-app.register_blueprint(routes.match.bp)
-app.register_blueprint(routes.news.bp)
-app.register_blueprint(routes.auth.bp)
-app.register_blueprint(routes.competition.bp)
-app.register_blueprint(routes.club.bp)
-app.register_blueprint(routes.player.bp)
-app.register_blueprint(routes.post.bp)
-app.register_blueprint(routes.like.bp)
-app.register_blueprint(routes.comment.bp)
+routes_list = [
+    routes.main.bp,
+    routes.matches.bp,
+    routes.match.bp,
+    routes.news.bp,
+    routes.auth.bp,
+    routes.competition.bp,
+    routes.club.bp,
+    routes.player.bp,
+    routes.post.bp,
+    routes.like.bp,
+    routes.comment.bp
+]
+
+for route in routes_list:
+  app.register_blueprint(route)
+
 
 db.init_app(app)
 seed_database(app)

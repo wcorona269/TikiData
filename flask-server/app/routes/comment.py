@@ -7,7 +7,6 @@ bp = Blueprint('comments', __name__, url_prefix='/comments')
 @bp.route('/create', methods=['POST'])
 def create_comment():
   data = request.json
-  print(data)
   user_id = data.get('user_id')
   post_id = data.get('post_id')
   text = data.get('text')

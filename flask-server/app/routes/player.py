@@ -10,7 +10,6 @@ bp = Blueprint('players', __name__, url_prefix='/players')
 
 @bp.route('/<playerId>', methods=['GET'])
 def competitionInfo(playerId):
-  print(playerId)
   conn = http.client.HTTPSConnection("v3.football.api-sports.io")
   headers = {
       'x-rapidapi-host': "v3.football.api-sports.io",

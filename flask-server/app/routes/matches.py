@@ -12,7 +12,6 @@ bp = Blueprint('matches', __name__, url_prefix='/matches')
 
 @bp.route('/<date>', methods=['GET'])
 def matches(date):
-  print(date)
   conn = http.client.HTTPSConnection("v3.football.api-sports.io")
   headers = {
     'x-rapidapi-host': "v3.football.api-sports.io",

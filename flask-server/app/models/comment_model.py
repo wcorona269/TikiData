@@ -27,6 +27,7 @@ class Comment(db.Model):
 			'user_id': self.user_id,
 			'post_id': self.post_id,
 			'text': self.text,
+			'likes': [like.to_dict() for like in self.comment_likes],
 			'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
 			'username': username,  # Include username of the comment user
 			'parent_id': self.parent_id,

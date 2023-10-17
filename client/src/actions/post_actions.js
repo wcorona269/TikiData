@@ -80,8 +80,13 @@ export const DELETE_LIKE_FAILURE = 'DELETE_LIKE_FAILURE'
 
 export const deleteLike = (likeData) => {
 	return (dispatch) => {
-		dispatch({ type: DELETE_LIKE_REQUEST });
-		return axios.post('/likes/delete', likeData)
+		dispatch({ type: DELETE_LIKE_REQUEST, likeData: likeData });
+			return axios.delete('/likes/delete', {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				data: likeData, // The data you want to send in the request body
+			})
 			.then((response) => {
 				dispatch({ type: DELETE_LIKE_SUCCESS, payload: response.data });
 			})

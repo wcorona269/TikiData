@@ -17,3 +17,21 @@ export const createComment = (commentData) => {
 			});
 	};
 };
+
+// create comment like
+export const CREATE_COMMENT_LIKE_REQUEST = 'CREATE_COMMENT_LIKE_REQUEST';
+export const CREATE_COMMENT_LIKE_SUCCESS = 'CREATE_COMMENT_LIKE_SUCCESS';
+export const CREATE_COMMENT_LIKE_FAILURE = 'CREATE_COMMENT_LIKE_FAILURE';
+
+export const createCommentLike = (likeData) => {
+	return (dispatch) => {
+		dispatch({ type: CREATE_COMMENT_LIKE_REQUEST });
+		return axios.post('/likes/create', likeData)
+			.then((response) => {
+				dispatch({ type: CREATE_COMMENT_LIKE_SUCCESS, payload: response.data });
+			})
+			.catch((error) => {
+				dispatch({ type: CREATE_COMMENT_LIKE_FAILURE, payload: error.message });
+			});
+	};
+}

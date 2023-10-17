@@ -11,7 +11,7 @@ const CommentSection = ({ comments, post_id }) => {
 			<CreateComment post_id={post_id} />
 			{comments.map((comment, idx) => {
 				return (
-					<CommentContainer comment={comment}/>
+					<CommentContainer comment={comment} key={idx}/>
 				)
 			})}
 		</Box>

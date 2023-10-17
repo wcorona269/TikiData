@@ -31,7 +31,6 @@ class PostLike(db.Model):
 		return {
 			'id': self.id,
 			'user_id': self.user_id,
-			'username': user_data['username'],
 			'post_id': self.post_id
 		}
 
@@ -49,9 +48,10 @@ class CommentLike(db.Model):
 		db.session.add(new_like)
 		db.session.commit()
 
-	def delete_like(user_id, post_id):
-		like_to_delete = CommentLike.query.filter_by(user_id=user_id, post_id=post_id).first()
-
+	def delete_like(user_id, comment_id):
+		like_to_delete = CommentLike.query.filter_by(user_id=user_id, comment_id=comment_id).first()
+		print(like_to_delete)
+  
 		if like_to_delete:
 			db.session.delete(like_to_delete)
 			db.session.commit()
@@ -66,6 +66,5 @@ class CommentLike(db.Model):
 		return {
 			'id': self.id,
 			'user_id': self.user_id ,
-			'username': user_data.username,
 			'comment_id': self.comment_id
 		}
