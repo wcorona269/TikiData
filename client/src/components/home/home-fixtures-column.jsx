@@ -13,7 +13,7 @@ const HomeFixturesColumn = () => {
 	
 
 	return (
-		<Paper elevation={6} id='home-fixtures-paper' sx={{position: 'sticky', top: '2rem'}}>
+		<Paper elevation={2} id='home-fixtures-paper' sx={{position: 'sticky', top: '2rem'}}>
 			<Typography className='section-heading' variant='h5'>
 				Live Fixtures
 			</Typography>
