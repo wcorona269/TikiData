@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import PostsColumn from './posts-column';
 import HomeFixturesColumn from './home-fixtures-column';
 import HomeMenu from './home-menu';
+import HomeNews from './home-news';
+import HomeNotifications from './home-notifications';
 
 const Home = () => {
 	const dispatch = useDispatch();
@@ -22,7 +24,9 @@ const Home = () => {
 	const [selectedTab, setSelectedTab] = useState(0);
 
 	let tabs = [
-		<PostsColumn posts={posts} />
+		<PostsColumn posts={posts} />,
+		<HomeNotifications/>,
+		<HomeNews/>
 	]
 
 	const handleTabSelect = (value) => {
@@ -30,7 +34,7 @@ const Home = () => {
 	}
 
 	return (
-		<Container className='home-container'>
+		<Container className='home-container' sx={{paddingBottom: '5rem'}}>
 			<Grid container alignItems='flex-start' spacing={1}>
 				<Grid item xs={3} sx={{position: 'sticky', top: '2rem'}}>
 					<HomeMenu selectedTab={selectedTab} handleTabSelect={handleTabSelect}/>

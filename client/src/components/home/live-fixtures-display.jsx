@@ -40,8 +40,8 @@ const LiveFixturesDisplay = ({ matches }) => {
 				</Grid>
 			)}
 		return (
-			<ListItem disablePadding>
-				<ListItemButton onClick={() => handleClick(fixture.fixture.id)} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '6rem', justifyContent: 'space-around', borderBottom: `1px solid ${theme.palette.grey['800']}`}}>
+			<ListItem disablePadding divider>
+				<ListItemButton onClick={() => handleClick(fixture.fixture.id)} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '6rem', justifyContent: 'space-around'}}>
 					<Typography variant='caption' sx={{color: theme.palette.grey['700'], width: '100%', textAlign: 'left'}}>
 						{fixture.league.name}
 					</Typography>
