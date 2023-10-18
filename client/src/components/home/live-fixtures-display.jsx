@@ -1,28 +1,29 @@
 import { Box, Grid, List, ListItem, ListItemButton, Typography, useTheme } from '@mui/material'
 import React, { useEffect } from 'react'
-// import { displayTeams } from '../club/home/club-home-fixtures'
+import { useNavigate } from 'react-router-dom';
 
 const LiveFixturesDisplay = ({ matches }) => {
 	const theme = useTheme();
+	useEffect(() => {}, [matches]);
+	const navigate = useNavigate();
 
-	useEffect(() => {
 
-	}, [matches])
+	const handleClick = (id) => {
+		navigate(`/match-overview/${id}`)
+	}
 
-	const displayTeams = (fixture) => {
+
+	const displayMatch = (fixture) => {
 		let result = [];
 		let teams = fixture.teams;
-		console.log(fixture)
-
 		for (let team of Object.keys(teams)) {
 			const team_name = teams[team].name;
 			const team_logo = teams[team].logo;
 			const team_id = teams[team].id;
 			const winner = teams[team].winner;
 			const num_goals = fixture.goals[team] || 0;
-			
 			result.unshift(
-				<Grid container className={winner === true ? 'winning team' : ''}>
+				<Grid container className={winner === true ? 'winning team' : ''} sx={{marginTop: '8px', marginBottom: '8px'}}>
 					<Grid item xs={2}>
 						<img src={team_logo} style={{display: 'flex', alignItems: 'center', justifyContent: 'left'}}/>
 					</Grid>
@@ -37,22 +38,26 @@ const LiveFixturesDisplay = ({ matches }) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			)
-		}
-
+			)}
 		return (
 			<ListItem disablePadding>
-				<ListItemButton sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-					<Box sx={{display: 'flex', flexDirection: 'column', width: '100%', gap: '4px'}}>
-						{result}
-					</Box>
-					<Typography variant='caption' sx={{marginLeft: '.25rem', color: theme.palette.grey['400']}}>
-						{fixture.fixture.status.elapsed}'
+				<ListItemButton onClick={() => handleClick(fixture.fixture.id)} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '6rem', justifyContent: 'space-around', borderBottom: `1px solid ${theme.palette.grey['800']}`}}>
+					<Typography variant='caption' sx={{color: theme.palette.grey['700'], width: '100%', textAlign: 'left'}}>
+						{fixture.league.name}
 					</Typography>
+					<Grid container>
+						<Grid item xs={11}>{result}</Grid>
+						<Grid item xs={1}>
+							<Typography variant='caption' sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: theme.palette.grey['700']}}>
+								{fixture.fixture.status.elapsed}'
+							</Typography>
+						</Grid>
+					</Grid>
 				</ListItemButton>
 			</ListItem>
 		);
 	}
+
 
 	const displayLiveMatches = (matches) => {
 		if (!matches?.length) return 
@@ -68,24 +73,18 @@ const LiveFixturesDisplay = ({ matches }) => {
 				matchesByCompetition[match.league.name].push(match);
 			}
 		}
-
-		console.log(matchesByCompetition)
-
 		for (let competition in matchesByCompetition) {
-			result.push(
-				<Typography variant="subtitle1" gutterBottom className='new-league-heading' sx={{ marginBottom: '0px', paddingLeft: '.5rem !important', padding: '.25rem', borderTop: `1px solid ${theme.palette.grey['700']}`, borderBottom: `1px solid ${theme.palette.grey['700']}`, fontFamily: theme.typography.bold}}>
-					{competition}
-				</Typography>
-			)
-			
+			// result.push(
+			// 	<Typography variant="subtitle1" gutterBottom className='new-league-heading' sx={{ marginBottom: '0px', paddingLeft: '.5rem !important', padding: '.25rem', borderTop: `1px solid ${theme.palette.grey['700']}`, borderBottom: `1px solid ${theme.palette.grey['700']}`, fontFamily: theme.typography.bold}}>
+			// 		{competition}
+			// 	</Typography>
+			// )
 			let competitionMatches = [];
-
 			for (let match of matchesByCompetition[competition]) {
 				competitionMatches.push(
-					displayTeams(match)
+					displayMatch(match)
 				)
 			}
-
 			result.push(
 				<List sx={{padding: '0px'}}>
 					{competitionMatches}
@@ -94,6 +93,7 @@ const LiveFixturesDisplay = ({ matches }) => {
 		}
 		return result;
 	}
+
 
 	return (
 		<Box className='live-fixtures-display'>

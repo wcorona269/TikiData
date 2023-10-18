@@ -67,7 +67,7 @@ const PostContainer = ({ post }) => {
 	];
 
 	return (
-		<Paper className='timeline-paper' elevation={3}>
+		<Paper className='timeline-paper' elevation={6}>
 			<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
 				<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'top' }}>
 					<Avatar sx={{ marginRight: '.5rem' }} />

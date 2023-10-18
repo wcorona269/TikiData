@@ -10,30 +10,36 @@ import { fetchPosts } from '../../actions/post_actions';
 import { useDispatch, useSelector } from 'react-redux';
 import PostsColumn from './posts-column';
 import HomeFixturesColumn from './home-fixtures-column';
+import HomeMenu from './home-menu';
 
 const Home = () => {
 	const dispatch = useDispatch();
 	const posts = useSelector(state => state.posts);
 
-	useEffect(() => {
-		dispatch(fetchPosts());
-	}, [])
+	useEffect(() => {dispatch(fetchPosts())}, [])
+	useEffect(() => {}, [posts])
 
-	useEffect(() => {
-		
-	}, [posts])
+	const [selectedTab, setSelectedTab] = useState(0);
+
+	let tabs = [
+		<PostsColumn posts={posts} />
+	]
+
+	const handleTabSelect = (value) => {
+		setSelectedTab(value)
+	}
 
 	return (
 		<Container className='home-container'>
-			<Grid container alignItems='flex-start' spacing={2}>
-				<Grid item xs={3} sx={{overflow: 'auto'}}>
-					<HomeFixturesColumn/>
+			<Grid container alignItems='flex-start' spacing={1}>
+				<Grid item xs={3} sx={{position: 'sticky', top: '2rem'}}>
+					<HomeMenu selectedTab={selectedTab} handleTabSelect={handleTabSelect}/>
 				</Grid>
 				<Grid item xs={6}>
-					<PostsColumn posts={posts} />
+					{tabs[selectedTab]}
 				</Grid>
-				<Grid item xs={3}>
-					Right col
+				<Grid item xs={3} sx={{ position: 'sticky', top: '2rem' }}>
+					<HomeFixturesColumn/>
 				</Grid>
 			</Grid>
 		</Container>

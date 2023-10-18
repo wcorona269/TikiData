@@ -8,18 +8,12 @@ const HomeFixturesColumn = () => {
 	const dispatch = useDispatch();
 	const matches = useSelector(state => state.matches.matches);
 	const isLoading = useSelector(state => state.matches.isLoading);
-
-
-	useEffect(() => {
-		dispatch(fetchLiveMatches())
-	}, [])
-
-	useEffect(() => {
-
-	}, [isLoading])
+	useEffect(() => {dispatch(fetchLiveMatches())}, [])
+	useEffect(() => {}, [isLoading])
+	
 
 	return (
-		<Paper elevation={6} id='home-fixtures-paper'>
+		<Paper elevation={6} id='home-fixtures-paper' sx={{position: 'sticky', top: '2rem'}}>
 			<Typography className='section-heading' variant='h5'>
 				Live Fixtures
 			</Typography>

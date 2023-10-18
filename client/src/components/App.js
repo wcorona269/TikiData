@@ -73,7 +73,7 @@ function App() {
       <Paper sx={{height: 'fit-content', minHeight: '150vh'}}>
         <Modal/>
         <NavBar currentUser={currentUser} />
-        <Container sx={{paddingTop: '6rem'}} >
+        <Container sx={{paddingTop: '6rem'}} fixed >
           <Routes>
             <Route path='/home'
               element={<ProtectedRoute currentUser={currentUser} component={<Home/>}/>}

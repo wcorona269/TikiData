@@ -50,7 +50,6 @@ class CommentLike(db.Model):
 
 	def delete_like(user_id, comment_id):
 		like_to_delete = CommentLike.query.filter_by(user_id=user_id, comment_id=comment_id).first()
-		print(like_to_delete)
   
 		if like_to_delete:
 			db.session.delete(like_to_delete)
