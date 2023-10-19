@@ -9,11 +9,13 @@ import CommentSection from './comment-section';
 import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { createLike, deleteLike, fetchPosts } from '../../actions/post_actions';
+import { createNotification } from '../../actions/notification_actions';
 
 const PostContainer = ({ post }) => {
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	const user_id = useSelector(state => state.users?.user?.id)
+	const username = useSelector(state => state.users?.user?.username)
 	const [showComments, setShowComments] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
 
@@ -39,10 +41,18 @@ const PostContainer = ({ post }) => {
 			'user_id': user_id,
 		}
 
+		const notif_info = {
+			'recipient_id': post.user_id,
+			'sender_id': user_id,
+			'message': `${username} liked your post`,
+			'post_id': post.id
+		}
+
 		if (isLiked === true) {
 			dispatch(deleteLike(like_info))
 		} else {
 			dispatch(createLike(like_info))
+			dispatch(createNotification(notif_info))
 		}
 		setIsLiked(!isLiked);
 	}

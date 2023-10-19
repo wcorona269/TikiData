@@ -1,16 +1,14 @@
-import React, { useEffect, useState }from 'react'
-import { BrowserRouter as Router, Route, Navigate, redirect } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../actions/session_actions';
-import { fetchCurrentUser } from '../../actions/user_actions';
+import React, { useEffect }from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ component, currentUser }) => {
+	const navigate = useNavigate();
+	
 	useEffect(() => {
 	}, [currentUser])
 
 	return currentUser !== null ? (
-		[component] ) : ( <Navigate to="/welcome" /> );
+		[component] ) : ( navigate("/welcome") );
 }
 
 export default ProtectedRoute;

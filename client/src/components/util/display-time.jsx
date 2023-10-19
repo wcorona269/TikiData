@@ -16,7 +16,7 @@ const DisplayTime = ({ match }) => {
 
 	const displayTime = (match) => {
 
-		if (match.fixture.status.short == 'FT') {
+		if (match.fixture.status.short === 'FT') {
 			return <p>Final</p>
 		}
 		if (match.fixture.status.elapsed !== null) {

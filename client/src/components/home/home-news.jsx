@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchNews } from '../../actions/news_actions';
-import { Container, Typography, Box, List, ListItem, ListItemButton, Grid, useTheme, Button } from '@mui/material';
+import { Container, Typography, Box, List, ListItem, ListItemButton, Grid, useTheme, Button, Paper } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
 
@@ -9,7 +9,8 @@ const HomeNews = () => {
 	const theme = useTheme()
 	const dispatch = useDispatch();
 	const news = useSelector(state => state.news?.news || []);
-	let isLoading = useSelector(state => state.news?.isLoading);
+	const isLoading = useSelector(state => state.news?.isLoading);
+	// const isLoading = true
 
 	const [articleCount, setArticleCount] = useState(25)
 	const [showButton, setShowButton] = useState(true);
@@ -89,29 +90,28 @@ const HomeNews = () => {
 	}
 
 	return (
-		<Box>
+		<Paper elevation={2} sx={{display: 'flex', flexDirection: 'column', minHeight: '40rem'}}>
 			<Typography variant='h5' className='section-heading'>
 				News
 			</Typography>
-			<Box sx={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
+			<Box sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column', width: '100%', minHeight: '40rem'}}>
 				{ isLoading ?
-					<CircularProgress color='primary' sx={{marginTop: '3rem' }}/> :
+					<CircularProgress color='primary' sx={{marginTop: '3rem', margin: 'auto'}}/> :
 					displayNews(news)
 				}
-				{ showButton &&
-					[ !isLoadingMore ?					
-						<Button onClick={handleClick} variant="outlined" sx={{height: '3rem'}}>
+				{ isLoading ? <></> :
+					!isLoadingMore ?
+						<Button onClick={handleClick} variant="outlined" sx={{ height: '3rem', width: '100%' }}>
 							<Typography variant='subtitle1'>
 								See More
 							</Typography>
 						</Button> :
-						<Button variant="outlined" sx={{ height: '3rem' }}>
-							<CircularProgress size='2rem'/>
+						<Button variant="outlined" sx={{ height: '3rem', width: '100%' }} >
+							<CircularProgress size='2rem' />
 						</Button>
-					]
 				}
 			</Box>
-		</Box>
+		</Paper>
 	)
 	}
 

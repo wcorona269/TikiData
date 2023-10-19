@@ -10,6 +10,7 @@ import matchesReducer from "./matches_reducer";
 import playerReducer from "./player_reducer";
 import newsReducer from "./news_reducer";
 import postsReducer from "./post_reducer";
+import notificationsReducer from "./notifications_reducer";
 
 const rootReducer = combineReducers({
 	counter: counterReducer,
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
 	matches: matchesReducer,
 	player: playerReducer,
 	news: newsReducer,
-	posts: postsReducer
+	posts: postsReducer,
+	notifications: notificationsReducer
 });
 
 export default rootReducer;

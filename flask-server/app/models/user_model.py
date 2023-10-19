@@ -13,12 +13,14 @@ class User(UserMixin, db.Model):
 	username = db.Column(db.String(64), index=True, unique=True, nullable=False)
 	email = db.Column(db.String(120), unique=True, nullable=False)
 	password_hash = db.Column(db.String(255), nullable=False)
+
  
 	# table relationships
 	favorites = db.relationship('Favorite', back_populates='user')
 	posts = db.relationship('Post', back_populates='user')
 	likes = db.relationship('PostLike', back_populates='user')
 	comments = db.relationship('Comment', back_populates='user')
+	notifications = db.relationship('Notification', back_populates='recipient', lazy=True)
  
 	# database constraints
 	__table_args__ = (

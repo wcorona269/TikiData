@@ -46,7 +46,7 @@ const CommentContainer = ({ comment }) => {
 		<Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '.5rem' }}>
 			<Avatar />
 			<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '.5rem' }}>
-				<Paper onDoubleClick={() => handleLike()} elevation={10} sx={{ padding: '.5rem', borderRadius: '.5rem' }} >
+				<Paper onDoubleClick={() => handleLike()} elevation={10} sx={{ padding: '.5rem', borderRadius: '.5rem', minWidth: '10rem' }} >
 					<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
 						<Typography variant='body2' sx={{ marginBottom: '.5rem', fontFamily: theme.typography.bold }}>
 							{comment.username}
