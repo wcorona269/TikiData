@@ -39,7 +39,7 @@ class Notification(db.Model):
 			'sender_id': self.sender_id,
 			'recipient_id': self.recipient_id,
 			'post_id': self.post_id,
-			'timestamp': self.timestamp.isoformat(),
+			'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
 			'message': self.message,
 			'is_read': self.is_read
 			# Add more fields if necessary

@@ -1,8 +1,18 @@
 import { Avatar, Container, List, ListItem, ListItemAvatar, ListItemButton, Paper, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchNotifications } from '../../actions/notification_actions'
 
 const HomeNotifications = () => {
+	const dispatch = useDispatch()
+	const notifications = useSelector(state => state.notifications?.notifications)
+	const user_id = useSelector(state => state.users.user.id);
 
+	useEffect(() => {
+		if (!notifications?.length) {
+			dispatch(fetchNotifications(user_id))
+		}
+	}, [])
 
 	const displayNotifications = () => {
 		let result = [];
@@ -37,4 +47,4 @@ const HomeNotifications = () => {
 	)
 }
 
-export default HomeNotifications
+export default HomeNotifications;

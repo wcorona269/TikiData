@@ -18,7 +18,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 					<HomeRoundedIcon fontSize='large'/> : <HomeOutlinedIcon fontSize='large'/>
 				}	
 				<ListItemContent sx={{marginLeft: '.5rem'}}>
-					<Typography sx={{ fontFamily: selectedTab === 0 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>home</Typography>
+					<Typography sx={{ fontFamily: selectedTab === 0 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>Home</Typography>
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,
@@ -28,7 +28,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 					<NotificationsIcon fontSize='large' /> : <NotificationsNoneIcon fontSize='large'/>
 				}	
 				<ListItemContent sx={{marginLeft: '.5rem'}}>
-					<Typography sx={{ fontFamily: selectedTab === 1 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>notifications</Typography>
+					<Typography sx={{ fontFamily: selectedTab === 1 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>Notifications</Typography>
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,
@@ -38,7 +38,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 					<ArticleIcon fontSize='large'/> : <ArticleOutlinedIcon fontSize='large' />
 				}	
 				<ListItemContent sx={{marginLeft: '.5rem'}}>
-					<Typography sx={{ fontFamily: selectedTab === 2 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>news</Typography>
+					<Typography sx={{ fontFamily: selectedTab === 2 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>News</Typography>
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>
@@ -47,7 +47,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 	return (
 		<>
 			<Typography className='section-heading' variant='h5'>
-				dashboard
+				Dashboard
 			</Typography>
 			<List>
 				{buttons}
