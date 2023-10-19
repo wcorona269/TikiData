@@ -9,7 +9,7 @@ import CommentSection from './comment-section';
 import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { createLike, deleteLike, fetchPosts } from '../../actions/post_actions';
-import { createNotification } from '../../actions/notification_actions';
+import { createNotification, deleteNotification } from '../../actions/notification_actions';
 
 const PostContainer = ({ post }) => {
 	const dispatch = useDispatch();
