@@ -19,6 +19,20 @@ def create_post():
   db.session.commit()
   
   return jsonify({'message': 'Post created successfully'}), 201
+
+
+@bp.route('/delete/<postId>', methods=['DELETE'])
+def delete_post(postId):
+  message = Post.delete_post(postId)
+  if message == True:
+    return jsonify({
+      'message': 'Post deleted successfully'
+    }), 200
+  else:
+    return jsonify({
+      'message': 'Invalid request data'
+    }), 401
+
   
 @bp.route('/fetch/<userId>')
 def fetch_user_posts(userId):

@@ -16,6 +16,21 @@ class Post(db.Model):
   likes = db.relationship('PostLike', back_populates='post')
   comments = db.relationship('Comment', back_populates='post')
   reposts = db.relationship('Repost', back_populates='post')
+  
+  def delete_post(id):
+    try:
+      post_to_delete = Post.query.get(id)
+      if post_to_delete:
+        db.session.delete(post_to_delete)
+        db.session.commit()
+        return True
+      else:
+        return False
+    except Exception as e:
+      db.session.rollback()
+      print(f"Error deleting post: {str(e)}")
+      return False
+      
 
   def to_dict(self):
     user_instance = User.query.get(self.user_id)
