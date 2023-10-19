@@ -67,7 +67,8 @@ routes_list = [
     routes.post.bp,
     routes.like.bp,
     routes.comment.bp,
-    routes.notification.bp
+    routes.notification.bp,
+    routes.repost.bp
 ]
 
 for route in routes_list:

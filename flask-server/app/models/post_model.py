@@ -15,7 +15,8 @@ class Post(db.Model):
   user = db.relationship('User', back_populates='posts')
   likes = db.relationship('PostLike', back_populates='post')
   comments = db.relationship('Comment', back_populates='post')
-  
+  reposts = db.relationship('Repost', back_populates='post')
+
   def to_dict(self):
     user_instance = User.query.get(self.user_id)
     user_data = User.to_dict(user_instance) if user_instance else None
@@ -26,6 +27,7 @@ class Post(db.Model):
 			'text': self.text,
 			'likes': [like.to_dict() for like in self.likes],
 			'comments': [comment.to_dict() for comment in self.comments],
+      'reposts': [repost.to_dict() for repost in self.reposts],
 			'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S')
 		}	
     
