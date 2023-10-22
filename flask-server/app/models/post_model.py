@@ -30,7 +30,6 @@ class Post(db.Model):
       db.session.rollback()
       print(f"Error deleting post: {str(e)}")
       return False
-      
 
   def to_dict(self):
     user_instance = User.query.get(self.user_id)

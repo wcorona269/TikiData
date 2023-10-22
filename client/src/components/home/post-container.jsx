@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, ButtonGroup, Grid, Paper, Typography } from '@mui/material'
+import { Avatar, Box, Button, ButtonGroup, Grid, Link, Paper, Typography } from '@mui/material'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
@@ -10,6 +10,7 @@ import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { createLike, deleteLike, fetchPosts } from '../../actions/post_actions';
 import { createNotification, deleteNotification } from '../../actions/notification_actions';
+import { useNavigate } from 'react-router-dom';
 
 const PostContainer = ({ post }) => {
 	const dispatch = useDispatch();
@@ -34,7 +35,6 @@ const PostContainer = ({ post }) => {
 		})}</span>;
 	};
 
-
 	const handleLike = () => {
 		const like_info = {
 			'post_id': post.id,
@@ -57,6 +57,28 @@ const PostContainer = ({ post }) => {
 		setIsLiked(!isLiked);
 	}
 
+	// const handleRepost = () => {
+	// 	const repost_info = {
+	// 		'post_id': post.id,
+	// 		'user_id': user_id,
+	// 	}
+
+	// 	const notif_info = {
+	// 		'recipient_id': post.user_id,
+	// 		'sender_id': user_id,
+	// 		'message': `${username} reposted your post`,
+	// 		'post_id': post.id
+	// 	}
+
+	// 	if (isLiked === true) {
+			
+	// 	} else {
+	// 		dispatch(createLike(like_info))
+	// 		dispatch(createNotification(notif_info))
+	// 	}
+	// 	setIsLiked(!isLiked);
+	// }
+
 
 	const buttons = [
 		<Button aria-label="favorite" size="large" sx={{ width: '100%' }} onClick={() => setShowComments(!showComments)}>
@@ -77,36 +99,29 @@ const PostContainer = ({ post }) => {
 	];
 
 	return (
-		<Paper className='timeline-paper' elevation={6}>
-			<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-				<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'top' }}>
-					<Avatar sx={{ marginRight: '.5rem' }} />
-					<Grid
-						container
-						direction="column"
-						justifyContent="center"
-						alignItems='flex-start'
-					>
-						<Grid item sx={6}>
-							<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>
+		<Paper className='timeline-paper' elevation={2}>
+			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+				<Avatar sx={{ marginRight: '.5rem' }} />
+				<Box sx={{ display: 'flex', flexDirection: 'column'}}>
+					<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '.5rem'}}>
+						<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>
+							<Link underline='hover'>
 								{post.username}
-							</Typography>
-						</Grid>
-						<Grid item sx={6}>
-							<Typography variant='caption' sx={{ color: 'var(--darkgray)' }}>
-								{timeAgo(post.created_at)}
-							</Typography>
-						</Grid>
-					</Grid>
+							</Link>
+						</Typography>
+						<Typography variant='caption' sx={{ color: 'var(--darkgray)' }}>
+							{timeAgo(post.created_at)}
+						</Typography>
+					</Box>
+					<Typography variant='body1'>
+						{post.text}
+					</Typography>
 				</Box>
 			</Box>
-			<Typography variant='body1'>
-				{post.text}
-			</Typography>
-			<ButtonGroup variant='text' size="large" aria-label="text button group" sx={{ width: '100%', marginTop: '2rem', marginBottom: '.5rem', color: theme.palette.primary.light}}>
+			<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '.5rem'}}>
 				{buttons}
-			</ButtonGroup>
-			{showComments && <CommentSection comments={post.comments} post_id={post.id} />}
+			</Box>
+			{showComments && <CommentSection comments={post.comments} post={post} />}
 		</Paper>
 	)
 }

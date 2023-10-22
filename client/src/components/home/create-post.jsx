@@ -38,7 +38,7 @@ const CreatePost = () => {
 	}
 
 	return (
-		<Paper className='timeline-paper' elevation={6} sx={{paddingBottom: '1rem'}}>
+		<Paper className='timeline-paper' elevation={2} sx={{paddingBottom: '1rem'}}>
 			<TextField
 				id="outlined-multiline-flexible"
 				placeholder='talk footy...'

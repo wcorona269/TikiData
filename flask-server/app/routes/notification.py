@@ -20,7 +20,7 @@ def add_notification():
   notification = Notification.add_notification(recipient_id, sender_id, post_id, message)
   if notification == True:
     return jsonify({
-			'message': 'Notification created successfully'
+				'message': 'Notification created successfully'
 		}), 200
   else:
     return jsonify({

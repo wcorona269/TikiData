@@ -4,19 +4,15 @@ import SendIcon from '@mui/icons-material/Send';
 import { useDispatch, useSelector } from 'react-redux';
 import { createComment } from '../../actions/comment_actions';
 import { fetchPosts } from '../../actions/post_actions'
+import { createNotification } from '../../actions/notification_actions';
 
-const CreateComment = ({ post_id, parent_id }) => {
+const CreateComment = ({ post }) => {
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	const [comment, setComment] = useState('');
 	const [isValid, setIsValid] = useState(false);
-	const userId = useSelector(state => state.users.user.id)
-
-	const comment_data = {
-		'user_id': userId,
-		'post_id': post_id,
-		'text': comment
-	}
+	const user_id = useSelector(state => state.users?.user?.id)
+	const username = useSelector(state => state.users?.user?.username)
 
 	useEffect(() => {
 		if (comment.length > 0 && comment.length < 1000) {
@@ -30,9 +26,23 @@ const CreateComment = ({ post_id, parent_id }) => {
 		setComment(event.target.value)
 	}
 	
-	const handleSubmit = (comment_data) => {
-		setComment('');
+	const handleSubmit = () => {
+		const comment_data = {
+			'user_id': user_id,
+			'post_id': post.id,
+			'text': comment
+		}
+
+		const notif_info = {
+			'recipient_id': post.user_id,
+			'sender_id': user_id,
+			'message': `${username} commented on your post.`,
+			'post_id': post.id
+		}
+
 		dispatch(createComment(comment_data));
+		dispatch(createNotification(notif_info))
+		setComment('');
 		dispatch(fetchPosts())
 	}
  
@@ -50,7 +60,7 @@ const CreateComment = ({ post_id, parent_id }) => {
 					onChange={handleChange}
 					/>
 				<IconButton variant='outlined' size='small' 
-					onClick={() => handleSubmit(comment_data)}
+					onClick={() => handleSubmit()}
 					disabled={!isValid}
 					sx={{ 
 						color: theme.palette.primary.main,

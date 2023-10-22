@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchNews } from '../../actions/news_actions';
 import { Container, Typography, Box, List, ListItem, ListItemButton, Grid, useTheme, Button, Paper } from '@mui/material';
+import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
 
@@ -111,6 +112,7 @@ const HomeNews = () => {
 						</Button>
 				}
 			</Box>
+			<ScrollToTopOnLoad />
 		</Paper>
 	)
 	}

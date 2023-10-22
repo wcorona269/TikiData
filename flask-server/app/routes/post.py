@@ -2,7 +2,6 @@ from sqlalchemy import desc
 from flask import Blueprint, request, jsonify
 from ..models import db, Post
 
-
 bp = Blueprint('posts', __name__, url_prefix='/posts')
 
 @bp.route('/create', methods=['POST'])
@@ -50,15 +49,15 @@ def fetch_user_posts(userId):
 
 @bp.route('/fetch/all')
 def fetch_all_posts():
-    # Query all posts and order them by created_at timestamp in descending order
-    posts = Post.query.order_by(desc(Post.created_at)).all()
+  # Query all posts and order them by created_at timestamp in descending order
+  posts = Post.query.order_by(desc(Post.created_at)).all()
 
-    if not posts:
-        return jsonify({'message': 'no posts found'}), 404
-      
-    posts_data = [post.to_dict() for post in posts]
+  if not posts:
+    return jsonify({'message': 'no posts found'}), 404
+    
+  posts_data = [post.to_dict() for post in posts]
 
-    return jsonify({
-        'message': 'All posts retrieved successfully',
-        'posts': posts_data
-    }), 200
+  return jsonify({
+    'message': 'All posts retrieved successfully',
+    'posts': posts_data
+  }), 200

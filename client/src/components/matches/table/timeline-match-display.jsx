@@ -11,7 +11,9 @@ import monthsOfYear from '../../club/monthsOfYear';
 import { Box,
 	Typography,
 	Tabs,
-	Tab
+	Tab,
+	Paper,
+	List
 } from '@mui/material';
 
 export const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -58,29 +60,13 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 	const filter_options = ['All', 'World', 'China', 'England', 'France', 'Germany', 'Portugal', 'Spain', 'USA']
 
 	return (
-		<>
-			<Box
-				sx={{
-					position: 'sticky',
-					top: '0',
-					display: 'flex',
-					flexDirection: 'column',
-				}}
-			>
-				<Box
-					sx={{display: 'flex', 
-					flexDirection: 'row', 
-					width: '100%',
-					justifyContent: 
-					'space-between !Important', 
-					p: '.5rem'
-				}}
-				>
-					<Typography variant='h5' sx={{padding: '1rem'}}>
+		<Paper elevation={2} id='home-fixtures-paper'>
+			<Paper elevation={2}
+				sx={{ position: 'sticky', top: '0', display: 'flex', flexDirection: 'column', zIndex: '100'}}>
+					<Typography variant='h5' className='section-heading'>
 						Matches
 					</Typography>
-					<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem', alignItems: 'center', marginRight: '.5rem'}}>
-						{/* <Typography variant='body2'>Filter by Country</Typography> */}
+					<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem', justifyContent: 'left', marginRight: '.5rem', marginTop: '1rem'}}>
 						<LocalizationProvider dateAdapter={AdapterDayjs}>
 							<DatePicker
 								label={formatted_date_string}
@@ -91,7 +77,6 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 						</LocalizationProvider>
 						<TimelineSelect nations={nations} onTabSelect={onTabSelect} selectedNation={selectedNation}/>
 					</Box>
-				</Box>
 				<Box>
 					<Tabs
 						value={selectedNation}
@@ -109,11 +94,11 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 					})}
 					</Tabs>
 				</Box>
-			</Box>
-			<ul>
+			</Paper>
+			<List>
 				{displayMatchesList()}
-			</ul>
-		</>
+			</List>
+		</Paper>
 	)
 }
 

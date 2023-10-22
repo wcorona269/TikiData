@@ -26,6 +26,7 @@ const Home = () => {
 	let tabs = [
 		<PostsColumn posts={posts} />,
 		<HomeNotifications/>,
+		<MatchesTimeline/>,
 		<HomeNews/>
 	]
 
@@ -39,12 +40,18 @@ const Home = () => {
 				<Grid item xs={3} sx={{position: 'sticky', top: '2rem'}}>
 					<HomeMenu selectedTab={selectedTab} handleTabSelect={handleTabSelect}/>
 				</Grid>
-				<Grid item xs={6}>
-					{tabs[selectedTab]}
-				</Grid>
-				<Grid item xs={3} sx={{ position: 'sticky', top: '2rem' }}>
-					<HomeFixturesColumn/>
-				</Grid>
+				{
+					selectedTab !== 2 ? 
+					[<Grid item xs={6}>
+						{tabs[selectedTab]}
+					</Grid>,
+					<Grid item xs={3} sx={{ position: 'sticky', top: '2rem' }}>
+						<HomeFixturesColumn/>
+					</Grid>] :
+					<Grid item xs={9}>
+						{tabs[selectedTab]}
+					</Grid>
+				}
 			</Grid>
 		</Container>
 	)

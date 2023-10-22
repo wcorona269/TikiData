@@ -6,6 +6,7 @@ import { Avatar, Box, Button, ButtonGroup, Container, Grid, IconButton, ListItem
 import LoadingMessage from '../util/loading/loading-screen';
 import CreatePost from './create-post';
 import PostContainer from './post-container';
+import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 
 
 const PostsColumn = ({posts}) => {
@@ -16,15 +17,16 @@ const PostsColumn = ({posts}) => {
 	}
 
 	return (
-		<Box>
+		<Paper elevation={2}>
 			<Typography className='section-heading' variant='h5'>
-				home
+				Home
 			</Typography>
 			<CreatePost/>
 			{posts.posts.map((post, idx) => (
 				<PostContainer post={post} />
 			))}
-		</Box>
+			<ScrollToTopOnLoad/>
+		</Paper>
 	)
 }
 

@@ -8,6 +8,7 @@ class Comment(db.Model):
 	id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
 	post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), index=True, nullable=False)  # Define foreign key to 'posts.id'
+
 	text = db.Column(db.String(200), nullable=False)
 	created_at = db.Column(db.DateTime, default=datetime.utcnow)
 	parent_id = db.Column(db.Integer, db.ForeignKey('comments.id'), default=None)
@@ -34,7 +35,6 @@ class Comment(db.Model):
 			# Add other fields as needed
 		}
     
-  
 	def delete_comment(id):
 		comment_to_delete = Comment.query.filter_by(id=id).first()
 
@@ -44,7 +44,6 @@ class Comment(db.Model):
 			return True
 		else:
 			return False
-  
   
 	def __repr__(self):
 			return f'<Comment {self.id}>'

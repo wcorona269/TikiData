@@ -20,7 +20,9 @@ const MatchesTimeline = ({apiKey}) => {
 		const day = (date.getDate()).toString().padStart(2, '0');
 		const dateString = `${year}-${month}-${day}`
 
-		dispatch(fetchMatches(dateString))
+		if (!matches) {
+			dispatch(fetchMatches(dateString))
+		}
 	}, [date]);
 
 	const resetFilters = () => {
@@ -79,24 +81,17 @@ const MatchesTimeline = ({apiKey}) => {
 	}
 
 	return (
-		<div className='matches-timeline'>
-					<Paper
-						className='home-paper'
-						elevation={6}
-					>
-						<TimelineMatchDisplay 
-							matches={sortedMatches} 
-							competitions={competitions}
-							selectedNation={selectedNation}
-							setSelectedNation={setSelectedNation}
-							nations={listOfNations}
-							nationsSet={nationsSet}
-							onTabSelect={handleTabSelect}
-							setDate={setDate}
-							date={date}
-							/>
-					</Paper>
-		</div>
+		<TimelineMatchDisplay 
+			matches={sortedMatches} 
+			competitions={competitions}
+			selectedNation={selectedNation}
+			setSelectedNation={setSelectedNation}
+			nations={listOfNations}
+			nationsSet={nationsSet}
+			onTabSelect={handleTabSelect}
+			setDate={setDate}
+			date={date}
+			/>
 	)
 }
 
