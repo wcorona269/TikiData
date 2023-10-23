@@ -70,4 +70,4 @@ const CommentContainer = ({ comment }) => {
 	)
 }
 
-export default CommentContainer
+export default CommentContainer;

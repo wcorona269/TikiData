@@ -19,6 +19,8 @@ const PostContainer = ({ post }) => {
 	const theme = useTheme();
 	const user_id = useSelector(state => state.users?.user?.id)
 	const username = useSelector(state => state.users?.user?.username)
+	const [postLikes, setPostLikes] = useState(post.likes.length);
+	const [reposts, setReposts] = useState(post.reposts.length);
 	const [showComments, setShowComments] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
 	const [isReposted, setIsReposted] = useState(false);
@@ -59,9 +61,11 @@ const PostContainer = ({ post }) => {
 
 		if (isLiked === true) {
 			dispatch(deleteLike(like_info))
+			setPostLikes(postLikes - 1)
 		} else {
 			dispatch(createLike(like_info))
 			dispatch(createNotification(notif_info))
+			setPostLikes(postLikes + 1)
 		}
 		setIsLiked(!isLiked);
 	}
@@ -74,6 +78,7 @@ const PostContainer = ({ post }) => {
 
 		if (isReposted === true) {
 			dispatch(deleteRepost(repost_info))
+			setReposts(reposts - 1)
 		} else {
 			const notif_info = {
 				'recipient_id': post.user_id,
@@ -83,24 +88,24 @@ const PostContainer = ({ post }) => {
 			}
 			dispatch(createRepost(repost_info));
 			dispatch(createNotification(notif_info));
+			setReposts(reposts + 1)
 		}
-		
 		setIsReposted(!isReposted);
 	}
 
 
 	const buttons = [
 		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: showComments ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => setShowComments(!showComments)}>
-			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />
+			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium'/>
 			{post.comments.length}
 		</Button>,
 		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isReposted ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => handleRepost()} >
-			<RepeatIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />
-			{post.reposts.length}
+			<RepeatIcon sx={{ marginRight: '.25rem' }} fontSize='medium'/>
+			{reposts}
 		</Button>,
 		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isLiked ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={handleLike} >
-				<FavoriteIcon sx={{ marginRight: '.25rem'}} fontSize='medium' ></FavoriteIcon> 
-			{post.likes.length}
+			{isLiked ? <FavoriteIcon sx={{ marginRight: '.25rem' }} fontSize='medium' /> : <FavoriteBorderIcon sx={{ marginRight: '.25rem' }} />  }
+			{postLikes}
 		</Button>,
 	];
 
