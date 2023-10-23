@@ -13,12 +13,13 @@ import { createLike, createRepost, deleteLike, deleteRepost, fetchPosts } from '
 import { createNotification, deleteNotification } from '../../actions/notification_actions';
 import { showModal } from '../../actions/modal_actions'
 import { useNavigate } from 'react-router-dom';
+import RepostButton from './repost-popper';
 
 const PostContainer = ({ post }) => {
 	const dispatch = useDispatch();
 	const theme = useTheme();
-	const user_id = useSelector(state => state.users?.user?.id)
-	const username = useSelector(state => state.users?.user?.username)
+	const user_id = useSelector(state => state.users?.user?.id);
+	const username = useSelector(state => state.users?.user?.username);
 	const [postLikes, setPostLikes] = useState(post.likes.length);
 	const [reposts, setReposts] = useState(post.reposts.length);
 	const [showComments, setShowComments] = useState(false);
@@ -29,12 +30,6 @@ const PostContainer = ({ post }) => {
 		for (let like of post.likes) {
 			if (like.user_id === user_id) {
 				setIsLiked(true)
-			}
-		}
-
-		for (let repost of post.reposts) {
-			if (repost.id === user_id) {
-				setIsReposted(true)
 			}
 		}
 	}, []);
@@ -99,10 +94,7 @@ const PostContainer = ({ post }) => {
 			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium'/>
 			{post.comments.length}
 		</Button>,
-		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isReposted ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => handleRepost()} >
-			<RepeatIcon sx={{ marginRight: '.25rem' }} fontSize='medium'/>
-			{reposts}
-		</Button>,
+		<RepostButton handleRepost={handleRepost} reposts={reposts} isReposted={isReposted} setIsReposted={setIsReposted} post={post} user_id={user_id}  />,
 		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isLiked ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={handleLike} >
 			{isLiked ? <FavoriteIcon sx={{ marginRight: '.25rem' }} fontSize='medium' /> : <FavoriteBorderIcon sx={{ marginRight: '.25rem' }} />  }
 			{postLikes}

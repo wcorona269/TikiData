@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MatchTimelineTable from './match-timeline-table';
 import TimelineSelect from '../nav-bar/timeline-select';
+import { Box, Typography, Tabs,Tab, Paper, List } from '@mui/material';
 import dayjs from 'dayjs';
 
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -8,20 +9,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import monthsOfYear from '../../club/monthsOfYear';
 
-import { Box,
-	Typography,
-	Tabs,
-	Tab,
-	Paper,
-	List
-} from '@mui/material';
-
 export const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelectedNation, date, setDate, nations, nationsSet, onTabSelect }) => {
 	const [showAll, setShowAll] = useState(true);
 	let matchesList;
-
 
 	const dayOfWeek = daysOfWeek[new Date(date).getDay()]
 	const month = monthsOfYear[new Date(date).getMonth()]
@@ -66,7 +58,7 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 					<Typography variant='h5' className='section-heading'>
 						Matches
 					</Typography>
-					<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem', justifyContent: 'left', marginRight: '.5rem', marginTop: '1rem'}}>
+					<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem', justifyContent: 'left', margin: '1rem', marginBottom: '0px' }}>
 						<LocalizationProvider dateAdapter={AdapterDayjs}>
 							<DatePicker
 								label={formatted_date_string}
