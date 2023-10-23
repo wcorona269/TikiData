@@ -1,3 +1,4 @@
+import './post-container.scss'
 import { Avatar, Box, Button, ButtonGroup, Grid, Link, Paper, Typography } from '@mui/material'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -8,8 +9,9 @@ import { formatDistanceToNow } from 'date-fns';
 import CommentSection from './comment-section';
 import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { createLike, deleteLike, fetchPosts } from '../../actions/post_actions';
+import { createLike, createRepost, deleteLike, deleteRepost, fetchPosts } from '../../actions/post_actions';
 import { createNotification, deleteNotification } from '../../actions/notification_actions';
+import { showModal } from '../../actions/modal_actions'
 import { useNavigate } from 'react-router-dom';
 
 const PostContainer = ({ post }) => {
@@ -19,11 +21,18 @@ const PostContainer = ({ post }) => {
 	const username = useSelector(state => state.users?.user?.username)
 	const [showComments, setShowComments] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
+	const [isReposted, setIsReposted] = useState(false);
 
 	useEffect(() => {
 		for (let like of post.likes) {
 			if (like.user_id === user_id) {
 				setIsLiked(true)
+			}
+		}
+
+		for (let repost of post.reposts) {
+			if (repost.id === user_id) {
+				setIsReposted(true)
 			}
 		}
 	}, []);
@@ -57,49 +66,46 @@ const PostContainer = ({ post }) => {
 		setIsLiked(!isLiked);
 	}
 
-	// const handleRepost = () => {
-	// 	const repost_info = {
-	// 		'post_id': post.id,
-	// 		'user_id': user_id,
-	// 	}
+	const handleRepost = () => {
+		const repost_info = {
+			'post_id': post.id,
+			'user_id': user_id,
+		}
 
-	// 	const notif_info = {
-	// 		'recipient_id': post.user_id,
-	// 		'sender_id': user_id,
-	// 		'message': `${username} reposted your post`,
-	// 		'post_id': post.id
-	// 	}
-
-	// 	if (isLiked === true) {
-			
-	// 	} else {
-	// 		dispatch(createLike(like_info))
-	// 		dispatch(createNotification(notif_info))
-	// 	}
-	// 	setIsLiked(!isLiked);
-	// }
+		if (isReposted === true) {
+			dispatch(deleteRepost(repost_info))
+		} else {
+			const notif_info = {
+				'recipient_id': post.user_id,
+				'sender_id': user_id,
+				'message': `${username} reposted your post`,
+				'post_id': post.id
+			}
+			dispatch(createRepost(repost_info));
+			dispatch(createNotification(notif_info));
+		}
+		
+		setIsReposted(!isReposted);
+	}
 
 
 	const buttons = [
-		<Button aria-label="favorite" size="large" sx={{ width: '100%' }} onClick={() => setShowComments(!showComments)}>
+		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: showComments ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => setShowComments(!showComments)}>
 			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />
 			{post.comments.length}
 		</Button>,
-		<Button aria-label="favorite" size="large" sx={{ width: '100%' }}>
+		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isReposted ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => handleRepost()} >
 			<RepeatIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />
-			0
+			{post.reposts.length}
 		</Button>,
-		<Button aria-label="favorite" size="large" sx={{ width: '100%' }} onClick={handleLike} >
-			{isLiked ? 
-				<FavoriteIcon sx={{ marginRight: '.25rem' }} fontSize='medium' ></FavoriteIcon> :
-				<FavoriteBorderIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />
-			}
-			{isLiked ? post.likes.length + 1 : post.likes.length}
+		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isLiked ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={handleLike} >
+				<FavoriteIcon sx={{ marginRight: '.25rem'}} fontSize='medium' ></FavoriteIcon> 
+			{post.likes.length}
 		</Button>,
 	];
 
 	return (
-		<Paper className='timeline-paper' elevation={2}>
+		<Paper id='post-container' className='timeline-paper' elevation={2} key={post.id}>
 			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
 				<Avatar sx={{ marginRight: '.5rem' }} />
 				<Box sx={{ display: 'flex', flexDirection: 'column'}}>
@@ -118,7 +124,7 @@ const PostContainer = ({ post }) => {
 					</Typography>
 				</Box>
 			</Box>
-			<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '.5rem'}}>
+			<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: '.5rem'}}>
 				{buttons}
 			</Box>
 			{showComments && <CommentSection comments={post.comments} post={post} />}

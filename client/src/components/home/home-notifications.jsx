@@ -25,7 +25,7 @@ const HomeNotifications = () => {
 
 		for (let i = 0; i < notifications.length; i++) {
 			result.push(
-				<ListItem disablePadding divider alignItems='flex-start'>
+				<ListItem disablePadding divider alignItems='flex-start' key={i}>
 					{/* TODO: onclick - take to post page */}
 					<ListItemButton>
 						<ListItemAvatar>
@@ -46,7 +46,7 @@ const HomeNotifications = () => {
 	return (
 		<>
 			<Paper elevation={2} sx={{minHeight: '40rem'}}>
-				<Typography variant='h6' className='section-heading'>
+				<Typography variant='h5' className='section-heading'>
 					Notifications
 				</Typography>
 				<List>

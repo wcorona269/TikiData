@@ -41,7 +41,7 @@ class Post(db.Model):
 			'text': self.text,
 			'likes': [like.to_dict() for like in self.likes],
 			'comments': [comment.to_dict() for comment in self.comments],
-      'reposts': [repost.to_dict() for repost in self.reposts],
+      'reposts': [repost.user_info() for repost in self.reposts],
 			'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S')
 		}	
     

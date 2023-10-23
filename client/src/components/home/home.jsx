@@ -17,11 +17,12 @@ import HomeNotifications from './home-notifications';
 const Home = () => {
 	const dispatch = useDispatch();
 	const posts = useSelector(state => state.posts);
+	const [selectedTab, setSelectedTab] = useState(0);
+	const [selectedPost, setSelectedPost] = useState(0);
 
 	useEffect(() => {dispatch(fetchPosts())}, [])
 	useEffect(() => {}, [posts])
 
-	const [selectedTab, setSelectedTab] = useState(0);
 
 	let tabs = [
 		<PostsColumn posts={posts} />,

@@ -38,14 +38,14 @@ export const fetchUserPosts = (userId) => {
 }
 
 // create post
-export const CREATE_POST_REQUEST = 'CREATE_POST_REQUEST'
-export const CREATE_POST_FAILURE = 'CREATE_POST_FAILURE'
-export const CREATE_POST_SUCCESS = 'CREATE_POST_SUCCESS'
+export const CREATE_POST_REQUEST = 'CREATE_POST_REQUEST';
+export const CREATE_POST_FAILURE = 'CREATE_POST_FAILURE';
+export const CREATE_POST_SUCCESS = 'CREATE_POST_SUCCESS';
 
 export const createPost = (postData) => {
 	return (dispatch) => {
 		dispatch({ type: CREATE_POST_REQUEST });
-		return axios.post('/posts/create', postData)  // Assuming your backend endpoint for creating posts is '/posts/create'
+		return axios.post('/posts/create', postData)
 			.then((response) => {
 				dispatch({ type: CREATE_POST_SUCCESS, payload: response.data });
 			})
@@ -54,6 +54,7 @@ export const createPost = (postData) => {
 			});
 	};
 };
+
 
 // create post like
 export const CREATE_LIKE_REQUEST = 'CREATE_LIKE_REQUEST';
@@ -92,6 +93,45 @@ export const deleteLike = (likeData) => {
 			})
 			.catch((error) => {
 				dispatch({ type: DELETE_LIKE_FAILURE, payload: error.message });
+			});
+	};
+}
+
+// create repost
+export const CREATE_REPOST_REQUEST = 'CREATE_REPOST_REQUEST'
+export const CREATE_REPOST_SUCCESS =  'CREATE_REPOST_SUCCESS'
+export const CREATE_REPOST_FAILURE = 'CREATE_REPOST_FAILURE'
+
+export const createRepost = (repostData) => {
+	return (dispatch) => {
+		dispatch({ type: CREATE_REPOST_REQUEST, repostData: repostData });
+			axios.post('/reposts/create', repostData)
+			.then((response) => {
+				dispatch({ type: CREATE_REPOST_SUCCESS, payload: response.data });
+			})
+			.catch((error) => {
+				dispatch({ type: CREATE_REPOST_FAILURE, payload: error.message });
+			});
+	};
+}
+
+
+// delete repost
+export const DELETE_REPOST_REQUEST = 'DELETE_REPOST_REQUEST'
+export const DELETE_REPOST_SUCCESS =  'DELETE_REPOST_SUCCESS'
+export const DELETE_REPOST_FAILURE = 'DELETE_REPOST_FAILURE'
+
+export const deleteRepost = (repostData) => {
+	return (dispatch) => {
+		dispatch({ type: DELETE_REPOST_REQUEST, repostData: repostData });
+			return axios.delete(`/reposts/delete`, {
+				data: repostData
+			})
+			.then((response) => {
+				dispatch({ type: DELETE_REPOST_SUCCESS, payload: response.data });
+			})
+			.catch((error) => {
+				dispatch({ type: DELETE_REPOST_FAILURE, payload: error.message });
 			});
 	};
 }

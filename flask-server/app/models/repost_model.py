@@ -1,6 +1,7 @@
 from .db import db
 from .user_model import User
 from .post_model import Post
+from datetime import datetime
 
 class Repost(db.Model):
   __tablename__ = 'reposts'
@@ -9,12 +10,14 @@ class Repost(db.Model):
   id = db.Column(db.Integer, primary_key=True, nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
+  created_at = db.Column(db.DateTime, default=datetime.utcnow)
   # relationships
-  user = db.relationship('User', backref='reposts')
-  post = db.relationship('Post', back_populates='reposts')
+  user = db.relationship('User', backref='reposts', lazy='joined')
+  post = db.relationship('Post', back_populates='reposts', lazy='joined')
   
   @staticmethod
   def add_repost(user_id, post_id):
+    print(user_id)
     try:
       new_repost = Repost(user_id=user_id, post_id=post_id)
       db.session.add(new_repost)
@@ -26,9 +29,9 @@ class Repost(db.Model):
       return False
     
   @staticmethod
-  def delete_repost(id):
+  def delete_repost(user_id, post_id):
     try:
-      repost_to_delete = Repost.query.get(id)
+      repost_to_delete = Repost.query.filter_by(user_id=user_id, post_id=post_id).first()
       if repost_to_delete:
         db.session.delete(repost_to_delete)
         db.session.commit()
@@ -39,7 +42,12 @@ class Repost(db.Model):
       db.session.rollback()  # Rollback the session in case of an error
       print(f"Error deleting repost: {str(e)}")
       return False
+    
   
+  def user_info(self):
+    user_data = self.user.to_dict() if self.user else None;
+    return user_data
+      
   def to_dict(self):
     user_data = self.user.to_dict() if self.user else None
     post_data = self.post.to_dict() if self.post else None

@@ -12,11 +12,11 @@ const initialState = {
 const notificationsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_NOTIFICATIONS_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...state, isLoading: true, error: null};
 		case FETCH_NOTIFICATIONS_SUCCESS:
 			return { ...state, isLoading: false, error: null, notifications: action.payload['notifications'] };
 		case FETCH_NOTIFICATIONS_FAILURE:
-			return { ...state, isLoading: false, error: action.payload, notifications: [] };
+			return { ...state, isLoading: false, error: action.payload, notifications: null };
 		default:
 			return state;
 	}

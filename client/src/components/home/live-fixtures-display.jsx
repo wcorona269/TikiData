@@ -23,7 +23,7 @@ const LiveFixturesDisplay = ({ matches }) => {
 			const winner = teams[team].winner;
 			const num_goals = fixture.goals[team] || 0;
 			result.unshift(
-				<Grid container className={winner === true ? 'winning team' : ''} sx={{marginTop: '8px', marginBottom: '8px'}}>
+				<Grid container className={winner === true ? 'winning team' : ''} sx={{marginTop: '8px', marginBottom: '8px'}} key={team_id}>
 					<Grid item xs={2}>
 						<img src={team_logo} style={{display: 'flex', alignItems: 'center', justifyContent: 'left'}}/>
 					</Grid>
@@ -40,7 +40,7 @@ const LiveFixturesDisplay = ({ matches }) => {
 				</Grid>
 			)}
 		return (
-			<ListItem disablePadding divider>
+			<ListItem disablePadding divider key={fixture.fixture.id}>
 				<ListItemButton onClick={() => handleClick(fixture.fixture.id)} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '6rem', justifyContent: 'space-around'}}>
 					<Typography variant='caption' sx={{color: theme.palette.grey['700'], width: '100%', textAlign: 'left', display: 'flex', alignItems: 'center' }}>
 						<img src={fixture.league.flag} style={{ height: '.75rem', marginRight: '.25rem' }} />
@@ -75,22 +75,19 @@ const LiveFixturesDisplay = ({ matches }) => {
 			}
 		}
 		for (let competition in matchesByCompetition) {
-			// result.push(
-			// 	<Typography variant="subtitle1" gutterBottom className='new-league-heading' sx={{ marginBottom: '0px', paddingLeft: '.5rem !important', padding: '.25rem', borderTop: `1px solid ${theme.palette.grey['700']}`, borderBottom: `1px solid ${theme.palette.grey['700']}`, fontFamily: theme.typography.bold}}>
-			// 		{competition}
-			// 	</Typography>
-			// )
 			let competitionMatches = [];
+			let idx = 0;
 			for (let match of matchesByCompetition[competition]) {
 				competitionMatches.push(
 					displayMatch(match)
 				)
 			}
 			result.push(
-				<List sx={{padding: '0px'}}>
+				<List sx={{padding: '0px'}} key={idx}>
 					{competitionMatches}
 				</List>
 			)
+			idx += 1;
 		}
 		return result;
 	}
@@ -98,7 +95,7 @@ const LiveFixturesDisplay = ({ matches }) => {
 
 	return (
 		<Box className='live-fixtures-display'>
-			<Box sx={{maxHeight: '40rem', overflowX: 'scroll'}}>
+			<Box sx={{maxHeight: '40rem', overflowY: 'scroll'}}>
 				{displayLiveMatches(matches)}
 			</Box>
 		</Box>

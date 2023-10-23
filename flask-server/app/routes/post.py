@@ -49,7 +49,6 @@ def fetch_user_posts(userId):
 
 @bp.route('/fetch/all')
 def fetch_all_posts():
-  # Query all posts and order them by created_at timestamp in descending order
   posts = Post.query.order_by(desc(Post.created_at)).all()
 
   if not posts:
