@@ -18,10 +18,6 @@ const CommentContainer = ({ comment }) => {
 	const theme = useTheme();
 
 	useEffect(() => {
-		dispatch(fetchPosts())
-	}, [isLiked])
-
-	useEffect(() => {
 		for (let like of comment.likes) {
 			if (like.user_id === user_id)	{
 				setIsLiked(true)

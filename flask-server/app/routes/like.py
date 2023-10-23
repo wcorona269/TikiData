@@ -10,18 +10,18 @@ def create_like():
   post_id = data.get('post_id')
   comment_id = data.get('comment_id')
   
-  if not user_id or not post_id:
+  if not user_id:
     return jsonify({
 			'message': 'Invalid request data'
 		}), 400
     
-  if not comment_id:
+  if user_id and post_id:
     PostLike.add_like(user_id, post_id)
     return jsonify({
 			'message': 'Like created successfully'
 		}), 200
   
-  if comment_id:
+  if user_id and comment_id:
     CommentLike.add_like(user_id, comment_id)
     return jsonify({
 			'message': 'Like created successfully',

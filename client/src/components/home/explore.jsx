@@ -42,7 +42,7 @@ const Explore = () =>  {
 	const displayTableRow = (country, idx) => {
 		const [name, info] = country;
 		const result = [
-			<StyledTableCell>{name} <Flag code={info['countryCode']} height='16' /></StyledTableCell>
+			<StyledTableCell sx={{display: 'flex', alignItems: 'center'}}><Flag code={info['countryCode']} height='14' width='20' style={{marginRight: '.25rem'}} />{name} </StyledTableCell>
 		];
 
 		{
