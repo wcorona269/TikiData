@@ -7,6 +7,8 @@ import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { List, ListItem, ListItemButton, Menu, Paper, Typography, useTheme } from '@mui/material';
 import ListItemContent from '@mui/joy/ListItemContent';
+import PublicIcon from '@mui/icons-material/Public';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import React from 'react';
 
 const HomeMenu = ({ selectedTab, handleTabSelect }) => {
@@ -43,11 +45,22 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 		</ListItem>,
 		<ListItem disablepadding sx={{ paddingLeft: '0px' }}>
 			<ListItemButton onClick={() => handleTabSelect(3)}>
-				{ selectedTab === 3 ?
+			{ selectedTab === 3 ?
+				<TravelExploreIcon fontSize='large'/> :
+				<PublicIcon fontSize='large' />
+			}	
+				<ListItemContent sx={{marginLeft: '.5rem'}}>
+					<Typography sx={{ fontFamily: selectedTab === 3 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>Explore</Typography>
+				</ListItemContent>
+			</ListItemButton>
+		</ListItem>,
+		<ListItem disablepadding sx={{ paddingLeft: '0px' }}>
+			<ListItemButton onClick={() => handleTabSelect(4)}>
+				{ selectedTab === 4 ?
 					<ArticleIcon fontSize='large'/> : <ArticleOutlinedIcon fontSize='large' />
 				}	
 				<ListItemContent sx={{marginLeft: '.5rem'}}>
-					<Typography sx={{ fontFamily: selectedTab === 3 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>News</Typography>
+					<Typography sx={{ fontFamily: selectedTab === 4 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>News</Typography>
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,

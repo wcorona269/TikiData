@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
 import leaguesByCountry from './leagues/leaguesByCountry';
-import { Link } from '@mui/material';
+import { Container, Link } from '@mui/material';
 import Flag from 'react-world-flags';
-import topLeagues from './leagues/topLeagues';
 import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import { Box, Table, TableCell, TableHead, TableRow, Paper, Typography, TableContainer, TableBody } from '@mui/material';
+import { tableCellClasses } from '@mui/material/TableCell';
+import StarIcon from '@mui/icons-material/Star';
+import { useNavigate } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -24,10 +20,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const sortedLeaguesByCountry = Object.entries(leaguesByCountry)
-.sort((a, b) => a[0].localeCompare(b[0]))
-.reduce((acc, [key, value]) => {
-	acc[key] = value;
-		return acc;
+	.sort((a, b) => a[0].localeCompare(b[0]))
+	.reduce((acc, [key, value]) => {
+		acc[key] = value;
+			return acc;
 }, {})
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -41,6 +37,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const Explore = () =>  {
+	const navigate = useNavigate()
+
 	const displayTableRow = (country, idx) => {
 		const [name, info] = country;
 		const result = [
@@ -72,11 +70,52 @@ const Explore = () =>  {
 		)
 	}
 
+	const handleChipClick = (id) => {
+		navigate(`/league-overview/${id}`)
+	}
+
+	const listTopLeagues = () => {
+
+		const topLeagues = [
+			['Premier League', 39],
+			['La Liga', 140],
+			['Bundesliga', 78],
+			['Serie A', 135],
+			['Ligue 1', 61],
+			['UEFA Champions League', 2],
+			['UEFA Europa League', 3],
+		]
+
+		let result = [];
+
+		topLeagues.map((league) => {
+			let [name, id] = league;
+
+			result.push(
+				<Chip onClick={() => handleChipClick(id)} label={name}/>
+			)
+		});
+
+		return (
+			<Container sx={{display: 'flex', flexDirection: 'column', padding: '1rem', gap: '1rem'}}> 
+				<Typography variant='subtitle1' sx={{display: 'flex', alignItems: 'center'}}>
+					Top Leagues
+				</Typography>
+				<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem'}}>
+					{result}
+				</Box>
+			</Container>
+		)
+	}
+
 	return (
 		<Paper elevation={2}>
 			<Typography variant='h5' className='section-heading'>
+				
 				Explore
 			</Typography>
+			<Box sx={{display: 'flex', flexDirection: 'column'}}>
+				{listTopLeagues()}
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 700 }} aria-label="customized table">
 					<TableHead>
@@ -94,6 +133,7 @@ const Explore = () =>  {
 					</TableBody>
 				</Table>
 			</TableContainer>
+			</Box>
 		</Paper>
 	);
 }
