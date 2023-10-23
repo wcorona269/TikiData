@@ -10,7 +10,7 @@ class Repost(db.Model):
   id = db.Column(db.Integer, primary_key=True, nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
-  created_at = db.Column(db.DateTime, default=datetime.utcnow)
+  created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
   # relationships
   user = db.relationship('User', backref='reposts', lazy='joined')
   post = db.relationship('Post', back_populates='reposts', lazy='joined')
@@ -54,5 +54,6 @@ class Repost(db.Model):
     return {
 				'id': self.id,
 				'user': user_data,
-				'post': post_data
+				'post': post_data,
+        'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S')
 		}
