@@ -21,6 +21,7 @@ import NewsTimeline from './news/news-timeline';
 import { Paper, createTheme, ThemeProvider, Container } from '@mui/material';
 import { fetchCurrentUser } from '../actions/user_actions';
 import { useDispatch, useSelector } from 'react-redux';
+import PostsColumn from './home/posts-column';
 
 
 const theme = createTheme({
@@ -75,32 +76,12 @@ function App() {
         <NavBar currentUser={currentUser} />
         <Container sx={{paddingTop: '6rem'}} fixed >
           <Routes>
-            <Route path='/home'
-              element={<ProtectedRoute currentUser={currentUser} component={<Home/>}/>}
-            />
-            <Route path='/matches'
-              element={<ProtectedRoute currentUser={currentUser} component={<MatchesTimeline apiKey={apiKey} />} />}
-            />  
-            <Route path='/news'
-              element={<ProtectedRoute currentUser={currentUser} component={<NewsTimeline/>}/>}
-            />
-            <Route path='/explore'
-              element={<ProtectedRoute currentUser={currentUser} component={<Explore />} />}
-            />
-            <Route path='/club/:clubId'
-              element={<ProtectedRoute currentUser={currentUser} component={<ClubProfile/>} />}
-            />
-            <Route path='/league-overview/:leagueId'
-              element={<ProtectedRoute currentUser={currentUser} component={<LeagueProfile />} />}
-            />
-            <Route path='/player-profile/:playerId'
-              element={<ProtectedRoute currentUser={currentUser} component={<PlayerProfile />} />}
-            />
-            <Route
-              path='match-overview/:matchId'
-              element={<ProtectedRoute currentUser={currentUser} component={<MatchOverview />} />}
-            />
-          <Route path='/welcome' element={<Welcome/>}/>
+            <Route path='/'
+            element={<ProtectedRoute currentUser={currentUser} />}
+          >
+            <Route path='/home' element={<PostsColumn/>} />
+          </Route>
+            <Route exact path='/welcome' element={<Welcome />} />
           </Routes>
         </Container>
       </Paper>

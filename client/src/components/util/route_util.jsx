@@ -1,14 +1,17 @@
 import React, { useEffect }from 'react'
 import { useNavigate } from 'react-router-dom';
+import Home from '../home/home';
 
-const ProtectedRoute = ({ component, currentUser }) => {
-	const navigate = useNavigate();
-	
-	useEffect(() => {
-	}, [currentUser])
+const ProtectedRoute = ({ currentUser }) => {
+	const navigate = useNavigate();	
+	const isAuthenticated = currentUser !== null;
 
-	return currentUser !== null ? (
-		[component] ) : ( navigate("/welcome") );
-}
+	if (isAuthenticated) {
+		return <Home />;
+	} else {
+		navigate('/welcome');
+		return null;
+	}
+};
 
 export default ProtectedRoute;

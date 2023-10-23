@@ -4,16 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { fetchNotifications } from '../../actions/notification_actions'
 
-const HomeNotifications = () => {
+const Notifications = () => {
 	const dispatch = useDispatch()
 	const notifications = useSelector(state => state.notifications?.notifications)
 
 	const user_id = useSelector(state => state.users.user.id);
 
 	useEffect(() => {
-		if (!notifications) {
-			dispatch(fetchNotifications(user_id))
-		}
+		dispatch(fetchNotifications(user_id))
 	}, [])
 
 	useEffect(() => {}, [notifications])
@@ -58,4 +56,4 @@ const HomeNotifications = () => {
 	)
 }
 
-export default HomeNotifications;
+export default Notifications;

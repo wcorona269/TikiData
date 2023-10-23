@@ -16,7 +16,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 
 	const buttons = [
 		<ListItem disablepadding sx={{paddingLeft: '0px'}}>
-			<ListItemButton onClick={() => handleTabSelect(0)}>
+			<ListItemButton onClick={() => handleTabSelect(0, 'home')}>
 				{ selectedTab === 0 ?
 					<HomeRoundedIcon fontSize='large'/> : <HomeOutlinedIcon fontSize='large'/>
 				}	
@@ -26,7 +26,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 			</ListItemButton>
 		</ListItem>,
 		<ListItem disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(1)}>
+			<ListItemButton onClick={() => handleTabSelect(1, 'notifications')}>
 				{ selectedTab === 1 ?
 					<NotificationsIcon fontSize='large' /> : <NotificationsNoneIcon fontSize='large'/>
 				}	
@@ -36,7 +36,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 			</ListItemButton>
 		</ListItem>,
 		<ListItem disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(2)}>
+			<ListItemButton onClick={() => handleTabSelect(2, 'matches')}>
 				<SportsSoccerIcon fontSize='large' />
 				<ListItemContent sx={{marginLeft: '.5rem'}}>
 					<Typography sx={{ fontFamily: selectedTab === 2 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>Matches</Typography>
@@ -44,7 +44,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 			</ListItemButton>
 		</ListItem>,
 		<ListItem disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(3)}>
+			<ListItemButton onClick={() => handleTabSelect(3, 'explore')}>
 			{ selectedTab === 3 ?
 				<TravelExploreIcon fontSize='large'/> :
 				<PublicIcon fontSize='large' />
@@ -55,7 +55,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 			</ListItemButton>
 		</ListItem>,
 		<ListItem disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(4)}>
+			<ListItemButton onClick={() => handleTabSelect(4, 'news')}>
 				{ selectedTab === 4 ?
 					<ArticleIcon fontSize='large'/> : <ArticleOutlinedIcon fontSize='large' />
 				}	

@@ -29,7 +29,7 @@ class Post(db.Model):
     except Exception as e:
       db.session.rollback()
       print(f"Error deleting post: {str(e)}")
-      return False
+      return False;
 
   def to_dict(self):
     user_instance = User.query.get(self.user_id)

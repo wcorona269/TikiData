@@ -3,7 +3,6 @@ import { Avatar, Box, Button, ButtonGroup, Grid, Link, Paper, Typography } from 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import RepeatIcon from '@mui/icons-material/Repeat';
 import React, { useEffect, useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import CommentSection from './comment-section';
