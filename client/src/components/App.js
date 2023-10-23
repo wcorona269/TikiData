@@ -10,7 +10,7 @@ import Footer from './footer/footer'
 import Home from './home/home'
 import Modal from './modal/modal';
 import Welcome from './home/welcome'
-import Explore from './home/leagues/leagues';
+import Explore from './home/leagues/explore';
 import axios from 'axios'
 import MatchesTimeline from './matches/matches-timeline';
 import ClubProfile from './club/club-profile';

@@ -2,7 +2,7 @@ import './home.scss';
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import Counter from './counter'
-import Leagues from './leagues/leagues'
+import Explore from './explore-accordion'
 import MatchesTimeline from '../matches/matches-timeline';
 import { Tab, Tabs, Typography, AppBar, Container, Grid } from '@mui/material';
 import { css } from '@emotion/css'
@@ -28,6 +28,7 @@ const Home = () => {
 		<PostsColumn posts={posts} />,
 		<HomeNotifications/>,
 		<MatchesTimeline/>,
+		<Explore/>,
 		<HomeNews/>
 	]
 
@@ -42,7 +43,7 @@ const Home = () => {
 					<HomeMenu selectedTab={selectedTab} handleTabSelect={handleTabSelect}/>
 				</Grid>
 				{
-					selectedTab !== 2 ? 
+					selectedTab < 2  ? 
 					[<Grid item xs={6}>
 						{tabs[selectedTab]}
 					</Grid>,
