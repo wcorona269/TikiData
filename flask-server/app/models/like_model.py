@@ -60,7 +60,7 @@ class CommentLike(db.Model):
  
 	def to_dict(self):
 		user_instance = User.query.get(self.user_id)
-		user_data = User.to_dict(user_instance) if user_instance else None
+		user_data = User.to_dict(user_instance) if user_instance else None;
   
 		return {
 			'id': self.id,

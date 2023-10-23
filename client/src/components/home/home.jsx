@@ -6,7 +6,7 @@ import Explore from './explore'
 import MatchesTimeline from '../matches/matches-timeline';
 import { Tab, Tabs, Typography, AppBar, Container, Grid } from '@mui/material';
 import { css } from '@emotion/css'
-import { fetchPosts } from '../../actions/post_actions';
+import { fetchPosts, fetchReposts } from '../../actions/post_actions';
 import { useDispatch, useSelector } from 'react-redux';
 import PostsColumn from './posts-column';
 import HomeFixturesColumn from './home-fixtures-column';
@@ -16,16 +16,11 @@ import HomeNotifications from './home-notifications';
 
 const Home = () => {
 	const dispatch = useDispatch();
-	const posts = useSelector(state => state.posts);
 	const [selectedTab, setSelectedTab] = useState(0);
 	const [selectedPost, setSelectedPost] = useState(0);
 
-	useEffect(() => {dispatch(fetchPosts())}, [])
-	useEffect(() => {}, [posts])
-
-
 	let tabs = [
-		<PostsColumn posts={posts} />,
+		<PostsColumn />,
 		<HomeNotifications/>,
 		<MatchesTimeline/>,
 		<Explore/>,

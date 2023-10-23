@@ -11,6 +11,7 @@ import playerReducer from "./player_reducer";
 import newsReducer from "./news_reducer";
 import postsReducer from "./post_reducer";
 import notificationsReducer from "./notifications_reducer";
+import repostsReducer from "./repost_reducer";
 
 const rootReducer = combineReducers({
 	counter: counterReducer,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
 	player: playerReducer,
 	news: newsReducer,
 	posts: postsReducer,
+	reposts: repostsReducer,
 	notifications: notificationsReducer
 });
 

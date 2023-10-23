@@ -135,3 +135,22 @@ export const deleteRepost = (repostData) => {
 			});
 	};
 }
+
+
+// delete repost
+export const FETCH_ALL_REPOSTS_REQUEST = 'FETCH_ALL_REPOSTS_REQUEST';
+export const FETCH_ALL_REPOSTS_SUCCESS = 'FETCH_ALL_REPOSTS_SUCCESS';
+export const FETCH_ALL_REPOSTS_FAILURE = 'FETCH_ALL_REPOSTS_FAILURE';
+
+export const fetchReposts = () => {
+	return (dispatch) => {
+		dispatch({ type: FETCH_ALL_REPOSTS_REQUEST });
+		return axios.get('/reposts/index')
+			.then((response) => {
+				dispatch({ type: FETCH_ALL_REPOSTS_SUCCESS, payload: response.data })
+			})
+			.catch((error) => {
+				dispatch({ type: FETCH_ALL_REPOSTS_FAILURE, payload: error.message })
+			})
+	}
+}

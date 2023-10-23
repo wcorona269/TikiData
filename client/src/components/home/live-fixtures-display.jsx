@@ -7,11 +7,9 @@ const LiveFixturesDisplay = ({ matches }) => {
 	useEffect(() => {}, [matches]);
 	const navigate = useNavigate();
 
-
 	const handleClick = (id) => {
 		navigate(`/match-overview/${id}`)
 	}
-
 
 	const displayMatch = (fixture) => {
 		let result = [];
@@ -74,20 +72,19 @@ const LiveFixturesDisplay = ({ matches }) => {
 				matchesByCompetition[match.league.name].push(match);
 			}
 		}
+
 		for (let competition in matchesByCompetition) {
 			let competitionMatches = [];
-			let idx = 0;
 			for (let match of matchesByCompetition[competition]) {
 				competitionMatches.push(
 					displayMatch(match)
 				)
 			}
 			result.push(
-				<List sx={{padding: '0px'}} key={idx}>
+		 		<List sx={{padding: '0px'}} key={competition}>
 					{competitionMatches}
 				</List>
 			)
-			idx += 1;
 		}
 		return result;
 	}

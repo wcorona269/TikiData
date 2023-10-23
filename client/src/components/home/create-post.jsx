@@ -7,7 +7,6 @@ const CreatePost = () => {
 	const dispatch = useDispatch()
 	const [post, setPost] = useState('');
 	const userId = useSelector(state => state.users.user.id)
-	console.log(userId)
 	const [isValidPost, setIsValidPost] = useState(false);
 	const [postLength, setPostLength] = useState(0);
 

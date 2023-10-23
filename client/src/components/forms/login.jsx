@@ -12,7 +12,6 @@ const LoginForm = (props) => {
 	const fields = ['email', 'password'];
 
 	const onSubmit = (formData) => {
-		console.log(formData)
 		dispatch(loginUser(formData))
 	}
 

@@ -43,7 +43,6 @@ const HomeNews = () => {
 
 
 	const displayArticle = (article, idx) => {
-		console.log(article)
 		return (
 			<ListItem divider disablePadding key={idx}>
 				<ListItemButton

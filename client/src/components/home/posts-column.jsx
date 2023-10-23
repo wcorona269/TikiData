@@ -1,18 +1,27 @@
 import './posts-column.scss'
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { formatDistanceToNow } from 'date-fns';
-import { Avatar, Box, Button, ButtonGroup, Container, Grid, IconButton, ListItem, Paper, TextField, Typography, useTheme } from '@mui/material'
+import React, { useEffect } from 'react'
+import { Paper, Typography, useTheme } from '@mui/material'
+import { fetchPosts, fetchReposts } from '../../actions/post_actions';
 import LoadingMessage from '../util/loading/loading-screen';
 import CreatePost from './create-post';
 import PostContainer from './post-container';
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-const PostsColumn = ({posts}) => {
+const PostsColumn = () => {
 	const theme = useTheme();
+	const dispatch = useDispatch();
+	const posts = useSelector(state => state.posts?.posts || []);
+	const reposts = useSelector(state => state.reposts?.reposts || []);
+	console.log(reposts);
 
-	if (!posts.posts) {
+	useEffect(() => {
+		dispatch(fetchPosts())
+		dispatch(fetchReposts())
+	}, [])
+
+	if (!posts) {
 		return <LoadingMessage/>
 	}
 
@@ -22,8 +31,8 @@ const PostsColumn = ({posts}) => {
 				Home
 			</Typography>
 			<CreatePost/>
-			{posts.posts.map((post, idx) => (
-				<PostContainer post={post} />
+			{posts.map((post, idx) => (
+				<PostContainer post={post} key={idx} />
 			))}
 			<ScrollToTopOnLoad/>
 		</Paper>

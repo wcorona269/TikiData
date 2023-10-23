@@ -30,7 +30,6 @@ const ClubSquadDashboard = ({squad}) => {
 			let grid = <Grid container >{grid_items}</Grid>
 
 			for (let player of squadPositions[key]) {
-				console.log(player)
 				grid_items.push(
 					<Grid item xs={2} key={player.name} className='club-squad-grid-item' >
 						<ClubSquadListItem player={player} />

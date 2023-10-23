@@ -4,18 +4,13 @@ import { createTheme, ThemeProvider } from '@mui/material';
 
 const ClubHomeInfo = ({ club }) => {
 	const clubInfo = club[0];
-	console.log(clubInfo);
-
 	let city = clubInfo.venue.city || 'N/A';
 	let country = clubInfo.team.country || 'N/A';
-
 	const theme = createTheme({
 		typography: {
 			fontFamily: 'Ubuntu'
 		}
 	})
-
-
 
 	let clubDetails = {
 		'Logo': clubInfo.team.logo || 'N/A',
@@ -35,7 +30,6 @@ const ClubHomeInfo = ({ club }) => {
 
 		for (let key in clubDetails) {
 			if (key === 'Image' || key === 'Logo') {
-				console.log('hello')
 			} else {
 				result.push(
 					<TableRow key={key}>

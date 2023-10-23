@@ -102,7 +102,6 @@ export const removeCompetition = () => {
 
 
 export const fetchClub = (clubId, season) => {
-	console.log(clubId, season);
 	return (dispatch) => {
 		dispatch({ type: FETCH_CLUB_REQUEST });
 		return axios.get(`/clubs/info/${clubId}/${season}`)

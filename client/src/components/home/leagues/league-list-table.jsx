@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Flag from 'react-world-flags';
 
-
 const LeagueListTable = ({ sortedLeaguesByCountry }) => {
 
 	const displayTableRow = (country, idx) => {
@@ -57,4 +56,4 @@ const LeagueListTable = ({ sortedLeaguesByCountry }) => {
 	)
 }
 
-export default LeagueListTable
+export default LeagueListTable;
