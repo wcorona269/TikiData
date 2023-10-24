@@ -10,7 +10,7 @@ import Footer from './footer/footer'
 import Home from './home/home'
 import Modal from './modal/modal';
 import Welcome from './home/welcome'
-import Explore from './home/leagues/explore';
+import Explore from './home/explore';
 import axios from 'axios'
 import MatchesTimeline from './matches/matches-timeline';
 import ClubProfile from './club/club-profile';
@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Notifications from './home/home-notifications';
 import PlayerOverview from './player/player-overview';
 import PostsTimeline from './home/posts-column';
+import HomeNews from './home/home-news';
 
 
 const theme = createTheme({
@@ -85,7 +86,7 @@ function App() {
               <Route path='/notifications' element={<Notifications/>} />
               <Route path='/matches' element={<MatchesTimeline/>} />
               <Route path='/explore' element={<Explore/>} />
-              <Route path='/news' element={<NewsTimeline/>} />
+              <Route path='/news' element={<HomeNews/>} />
               <Route path='/match/:id' element={<MatchOverview/>} />
               {/* <Route path='/user/:id' element={<UserProfile/>}/> */}
               <Route path='/club/:id' element={<ClubProfile/>} />

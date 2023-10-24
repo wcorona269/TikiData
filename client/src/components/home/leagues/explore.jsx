@@ -22,7 +22,7 @@ const Explore = () => {
 						const [key, value] = info;
 
 						return (
-							<Link key={idx} to={`/league-overview/${value}`}>
+							<Link key={idx} to={`/league/${value}`}>
 								{key}
 							</Link>
 						)

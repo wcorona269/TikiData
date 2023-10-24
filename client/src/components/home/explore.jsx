@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Chip from '@mui/material/Chip';
 import leaguesByCountry from './leagues/leaguesByCountry';
-import { Container, Link } from '@mui/material';
+import { Container, Grid, Link } from '@mui/material';
 import Flag from 'react-world-flags';
 import { styled } from '@mui/material/styles';
 import { Box, Table, TableCell, TableHead, TableRow, Paper, Typography, TableContainer, TableBody } from '@mui/material';
@@ -49,7 +49,7 @@ const Explore = () =>  {
 			Object.entries(info['leagues']).map(([league, id]) => {
 				result.push(
 					<StyledTableCell>
-						<Link underline='hover'>
+						<Link underline='hover' onClick={() => navigate(`/league/${id}`)} >
 							{league}
 						</Link>
 					</StyledTableCell>
@@ -71,7 +71,7 @@ const Explore = () =>  {
 	}
 
 	const handleChipClick = (id) => {
-		navigate(`/league-overview/${id}`)
+		navigate(`/league/${id}`)
 	}
 
 	const listTopLeagues = () => {
@@ -109,32 +109,33 @@ const Explore = () =>  {
 	}
 
 	return (
-		<Paper elevation={2}>
-			<Typography variant='h5' className='section-heading'>
-				
-				Explore
-			</Typography>
-			<Box sx={{display: 'flex', flexDirection: 'column'}}>
-				{listTopLeagues()}
-			<TableContainer component={Paper}>
-				<Table sx={{ minWidth: 700 }} aria-label="customized table">
-					<TableHead>
-						<TableRow>
-							<StyledTableCell>Nation</StyledTableCell>
-							<StyledTableCell align="left">1st Division</StyledTableCell>
-							<StyledTableCell align="left">2nd Division</StyledTableCell>
-							<StyledTableCell align="left">3rd Division</StyledTableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{Object.entries(sortedLeaguesByCountry).map((country, idx) => (
-							displayTableRow(country, idx)
-						))}
-					</TableBody>
-				</Table>
-			</TableContainer>
-			</Box>
-		</Paper>
+		<Grid item xs>
+			<Paper elevation={2}>
+				<Typography variant='h5' className='section-heading'>
+					Explore
+				</Typography>
+				<Box sx={{display: 'flex', flexDirection: 'column'}}>
+					{listTopLeagues()}
+				<TableContainer component={Paper}>
+					<Table sx={{ minWidth: 700 }} aria-label="customized table">
+						<TableHead>
+							<TableRow>
+								<StyledTableCell>Nation</StyledTableCell>
+								<StyledTableCell align="left">1st Division</StyledTableCell>
+								<StyledTableCell align="left">2nd Division</StyledTableCell>
+								<StyledTableCell align="left">3rd Division</StyledTableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{Object.entries(sortedLeaguesByCountry).map((country, idx) => (
+								displayTableRow(country, idx)
+							))}
+						</TableBody>
+					</Table>
+				</TableContainer>
+				</Box>
+			</Paper>
+		</Grid>
 	);
 }
 

@@ -81,17 +81,19 @@ const MatchesTimeline = ({apiKey}) => {
 	}
 
 	return (
-		<TimelineMatchDisplay 
-			matches={sortedMatches} 
-			competitions={competitions}
-			selectedNation={selectedNation}
-			setSelectedNation={setSelectedNation}
-			nations={listOfNations}
-			nationsSet={nationsSet}
-			onTabSelect={handleTabSelect}
-			setDate={setDate}
-			date={date}
-			/>
+		<Grid item xs>
+			<TimelineMatchDisplay 
+				matches={sortedMatches} 
+				competitions={competitions}
+				selectedNation={selectedNation}
+				setSelectedNation={setSelectedNation}
+				nations={listOfNations}
+				nationsSet={nationsSet}
+				onTabSelect={handleTabSelect}
+				setDate={setDate}
+				date={date}
+				/>
+		</Grid>
 	)
 }
 

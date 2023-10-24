@@ -30,7 +30,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 				<TableRow key={i}>
 					<TableCell component="th" scope="row">
 						<Typography variant='body2' id='team-name'>
-							<Link to={`/player-profile/${id}`}>
+							<Link to={`/player/${id}`}>
 								<img src={photo} />
 								{name}
 							</Link>

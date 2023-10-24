@@ -24,7 +24,7 @@ const ClubFixturesTable = ({fixtures}) => {
 	const navigate = useNavigate();
 
 	const handleClick = (id) => {
-		navigate(`/match-overview/${id}`);
+		navigate(`/match/${id}`);
 	}
 
 	return (
@@ -48,7 +48,7 @@ const ClubFixturesTable = ({fixtures}) => {
 								</Link>
 							</TableCell>
 							<TableCell align='center' sx={{width: '100px'}}>
-								<Link to={`/match-overview/${fixture.fixture.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+								<Link to={`/match/${fixture.fixture.id}`} style={{ textDecoration: 'none', color: 'black' }}>
 									<Box sx={{ margin: 'auto', width: '75px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
 										<img src={logos[0]}/>
 										{score[0]} - {score[1]}

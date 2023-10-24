@@ -5,6 +5,7 @@ import { Container, Typography, Box, List, ListItem, ListItemButton, Grid, useTh
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
+import HomeFixturesColumn from './home-fixtures-column';
 
 const HomeNews = () => {
 	const theme = useTheme()
@@ -40,7 +41,7 @@ const HomeNews = () => {
 			setArticleCount(articleCount + 25)
 		}, 2000);
 	}
-
+	
 
 	const displayArticle = (article, idx) => {
 		return (
@@ -90,29 +91,36 @@ const HomeNews = () => {
 	}
 
 	return (
-		<Paper elevation={2} sx={{display: 'flex', flexDirection: 'column', minHeight: '40rem'}}>
-			<Typography variant='h5' className='section-heading'>
-				News
-			</Typography>
-			<Box sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column', width: '100%', minHeight: '40rem'}}>
-				{ isLoading ?
-					<CircularProgress color='primary' sx={{marginTop: '3rem', margin: 'auto'}}/> :
-					displayNews(news)
-				}
-				{ isLoading ? <></> :
-					!isLoadingMore ?
-						<Button onClick={handleClick} variant="outlined" sx={{ height: '3rem', width: '100%' }}>
-							<Typography variant='subtitle1'>
-								See More
-							</Typography>
-						</Button> :
-						<Button variant="outlined" sx={{ height: '3rem', width: '100%' }} >
-							<CircularProgress size='2rem' />
-						</Button>
-				}
-			</Box>
-			<ScrollToTopOnLoad />
-		</Paper>
+		<>
+			<Grid item xs={6}>
+				<Paper elevation={2} sx={{display: 'flex', flexDirection: 'column', minHeight: '40rem'}}>
+					<Typography variant='h5' className='section-heading'>
+						News
+					</Typography>
+					<Box sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column', width: '100%', minHeight: '40rem'}}>
+						{ isLoading ?
+							<CircularProgress color='primary' sx={{marginTop: '3rem', margin: 'auto'}}/> :
+							displayNews(news)
+						}
+						{ isLoading ? <></> :
+							!isLoadingMore ?
+								<Button onClick={handleClick} variant="outlined" sx={{ height: '3rem', width: '100%' }}>
+									<Typography variant='subtitle1'>
+										See More
+									</Typography>
+								</Button> :
+								<Button variant="outlined" sx={{ height: '3rem', width: '100%' }} >
+									<CircularProgress size='2rem' />
+								</Button>
+						}
+					</Box>
+					<ScrollToTopOnLoad />
+				</Paper>
+			</Grid>
+			<Grid item xs>
+				<HomeFixturesColumn/>
+			</Grid>
+		</>
 	)
 	}
 

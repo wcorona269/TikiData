@@ -9,7 +9,7 @@ const MatchTimelineTable = ({nation, matches}) => {
 	const navigate = useNavigate();
 
 	const handleClick = (id) => {
-		navigate(`/match-overview/${id}`)
+		navigate(`/match/${id}`)
 	}
 
 	const displayMatch = (match) => {

@@ -13,7 +13,7 @@ const LeagueListTable = ({ sortedLeaguesByCountry }) => {
 		{Object.entries(info['leagues']).map(([league, id]) => {
 			result.push(
 				<td>
-					<Link key={id} to={`/league-overview/${id}`}>
+					<Link key={id} to={`/league/${id}`}>
 						{league}
 					</Link>
 				</td>

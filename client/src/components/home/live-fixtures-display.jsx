@@ -8,7 +8,7 @@ const LiveFixturesDisplay = ({ matches }) => {
 	const navigate = useNavigate();
 
 	const handleClick = (id) => {
-		navigate(`/match-overview/${id}`)
+		navigate(`/match/${id}`)
 	}
 
 	const displayMatch = (fixture) => {

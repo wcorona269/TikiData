@@ -1,8 +1,9 @@
-import { Avatar, Container, Divider, List, ListItem, ListItemAvatar, ListItemButton, Paper, Typography } from '@mui/material'
+import { Avatar, Container, Divider, Grid, List, ListItem, ListItemAvatar, ListItemButton, Paper, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { fetchNotifications } from '../../actions/notification_actions'
+import HomeFixturesColumn from './home-fixtures-column';
 
 const Notifications = () => {
 	const dispatch = useDispatch()
@@ -43,14 +44,19 @@ const Notifications = () => {
 
 	return (
 		<>
-			<Paper elevation={2} sx={{minHeight: '40rem'}}>
-				<Typography variant='h5' className='section-heading'>
-					Notifications
-				</Typography>
-				<List>
-					{displayNotifications(notifications)}
-				</List>
-			</Paper>
+			<Grid item xs={6}>
+				<Paper elevation={2} sx={{minHeight: '40rem'}}>
+					<Typography variant='h5' className='section-heading'>
+						Notifications
+					</Typography>
+					<List>
+						{displayNotifications(notifications)}
+					</List>
+				</Paper>
+			</Grid>
+			<Grid item xs>
+				<HomeFixturesColumn/>
+			</Grid>
 			<ScrollToTopOnLoad/>
 		</>
 	)
