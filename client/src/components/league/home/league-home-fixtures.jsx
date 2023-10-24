@@ -71,7 +71,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 				let NewSectionHeading;
 				if (!match_dates.has(match_date.split('T')[0])) {
 					NewSectionHeading = (
-						<Typography variant="subtitle1" gutterBottom className='new-date-heading'>
+						<Typography variant="subtitle1" gutterBottom sx={{margin: '.5rem', marginLeft: '1rem'}}>
 							{day_name}, {formatDate(match_date)}
 						</Typography>
 					)
@@ -80,7 +80,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 				result.push(
 					<>
 						{NewSectionHeading}
-						<ListItem disablePadding className='home-fixture-li-container'>
+						<ListItem divider disablePadding >
 							<ListItemButton>
 								<Box className='home-fixture-li'>
 									<Typography id='time-element' variant='body2'>

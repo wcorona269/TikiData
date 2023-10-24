@@ -34,12 +34,12 @@ const LeagueHomeStats = ({top_scorers}) => {
 							<Link underline='hover' onClick={() => navigate(`/player/${id}`)} 
 								sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'left'}}
 							>
-								<Avatar src={photo} />
+								<Avatar src={photo} sx={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
 								{name}
 							</Link>
 						</Typography>
 					</TableCell>
-					<TableCell align="right">{goals}</TableCell>
+					<TableCell align="center">{goals}</TableCell>
 				</TableRow>
 			)
 		}
@@ -49,7 +49,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 	}
 
 	return (
-		<Paper elevation={2}>
+		<Paper elevation={2} className='home-paper'>
 			<Typography variant='h6' gutterBottom className='section-heading' >
 				Top Scorers
 			</Typography>
@@ -67,7 +67,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 						<TableHead>
 							<TableRow>
 								<TableCell align='left'>Player</TableCell>
-								<TableCell align='right'>Goals</TableCell>
+								<TableCell align='center'>Goals</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
@@ -76,7 +76,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 					</Table>
 				</TableContainer>
 			</div>
-			<Button variant="outlined" startIcon={!showMore ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />} onClick={handleChange} className='show-more-button'>
+			<Button variant="contained" startIcon={!showMore ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />} onClick={handleChange} sx={{width: '100%'}} >
 				{!showMore ? 'Show More' : 'Show Less'}
 			</Button>
 		</Paper>
