@@ -11,6 +11,7 @@ import {
 	ListItem,
 	ListItemButton,
 	ListItemText,
+	useTheme,
 } from '@mui/material'
 
 
@@ -51,7 +52,7 @@ export const displayTeams = (fixture) => {
 
 
 const ClubHomeFixtures = ({ fixtures }) => {
-
+	const theme = useTheme();
 
 	const displayUpcomingFixtures = (fixtures) => {
 		const match_dates = new Set()
@@ -73,7 +74,7 @@ const ClubHomeFixtures = ({ fixtures }) => {
 				let NewSectionHeading;
 				if (!match_dates.has(match_date.split('T')[0])) {
 					NewSectionHeading = (
-						<Typography variant="subtitle1" gutterBottom className='new-date-heading'>
+						<Typography variant="subtitle1" gutterBottom sx={{ padding: '1rem', backgroundColor: theme.palette.action.hover }}>
 							{day_name}, {formatDate(match_date)}
 						</Typography>
 					)
@@ -84,8 +85,8 @@ const ClubHomeFixtures = ({ fixtures }) => {
 						{NewSectionHeading}
 						<ListItem disablePadding className='home-fixture-li-container'>
 							<ListItemButton>
-								<Box className='home-fixture-li'>
-									<Typography id='time-element' variant='body2'>
+								<Box>
+									<Typography variant='body2'>
 										<DisplayTime match={fixture} />
 									</Typography>
 									{displayTeams(fixture)}
@@ -105,7 +106,7 @@ const ClubHomeFixtures = ({ fixtures }) => {
 		<Paper
 			className='home-paper'
 			id='sticky-paper'
-			elevation={6}
+			elevation={2}
 		>
 			<Typography variant="h6" gutterBottom className='section-heading'>
 				Upcoming Fixtures

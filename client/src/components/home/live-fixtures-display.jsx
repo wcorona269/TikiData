@@ -47,7 +47,7 @@ const LiveFixturesDisplay = ({ matches }) => {
 					<Grid container>
 						<Grid item xs={11}>{result}</Grid>
 						<Grid item xs={1}>
-							<Typography variant='caption' sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: theme.palette.grey['700']}}>
+							<Typography variant='caption' sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: theme.palette.text.disabled}}>
 								{fixture.fixture.status.elapsed}'
 							</Typography>
 						</Grid>

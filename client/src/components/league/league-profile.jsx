@@ -37,7 +37,7 @@ const LeagueProfile = () => {
 
 	useEffect(() => {
 		let selectedSeason = season.split('/')[0];
-		// dispatch(fetchCompetition(id, selectedSeason))
+		dispatch(fetchCompetition(id, selectedSeason))
 	}, [season]);
 
 	useEffect(() => {
@@ -65,7 +65,7 @@ const LeagueProfile = () => {
 
 	return (
 		<Grid item xs={9}>
-			<Box elevation={2}>
+			<Paper>
 				<Typography className='section-heading' variant='h5'>
 					<img style={{height: '2rem', width: '2rem'}} src={logo} alt='' />
 					{name}
@@ -92,7 +92,7 @@ const LeagueProfile = () => {
 					{selectedTab === 2 && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />}
 					{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} uniqueDates={uniqueDates} />}
 				</Box>
-			</Box>
+			</Paper>
 		<ScrollToTopOnLoad/>
 		</Grid>
 	)

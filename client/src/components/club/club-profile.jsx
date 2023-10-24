@@ -9,10 +9,10 @@ import ClubFixturesDashboard from './club-fixtures-dashboard';
 import ClubSquadDashboard from './club-squad-dashboard';
 import ClubStatsDashboard from './club-stats-dashboard';
 import ClubHomeDashboard from './home/club-home-dashboard';
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Grid, Paper, Typography } from '@mui/material';
 
 const ClubProfile = () => {
-	const { clubId } = useParams();
+	const { id } = useParams();
 	const dispatch = useDispatch();
 
 	const [season, setSeason] = useState('2023/24');
@@ -29,10 +29,7 @@ const ClubProfile = () => {
 
 	useEffect(() => {
 		let formattedSeason = season.split('/')[0]
-
-		if (!isLoading) {
-			dispatch(fetchClub(clubId, formattedSeason))
-		}
+		dispatch(fetchClub(id, formattedSeason))
 	}, [season]);
 
 	// useEffect(() => {
@@ -56,24 +53,19 @@ const ClubProfile = () => {
 	let logo = clubInfo.team.logo || 'N/A';
 
 	return (
-		<div className='club-profile-container'>
-			<Paper
-				className='home-paper'
-				sx={{ width: '100%', height: 'fit-content' }}
-			>
+		<Grid item xs={9}>
+			<Paper>
+				<Typography variant='h5' className='section-heading' sx={{ justifyContent: 'left'}} >
+					<img src={logo} style={{ height: '2rem', width: '2rem'}} />
+					{name}
+				</Typography>
 				<ClubProfileNavBar club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
-				<div>
-					<Typography variant='h5' className='section-heading' sx={{width: '100%', justifyContent: 'left'}} >
-						<img src={logo} />
-						{name}
-					</Typography>
-				</div>
 				{ selectedTab === 0 && <ClubHomeDashboard club={club} fixtures={fixtures} squad={squad} news={news} /> }
 				{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures}/> }
 				{ selectedTab === 2 && <ClubStatsDashboard stats={stats} /> }
 				{ selectedTab === 3 && <ClubSquadDashboard squad={squad[0].players}  /> }
 			</Paper>
-		</div>
+		</Grid>
 	)
 }
 

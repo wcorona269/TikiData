@@ -9,14 +9,12 @@ const ClubHomeDashboard = ({ club, fixtures, squad, news }) => {
 
 	return (
 		<Box className='club-home-container'>
-			<Grid container className='club-home-grid'>
-				<Grid item xs={3} >
-					<ClubHomeInfo club={club}  />
-				</Grid>
-				<Grid item xs={5} >
+			<Grid spacing={1} container className='club-home-grid'>
+				<Grid item xs={8} >
 					<LeagueHomeNews news={news} />
 				</Grid>
 				<Grid item xs={4} >
+					<ClubHomeInfo club={club}  />
 					<HomeFixturesComponent fixtures={fixtures} />
 				</Grid>
 			</Grid>

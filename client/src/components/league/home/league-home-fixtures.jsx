@@ -107,7 +107,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 		<Paper 
 			className='home-paper'
 			id='sticky-paper'
-			elevation={6}
+			elevation={2}
 		>
 			<Typography variant="h6" gutterBottom className='section-heading'>
 				Upcoming Fixtures

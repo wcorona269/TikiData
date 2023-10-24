@@ -28,7 +28,7 @@ const LeagueHomeNews = ({news}) => {
 		<Paper
 			className='home-paper'
 			id='league-home-news'
-			elevation={6}
+			elevation={2}
 		>
 			<Typography variant='h6' gutterbottom className='section-heading'>
 				News

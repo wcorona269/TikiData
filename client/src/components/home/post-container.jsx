@@ -1,5 +1,5 @@
 import './post-container.scss'
-import { Avatar, Box, Button, ButtonGroup, Grid, Link, Paper, Typography } from '@mui/material'
+import { Avatar, Box, Button, ButtonGroup, Divider, Grid, Link, Paper, Typography } from '@mui/material'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
@@ -101,30 +101,38 @@ const PostContainer = ({ post }) => {
 	];
 
 	return (
-		<Paper id='post-container' className='timeline-paper' elevation={2} key={post.id}>
-			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-				<Avatar sx={{ marginRight: '.5rem' }} />
-				<Box sx={{ display: 'flex', flexDirection: 'column'}}>
-					<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '.5rem'}}>
-						<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>
-							<Link underline='hover'>
-								{post.username}
-							</Link>
-						</Typography>
-						<Typography variant='caption' sx={{ color: 'var(--darkgray)' }}>
-							{timeAgo(post.created_at)}
+		<>
+			<Paper id='post-container' className='timeline-paper' elevation={2} key={post.id} sx={{borderBottom: 'none !important'}}>
+				<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+					<Avatar sx={{ marginRight: '.5rem' }} />
+					<Box sx={{ display: 'flex', flexDirection: 'column'}}>
+						<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '.5rem'}}>
+							<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>
+								<Link underline='hover'>
+									{post.username}
+								</Link>
+							</Typography>
+							<Typography variant='caption' sx={{ color: 'var(--darkgray)' }}>
+								{timeAgo(post.created_at)}
+							</Typography>
+						</Box>
+						<Typography variant='body1'>
+							{post.text}
 						</Typography>
 					</Box>
-					<Typography variant='body1'>
-						{post.text}
-					</Typography>
 				</Box>
-			</Box>
-			<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: '.5rem'}}>
-				{buttons}
-			</Box>
-			{showComments && <CommentSection comments={post.comments} post={post} />}
-		</Paper>
+				<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: '.5rem'}}>
+					{buttons}
+				</Box>
+				{showComments && 
+					[
+						<Divider/>,
+						<CommentSection comments={post.comments} post={post} />
+					]
+				}
+			</Paper>
+			<Divider/>
+		</>
 	)
 }
 

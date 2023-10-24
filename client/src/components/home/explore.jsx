@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Chip from '@mui/material/Chip';
 import leaguesByCountry from './leagues/leaguesByCountry';
-import { Container, Grid, Link } from '@mui/material';
+import { Container, useTheme, Grid, Link } from '@mui/material';
 import Flag from 'react-world-flags';
 import { styled } from '@mui/material/styles';
 import { Box, Table, TableCell, TableHead, TableRow, Paper, Typography, TableContainer, TableBody } from '@mui/material';
@@ -37,7 +37,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const Explore = () =>  {
-	const navigate = useNavigate()
+	const navigate = useNavigate();
+	const theme = useTheme();
 
 	const displayTableRow = (country, idx) => {
 		const [name, info] = country;
@@ -92,7 +93,7 @@ const Explore = () =>  {
 			let [name, id] = league;
 
 			result.push(
-				<Chip onClick={() => handleChipClick(id)} label={name}/>
+				<Chip onClick={() => handleChipClick(id)} label={name} sx={{backgroundColor: theme.palette.primary.light }}/>
 			)
 		});
 

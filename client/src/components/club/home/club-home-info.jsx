@@ -1,16 +1,12 @@
 import React from 'react';
-import { Typography, Paper, Box, Table, TableRow, TableCell, TableHead, TableContainer, TableBody } from '@mui/material';
+import { Typography, Paper, Box, Table, TableRow, TableCell, TableHead, TableContainer, TableBody, useTheme } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material';
 
 const ClubHomeInfo = ({ club }) => {
 	const clubInfo = club[0];
 	let city = clubInfo.venue.city || 'N/A';
 	let country = clubInfo.team.country || 'N/A';
-	const theme = createTheme({
-		typography: {
-			fontFamily: 'Ubuntu'
-		}
-	})
+	const theme = useTheme()
 
 	let clubDetails = {
 		'Logo': clubInfo.team.logo || 'N/A',
@@ -51,32 +47,30 @@ const ClubHomeInfo = ({ club }) => {
 		return result;
 	}
 	return (
-		<ThemeProvider theme={theme}>
-			<Paper className='home-paper club-home-table' id='sticky-paper' elevation={6} sx={{ top: '1rem', overflow: 'hidden'}}>
-				<Typography variant='h6' gutterBottom className='section-heading'>
-					Info
+		<Paper elevation={2}  sx={{paddingBottom: 1, marginBottom: 1}} >
+			<Typography variant='h6' gutterBottom className='section-heading'>
+				Info
+			</Typography>
+			<Box sx={{ display: 'flex', justifyContent: 'center', padding: '.5rem' }}>
+				<Typography variant='caption' className='table-key'>
+					{clubDetails['Stadium']}
 				</Typography>
-				<Box sx={{ display: 'flex', justifyContent: 'center', padding: '.5rem' }}>
-					<Typography variant='caption' className='table-key'>
-						{clubDetails['Stadium']}
-					</Typography>
-				</Box>
-				<img src={clubDetails['Image']} style={{width: '90%', height: '90%', objectFit: 'cover', margin: 'auto', display: 'flex'}} />
-				<TableContainer >
-					<Table size='small' aria-label='a dense table'>
-						<TableHead>
-							<TableRow>
-								<TableCell align='left' colSpan={2}>{clubDetails['name']}</TableCell>
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{displayTable(clubDetails)}
-						</TableBody>
-					</Table>
-				</TableContainer>
-			</Paper>
-		</ThemeProvider>
+			</Box>
+			<img src={clubDetails['Image']} style={{width: '90%', height: '90%', objectFit: 'cover', margin: 'auto', display: 'flex'}} />
+			<TableContainer >
+				<Table size='small' aria-label='a dense table'>
+					<TableHead>
+						<TableRow>
+							<TableCell align='left' colSpan={2}>{clubDetails['name']}</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{displayTable(clubDetails)}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</Paper>
 	)
 }
 
-export default ClubHomeInfo
+export default ClubHomeInfo;

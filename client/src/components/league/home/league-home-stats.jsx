@@ -77,7 +77,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 					</Table>
 				</TableContainer>
 			</div>
-			<Button variant="contained" startIcon={!showMore ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />} onClick={handleChange} sx={{width: '100%'}} >
+			<Button variant="outlined" startIcon={!showMore ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />} onClick={handleChange} sx={{width: '100%'}} >
 				{!showMore ? 'Show More' : 'Show Less'}
 			</Button>
 		</Paper>

@@ -2,9 +2,10 @@ import './club-fixtures.scss';
 import React from 'react'
 import ClubFixturesTable from './club-fixtures-table';
 import monthsOfYear from './monthsOfYear';
-import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
 
 const ClubFixturesDashboard = ({fixtures}) => {
+	const theme = useTheme()
 	const fixturesSortedByDate = fixtures.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date));
 	const monthsOfFixtures = new Set();
 	let fixturesByDate = [];
@@ -49,7 +50,7 @@ const ClubFixturesDashboard = ({fixtures}) => {
 						</Box>
 						<TableContainer>
 							<Table>
-								<TableHead sx={{backgroundColor: 'var(--gray)'}}>
+								<TableHead sx={{ backgroundColor: theme.palette.action.hover }}>
 									<TableRow>
 										<TableCell align='left' sx={{padding: '16px !important'}}>
 											Date

@@ -29,7 +29,7 @@ import HomeNews from './home/home-news';
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
       main: '#00a672',
       light: '#00c49a',

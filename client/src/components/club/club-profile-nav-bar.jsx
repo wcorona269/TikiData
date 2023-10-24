@@ -1,7 +1,7 @@
-import './club-profile-nav-bar.scss'
+
 import React from 'react'
 import SeasonSelect from '../util/season-select/season-select';
-import { Typography, Box, Tab, Tabs } from '@mui/material';
+import { Typography, Box, Tab, Tabs, Divider } from '@mui/material';
 import Flag from 'react-world-flags';
 
 const ClubProfileNavBar = ({club, season, showSeason, setShowSeason, handleSeasonChange, availableSeasons, selectedTab, setSelectedTab}) => {
@@ -13,7 +13,8 @@ const ClubProfileNavBar = ({club, season, showSeason, setShowSeason, handleSeaso
 	const tabs = ['Home', 'Fixtures', 'Stats', 'Squad'];
 
 	return (
-			<Box className='league-profile-nav-bar' sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
+		<>
+			<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between !important', width: '100%'}}>
 				<Tabs value={selectedTab }>
 					{tabs.map((tab, idx) => (
 						<Tab label={tab} onClick={() => setSelectedTab(idx)} />
@@ -27,10 +28,11 @@ const ClubProfileNavBar = ({club, season, showSeason, setShowSeason, handleSeaso
 					</p>
 					<p>{country}</p>
 					<Flag code={country} height='20' />
-					{/* <img src={flag} /> */}
 				</div>
 				{/* <SeasonSelect season={season} showSeason={showSeason} setShowSeason={setShowSeason} handleSeasonChange={handleSeasonChange} availableSeasons={availableSeasons}/> */}
 			</Box>
+			<Divider/>
+		</>
 	)
 }
 
