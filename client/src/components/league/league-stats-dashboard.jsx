@@ -18,7 +18,7 @@ const LeagueStatsDashboard = ({top_scorers, top_assists}) => {
 	
 	return (
 		<Paper elevation={2} sx={{ marginTop: '1rem', mx: 'auto', marginTop: '1rem' }}>
-			<Typography variant="h5" gutterBottom className='section-heading'>
+			<Typography variant="h6" gutterBottom className='section-heading'>
 				<img src={leagueLogo} />
 				{leagueName} Stats
 			</Typography>

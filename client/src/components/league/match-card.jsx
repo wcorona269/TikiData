@@ -1,32 +1,67 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import DisplayTime from '../util/display-time';
-import { Box, Container, Grid, Typography, Paper } from '@mui/material';
+import { Box, Link, Container, Grid, Typography, Paper, Button, useTheme, ListItemButton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '@emotion/react';
 
 
 const MatchCard = ({fixture, key}) => {	
+	const theme = useTheme()
+	const navigate = useNavigate();
+
+	const home = fixture.teams.home.name;
+	const away = fixture.teams.away.name;
+
+	const homeLogo = fixture.teams.home.logo;
+	const awayLogo = fixture.teams.away.logo;
+
+	const homeGoals = fixture.goals.home;
+	const awayGoals = fixture.goals.away;
+
+	const displayTeams = (fixture) => {
+		let result = [];
+		let teams = fixture.teams;
+
+		for (let team of Object.keys(teams)) {
+			const team_name = teams[team].name;
+			const team_logo = teams[team].logo;
+			const team_id = teams[team].id;
+			const winner = teams[team].winner;
+			const num_goals = fixture.goals[team] || 0
+
+			result.unshift(
+				<Grid container className={winner === true ? 'winning team' : ''}>
+					<Grid item xs={10} align='left' sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+						<img src={team_logo} style={{height: '2rem', width: '2rem', marginRight: '.25rem'}} />
+						<Typography variant='body2'>
+							{team_name}
+						</Typography>
+					</Grid>
+					<Grid item xs={2}>
+						<Typography id='goal-display' variant='h6'>
+							{num_goals}
+						</Typography>
+					</Grid>
+				</Grid>
+			)
+		}
+
+		return result;
+	}
+	
 	return (
-		<Paper elevation={2} key={key} sx={{width: '40%'}}>
-			<Link to={`/match/${fixture.fixture.id}`}>
-				<Box >
-					<Box >
-						<Box >
-							<img src={fixture.teams.home.logo} alt=''/>
-							<p>{fixture.teams.home.name}</p>
-						</Box>
-						<Box >
-							<img src={fixture.teams.away.logo} alt=''/>
-							<p>{fixture.teams.away.name}</p>
-						</Box>
+		<Grid item xs={4} >
+			<Paper elevation={5} key={key} sx={{width: '100%', color: theme.palette.text.primary }}>
+				<ListItemButton variant='text' sx={{width: '100%', height: '100%'}} onClick={() => navigate(`/match/${fixture.fixture.id}`)}>
+					<Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', gap: '.5rem' }}>
+						<Typography align='left' sx={{color: theme.palette.text.disabled }} variant='body2'>
+							<DisplayTime match={fixture} />
+						</Typography>
+						{displayTeams(fixture)}
 					</Box>
-					<Box >
-							<p>{fixture.goals.home}</p>
-							<p>{fixture.goals.away}</p>
-					</Box>
-					<Box><DisplayTime match={fixture}/></Box>
-				</Box>
-			</Link>
-		</Paper>
+				</ListItemButton>
+			</Paper>	
+		</Grid>
 	)
 }
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import MatchCard from './match-card';
 import shorthandMonthsOfYear from './shorthandMonths';
-import { Box, List, Typography } from '@mui/material';
+import { Box, Divider, Grid, List, Stack, Typography, useTheme } from '@mui/material';
+
 
 
 // FIXTURE DISPLAY
@@ -11,6 +12,7 @@ import { Box, List, Typography } from '@mui/material';
 
 const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 	const dates = uniqueDates.slice(selectedDate, selectedDate + 7)
+	const theme = useTheme();
 	let fixturesByDate = {};
 
 	for (let date of dates) {
@@ -39,13 +41,15 @@ const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 			const formattedDate = `${shorthandMonthsOfYear[Number(dateInfo[1]) - 1]} ${dateInfo[2]}`
 
 			result.push(
-				<Box sx={{display: 'flex', flexDirection: 'column', gap: '10rem'}} >
-					<Typography variant="h6" gutterBottom>
+				<Box sx={{display: 'flex', flexDirection: 'column'}} >
+					<Divider/>
+					<Typography variant="h6" gutterBottom sx={{marginTop: '1rem', fontFamily: theme.typography.bold}} >
 						{formattedDate}
 					</Typography>
-					<List>
+					<Divider />
+					<Grid container spacing={2} direction='row' sx={{ my: '1rem', width: '100%', marginTop: 0 }}>
 						{matchesOfTheDay}
-					</List>
+					</Grid>
 				</Box>
 			)
 		}
@@ -54,7 +58,7 @@ const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 	}
 
 	return (
-		<Box>
+		<Box sx={{padding: '1rem'}}>
 			{displayFixturesByDate(fixturesByDate)}
 		</Box>
 	)

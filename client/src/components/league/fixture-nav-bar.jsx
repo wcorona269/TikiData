@@ -3,12 +3,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import shorthandMonthsOfYear from './shorthandMonths';
-import { Container } from '@mui/material';
+import { Divider } from '@mui/material';
 
 const FixtureNavBar = ({selectedDate, dates, handleChange, setSelectedDate}) => {
 
 	return (
-		<Container >
+		<Box >
 			<Tabs
 				value={selectedDate}
 				onChange={handleChange}
@@ -38,7 +38,8 @@ const FixtureNavBar = ({selectedDate, dates, handleChange, setSelectedDate}) => 
 				)
 			})}
 			</Tabs>
-		</Container>
+			<Divider/>
+		</Box>
 	);
 }
 
