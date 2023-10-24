@@ -6,9 +6,14 @@ import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
 import HomeFixturesColumn from './home-fixtures-column';
+import Article from '../news/article';
+
+
+
+
 
 const HomeNews = () => {
-	const theme = useTheme()
+	const theme = useTheme();
 	const dispatch = useDispatch();
 	const news = useSelector(state => state.news?.news || []);
 	const isLoading = useSelector(state => state.news?.isLoading);
@@ -43,45 +48,12 @@ const HomeNews = () => {
 	}
 	
 
-	const displayArticle = (article, idx) => {
-		return (
-			<ListItem divider disablePadding key={idx}>
-				<ListItemButton
-					component="a"  // Set the component prop to 'a' to make it act like an anchor tag
-					href={`https://${article.link}`} // Specify the URL of the article
-					target="_blank" // Open the link in a new tab
-					rel="noopener noreferrer" // Recommended for security to add rel attribute
-				>
-					<Grid container>
-						<Grid item xs={9}>
-							<Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
-								<Typography variant='caption' sx={{color: theme.palette.grey['700']}}>
-									{article.media}
-								</Typography>
-								<Typography variant='subtitle1' className='home-article-title'>
-									{article.title}
-								</Typography>
-								<Typography variant='caption' sx={{ color: theme.palette.grey['700'] }}>
-									{article.date}
-								</Typography>
-							</Box>
-						</Grid>
-						<Grid item xs={3} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-							<img src={article.img} style={{ width: '60%', margin: 'auto' }}/>
-						</Grid>
-					</Grid>
-				</ListItemButton>
-			</ListItem>
-		)
-	}
-
-
 	const displayNews = (articles) => {
 		let result = [];
 		let max = Math.min(articles.length, articleCount)
 
 		for (let i = 0; i < max; i++) {
-			result.push(displayArticle(articles[i], i));
+			result.push(<Article article={articles[i]} idx={i} />);
 		}
 		return (
 			<List sx={{width: '100%'}}>

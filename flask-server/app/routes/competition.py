@@ -18,6 +18,7 @@ def competitionInfo(leagueId, season):
 			'x-rapidapi-host': "v3.football.api-sports.io",
 			'x-rapidapi-key': api_key
 	}
+
   
   # Make the first API call to get standings
   conn.request("GET", f"/standings?league={leagueId}&season={season}", headers=headers)

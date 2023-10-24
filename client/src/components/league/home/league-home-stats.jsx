@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Paper, Button, Box, Typography, List, ListItem, Grid } from '@mui/material'
-import { Link } from 'react-router-dom';
+import { Paper, Link, Button, Box, Typography, List, ListItem, Grid, Avatar } from '@mui/material'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,8 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import { useNavigate } from 'react-router-dom';
 
 const LeagueHomeStats = ({top_scorers}) => {
+	const navigate = useNavigate();
 	const [showMore, setShowMore] = useState(false);
 
 	const handleChange = () => {
@@ -30,8 +31,10 @@ const LeagueHomeStats = ({top_scorers}) => {
 				<TableRow key={i}>
 					<TableCell component="th" scope="row">
 						<Typography variant='body2' id='team-name'>
-							<Link to={`/player/${id}`}>
-								<img src={photo} />
+							<Link underline='hover' onClick={() => navigate(`/player/${id}`)} 
+								sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'left'}}
+							>
+								<Avatar src={photo} />
 								{name}
 							</Link>
 						</Typography>
@@ -46,7 +49,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 	}
 
 	return (
-		<Paper className='home-paper' id='league-home-table' elevation={6}>
+		<Paper elevation={2}>
 			<Typography variant='h6' gutterBottom className='section-heading' >
 				Top Scorers
 			</Typography>

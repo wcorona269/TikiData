@@ -8,15 +8,16 @@ import LeagueFixturesDashboard from './league-fixtures-dashboard'
 import LeagueStatsDashboard from './league-stats-dashboard';
 import { fetchCompetition, removeCompetition } from '../../actions/api_actions';
 import response from './response';
-import { Tabs, Tab } from '@mui/material';
+import { Tabs, Tab, Grid, Paper, Typography, Box, Divider, useTheme } from '@mui/material';
 import LoadingMessage from '../util/loading/loading-screen';
 import NoDataMessage from '../util/no-data/no-data-message';
 import LeagueProfileHeader from './league-profile-header'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 
 const LeagueProfile = () => {
+	const theme = useTheme();
 	const dispatch = useDispatch();
-	const { leagueId } = useParams();
+	const { id } = useParams();
 
 	const competition = useSelector(state => state.competition);
 	const isLoading = useSelector(state => state.competition.isLoading);
@@ -36,7 +37,7 @@ const LeagueProfile = () => {
 
 	useEffect(() => {
 		let selectedSeason = season.split('/')[0];
-		dispatch(fetchCompetition(leagueId, selectedSeason))
+		dispatch(fetchCompetition(id, selectedSeason))
 	}, [season]);
 
 	useEffect(() => {
@@ -62,43 +63,38 @@ const LeagueProfile = () => {
 	const logo = leagueInfo?.logo;
 	const name = leagueInfo?.name;
 
-
 	return (
-		<>
-		<div>
-			<LeagueProfileHeader
-			 table={table} 
-			 handleSeasonChange={handleSeasonChange} 
-			 season={season} 
-			 showSeason={showSeason} 
-			 setShowSeason={setShowSeason}
-			 />
-			<div className='league-profile-dashboard-container'>
-				<div class='league-profile-nav-bar'>
-					<Tabs value={selectedTab}>
-						<Tab label='Home' onClick={() => handleChange(0)} />
-						<Tab label='Table' onClick={() => handleChange(1)} />
-						<Tab label='Stats' onClick={() => handleChange(2)} />
-						<Tab label='Fixtures' onClick={() => handleChange(3)} />
-					</Tabs>
-					<div className='league-logo-bar'>
-						<img src={logo} alt='' />
-						<p>{name}</p>
-						<p>
-							|
-						</p>
-						<p>{country}</p>
-						<img src={flag} />
-					</div>
-				</div>
-				{selectedTab === 0 && <LeagueHomeDashboard news={news} fixtures={fixtures} uniqueDates={uniqueDates} table={table} top_scorers={top_scorers} />}
-				{selectedTab === 1 && <LeagueTableDashboard table={table}  />}
-				{selectedTab === 2 && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />}
-				{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} uniqueDates={uniqueDates} />}
-			</div>
-		</div>
+		<Grid item xs>
+			<Paper elevation={2}>
+				<Typography className='section-heading' variant='h5'>
+					<img style={{height: '2rem', width: '2rem'}} src={logo} alt='' />
+					{name}
+				</Typography>
+				<Box>
+					<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+						<Tabs value={selectedTab}>
+							<Tab label='Home' onClick={() => handleChange(0)} />
+							<Tab label='Table' onClick={() => handleChange(1)} />
+							<Tab label='Stats' onClick={() => handleChange(2)} />
+							<Tab label='Fixtures' onClick={() => handleChange(3)} />
+						</Tabs>
+						<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: '1rem' }} >
+							<img style={{ height: '2rem', width: '2rem', marginRight: '.5rem' }} src={logo} alt='' />
+							<Typography variant='subtitle1'>{name}</Typography>
+							<Divider orientation="vertical" sx={{py: 3, mx: 2}}/>
+							<Typography variant='subtitle1' sx={{color: theme.palette.text.disabled }} >{country}</Typography>
+							<img src={flag} style={{ height: '2rem', width: '2rem', marginLeft: '.5rem' }} />
+						</Box>
+					</Box>
+					<Divider/>
+					{selectedTab === 0 && <LeagueHomeDashboard news={news} fixtures={fixtures} uniqueDates={uniqueDates} table={table} top_scorers={top_scorers} />}
+					{selectedTab === 1 && <LeagueTableDashboard table={table}  />}
+					{selectedTab === 2 && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />}
+					{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} uniqueDates={uniqueDates} />}
+				</Box>
+			</Paper>
 		<ScrollToTopOnLoad/>
-		</>
+		</Grid>
 	)
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Grid, List, ListItem, ListItemButton, Pagination, Paper, Stack, Typography } from '@mui/material';
+import { Box, Grid, List, ListItem, ListItemButton, Pagination, Paper, Stack, Link, Typography } from '@mui/material';
 import { splitArticleIntoPages } from '../../news/sub-articles-timeline';
-import { Link } from 'react-router-dom';
+import Article from '../../news/article';
 
 const LeagueHomeNews = ({news}) => {
 	const [page, setPage] = useState(1);
@@ -13,26 +13,11 @@ const LeagueHomeNews = ({news}) => {
 	const displayNews = (news) => {
 		let result = [];
 
-		for (let article of news) {
+		news.map((article, idx) => {
 			result.push(
-				<a target='_blank' href={`https://${article.link}`}>
-					<ListItem disablePadding className='league-home-news-item'>
-						<ListItemButton>
-							<Grid container>
-								<Grid item xs={9} className='news-item-title'>
-									<Typography variant='subtitle1'>
-										{article.title}
-									</Typography>
-								</Grid>
-								<Grid item xs={3}>
-									<img src={article.img}/>
-								</Grid>
-							</Grid>
-						</ListItemButton>
-					</ListItem>
-				</a>
+				<Article article={article} idx={idx} />
 			)
-		}
+		})
 
 		return result;
 	}
