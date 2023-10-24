@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Paper, Link, Button, Box, Typography, List, ListItem, Grid, Avatar } from '@mui/material'
+import { Paper, Link, Button, Box, Typography, List, ListItem, Grid, Avatar, useTheme } from '@mui/material'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,6 +11,7 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { useNavigate } from 'react-router-dom';
 
 const LeagueHomeStats = ({top_scorers}) => {
+	const theme = useTheme()
 	const navigate = useNavigate();
 	const [showMore, setShowMore] = useState(false);
 
@@ -64,7 +65,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 			>
 				<TableContainer>
 					<Table size='small' aria-label='a dense table'>
-						<TableHead>
+						<TableHead sx={{backgroundColor: theme.palette.action.hover}} >
 							<TableRow>
 								<TableCell align='left'>Player</TableCell>
 								<TableCell align='center'>Goals</TableCell>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MatchCard from './match-card';
 import shorthandMonthsOfYear from './shorthandMonths';
-import { Typography } from '@mui/material';
+import { Box, List, Typography } from '@mui/material';
 
 
 // FIXTURE DISPLAY
@@ -39,14 +39,14 @@ const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 			const formattedDate = `${shorthandMonthsOfYear[Number(dateInfo[1]) - 1]} ${dateInfo[2]}`
 
 			result.push(
-				<>
+				<Box sx={{display: 'flex', flexDirection: 'column', gap: '10rem'}} >
 					<Typography variant="h6" gutterBottom>
 						{formattedDate}
 					</Typography>
-					<ul>
+					<List>
 						{matchesOfTheDay}
-					</ul>
-				</>
+					</List>
+				</Box>
 			)
 		}
 
@@ -54,9 +54,9 @@ const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 	}
 
 	return (
-		<div className='fixtures-display'>
+		<Box>
 			{displayFixturesByDate(fixturesByDate)}
-		</div>
+		</Box>
 	)
 }
 

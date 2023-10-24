@@ -1,43 +1,44 @@
-import './fixture-nav-bar.scss';
 import React, { useEffect } from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import shorthandMonthsOfYear from './shorthandMonths';
+import { Container } from '@mui/material';
 
 const FixtureNavBar = ({selectedDate, dates, handleChange, setSelectedDate}) => {
 
 	return (
-		<Tabs
-			value={selectedDate}
-			onChange={handleChange}
-			className='fixture-nav-bar'
-			variant="scrollable"
-			scrollButtons="auto"
-			aria-label="scrollable auto tabs example"
-		>
-		{dates.map((date, idx) => {
+		<Container >
+			<Tabs
+				value={selectedDate}
+				onChange={handleChange}
+				variant="scrollable"
+				scrollButtons="auto"
+				aria-label="scrollable auto tabs example"
+			>
+			{dates.map((date, idx) => {
 
-			let fullDate = new Date(date);
-			let today = new Date();
+				let fullDate = new Date(date);
+				let today = new Date();
 
-			if (
-				fullDate.getFullYear() === today.getFullYear() &&
-				fullDate.getMonth() === today.getMonth() &&
-				fullDate.getDate() >= today.getDate() &&
-				selectedDate === 0
-			) {
-				setSelectedDate(idx - 1)
-			}
+				if (
+					fullDate.getFullYear() === today.getFullYear() &&
+					fullDate.getMonth() === today.getMonth() &&
+					fullDate.getDate() >= today.getDate() &&
+					selectedDate === 0
+				) {
+					setSelectedDate(idx - 1)
+				}
 
-			const dateInfo = date.split('-');
-			const formattedDate = `${shorthandMonthsOfYear[Number(dateInfo[1]) - 1]} ${dateInfo[2]}`
+				const dateInfo = date.split('-');
+				const formattedDate = `${shorthandMonthsOfYear[Number(dateInfo[1]) - 1]} ${dateInfo[2]}`
 
-			return (
-				<Tab label={formattedDate} className={idx === selectedDate ? 'selected' : ''}/>
-			)
-		})}
-		</Tabs>
+				return (
+					<Tab label={formattedDate}/>
+				)
+			})}
+			</Tabs>
+		</Container>
 	);
 }
 

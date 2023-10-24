@@ -1,31 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import DisplayTime from '../util/display-time';
+import { Box, Container, Grid, Typography, Paper } from '@mui/material';
 
 
 const MatchCard = ({fixture, key}) => {	
 	return (
-		<li className='event-card' key={key}>
+		<Paper elevation={2} key={key} sx={{width: '40%'}}>
 			<Link to={`/match/${fixture.fixture.id}`}>
-				<div className='event-card-info'>
-					<div className='event-card-teams'>
-						<div className='event-card-team-row'>
+				<Box >
+					<Box >
+						<Box >
 							<img src={fixture.teams.home.logo} alt=''/>
 							<p>{fixture.teams.home.name}</p>
-						</div>
-						<div className='event-card-team-row'>
+						</Box>
+						<Box >
 							<img src={fixture.teams.away.logo} alt=''/>
 							<p>{fixture.teams.away.name}</p>
-						</div>
-					</div>
-					<div className='event-card-scores'>
+						</Box>
+					</Box>
+					<Box >
 							<p>{fixture.goals.home}</p>
 							<p>{fixture.goals.away}</p>
-					</div>
-					<div className='event-card-status'><DisplayTime match={fixture}/></div>
-				</div>
+					</Box>
+					<Box><DisplayTime match={fixture}/></Box>
+				</Box>
 			</Link>
-		</li>
+		</Paper>
 	)
 }
 

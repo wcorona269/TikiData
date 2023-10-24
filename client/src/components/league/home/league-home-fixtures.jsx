@@ -11,10 +11,13 @@ import {
 	ListItem,
 	ListItemButton,
 	ListItemText,
+	Divider,
+	useTheme,
  } from '@mui/material'
 
 
 const HomeFixturesComponent = ({fixtures}) => {
+	const theme = useTheme();
 
 	const displayTeams = (fixture) => {
 		let result = [];
@@ -71,9 +74,10 @@ const HomeFixturesComponent = ({fixtures}) => {
 				let NewSectionHeading;
 				if (!match_dates.has(match_date.split('T')[0])) {
 					NewSectionHeading = (
-						<Typography variant="subtitle1" gutterBottom sx={{margin: '.5rem', marginLeft: '1rem'}}>
+						[<Typography variant="subtitle1" gutterBottom sx={{ margin: '0px', padding: '.5rem', paddingLeft: '1rem', backgroundColor: theme.palette.action.hover}}>
 							{day_name}, {formatDate(match_date)}
-						</Typography>
+						</Typography>,
+						<Divider/>]
 					)
 					match_dates.add(match_date.split('T')[0]);
 				}
@@ -108,7 +112,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 			<Typography variant="h6" gutterBottom className='section-heading'>
 				Upcoming Fixtures
 			</Typography>
-			<List id='league-home-fixture-ul'>
+			<List id='league-home-fixture-ul' sx={{p: 0}}>
 				{displayUpcomingFixtures(fixtures)}
 			</List>
 		</Paper>
