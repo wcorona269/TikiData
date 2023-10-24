@@ -21,7 +21,9 @@ import NewsTimeline from './news/news-timeline';
 import { Paper, createTheme, ThemeProvider, Container } from '@mui/material';
 import { fetchCurrentUser } from '../actions/user_actions';
 import { useDispatch, useSelector } from 'react-redux';
-import PostsColumn from './home/posts-column';
+import Notifications from './home/home-notifications';
+import PlayerOverview from './player/player-overview';
+import PostsTimeline from './home/posts-column';
 
 
 const theme = createTheme({
@@ -78,11 +80,21 @@ function App() {
           <Routes>
             <Route path='/'
             element={<ProtectedRoute currentUser={currentUser} />}
-          >
-            <Route path='/home' element={<PostsColumn/>} />
-          </Route>
-            <Route exact path='/welcome' element={<Welcome />} />
-          </Routes>
+            >
+              <Route path='/home' element={<PostsTimeline/>} />
+              <Route path='/notifications' element={<Notifications/>} />
+              <Route path='/matches' element={<MatchesTimeline/>} />
+              <Route path='/explore' element={<Explore/>} />
+              <Route path='/news' element={<NewsTimeline/>} />
+              <Route path='/match/:id' element={<MatchOverview/>} />
+              {/* <Route path='/user/:id' element={<UserProfile/>}/> */}
+              <Route path='/club/:id' element={<ClubProfile/>} />
+              <Route path='/league/:id' element={<LeagueProfile/>} />
+              <Route path='/player/:id' element={<PlayerProfile/>} />
+            </Route>
+              <Route exact path='/welcome' element={<Welcome />} />
+            </Routes>
+
         </Container>
       </Paper>
       <Footer/>
