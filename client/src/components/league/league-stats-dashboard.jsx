@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Tabs, Tab } from '@mui/material';
+import { Tabs, Tab, Paper, Box } from '@mui/material';
 import './league-stats.scss';
 import Typography from '@mui/material/Typography';
-
-import TopScorers from './topScorers';
-import TopAssists from './topAssists';
+import LeagueStatsTable from './LeagueStatsTable';
 
 const LeagueStatsDashboard = ({top_scorers, top_assists}) => {
 	const [selectedTab, setSelectedTab] = useState(0);
@@ -19,29 +17,25 @@ const LeagueStatsDashboard = ({top_scorers, top_assists}) => {
 
 	
 	return (
-		<div>
+		<Paper elevation={2} sx={{ marginTop: '1rem', mx: 'auto', marginTop: '1rem' }}>
 			<Typography variant="h5" gutterBottom className='section-heading'>
 				<img src={leagueLogo} />
 				{leagueName} Stats
 			</Typography>
-			<div className='league-stats-container'>
-				{/* <div className='league-stats-nav-bar'>
-					<button className={buttonDisplay('goals')} onClick={() => setShowGoals(true)}>Top Scorers</button>
-					<button className={buttonDisplay('assists')} onClick={() => setShowGoals(false)}>Top Assist</button>
-				</div> */}
-				<Tabs value={selectedTab} onChange={handleChange} className='league-stats-nav-bar'>
+			<Box>
+				<Tabs value={selectedTab} onChange={handleChange} >
 					<Tab label='Goals'/>
 					<Tab label='Assists'/>
 				</Tabs>
-				<div className='league-stats-table-container'>
+				<Box>
 					{
 						selectedTab === 0 ? 
-						<TopScorers data={top_scorers} /> :
-						<TopAssists data={top_assists} />
+						<LeagueStatsTable data={top_scorers} category={'Goals'} /> :
+						<LeagueStatsTable data={top_assists} category={'Assists'}/>
 					}
-				</div>
-			</div>
-		</div>
+				</Box>
+			</Box>
+		</Paper>
 	)
 }
 

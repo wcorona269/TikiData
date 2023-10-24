@@ -65,7 +65,7 @@ const LeagueProfile = () => {
 
 	return (
 		<Grid item xs>
-			<Paper elevation={2}>
+			<Box elevation={2}>
 				<Typography className='section-heading' variant='h5'>
 					<img style={{height: '2rem', width: '2rem'}} src={logo} alt='' />
 					{name}
@@ -92,7 +92,7 @@ const LeagueProfile = () => {
 					{selectedTab === 2 && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />}
 					{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} uniqueDates={uniqueDates} />}
 				</Box>
-			</Paper>
+			</Box>
 		<ScrollToTopOnLoad/>
 		</Grid>
 	)
