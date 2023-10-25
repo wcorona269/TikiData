@@ -8,7 +8,7 @@ import React from 'react';
 
 const LeagueHomeDashboard = ({ news, fixtures, uniqueDates, table, top_scorers }) => {
 	return (
-		<Grid container className='league-home-dashboard'>
+		<Grid container spacing={1} sx={{marginTop: 1}}>
 			<Grid item xs={8}>
 				<LeagueHomeNews news={news} />
 			</Grid>

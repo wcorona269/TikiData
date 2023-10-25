@@ -42,12 +42,12 @@ const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 
 			result.push(
 				<Box sx={{display: 'flex', flexDirection: 'column'}} >
-					<Divider/>
-					<Typography variant="h6" gutterBottom sx={{marginTop: '1rem', fontFamily: theme.typography.bold}} >
+					{/* <Divider/> */}
+					<Typography variant="h6" gutterBottom sx={{marginTop: '1rem'}} >
 						{formattedDate}
 					</Typography>
-					<Divider />
-					<Grid container spacing={2} direction='row' sx={{ my: '1rem', width: '100%', marginTop: 0 }}>
+					{/* <Divider /> */}
+					<Grid container spacing={1} direction='row' sx={{ my: '1rem', width: '100%', marginTop: 0 }}>
 						{matchesOfTheDay}
 					</Grid>
 				</Box>

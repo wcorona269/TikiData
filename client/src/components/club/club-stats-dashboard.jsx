@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchClubStats } from '../../actions/api_actions';
-import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow } from '@mui/material';
+import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, useTheme } from '@mui/material';
 import YellowCard from '../../images/yellow.png';
 import RedCard from '../../images/red.png';
 
 const ClubStatsDashboard = ({ stats }) => {
+	const theme = useTheme();
 	let totals = {}
 	
 	const displayTeamStats = (stats) => {
@@ -60,7 +61,7 @@ const ClubStatsDashboard = ({ stats }) => {
 
 			result.push(
 				<TableRow key={competition}>
-					<TableCell sx={{borderRight: '1px solid var(--gray)', display: 'flex', alignItems: 'center'}}>
+					<TableCell sx={{ display: 'flex', alignItems: 'center'}}>
 						<img src={logo} style={{ width: '1rem', height: '1rem', marginRight: '.5rem'}}/>
 						{competition}
 					</TableCell>
@@ -79,7 +80,7 @@ const ClubStatsDashboard = ({ stats }) => {
 		}
 
 		result.push(
-			<TableRow key={totals} id='totals' sx={{ backgroundColor: 'var(--gray)' }}>
+			<TableRow key={totals} id='totals' sx={{ backgroundColor: theme.palette.primary.main }}>
 				<TableCell>All</TableCell>
 				<TableCell>{totals['played']}</TableCell>
 				<TableCell>{totals['wins']}</TableCell>
@@ -101,7 +102,7 @@ const ClubStatsDashboard = ({ stats }) => {
 		<TableContainer>
 		<Table>
 			<TableHead>
-				<TableRow sx={{backgroundColor: 'var(--gray)'}}>
+				<TableRow sx={{backgroundColor: theme.palette.action.hover}}>
 					<TableCell sx={{ padding: '16px !important' }}>Competition</TableCell>
 					<TableCell sx={{ padding: '16px !important' }}>MP</TableCell>
 					<TableCell sx={{ padding: '16px !important' }}>W</TableCell>

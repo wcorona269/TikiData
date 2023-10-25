@@ -27,7 +27,7 @@ const ClubFixturesTable = ({fixtures}) => {
 
 		fixtures.map((fixture, idx) => {
 			let league = [fixture.league.name, fixture.league.logo];
-			
+
 			result.push(
 				<MatchCard key={idx} fixture={fixture} league={league} />
 			)
@@ -37,7 +37,7 @@ const ClubFixturesTable = ({fixtures}) => {
 	}
 
 	return (
-		<Grid container spacing={2}>
+		<Grid container spacing={1}>
 			{displayFixtures(fixtures)}
 		</Grid>
 	)

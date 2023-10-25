@@ -59,7 +59,6 @@ const MatchCard = ({fixture, key, league}) => {
 						{displayTeams(fixture)}
 						{ !!league && 
 							<Typography align='left' display='flex' alignItems='center' sx={{color: theme.palette.text.disabled }} variant='body2'>
-								<img src={league[1]} style={{ height: '1rem', width: '1rem', marginRight: '.25rem' }} />
 								{league[0]}
 							</Typography>
 						 }

@@ -81,7 +81,7 @@ const MatchesTimeline = ({apiKey}) => {
 	}
 
 	return (
-		<Grid item xs>
+		<Grid item xs={9}>
 			<TimelineMatchDisplay 
 				matches={sortedMatches} 
 				competitions={competitions}
