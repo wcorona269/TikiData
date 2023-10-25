@@ -4,6 +4,7 @@ from datetime import timedelta
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from .db import db, bcrypt
 from flask import jsonify
+from datetime import datetime
 
 class User(UserMixin, db.Model):
 	__tablename__ = 'users'
@@ -11,8 +12,11 @@ class User(UserMixin, db.Model):
 	# table columns
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(64), index=True, unique=True, nullable=False)
+	# bio = db.Column(db.String(200), default='')
 	email = db.Column(db.String(120), unique=True, nullable=False)
 	password_hash = db.Column(db.String(255), nullable=False)
+	created_at = db.Column(db.DateTime, default=datetime.utcnow)
+	bio = db.Column(db.String, default='')
  
 	# table relationships
 	favorites = db.relationship('Favorite', back_populates='user')
@@ -37,7 +41,21 @@ class User(UserMixin, db.Model):
 			return user.username
 		else:
 			return None
-		
+
+	@staticmethod
+	def get_user_info(username):
+		user = User.query.filter_by(username=username).first()
+		if user:
+			return True, {
+					'username': user.username,
+					'posts': [post.to_dict() for post in user.posts],
+					'reposts': [repost.to_dict() for repost in user.reposts],
+					'created_at': user.created_at.strftime('%Y-%m-%d %H:%M:%S')
+				# 'avatar': user.avatar
+			}
+		else:
+			return False
+  
 	# Authentication functions
 	def set_password(self, password):
 		pwhash = bcrypt.generate_password_hash(password)

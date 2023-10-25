@@ -47,3 +47,22 @@ export const fetchCurrentUser = () => {
 			});
 	};
 };
+
+
+// Action types
+export const FETCH_USER_INFO_REQUEST = 'FETCH_USER_INFO_REQUEST';
+export const FETCH_USER_INFO_SUCCESS = 'FETCH_USER_INFO_SUCCESS';
+export const FETCH_USER_INFO_FAILURE = 'REGISTER_USER_FAILURE';
+
+export const fetchUserInfo = (username) => {
+	return (dispatch) => {
+		dispatch({ type: FETCH_USER_INFO_REQUEST });
+		axios.get(`/users/info/${username}`)
+			.then((response) => {
+				dispatch({ type: FETCH_USER_INFO_SUCCESS, payload: response.data });
+			})
+			.catch((error) => {
+				dispatch({ type: FETCH_USER_INFO_FAILURE, payload: error.message });
+			});
+	};
+};

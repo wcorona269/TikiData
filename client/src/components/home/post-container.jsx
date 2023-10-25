@@ -16,6 +16,7 @@ import RepostButton from './repost-popper';
 
 const PostContainer = ({ post }) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate()
 	const theme = useTheme();
 	const user_id = useSelector(state => state.users?.user?.id);
 	const username = useSelector(state => state.users?.user?.username);
@@ -108,7 +109,7 @@ const PostContainer = ({ post }) => {
 					<Box sx={{ display: 'flex', flexDirection: 'column'}}>
 						<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '.5rem'}}>
 							<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>
-								<Link underline='hover'>
+								<Link underline='hover' onClick={() => navigate(`/user/${post.username}`)} >
 									{post.username}
 								</Link>
 							</Typography>

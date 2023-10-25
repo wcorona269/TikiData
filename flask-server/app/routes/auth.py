@@ -43,8 +43,6 @@ def login():
     return jsonify(message)
 
 @bp.route('/logout', methods=['POST'])
-
-
 def logout():
   response = make_response(jsonify({'message': 'Logout successful'}))
   response.set_cookie('access_token', '', expires=0, httponly=True, secure=True)

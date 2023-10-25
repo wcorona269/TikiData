@@ -68,12 +68,12 @@ routes_list = [
     routes.like.bp,
     routes.comment.bp,
     routes.notification.bp,
-    routes.repost.bp
+    routes.repost.bp,
+    routes.user.bp
 ]
 
 for route in routes_list:
   app.register_blueprint(route)
-
 
 db.init_app(app)
 seed_database(app)
@@ -82,4 +82,3 @@ seed_database(app)
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
-

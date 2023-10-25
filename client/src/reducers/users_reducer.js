@@ -5,7 +5,10 @@ import {
 	FETCH_USER_REQUEST,
 	FETCH_USER_SUCCESS,
 	FETCH_USER_FAILURE,
-	REMOVE_USER_ERRORS
+	REMOVE_USER_ERRORS,
+	FETCH_USER_INFO_FAILURE,
+	FETCH_USER_INFO_REQUEST,
+	FETCH_USER_INFO_SUCCESS
 } from '../actions/user_actions';
 
 
@@ -26,10 +29,15 @@ const usersReducer = (state = initialState, action) => {
 		case FETCH_USER_SUCCESS:
 			return { ...state, user: action.payload, isLoading: false, error: null };
 		case REGISTER_USER_FAILURE:
+		case FETCH_USER_INFO_FAILURE:
 		case FETCH_USER_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
 		case REMOVE_USER_ERRORS:
-			return { ...state, isLoading: false, error: null }
+			return { ...state, isLoading: false, error: null };
+		case FETCH_USER_INFO_REQUEST:
+			return { ...state, isLoading: true, error: null };
+		case FETCH_USER_INFO_SUCCESS:
+			return { ...state, isLoading: false, users: action.payload }; 
 		default:
 			return state;
 	}

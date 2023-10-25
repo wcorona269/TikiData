@@ -32,12 +32,6 @@ const ClubProfile = () => {
 		dispatch(fetchClub(id, formattedSeason))
 	}, [season]);
 
-	// useEffect(() => {
-	// 	return () => {
-	// 		dispatch(removeClub());
-	// 	}
-	// }, []);
-
 	if (isLoading || !club) {
 		return <LoadingMessage/>	
 	}

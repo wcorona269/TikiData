@@ -25,6 +25,8 @@ import Notifications from './home/home-notifications';
 import PlayerOverview from './player/player-overview';
 import PostsTimeline from './home/posts-column';
 import HomeNews from './home/home-news';
+import UserProfile from './user/user-profile';
+
 
 
 const theme = createTheme({
@@ -88,14 +90,13 @@ function App() {
               <Route path='/explore' element={<Explore/>} />
               <Route path='/news' element={<HomeNews/>} />
               <Route path='/match/:id' element={<MatchOverview/>} />
-              {/* <Route path='/user/:id' element={<UserProfile/>}/> */}
+              <Route path='/user/:username' element={<UserProfile/>}/>
               <Route path='/club/:id' element={<ClubProfile/>} />
               <Route path='/league/:id' element={<LeagueProfile/>} />
               <Route path='/player/:id' element={<PlayerProfile/>} />
             </Route>
               <Route exact path='/welcome' element={<Welcome />} />
             </Routes>
-
         </Container>
       </Paper>
       <Footer/>
