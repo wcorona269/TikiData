@@ -5,7 +5,9 @@ import { Paper, Box, Avatar, Icon, IconButton, Grid, Tabs, Tab, Container, Typog
 import PostContainer from '../home/post-container';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo } from '../../actions/user_actions';
+import { formatDistanceToNow } from 'date-fns';
 import RepostContainer from '../home/repost-container';
+import ReactTimeAgo from 'react-time-ago'
 
 const UserProfile = () => {
 	const dispatch = useDispatch();
@@ -23,19 +25,28 @@ const UserProfile = () => {
 		dispatch(fetchUserInfo(username));
 	}, [])
 
+	const noPostsMessage = (
+			<Container >
+				<Typography textAlign='center' variant='h6' sx={{ color: theme.palette.text.disabled, padding: 5 }}>
+					{username} hasn't posted yet.
+				</Typography>
+			</Container>
+)
+
 	const displayPosts = () => {
 		let result = [];
 
 		if (isLoading) return ;
 
 		if (selectedTab === 0) {
+			if (!posts?.length) return noPostsMessage;
 			for (let post of posts) {
 				result.push(
 					<PostContainer post={post} />
 				)	
 			}
 		} else {
-			if (!reposts.length) return [];
+			if (!reposts?.length) return noPostsMessage;
 			for (let i = 0; i < reposts.length; i++) {
 				result.push(<RepostContainer post={reposts[i]} idx={i} />)
 			}
@@ -78,7 +89,7 @@ const UserProfile = () => {
 								{username}
 							</Typography>
 							<Typography variant='subtitle1' sx={{ color: theme.palette.text.secondary }} >
-								Joined a few days ago
+								Joined <ReactTimeAgo date={created_at} locale="en-US"/>
 							</Typography>
 						</Box>
 					</Box>
@@ -89,7 +100,7 @@ const UserProfile = () => {
 							<Tab label={'Reposts'} />
 						</Tabs>
 						<Divider/>
-						{/* {displayPosts()} */}
+						{displayPosts()}
 					</Box>
 				</Paper>
 			</Grid>
