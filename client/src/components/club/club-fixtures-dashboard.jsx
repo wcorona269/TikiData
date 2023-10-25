@@ -48,27 +48,7 @@ const ClubFixturesDashboard = ({fixtures}) => {
 								{month}
 							</Typography>
 						</Box>
-						<TableContainer>
-							<Table>
-								<TableHead sx={{ backgroundColor: theme.palette.action.hover }}>
-									<TableRow>
-										<TableCell align='left' sx={{padding: '16px !important'}}>
-											Date
-										</TableCell>
-										<TableCell align='left' colSpan={3} sx={{padding: '16px !important'}}>
-											Match
-										</TableCell>
-										<TableCell align='left' sx={{ padding: '16px !important' }}>
-											Time
-										</TableCell>
-										<TableCell align='left' sx={{ padding: '16px !important' }}>
-											Competition
-										</TableCell>
-									</TableRow>
-								</TableHead>
-								<ClubFixturesTable fixtures={month_of_fixtures} />
-							</Table>
-						</TableContainer>
+						<ClubFixturesTable fixtures={month_of_fixtures} />
 					</>
 				)
 			})}
