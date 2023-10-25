@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Grid, List, ListItem, ListItemButton, Pagination, Paper, Stack, Link, Typography } from '@mui/material';
 import { splitArticleIntoPages } from '../../news/sub-articles-timeline';
 import Article from '../../news/article';
 
-const LeagueHomeNews = ({news}) => {
-	const [page, setPage] = useState(1);
+const LeagueHomeNews = ({ name, logo, news }) => {
+	const [page, setPage] = useState(1)
 
 	const handleChange = (event, newValue) => {
 		setPage(newValue);
@@ -31,7 +31,8 @@ const LeagueHomeNews = ({news}) => {
 			elevation={2}
 		>
 			<Typography variant='h6' gutterbottom className='section-heading'>
-				News
+				<img src={logo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
+					{name} News
 			</Typography>
 			<List>
 				{displayNews(articlesByPage[page])}

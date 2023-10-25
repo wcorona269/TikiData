@@ -87,10 +87,10 @@ const LeagueProfile = () => {
 						</Box>
 					</Box>
 					<Divider/>
-					{selectedTab === 0 && <LeagueHomeDashboard news={news} fixtures={fixtures} uniqueDates={uniqueDates} table={table} top_scorers={top_scorers} />}
-					{selectedTab === 1 && <LeagueTableDashboard table={table}  />}
-					{selectedTab === 2 && <LeagueStatsDashboard top_scorers={top_scorers} top_assists={top_assists} />}
-					{selectedTab === 3 && <LeagueFixturesDashboard fixtures={fixtures} uniqueDates={uniqueDates} />}
+					{selectedTab === 0 && <LeagueHomeDashboard name={name} logo={logo} news={news} fixtures={fixtures} uniqueDates={uniqueDates} table={table} top_scorers={top_scorers} />}
+					{selectedTab === 1 && <LeagueTableDashboard name={name} logo={logo} table={table}  />}
+					{selectedTab === 2 && <LeagueStatsDashboard name={name} logo={logo} top_scorers={top_scorers} top_assists={top_assists} />}
+					{selectedTab === 3 && <LeagueFixturesDashboard name={name} logo={logo} fixtures={fixtures} uniqueDates={uniqueDates} />}
 				</Box>
 			</Paper>
 		<ScrollToTopOnLoad/>

@@ -5,13 +5,13 @@ import ClubHomeInfo from './club-home-info';
 import HomeFixturesComponent from '../../league/home/league-home-fixtures';
 import LeagueHomeNews from '../../league/home/league-home-news';
 
-const ClubHomeDashboard = ({ club, fixtures, squad, news }) => {
+const ClubHomeDashboard = ({ name, logo, club, fixtures, squad, news }) => {
 
 	return (
-		<Box className='club-home-container'>
-			<Grid spacing={1} container className='club-home-grid'>
+		<Box>
+			<Grid spacing={1} container sx={{marginTop: 1}}>
 				<Grid item xs={8} >
-					<LeagueHomeNews news={news} />
+					<LeagueHomeNews name={name} logo={logo} news={news}  />
 				</Grid>
 				<Grid item xs={4} >
 					<ClubHomeInfo club={club}  />

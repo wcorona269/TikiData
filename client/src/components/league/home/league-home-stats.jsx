@@ -33,7 +33,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 					<TableCell component="th" scope="row">
 						<Typography variant='body2' id='team-name'>
 							<Link underline='hover' onClick={() => navigate(`/player/${id}`)} 
-								sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'left'}}
+								sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'left', color: theme.palette.text.primary }}
 							>
 								<Avatar src={photo} sx={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
 								{name}
@@ -50,7 +50,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 	}
 
 	return (
-		<Paper elevation={2} className='home-paper'>
+		<Paper elevation={2} sx={{marginBottom: 1}}>
 			<Typography variant='h6' gutterBottom className='section-heading' >
 				Top Scorers
 			</Typography>

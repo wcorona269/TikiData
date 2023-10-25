@@ -4,14 +4,15 @@ import NoDataMessage from '../util/no-data/no-data-message';
 import MultiTableDashboard from './multi-table-dashboard';
 import Typography from '@mui/material/Typography';
 import { TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Link, Avatar, useTheme, Paper } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
 
 const LeagueTableDashboard = ({table}) => {
 	const theme = useTheme();
+	const navigate = useNavigate();
 	useEffect(() => {}, [table])
 
-	const leagueName = table[0].league.name
-	const leagueLogo = table[0].league.logo
-
+	const leagueName = table[0].league.name;
+	const leagueLogo = table[0].league.logo;
 
 	if (!table?.length) {
 		return <NoDataMessage/>
@@ -57,7 +58,7 @@ const LeagueTableDashboard = ({table}) => {
 	return (
 		<Paper elevation={2} sx={{marginTop: '1rem', mx: 'auto', marginTop: '1rem'}}>
 			<Typography variant="h6" gutterBottom className='section-heading'>
-				<img src={leagueLogo}/>
+				<img src={leagueLogo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }}/>
 				{leagueName} Table
 			</Typography>
 			<TableContainer>
@@ -84,8 +85,8 @@ const LeagueTableDashboard = ({table}) => {
 								<TableRow key={idx} className='league-table-row'>
 								<TableCell>{club['rank']}</TableCell>
 								<TableCell id='Club' >
-									<Link underline='hover'>
-										<Avatar src={club['team']['logo']} sx={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} alt=''/>
+									<Link underline='hover' sx={{color: theme.palette.text.primary }} onClick={() => navigate(`/club/${clubId}`)} >
+										<img src={club['team']['logo']} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} alt=''/>
 										<Typography variant='body1'>{clubName}</Typography>
 									</Link>
 								</TableCell>

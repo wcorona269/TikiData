@@ -2,9 +2,9 @@ import './club-fixtures.scss';
 import React from 'react'
 import ClubFixturesTable from './club-fixtures-table';
 import monthsOfYear from './monthsOfYear';
-import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
+import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
 
-const ClubFixturesDashboard = ({fixtures}) => {
+const ClubFixturesDashboard = ({fixtures, name, logo}) => {
 	const theme = useTheme()
 	const fixturesSortedByDate = fixtures.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date));
 	const monthsOfFixtures = new Set();
@@ -37,22 +37,26 @@ const ClubFixturesDashboard = ({fixtures}) => {
 	
 
 	return (
-		<div className='club-fixtures-dashboard'>
+		<Paper elevation={2} sx={{marginTop: '1rem'}}>
+			<Typography variant='h6' className='section-heading'>
+				<img src={logo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
+				{name} Fixtures
+			</Typography>
 			{fixturesByDate.map(month_of_fixtures => {
 				let month = month_of_fixtures.shift();
 
 				return (
-					<>
+					<Box sx={{ p: 1 }}>
 						<Box sx={{width: '100%'}}>
-							<Typography variant='subtitle1' sx={{padding: '1rem'}}>
+							<Typography variant='h6' sx={{py: 1, fontFamily: theme.typography.bold}}>
 								{month}
 							</Typography>
 						</Box>
 						<ClubFixturesTable fixtures={month_of_fixtures} />
-					</>
+					</Box>
 				)
 			})}
-		</div>
+		</Paper>
 	)
 }
 

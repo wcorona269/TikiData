@@ -23,7 +23,7 @@ const LeagueFixturesDashboard = ({fixtures, uniqueDates}) => {
 	return (
 		<Paper elevation={2} sx={{ marginTop: '1rem', mx: 'auto', marginTop: '1rem' }}>
 			<Typography variant="h6" gutterBottom className='section-heading'>
-				<img src={leagueLogo}/>
+				<img src={leagueLogo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
 				{leagueName} Fixtures
 			</Typography>
 			<FixtureNavBar selectedDate={selectedDate} dates={uniqueDates} handleChange={handleChange} setSelectedDate={setSelectedDate}/>

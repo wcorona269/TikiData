@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchClubStats } from '../../actions/api_actions';
-import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, useTheme } from '@mui/material';
+import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, useTheme, Paper, Typography } from '@mui/material';
 import YellowCard from '../../images/yellow.png';
 import RedCard from '../../images/red.png';
 
-const ClubStatsDashboard = ({ stats }) => {
+const ClubStatsDashboard = ({ name, logo, stats }) => {
 	const theme = useTheme();
 	let totals = {}
 	
@@ -99,29 +99,34 @@ const ClubStatsDashboard = ({ stats }) => {
 
 
 	return (
-		<TableContainer>
-		<Table>
-			<TableHead>
-				<TableRow sx={{backgroundColor: theme.palette.action.hover}}>
-					<TableCell sx={{ padding: '16px !important' }}>Competition</TableCell>
-					<TableCell sx={{ padding: '16px !important' }}>MP</TableCell>
-					<TableCell sx={{ padding: '16px !important' }}>W</TableCell>
-					<TableCell sx={{ padding: '16px !important' }}>D</TableCell>
-					<TableCell sx={{ padding: '16px !important' }}>L</TableCell>
-					<TableCell sx={{ padding: '16px !important' }}>GF</TableCell>
-					<TableCell sx={{ padding: '16px !important' }}>GC</TableCell>
-					<TableCell sx={{ padding: '16px !important' }}>GD</TableCell>
-					<TableCell sx={{ padding: '16px !important' }}><img src={YellowCard} style={{ width: '1rem', height: '1rem'}}/></TableCell>
-						<TableCell sx={{ padding: '16px !important' }}><img src={RedCard} style={{ width: '1rem', height: '1rem' }} /></TableCell>
-					<TableCell sx={{ padding: '16px !important' }}>Clean Sheets</TableCell>
-				</TableRow>
-			</TableHead>
-			<tbody>
-				{displayTeamStats(stats)}
-			</tbody>
-		</Table>
-
-		</TableContainer>
+		<Paper elevation={2} sx={{marginTop: '1rem'}}>
+			<Typography className='section-heading' variant='h6'>
+				<img src={logo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
+				{name} Stats
+			</Typography>
+			<TableContainer>
+			<Table>
+				<TableHead>
+					<TableRow sx={{backgroundColor: theme.palette.action.hover}}>
+						<TableCell sx={{ padding: '16px !important' }}>Competition</TableCell>
+						<TableCell sx={{ padding: '16px !important' }}>MP</TableCell>
+						<TableCell sx={{ padding: '16px !important' }}>W</TableCell>
+						<TableCell sx={{ padding: '16px !important' }}>D</TableCell>
+						<TableCell sx={{ padding: '16px !important' }}>L</TableCell>
+						<TableCell sx={{ padding: '16px !important' }}>GF</TableCell>
+						<TableCell sx={{ padding: '16px !important' }}>GC</TableCell>
+						<TableCell sx={{ padding: '16px !important' }}>GD</TableCell>
+						<TableCell sx={{ padding: '16px !important' }}><img src={YellowCard} style={{ width: '1rem', height: '1rem'}}/></TableCell>
+							<TableCell sx={{ padding: '16px !important' }}><img src={RedCard} style={{ width: '1rem', height: '1rem' }} /></TableCell>
+						<TableCell sx={{ padding: '16px !important' }}>Clean Sheets</TableCell>
+					</TableRow>
+				</TableHead>
+				<tbody>
+					{displayTeamStats(stats)}
+				</tbody>
+			</Table>
+			</TableContainer>
+		</Paper>
 	)
 }
 

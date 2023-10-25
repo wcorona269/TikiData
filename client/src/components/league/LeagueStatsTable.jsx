@@ -21,7 +21,7 @@ const LeagueStatsTable = ({data, category}) => {
 				<TableHead sx={{backgroundColor: theme.palette.action.hover}} >
 					<TableRow>
 						{columns.map((column, idx) => (
-							<TableCell align={idx === 2 || idx === 4 ? 'center' : 'left' } key={idx} >
+							<TableCell align={idx === 2 || idx === 4 ? 'center' : 'left'  } key={idx} >
 								<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>
 									{column}
 								</Typography>
@@ -47,7 +47,7 @@ const LeagueStatsTable = ({data, category}) => {
 									{idx + 1}
 								</TableCell>
 								<TableCell sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}} ><Avatar sx={{ marginRight: '.25rem', height: '1.5rem', width: '1.5rem' }} src={icon} />
-									<Link underline='hover' onClick={() => navigate(`/player/${id}`)}>
+									<Link underline='hover' onClick={() => navigate(`/player/${id}`)} sx={{color: theme.palette.text.primary }} >
 										{name}
 									</Link>
 								</TableCell>

@@ -1,10 +1,10 @@
 import './club-squad.scss';
 import React from 'react';
 import ClubSquadListItem from './club-squad-list-item';
-import { Avatar, Grid, Paper, Typography } from '@mui/material';
+import { Avatar, Box, Grid, Paper, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const ClubSquadDashboard = ({squad}) => {
+const ClubSquadDashboard = ({name, logo, squad}) => {
 	let columns = ['Name', 'Age', 'Pos'];
 
 	let squadPositions = {
@@ -44,9 +44,15 @@ const ClubSquadDashboard = ({squad}) => {
 	}
 
 	return (
-		<div className='club-squad-dashboard'>
-			{displaySquad(squadPositions)}
-		</div>
+		<Paper elevation={2} sx={{marginTop: '1rem'}}>
+			<Typography variant='h6' className='section-heading'>
+				<img src={logo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
+				{name} Squad
+			</Typography>
+			<Box sx={{margin: '1rem'}}>
+				{displaySquad(squadPositions)}
+			</Box>
+		</Paper>
 	)
 }
 

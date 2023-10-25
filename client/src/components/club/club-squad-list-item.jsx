@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 const ClubSquadListItem = ({player}) => {
 	return (
-		<Card sx={{ width: '100%', height: 'fit-content', margin: '.5rem' }}>
+		<Card sx={{ width: '100%', height: '250px', margin: '.5rem' }}>
 			<img src={player.photo} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}/>
 			<CardContent>
 				<Typography gutterBottom variant="subtitle1" component="div">

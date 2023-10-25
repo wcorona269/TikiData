@@ -49,8 +49,8 @@ const ClubProfile = () => {
 	}
 
 	const clubInfo = club[0];
-	let name = clubInfo.team.name || 'N/A';
-	let logo = clubInfo.team.logo || 'N/A';
+	const name = clubInfo?.team?.name
+	const logo = clubInfo?.team?.logo
 
 	return (
 		<Grid item xs={9}>
@@ -60,10 +60,10 @@ const ClubProfile = () => {
 					{name}
 				</Typography>
 				<ClubProfileNavBar club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
-				{ selectedTab === 0 && <ClubHomeDashboard club={club} fixtures={fixtures} squad={squad} news={news} /> }
-				{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures}/> }
-				{ selectedTab === 2 && <ClubStatsDashboard stats={stats} /> }
-				{ selectedTab === 3 && <ClubSquadDashboard squad={squad[0].players}  /> }
+				{ selectedTab === 0 && <ClubHomeDashboard name={name} logo={logo} club={club} fixtures={fixtures} squad={squad} news={news} /> }
+				{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures} name={name} logo={logo} /> }
+				{ selectedTab === 2 && <ClubStatsDashboard stats={stats} name={name} logo={logo} /> }
+				{ selectedTab === 3 && <ClubSquadDashboard name={name} logo={logo} squad={squad[0].players}  /> }
 			</Paper>
 		</Grid>
 	)

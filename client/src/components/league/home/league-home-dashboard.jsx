@@ -6,11 +6,11 @@ import LeagueHomeStats from './league-home-stats';
 import LeagueHomeTable from './league-home-table';
 import React from 'react';
 
-const LeagueHomeDashboard = ({ news, fixtures, uniqueDates, table, top_scorers }) => {
+const LeagueHomeDashboard = ({ name, logo, news, fixtures, uniqueDates, table, top_scorers }) => {
 	return (
 		<Grid container spacing={1} sx={{marginTop: 1}}>
 			<Grid item xs={8}>
-				<LeagueHomeNews news={news} />
+				<LeagueHomeNews news={news} table={table} name={name} logo={logo} />
 			</Grid>
 			<Grid item xs>
 				<LeagueHomeTable table={table} />

@@ -8,6 +8,7 @@ const Article = ({article, idx}) => {
 	return (
 		<ListItem divider disablePadding key={idx}>
 			<ListItemButton
+				sx={{height: 125}}
 				component="a"  // Set the component prop to 'a' to make it act like an anchor tag
 				href={`https://${article.link}`} // Specify the URL of the article
 				target="_blank" // Open the link in a new tab
@@ -16,13 +17,13 @@ const Article = ({article, idx}) => {
 				<Grid container>
 					<Grid item xs={9}>
 						<Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
-							<Typography variant='caption' sx={{ color: theme.palette.grey['700'] }}>
+							<Typography variant='caption' sx={{ color: theme.palette.text.disabled }}>
 								{article.media}
 							</Typography>
 							<Typography variant='subtitle1' className='home-article-title'>
 								{article.title}
 							</Typography>
-							<Typography variant='caption' sx={{ color: theme.palette.grey['700'] }}>
+							<Typography variant='caption' sx={{ color: theme.palette.text.disabled }}>
 								{article.date}
 							</Typography>
 						</Box>

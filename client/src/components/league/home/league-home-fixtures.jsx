@@ -1,23 +1,13 @@
 import React from 'react'
 import DisplayTime from '../../util/display-time';
 import { formatDate } from '../../club/club-fixtures-table';
-import { Link } from 'react-router-dom';
-import { 
-	Box,
-	Paper, 
-	Grid,
-	Typography, 
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-	Divider,
-	useTheme,
- } from '@mui/material'
+import { Box, Link, Paper, Grid, Typography, List, ListItem, ListItemButton, Divider, useTheme } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
 
 
 const HomeFixturesComponent = ({fixtures}) => {
 	const theme = useTheme();
+	const navigate = useNavigate();
 
 	const displayTeams = (fixture) => {
 		let result = [];
@@ -36,7 +26,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 							<img src={team_logo} />
 					</Grid>
 					<Grid item xs={9}>
-						<Link to={`/club/${team_id}`}>
+						<Link sx={{color: theme.palette.text.primary}} underline='hover' onClick={() => navigate(`/club/${team_id}`)}>
 							<Typography variant='body2' className={winner === true ? 'winning-team' : ''}>
 								{team_name}
 							</Typography>
@@ -104,7 +94,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 
 
 	return (
-		<Paper 
+		<Paper
 			className='home-paper'
 			id='sticky-paper'
 			elevation={2}
@@ -112,7 +102,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 			<Typography variant="h6" gutterBottom className='section-heading'>
 				Upcoming Fixtures
 			</Typography>
-			<List id='league-home-fixture-ul' sx={{p: 0}}>
+			<List sx={{p: 0, overflow: 'scroll'}}>
 				{displayUpcomingFixtures(fixtures)}
 			</List>
 		</Paper>
