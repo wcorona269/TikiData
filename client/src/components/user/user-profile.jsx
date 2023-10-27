@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo } from '../../actions/user_actions';
 import { formatDistanceToNow } from 'date-fns';
 import RepostContainer from '../home/repost-container';
-import ReactTimeAgo from 'react-time-ago'
+// import ReactTimeAgo from 'react-time-ago'
 
 const UserProfile = () => {
 	const dispatch = useDispatch();
@@ -98,7 +98,7 @@ const UserProfile = () => {
 									{username}
 								</Typography>
 								<Typography variant='subtitle1' sx={{ color: theme.palette.text.secondary }} >
-									Joined <ReactTimeAgo date={created_at} locale="en-US"/>
+									{/* Joined <ReactTimeAgo date={created_at} locale="en-US"/> */}
 								</Typography>
 							</Box>
 						</Box>

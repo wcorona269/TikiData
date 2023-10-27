@@ -13,7 +13,7 @@ import { createNotification, deleteNotification } from '../../actions/notificati
 import { showModal } from '../../actions/modal_actions'
 import { useNavigate } from 'react-router-dom';
 import RepostButton from './repost-popper';
-import ReactTimeAgo from 'react-time-ago'
+// import ReactTimeAgo from 'react-time-ago'
 
 const PostContainer = ({ post }) => {
 	const dispatch = useDispatch();
@@ -115,7 +115,7 @@ const PostContainer = ({ post }) => {
 								</Link>
 							</Typography>
 							<Typography variant='caption' sx={{ color: 'var(--darkgray)' }}>
-								<ReactTimeAgo date={post.created_at} locale="en-US" />
+								{/* <ReactTimeAgo date={post.created_at} locale="en-US" /> */}
 							</Typography>
 						</Box>
 						<Typography variant='body1' onClick={() => navigate(`/post/${post.id}`)}>

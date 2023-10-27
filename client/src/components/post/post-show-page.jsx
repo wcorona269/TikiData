@@ -23,13 +23,33 @@ const PostShowPage = () => {
 	const isLoading = useSelector(state => state.posts.isLoading);
 	const username = useSelector(state => state.users?.user?.username);
 
-	const [postLikes, setPostLikes] = useState(post.likes.length);
-	const [reposts, setReposts] = useState(post.reposts.length);
+	const [postLikes, setPostLikes] = useState(post?.likes?.length || 0);
+	const [reposts, setReposts] = useState(post?.reposts?.length || 0);
 	const [createComment, setCreateComment] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
 	const [isReposted, setIsReposted] = useState(false);
 
+	useEffect(() => {
+		if (!post) return;
+		for (let like of post?.likes) {
+			if (like.user_id === user_id) {
+				setIsLiked(true)
+			}
+		}
+	}, [post]);
+
+	useEffect(() => {
+		if (id !== post?.id && !isLoading) {
+			dispatch(fetchPost(id));
+		}
+	}, [id]);
+
+
 	const handleLike = () => {
+		if (!post || !post?.likes) {
+			return; // Exit the function if post or post.likes is undefined
+		}
+
 		const like_info = {
 			'post_id': post.id,
 			'user_id': user_id,
@@ -53,19 +73,6 @@ const PostShowPage = () => {
 		setIsLiked(!isLiked);
 	}
 
-	useEffect(() => {
-		for (let like of post.likes) {
-			if (like.user_id === user_id) {
-				setIsLiked(true)
-			}
-		}
-	}, [post]);
-
-	useEffect(() => {
-		if (id !== post?.id && !isLoading) {
-			dispatch(fetchPost(id));
-		}
-	}, [id]);
 
 	const handleRepost = () => {
 		const repost_info = {
@@ -91,8 +98,8 @@ const PostShowPage = () => {
 	}
 
 	const displayComments = (comments) => {
-		console.log(comments);
 		let result = [];
+		if (!comments) return;
 
 		comments.map((comment, idx) => {
 			result.push(
@@ -105,12 +112,12 @@ const PostShowPage = () => {
 
 
 	const buttons = [
-		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: createComment ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => setCreateComment(!createComment)}>
+		<Button key={0} aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: createComment ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => setCreateComment(!createComment)}>
 			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />
-			{post.comments.length}
+			{post?.comments?.length}
 		</Button>,
-		<RepostButton handleRepost={handleRepost} reposts={reposts} isReposted={isReposted} setIsReposted={setIsReposted} post={post} user_id={user_id} />,
-		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isLiked ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={handleLike} >
+		<RepostButton key={1} handleRepost={handleRepost} reposts={reposts} isReposted={isReposted} setIsReposted={setIsReposted} post={post} user_id={user_id} />,
+		<Button key={2} aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isLiked ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={handleLike} >
 			{isLiked ? <FavoriteIcon sx={{ marginRight: '.25rem' }} fontSize='medium' /> : <FavoriteBorderIcon sx={{ marginRight: '.25rem' }} />}
 			{postLikes}
 		</Button>,
@@ -123,23 +130,28 @@ const PostShowPage = () => {
 					<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate('/home')}>
 						<ArrowBackIcon />
 					</IconButton>
-					Post by username
+					Post by {post?.username}
 				</Typography>
 				<Box display='flex' flexDirection='column' justifyContent={'center'} padding={2} >
-					{ isLoading ? 
-						<Box height={150} display='flex' alignItems='center'>
+					{ isLoading || !post ? 
+						<Box height={150} display='flex' alignItems='center' width='100%'>
 							<CircularProgress/>
 						</Box> :
 						[<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'left', width: '100%' }} >
 							<Avatar sx={{ marginRight: '.5rem', width: 50, height: 50 }}/>
-							<Link underline='hover' onClick={() => navigate(`/user/${post.username}`)} >
-								<Typography variant='subtitle1' sx={{fontFamily: theme.typography.bold}} >
-									{post.username}
+							<Box sx={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+								<Link underline='hover' onClick={() => navigate(`/user/${post?.username}`)} >
+									<Typography variant='subtitle1' sx={{fontFamily: theme.typography.bold}} >
+										{post?.username}
+									</Typography>
+								</Link>
+								<Typography variant='caption'>
+									{/* <ReactTimeAgo date={post?.created_at} locale="en-US" /> */}
 								</Typography>
-							</Link>
+							</Box>
 						</Box>,
 						<Typography variant='subtitle1' sx={{py: 2}}>
-							{post.text}
+							{post?.text}
 						</Typography>,
 						<Divider/>,
 						<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}} >
@@ -152,7 +164,7 @@ const PostShowPage = () => {
 								<CreateComment post={post}/>
 							</Box>
 						],
-						displayComments(post.comments)
+						displayComments(post?.comments)
 					]}
 				</Box>
 			</Paper>
