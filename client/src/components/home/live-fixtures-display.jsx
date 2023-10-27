@@ -1,11 +1,13 @@
-import { Box, Grid, List, ListItem, ListItemButton, Typography, useTheme } from '@mui/material'
+import { Box, Grid, List, ListItem, ListItemButton, Skeleton, Typography, useTheme } from '@mui/material'
 import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const LiveFixturesDisplay = ({ matches }) => {
 	const theme = useTheme();
 	useEffect(() => {}, [matches]);
 	const navigate = useNavigate();
+	const isLoading = useSelector(state => state.matches.isLoading);
 
 	const handleClick = (id) => {
 		navigate(`/match/${id}`)
@@ -99,4 +101,4 @@ const LiveFixturesDisplay = ({ matches }) => {
 	)
 }
 
-export default LiveFixturesDisplay
+export default LiveFixturesDisplay;

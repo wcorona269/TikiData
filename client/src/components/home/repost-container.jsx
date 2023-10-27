@@ -17,4 +17,4 @@ const RepostContainer = ({post, idx}) => {
 	)
 }
 
-export default RepostContainer
+export default RepostContainer;

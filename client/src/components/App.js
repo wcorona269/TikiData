@@ -25,6 +25,7 @@ import Notifications from './home/home-notifications';
 import PlayerOverview from './player/player-overview';
 import PostsTimeline from './home/posts-column';
 import HomeNews from './home/home-news';
+import PostShowPage from './post/post-show-page';
 import UserProfile from './user/user-profile';
 
 
@@ -94,6 +95,7 @@ function App() {
               <Route path='/club/:id' element={<ClubProfile/>} />
               <Route path='/league/:id' element={<LeagueProfile/>} />
               <Route path='/player/:id' element={<PlayerProfile/>} />
+              <Route path='/post/:id' element={<PostShowPage/>}/>
             </Route>
               <Route exact path='/welcome' element={<Welcome />} />
             </Routes>

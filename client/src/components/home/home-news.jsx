@@ -8,10 +8,6 @@ import { useState } from 'react';
 import HomeFixturesColumn from './home-fixtures-column';
 import Article from '../news/article';
 
-
-
-
-
 const HomeNews = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();

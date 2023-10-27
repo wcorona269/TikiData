@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Paper, Box, Avatar, Icon, IconButton, Grid, Tabs, Tab, Container, Typography, Divider, List, useTheme } from '@mui/material';
+import { Paper, Box, Avatar, Icon, IconButton, Grid, Tabs, Tab, Container, Typography, Divider, List, useTheme, Skeleton } from '@mui/material';
 import PostContainer from '../home/post-container';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo } from '../../actions/user_actions';
@@ -72,37 +72,47 @@ const UserProfile = () => {
 		return result;
 	}
 
+
 	return (
 		<>
 			<Grid item xs={6}>
-				<Paper elevation={2}>
-					<Typography variant='h5' className='section-heading'>
-						<IconButton sx={{p: 0, m: 0, marginRight: 2}}>
-							<ArrowBackIcon/>
-						</IconButton>
-						{username}
-					</Typography>
-					<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'flex-end', padding: 2, gap: 1 }} >
-						<Avatar sx={{height: 100, width: 100, marginRight: 1 }} />
-						<Box display='flex' flexDirection='column'>
-							<Typography variant='h6'>
-								{username}
-							</Typography>
-							<Typography variant='subtitle1' sx={{ color: theme.palette.text.secondary }} >
-								Joined <ReactTimeAgo date={created_at} locale="en-US"/>
-							</Typography>
+				{
+					isLoading ? 
+						<Skeleton
+							animation="wave"
+							height={100}
+							width='100%'
+						/>
+						:
+					<Paper elevation={2}>
+						<Typography variant='h5' className='section-heading'>
+							<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate('/home')}>
+								<ArrowBackIcon/>
+							</IconButton>
+							{username}
+						</Typography>
+						<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'flex-end', padding: 2, gap: 1 }} >
+							<Avatar sx={{height: 100, width: 100, marginRight: 1 }} />
+							<Box display='flex' flexDirection='column'>
+								<Typography variant='h6'>
+									{username}
+								</Typography>
+								<Typography variant='subtitle1' sx={{ color: theme.palette.text.secondary }} >
+									Joined <ReactTimeAgo date={created_at} locale="en-US"/>
+								</Typography>
+							</Box>
 						</Box>
-					</Box>
-					<Divider/>
-					<Box>
-						<Tabs onChange={handleChange} value={selectedTab} variant='fullWidth'>
-							<Tab label={'Posts'} />
-							<Tab label={'Reposts'} />
-						</Tabs>
 						<Divider/>
-						{displayPosts()}
-					</Box>
-				</Paper>
+						<Box>
+							<Tabs onChange={handleChange} value={selectedTab} variant='fullWidth'>
+								<Tab label={'Posts'} />
+								<Tab label={'Reposts'} />
+							</Tabs>
+							<Divider/>
+							{displayPosts()}
+						</Box>
+					</Paper>
+				}
 			</Grid>
 		</>
 	)

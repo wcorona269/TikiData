@@ -23,7 +23,7 @@ const CommentContainer = ({ comment }) => {
 				setIsLiked(true)
 			}
 		}
-	}, [])
+	}, []);
 	
 	const handleLike = () => {
 		const like_info = {
@@ -43,7 +43,7 @@ const CommentContainer = ({ comment }) => {
 			dispatch(createNotification(notif_info))
 		}
 		setIsLiked(!isLiked)
-	}
+	};
 
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '.5rem' }}>

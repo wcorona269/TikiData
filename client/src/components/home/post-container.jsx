@@ -13,10 +13,11 @@ import { createNotification, deleteNotification } from '../../actions/notificati
 import { showModal } from '../../actions/modal_actions'
 import { useNavigate } from 'react-router-dom';
 import RepostButton from './repost-popper';
+import ReactTimeAgo from 'react-time-ago'
 
 const PostContainer = ({ post }) => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const theme = useTheme();
 	const user_id = useSelector(state => state.users?.user?.id);
 	const username = useSelector(state => state.users?.user?.username);
@@ -114,10 +115,10 @@ const PostContainer = ({ post }) => {
 								</Link>
 							</Typography>
 							<Typography variant='caption' sx={{ color: 'var(--darkgray)' }}>
-								{timeAgo(post.created_at)}
+								<ReactTimeAgo date={post.created_at} locale="en-US" />
 							</Typography>
 						</Box>
-						<Typography variant='body1'>
+						<Typography variant='body1' onClick={() => navigate(`/post/${post.id}`)}>
 							{post.text}
 						</Typography>
 					</Box>
