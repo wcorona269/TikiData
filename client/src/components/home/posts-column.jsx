@@ -46,7 +46,6 @@ const PostsTimeline = () => {
 		result.push(...remainingReposts);
 
 		setAllPosts(result);
-		console.log(allPosts)
 	}, [posts, reposts])
 
 	if (!allPosts) {

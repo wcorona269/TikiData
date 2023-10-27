@@ -6,9 +6,14 @@ import LiveFixturesDisplay from './live-fixtures-display';
 
 const HomeFixturesColumn = () => {
 	const dispatch = useDispatch();
-	const matches = useSelector(state => state.matches.matches);
+	const matches = useSelector(state => state.matches.live);
 	const isLoading = useSelector(state => state.matches.isLoading);
-	useEffect(() => {dispatch(fetchLiveMatches())}, [])
+	useEffect(() => {
+		if (!matches) {
+			dispatch(fetchLiveMatches())
+		}
+	}, [])
+	
 	useEffect(() => {}, [isLoading])
 	
 

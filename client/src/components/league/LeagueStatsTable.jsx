@@ -31,7 +31,6 @@ const LeagueStatsTable = ({data, category}) => {
 				</TableHead>
 				<TableBody>
 					{data.map((player, idx) => {
-						console.log(player);
 						let statistics = player['statistics'][0];
 						const id = player.player.id;
 						const club = statistics['team']['logo'];

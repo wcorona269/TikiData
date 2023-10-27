@@ -25,7 +25,7 @@ const matchesReducer = (state = initialState, action) => {
 		case FETCH_LIVE_MATCHES_REQUEST:
 			return { ...state, isLoading: true, error: null };
 		case FETCH_LIVE_MATCHES_SUCCESS:
-			return { ...state, matches: action.payload, isLoading: false, error: null };
+			return { ...state, live: action.payload, isLoading: false, error: null };
 		case FETCH_LIVE_MATCHES_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
 		default:
