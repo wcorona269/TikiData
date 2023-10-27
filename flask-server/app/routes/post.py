@@ -31,6 +31,20 @@ def delete_post(postId):
     return jsonify({
       'message': 'Invalid request data'
     }), 401
+    
+    
+@bp.route('/fetch/one/<postId>', methods=['GET'])
+def fetch_post(postId):
+  post = Post.query.filter_by(id=postId).first();
+  if post:
+    return jsonify({
+      'message': 'Post fetched successfully',
+      'post': post.to_dict()
+    }), 200
+  else:
+    return jsonify({
+      'message': 'Post not found'
+      }), 404
 
   
 @bp.route('/fetch/<userId>')

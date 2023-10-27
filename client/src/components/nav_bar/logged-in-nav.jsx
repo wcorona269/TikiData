@@ -7,6 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SportsIcon from '@mui/icons-material/Sports';
 import ExploreIcon from '@mui/icons-material/Explore';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
+import AccountMenu from './account-menu';
 
 const LoggedInNav = () => {
 	const navigate = useNavigate();
@@ -39,28 +40,7 @@ const LoggedInNav = () => {
 	}
 	
 	return (
-		<Tabs value={selectedTab} >
-			<Tab
-				onClick={() => handleChange(0)}
-				icon={<HomeIcon />}
-				aria-label="home"
-			/>
-			<Tab
-				onClick={() => handleChange(1)}
-				icon={<NewspaperIcon />}
-				aria-label="home"
-			/>
-			<Tab
-				onClick={() => handleChange(2)}
-				icon={<SportsIcon />}
-				aria-label="home"
-			/>
-			<Tab
-				onClick={() => handleChange(3)}
-				icon={<ExploreIcon />}
-				aria-label="home"
-			/>
-		</Tabs>
+		<AccountMenu/>
 	)
 }
 

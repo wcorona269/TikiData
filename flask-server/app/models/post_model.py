@@ -43,7 +43,7 @@ class Post(db.Model):
 			'comments': [comment.to_dict() for comment in self.comments],
       'reposts': [repost.user_info() for repost in self.reposts],
 			'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S')
-		}	
+		}
     
 def __repr__(self):
 	return f'<Post {self.id}>'
