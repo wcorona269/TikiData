@@ -5,11 +5,11 @@ import LoggedOutNav from './logged-out-nav';
 import { AppBar, Box, Container, IconButton, Tab, Tabs, Typography, useTheme } from '@mui/material';
 
 
-const NavBar = ({currentUser}) => {
+const NavBar = ({currentUser, lightMode, setLightMode }) => {
 	const navigate = useNavigate();
 	const theme = useTheme();
 	let component;
-	currentUser === null ? component = <LoggedOutNav /> : component = <LoggedInNav />
+	currentUser === null ? component = <LoggedOutNav /> : component = <LoggedInNav lightMode={lightMode} setLightMode={setLightMode} />
 	useEffect(() => {}, [currentUser])
 
 
@@ -17,7 +17,7 @@ const NavBar = ({currentUser}) => {
 	return (
 		<AppBar>
 			<Container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-				<Typography variant='h4' sx={{color: theme.palette.primary.main}}>
+				<Typography variant='h4' sx={{color: lightMode ? theme.palette.text.primary : theme.palette.primary.main }}>
 					touchline
 				</Typography>
 				{component}

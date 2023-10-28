@@ -1,4 +1,4 @@
-import { Avatar, Box, ButtonGroup, Divider, IconButton, Link, Paper, Typography } from '@mui/material';
+import { Avatar, Box, ButtonGroup, Divider, Grid, IconButton, Link, Paper, Typography } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -53,34 +53,40 @@ const CommentContainer = ({ comment, idx }) => {
 	return (
 		<>
 			<Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '.5rem' }} key={idx}>
-				<Avatar />
-				<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '.5rem', width: '100%' }}>
-					<Box onDoubleClick={() => handleLike()} sx={{ padding: '.5rem', paddingTop: 0, paddingLeft: 0, borderRadius: '.5rem', minWidth: '10rem', width: '95%' }} >
-						<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+				<Grid container spacing={3}>
+					<Grid item xs="auto">
+						<Avatar />
+					</Grid>
+					<Grid item xs sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column', alignItems: 'left', paddingLeft: '.5rem !important'}}>
+						<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left' }}>
 							<Link underline='hover' onClick={() => navigate(`/user/${user_id}`)} >
 								<Typography variant='body2' sx={{ marginBottom: '.25rem', fontFamily: theme.typography.bold }}>
 									{comment.username}
 								</Typography>
 							</Link>
-							<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', color: theme.palette.text.secondary}}>
-								<Typography variant='body2' sx={{marginRight: 1, fontSize: 15}}>
-									{commentLikes}
-								</Typography>
-								<IconButton aria-label="favorite" size="small" onClick={() => handleLike()} sx={{padding: '0px', color: theme.palette.primary.main }}>
-									{ isLiked ?
-										<FavoriteIcon fontSize='small' sx={{ height: 18, width: 18 }} /> :
-										<FavoriteBorderIcon fontSize='small' sx={{ height: 18, width: 18 }} />
-									}
-								</IconButton>
 							</Box>
+							<Box onDoubleClick={() => handleLike()} sx={{ padding: '.5rem', paddingTop: 0, paddingLeft: 0, width: '95%' }} >
+								<Typography variant='body2'>
+									{comment.text}
+								</Typography>
+							</Box>
+					</Grid>
+					<Grid item xs='auto'>
+						<Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: theme.palette.text.secondary }}>
+							<IconButton aria-label="favorite" size="small" onClick={() => handleLike()} sx={{ padding: '0px', color: theme.palette.primary.main }}>
+								{isLiked ?
+									<FavoriteIcon fontSize='small' sx={{ height: 18, width: 18 }} /> :
+									<FavoriteBorderIcon fontSize='small' sx={{ height: 18, width: 18 }} />
+								}
+							</IconButton>
+							<Typography variant='body2' sx={{ fontSize: 15 }}>
+								{commentLikes}
+							</Typography>
 						</Box>
-						<Typography variant='body2'>
-							{comment.text}
-						</Typography>
-					</Box>
-				</Box>
+					</Grid>
+				</Grid>
+				<Divider/>
 			</Box>
-			<Divider/>
 		</>
 	)
 }

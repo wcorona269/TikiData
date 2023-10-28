@@ -9,38 +9,17 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import AccountMenu from './account-menu';
 
-const LoggedInNav = () => {
+const LoggedInNav = ({ lightMode, setLightMode }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const username = useSelector(state => state.users?.user?.username ?? null);
 
 	const handleClick = () => { 
-		dispatch(logoutUser())
+		dispatch(logoutUser());
 	}
 
-	let [selectedTab, setSelectedTab] = useState(0);
-
-	const handleChange = (value) => {
-		setSelectedTab(value);
-
-		switch (value) {
-			case 0:
-				navigate('/home')
-				break;
-			case 1:
-				navigate('/news')
-				break;
-			case 2:
-				navigate('/matches')
-				break;
-			case 3:
-				navigate('/explore')
-				break;
-		}
-	}
-	
 	return (
-		<AccountMenu/>
+		<AccountMenu lightMode={lightMode} setLightMode={setLightMode} handleClick={handleClick} />
 	)
 }
 

@@ -9,22 +9,26 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
+import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import PaperProps from '@mui/material';
+import { Switch } from '@mui/material';
 
-const AccountMenu = () => {
-	// const [anchorEl, setAnchorEl] = React.useState < null | HTMLElement > (null);
-	// const open = Boolean(anchorEl);
-	// const handleClick = (event) => {
-	// 	setAnchorEl(event.currentTarget);
-	// };
-	const handleClose = () => {
-		// setAnchorEl(null);
+const AccountMenu = ({ lightMode, setLightMode }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+	const open = Boolean(anchorEl);
+
+	const handleClick = (event) => {
+		setAnchorEl(event.currentTarget);
 	};
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
 	return (
 		<>
-			{/* <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+			<Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
 				<Typography sx={{ minWidth: 100 }}>Contact</Typography>
 				<Typography sx={{ minWidth: 100 }}>Profile</Typography>
 				<Tooltip title="Account settings">
@@ -39,13 +43,12 @@ const AccountMenu = () => {
 						<Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
 					</IconButton>
 				</Tooltip>
-			</Box> */}
-			{/* <Menu
+			</Box>
+			<Menu
 				anchorEl={anchorEl}
 				id="account-menu"
 				open={open}
 				onClose={handleClose}
-				onClick={handleClose}
 				PaperProps={{
 					elevation: 0,
 					sx: {
@@ -82,25 +85,25 @@ const AccountMenu = () => {
 					<Avatar /> My account
 				</MenuItem>
 				<Divider />
-				<MenuItem onClick={handleClose}>
-					<ListItemIcon>
-						<PersonAdd fontSize="small" />
-					</ListItemIcon>
-					Add another account
+				<MenuItem sx={{ paddingLeft: 0 }} >
+					<Switch defaultChecked color="default" onChange={() => setLightMode(!lightMode)} />
+					{
+						lightMode ? 'Mode: Light' : 'Mode: Dark'
+					}
 				</MenuItem>
-				<MenuItem onClick={handleClose}>
+				{/* <MenuItem onClick={handleClose}>
 					<ListItemIcon>
 						<Settings fontSize="small" />
 					</ListItemIcon>
 					Settings
-				</MenuItem>
+				</MenuItem> */}
 				<MenuItem onClick={handleClose}>
 					<ListItemIcon>
 						<Logout fontSize="small" />
 					</ListItemIcon>
 					Logout
 				</MenuItem>
-			</Menu> */}
+			</Menu>
 		</>
 	);
 }

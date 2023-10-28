@@ -2,7 +2,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, Route, Routes, Switch } from 'react-router-dom';
 import ProtectedRoute from './util/route_util';
 import NavBar from './nav_bar/nav-bar';
@@ -29,29 +29,6 @@ import PostShowPage from './post/post-show-page';
 import UserProfile from './user/user-profile';
 
 
-
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#00a672',
-      light: '#00c49a',
-      dark: '#005a2c'
-    },
-    secondary: {
-      main: '#18ade5',
-      light: '#84d6f0',
-      dark: '#005c8f'
-    }
-  },
-  typography: {
-    fontFamily: 'Ubuntu',
-    bold: 'Ubuntu-Bold',
-    light: 'Ubuntu-Light',
-    regular: 'Ubuntu-Regular'
-  }
-})
-
 let apiKey;
 
 
@@ -71,15 +48,37 @@ getConfig();
 function App() {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.users?.user?.username || null);
+  const [lightMode, setLightMode] = useState(false);
   useEffect(() => { dispatch(fetchCurrentUser()) }, []);
   useEffect(() => {}, [ currentUser ]);
 
-  
+  const theme = createTheme({
+    palette: {
+      mode: lightMode ? 'light' : 'dark',
+      primary: {
+        main: '#00a672',
+        light: '#00c49a',
+        dark: '#005a2c'
+      },
+      secondary: {
+        main: '#18ade5',
+        light: '#84d6f0',
+        dark: '#005c8f'
+      }
+    },
+    typography: {
+      fontFamily: 'Ubuntu',
+      bold: 'Ubuntu-Bold',
+      light: 'Ubuntu-Light',
+      regular: 'Ubuntu-Regular'
+    }
+  })
+
   return (
     <ThemeProvider theme={theme}>
       <Paper sx={{height: 'fit-content', minHeight: '150vh'}}>
         <Modal/>
-        <NavBar currentUser={currentUser} />
+        <NavBar currentUser={currentUser} lightMode={lightMode} setLightMode={setLightMode} />
         <Container sx={{paddingTop: '6rem'}} fixed >
           <Routes>
             <Route path='/'
