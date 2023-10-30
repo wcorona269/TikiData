@@ -9,11 +9,12 @@ import ClubFixturesDashboard from './club-fixtures-dashboard';
 import ClubSquadDashboard from './club-squad-dashboard';
 import ClubStatsDashboard from './club-stats-dashboard';
 import ClubHomeDashboard from './home/club-home-dashboard';
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Box, Grid, Paper, Typography, useTheme } from '@mui/material';
 
 const ClubProfile = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
+	const theme = useTheme();
 
 	const [season, setSeason] = useState('2023/24');
 	const [showSeason, setShowSeason] = useState(false);
@@ -49,7 +50,7 @@ const ClubProfile = () => {
 	return (
 		<Grid item xs={9}>
 			<Paper>
-				<Typography variant='h5' className='section-heading' sx={{ justifyContent: 'left'}} >
+				<Typography variant='h5' className='section-heading' sx={{ borderBottom: `2px solid ${theme.palette.divider}`, fontFamily: theme.typography.bold }} >
 					<img src={logo} style={{ height: '2rem', width: '2rem'}} />
 					{name}
 				</Typography>

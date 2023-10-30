@@ -1,5 +1,6 @@
 import React from 'react'
 import DisplayTime from '../../util/display-time';
+import useTheme from '@mui/material';
 import { formatDate } from '../../club/club-fixture-list-item';
 import { Link } from 'react-router-dom';
 import {
@@ -108,7 +109,7 @@ const ClubHomeFixtures = ({ fixtures }) => {
 			id='sticky-paper'
 			elevation={2}
 		>
-			<Typography variant="h6" gutterBottom className='section-heading'>
+			<Typography variant="h6" gutterBottom className='section-heading' sx={{ borderBottom: `2px solid ${theme.palette.divider}`, fontFamily: theme.typography.bold }}>
 				Upcoming Fixtures
 			</Typography>
 			<List id='league-home-fixture-ul'>

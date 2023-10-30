@@ -1,10 +1,11 @@
 import './club-squad.scss';
 import React from 'react';
 import ClubSquadListItem from './club-squad-list-item';
-import { Avatar, Box, Grid, Paper, Typography } from '@mui/material';
+import { Avatar, Box, Grid, Paper, Typography, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const ClubSquadDashboard = ({name, logo, squad}) => {
+	const theme = useTheme();
 	let columns = ['Name', 'Age', 'Pos'];
 
 	let squadPositions = {
@@ -45,7 +46,7 @@ const ClubSquadDashboard = ({name, logo, squad}) => {
 
 	return (
 		<Paper elevation={2} sx={{marginTop: '1rem'}}>
-			<Typography variant='h6' className='section-heading'>
+			<Typography variant='h6' className='section-heading' sx={{ borderBottom: `2px solid ${theme.palette.divider}`, fontFamily: theme.typography.bold }}>
 				<img src={logo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
 				{name} Squad
 			</Typography>

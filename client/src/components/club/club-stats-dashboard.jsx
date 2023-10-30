@@ -100,7 +100,7 @@ const ClubStatsDashboard = ({ name, logo, stats }) => {
 
 	return (
 		<Paper elevation={2} sx={{marginTop: '1rem'}}>
-			<Typography className='section-heading' variant='h6'>
+			<Typography className='section-heading' variant='h6' sx={{ borderBottom: `2px solid ${theme.palette.divider}`, fontFamily: theme.typography.bold }}>
 				<img src={logo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
 				{name} Stats
 			</Typography>

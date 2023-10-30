@@ -13,6 +13,7 @@ import LoadingMessage from '../util/loading/loading-screen';
 import NoDataMessage from '../util/no-data/no-data-message';
 import LeagueProfileHeader from './league-profile-header'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
+import SectionHeading from '../util/section-heading';
 
 const LeagueProfile = () => {
 	const theme = useTheme();
@@ -66,10 +67,11 @@ const LeagueProfile = () => {
 	return (
 		<Grid item xs={9}>
 			<Paper>
-				<Typography className='section-heading' variant='h5'>
+				<SectionHeading variant='h5' content={name} img={logo} size={'2rem'} />
+				{/* <Typography className='section-heading' variant='h5'>
 					<img style={{height: '2rem', width: '2rem'}} src={logo} alt='' />
 					{name}
-				</Typography>
+				</Typography> */}
 				<Box>
 					<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
 						<Tabs value={selectedTab}>
