@@ -80,7 +80,7 @@ class User(UserMixin, db.Model):
 		user = User.query.filter_by(email=email).first()
     
 		if not user or not user.check_password(password):
-			return False, {'message': 'Invalid Credentials'}
+			return False
 		else:
 			user_data = {
 				'id': user.id,
@@ -107,6 +107,17 @@ class User(UserMixin, db.Model):
 		db.session.commit()
 
 		return True
+
+	@staticmethod
+	def update_user(username, password):
+		user = User.query.filter_by(username=username).first()
+		if user:
+			if password:
+				user.set_password(password)
+				db.session.commit()
+				return True;
+		else:
+			return False;
 
 	def to_dict(self):
 		return {

@@ -27,10 +27,9 @@ import PostsTimeline from './home/posts-column';
 import HomeNews from './home/home-news';
 import PostShowPage from './post/post-show-page';
 import UserProfile from './user/user-profile';
-
+import UserUpdatePage from './user/user-update-page';
 
 let apiKey;
-
 
 const getConfig = async () => {
   try {
@@ -41,9 +40,7 @@ const getConfig = async () => {
   }
 };
 
-
 getConfig();
-
 
 function App() {
   const dispatch = useDispatch();
@@ -95,6 +92,7 @@ function App() {
               <Route path='/league/:id' element={<LeagueProfile/>} />
               <Route path='/player/:id' element={<PlayerProfile/>} />
               <Route path='/post/:id' element={<PostShowPage/>}/>
+              <Route path='/edit-profile/:username' element={<UserUpdatePage/>}/>
             </Route>
               <Route exact path='/welcome' element={<Welcome />} />
             </Routes>

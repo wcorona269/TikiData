@@ -29,12 +29,11 @@ def register():
 @bp.route('/login', methods=['POST'])
 def login():
   data = request.json
-
   email = data.get('email')
   password = data.get('password')
   
   status, message = User.login_user(email, password)
-  if status == True:
+  if status:
     token = jwt.encode({'email': email, 'username': message['username'], 'id': message['id'], 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=6)}, Config.SECRET_KEY, algorithm='HS256')
     response = make_response(jsonify({'message': 'Login successful'}))
     response.set_cookie('access_token', token, httponly=True, secure=True)
@@ -49,24 +48,17 @@ def logout():
   return response, 200
 
 
-@bp.route('/update', methods=['PUT'])
-@jwt_required()
+@bp.route('/update/', methods=['POST'])
 def update_user():
-  current_user_id = get_jwt_identity()
-  data = request.json
-
-  user = User.query.get(current_user_id)
-  if not user:
-    return jsonify({'message': 'User not found'}), 404
-
-  if 'username' in data:
-    new_username = data['username']
-    user.username = new_username
-
-  if 'password' in data:
-    new_password = data['password']
-    user.set_password(new_password)    
-  
-  db.session.commit()
-
-  return jsonify({'message': 'User information updated successfully'}), 200
+    data = request.json;
+    username = data.get('username')
+    password = data.get('password')
+    result = User.update_user(username, password)
+    if result:
+      return jsonify({
+        'message': 'user updated successfully'
+      }), 201
+    else:
+      return jsonify({
+        'message': 'User update failed'
+      }), 500

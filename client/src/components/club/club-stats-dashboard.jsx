@@ -9,7 +9,7 @@ import RedCard from '../../images/red.png';
 import SectionHeading from '../util/section-heading';
 
 const ClubStatsDashboard = ({ name, logo, stats }) => {
-	const theme = useTheme();
+	const theme = useTheme(); 
 	let totals = {}
 	
 	const displayTeamStats = (stats) => {
@@ -102,6 +102,7 @@ const ClubStatsDashboard = ({ name, logo, stats }) => {
 	return (
 		<Paper elevation={2} sx={{marginTop: '1rem'}}>
 			<SectionHeading variant='h6' content={`${name} Stats`} img={logo} />
+
 			<TableContainer>
 			<Table>
 				<TableHead>

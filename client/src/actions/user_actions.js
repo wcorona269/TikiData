@@ -66,3 +66,20 @@ export const fetchUserInfo = (username) => {
 			});
 	};
 };
+
+export const UPDATE_USER_REQUEST = 'UPDATE_USER_REQUEST';
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
+
+export const updateUser = (userInfo) => {
+	return (dispatch) => {
+		dispatch({ type: UPDATE_USER_REQUEST, userData: userInfo });
+		axios.put(`/users/update`, userInfo)
+			.then((response) => {
+				dispatch({ type: UPDATE_USER_SUCCESS, payload: response.data });
+			})
+			.catch((error) => {
+				dispatch({ type: UPDATE_USER_FAILURE, payload: error.message });
+			});
+	};
+};
