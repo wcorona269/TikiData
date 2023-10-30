@@ -8,6 +8,7 @@ import { fetchUserInfo } from '../../actions/user_actions';
 import { formatDistanceToNow } from 'date-fns';
 import RepostContainer from '../home/repost-container';
 import SectionHeading from '../util/section-heading';
+import HomeFixturesColumn from '../home/home-fixtures-column';
 // import ReactTimeAgo from 'react-time-ago'
 
 const UserProfile = () => {
@@ -27,11 +28,11 @@ const UserProfile = () => {
 	}, [])
 
 	const noPostsMessage = (
-			<Container >
-				<Typography textAlign='center' variant='h6' sx={{ color: theme.palette.text.disabled, padding: 5 }}>
-					{username} hasn't posted yet.
-				</Typography>
-			</Container>
+		<Container >
+			<Typography textAlign='center' variant='h6' sx={{ color: theme.palette.text.disabled, padding: 5 }}>
+				{username} hasn't posted yet.
+			</Typography>
+		</Container>
 )
 
 	const displayPosts = () => {
@@ -115,6 +116,9 @@ const UserProfile = () => {
 						</Box>
 					</Paper>
 				}
+			</Grid>
+			<Grid item xs={3}>
+				<HomeFixturesColumn/>
 			</Grid>
 		</>
 	)
