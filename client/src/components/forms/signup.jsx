@@ -4,9 +4,11 @@ import { registerUser, removeUserErrors } from '../../actions/user_actions';
 import { loginUser } from '../../actions/session_actions';
 import { showModal, closeModal } from '../../actions/modal_actions';
 import AuthForm from './authForm';
+import { Box, Typography, useTheme } from '@mui/material';
 
 const SignupForm = () => {
 	const dispatch = useDispatch();
+	const theme = useTheme();
 	const currentUser = useSelector(state => state.session.user);
 	const errorMessage = useSelector(state => state.users.error);
 
@@ -22,14 +24,14 @@ const SignupForm = () => {
 	}
 
 	return (
-		<div className='auth-form-container'>
+		<Box sx={{ width: 'fit-content', margin: 'auto' }}>
 			<AuthForm
 				fields={fields}
 				onSubmit={onSubmit}
 			/>
-			<div onClick={() => changeFormType()} className='form-switch-button'>Already have an account? Log in.</div>
-		</div>
+			<Typography variant='body2' sx={{ marginTop: 2, color: theme.palette.text.secondary}} onClick={() => changeFormType()}>Already have an account? Log in.</Typography>
+		</Box>
 	)
 }
 
-export default SignupForm
+export default SignupForm;

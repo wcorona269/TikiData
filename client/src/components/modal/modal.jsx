@@ -2,38 +2,59 @@ import './modal.scss';
 import React, { useEffect } from 'react';
 import LoginForm from '../forms/login';
 import SignupForm from '../forms/signup';
-import { Link, Route, Routes, Switch } from 'react-router-dom';
 import { showModal, closeModal } from '../../actions/modal_actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { Box, Button, Modal, Typography, useTheme } from '@mui/material';
 
-const Modal = () => {
+const ModalContainer = () => {
 	const dispatch = useDispatch();
-	const modal = useSelector(state => state.ui.modal);
-	let component;
+	const theme = useTheme();
+	const modal = useSelector(state => state.ui?.modal?.modal || null);
+	const [open, setOpen] = useState(false);
+	const [component, setComponent] = useState(<></>);
+	console.log(component);
 
-	switch (modal.modal) {
-		case 'signup':
-			component = <SignupForm/>
-			break;
-		case 'login':
-			component = <LoginForm/>
-			break;
-		default:
-			return null;
-	}
+	useEffect(() => {
+		console.log(modal);
+		switch (modal) {
+			case 'login':
+				setComponent(<LoginForm/>)
+				setOpen(true);
+				break;
+			case 'signup':
+				setComponent(<SignupForm/>)
+				setOpen(true)
+				break;
+			default:
+				setComponent(<></>)
+				setOpen(false);
+		}
+
+	}, [modal])
 
 	const handleModal = (e) => {
 		e.preventDefault();
 		dispatch(closeModal())
 	}
+
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 	
 	return (
-		<div className='modal-background' onClick={handleModal}>
-			<div className='modal-body' onClick={e => e.stopPropagation()}>
-				{component}
-			</div>
+		<div>
+			<Modal
+				open={open}
+				onClose={handleModal}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box sx={{ padding: 4, borderRadius: '1rem', border: `2px solid ${theme.palette.primary.main}`, margin: 'auto', marginTop: 20, width: 'fit-content', background: theme.palette.background.paper }}>
+					{component}
+				</Box>
+			</Modal>
 		</div>
 	)
 }
 
-export default Modal
+export default ModalContainer;

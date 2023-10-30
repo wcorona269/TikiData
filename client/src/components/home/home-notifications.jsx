@@ -10,7 +10,7 @@ const Notifications = () => {
 	const dispatch = useDispatch()
 	const notifications = useSelector(state => state.notifications?.notifications)
 
-	const user_id = useSelector(state => state.users.user.id);
+	const user_id = useSelector(state => state.session?.user?.id);
 
 	useEffect(() => {
 		dispatch(fetchNotifications(user_id))

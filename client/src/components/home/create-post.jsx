@@ -6,7 +6,7 @@ import { createPost, fetchPosts } from '../../actions/post_actions';
 const CreatePost = () => {
 	const dispatch = useDispatch()
 	const [post, setPost] = useState('');
-	const userId = useSelector(state => state.users.user.id)
+	const userId = useSelector(state => state.session?.user?.id)
 	const [isValidPost, setIsValidPost] = useState(false);
 	const [postLength, setPostLength] = useState(0);
 

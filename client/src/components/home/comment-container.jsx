@@ -16,8 +16,8 @@ const CommentContainer = ({ comment, idx }) => {
 	const navigate = useNavigate();
 	const [isLiked, setIsLiked] = useState(0);
 	const [commentLikes, setCommentLikes] = useState(comment?.likes?.length || 0);
-	const user_id = useSelector(state => state.users.user.id);
-	const username = useSelector(state => state.users?.user?.username);
+	const user_id = useSelector(state => state.session?.user?.id);
+	const username = useSelector(state => state.session?.user?.username);
 	const theme = useTheme();
 
 	useEffect(() => {

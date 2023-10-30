@@ -11,8 +11,8 @@ const CreateComment = ({ post }) => {
 	const theme = useTheme();
 	const [comment, setComment] = useState('');
 	const [isValid, setIsValid] = useState(false);
-	const user_id = useSelector(state => state.users?.user?.id)
-	const username = useSelector(state => state.users?.user?.username)
+	const user_id = useSelector(state => state.session?.user?.id)
+	const username = useSelector(state => state.session?.user?.username)
 
 	useEffect(() => {
 		if (comment.length > 0 && comment.length < 1000) {

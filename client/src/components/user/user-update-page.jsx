@@ -18,7 +18,7 @@ const UserUpdatePage = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();
 	const isLoading = useSelector(state => state.users.isLoading);
-	const currentUsername = useSelector(state => state.users?.user?.username);
+	const currentUsername = useSelector(state => state.session?.user?.username);
 	const [open, setOpen] = useState(false)
 
 	const [password, setPassword] = useState('');

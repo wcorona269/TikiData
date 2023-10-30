@@ -11,7 +11,7 @@ const UserProfileHeader = () => {
 	const navigate = useNavigate();
 	const theme = useTheme();
 	const { username } = useParams();
-	const currentUser = useSelector(state => state.users.user?.username);
+	const currentUser = useSelector(state => state.session.user?.username);
 	const isUserProfile = username == currentUser;
 
 	const handleClick = () => {

@@ -3,8 +3,8 @@ import React from 'react'
 
 const SectionHeading = ({ variant, content, img }) => {
 	const theme = useTheme();
-	let size = variant == 'h5' ? '3rem' : '2rem';
-	let mr = variant == 'h5' ? '1rem' : '.5rem'
+	let size = variant === 'h5' ? '3rem' : '2rem';
+	let mr = variant === 'h5' ? '1rem' : '.5rem'
 
 	return (
 		<Typography

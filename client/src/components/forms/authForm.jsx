@@ -1,7 +1,10 @@
+import { Box, Button, TextField, Typography, useTheme } from '@mui/material';
 import './auth-form.scss';
 import React, { useEffect, useState } from 'react';
+import { ThemeContext } from '@emotion/react';
 
 const AuthForm = ({fields, onSubmit}) => {
+	const theme = useTheme();
 	const [formState, setFormState] = useState({});
 	const [isValid, setIsValid] = useState(null);
 	const [errors, setErrors] = useState([]);
@@ -59,9 +62,10 @@ const AuthForm = ({fields, onSubmit}) => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit} style={{width: 'fit-content'}} >
 			{fields.map((field) => (
-				<input
+				<TextField
+					sx={{width: 250}}
 					key={field}
 					type={field === 'password' || field === 'confirmPassword' ? 'password' : 'text'}
 					placeholder={field}
@@ -71,20 +75,21 @@ const AuthForm = ({fields, onSubmit}) => {
 				/>
 			))
 		}
-		<p className='auth-error-message'>
+		<Box className='auth-error-message'>
 			{errors.map((error) => (
-				<p className='auth-error-message' key={error}>
+				<Typography variant='body2' sx={{ color: theme.palette.error.main, typography: theme.typography.bold }} key={error}>
 					{error}
-				</p>
+				</Typography>
 			))}	
-		</p>
-		<button
-
+		</Box>
+		<Button
+			sx={{width: '100%'}}
+			variant='contained'
 			type="submit"
 			className={isValid === true ? 'auth-form-btn' : 'auth-form-btn error-btn' }
 		>
 			submit
-		</button>
+		</Button>
 		</form>
 	)
 }

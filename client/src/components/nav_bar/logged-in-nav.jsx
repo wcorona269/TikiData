@@ -12,7 +12,7 @@ import AccountMenu from './account-menu';
 const LoggedInNav = ({ lightMode, setLightMode }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const username = useSelector(state => state.users?.user?.username ?? null);
+	const username = useSelector(state => state.session?.user?.username ?? null);
 
 	const handleClick = () => { 
 		dispatch(logoutUser());

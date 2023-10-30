@@ -4,12 +4,13 @@
 	left: 0;
 	top: 0;
 	z-index: 9999;
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vw;
 	padding-top: 100px;
 	-webkit-transition: 0.5s;
 	overflow: auto;
 	transition: all 0.3s linear;
+	background-color: rbga(0, 0, 0, 0.9);
 }
 
 .modal-body {

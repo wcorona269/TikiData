@@ -19,8 +19,8 @@ const PostContainer = ({ post }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const theme = useTheme();
-	const user_id = useSelector(state => state.users?.user?.id);
-	const username = useSelector(state => state.users?.user?.username);
+	const user_id = useSelector(state => state.session?.user?.id);
+	const username = useSelector(state => state.session?.user?.username);
 	const [postLikes, setPostLikes] = useState(post.likes.length);
 	const [reposts, setReposts] = useState(post.reposts.length);
 	const [showComments, setShowComments] = useState(false);

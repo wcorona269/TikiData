@@ -8,7 +8,7 @@ import ProtectedRoute from './util/route_util';
 import NavBar from './nav_bar/nav-bar';
 import Footer from './footer/footer'
 import Home from './home/home'
-import Modal from './modal/modal';
+import ModalContainer from './modal/modal';
 import Welcome from './home/welcome'
 import Explore from './home/explore';
 import axios from 'axios'
@@ -19,7 +19,7 @@ import PlayerProfile from './player/player-profile';
 import MatchOverview from './match/match-overview';
 import NewsTimeline from './news/news-timeline';
 import { Paper, createTheme, ThemeProvider, Container } from '@mui/material';
-import { fetchCurrentUser } from '../actions/user_actions';
+import { fetchCurrentUser } from '../actions/session_actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Notifications from './home/home-notifications';
 import PlayerOverview from './player/player-overview';
@@ -44,10 +44,16 @@ getConfig();
 
 function App() {
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.users?.user?.username || null);
+  const currentUser = useSelector(state => state.session.user);
+  const isLoading = useSelector(state => state.session.isLoading);
   const [lightMode, setLightMode] = useState(false);
+  
+  useEffect(() => {}, [currentUser])
   useEffect(() => { dispatch(fetchCurrentUser()) }, []);
-  useEffect(() => {}, [ currentUser ]);
+
+  if (isLoading) {
+    return null;
+  }
 
   const theme = createTheme({
     palette: {
@@ -74,8 +80,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Paper sx={{height: 'fit-content', minHeight: '150vh'}}>
-        <Modal/>
-        <NavBar currentUser={currentUser} lightMode={lightMode} setLightMode={setLightMode} />
+        <ModalContainer/>
+        <NavBar lightMode={lightMode} setLightMode={setLightMode} />
         <Container sx={{paddingTop: '6rem'}} fixed >
           <Routes>
             <Route path='/'

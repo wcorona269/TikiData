@@ -22,7 +22,7 @@ const AccountMenu = ({ lightMode, setLightMode }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
-	const username = useSelector(state => state?.users?.user?.username);
+	const username = useSelector(state => state?.session?.user?.username);
 	const open = Boolean(anchorEl);
 
 	const handleClick = (event) => {

@@ -6,11 +6,6 @@ import { closeModal } from './modal_actions';
 export const REGISTER_USER_REQUEST = 'REGISTER_USER_REQUEST';
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const REGISTER_USER_FAILURE = 'REGISTER_USER_FAILURE';
-
-export const FETCH_USER_REQUEST = 'FETCH_USER_REQUEST';
-export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
-export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
-
 export const REMOVE_USER_ERRORS = 'REMOVE_USER_ERRORS'
 
 export const removeUserErrors = () => ({
@@ -33,21 +28,6 @@ export const registerUser = (userData) => {
 			});
 	};
 };
-
-
-export const fetchCurrentUser = () => {
-	return (dispatch) => {
-		dispatch({ type: FETCH_USER_REQUEST });
-		axios.get(`/protected`)
-			.then((response) => {
-				dispatch({ type: FETCH_USER_SUCCESS, payload: response.data });
-			})
-			.catch((error) => {
-				dispatch({ type: FETCH_USER_FAILURE, payload: error.message });
-			});
-	};
-};
-
 
 // Action types
 export const FETCH_USER_INFO_REQUEST = 'FETCH_USER_INFO_REQUEST';

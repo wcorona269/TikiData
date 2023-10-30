@@ -22,9 +22,9 @@ const PostShowPage = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const post = useSelector(state => state.posts?.post);
-	const user_id = useSelector(state => state.users?.user?.id);
+	const user_id = useSelector(state => state.session?.user?.id);
 	const isLoading = useSelector(state => state.posts.isLoading);
-	const username = useSelector(state => state.users?.user?.username);
+	const username = useSelector(state => state.session?.user?.username);
 
 	const [postLikes, setPostLikes] = useState(post?.likes?.length || 0);
 	const [reposts, setReposts] = useState(post?.reposts?.length || 0);
