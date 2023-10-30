@@ -3,6 +3,7 @@ import { Tabs, Tab, Paper, Box } from '@mui/material';
 import './league-stats.scss';
 import Typography from '@mui/material/Typography';
 import LeagueStatsTable from './LeagueStatsTable';
+import SectionHeading from '../util/section-heading';
 
 const LeagueStatsDashboard = ({top_scorers, top_assists}) => {
 	const [selectedTab, setSelectedTab] = useState(0);
@@ -18,10 +19,7 @@ const LeagueStatsDashboard = ({top_scorers, top_assists}) => {
 	
 	return (
 		<Paper elevation={2} sx={{ marginTop: '1rem', mx: 'auto', marginTop: '1rem' }}>
-			<Typography variant="h6" gutterBottom className='section-heading'>
-				<img src={leagueLogo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
-				{leagueName} Stats
-			</Typography>
+			<SectionHeading variant='h6' content={`${leagueName} Stats`} img={leagueLogo} />
 			<Box>
 				<Tabs value={selectedTab} onChange={handleChange} >
 					<Tab label='Goals'/>

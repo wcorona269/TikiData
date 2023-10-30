@@ -10,6 +10,7 @@ import ListItemContent from '@mui/joy/ListItemContent';
 import PublicIcon from '@mui/icons-material/Public';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import React from 'react';
+import SectionHeading from '../util/section-heading';
 
 const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 	const theme = useTheme();
@@ -68,9 +69,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 
 	return (
 		<>
-			<Typography className='section-heading' variant='h5'>
-				Dashboard
-			</Typography>
+			<SectionHeading variant='h5' content='Dashboard' />
 			<List>
 				{buttons}
 			</List>

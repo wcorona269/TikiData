@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { fetchNotifications } from '../../actions/notification_actions'
 import HomeFixturesColumn from './home-fixtures-column';
+import SectionHeading from '../util/section-heading';
 
 const Notifications = () => {
 	const dispatch = useDispatch()
@@ -46,9 +47,7 @@ const Notifications = () => {
 		<>
 			<Grid item xs={6}>
 				<Paper elevation={2} sx={{minHeight: '40rem'}}>
-					<Typography variant='h5' className='section-heading'>
-						Notifications
-					</Typography>
+					<SectionHeading variant='h5' content='Notifications' />
 					<List>
 						{displayNotifications(notifications)}
 					</List>

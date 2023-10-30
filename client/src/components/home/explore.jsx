@@ -8,6 +8,7 @@ import { Box, Table, TableCell, TableHead, TableRow, Paper, Typography, TableCon
 import { tableCellClasses } from '@mui/material/TableCell';
 import StarIcon from '@mui/icons-material/Star';
 import { useNavigate } from 'react-router-dom';
+import SectionHeading from '../util/section-heading';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -112,9 +113,7 @@ const Explore = () =>  {
 	return (
 		<Grid item xs>
 			<Paper elevation={2}>
-				<Typography variant='h5' className='section-heading'>
-					Explore
-				</Typography>
+				<SectionHeading variant='h5' content='Explore' />
 				<Box sx={{display: 'flex', flexDirection: 'column'}}>
 					{listTopLeagues()}
 				<TableContainer component={Paper}>

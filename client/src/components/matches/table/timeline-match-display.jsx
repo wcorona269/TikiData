@@ -8,6 +8,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import monthsOfYear from '../../club/monthsOfYear';
+import SectionHeading from '../../util/section-heading';
 
 export const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -53,22 +54,21 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 
 	return (
 		<Paper elevation={2} id='home-fixtures-paper'>
-			<Paper elevation={2}
-				sx={{ position: 'sticky', top: '0', display: 'flex', flexDirection: 'column', zIndex: '100'}}>
-					<Typography variant='h5' className='section-heading'>
-						Matches
-					</Typography>
-					<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem', justifyContent: 'left', margin: '1rem', marginBottom: '0px' }}>
-						<LocalizationProvider dateAdapter={AdapterDayjs}>
-							<DatePicker
-								label={formatted_date_string}
-								views={['day']}
-								date={date}
-								onChange={(newValue) => setDate(newValue['$d'])}
-							/>
-						</LocalizationProvider>
-						<TimelineSelect nations={nations} onTabSelect={onTabSelect} selectedNation={selectedNation}/>
-					</Box>
+			<Paper elevation={2} 
+				sx={{ position: 'sticky', top: '0', display: 'flex', flexDirection: 'column', zIndex: '100'}}
+			>
+				<SectionHeading variant='h5' content='Matches' />
+				<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem', justifyContent: 'left', margin: '1rem', marginBottom: '0px' }}>
+					<LocalizationProvider dateAdapter={AdapterDayjs}>
+						<DatePicker
+							label={formatted_date_string}
+							views={['day']}
+							date={date}
+							onChange={(newValue) => setDate(newValue['$d'])}
+						/>
+					</LocalizationProvider>
+					<TimelineSelect nations={nations} onTabSelect={onTabSelect} selectedNation={selectedNation}/>
+				</Box>
 				<Box>
 					<Tabs
 						value={selectedNation}

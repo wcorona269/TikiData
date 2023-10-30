@@ -10,6 +10,7 @@ import ClubSquadDashboard from './club-squad-dashboard';
 import ClubStatsDashboard from './club-stats-dashboard';
 import ClubHomeDashboard from './home/club-home-dashboard';
 import { Box, Grid, Paper, Typography, useTheme } from '@mui/material';
+import SectionHeading from '../util/section-heading';
 
 const ClubProfile = () => {
 	const { id } = useParams();
@@ -50,10 +51,7 @@ const ClubProfile = () => {
 	return (
 		<Grid item xs={9}>
 			<Paper>
-				<Typography variant='h5' className='section-heading' sx={{ borderBottom: `2px solid ${theme.palette.divider}`, fontFamily: theme.typography.bold }} >
-					<img src={logo} style={{ height: '2rem', width: '2rem'}} />
-					{name}
-				</Typography>
+				<SectionHeading variant='h5' content={name} img={logo} />
 				<ClubProfileNavBar club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
 				{ selectedTab === 0 && <ClubHomeDashboard name={name} logo={logo} club={club} fixtures={fixtures} squad={squad} news={news} /> }
 				{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures} name={name} logo={logo} /> }

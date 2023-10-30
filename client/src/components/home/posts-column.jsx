@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RepostContainer from './repost-container';
 import HomeFixturesComponent from '../league/home/league-home-fixtures';
 import HomeFixturesColumn from './home-fixtures-column';
+import SectionHeading from '../util/section-heading';
 
 
 const PostsTimeline = () => {
@@ -56,9 +57,7 @@ const PostsTimeline = () => {
 		<>
 			<Grid item xs={6}>
 				<Paper elevation={2}>
-					<Typography className='section-heading' variant='h5'>
-						Home
-					</Typography>
+					<SectionHeading variant='h5' content='Home'/>
 					<CreatePost/>
 					{allPosts.map((item, idx) => {
 						if (item.post) {

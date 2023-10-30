@@ -14,6 +14,7 @@ import CreateComment from '../home/create-comment';
 import CommentContainer from '../home/comment-container';
 import LiveFixturesDisplay from '../home/live-fixtures-display';
 import HomeFixturesColumn from '../home/home-fixtures-column';
+import SectionHeading from '../util/section-heading';
 
 const PostShowPage = () => {
 	const dispatch = useDispatch();
@@ -118,16 +119,18 @@ const PostShowPage = () => {
 		</Button>,
 	];
 
+	const content = [
+		<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate('/home')}>
+			<ArrowBackIcon />
+		</IconButton>,
+		`Post by ${post?.username}`
+	]
+
 	return (
 		<>
 			<Grid item xs={6}>
 				<Paper elevation={2}>
-					<Typography variant='h6' className='section-heading'>
-						<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate('/home')}>
-							<ArrowBackIcon />
-						</IconButton>
-						Post by {post?.username}
-					</Typography>
+					<SectionHeading variant='h6' content={content} />
 					<Box display='flex' flexDirection='column' justifyContent={'center'} padding={2} >
 						{ isLoading || !post ? 
 							<Box height={150} display='flex' alignItems='center' width='100%'>

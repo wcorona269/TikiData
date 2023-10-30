@@ -1,12 +1,13 @@
 import { Typography, useTheme } from '@mui/material'
 import React from 'react'
 
-const SectionHeading = ({ variant, content, img, size }) => {
-	const theme = useTheme()
+const SectionHeading = ({ variant, content, img }) => {
+	const theme = useTheme();
+	let size = variant == 'h5' ? '3rem' : '2rem';
+	let mr = variant == 'h5' ? '1rem' : '.5rem'
 
 	return (
 		<Typography
-			className='section-heading'
 			variant={variant}
 			sx={{
 				p: '1rem',
@@ -20,7 +21,7 @@ const SectionHeading = ({ variant, content, img, size }) => {
 			}}
 		>
 			{img && 
-				<img src={img} style={{ height: {size}, width: {size}, marginRight: '1rem' }} />
+				<img src={img} style={{ height: size, width: size, marginRight: mr }} />
 			}
 			{content}
 		</Typography>

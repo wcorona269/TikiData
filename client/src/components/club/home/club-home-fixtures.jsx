@@ -14,6 +14,7 @@ import {
 	ListItemText,
 	useTheme,
 } from '@mui/material'
+import SectionHeading from '../../util/section-heading';
 
 
 export const displayTeams = (fixture) => {
@@ -109,9 +110,7 @@ const ClubHomeFixtures = ({ fixtures }) => {
 			id='sticky-paper'
 			elevation={2}
 		>
-			<Typography variant="h6" gutterBottom className='section-heading' sx={{ borderBottom: `2px solid ${theme.palette.divider}`, fontFamily: theme.typography.bold }}>
-				Upcoming Fixtures
-			</Typography>
+			<SectionHeading variant='h6' content='Upcoming Fixtures' />
 			<List id='league-home-fixture-ul'>
 				{displayUpcomingFixtures(fixtures)}
 			</List>

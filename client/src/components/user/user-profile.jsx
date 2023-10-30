@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo } from '../../actions/user_actions';
 import { formatDistanceToNow } from 'date-fns';
 import RepostContainer from '../home/repost-container';
+import SectionHeading from '../util/section-heading';
 // import ReactTimeAgo from 'react-time-ago'
 
 const UserProfile = () => {
@@ -72,6 +73,12 @@ const UserProfile = () => {
 		return result;
 	}
 
+	const content = [
+		<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate('/home')}>
+			<ArrowBackIcon />
+		</IconButton>,
+		username
+	]
 
 	return (
 		<>
@@ -85,12 +92,7 @@ const UserProfile = () => {
 						/>
 						:
 					<Paper elevation={2}>
-						<Typography variant='h5' className='section-heading'>
-							<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate('/home')}>
-								<ArrowBackIcon/>
-							</IconButton>
-							{username}
-						</Typography>
+						<SectionHeading variant='h5' content={content} />
 						<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'flex-end', padding: 2, gap: 1 }} >
 							<Avatar sx={{height: 100, width: 100, marginRight: 1 }} />
 							<Box display='flex' flexDirection='column'>

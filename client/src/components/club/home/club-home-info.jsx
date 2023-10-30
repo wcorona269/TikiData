@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, Paper, Box, Table, TableRow, TableCell, TableHead, TableContainer, TableBody, useTheme } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material';
+import SectionHeading from '../../util/section-heading';
 
 const ClubHomeInfo = ({ club }) => {
 	const clubInfo = club[0];
@@ -48,9 +49,8 @@ const ClubHomeInfo = ({ club }) => {
 	}
 	return (
 		<Paper elevation={2}  sx={{paddingBottom: 1, marginBottom: 1}} >
-			<Typography variant='h6' gutterBottom className='section-heading'>
-				Info
-			</Typography>
+			<SectionHeading variant='h6' content='Club Info' />
+
 			<Box sx={{ display: 'flex', justifyContent: 'center', padding: '.5rem' }}>
 				<Typography variant='caption' className='table-key'>
 					{clubDetails['Stadium']}

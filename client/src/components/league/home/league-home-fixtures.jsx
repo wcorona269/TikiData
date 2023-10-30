@@ -3,6 +3,7 @@ import DisplayTime from '../../util/display-time';
 import { formatDate } from '../../club/club-fixtures-table';
 import { Box, Link, Paper, Grid, Typography, List, ListItem, ListItemButton, Divider, useTheme } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
+import SectionHeading from '../../util/section-heading';
 
 
 const HomeFixturesComponent = ({fixtures}) => {
@@ -99,9 +100,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 			id='sticky-paper'
 			elevation={2}
 		>
-			<Typography variant="h6" gutterBottom className='section-heading'>
-				Upcoming Fixtures
-			</Typography>
+			<SectionHeading variant='h6' content='Upcoming Fixtures' />
 			<List sx={{p: 0, overflow: 'scroll'}}>
 				{displayUpcomingFixtures(fixtures)}
 			</List>

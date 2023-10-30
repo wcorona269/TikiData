@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Grid, List, ListItem, ListItemButton, Pagination, Paper, Stack, Link, Typography } from '@mui/material';
 import { splitArticleIntoPages } from '../../news/sub-articles-timeline';
 import Article from '../../news/article';
+import SectionHeading from '../../util/section-heading';
 
 const LeagueHomeNews = ({ name, logo, news }) => {
 	const [page, setPage] = useState(1)
@@ -30,10 +31,7 @@ const LeagueHomeNews = ({ name, logo, news }) => {
 			id='league-home-news'
 			elevation={2}
 		>
-			<Typography variant='h6' gutterbottom className='section-heading'>
-				<img src={logo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
-					{name} News
-			</Typography>
+			<SectionHeading variant='h6' content={`${name} News`} img={logo} />
 			<List>
 				{displayNews(articlesByPage[page])}
 			</List>

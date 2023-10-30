@@ -67,11 +67,7 @@ const LeagueProfile = () => {
 	return (
 		<Grid item xs={9}>
 			<Paper>
-				<SectionHeading variant='h5' content={name} img={logo} size={'2rem'} />
-				{/* <Typography className='section-heading' variant='h5'>
-					<img style={{height: '2rem', width: '2rem'}} src={logo} alt='' />
-					{name}
-				</Typography> */}
+				<SectionHeading variant='h5' content={name} img={logo} size={'4rem'} />
 				<Box>
 					<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
 						<Tabs value={selectedTab}>
