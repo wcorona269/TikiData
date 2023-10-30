@@ -47,7 +47,6 @@ def logout():
   response.set_cookie('access_token', '', expires=0, httponly=True, secure=True)
   return response, 200
 
-
 @bp.route('/update/', methods=['POST'])
 def update_user():
     data = request.json;

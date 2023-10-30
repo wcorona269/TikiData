@@ -80,7 +80,7 @@ class User(UserMixin, db.Model):
 		user = User.query.filter_by(email=email).first()
     
 		if not user or not user.check_password(password):
-			return False
+			return False, {'message': 'Login attempt failed'}
 		else:
 			user_data = {
 				'id': user.id,

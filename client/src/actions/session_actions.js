@@ -66,4 +66,4 @@ export const updateUser = (userInfo) => {
 				dispatch({ type: UPDATE_USER_FAILURE, payload: error.message });
 			});
 	};
-};
+}

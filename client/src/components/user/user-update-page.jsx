@@ -1,4 +1,5 @@
-import { Box, Grid, Paper, OutlinedInput, InputAdornment, IconButton, Skeleton, TextField, Stack, Button, InputLabel, useTheme, Typography } from '@mui/material';
+import { Box, Grid, Paper, OutlinedInput, InputAdornment, Snackbar, Alert, IconButton, Skeleton, TextField, Stack, Button, InputLabel, useTheme, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import UserProfileHeader from './user-profile-header';
@@ -18,6 +19,7 @@ const UserUpdatePage = () => {
 	const dispatch = useDispatch();
 	const isLoading = useSelector(state => state.users.isLoading);
 	const currentUsername = useSelector(state => state.users?.user?.username);
+	const [open, setOpen] = useState(false)
 
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
@@ -37,12 +39,17 @@ const UserUpdatePage = () => {
 		if (name == 'confirm') setConfirmPassword(value);
 	}
 
+	const handleClose = () => {
+		setOpen(false);
+	}
+
 	const handleSubmit = () => {
 		let userInfo = {
 			'username': currentUsername,
 			'password': password
 		}
-		dispatch(updateUser(userInfo))
+		dispatch(updateUser(userInfo));
+		setOpen(true);
 	}
 
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -56,6 +63,20 @@ const UserUpdatePage = () => {
 	const handleUpdateUser = () => {
 
 	}
+
+	const action = (
+		<React.Fragment>
+			<IconButton
+				size="small"
+				aria-label="close"
+				color="inherit"
+				onClick={handleClose}
+			>
+				<CloseIcon fontSize="small" />
+			</IconButton>
+		</React.Fragment>
+	);
+
 
 	return (
 		<>
@@ -131,6 +152,11 @@ const UserUpdatePage = () => {
 			<Grid item xs={3}>
 				<HomeFixturesColumn />
 			</Grid>
+			<Snackbar open={open} autoHideDuration={6000}>
+				<Alert severity="success" sx={{ width: '100%' }}>
+					Password updated successfully
+				</Alert>
+			</Snackbar>
 		</>
 	)
 }

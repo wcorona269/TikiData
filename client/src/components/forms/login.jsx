@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, removeSessionErrors } from '../../actions/session_actions';
 import AuthForm from './authForm';
 import { showModal, closeModal } from '../../actions/modal_actions';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = (props) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate()
 	const currentUser = useSelector(state => state.session.user);
 	const errorMessage = useSelector(state => state.session.error);
 
 	const fields = ['email', 'password'];
 
 	const onSubmit = (formData) => {
-		dispatch(loginUser(formData))
+		dispatch(loginUser(formData));
 	}
 
 	const changeFormType = () => {
