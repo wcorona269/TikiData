@@ -119,18 +119,11 @@ const PostShowPage = () => {
 		</Button>,
 	];
 
-	const content = [
-		<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate('/home')}>
-			<ArrowBackIcon />
-		</IconButton>,
-		`Post by ${post?.username}`
-	]
-
 	return (
 		<>
 			<Grid item xs={6}>
 				<Paper elevation={2}>
-					<SectionHeading variant='h6' content={content} />
+					<SectionHeading variant='h6' content={`Post by ${post?.username}`} back={true} />
 					<Box display='flex' flexDirection='column' justifyContent={'center'} padding={2} >
 						{ isLoading || !post ? 
 							<Box height={150} display='flex' alignItems='center' width='100%'>

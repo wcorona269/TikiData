@@ -7,10 +7,6 @@ import SectionHeading from '../../util/section-heading';
 const Lineups = ({ lineups, header }) => {
 	const theme = useTheme();
 
-	if (!lineups.length) {
-		return <NoDataMessage/>
-	}
-
 	let result = [];
 
 	lineups.map((lineup, idx) => {
@@ -61,15 +57,20 @@ const Lineups = ({ lineups, header }) => {
 	return (
 		<Paper elevation={2} >
 			<SectionHeading variant='h6' content='Lineups' />
-				{header}
-			<Grid container>
-				<Grid item xs={6}>
-					{result[0]}
-				</Grid>
-				<Grid item xs={6}>
-					{result[1]}
-				</Grid>
-			</Grid>
+			{
+				!lineups.length ? <NoDataMessage/> :
+				<>
+					{header}
+					<Grid container>
+						<Grid item xs={6}>
+							{result[0]}
+						</Grid>
+						<Grid item xs={6}>
+							{result[1]}
+						</Grid>
+					</Grid>
+				</>
+			}
 		</Paper>
 	)
 }

@@ -18,16 +18,9 @@ const UserProfileHeader = () => {
 		navigate(`/edit-profile/${currentUser}`)
 	}
 
-	const content = [
-		<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate('/home')}>
-			<ArrowBackIcon />
-		</IconButton>,
-		username
-	]
-
 	return (
 		<>
-			<SectionHeading variant='h5' content={content} />
+			<SectionHeading variant='h5' content={username} back={true} />
 			<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'flex-end', padding: 2, gap: 1 }} >
 				<Avatar sx={{ height: 100, width: 100, marginRight: 1 }} />
 				<Box display='flex' flexDirection='column'>

@@ -1,9 +1,12 @@
-import { Typography, useTheme } from '@mui/material'
+import { Typography, useTheme, IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const SectionHeading = ({ variant, content, img }) => {
+const SectionHeading = ({ variant, content, img, back }) => {
 	const theme = useTheme();
-	let size = variant === 'h5' ? '3rem' : '2rem';
+	const navigate = useNavigate();
+	let size = variant === 'h5' ? '2rem' : '1.5rem';
 	let mr = variant === 'h5' ? '1rem' : '.5rem'
 
 	return (
@@ -20,6 +23,11 @@ const SectionHeading = ({ variant, content, img }) => {
 				alignItems: 'center'
 			}}
 		>
+			{back &&
+				<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate(-1)}>
+					<ArrowBackIcon />
+				</IconButton>
+			}
 			{img && 
 				<img src={img} style={{ height: size, width: size, marginRight: mr }} />
 			}

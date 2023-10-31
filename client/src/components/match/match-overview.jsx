@@ -63,7 +63,7 @@ const MatchOverview = () => {
 			<Grid item xs={3} sx={{ position: 'sticky', top: '1rem' }}>
 				<Stack spacing={2}>
 					<MatchInfoTable match={match[0]} />
-					<MiniLeagueTable match={match[0]} homeTeam={homeTeam} awayTeam={awayTeam} />
+					{/* <MiniLeagueTable match={match[0]} homeTeam={homeTeam} awayTeam={awayTeam} /> */}
 				</Stack>
 			</Grid>
 		</>

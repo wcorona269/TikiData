@@ -7,10 +7,6 @@ const MatchStats = ({match, header}) => {
 	const theme = useTheme();
 	let stats = match.statistics;
 
-	if (!stats.length) {
-		return <NoDataMessage/>
-	}
-
 	let combinedStats = {}
 
 	for (let team of stats) {
@@ -102,15 +98,19 @@ const MatchStats = ({match, header}) => {
 	return (
 		<Paper elevation={2} >
 			<SectionHeading variant='h6' content='Match Stats'/>
-			{header}
-			<Divider />
-			<TableContainer>
-				<Table size='small' aria-label='a dense table'>
-					<TableBody>
-						{displayTeamStats(combinedStats)}
-					</TableBody>
-				</Table>
-			</TableContainer>
+			{!stats.length ? <NoDataMessage/> :
+			<>
+				{header}
+				<Divider />
+				<TableContainer>
+					<Table size='small' aria-label='a dense table'>
+						<TableBody>
+							{displayTeamStats(combinedStats)}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</>
+			}
 		</Paper>
 	)
 }
