@@ -1,9 +1,9 @@
-import './match-stats.scss';
 import React from 'react';
 import NoDataMessage from '../../util/no-data/no-data-message';
-import { Box, Table, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
 
 const MatchStats = ({match}) => {
+	const theme = useTheme();
 	let stats = match.statistics;
 
 	if (!stats.length) {
@@ -62,22 +62,33 @@ const MatchStats = ({match}) => {
 			result.push(
 				[
 				<TableRow key={key}>
-					<td id='stat-name-column' colSpan='3'>{key}</td>
+						<TableCell align='left' sx={{ width: 'auto', borderBottom: 'none' }}>
+						<Typography variant='body1'>
+							{homeStat}
+						</Typography></TableCell>
+						<TableCell align='center' sx={{ width: 'auto', borderBottom: 'none' }} >
+						<Typography variant='body1' sx={{color: theme.palette.text.secondary}}>
+							{key}
+						</Typography>
+					</TableCell>
+					<TableCell align='right' sx={{ width: 'auto', borderBottom: 'none' }}>
+						<Typography variant='body1'>
+							{awayStat}
+						</Typography>
+					</TableCell>
 				</TableRow>,
-				<TableRow key={key + '_percentage'} id='stat-row'>
-					<TableCell colSpan='3' id='percentage-stat-td'>
-						<Box className='stat-containers'>
+				<TableRow key={key + '_percentage'} sx={{height: 'fit-content', m: 0, p: 0 }}>
+					<TableCell colSpan='3' sx={{ p: 0, m: 0 }}>
 							{isNonZeroStat ? 
 							<>
-									<Box className={isHomeLeading ? 'leading-col' : 'losing-col'} style={{width:percentageHome + '%'}}>{homeStat}</Box>
-									<Box className={isHomeLeading ? 'losing-col' : 'leading-col'} style={{width:percentageAway + '%'}}>{awayStat}</Box>
+								<Box sx={{ backgroundColor: isHomeLeading ? theme.palette.primary.main : 'red' , display: 'inline-block', height: '.25rem', width:percentageHome + '%'}}></Box>
+								<Box sx={{ backgroundColor: isHomeLeading? 'red': theme.palette.primary.main, display: 'inline-block', height: '.25rem', width:percentageAway + '%'}}></Box>
 							</> :
 								<>
-									<Box id='zero-col' style={{ width: 50 + '%'}}>{homeValue}</Box>
-									<Box id='zero-col' style={{ width: 50 + '%'}}>{awayValue}</Box>
+									<Box sx={{ width: 50 + '%', height: '.25rem'}}></Box>
+									<Box sx={{ width: 50 + '%', height: '.25rem'}}></Box>
 								</>
 							}
-						</Box>
 					</TableCell>
 				</TableRow>
 				]
@@ -89,18 +100,11 @@ const MatchStats = ({match}) => {
 
 
 	return (
-		<TableContainer className='match-stats-container'>
+		<TableContainer>
 			<Table size='small' aria-label='a dense table'>
-				<TableHead>
-					<TableRow>
-						<TableCell component='th' align='left'>{match.teams.home.name}</TableCell>
-						<TableCell component='th' align='center' >Statistics</TableCell>
-						<TableCell component='th' align='right' >{match.teams.away.name}</TableCell>
-					</TableRow>
-				</TableHead>
-				<tbody>
+				<TableBody>
 					{displayTeamStats(combinedStats)}
-				</tbody>
+				</TableBody>
 			</Table>
 		</TableContainer>
 	)

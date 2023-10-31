@@ -23,31 +23,31 @@ const Lineups = ({lineups}) => {
 				<Table size='small' aria-label='a dense table'>
 					<TableBody>
 						<TableRow>
-							<TableCell sx={{ fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover }} >
+							<TableCell sx={{ fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover, p: 1 }} >
 								Coach
 							</TableCell>
 						</TableRow>
 						<TableRow>
-							<TableCell>
+							<TableCell sx={{p: 1}}>
 								{coach}
 							</TableCell>
 						</TableRow>
 						<TableRow>
-							<TableCell sx={{ fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover }} >   
+							<TableCell sx={{ fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover, p: 1 }} >   
 								Starting XI
 							</TableCell>
 						</TableRow>
 						{eleven.map((player, idx) => (
-							<TableRow key={idx}><TableCell>{player.player.name}</TableCell></TableRow>
+							<TableRow key={idx}><TableCell sx={{p: 1}} >{player.player.name}</TableCell></TableRow>
 						))}
 						<TableRow>
-							<TableCell sx={{ fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover }} >
+							<TableCell sx={{ p: 1, fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover }} >
 								Bench
 							</TableCell>
 						</TableRow>
 						{subs.map((sub, idx) => (
-							<TableRow key={idx}>
-								<TableCell>
+							<TableRow key={idx} >
+								<TableCell sx={{ p: 1 }}>
 									{sub.player.name}
 								</TableCell>
 							</TableRow>
