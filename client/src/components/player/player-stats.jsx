@@ -1,7 +1,12 @@
 import React from 'react'
 import NoDataMessage from '../util/no-data/no-data-message';
+import { Box, Paper, Table, TableBody, TableCell, TableHead, TableRow, useTheme } from '@mui/material';
+import SectionHeading from '../util/section-heading';
+import YellowCard from '../../images/yellow.png'
+import RedCard from '../../images/red.png'
 
 const PlayerStats = ({statistics}) => {
+	const theme = useTheme();
 
 	if (!statistics.length) {
 		return <NoDataMessage/>
@@ -47,36 +52,36 @@ const PlayerStats = ({statistics}) => {
 			totals['red'] += red;
 
 			result.push(
-				<tr>
-					<td id='competition'>{competition}</td>
-					<td id='team'>{team}</td>
-					<td>{apps}</td>
-					<td>{goals}</td>
-					<td>{assists}</td>
-					<td>{passes}</td>
-					<td>{dribbles}</td>
-					<td>{tackles}</td>
-					<td>{interceptions}</td>
-					<td>{yellow}</td>
-					<td>{red}</td>
-				</tr>
+				<TableRow>
+					<TableCell component='th' align='left' sx={{ padding:1 }} id='competition'>{competition}</TableCell>
+					{/* <TableCell sx={{padding: 1}}  align='left' >{team}</TableCell> */}
+					<TableCell sx={{padding: 1}} align='center' >{apps}</TableCell>
+					<TableCell sx={{padding: 1}} align='center' >{goals}</TableCell>
+					<TableCell sx={{padding: 1}} align='center' >{assists}</TableCell>
+					<TableCell sx={{padding: 1}} align='center' >{passes}</TableCell>
+					<TableCell sx={{padding: 1}} align='center' >{dribbles}</TableCell>
+					<TableCell sx={{padding: 1}} align='center' >{tackles}</TableCell>
+					<TableCell sx={{padding: 1}} align='center' >{interceptions}</TableCell>
+					<TableCell sx={{padding: 1}} align='center' >{yellow}</TableCell>
+					<TableCell sx={{padding: 1}} align='center' >{red}</TableCell>
+				</TableRow>
 			)
 		}
 
 		result.push(
-			<tr id='stats-totals'>
-				<td id='competition'>All</td>
-				<td id='team'>-</td>
-				<td>{totals['apps']}</td>
-				<td>{totals['goals']}</td>
-				<td>{totals['assists']}</td>
-				<td>{totals['passes']}</td>
-				<td>{totals['dribbles']}</td>
-				<td>{totals['tackles']}</td>
-				<td>{totals['interceptions']}</td>
-				<td>{totals['yellow']}</td>
-				<td>{totals['red']}</td>
-			</tr>
+			<TableRow sx={{backgroundColor: theme.palette.primary.main }}>
+				<TableCell sx={{ padding: 1, fontFamily: theme.typography.bold }} id='competition'>Total</TableCell>
+				{/* <TableCell sx={{ padding: 1, fontFamily: theme.typography.bold }} id='team'>-</TableCell> */}
+				<TableCell align='center' sx={{ padding: 1, fontFamily: theme.typography.bold }}>{totals['apps']}</TableCell>
+				<TableCell align='center' sx={{ padding: 1, fontFamily: theme.typography.bold }} >{totals['goals']}</TableCell>
+				<TableCell align='center' sx={{ padding: 1, fontFamily: theme.typography.bold }} >{totals['assists']}</TableCell>
+				<TableCell align='center' sx={{ padding: 1, fontFamily: theme.typography.bold }} >{totals['passes']}</TableCell>
+				<TableCell align='center' sx={{ padding: 1, fontFamily: theme.typography.bold }} >{totals['dribbles']}</TableCell>
+				<TableCell align='center' sx={{ padding: 1, fontFamily: theme.typography.bold }} >{totals['tackles']}</TableCell>
+				<TableCell align='center' sx={{ padding: 1, fontFamily: theme.typography.bold }} >{totals['interceptions']}</TableCell>
+				<TableCell align='center' sx={{ padding: 1, fontFamily: theme.typography.bold }} >{totals['yellow']}</TableCell>
+				<TableCell align='center' sx={{ padding: 1, fontFamily: theme.typography.bold }} >{totals['red']}</TableCell>
+			</TableRow>
 		)
 
 
@@ -84,27 +89,33 @@ const PlayerStats = ({statistics}) => {
 	}
 
 	return (
-		<div className='player-stats-dashboard'>
-			<h3>Statistics</h3>
-			<table className='player-stats-table'>
-				<thead>
-					<th id='competition'>Competition</th>
-					<th id='team'>Team</th>
-					<th>Apps</th>
-					<th>Goals</th>
-					<th>Assists</th>
-					<th>Passes</th>
-					<th>Dribbles</th>
-					<th>Tackles</th>
-					<th>Int.</th>
-					<th>Yellow</th>
-					<th>Red</th>
-				</thead>
-				<tbody>
+		<Paper elevation={2} >
+			<SectionHeading variant='h6' content='Player Statistics' />
+			<Table >
+				<TableHead sx={{ backgroundColor: theme.palette.action.hover }}>
+					<TableRow>
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' id='competition'>Competition</TableCell>
+						{/* <TableCell sx={{ padding: 1, fontFamily: theme.typography.bold }} component='th' id='team'>Team</TableCell> */}
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >App.</TableCell>
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >G</TableCell>
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >A</TableCell>
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >Pas.</TableCell>
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >Drib.</TableCell>
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >Tack.</TableCell>
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >Int.</TableCell>
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >
+							<img src={YellowCard} style={{ height: '1.25rem', width: '1rem'}}/>
+						</TableCell>
+						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >
+							<img src={RedCard} style={{ height: '1.25rem', width: '1rem'}}/>
+						</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
 					{displayStats(statistics)}
-				</tbody>
-			</table>
-		</div>
+				</TableBody>
+			</Table>
+		</Paper>
 	)
 }
 

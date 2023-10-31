@@ -43,7 +43,7 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 		};
 
 		return (
-			<p id='form-display'>
+			<p >
 				{form.split('').map((symbol, index) => (
 					<span key={index}>{icons[symbol]}</span>
 				))}
@@ -83,7 +83,7 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 								<TableRow key={idx} className='league-table-row'>
 								<TableCell>{club['rank']}</TableCell>
 								<TableCell id='Club' >
-									<Link underline='hover' sx={{color: theme.palette.text.primary }} onClick={() => navigate(`/club/${clubId}`)} >
+									<Link underline='hover' sx={{ color: theme.palette.text.primary, display: 'flex', flexDirection: 'row' }} onClick={() => navigate(`/club/${clubId}`)} >
 										<img src={club['team']['logo']} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} alt=''/>
 										<Typography variant='body1'>{clubName}</Typography>
 									</Link>

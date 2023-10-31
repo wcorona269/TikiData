@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Tabs, Tab, Paper, Box } from '@mui/material';
-import './league-stats.scss';
 import Typography from '@mui/material/Typography';
 import LeagueStatsTable from './LeagueStatsTable';
 import SectionHeading from '../util/section-heading';

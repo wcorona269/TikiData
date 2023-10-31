@@ -7,42 +7,43 @@ import PlayerOverview from './player-overview';
 import PlayerStats from './player-stats';
 import LoadingMessage from '../util/loading/loading-screen';
 import NoDataMessage from '../util/no-data/no-data-message';
+import { Grid, Stack } from '@mui/material';
+
+import HomeFixturesColumn from '../home/home-fixtures-column';
 
 const PlayerProfile = () => {
 	const dispatch = useDispatch();
-	const { playerId }= useParams();
-	
-	let player = useSelector(state => state.player.player);
-	const isLoading = useSelector(state => state.player.isLoading);	
-	
-	useEffect(() => {
-		dispatch(fetchPlayer(playerId))
-		.catch(error => {
-			console.log('Error fetching player', error);
-		})
-	}, [])
+	const { id } = useParams();
+	const player = useSelector(state => state.player?.player?.[0]);
+	const isLoading = useSelector(state => state.player.isLoading);
+	// const state = useSelector(state => state)
 
-	useEffect(() => {
+	useEffect(() => { if (!isLoading) { dispatch(fetchPlayer(id)) } }, [])
+	useEffect(() => { }, [isLoading])
 
-	}, [isLoading])
-	
+
 	if (isLoading) {
-		return <LoadingMessage/>
+		return <LoadingMessage />
 	}
-	
+
 	if (!player) {
-		return <NoDataMessage/>
+		return <NoDataMessage />
 	}
 
-
-	player = player[0];
-	const statistics = player.statistics;
+	const statistics = player?.statistics;
 
 	return (
-		<div className='player-profile-container'>
-			<PlayerOverview player={player}/>
-			<PlayerStats statistics={statistics}/>
-		</div>
+		<>
+			<Grid item xs={6}>
+				<Stack spacing={2}>
+					<PlayerOverview player={player} />
+					<PlayerStats statistics={statistics} />
+				</Stack>
+			</Grid>
+			<Grid item xs={3}>
+				<HomeFixturesColumn />
+			</Grid>
+		</>
 	)
 }
 

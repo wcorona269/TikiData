@@ -1,7 +1,13 @@
 import React from 'react'
 import shorthandMonthsOfYear from '../league/shorthandMonths';
+import { Box, Grid, IconButton, Paper, Table, TableBody, TableCell, Card, CardMedia, CardContent, TableContainer, TableRow, Typography, useTheme } from '@mui/material';
+import SectionHeading from '../util/section-heading';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from 'react-router-dom';
 
 const PlayerOverview = ({player}) => {
+	const theme = useTheme();
+	const navigate = useNavigate();
 	const fullName = `${player.player.firstname} ${player.player.lastname}`
 
 	const displayBirthDate = (birthInfo) => {
@@ -20,52 +26,85 @@ const PlayerOverview = ({player}) => {
 	const height = player.player.height || 'N/A';
 	const weight = player.player.weight || 'NA';
 
+	const content = [
+		<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate(-1)}>
+			<ArrowBackIcon />
+		</IconButton>,
+		name
+	]
+
 	return (
-		<div className='player-overview'>
-			<div className='player-profile-icon'>
-				<p>
-					{name}
-				</p>
-				<img src={photo} />
-			</div>
-			<table className='player-info'>
-				<tbody>
-					<tr>
-						<th id='table-caption' colSpan={2}>Personal Information</th>
-					</tr>
-					<tr>
-						<th>Full Name</th>
-						<td>{fullName}</td>
-					</tr>
-					<tr>
-						<th>Age</th>
-						<td>{age}</td>
-					</tr>
-					<tr>
-						<th>Nationality</th>
-						<td>
-							{nationality}
-						</td>
-					</tr>
-					<tr>
-						<th>Date of Birth</th>
-						<td>{displayBirthDate(birth)}</td>
-					</tr>
-					<tr>
-						<th>Place of Birth</th>
-						<td>{birthPlace}</td>
-					</tr>
-					<tr>
-						<th>Height</th>
-						<td>{height}</td>
-					</tr>
-					<tr>
-						<th>Weight</th>
-						<td>{weight}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<Paper elevation={2}>
+			<SectionHeading variant='h5' content={content} />
+			<Grid container sx={{padding: 1}}>
+				<Grid item xs={4}>
+					<Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+						<Card sx={{height: 250}}>
+							<CardMedia
+								component="img"
+								image={photo}
+								alt={name}
+							/>
+							<CardContent>
+								<Typography variant='h6'>
+									{name}
+								</Typography>
+								<Typography variant='caption' sx={{color: theme.palette.text.secondary }} >
+									{age} years old
+								</Typography>
+							</CardContent>
+						</Card>
+					</Box>
+				</Grid >
+				<Grid item xs={8}>
+					<TableContainer sx={{ border: `1px solid ${theme.palette.divider}` }}>
+						<Table size='small' aria-label='a dense table' >
+							<TableBody>
+								<TableRow>
+									<TableCell sx={{ width: '40%', color: theme.palette.text.secondary, fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover }} component='th' align='center' colSpan={2}>
+										Personal Information
+									</TableCell>
+								</TableRow>
+								<TableRow>
+									<TableCell sx={{ width: '40%', color: theme.palette.text.secondary, fontFamily: theme.typography.bold }} component='th'>
+										Full Name
+									</TableCell>
+									<TableCell>
+										{fullName}
+									</TableCell>
+								</TableRow>
+								<TableRow>
+									<TableCell sx={{ width: '40%', color: theme.palette.text.secondary, fontFamily: theme.typography.bold }} component='th'>Age</TableCell>
+									<TableCell>{age}</TableCell>
+								</TableRow>
+								<TableRow>
+									<TableCell sx={{ width: '40%', color: theme.palette.text.secondary, fontFamily: theme.typography.bold }} component='th'>Nationality</TableCell>
+									<TableCell>
+										{nationality}
+									</TableCell>
+								</TableRow>
+								<TableRow>
+									<TableCell sx={{ width: '40%', color: theme.palette.text.secondary, fontFamily: theme.typography.bold }} component='th'>Date of Birth</TableCell>
+									<TableCell>{displayBirthDate(birth)}</TableCell>
+								</TableRow>
+								<TableRow>
+									<TableCell sx={{ width: '40%', color: theme.palette.text.secondary, fontFamily: theme.typography.bold }} component='th'>Place of Birth</TableCell>
+									<TableCell>{birthPlace}</TableCell>
+								</TableRow>
+								<TableRow>
+									<TableCell sx={{ width: '40%', color: theme.palette.text.secondary, fontFamily: theme.typography.bold }} component='th'>Height</TableCell>
+									<TableCell>{height}</TableCell>
+								</TableRow>
+								<TableRow>
+									<TableCell sx={{ width: '40%', color: theme.palette.text.secondary, fontFamily: theme.typography.bold }} component='th'>Weight</TableCell>
+									<TableCell>{weight}</TableCell>
+								</TableRow>
+							</TableBody>
+						</Table>
+					</TableContainer>
+				</Grid>
+			</Grid>
+		</Paper>
 	)
 }
 
