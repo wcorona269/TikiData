@@ -31,7 +31,7 @@ const MatchOverviewHeader = ({match}) => {
 			const team = teams[ele]; 
 			
 			result.push(
-				<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+				<Box key={team.id} sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
 					<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'center' }}>
 						<img src={team.logo} style={{height: '3rem', width: '3rem', marginRight: '.5rem'}} />
 						<Typography variant='h6'>
