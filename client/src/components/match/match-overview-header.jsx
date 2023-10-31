@@ -57,6 +57,10 @@ const MatchOverviewHeader = ({match}) => {
 					{timeDisplay}
 				</Typography>
 				{displayTeams(match.teams)}
+				<Typography variant='subtitle1' sx={{ color: theme.palette.text.secondary, display: 'flex', flexDirection: 'row', alignItems: 'center' }} >
+					<img src={leagueLogo} style={{height: '1.5rem', width: '1.5rem', marginRight: '.5rem'}} />
+					{leagueName}
+				</Typography>
 			</Stack>
 		</Paper>
 	)

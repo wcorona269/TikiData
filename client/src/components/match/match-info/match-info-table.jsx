@@ -1,4 +1,4 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useTheme } from '@mui/material'
+import { Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material'
 import React from 'react'
 import SectionHeading from '../../util/section-heading'
 import DisplayTime from '../../util/display-time';
@@ -9,7 +9,7 @@ const MatchInfoTable = ({ match }) => {
 	const date = match?.fixture?.date;
 	const status = match?.fixture?.status?.long;
 	const referee = match?.fixture?.referee;
-	const time_zone = match?.fixture?.referee;
+	const time_zone = match?.fixture?.timezone;
 	const venue = match?.fixture?.venue?.name;
 	const leagueLogo = match?.league?.logo;
 	const country = match?.league?.country;
@@ -23,7 +23,7 @@ const MatchInfoTable = ({ match }) => {
 		'Round': round,
 		'Referee': referee,
 		'Status': status,
-		'Time Zone': time_zone,
+		'Timezone': time_zone,
 		'Venue': venue
 	}
 
@@ -34,10 +34,14 @@ const MatchInfoTable = ({ match }) => {
 			result.push(
 				<TableRow>
 					<TableCell component='th' sx={{padding: 1}}>
-						{key}
+						<Typography variant='body2' sx={{fontFamily: theme.typography.bold}}>
+							{key}
+						</Typography>
 					</TableCell>
-					<TableCell sx={{padding: 1}}>
-						{matchInfo[key]}
+					<TableCell sx={{padding: 0}}>
+						<Typography variant='body2'>
+							{matchInfo[key]}
+						</Typography>
 					</TableCell>
 				</TableRow>
 			)
