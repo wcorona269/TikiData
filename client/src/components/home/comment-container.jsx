@@ -59,7 +59,7 @@ const CommentContainer = ({ comment, idx }) => {
 					</Grid>
 					<Grid item xs sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column', alignItems: 'left', paddingLeft: '.5rem !important'}}>
 						<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left' }}>
-							<Link underline='hover' onClick={() => navigate(`/user/${user_id}`)} >
+							<Link underline='hover' onClick={() => navigate(`/user/${comment.username}`)} >
 								<Typography variant='body2' sx={{ marginBottom: '.25rem', fontFamily: theme.typography.bold }}>
 									{comment.username}
 								</Typography>

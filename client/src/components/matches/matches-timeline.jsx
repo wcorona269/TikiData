@@ -1,4 +1,3 @@
-import './timeline.scss';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TimelineMatchDisplay from './table/timeline-match-display';

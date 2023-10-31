@@ -17,7 +17,7 @@ const MatchInfoTable = ({ match }) => {
 	const round = match?.league?.round;
 
 	const matchInfo = {
-		'Date': date,
+		'Date': new Date(date).toDateString(),
 		'Country': country,
 		'League': leagueName, 
 		'Round': round,
@@ -38,7 +38,7 @@ const MatchInfoTable = ({ match }) => {
 							{key}
 						</Typography>
 					</TableCell>
-					<TableCell sx={{padding: 0}}>
+					<TableCell sx={{padding: 0, color: theme.palette.text.secondary }}>
 						<Typography variant='body2'>
 							{matchInfo[key]}
 						</Typography>

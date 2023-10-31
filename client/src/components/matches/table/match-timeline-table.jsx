@@ -92,13 +92,13 @@ const MatchTimelineTable = ({nation, matches}) => {
 			for (let match of matchesByCompetition[competition]) {
 				competitionMatches.push(
 					<StyledTableRow key={match.fixture.idsty}>
-						<StyledTableCell sx={{padding: '.25rem'}}>
+						<StyledTableCell sx={{ width: '50% !important', padding: '.25rem'}}>
 							{displayMatch(match)}
 						</StyledTableCell>
-						<StyledTableCell sx={{padding: '.25rem'}}>
+						<StyledTableCell sx={{ width: '10% !important', padding: '.25rem'}}>
 							<DisplayTime match={match}/>
 						</StyledTableCell>
-						<StyledTableCell sx={{padding: '.25rem'}}>
+						<StyledTableCell sx={{ width: '20% !important', padding: '.25rem'}}>
 							{match.league.name}
 						</StyledTableCell>
 					</StyledTableRow >
@@ -113,13 +113,13 @@ const MatchTimelineTable = ({nation, matches}) => {
 					</Box>
 					<TableContainer size='small'>
 						<Table>
-							<TableHead>
+							{/* <TableHead>
 								<TableRow>
 									<StyledTableCell sx={{width: '50% !important'}}>Match</StyledTableCell>
 									<StyledTableCell sx={{ width: '10% !important' }}>Time</StyledTableCell>
 									<StyledTableCell sx={{ width: '20% !important' }}>Competition</StyledTableCell>
 								</TableRow>
-							</TableHead>
+							</TableHead> */}
 							<TableBody>
 								{competitionMatches}
 							</TableBody>

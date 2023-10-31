@@ -10,18 +10,6 @@ const MatchOverviewHeader = ({match}) => {
 	const navigate = useNavigate();
 	const leagueName = match?.league?.name;
 	const leagueLogo = match?.league?.logo;
-
-	const country = match?.league?.country;
-	const flag = match?.league?.flag;
-	const round = match?.league?.round;
-
-	const homeTeam = match?.teams?.home?.name
-	const homeLogo = match?.teams?.home?.logo;
-	const awayTeam = match?.teams?.away?.name
-	const awayLogo = match?.teams?.away?.logo;
-
-	const homeGoals = match?.goals?.home
-	const awayGoals = match?.goals?.away
 	const timeDisplay = <DisplayTime match={match}/>;
 
 	const displayTeams = (teams) => {
@@ -52,14 +40,14 @@ const MatchOverviewHeader = ({match}) => {
 	
 	return (
 		<Paper elevation={2} sx={{ p: 3 }}>
-			<Stack spacing={2}>
-				<Typography variant='h6' sx={{color: theme.palette.text.secondary}} >
-					{timeDisplay}
-				</Typography>
-				{displayTeams(match.teams)}
+			<Stack spacing={2} direction='column-reverse' >
 				<Typography variant='subtitle1' sx={{ color: theme.palette.text.secondary, display: 'flex', flexDirection: 'row', alignItems: 'center' }} >
 					<img src={leagueLogo} style={{height: '1.5rem', width: '1.5rem', marginRight: '.5rem'}} />
 					{leagueName}
+				</Typography>
+				{displayTeams(match.teams)}
+				<Typography variant='subtitle1' sx={{color: theme.palette.text.secondary}} >
+					{timeDisplay}
 				</Typography>
 			</Stack>
 		</Paper>

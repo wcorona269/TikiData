@@ -1,43 +1,72 @@
 import './lineups.scss';
 import React from 'react'
 import NoDataMessage from '../../util/no-data/no-data-message';
+import { Grid, Table, TableBody, TableCell, TableContainer, TableRow, useTheme } from '@mui/material';
 
 const Lineups = ({lineups}) => {
+	const theme = useTheme();
+	debugger;
 
 	if (!lineups.length) {
 		return <NoDataMessage/>
 	}
 
+	let result = [];
+
+	lineups.map((lineup, idx) => {
+		const coach = lineup.coach.name;
+		const eleven = lineup.startXI;
+		const subs = lineup.substitutes;
+
+		result.push(
+			<TableContainer>
+				<Table size='small' aria-label='a dense table'>
+					<TableBody>
+						<TableRow>
+							<TableCell sx={{ fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover }} >
+								Coach
+							</TableCell>
+						</TableRow>
+						<TableRow>
+							<TableCell>
+								{coach}
+							</TableCell>
+						</TableRow>
+						<TableRow>
+							<TableCell sx={{ fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover }} >   
+								Starting XI
+							</TableCell>
+						</TableRow>
+						{eleven.map((player, idx) => (
+							<TableRow key={idx}><TableCell>{player.player.name}</TableCell></TableRow>
+						))}
+						<TableRow>
+							<TableCell sx={{ fontFamily: theme.typography.bold, backgroundColor: theme.palette.action.hover }} >
+								Bench
+							</TableCell>
+						</TableRow>
+						{subs.map((sub, idx) => (
+							<TableRow key={idx}>
+								<TableCell>
+									{sub.player.name}
+								</TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		)
+	})
+
 	return (
-		<div className='lineups-tab'>
-			{
-				lineups.map((lineup, idx) => {
-		
-					const logo = lineup.team.logo;
-					const name = lineup.team.name;
-					const coach = lineup.coach.name;
-					const eleven = lineup.startXI;
-					const subs = lineup.substitutes;
-
-					return (
-						<table>
-							<tbody>
-								<tr id='lineup-header'><td>Coach</td></tr>
-								<tr><td>{coach}</td></tr>
-								<tr id='lineup-header'><td>Starting XI</td></tr>
-								{eleven.map((player, idx) => (
-									<tr key={idx}><td>{player.player.name}</td></tr>
-								))}
-								<tr id='lineup-header'><td>Bench</td></tr>
-								{subs.map((sub, idx) => (
-									<tr key={idx}><td>{sub.player.name}</td></tr>
-								))}
-							</tbody>
-						</table>
-					)
-			})}
-		</div>
-
+		<Grid container>
+			<Grid item xs={6}>
+				{result[0]}
+			</Grid>
+			<Grid item xs={6}>
+				{result[1]}
+			</Grid>
+		</Grid>
 	)
 }
 

@@ -20,7 +20,7 @@ const MatchOverview = () => {
 	const match = useSelector(state => state.match.match);
 
 	useEffect(()=> {
-		// dispatch(fetchMatch(id))
+		dispatch(fetchMatch(id))
 			// .catch(error => {
 			// 	console.log('Error fetching match', error);
 			// })
@@ -44,9 +44,9 @@ const MatchOverview = () => {
 			<Grid item xs={6}>
 				<Paper>
 					<SectionHeading variant='h5' content='Match Summary' />
-					<Stack spacing={2}>
+					<Stack spacing={1} sx={{marginTop: 1}}>
 						<MatchOverviewHeader match={match[0]}/>
-						{/* <MatchInfo match={match[0]}/> */}
+						<MatchInfo match={match[0]}/>
 					</Stack>
 				</Paper>
 			</Grid>

@@ -1,6 +1,7 @@
 import './match-stats.scss';
 import React from 'react';
 import NoDataMessage from '../../util/no-data/no-data-message';
+import { Box, Table, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 const MatchStats = ({match}) => {
 	let stats = match.statistics;
@@ -24,12 +25,9 @@ const MatchStats = ({match}) => {
 
 	const percentageStringToInteger = (percentageString) => {
 		if (Number.isInteger(percentageString)) return percentageString;
-
 		const cleanedString = percentageString.replace(/%/g, '').trim();
-
 		// Parse the cleaned string as an integer
 		const intValue = parseInt(cleanedString, 10);
-
 		return intValue;
 	}
 
@@ -63,25 +61,25 @@ const MatchStats = ({match}) => {
 
 			result.push(
 				[
-				<tr key={key}>
+				<TableRow key={key}>
 					<td id='stat-name-column' colSpan='3'>{key}</td>
-				</tr>,
-				<tr key={key + '_percentage'} id='stat-row'>
-					<td colSpan='3' id='percentage-stat-td'>
-						<div className='stat-containers'>
+				</TableRow>,
+				<TableRow key={key + '_percentage'} id='stat-row'>
+					<TableCell colSpan='3' id='percentage-stat-td'>
+						<Box className='stat-containers'>
 							{isNonZeroStat ? 
 							<>
-									<div className={isHomeLeading ? 'leading-col' : 'losing-col'} style={{width:percentageHome + '%'}}>{homeStat}</div>
-									<div className={isHomeLeading ? 'losing-col' : 'leading-col'} style={{width:percentageAway + '%'}}>{awayStat}</div>
+									<Box className={isHomeLeading ? 'leading-col' : 'losing-col'} style={{width:percentageHome + '%'}}>{homeStat}</Box>
+									<Box className={isHomeLeading ? 'losing-col' : 'leading-col'} style={{width:percentageAway + '%'}}>{awayStat}</Box>
 							</> :
 								<>
-									<div id='zero-col' style={{ width: 50 + '%'}}>{homeValue}</div>
-									<div id='zero-col' style={{ width: 50 + '%'}}>{awayValue}</div>
+									<Box id='zero-col' style={{ width: 50 + '%'}}>{homeValue}</Box>
+									<Box id='zero-col' style={{ width: 50 + '%'}}>{awayValue}</Box>
 								</>
 							}
-						</div>
-					</td>
-				</tr>
+						</Box>
+					</TableCell>
+				</TableRow>
 				]
 			)
 		}
@@ -91,20 +89,20 @@ const MatchStats = ({match}) => {
 
 
 	return (
-		<div className='match-stats-container'>
-			<table>
-				<thead>
-					<tr>
-						<th>{match.teams.home.name}</th>
-						<th className='stat-name-column'>Statistics</th>
-						<th>{match.teams.away.name}</th>
-					</tr>
-				</thead>
+		<TableContainer className='match-stats-container'>
+			<Table size='small' aria-label='a dense table'>
+				<TableHead>
+					<TableRow>
+						<TableCell component='th' align='left'>{match.teams.home.name}</TableCell>
+						<TableCell component='th' align='center' >Statistics</TableCell>
+						<TableCell component='th' align='right' >{match.teams.away.name}</TableCell>
+					</TableRow>
+				</TableHead>
 				<tbody>
 					{displayTeamStats(combinedStats)}
 				</tbody>
-			</table>
-		</div>
+			</Table>
+		</TableContainer>
 	)
 }
 
