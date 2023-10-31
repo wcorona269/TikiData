@@ -24,7 +24,6 @@ const EventsTimeline = ({match, header }) => {
 	let periods = 0;
 
 	const determineEventImage = (event) => {
-		console.log(event);
 		if (event.type === 'Goal') {
 			if (event.detail === 'Penalty') return [<SportsSoccerIcon size='small' sx={{color: theme.palette.success.light }} />, '(PK)' ]
 			if (event.detail.includes('Normal')) return <SportsSoccerIcon size='small' />

@@ -13,10 +13,8 @@ const ModalContainer = () => {
 	const modal = useSelector(state => state.ui?.modal?.modal || null);
 	const [open, setOpen] = useState(false);
 	const [component, setComponent] = useState(<></>);
-	console.log(component);
 
 	useEffect(() => {
-		console.log(modal);
 		switch (modal) {
 			case 'login':
 				setComponent(<LoginForm/>)

@@ -12,6 +12,7 @@ import newsReducer from "./news_reducer";
 import postsReducer from "./post_reducer";
 import notificationsReducer from "./notifications_reducer";
 import repostsReducer from "./repost_reducer";
+import standingsReducer from "./standings_reducer";
 
 const rootReducer = combineReducers({
 	counter: counterReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
 	news: newsReducer,
 	posts: postsReducer,
 	reposts: repostsReducer,
+	standings: standingsReducer,
 	notifications: notificationsReducer
 });
 

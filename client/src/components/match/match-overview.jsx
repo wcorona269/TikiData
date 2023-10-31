@@ -15,7 +15,7 @@ import Lineups from './match-info/lineups';
 import MatchStats from './match-info/match-stats';
 import EventsTimeline from './match-info/events-timeline'
 import MatchInfoTable from './match-info/match-info-table';
-import MatchLeagueTable from './match-info/match-league-table';
+import MiniLeagueTable from './match-info/mini-league-table';
 
 const MatchOverview = () => {
 	const dispatch = useDispatch();
@@ -63,7 +63,7 @@ const MatchOverview = () => {
 			<Grid item xs={3} sx={{ position: 'sticky', top: '1rem' }}>
 				<Stack spacing={2}>
 					<MatchInfoTable match={match[0]} />
-					<MatchLeagueTable match={match[0]} />
+					<MiniLeagueTable match={match[0]} homeTeam={homeTeam} awayTeam={awayTeam} />
 				</Stack>
 			</Grid>
 		</>
