@@ -5,13 +5,14 @@ import RedCard from '../../../images/red.png';
 import Substitution from '../../../images/sub.png';
 import Goal from '../../../images/goal.png';
 import NoDataMessage from '../../util/no-data/no-data-message';
-import { Box, Table, TableBody, TableCell, TableContainer, TableRow, Typography, useTheme } from '@mui/material';
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography, useTheme } from '@mui/material';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import SectionHeading from '../../util/section-heading';
 
-const EventsTimeline = ({match}) => {
+const EventsTimeline = ({match, header }) => {
 	const theme = useTheme();
 	const events = match?.events;
 	const homeTeam = match?.teams?.home?.name;
@@ -69,39 +70,43 @@ const EventsTimeline = ({match}) => {
 	}
 
 	return (
-		<TableContainer>
-			<Table size='small' aria-label='a dense table' >
-				<TableBody>
-					{events.map((event, idx) => {
-						const isHome = event.team.name === homeTeam;
-						const elapsed = event.time.elapsed;
-						const extraTime = event.time.extra;
-						const player = event.player.name || 'N/A';
-						const assist = event.assist.name || '';
+		<Paper elevation={2}>
+			<SectionHeading variant='h6' content='Match Timeline'/>
+				{header}
+			<TableContainer>
+				<Table size='small' aria-label='a dense table' >
+					<TableBody>
+						{events.map((event, idx) => {
+							const isHome = event.team.name === homeTeam;
+							const elapsed = event.time.elapsed;
+							const extraTime = event.time.extra;
+							const player = event.player.name || 'N/A';
+							const assist = event.assist.name || '';
 
-						return (
-							<>
-								{determineNewPeriods(elapsed, extraTime)}
-								<TableRow key={idx}>
-									<TableCell sx={{ px: 1, display: 'flex', flexDirection: isHome ? 'row' : 'row-reverse', alignItems: 'flex-end', gap: 1}}>
-										<Typography variant='body1' sx={{fontFamily: theme.typography.bold }}>
-											{extraTime === null ? `${elapsed}'` : `${elapsed} + ${extraTime}`}
-										</Typography>
-										{determineEventImage(event)}
-										<Typography variant='body1' sx={{  }} >
-											{player}
-										</Typography>
-										<Typography variant='body1' sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary}}>
-											{assist}
-										</Typography>
-									</TableCell>
-								</TableRow>
-							</>
-						)
-					})}
-				</TableBody>
-			</Table>
-		</TableContainer>
+							return (
+								<>
+									{determineNewPeriods(elapsed, extraTime)}
+									<TableRow key={idx}>
+										<TableCell sx={{ px: 1, display: 'flex', flexDirection: isHome ? 'row' : 'row-reverse', alignItems: 'flex-end', gap: 1}}>
+											<Typography variant='body1' sx={{fontFamily: theme.typography.bold }}>
+												{extraTime === null ? `${elapsed}'` : `${elapsed} + ${extraTime}`}
+											</Typography>
+											{determineEventImage(event)}
+											<Typography variant='body1' sx={{  }} >
+												{player}
+											</Typography>
+											<Typography variant='body1' sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary}}>
+												{assist}
+											</Typography>
+										</TableCell>
+									</TableRow>
+								</>
+							)
+						})}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</Paper>
 	)
 }
 

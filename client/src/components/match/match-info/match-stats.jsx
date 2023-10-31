@@ -1,8 +1,9 @@
 import React from 'react';
 import NoDataMessage from '../../util/no-data/no-data-message';
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
+import { Box, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
+import SectionHeading from '../../util/section-heading';
 
-const MatchStats = ({match}) => {
+const MatchStats = ({match, header}) => {
 	const theme = useTheme();
 	let stats = match.statistics;
 
@@ -98,15 +99,19 @@ const MatchStats = ({match}) => {
 		return result;
 	}
 
-
 	return (
-		<TableContainer>
-			<Table size='small' aria-label='a dense table'>
-				<TableBody>
-					{displayTeamStats(combinedStats)}
-				</TableBody>
-			</Table>
-		</TableContainer>
+		<Paper elevation={2} >
+			<SectionHeading variant='h6' content='Match Stats'/>
+			{header}
+			<Divider />
+			<TableContainer>
+				<Table size='small' aria-label='a dense table'>
+					<TableBody>
+						{displayTeamStats(combinedStats)}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</Paper>
 	)
 }
 

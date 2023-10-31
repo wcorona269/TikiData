@@ -1,11 +1,11 @@
 import './lineups.scss';
 import React from 'react'
 import NoDataMessage from '../../util/no-data/no-data-message';
-import { Grid, Table, TableBody, TableCell, TableContainer, TableRow, useTheme } from '@mui/material';
+import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableRow, useTheme } from '@mui/material';
+import SectionHeading from '../../util/section-heading';
 
-const Lineups = ({lineups}) => {
+const Lineups = ({ lineups, header }) => {
 	const theme = useTheme();
-	debugger;
 
 	if (!lineups.length) {
 		return <NoDataMessage/>
@@ -59,14 +59,18 @@ const Lineups = ({lineups}) => {
 	})
 
 	return (
-		<Grid container>
-			<Grid item xs={6}>
-				{result[0]}
+		<Paper elevation={2} >
+			<SectionHeading variant='h6' content='Lineups' />
+				{header}
+			<Grid container>
+				<Grid item xs={6}>
+					{result[0]}
+				</Grid>
+				<Grid item xs={6}>
+					{result[1]}
+				</Grid>
 			</Grid>
-			<Grid item xs={6}>
-				{result[1]}
-			</Grid>
-		</Grid>
+		</Paper>
 	)
 }
 
