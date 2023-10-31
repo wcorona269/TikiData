@@ -122,7 +122,7 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 					/>
 				</Box> :
 				<>
-					<SectionHeading variant='subtitle1' content={`${league_name}`} img={league_logo}/>
+					<SectionHeading variant='h6' content={`Standings`} img={league_logo}/>
 					{displayTable(standings_data)}
 				</>
 			}

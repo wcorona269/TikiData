@@ -1,28 +1,36 @@
+import { Paper, Table, Link, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme, Box } from '@mui/material';
 import React from 'react'
-import { Link } from 'react-router-dom';
+import SectionHeading from '../util/section-heading';
+import { useNavigate } from 'react-router-dom';
 
-const MultiTableDashboard = ({standings}) => {
+const MultiTableDashboard = ({ standings, name, logo }) => {
+	const theme = useTheme()
+	const navigate = useNavigate();
+
+	const determineColumnWidth = (idx) => {
+		if (idx === 0) return '10%';
+		if (idx === 1) return '40%';
+		return 'auto'
+	}
 
 	const displayIndividualTable = (table, idx) => {
-	
 		const leagueInfo = table[0].group || table[0].description;
-
 		const columns = ['Position', 'Club', 'Played', 'Won', 'Drawn', 'Lost', 'GF', 'GC', 'GD', 'Points'];
 
 		return (
-			<div className='multi-table-dashboard'>
-				<h2>
+			<TableContainer sx={{marginTop: 2}}>
+				<Typography variant='subtitle1' sx={{color: theme.palette.text.secondary}} >
 					{leagueInfo}
-				</h2>
-				<table className='league-table' key={idx}>
-					<thead>
-						<tr>
+				</Typography>
+				<Table key={idx} size='small' aria-label='a dense table'>
+					<TableHead>
+						<TableRow>
 							{columns.map((column, idx) => (
-								<th key={idx} className='league-table-header' id={column}>{column}</th>
+								<TableCell component='th' key={idx} sx={{ width: determineColumnWidth(idx) }} >{column}</TableCell>
 							))}
-						</tr>
-					</thead>
-					<tbody className='league-table-body'>
+						</TableRow>
+					</TableHead>
+					<TableBody>
 						{table.map((club, idx) => {
 							const clubId = club['team']['id'];
 							const rank = club['rank'];
@@ -31,40 +39,44 @@ const MultiTableDashboard = ({standings}) => {
 							const clubData = club['all'];
 							const goalsDiff = club['goalsDiff'];
 							const points = club['points'];
-							const form = club['form']
 
 							return (
-							<tr key={idx} className='league-table-row'>
-								<td>{rank}</td>
-								<td id='Club' >
-									<Link to={`/club/${clubId}`}>
-										<img src={club['team']['logo']} alt=''/>
-										<span>{clubName}</span>
+							<TableRow key={idx} >
+								<TableCell>{rank}</TableCell>
+								<TableCell >
+									<Link onClick={() => navigate(`/club/${clubId}`)} sx={{ color: theme.palette.info.main }} >
+										<Typography variant='body1' sx={{ display: 'flex', alignItems: 'center' }} >
+											<img src={clubLogo} style={{height: '1.5rem', width: '1.5rem', marginRight: '.25rem'}} alt=''/>
+											{clubName}
+										</Typography>
 									</Link>
-								</td>
-								<td>{clubData['played']}</td>
-								<td>{clubData['win']}</td>
-								<td>{clubData['lose']}</td>
-								<td>{clubData['draw']}</td>
-								<td>{clubData['goals']['for']}</td>
-								<td>{clubData['goals']['against']}</td>
-								<td>{goalsDiff}</td>
-								<td>{points}</td>
-							</tr>
+								</TableCell>
+								<TableCell align='center'>{clubData['played']}</TableCell>
+								<TableCell align='center'>{clubData['win']}</TableCell>
+								<TableCell align='center'>{clubData['lose']}</TableCell>
+								<TableCell align='center'>{clubData['draw']}</TableCell>
+								<TableCell align='center'>{clubData['goals']['for']}</TableCell>
+								<TableCell align='center'>{clubData['goals']['against']}</TableCell>
+								<TableCell align='center'>{goalsDiff}</TableCell>
+								<TableCell align='center'>{points}</TableCell>
+							</TableRow>
 							)
 						})}
-					</tbody>
-				</table>
-			</div>
+					</TableBody>
+				</Table>
+			</TableContainer>
 		)
 	}
 
 	return (
-		<div>
-			{standings.map((group, idx) => (
-				displayIndividualTable(group, idx)
-			))}
-		</div>
+		<Paper elevation={2} sx={{marginTop: 2}}>
+			<SectionHeading variant='h6' content={`${name} Standings`} img={logo} />
+			<Box sx={{padding: 2}}>
+				{standings.map((group, idx) => (
+					displayIndividualTable(group, idx)
+				))}
+			</Box>
+		</Paper>
 	)
 }
 

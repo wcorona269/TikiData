@@ -1,4 +1,4 @@
-import './league-table-dashboard.scss';
+
 import React, {useEffect} from 'react'
 import NoDataMessage from '../util/no-data/no-data-message';
 import MultiTableDashboard from './multi-table-dashboard';
@@ -7,7 +7,7 @@ import { TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Link,
 import { useNavigate } from 'react-router-dom';
 import SectionHeading from '../util/section-heading';
 
-const LeagueTableDashboard = ({table}) => {
+const LeagueTableDashboard = ({table, name, logo }) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
 	useEffect(() => {}, [table])
@@ -23,7 +23,7 @@ const LeagueTableDashboard = ({table}) => {
 	let standings = leagueInfo['standings'];
 
 	if (standings?.length > 1) {
-		return <MultiTableDashboard standings={standings}/>
+		return <MultiTableDashboard standings={standings} name={name} logo={logo} />
 	}
 
 	standings = leagueInfo['standings'][0];
