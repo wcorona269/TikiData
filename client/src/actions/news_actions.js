@@ -10,7 +10,7 @@ export const FETCH_NEWS_FAILURE = 'FETCH_NEWS_FAILURE';
 export const fetchNews = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_NEWS_REQUEST });
-		return axios.get(`/news`)
+		return axios.get(`/news/all`)
 		.then((response) => {
 			dispatch({ type: FETCH_NEWS_SUCCESS, payload: response.data });
 		})
