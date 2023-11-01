@@ -19,9 +19,8 @@ const MatchesTimeline = ({apiKey}) => {
 		const day = (date.getDate()).toString().padStart(2, '0');
 		const dateString = `${year}-${month}-${day}`
 
-		if (!matches) {
-			dispatch(fetchMatches(dateString))
-		}
+		dispatch(fetchMatches(dateString))
+		window.scrollTo(0, 0);
 	}, [date]);
 
 	const resetFilters = () => {
@@ -68,6 +67,7 @@ const MatchesTimeline = ({apiKey}) => {
 	
 	
 	useEffect(() => {
+		window.scrollTo(0, 0);
 	}, [selectedNation])
 	
 

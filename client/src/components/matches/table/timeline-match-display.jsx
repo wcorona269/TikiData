@@ -9,12 +9,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import monthsOfYear from '../../club/monthsOfYear';
 import SectionHeading from '../../util/section-heading';
+import ScrollToTopOnLoad from '../../util/scroll-to-top-on-load';
 
 export const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelectedNation, date, setDate, nations, nationsSet, onTabSelect }) => {
 	const [showAll, setShowAll] = useState(true);
-	debugger;
 	let matchesList;
 
 	const dayOfWeek = daysOfWeek[new Date(date).getDay()]
@@ -54,7 +54,7 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 	const filter_options = ['All', 'World', 'China', 'England', 'France', 'Germany', 'Portugal', 'Spain', 'USA']
 
 	return (
-		<Paper elevation={2}>
+		<Box>
 			<Paper elevation={2} 
 				sx={{ position: 'sticky', top: '0', display: 'flex', flexDirection: 'column', zIndex: '100'}}
 			>
@@ -73,8 +73,7 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 				<Box>
 					<Tabs
 						value={selectedNation}
-						variant="scrollable"
-						scrollButtons="auto"
+						variant='fullWidth'
 					>
 					{filter_options.map(value => {
 						let result = [];
@@ -88,10 +87,11 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 					</Tabs>
 				</Box>
 			</Paper>
-			<Stack spacing={2}>
+			<Stack spacing={2} sx={{paddingTop: 2}}>
 				{displayMatchesList()}
 			</Stack>
-		</Paper>
+			<ScrollToTopOnLoad/>
+		</Box>
 	)
 }
 

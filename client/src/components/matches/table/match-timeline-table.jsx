@@ -1,12 +1,15 @@
 import React from 'react';
 import DisplayTime from '../../util/display-time';
-import { styled, Box, Container, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Typography, Link, useTheme } from '@mui/material';
+import { styled, Box, Container, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Typography, Link, useTheme, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import SectionHeading from '../../util/section-heading';
+import ScrollToTopOnLoad from '../../util/scroll-to-top-on-load';
 
 
 const MatchTimelineTable = ({nation, matches}) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
+	let flag;
 
 	const handleClick = (id) => {
 		navigate(`/match/${id}`)
@@ -70,74 +73,51 @@ const MatchTimelineTable = ({nation, matches}) => {
 	}
 
 	const displayMatches = (matches) => {
-		let matchesByCompetition = {};
 		let result = [];
-		let flag;
 
 		for (let match of matches) {
-			if (flag === undefined) flag = match.league.flag;
-
-			if (match.league.name in matchesByCompetition) {
-				matchesByCompetition[match.league.name].push(match);
-			}
-			else {
-				matchesByCompetition[match.league.name] = [];
-				matchesByCompetition[match.league.name].push(match);
-			}
-		}
-
-		for (let competition in matchesByCompetition) {
-			let competitionMatches = [];
-
-			for (let match of matchesByCompetition[competition]) {
-				competitionMatches.push(
-					<StyledTableRow key={match.fixture.idsty}>
-						<StyledTableCell sx={{ width: '50% !important', padding: '.25rem'}}>
-							{displayMatch(match)}
-						</StyledTableCell>
-						<StyledTableCell sx={{ width: '10% !important', padding: '.25rem'}}>
-							<DisplayTime match={match}/>
-						</StyledTableCell>
-						<StyledTableCell sx={{ width: '20% !important', padding: '.25rem'}}>
-							{match.league.name}
-						</StyledTableCell>
-					</StyledTableRow >
-				)
-			} 
-
+			if (flag === undefined) flag = match?.league?.flag;
+			
 			result.push(
-				<>
-					<Box sx={{display: 'flex', alignItems: 'center', margin: '.5rem'}}>
-						<img src={flag} alt='' style={{height: '1.5rem', width: '1.5rem', marginRight: '.5rem'}}/>
-						<Typography variant='body1'>{nation} - {competition}</Typography >
-					</Box>
-					<TableContainer size='small'>
-						<Table>
-							{/* <TableHead>
-								<TableRow>
-									<StyledTableCell sx={{width: '50% !important'}}>Match</StyledTableCell>
-									<StyledTableCell sx={{ width: '10% !important' }}>Time</StyledTableCell>
-									<StyledTableCell sx={{ width: '20% !important' }}>Competition</StyledTableCell>
-								</TableRow>
-							</TableHead> */}
-							<TableBody>
-								{competitionMatches}
-							</TableBody>
-						</Table>
-					</TableContainer>
-				</>
+				<TableRow key={match.fixture.idsty}>
+					<TableCell sx={{ width: '50% !important', padding: '.25rem'}}>
+						{displayMatch(match)}
+					</TableCell>
+					<TableCell sx={{ width: '10% !important', padding: '.25rem'}}>
+						<DisplayTime match={match}/>
+					</TableCell>
+					<TableCell sx={{ width: '20% !important', padding: '.25rem'}}>
+						{match.league.name}
+					</TableCell>
+				</TableRow >
 			)
 		}
-
+			
 		return (
-				result
+			<Paper elevation={2}>
+				<SectionHeading variant='h6' img={flag} content={nation} />
+				<TableContainer size='small'>
+					<Table size='small' aria-label='a dense table'>
+						<TableHead sx={{backgroundColor: theme.palette.action.hover}} >
+							<TableRow >
+							<TableCell sx={{width: '50% !important'}}>Match</TableCell>
+							<TableCell sx={{ width: '10% !important' }}>Time</TableCell>
+							<TableCell sx={{ width: '20% !important' }}>Competition</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{result}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</Paper>
 		)
 	}
 
 	return (
-		<Container className='match-timeline-table' disablepadding sx={{padding: '0px !important', margin: '0px!important', zIndex: '0'}}>
+		<Box>
 			{displayMatches(matches)}
-		</Container>
+		</Box>
 	)
 }
 
