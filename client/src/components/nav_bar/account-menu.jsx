@@ -43,8 +43,7 @@ const AccountMenu = ({ lightMode, setLightMode }) => {
 	return (
 		<>
 			<Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-				<Typography sx={{ minWidth: 100 }}>Contact</Typography>
-				<Typography sx={{ minWidth: 100 }}>Profile</Typography>
+				<Typography sx={{ minWidth: 100 }}>{username}</Typography>
 				<Tooltip title="Account settings">
 					<IconButton
 						onClick={handleClick}
@@ -54,7 +53,7 @@ const AccountMenu = ({ lightMode, setLightMode }) => {
 						aria-haspopup="true"
 						aria-expanded={open ? 'true' : undefined}
 					>
-						<Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+						<Avatar sx={{ width: 32, height: 32 }}/>
 					</IconButton>
 				</Tooltip>
 			</Box>

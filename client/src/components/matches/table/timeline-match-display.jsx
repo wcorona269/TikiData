@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MatchTimelineTable from './match-timeline-table';
 import TimelineSelect from '../nav-bar/timeline-select';
-import { Box, Typography, Tabs,Tab, Paper, List } from '@mui/material';
+import { Box, Typography, Tabs,Tab, Paper, List, Stack } from '@mui/material';
 import dayjs from 'dayjs';
 
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -14,6 +14,7 @@ export const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday
 
 const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelectedNation, date, setDate, nations, nationsSet, onTabSelect }) => {
 	const [showAll, setShowAll] = useState(true);
+	debugger;
 	let matchesList;
 
 	const dayOfWeek = daysOfWeek[new Date(date).getDay()]
@@ -53,7 +54,7 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 	const filter_options = ['All', 'World', 'China', 'England', 'France', 'Germany', 'Portugal', 'Spain', 'USA']
 
 	return (
-		<Paper elevation={2} id='home-fixtures-paper'>
+		<Paper elevation={2}>
 			<Paper elevation={2} 
 				sx={{ position: 'sticky', top: '0', display: 'flex', flexDirection: 'column', zIndex: '100'}}
 			>
@@ -87,9 +88,9 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 					</Tabs>
 				</Box>
 			</Paper>
-			<List>
+			<Stack spacing={2}>
 				{displayMatchesList()}
-			</List>
+			</Stack>
 		</Paper>
 	)
 }

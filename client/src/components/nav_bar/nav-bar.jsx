@@ -19,7 +19,7 @@ const NavBar = ({ lightMode, setLightMode }) => {
 	}, [currentUser, lightMode, setLightMode]);
 
 	return (
-		<AppBar>
+		<AppBar  >
 			<Container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
 				<Typography variant='h4' sx={{color: lightMode ? theme.palette.text.primary : theme.palette.primary.main }}>
 					touchline

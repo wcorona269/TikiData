@@ -18,7 +18,7 @@ import LeagueProfile from './league/league-profile';
 import PlayerProfile from './player/player-profile';
 import MatchOverview from './match/match-overview';
 import NewsTimeline from './news/news-timeline';
-import { Paper, createTheme, ThemeProvider, Container } from '@mui/material';
+import { Paper, createTheme, ThemeProvider, Container, Box } from '@mui/material';
 import { fetchCurrentUser } from '../actions/session_actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Notifications from './home/home-notifications';
@@ -59,7 +59,7 @@ function App() {
         main: '#18ade5',
         light: '#84d6f0',
         dark: '#005c8f'
-      }
+      },
     },
     typography: {
       fontFamily: 'Ubuntu',
@@ -71,7 +71,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Paper sx={{height: 'fit-content', minHeight: '150vh'}}>
+      <Paper elevation={1} sx={{ borderRadius: '0px', minHeight: '150vh' }} >
         <ModalContainer/>
         <NavBar lightMode={lightMode} setLightMode={setLightMode} />
         <Container sx={{paddingTop: '6rem'}} fixed >

@@ -60,11 +60,15 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 		<Paper elevation={2} sx={{marginTop: '1rem', mx: 'auto', marginTop: '1rem'}}>
 			<SectionHeading variant='h6' content={`${leagueName} Table`} img={leagueLogo} />
 			<TableContainer>
-				<Table>
+				<Table size='small' aria-label='a dense table' >
 					<TableHead>
 						<TableRow>
 							{columns.map((column, idx) => (
-								<TableCell key={idx} id={column}>{column}</TableCell>
+								<TableCell key={idx} id={column}>
+									<Typography variant='body1'>
+										{column}
+									</Typography>
+								</TableCell>
 								))}
 						</TableRow>
 					</TableHead>

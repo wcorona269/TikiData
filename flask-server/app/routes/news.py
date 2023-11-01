@@ -19,7 +19,7 @@ def fetchNews():
   for topic in topics:
       gNews.clear()
       gNews.get_news(topic)
-      result = gNews.results()
+      result = gNews.results(sort=True)
       news_articles.extend(result)
   
   cleaned_news = []

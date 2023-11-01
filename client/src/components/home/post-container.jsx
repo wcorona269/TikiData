@@ -13,9 +13,10 @@ import { createNotification, deleteNotification } from '../../actions/notificati
 import { showModal } from '../../actions/modal_actions'
 import { useNavigate } from 'react-router-dom';
 import RepostButton from './repost-popper';
+import RepeatIcon from '@mui/icons-material/Repeat';
 // import ReactTimeAgo from 'react-time-ago'
 
-const PostContainer = ({ post }) => {
+const PostContainer = ({ post, repost }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const theme = useTheme();
@@ -104,7 +105,13 @@ const PostContainer = ({ post }) => {
 
 	return (
 		<>
-			<Paper id='post-container' className='timeline-paper' elevation={2} key={post.id} sx={{borderBottom: 'none !important'}}>
+			<Paper elevation={2} key={post.id} sx={{ padding: 2, paddingBottom: 0, borderBottom: 'none !important'}}>
+				{repost &&
+					<Link onClick={() => navigate(`/user/${repost.user.username}`)} underline='hover' sx={{ color: theme.palette.grey['500'], display: 'flex', alignItems: 'center', marginBottom: 1 }} variant='caption'>
+						<RepeatIcon sx={{ marginRight: '.25rem' }} fontSize='small' />
+						Reposted by {repost.user.username}
+					</Link>
+				}
 				<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
 					<Avatar sx={{ marginRight: '.5rem' }} />
 					<Box sx={{ display: 'flex', flexDirection: 'column'}}>

@@ -1,6 +1,6 @@
 import './posts-column.scss'
 import React, { useEffect, useState } from 'react'
-import { Grid, Paper, Typography, useTheme } from '@mui/material'
+import { Grid, Paper, Stack, Typography, useTheme } from '@mui/material'
 import { fetchPosts, fetchReposts } from '../../actions/post_actions';
 import LoadingMessage from '../util/loading/loading-screen';
 import CreatePost from './create-post';
@@ -56,13 +56,15 @@ const PostsTimeline = () => {
 	return (
 		<>
 			<Grid item xs={6}>
-				<Paper elevation={2}>
-					<SectionHeading variant='h5' content='Home'/>
-					<CreatePost/>
+				<Stack spacing={2}>
+					<Paper elevation={2}>
+						<SectionHeading variant='h5' content='Home'/>
+						<CreatePost/>
+					</Paper>
 					{allPosts.map((item, idx) => {
 						if (item.post) {
 							return (
-								<RepostContainer post={item} idx={idx} />
+								<PostContainer repost={item} post={item.post} idx={idx} />
 							) 
 						} else {
 							return (
@@ -70,12 +72,12 @@ const PostsTimeline = () => {
 							)
 						}
 					})}
-					<ScrollToTopOnLoad/>
-				</Paper>
+				</Stack>
 			</Grid>
 			<Grid item xs>
 				<HomeFixturesColumn/>
 			</Grid>
+			<ScrollToTopOnLoad/>
 		</>
 	)
 }
