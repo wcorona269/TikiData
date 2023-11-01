@@ -5,6 +5,7 @@ import { fetchStandings } from '../../../actions/standings_actions';
 import { useNavigate } from 'react-router-dom';
 import LoadingMessage from '../../util/loading/loading-screen';
 import SectionHeading from '../../util/section-heading';
+import NoDataMessage from '../../util/no-data/no-data-message';
 
 const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 	const dispatch = useDispatch();
@@ -15,7 +16,6 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 	const standings = useSelector(state => state.standings?.standings?.[0]);
 	const standings_data = standings?.league?.standings || [];
 	const league_logo = standings?.league?.logo;
-	const league_name = standings?.league?.name;
 
 
 	useEffect(() => {
@@ -25,6 +25,7 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 	useEffect(() => {}, [isLoading])
 
 	const displayTable = (standings, group=false) => {
+		if (!standings.length) return <NoDataMessage/>
 		let result = []; 
 		let thead = [];
 		let tbody = [];
@@ -63,7 +64,7 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 					</TableCell>
 				</TableRow>
 			)
-
+			
 			standings.map((ele, idx) => {
 				let isPlayingTeam = ele['team']['name'] === homeTeam || ele['team']['name'] === awayTeam;
 
@@ -115,6 +116,7 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 
 	return (
 		<Paper elevation={2}>
+			<SectionHeading variant='h6' content={`Standings`} img={league_logo}/>
 			{ isLoading ?
 				<Box sx={{ height: '20rem', width: '100%', display: 'flex', alignItems: 'center' }}>
 					<CircularProgress
@@ -122,7 +124,6 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 					/>
 				</Box> :
 				<>
-					<SectionHeading variant='h6' content={`Standings`} img={league_logo}/>
 					{displayTable(standings_data)}
 				</>
 			}

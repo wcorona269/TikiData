@@ -51,7 +51,7 @@ const MatchOverview = () => {
 		<>
 			<Grid item xs={6}>
 				<Paper>
-					<SectionHeading variant='h5' content='Match Summary' />
+					<SectionHeading variant='h5' content='Match Summary' back={true} />
 					<Stack spacing={2} sx={{marginTop: 1}}>
 						<MatchOverviewHeader match={match[0]}/>
 						<MatchStats match={match[0]} header={header} />
@@ -63,7 +63,7 @@ const MatchOverview = () => {
 			<Grid item xs={3} sx={{ position: 'sticky', top: '1rem' }}>
 				<Stack spacing={2}>
 					<MatchInfoTable match={match[0]} />
-					{/* <MiniLeagueTable match={match[0]} homeTeam={homeTeam} awayTeam={awayTeam} /> */}
+					<MiniLeagueTable match={match[0]} homeTeam={homeTeam} awayTeam={awayTeam} />
 				</Stack>
 			</Grid>
 		</>

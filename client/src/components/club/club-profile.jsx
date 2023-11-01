@@ -51,7 +51,7 @@ const ClubProfile = () => {
 	return (
 		<Grid item xs={9}>
 			<Paper>
-				<SectionHeading variant='h5' content={name} img={logo} />
+				<SectionHeading variant='h5' content={name} img={logo} back={true} />
 				<ClubProfileNavBar club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
 				{ selectedTab === 0 && <ClubHomeDashboard name={name} logo={logo} club={club} fixtures={fixtures} squad={squad} news={news} /> }
 				{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures} name={name} logo={logo} /> }
