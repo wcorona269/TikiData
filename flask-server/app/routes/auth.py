@@ -33,13 +33,15 @@ def login():
   password = data.get('password')
   
   status, message = User.login_user(email, password)
-  if status:
+  if status == True:
     token = jwt.encode({'email': email, 'username': message['username'], 'id': message['id'], 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=6)}, Config.SECRET_KEY, algorithm='HS256')
     response = make_response(jsonify({'message': 'Login successful'}))
     response.set_cookie('access_token', token, httponly=True, secure=True)
     return response, 200
   else:
-    return jsonify(message)
+    return jsonify({
+      'message': 'Login attempt failed'
+    }), 401
 
 @bp.route('/logout', methods=['POST'])
 def logout():

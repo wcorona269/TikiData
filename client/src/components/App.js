@@ -44,16 +44,8 @@ getConfig();
 
 function App() {
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.session.user);
-  const isLoading = useSelector(state => state.session.isLoading);
   const [lightMode, setLightMode] = useState(false);
-  
-  useEffect(() => {}, [currentUser])
-  useEffect(() => { dispatch(fetchCurrentUser()) }, []);
 
-  if (isLoading) {
-    return null;
-  }
 
   const theme = createTheme({
     palette: {
@@ -84,9 +76,7 @@ function App() {
         <NavBar lightMode={lightMode} setLightMode={setLightMode} />
         <Container sx={{paddingTop: '6rem'}} fixed >
           <Routes>
-            <Route path='/'
-            element={<ProtectedRoute currentUser={currentUser} />}
-            >
+            <Route path='/' element={<ProtectedRoute/>} >
               <Route path='/home' element={<PostsTimeline/>} />
               <Route path='/notifications' element={<Notifications/>} />
               <Route path='/matches' element={<MatchesTimeline/>} />
@@ -100,8 +90,8 @@ function App() {
               <Route path='/post/:id' element={<PostShowPage/>}/>
               <Route path='/edit-profile/:username' element={<UserUpdatePage/>}/>
             </Route>
-              <Route exact path='/welcome' element={<Welcome />} />
-            </Routes>
+            <Route exact path='/welcome' element={<Welcome />} />
+          </Routes>
         </Container>
       </Paper>
       <Footer/>

@@ -76,12 +76,15 @@ export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
 export const fetchCurrentUser = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_USER_REQUEST });
-		axios.get(`/protected`)
+		return axios
+			.get(`/protected`)
 			.then((response) => {
 				dispatch({ type: FETCH_USER_SUCCESS, payload: response.data });
+				return response.data; // Return user data if needed
 			})
 			.catch((error) => {
 				dispatch({ type: FETCH_USER_FAILURE, payload: error.message });
+				throw error; // Throw error to handle it in the component
 			});
 	};
 };

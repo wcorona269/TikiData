@@ -14,9 +14,11 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 	const leagueId = match?.league?.id;
 	const isLoading = useSelector(state => state.standings.isLoading);
 	const standings = useSelector(state => state.standings?.standings?.[0]);
+	// debugger;
 	const standings_data = standings?.league?.standings || [];
 	const league_logo = standings?.league?.logo;
-
+	const league_name = standings?.league?.name || '';
+	
 
 	useEffect(() => {
 		dispatch(fetchStandings(leagueId))
@@ -25,7 +27,13 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 	useEffect(() => {}, [isLoading])
 
 	const displayTable = (standings, group=false) => {
-		if (!standings.length) return <NoDataMessage/>
+		if (!standings.length) {
+			return (
+				<Box sx={{p: 2}}>
+					<NoDataMessage/>
+				</Box>
+			)
+		}
 		let result = []; 
 		let thead = [];
 		let tbody = [];
@@ -116,7 +124,7 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 
 	return (
 		<Paper elevation={2}>
-			<SectionHeading variant='h6' content={`Standings`} img={league_logo}/>
+			<SectionHeading variant='subtitle1' content={`${league_name} Standings`} img={league_logo}/>
 			{ isLoading ?
 				<Box sx={{ height: '20rem', width: '100%', display: 'flex', alignItems: 'center' }}>
 					<CircularProgress

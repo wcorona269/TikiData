@@ -75,12 +75,12 @@ class User(UserMixin, db.Model):
 	@staticmethod
 	def login_user(email, password):
 		if not email or not password:
-			return False
+			return False, None
 
 		user = User.query.filter_by(email=email).first()
     
 		if not user or not user.check_password(password):
-			return False, {'message': 'Login attempt failed'}
+			return False, None
 		else:
 			user_data = {
 				'id': user.id,
