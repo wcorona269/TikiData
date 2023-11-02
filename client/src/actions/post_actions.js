@@ -8,7 +8,7 @@ export const FETCH_ALL_POSTS_FAILURE = 'FETCH_ALL_POSTS_FAILURE'
 export const fetchPosts = (page = 1, perPage = 10) => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_ALL_POSTS_REQUEST });
-		return axios.get(`/posts/fetch/all?page=${page}&per_page=${perPage}`)
+		return axios.get(`/posts/index?page=${page}&per_page=${perPage}`)
 			.then((response) => {
 				dispatch({ type: FETCH_ALL_POSTS_SUCCESS, payload: response.data })
 			})

@@ -7,27 +7,23 @@ import CreatePost from './create-post';
 import PostContainer from './post-container';
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { useDispatch, useSelector } from 'react-redux';
-import RepostContainer from './repost-container';
-import HomeFixturesComponent from '../league/home/league-home-fixtures';
 import HomeFixturesColumn from './home-fixtures-column';
 import SectionHeading from '../util/section-heading';
-
-const PAGE_SIZE = 20;
 
 const PostsTimeline = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();
 	const posts = useSelector(state => state.posts?.posts || []);
-	const isLoading = useSelector(state => state.posts.isLoading);
-	const current_page = useSelector(state => state.posts?.current_page)
-	const reposts = useSelector(state => state.reposts?.reposts?.[0] || []);
+	const current_page = useSelector(state => state.posts?.current_page);
+	const isPostsLoading = useSelector(state => state.posts.isLoading);
+	const isRepostsLoading = useSelector(state => state.reposts.isLoading);
+	const reposts = useSelector(state => state.reposts?.reposts || []);
 	const [combinedPosts, setCombinedPosts] = useState();
-	const [isLoadingMore, setIsLoadingMore] = useState(false)
 
 	useEffect(() => {
 		dispatch(fetchPosts())
 		dispatch(fetchReposts())
-	}, [])
+	}, []);
 
 	useEffect(() => {
 		let result = [];
@@ -36,7 +32,7 @@ const PostsTimeline = () => {
 		let j = 0;
 
 		while (i < posts.length && j < reposts.length) {
-			if (posts[i].created_at > reposts[j].created_at) {
+			if (i === j) {
 				result.push(posts[i])
 				i++
 			} else {
@@ -45,7 +41,7 @@ const PostsTimeline = () => {
 			}
 		}
 
-		let remainingPosts = posts.slice(i) || [];
+		let remainingPosts = posts?.slice(i) || [];
 		let remainingReposts = reposts?.slice(j) || [];
 		result.push(...remainingPosts);
 		result.push(...remainingReposts);
@@ -54,11 +50,8 @@ const PostsTimeline = () => {
 	}, [posts, reposts]);
 
 	const loadMorePosts = () => {
-		setIsLoadingMore(true)
 		dispatch(fetchPosts(current_page + 1));
-		setTimeout(() => {
-			setIsLoadingMore(false)
-		}, 2000);
+		dispatch(fetchReposts(current_page + 1));
 	};
 
 	if (!combinedPosts) {
@@ -85,7 +78,7 @@ const PostsTimeline = () => {
 						}
 					})}
 					{
-						!isLoadingMore ?
+						!isPostsLoading && !isRepostsLoading ?
 							<Button onClick={loadMorePosts} variant="outlined" sx={{ height: '3rem', width: '100%' }}>
 								<Typography variant='subtitle1'>
 									See More
@@ -97,7 +90,7 @@ const PostsTimeline = () => {
 					}
 				</Stack>
 			</Grid>
-			<Grid item xs>
+			<Grid item xs={3} sx={{ position: 'sticky', top: '3rem' }}>
 				<HomeFixturesColumn/>
 			</Grid>
 			<ScrollToTopOnLoad/>

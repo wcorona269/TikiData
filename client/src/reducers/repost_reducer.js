@@ -6,7 +6,8 @@ import {
 
 const initialState = {
 	isLoading: false,
-	error: null
+	error: null,
+	reposts: []
 }
 
 const repostsReducer = (state = initialState, action) => {
@@ -14,7 +15,11 @@ const repostsReducer = (state = initialState, action) => {
 		case FETCH_ALL_REPOSTS_REQUEST:
 			return { ...state, isLoading: true, error: null };
 		case FETCH_ALL_REPOSTS_SUCCESS:
-			return { ...state, isLoading: false, error: null, reposts: action.payload['reposts'] };
+			return { ...state, 
+				isLoading: false, 
+				error: null, 
+				reposts: [...state['reposts'], ...action.payload['reposts']], // Concatenate old and new posts
+			};
 		case FETCH_ALL_REPOSTS_FAILURE:
 			return { ...state, isLoading: false, error: action.payload, reposts: null }
 		default:

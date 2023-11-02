@@ -61,10 +61,10 @@ def fetch_user_posts(userId):
 		'posts': posts_data
 	}), 200
 
-@bp.route('/fetch/all')
+@bp.route('/index')
 def fetch_all_posts():
   page = request.args.get('page', 1, type=int)
-  per_page = request.args.get('per_page', 15, type=int)
+  per_page = request.args.get('per_page', 10, type=int)
   
   posts = Post.query.order_by(Post.created_at.desc()).paginate(
       page=page, per_page=per_page, error_out=False

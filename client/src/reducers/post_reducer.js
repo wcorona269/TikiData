@@ -13,8 +13,12 @@ import {
 
 const initialState = {
 	isLoading: false,
-	error: null
-}
+	error: null,
+	posts: [], 
+	total_pages: 1,
+	current_page: 1, 
+	total_posts: 0
+};
 
 const postsReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -25,7 +29,7 @@ const postsReducer = (state = initialState, action) => {
 			return { ...state, 
 				isLoading: false, 
 				error: null, 
-				posts: action.payload['posts'],
+				posts: [...state['posts'], ...action.payload['posts']], // Concatenate old and new posts
 				total_pages: action.payload['total_pages'],
 				current_page: action.payload['current_page'],
 				total_posts: action.payload['total_posts'],
