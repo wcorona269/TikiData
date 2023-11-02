@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createLike, deleteLike, fetchPosts } from '../../actions/post_actions';
 import { createNotification } from '../../actions/notification_actions';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 const CommentContainer = ({ comment, idx }) => {
 	const dispatch = useDispatch();
@@ -58,18 +59,21 @@ const CommentContainer = ({ comment, idx }) => {
 						<Avatar />
 					</Grid>
 					<Grid item xs sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column', alignItems: 'left', paddingLeft: '.5rem !important'}}>
-						<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left' }}>
+						<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 							<Link underline='hover' onClick={() => navigate(`/user/${comment.username}`)} >
 								<Typography variant='body2' sx={{ marginBottom: '.25rem', fontFamily: theme.typography.bold }}>
 									{comment.username}
 								</Typography>
 							</Link>
-							</Box>
-							<Box onDoubleClick={() => handleLike()} sx={{ padding: '.5rem', paddingTop: 0, paddingLeft: 0, width: '95%' }} >
-								<Typography variant='body2'>
-									{comment.text}
-								</Typography>
-							</Box>
+							<Typography variant='caption' sx={{ color: theme.palette.text.disabled, marginLeft: 1 }} >
+								{moment(comment.created_at).fromNow()}
+							</Typography>
+						</Box>
+						<Box onDoubleClick={() => handleLike()} sx={{ padding: '.5rem', paddingTop: 0, paddingLeft: 0, width: '95%' }} >
+							<Typography variant='body2'>
+								{comment.text}
+							</Typography>
+						</Box>
 					</Grid>
 					<Grid item xs='auto'>
 						<Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: theme.palette.text.secondary }}>

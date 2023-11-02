@@ -42,7 +42,7 @@ const LiveFixturesDisplay = ({ matches }) => {
 		return (
 			<ListItem disablePadding divider key={fixture.fixture.id}>
 				<ListItemButton onClick={() => handleClick(fixture.fixture.id)} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '6rem', justifyContent: 'space-around'}}>
-					<Typography variant='caption' sx={{color: theme.palette.grey['700'], width: '100%', textAlign: 'left', display: 'flex', alignItems: 'center' }}>
+					<Typography variant='caption' sx={{color: theme.palette.text.disabled, width: '100%', textAlign: 'left', display: 'flex', alignItems: 'center' }}>
 						<img src={fixture.league.flag} style={{ height: '.75rem', marginRight: '.25rem' }} />
 						{fixture.league.name}
 					</Typography>

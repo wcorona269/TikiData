@@ -89,7 +89,7 @@ const PlayerStats = ({statistics}) => {
 	}
 
 	return (
-		<Paper elevation={2} >
+		<Paper elevation={1} >
 			<SectionHeading variant='h6' content='Player Statistics' />
 			<Table >
 				<TableHead sx={{ backgroundColor: theme.palette.action.hover }}>

@@ -22,7 +22,14 @@ const postsReducer = (state = initialState, action) => {
 		case FETCH_POST_REQUEST:
 			return { ...state, isLoading: true, error: null };
 		case FETCH_ALL_POSTS_SUCCESS:
-			return { ...state, isLoading: false, error: null, posts: action.payload['posts'] };
+			return { ...state, 
+				isLoading: false, 
+				error: null, 
+				posts: action.payload['posts'],
+				total_pages: action.payload['total_pages'],
+				current_page: action.payload['current_page'],
+				total_posts: action.payload['total_posts'],
+			};
 		case FETCH_ALL_POSTS_FAILURE:
 			return { ...state, isLoading: false, error: action.payload, posts: null };
 		case FETCH_USER_POSTS_REQUEST:

@@ -31,7 +31,7 @@ const ClubProfile = () => {
 
 	useEffect(() => {
 		let formattedSeason = season.split('/')[0]
-		dispatch(fetchClub(id, formattedSeason))
+		dispatch(fetchClub(id, formattedSeason));
 	}, [season]);
 
 	if (isLoading || !club) {

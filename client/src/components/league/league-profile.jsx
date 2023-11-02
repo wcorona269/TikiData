@@ -41,6 +41,7 @@ const LeagueProfile = () => {
 	}, [season]);
 
 	useEffect(() => {
+		window.scrollTo(0, 0)
 	}, [isLoading]);
 
 	const handleChange = (newValue) => {
@@ -65,31 +66,31 @@ const LeagueProfile = () => {
 
 	return (
 		<Grid item xs={9}>
-			<Paper>
-				<SectionHeading variant='h5' content={name} img={logo} back={true} />
-				<Box>
-					<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-						<Tabs value={selectedTab}>
-							<Tab label='Home' onClick={() => handleChange(0)} />
-							<Tab label='Table' onClick={() => handleChange(1)} />
-							<Tab label='Stats' onClick={() => handleChange(2)} />
-							<Tab label='Fixtures' onClick={() => handleChange(3)} />
-						</Tabs>
-						<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: '1rem' }} >
-							<img style={{ height: '2rem', width: '2rem', marginRight: '.5rem' }} src={logo} alt='' />
-							<Typography variant='subtitle1'>{name}</Typography>
-							<Divider orientation="vertical" sx={{py: 3, mx: 2}}/>
-							<Typography variant='subtitle1' sx={{color: theme.palette.text.disabled }} >{country}</Typography>
-							<img src={flag} style={{ height: '2rem', width: '2rem', marginLeft: '.5rem' }} />
+			<Box>
+				<Paper elevation={1}>
+					<SectionHeading variant='h5' content={name} img={logo} back={true} />
+						<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+							<Tabs value={selectedTab}>
+								<Tab label='Home' onClick={() => handleChange(0)} />
+								<Tab label='Fixtures' onClick={() => handleChange(1)} />
+								<Tab label='Table' onClick={() => handleChange(2)} />
+								<Tab label='Stats' onClick={() => handleChange(3)} />
+							</Tabs>
+							<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: '1rem' }} >
+								<img style={{ height: '2rem', width: '2rem', marginRight: '.5rem' }} src={logo} alt='' />
+								<Typography variant='subtitle1'>{name}</Typography>
+								<Divider orientation="vertical" sx={{py: 3, mx: 2}}/>
+								<Typography variant='subtitle1' sx={{color: theme.palette.text.disabled }} >{country}</Typography>
+								<img src={flag} style={{ height: '2rem', width: '2rem', marginLeft: '.5rem' }} />
+							</Box>
 						</Box>
-					</Box>
-					<Divider/>
-					{selectedTab === 0 && <LeagueHomeDashboard name={name} logo={logo} news={news} fixtures={fixtures} uniqueDates={uniqueDates} table={table} top_scorers={top_scorers} />}
-					{selectedTab === 1 && <LeagueTableDashboard name={name} logo={logo} table={table}  />}
-					{selectedTab === 2 && <LeagueStatsDashboard name={name} logo={logo} top_scorers={top_scorers} top_assists={top_assists} />}
-					{selectedTab === 3 && <LeagueFixturesDashboard name={name} logo={logo} fixtures={fixtures} uniqueDates={uniqueDates} />}
-				</Box>
-			</Paper>
+						<Divider/>
+				</Paper>
+				{selectedTab === 0 && <LeagueHomeDashboard name={name} logo={logo} news={news} fixtures={fixtures} uniqueDates={uniqueDates} table={table} top_scorers={top_scorers} />}
+				{selectedTab === 1 && <LeagueFixturesDashboard name={name} logo={logo} fixtures={fixtures} uniqueDates={uniqueDates} />}
+				{selectedTab === 2 && <LeagueTableDashboard name={name} logo={logo} table={table}  />}
+				{selectedTab === 3 && <LeagueStatsDashboard name={name} logo={logo} top_scorers={top_scorers} top_assists={top_assists} />}
+			</Box>
 		<ScrollToTopOnLoad/>
 		</Grid>
 	)

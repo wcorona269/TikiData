@@ -3,13 +3,11 @@ import MatchTimelineTable from './match-timeline-table';
 import TimelineSelect from '../nav-bar/timeline-select';
 import { Box, Typography, Tabs,Tab, Paper, List, Stack } from '@mui/material';
 import dayjs from 'dayjs';
-
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import monthsOfYear from '../../club/monthsOfYear';
 import SectionHeading from '../../util/section-heading';
-import ScrollToTopOnLoad from '../../util/scroll-to-top-on-load';
 
 export const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -55,7 +53,7 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 
 	return (
 		<Box>
-			<Paper elevation={2} 
+			<Paper elevation={1} 
 				sx={{ position: 'sticky', top: '0', display: 'flex', flexDirection: 'column', zIndex: '100'}}
 			>
 				<SectionHeading variant='h5' content='Matches' />
@@ -90,7 +88,6 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 			<Stack spacing={2} sx={{paddingTop: 2}}>
 				{displayMatchesList()}
 			</Stack>
-			<ScrollToTopOnLoad/>
 		</Box>
 	)
 }

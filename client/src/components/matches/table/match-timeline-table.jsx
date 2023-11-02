@@ -94,7 +94,7 @@ const MatchTimelineTable = ({nation, matches}) => {
 		}
 			
 		return (
-			<Paper elevation={2}>
+			<Paper elevation={1}>
 				<SectionHeading variant='h6' img={flag} content={nation} />
 				<TableContainer size='small'>
 					<Table size='small' aria-label='a dense table'>

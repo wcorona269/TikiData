@@ -55,7 +55,7 @@ const Lineups = ({ lineups, header }) => {
 	})
 
 	return (
-		<Paper elevation={2} >
+		<Paper elevation={1} >
 			<SectionHeading variant='h6' content='Lineups' />
 			{
 				!lineups.length ? <NoDataMessage/> :

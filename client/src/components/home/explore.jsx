@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chip from '@mui/material/Chip';
 import leaguesByCountry from './leagues/leaguesByCountry';
-import { Container, useTheme, Grid, Link } from '@mui/material';
+import { Container, useTheme, Grid, Link, Stack } from '@mui/material';
 import Flag from 'react-world-flags';
 import { styled } from '@mui/material/styles';
 import { Box, Table, TableCell, TableHead, TableRow, Paper, Typography, TableContainer, TableBody } from '@mui/material';
@@ -41,34 +41,36 @@ const Explore = () =>  {
 	const navigate = useNavigate();
 	const theme = useTheme();
 
+	useEffect(() => { window.scrollTo(0,0) }, [])
+
 	const displayTableRow = (country, idx) => {
 		const [name, info] = country;
 		const result = [
-			<StyledTableCell sx={{display: 'flex', alignItems: 'center'}}><Flag code={info['countryCode']} height='14' width='20' style={{marginRight: '.25rem'}} />{name} </StyledTableCell>
+			<TableCell sx={{display: 'flex', alignItems: 'center'}}><Flag code={info['countryCode']} height='14' width='20' style={{marginRight: '.25rem'}} />{name} </TableCell>
 		];
 
 		{
 			Object.entries(info['leagues']).map(([league, id]) => {
 				result.push(
-					<StyledTableCell>
-						<Link underline='hover' onClick={() => navigate(`/league/${id}`)} >
+					<TableCell>
+						<Link underline='hover' onClick={() => navigate(`/league/${id}`)} sx={{ color: theme.palette.secondary.main }} >
 							{league}
 						</Link>
-					</StyledTableCell>
+					</TableCell>
 				)
 			})
 		}
 
 		while (result.length < 4) {
 			result.push(
-				<StyledTableCell>-</StyledTableCell>
+				<TableCell>-</TableCell>
 			)
 		}
 
 		return (
-			<StyledTableRow>
+			<TableRow>
 				{result}
-			</StyledTableRow>
+			</TableRow>
 		)
 	}
 
@@ -94,15 +96,12 @@ const Explore = () =>  {
 			let [name, id] = league;
 
 			result.push(
-				<Chip onClick={() => handleChipClick(id)} label={name} sx={{backgroundColor: theme.palette.primary.light }}/>
+				<Chip onClick={() => handleChipClick(id)} label={name} sx={{backgroundColor: theme.palette.secondary.main, fontFamily: theme.typography.bold, color: theme.palette.text.primary }}/>
 			)
 		});
 
 		return (
 			<Container sx={{display: 'flex', flexDirection: 'column', padding: '1rem', gap: '1rem'}}> 
-				<Typography variant='subtitle1' sx={{display: 'flex', alignItems: 'center'}}>
-					Top Leagues
-				</Typography>
 				<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem'}}>
 					{result}
 				</Box>
@@ -111,30 +110,39 @@ const Explore = () =>  {
 	}
 
 	return (
-		<Grid item xs>
-			<Paper elevation={2}>
-				<SectionHeading variant='h5' content='Explore' />
-				<Box sx={{display: 'flex', flexDirection: 'column'}}>
-					{listTopLeagues()}
-				<TableContainer component={Paper}>
-					<Table sx={{ minWidth: 700 }} aria-label="customized table">
-						<TableHead>
-							<TableRow>
-								<StyledTableCell>Nation</StyledTableCell>
-								<StyledTableCell align="left">1st Division</StyledTableCell>
-								<StyledTableCell align="left">2nd Division</StyledTableCell>
-								<StyledTableCell align="left">3rd Division</StyledTableCell>
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{Object.entries(sortedLeaguesByCountry).map((country, idx) => (
-								displayTableRow(country, idx)
-							))}
-						</TableBody>
-					</Table>
-				</TableContainer>
-				</Box>
-			</Paper>
+		<Grid item xs={9}>
+			<Box>
+				<Paper elevation={1}>
+					<SectionHeading variant='h5' content='Explore' />
+				</Paper>
+				<Stack spacing={2}>
+					<Paper elevation={1}>
+						<SectionHeading variant='h6' content='Top Leagues' />
+						{listTopLeagues()}
+					</Paper>
+					<Paper elevation={1}>
+						<SectionHeading variant='h6' content='All Leagues' />
+						<TableContainer component={Paper}>
+							<Table sx={{ minWidth: 700 }} size='small' >
+								<TableHead>
+									<TableRow sx={{backgroundColor: theme.palette.action.hover }}>
+										<TableCell>Nation</TableCell>
+										<TableCell align="left">1st Division</TableCell>
+										<TableCell align="left">2nd Division</TableCell>
+										<TableCell align="left">3rd Division</TableCell>
+									</TableRow>
+								</TableHead>
+								<TableBody>
+									{Object.entries(sortedLeaguesByCountry).map((country, idx) => (
+										displayTableRow(country, idx)
+									))}
+								</TableBody>
+							</Table>
+						</TableContainer>
+					</Paper>
+
+				</Stack>
+			</Box>
 		</Grid>
 	);
 }

@@ -69,7 +69,7 @@ const MultiTableDashboard = ({ standings, name, logo }) => {
 	}
 
 	return (
-		<Paper elevation={2} sx={{marginTop: 2}}>
+		<Paper elevation={1} sx={{marginTop: 2}}>
 			<SectionHeading variant='h6' content={`${name} Standings`} img={logo} />
 			<Box sx={{padding: 2}}>
 				{standings.map((group, idx) => (

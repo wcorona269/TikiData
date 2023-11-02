@@ -7,7 +7,7 @@ const RepostContainer = ({post, idx}) => {
 	const theme = useTheme()
 
 	return (
-		<Paper elevation={2} key={idx} style={{paddingTop: '1rem'}}>
+		<Paper elevation={1} key={idx} style={{paddingTop: '1rem'}}>
 			<Typography sx={{marginLeft: '1rem', color: theme.palette.grey['500'], display: 'flex', alignItems: 'center' }} variant='caption'>
 				<RepeatIcon sx={{ marginRight: '.25rem' }} fontSize='small' />
 				Reposted by {post.user.username}

@@ -22,7 +22,7 @@ const LeagueFixturesDashboard = ({fixtures, uniqueDates}) => {
 	const leagueLogo = fixtures[0].league.logo
 
 	return (
-		<Paper elevation={2} sx={{ marginTop: '1rem', mx: 'auto', marginTop: '1rem' }}>
+		<Paper elevation={1} sx={{ marginTop: '1rem', mx: 'auto', marginTop: '1rem' }}>
 			<SectionHeading variant='h6' img={leagueLogo} content={`${leagueName} Fixtures`} />
 			<FixtureNavBar selectedDate={selectedDate} dates={uniqueDates} handleChange={handleChange} setSelectedDate={setSelectedDate}/>
 			<FixturesDisplay fixtures={fixtures} selectedDate={selectedDate} uniqueDates={uniqueDates}/>

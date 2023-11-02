@@ -5,10 +5,10 @@ export const FETCH_ALL_POSTS_REQUEST = 'FETCH_ALL_POSTS_REQUEST'
 export const FETCH_ALL_POSTS_SUCCESS = 'FETCH_ALL_POSTS_SUCCESS'
 export const FETCH_ALL_POSTS_FAILURE = 'FETCH_ALL_POSTS_FAILURE'
 
-export const fetchPosts = () => {
+export const fetchPosts = (page = 1, perPage = 10) => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_ALL_POSTS_REQUEST });
-		return axios.get('/posts/fetch/all')
+		return axios.get(`/posts/fetch/all?page=${page}&per_page=${perPage}`)
 			.then((response) => {
 				dispatch({ type: FETCH_ALL_POSTS_SUCCESS, payload: response.data })
 			})
@@ -17,6 +17,7 @@ export const fetchPosts = () => {
 			})
 	}
 }
+
 
 // fetch individual post
 export const FETCH_POST_REQUEST = 'FETCH_POST_REQUEST'
@@ -55,6 +56,7 @@ export const fetchUserPosts = (userId) => {
 	}
 }
 
+
 // create post
 export const CREATE_POST_REQUEST = 'CREATE_POST_REQUEST';
 export const CREATE_POST_FAILURE = 'CREATE_POST_FAILURE';
@@ -92,6 +94,7 @@ export const createLike = (likeData) => {
 	};
 }
 
+
 // remove post like
 export const DELETE_LIKE_REQUEST = 'DELETE_LIKE_REQUEST'
 export const DELETE_LIKE_SUCCESS = 'DELETE_LIKE_SUCCESS'
@@ -114,6 +117,7 @@ export const deleteLike = (likeData) => {
 			});
 	};
 }
+
 
 // create repost
 export const CREATE_REPOST_REQUEST = 'CREATE_REPOST_REQUEST'
@@ -160,10 +164,10 @@ export const FETCH_ALL_REPOSTS_REQUEST = 'FETCH_ALL_REPOSTS_REQUEST';
 export const FETCH_ALL_REPOSTS_SUCCESS = 'FETCH_ALL_REPOSTS_SUCCESS';
 export const FETCH_ALL_REPOSTS_FAILURE = 'FETCH_ALL_REPOSTS_FAILURE';
 
-export const fetchReposts = () => {
+export const fetchReposts = (page = 1, perPage = 10) => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_ALL_REPOSTS_REQUEST });
-		return axios.get('/reposts/index')
+		return axios.get(`/reposts/index?page=${page}&per_page=${perPage}`)
 			.then((response) => {
 				dispatch({ type: FETCH_ALL_REPOSTS_SUCCESS, payload: response.data })
 			})

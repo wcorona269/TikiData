@@ -1,6 +1,6 @@
 import './posts-column.scss'
 import React, { useEffect, useState } from 'react'
-import { Grid, Paper, Stack, Typography, useTheme } from '@mui/material'
+import { Button, Grid, Paper, Stack, Typography, useTheme, CircularProgress } from '@mui/material'
 import { fetchPosts, fetchReposts } from '../../actions/post_actions';
 import LoadingMessage from '../util/loading/loading-screen';
 import CreatePost from './create-post';
@@ -12,13 +12,17 @@ import HomeFixturesComponent from '../league/home/league-home-fixtures';
 import HomeFixturesColumn from './home-fixtures-column';
 import SectionHeading from '../util/section-heading';
 
+const PAGE_SIZE = 20;
 
 const PostsTimeline = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();
 	const posts = useSelector(state => state.posts?.posts || []);
+	const isLoading = useSelector(state => state.posts.isLoading);
+	const current_page = useSelector(state => state.posts?.current_page)
 	const reposts = useSelector(state => state.reposts?.reposts?.[0] || []);
-	const [allPosts, setAllPosts] = useState();
+	const [combinedPosts, setCombinedPosts] = useState();
+	const [isLoadingMore, setIsLoadingMore] = useState(false)
 
 	useEffect(() => {
 		dispatch(fetchPosts())
@@ -46,10 +50,18 @@ const PostsTimeline = () => {
 		result.push(...remainingPosts);
 		result.push(...remainingReposts);
 
-		setAllPosts(result);
-	}, [posts, reposts])
+		setCombinedPosts(result);
+	}, [posts, reposts]);
 
-	if (!allPosts) {
+	const loadMorePosts = () => {
+		setIsLoadingMore(true)
+		dispatch(fetchPosts(current_page + 1));
+		setTimeout(() => {
+			setIsLoadingMore(false)
+		}, 2000);
+	};
+
+	if (!combinedPosts) {
 		return <LoadingMessage/>
 	}
 
@@ -57,11 +69,11 @@ const PostsTimeline = () => {
 		<>
 			<Grid item xs={6}>
 				<Stack spacing={2}>
-					<Paper elevation={2}>
+					<Paper elevation={1}>
 						<SectionHeading variant='h5' content='Home'/>
 						<CreatePost/>
 					</Paper>
-					{allPosts.map((item, idx) => {
+					{combinedPosts.map((item, idx) => {
 						if (item.post) {
 							return (
 								<PostContainer repost={item} post={item.post} idx={idx} />
@@ -72,6 +84,17 @@ const PostsTimeline = () => {
 							)
 						}
 					})}
+					{
+						!isLoadingMore ?
+							<Button onClick={loadMorePosts} variant="outlined" sx={{ height: '3rem', width: '100%' }}>
+								<Typography variant='subtitle1'>
+									See More
+								</Typography>
+							</Button> :
+							<Button variant="outlined" sx={{ height: '3rem', width: '100%' }} >
+								<CircularProgress size='2rem' />
+							</Button>
+					}
 				</Stack>
 			</Grid>
 			<Grid item xs>

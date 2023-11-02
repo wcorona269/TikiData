@@ -29,7 +29,7 @@ const LeagueHomeNews = ({ name, logo, news }) => {
 		<Paper
 			className='home-paper'
 			id='league-home-news'
-			elevation={2}
+			elevation={1}
 		>
 			<SectionHeading variant='h6' content={`${name} News`} img={logo} />
 			<List>

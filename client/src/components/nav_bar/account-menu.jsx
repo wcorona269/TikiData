@@ -17,6 +17,8 @@ import { Switch } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../actions/session_actions';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 const AccountMenu = ({ lightMode, setLightMode }) => {
 	const navigate = useNavigate();
@@ -42,7 +44,7 @@ const AccountMenu = ({ lightMode, setLightMode }) => {
 
 	return (
 		<>
-			<Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+			<Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'right' }}>
 				<Typography sx={{ minWidth: 100 }}>{username}</Typography>
 				<Tooltip title="Account settings">
 					<IconButton
@@ -91,13 +93,13 @@ const AccountMenu = ({ lightMode, setLightMode }) => {
 				transformOrigin={{ horizontal: 'right', vertical: 'top' }}
 				anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 			>
-				<MenuItem sx={{ paddingLeft: 0 }} >
-					<Switch defaultChecked color="default" onChange={() => setLightMode(!lightMode)} />
-					{
-						lightMode ? 'Mode: Light' : 'Mode: Dark'
-					}
+				<MenuItem sx={{ paddingLeft: 1, display: 'flex', flexDirection: 'row', alignItems: 'center' }} onClick={() => setLightMode(!lightMode)} >
+					{ lightMode ? <LightModeIcon sx={{ padding: 1, margin: 'auto' }} size='small'/> : 
+						<DarkModeIcon size='small' sx={{ padding: 1, margin: 'auto' }} /> }
+					<Box>
+						{ lightMode ? 'Light Mode' : 'Night Mode' }
+					</Box>
 				</MenuItem>
-				<Divider/>
 				<MenuItem onClick={handleClose} name='profile' >
 					<Avatar /> My Profile
 				</MenuItem>

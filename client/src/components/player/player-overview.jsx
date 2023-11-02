@@ -34,7 +34,7 @@ const PlayerOverview = ({player}) => {
 	]
 
 	return (
-		<Paper elevation={2}>
+		<Paper elevation={1}>
 			<SectionHeading variant='h5' content={content} />
 			<Grid container sx={{padding: 1}}>
 				<Grid item xs={4}>

@@ -46,7 +46,7 @@ const ClubSquadDashboard = ({name, logo, squad}) => {
 	}
 
 	return (
-		<Paper elevation={2} sx={{marginTop: '1rem'}}>
+		<Paper elevation={1} sx={{marginTop: '1rem'}}>
 			<SectionHeading variant='h6' content={`${name} Squad`} img={logo} />
 			<Box sx={{margin: '1rem'}}>
 				{displaySquad(squadPositions)}

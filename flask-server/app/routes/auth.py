@@ -54,6 +54,7 @@ def update_user():
     data = request.json;
     username = data.get('username')
     password = data.get('password')
+    bio = data.get('password')
     result = User.update_user(username, password)
     if result:
       return jsonify({

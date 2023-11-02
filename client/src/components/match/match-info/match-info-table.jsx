@@ -53,7 +53,7 @@ const MatchInfoTable = ({ match }) => {
 
 
 	return (
-		<Paper elevation={2}>
+		<Paper elevation={1}>
 			<SectionHeading variant='h5' content='Match Info' />
 			<TableContainer>
 				<Table size="small" aria-label="a dense table">

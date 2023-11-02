@@ -98,7 +98,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 		<Paper
 			className='home-paper'
 			id='sticky-paper'
-			elevation={2}
+			elevation={1}
 		>
 			<SectionHeading variant='h6' content='Upcoming Fixtures' />
 			<List sx={{p: 0, overflow: 'scroll'}}>

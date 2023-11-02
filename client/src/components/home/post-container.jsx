@@ -14,7 +14,7 @@ import { showModal } from '../../actions/modal_actions'
 import { useNavigate } from 'react-router-dom';
 import RepostButton from './repost-popper';
 import RepeatIcon from '@mui/icons-material/Repeat';
-// import ReactTimeAgo from 'react-time-ago'
+import moment from 'moment';
 
 const PostContainer = ({ post, repost }) => {
 	const dispatch = useDispatch();
@@ -105,7 +105,7 @@ const PostContainer = ({ post, repost }) => {
 
 	return (
 		<>
-			<Paper elevation={2} key={post.id} sx={{ padding: 2, paddingBottom: 0, borderBottom: 'none !important'}}>
+			<Paper elevation={1} key={post.id} sx={{ padding: 2, paddingBottom: 0, borderBottom: 'none !important'}}>
 				{repost &&
 					<Link onClick={() => navigate(`/user/${repost.user.username}`)} underline='hover' sx={{ color: theme.palette.grey['500'], display: 'flex', alignItems: 'center', marginBottom: 1 }} variant='caption'>
 						<RepeatIcon sx={{ marginRight: '.25rem' }} fontSize='small' />
@@ -122,10 +122,10 @@ const PostContainer = ({ post, repost }) => {
 								</Link>
 							</Typography>
 							<Typography variant='caption' sx={{ color: 'var(--darkgray)' }}>
-								{/* <ReactTimeAgo date={post.created_at} locale="en-US" /> */}
+								{moment(post.created_at).fromNow()}
 							</Typography>
 						</Box>
-						<Typography variant='body1' onClick={() => navigate(`/post/${post.id}`)}>
+						<Typography variant='body1' onClick={() => navigate(`/post/${post.id}`)} sx={{width: '100%'}} >
 							{post.text}
 						</Typography>
 					</Box>

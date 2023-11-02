@@ -9,7 +9,6 @@ class Post(db.Model):
   id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
   text = db.Column(db.String(200), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
-  parent_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
   created_at = db.Column(db.DateTime, default=datetime.utcnow)
   # relationships
   user = db.relationship('User', back_populates='posts')

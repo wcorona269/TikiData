@@ -38,7 +38,7 @@ const CreatePost = () => {
 
 	return (
 		<>
-			<Paper elevation={2} sx={{padding: 2}}>
+			<Paper elevation={1} sx={{padding: 2}}>
 				<TextField
 					sx={{width: '100%'}}
 					id="outlined-multiline-flexible"

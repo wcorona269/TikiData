@@ -100,7 +100,7 @@ const ClubStatsDashboard = ({ name, logo, stats }) => {
 
 
 	return (
-		<Paper elevation={2} sx={{marginTop: '1rem'}}>
+		<Paper elevation={1} sx={{marginTop: '1rem'}}>
 			<SectionHeading variant='h6' content={`${name} Stats`} img={logo} />
 
 			<TableContainer>

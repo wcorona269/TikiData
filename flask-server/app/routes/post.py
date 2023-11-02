@@ -63,14 +63,22 @@ def fetch_user_posts(userId):
 
 @bp.route('/fetch/all')
 def fetch_all_posts():
-  posts = Post.query.order_by(desc(Post.created_at)).all()
+  page = request.args.get('page', 1, type=int)
+  per_page = request.args.get('per_page', 15, type=int)
+  
+  posts = Post.query.order_by(Post.created_at.desc()).paginate(
+      page=page, per_page=per_page, error_out=False
+  )
 
-  if not posts:
+  if not posts.items:
     return jsonify({'message': 'no posts found'}), 404
-    
-  posts_data = [post.to_dict() for post in posts]
-
+  
+  posts_data = [post.to_dict() for post in posts.items]
+  
   return jsonify({
     'message': 'All posts retrieved successfully',
-    'posts': posts_data
+    'posts': posts_data,
+    'total_pages': posts.pages,
+    'current_page': posts.page,
+    'total_posts': posts.total
   }), 200

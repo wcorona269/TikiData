@@ -12,7 +12,7 @@ class User(UserMixin, db.Model):
 	# table columns
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(64), index=True, unique=True, nullable=False)
-	# bio = db.Column(db.String(200), default='')
+	bio = db.Column(db.String(200), default='', nullable=False)
 	email = db.Column(db.String(120), unique=True, nullable=False)
 	password_hash = db.Column(db.String(255), nullable=False)
 	created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -50,6 +50,7 @@ class User(UserMixin, db.Model):
 					'username': user.username,
 					'posts': [post.to_dict() for post in user.posts],
 					'reposts': [repost.to_dict() for repost in user.reposts],
+					'bio': user.bio,
 					'created_at': user.created_at.strftime('%Y-%m-%d %H:%M:%S')
 				# 'avatar': user.avatar
 			}
@@ -124,6 +125,7 @@ class User(UserMixin, db.Model):
 			'id': self.id, 
 			'username': self.username,
 			'email': self.email,
+			'bio': self.bio,
 		}
 
 	# Print user object

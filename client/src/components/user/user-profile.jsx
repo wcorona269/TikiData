@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { Paper, Box, Grid, Tabs, Tab, Container, Typography, Divider, useTheme, Skeleton } from '@mui/material';
+import { Paper, Box, Grid, Tabs, Tab, Container, Typography, Divider, useTheme, Skeleton, Stack } from '@mui/material';
 import PostContainer from '../home/post-container';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo } from '../../actions/user_actions';
@@ -8,18 +8,18 @@ import RepostContainer from '../home/repost-container';
 import HomeFixturesColumn from '../home/home-fixtures-column';
 import UserProfileHeader from './user-profile-header';
 
+
 const UserProfile = () => {
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	const { username } = useParams();
 	const posts = useSelector(state => state.users.users?.user?.posts);
 	const reposts = useSelector(state => state.users.users?.user?.reposts);
-	const created_at = useSelector(state => state.users.users?.user?.created_at);
 	const isLoading = useSelector(state => state.users.isLoading);
 
 	const [selectedTab, setSelectedTab] = useState(0);
 	
-	useEffect(() => {dispatch(fetchUserInfo(username))}, [])
+	useEffect(() => {dispatch(fetchUserInfo(username))}, [username])
 
 	const noPostsMessage = (
 		<Container >
@@ -48,7 +48,11 @@ const UserProfile = () => {
 			}
 		}
 
-		return result;
+		return (
+			<Stack spacing={2} sx={{paddingTop: 2}} >
+				{result}
+			</Stack>
+		)
 	}
 
 	const handleChange = (event, newValue) => {
@@ -66,17 +70,17 @@ const UserProfile = () => {
 							width='100%'
 						/>
 						:
-					<Paper elevation={2}>
-						<UserProfileHeader/>
-						<Box>
+					<Box>
+						<Paper elevation={1}>
+							<UserProfileHeader/>
 							<Tabs onChange={handleChange} value={selectedTab} variant='fullWidth'>
 								<Tab label={'Posts'} />
 								<Tab label={'Reposts'} />
 							</Tabs>
 							<Divider/>
-							{displayPosts()}
-						</Box>
-					</Paper>
+						</Paper>
+						{displayPosts()}
+					</Box>
 				}
 			</Grid>
 			<Grid item xs={3}>

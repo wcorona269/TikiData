@@ -89,7 +89,7 @@ const UserUpdatePage = () => {
 							width='100%'
 						/>
 						:
-						<Paper elevation={2}>
+						<Paper elevation={1}>
 							<UserProfileHeader />
 							<Box>
 								<SectionHeading variant='h6' content='Edit Profile' />

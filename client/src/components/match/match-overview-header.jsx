@@ -39,7 +39,7 @@ const MatchOverviewHeader = ({match}) => {
 	}
 	
 	return (
-		<Paper elevation={2} sx={{ p: 3 }}>
+		<Paper elevation={1} sx={{ p: 3 }}>
 			<Stack spacing={2} direction='column-reverse' >
 				<Typography variant='subtitle1' sx={{ color: theme.palette.text.secondary, display: 'flex', flexDirection: 'row', alignItems: 'center' }} >
 					<img src={leagueLogo} style={{height: '1.5rem', width: '1.5rem', marginRight: '.5rem'}} />

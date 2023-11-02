@@ -62,7 +62,7 @@ const HomeNews = () => {
 	return (
 		<>
 			<Grid item xs={6}>
-				<Paper elevation={2} sx={{display: 'flex', flexDirection: 'column', minHeight: '40rem'}}>
+				<Paper elevation={1} sx={{display: 'flex', flexDirection: 'column', minHeight: '40rem'}}>
 					<SectionHeading variant='h5' content='News' />
 					<Box sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column', width: '100%', minHeight: '40rem'}}>
 						{ isLoading ?

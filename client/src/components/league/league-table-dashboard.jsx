@@ -3,7 +3,7 @@ import React, {useEffect} from 'react'
 import NoDataMessage from '../util/no-data/no-data-message';
 import MultiTableDashboard from './multi-table-dashboard';
 import Typography from '@mui/material/Typography';
-import { TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Link, Avatar, useTheme, Paper } from '@mui/material'
+import { TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Link, Avatar, useTheme, Paper, Box } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 import SectionHeading from '../util/section-heading';
 
@@ -11,14 +11,12 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
 	useEffect(() => {}, [table])
+	if (!table?.length) { return <NoDataMessage/> }
 
-	const leagueName = table[0].league.name;
-	const leagueLogo = table[0].league.logo;
+	const leagueName = table[0]?.league?.name;
+	const leagueLogo = table[0]?.league?.logo;
 
-	if (!table?.length) {
-		return <NoDataMessage/>
-	}
-
+	
 	let leagueInfo = table[0]['league'];
 	let standings = leagueInfo['standings'];
 
@@ -33,21 +31,36 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 	}
 
 
-	const columns = ['Position', 'Club', 'MP', 'W', 'D', 'L', 'GF', 'GC', 'GD', 'Pts', 'Form'];
+	const columns = ['', 'Club', 'MP', 'W', 'D', 'L', 'GF', 'GC', 'GD', 'Pts', 'Form'];
 
 	const displayForm = (form) => {
-		let icons = {
-			'W': '\u{1F7E2}',
-			'D': '\u{1F7E1}',
-			'L': '\u{1F534}'
-		};
+		const symbols = {
+			'W': 'yellowgreen',
+			'D': 'green',
+			'L': 'red'
+		}
 
 		return (
-			<p >
-				{form.split('').map((symbol, index) => (
-					<span key={index}>{icons[symbol]}</span>
-				))}
-			</p>
+			<>
+				{form.split('').map((symbol, index) => {
+					return (
+						<Paper 
+						style={{ 
+							textAlign: 'center',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							fontSize: '8px',
+							height: '1rem',
+							width: '1rem',
+							fontFamily: theme.typography.bold,
+							backgroundColor: symbols[symbol]
+						}} key={index}>
+						{symbol}
+						</Paper>
+					)}
+				)}
+			</>
 		);
 	};
 
@@ -57,14 +70,14 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 
 
 	return (
-		<Paper elevation={2} sx={{marginTop: '1rem', mx: 'auto', marginTop: '1rem'}}>
+		<Paper elevation={1} sx={{marginTop: '1rem', mx: 'auto', marginTop: '1rem'}}>
 			<SectionHeading variant='h6' content={`${leagueName} Table`} img={leagueLogo} />
 			<TableContainer>
 				<Table size='small' aria-label='a dense table' >
 					<TableHead>
 						<TableRow>
 							{columns.map((column, idx) => (
-								<TableCell key={idx} id={column}>
+								<TableCell sx={{ width: idx === 1 ? '50%' : 'auto' }} key={idx} id={column}>
 									<Typography variant='body1'>
 										{column}
 									</Typography>
@@ -132,10 +145,10 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 										{points}
 									</Typography>
 								</TableCell>
-								<TableCell>
-									<Typography variant='body1'>
+								<TableCell >
+									<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }} >
 										{displayForm(form)}
-									</Typography>
+									</Box>
 								</TableCell>
 							</TableRow>
 							)

@@ -1,55 +1,59 @@
+from seeds import post_seeds, user_seeds
+import random
 from dotenv import load_dotenv
+import pdb
 load_dotenv(".flaskenv")
-from  app.models import db, User, Favorite, Post, PostLike, CommentLike, Comment
+from  app.models import db, User, Favorite, Post, PostLike, CommentLike, Comment, Repost
 
 def seed_database(app):
   with app.app_context():
     db.drop_all()
     db.create_all()
     
-    will = User(username='willyc', email='wcorona269@gmail.com')
-    will.set_password('Loyola301!')
-    spencer = User(username='spennybluntz', email='spencer@gmail.com')
-    spencer.set_password('courts')
+    # user_ids = []
+    # post_ids = []
+    # comment_ids = []
     
-    db.session.add(will)
-    db.session.add(spencer)
-    db.session.commit()
-    
-   # Creating posts
-    post1 = Post(text='Who will win the World Cup this year?', user_id=will.id)
-    post2 = Post(text='Thoughts on the recent match between Team A and Team B?', user_id=spencer.id)
-
-    db.session.add(post1)
-    db.session.add(post2)
-    db.session.commit()
-
-    # Creating comments
-    comment1 = Comment(user_id=spencer.id, post_id=post1.id, text='I think Team C has a strong chance!')
-    comment2 = Comment(user_id=will.id, post_id=post1.id, text='Team B has a solid lineup as well.')
-    comment3 = Comment(user_id=will.id, post_id=post2.id, text='It was an intense match!')
-    comment4 = Comment(user_id=will.id, post_id=post2.id, text='I agree! So intense!', parent_id=comment3.id)
-
-    db.session.add(comment1)
-    db.session.add(comment2)
-    db.session.add(comment3)
-    db.session.add(comment4)
-    db.session.commit()
-
-    # Creating post likes and comment likes
-    post_like = PostLike(user_id=will.id, post_id=post1.id)
-    comment_like = CommentLike(user_id=will.id, comment_id=comment1.id)
-    db.session.add(post_like)
-    db.session.add(comment_like)
-    db.session.commit()
-    
-    
+    for user in user_seeds:
+      username = user[0]
+      email = user[1]
+      bio = user[2]
+      new_user = User(username=username, email=email, bio=bio)
+      new_user.set_password('touchline')
+      db.session.add(new_user)
+      # user_ids.append(new_user.id)
       
+    db.session.commit()
+    user_ids = [user.id for user in User.query.all()]
+    
+    for _ in range(0, 300):
+      new_post = Post(user_id=random.choice(user_ids), text=random.choice(post_seeds));
+      db.session.add(new_post);
+    
+    db.session.commit()
+    post_ids = [post.id for post in Post.query.all()]
+    
+    for _ in range(0, 300):  
+      new_comment = Comment(user_id=random.choice(user_ids), post_id=random.choice(post_ids), text=random.choice(post_seeds))
+      db.session.add(new_comment)
+    
+    db.session.commit()
+    comment_ids = [comment.id for comment in Comment.query.all()]
+    
+    for _ in range(0, 300):
+      post_like = PostLike(user_id=random.choice(user_ids), post_id=random.choice(post_ids))
+      db.session.add(post_like)
+    
+    for _ in range(0, 300):
+      comment_like = CommentLike(user_id=random.choice(user_ids), comment_id=random.choice(comment_ids))
+      db.session.add(comment_like)
+      
+    for user_id in user_ids:
+      for _ in range(random.randint(0, 10)):
+        new_repost = Repost(user_id=user_id, post_id=random.choice(post_ids))
+        db.session.add(new_repost)
+          
     # create favorites
-    favorite = Favorite(club='Barcelona', user=will)
-    favorite2 = Favorite(club='Manchester City', user=will)
-    favorite3 = Favorite(club='Chelsea', user=spencer)
-    db.session.add(favorite)
-    db.session.add(favorite2)
-    db.session.add(favorite3)
+    # favorite = Favorite(club='Manchester City', user=will)
+    
     db.session.commit()

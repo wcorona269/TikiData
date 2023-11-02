@@ -19,7 +19,7 @@ const HomeFixturesColumn = () => {
 	
 
 	return (
-		<Paper elevation={2} id='home-fixtures-paper' sx={{position: 'sticky', top: '2rem'}}>
+		<Paper elevation={1} id='home-fixtures-paper' sx={{position: 'sticky', top: '2rem'}}>
 			<SectionHeading variant='h5' content='Live Fixtures' />
 			{ isLoading ?
 				<Box sx={{height: '20rem', width: '100%', display: 'flex', alignItems: 'center' }}>

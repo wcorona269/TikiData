@@ -50,7 +50,7 @@ const MatchCard = ({fixture, key, league}) => {
 	
 	return (
 		<Grid item xs={4} >
-			<Paper elevation={5} key={key} sx={{width: '100%', color: theme.palette.text.primary }}>
+			<Paper elevation={10} key={key} sx={{width: '100%', color: theme.palette.text.primary }}>
 				<ListItemButton variant='text' sx={{width: '100%', height: '100%'}} onClick={() => navigate(`/match/${fixture.fixture.id}`)}>
 					<Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', gap: '.5rem' }}>
 						<Typography align='left' sx={{color: theme.palette.text.disabled }} variant='body2'>

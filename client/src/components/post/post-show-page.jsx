@@ -1,20 +1,19 @@
-import { Avatar, Box, Button, CircularProgress, Divider, Grid, IconButton, Link, Paper, Typography, dividerClasses, useTheme } from '@mui/material';
+import { Avatar, Box, Button, CircularProgress, Divider, Grid, Link, Paper, Typography, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { fetchPost } from '../../actions/post_actions';
 import RepostButton from '../home/repost-popper';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import { createLike, createRepost, deleteLike, deleteRepost, fetchPosts } from '../../actions/post_actions';
+import { createLike, createRepost, deleteLike, deleteRepost } from '../../actions/post_actions';
 import { createNotification } from '../../actions/notification_actions';
 import CreateComment from '../home/create-comment';
 import CommentContainer from '../home/comment-container';
-import LiveFixturesDisplay from '../home/live-fixtures-display';
 import HomeFixturesColumn from '../home/home-fixtures-column';
 import SectionHeading from '../util/section-heading';
+import moment from 'moment';
 
 const PostShowPage = () => {
 	const dispatch = useDispatch();
@@ -122,7 +121,7 @@ const PostShowPage = () => {
 	return (
 		<>
 			<Grid item xs={6}>
-				<Paper elevation={2}>
+				<Paper elevation={1}>
 					<SectionHeading variant='h6' content={`Post by ${post?.username}`} back={true} />
 					<Box display='flex' flexDirection='column' justifyContent={'center'} padding={2} >
 						{ isLoading || !post ? 
@@ -131,14 +130,14 @@ const PostShowPage = () => {
 							</Box> :
 							[<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'left', width: '100%' }} >
 								<Avatar sx={{ marginRight: '.5rem', width: 50, height: 50 }}/>
-								<Box sx={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+								<Box sx={{width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
 									<Link underline='hover' onClick={() => navigate(`/user/${post?.username}`)} >
 										<Typography variant='subtitle1' sx={{fontFamily: theme.typography.bold}} >
 											{post?.username}
 										</Typography>
 									</Link>
-									<Typography variant='caption'>
-										{/* <ReactTimeAgo date={post?.created_at} locale="en-US" /> */}
+									<Typography variant='caption' sx={{color: theme.palette.text.disabled}}>
+										{moment(post.created_at).fromNow()}
 									</Typography>
 								</Box>
 							</Box>,

@@ -46,7 +46,7 @@ const Notifications = () => {
 	return (
 		<>
 			<Grid item xs={6}>
-				<Paper elevation={2} sx={{minHeight: '40rem'}}>
+				<Paper elevation={1} sx={{minHeight: '40rem'}}>
 					<SectionHeading variant='h5' content='Notifications' />
 					<List>
 						{displayNotifications(notifications)}

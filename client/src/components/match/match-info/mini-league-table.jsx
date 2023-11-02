@@ -123,7 +123,7 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 	}
 
 	return (
-		<Paper elevation={2}>
+		<Paper elevation={1}>
 			<SectionHeading variant='subtitle1' content={`${league_name} Standings`} img={league_logo}/>
 			{ isLoading ?
 				<Box sx={{ height: '20rem', width: '100%', display: 'flex', alignItems: 'center' }}>

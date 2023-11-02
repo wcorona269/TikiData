@@ -29,7 +29,7 @@ const MatchInfo = ({match}) => {
 	}, [selectedTab])
 
 	return (
-		<Paper elevation={2} sx={{ p: 1 }} >
+		<Paper elevation={1} sx={{ p: 1 }} >
 			<Tabs value={selectedTab} onChange={handleChange} className='match-nav-bar' sx={{marginBottom: 0}} variant='fullWidth'>
 				<Tab label='Events'/>
 				<Tab label='Lineups'/>

@@ -51,7 +51,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 	}
 
 	return (
-		<Paper elevation={2} sx={{marginBottom: 1}}>
+		<Paper elevation={1} sx={{marginBottom: 1}}>
 			<SectionHeading variant='h6' content='Top Scorers'  />
 			<div
 				style={{

@@ -71,7 +71,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Paper elevation={1} sx={{ borderRadius: '0px', minHeight: '150vh' }} >
+      <Box sx={{ backgroundColor: theme.palette.background.default, color: theme.palette.text.primary, borderRadius: '0px', minHeight: '150vh' }} >
         <ModalContainer/>
         <NavBar lightMode={lightMode} setLightMode={setLightMode} />
         <Container sx={{paddingTop: '6rem'}} fixed >
@@ -93,7 +93,7 @@ function App() {
             <Route exact path='/welcome' element={<Welcome />} />
           </Routes>
         </Container>
-      </Paper>
+      </Box>
       <Footer/>
     </ThemeProvider>
   )

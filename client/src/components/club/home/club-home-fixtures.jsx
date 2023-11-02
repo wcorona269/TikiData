@@ -108,7 +108,7 @@ const ClubHomeFixtures = ({ fixtures }) => {
 		<Paper
 			className='home-paper'
 			id='sticky-paper'
-			elevation={2}
+			elevation={1}
 		>
 			<SectionHeading variant='h6' content='Upcoming Fixtures' />
 			<List id='league-home-fixture-ul'>

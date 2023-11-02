@@ -66,8 +66,18 @@ def get_user_reposts(userId):
 
 @bp.route('/index', methods=['GET'])
 def get_all_reposts():
-  reposts = Repost.query.order_by(desc(Repost.created_at)).all()
-  reposts_data = [repost.to_dict() for repost in reposts],
+  page = request.args.get('page', 1, type=int)
+  per_page = request.args.get('per_page', 15, type=int)
+
+  reposts = Repost.query.order_by(Repost.created_at.desc()).paginate(
+      page=page, per_page=per_page, error_out=False
+  )
+  
+  if not reposts.items:
+    return jsonify({'message': 'no posts found'}), 404
+  
+  reposts_data = [repost.to_dict() for repost in reposts.items],
+  
   if reposts:
     return jsonify({
 			'message': 'Posts fetched successfully',

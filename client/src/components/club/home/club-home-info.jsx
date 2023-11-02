@@ -48,7 +48,7 @@ const ClubHomeInfo = ({ club }) => {
 		return result;
 	}
 	return (
-		<Paper elevation={2}  sx={{paddingBottom: 1, marginBottom: 1}} >
+		<Paper elevation={1}  sx={{paddingBottom: 1, marginBottom: 1}} >
 			<SectionHeading variant='h6' content='Club Info' />
 
 			<Box sx={{ display: 'flex', justifyContent: 'center', padding: '.5rem' }}>
