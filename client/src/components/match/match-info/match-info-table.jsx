@@ -1,6 +1,6 @@
 import { Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material'
 import React from 'react'
-import SectionHeading from '../../util/section-heading'
+import Title from '../../util/section-heading'
 import DisplayTime from '../../util/display-time';
 
 const MatchInfoTable = ({ match }) => {
@@ -54,7 +54,7 @@ const MatchInfoTable = ({ match }) => {
 
 	return (
 		<Paper elevation={1}>
-			<SectionHeading variant='h5' content='Match Info' />
+			<Title variant='h5' content='Match Info' />
 			<TableContainer>
 				<Table size="small" aria-label="a dense table">
 					<TableBody>

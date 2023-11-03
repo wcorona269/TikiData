@@ -3,7 +3,7 @@ import DisplayTime from '../../util/display-time';
 import { formatDate } from '../../club/club-fixtures-table';
 import { Box, Link, Paper, Grid, Typography, List, ListItem, ListItemButton, Divider, useTheme } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
-import SectionHeading from '../../util/section-heading';
+import Title from '../../util/section-heading';
 
 
 const HomeFixturesComponent = ({fixtures}) => {
@@ -62,9 +62,9 @@ const HomeFixturesComponent = ({fixtures}) => {
 			const day_name = days[day_of_week];
 			
 			if (new Date(match_date) > today ) {
-				let NewSectionHeading;
+				let NewTitle;
 				if (!match_dates.has(match_date.split('T')[0])) {
-					NewSectionHeading = (
+					NewTitle = (
 						[<Typography variant="subtitle1" gutterBottom sx={{ margin: '0px', padding: '.5rem', paddingLeft: '1rem', backgroundColor: theme.palette.action.hover}}>
 							{day_name}, {formatDate(match_date)}
 						</Typography>,
@@ -74,7 +74,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 				}
 				result.push(
 					<>
-						{NewSectionHeading}
+						{NewTitle}
 						<ListItem divider disablePadding >
 							<ListItemButton>
 								<Box className='home-fixture-li'>
@@ -100,7 +100,7 @@ const HomeFixturesComponent = ({fixtures}) => {
 			id='sticky-paper'
 			elevation={1}
 		>
-			<SectionHeading variant='h6' content='Upcoming Fixtures' />
+			<Title variant='h6' content='Upcoming Fixtures' />
 			<List sx={{p: 0, overflow: 'scroll'}}>
 				{displayUpcomingFixtures(fixtures)}
 			</List>

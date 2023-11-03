@@ -12,7 +12,7 @@ import ModalContainer from './modal/modal';
 import Welcome from './home/welcome'
 import Explore from './home/explore';
 import axios from 'axios'
-import MatchesTimeline from './matches/matches-timeline';
+import MatchFeed from './matches/match-feed';
 import ClubProfile from './club/club-profile';
 import LeagueProfile from './league/league-profile';
 import PlayerProfile from './player/player-profile';
@@ -60,6 +60,9 @@ function App() {
         light: '#84d6f0',
         dark: '#005c8f'
       },
+      background: {
+        standard: lightMode ? '#f5f5f5' : '#121212'
+      }
     },
     typography: {
       fontFamily: 'Ubuntu',
@@ -71,7 +74,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ backgroundColor: theme.palette.background.default, color: theme.palette.text.primary, borderRadius: '0px', minHeight: '150vh' }} >
+      <Box sx={{ backgroundColor: theme.palette.background.standard, color: theme.palette.text.primary, borderRadius: '0px', minHeight: '150vh' }} >
         <ModalContainer/>
         <NavBar lightMode={lightMode} setLightMode={setLightMode} />
         <Container sx={{paddingTop: '6rem'}} fixed >
@@ -79,7 +82,7 @@ function App() {
             <Route path='/' element={<ProtectedRoute/>} >
               <Route path='/home' element={<PostsTimeline/>} />
               <Route path='/notifications' element={<Notifications/>} />
-              <Route path='/matches' element={<MatchesTimeline/>} />
+              <Route path='/matches' element={<MatchFeed/>} />
               <Route path='/explore' element={<Explore/>} />
               <Route path='/news' element={<HomeNews/>} />
               <Route path='/match/:id' element={<MatchOverview/>} />
@@ -94,7 +97,7 @@ function App() {
           </Routes>
         </Container>
       </Box>
-      <Footer/>
+      <Footer lightMode={lightMode} />
     </ThemeProvider>
   )
 }

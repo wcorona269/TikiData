@@ -3,7 +3,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const SectionHeading = ({ variant, content, img, back }) => {
+const Title = ({ variant, content, img, back }) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
 	let size = variant === 'h5' ? '2rem' : '1.5rem';
@@ -36,4 +36,4 @@ const SectionHeading = ({ variant, content, img, back }) => {
 	)
 }
 
-export default SectionHeading;
+export default Title;

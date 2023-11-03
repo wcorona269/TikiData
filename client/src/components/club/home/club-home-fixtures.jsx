@@ -14,7 +14,7 @@ import {
 	ListItemText,
 	useTheme,
 } from '@mui/material'
-import SectionHeading from '../../util/section-heading';
+import Title from '../../util/section-heading';
 
 
 export const displayTeams = (fixture) => {
@@ -73,9 +73,9 @@ const ClubHomeFixtures = ({ fixtures }) => {
 			const day_name = days[day_of_week];
 
 			if (new Date(match_date) > today) {
-				let NewSectionHeading;
+				let NewTitle;
 				if (!match_dates.has(match_date.split('T')[0])) {
-					NewSectionHeading = (
+					NewTitle = (
 						<Typography variant="subtitle1" gutterBottom sx={{ padding: '1rem', backgroundColor: theme.palette.action.hover }}>
 							{day_name}, {formatDate(match_date)}
 						</Typography>
@@ -84,7 +84,7 @@ const ClubHomeFixtures = ({ fixtures }) => {
 				}
 				result.push(
 					<>
-						{NewSectionHeading}
+						{NewTitle}
 						<ListItem disablePadding className='home-fixture-li-container'>
 							<ListItemButton>
 								<Box>
@@ -110,7 +110,7 @@ const ClubHomeFixtures = ({ fixtures }) => {
 			id='sticky-paper'
 			elevation={1}
 		>
-			<SectionHeading variant='h6' content='Upcoming Fixtures' />
+			<Title variant='h6' content='Upcoming Fixtures' />
 			<List id='league-home-fixture-ul'>
 				{displayUpcomingFixtures(fixtures)}
 			</List>

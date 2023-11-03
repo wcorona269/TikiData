@@ -12,7 +12,7 @@ import { createNotification } from '../../actions/notification_actions';
 import CreateComment from '../home/create-comment';
 import CommentContainer from '../home/comment-container';
 import HomeFixturesColumn from '../home/home-fixtures-column';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 import moment from 'moment';
 
 const PostShowPage = () => {
@@ -122,7 +122,7 @@ const PostShowPage = () => {
 		<>
 			<Grid item xs={6}>
 				<Paper elevation={1}>
-					<SectionHeading variant='h6' content={`Post by ${post?.username}`} back={true} />
+					<Title variant='h6' content={`Post by ${post?.username}`} back={true} />
 					<Box display='flex' flexDirection='column' justifyContent={'center'} padding={2} >
 						{ isLoading || !post ? 
 							<Box height={150} display='flex' alignItems='center' width='100%'>

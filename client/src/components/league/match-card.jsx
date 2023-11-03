@@ -4,18 +4,25 @@ import { Box, Link, Container, Grid, Typography, Paper, Button, useTheme, ListIt
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '@emotion/react';
 
-const MatchCard = ({fixture, key, league}) => {	
+const match_not_played = new Set([
+	'TBD',
+	'NS',
+	'PST',
+	'CANC',
+	'ABD',
+	'AWD',
+	'WO',
+]);
+
+const MatchCard = ({fixture, key, league}) => {
 	const theme = useTheme()
+	if (!key) {
+		key = fixture.fixture.id
+	}
 	const navigate = useNavigate();
-
-	const home = fixture.teams.home.name;
-	const away = fixture.teams.away.name;
-
-	const homeLogo = fixture.teams.home.logo;
-	const awayLogo = fixture.teams.away.logo;
-
-	const homeGoals = fixture.goals.home;
-	const awayGoals = fixture.goals.away;
+	const status = fixture.fixture.status.short;
+	const competition = fixture.league.name;
+	let started = !match_not_played.has(status);
 
 	const displayTeams = (fixture) => {
 		let result = [];
@@ -24,20 +31,25 @@ const MatchCard = ({fixture, key, league}) => {
 		for (let team of Object.keys(teams)) {
 			const team_name = teams[team].name;
 			const team_logo = teams[team].logo;
-			const team_id = teams[team].id;
 			const winner = teams[team].winner;
-			const num_goals = fixture.goals[team] || 0
+			let num_goals
+
+			if (started) {
+				num_goals = fixture.goals[team] || 0
+			} else {
+				num_goals = '-'
+			}
 
 			result.unshift(
 				<Grid container className={winner === true ? 'winning team' : ''}>
 					<Grid item xs={10} align='left' sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
 						<img src={team_logo} style={{height: '2rem', width: '2rem', marginRight: '.25rem'}} />
-						<Typography variant='body2'>
+						<Typography variant='body2' sx={{ flexShrink: 1, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis'}} >
 							{team_name}
 						</Typography>
 					</Grid>
-					<Grid item xs={2}>
-						<Typography id='goal-display' variant='h6'>
+					<Grid item xs={2} sx={{display: 'flex'}}>
+						<Typography variant='h6' sx={{margin: 'auto'}}>
 							{num_goals}
 						</Typography>
 					</Grid>
@@ -59,7 +71,7 @@ const MatchCard = ({fixture, key, league}) => {
 						{displayTeams(fixture)}
 						{ !!league && 
 							<Typography align='left' display='flex' alignItems='center' sx={{color: theme.palette.text.disabled }} variant='body2'>
-								{league[0]}
+								{competition}
 							</Typography>
 						 }
 					</Box>

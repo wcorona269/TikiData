@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MatchTimelineTable from './match-timeline-table';
+import MatchFeedItem from './match-timeline-table';
 import TimelineSelect from '../nav-bar/timeline-select';
 import { Box, Typography, Tabs,Tab, Paper, List, Stack } from '@mui/material';
 import dayjs from 'dayjs';
@@ -7,11 +7,11 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import monthsOfYear from '../../club/monthsOfYear';
-import SectionHeading from '../../util/section-heading';
+import Title from '../../util/section-heading';
 
 export const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelectedNation, date, setDate, nations, nationsSet, onTabSelect }) => {
+const MatchFeed = ({matches, competitions, selectedNation, setSelectedNation, date, setDate, nations, nationsSet, onTabSelect }) => {
 	const [showAll, setShowAll] = useState(true);
 	let matchesList;
 
@@ -43,7 +43,7 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 	const displayMatchesList = () => {
 		let result = []
 		for (let key in matchesList) {
-			result.push(<MatchTimelineTable nation={key} matches={matchesList[key]}/>)
+			result.push(<MatchFeedItem nation={key} matches={matchesList[key]}/>)
 		}
 
 		return result;
@@ -56,7 +56,7 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 			<Paper elevation={1} 
 				sx={{ position: 'sticky', top: '0', display: 'flex', flexDirection: 'column', zIndex: '100'}}
 			>
-				<SectionHeading variant='h5' content='Matches' />
+				<Title variant='h5' content='Matches' />
 				<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem', justifyContent: 'left', margin: '1rem', marginBottom: '0px' }}>
 					<LocalizationProvider dateAdapter={AdapterDayjs}>
 						<DatePicker
@@ -92,4 +92,4 @@ const TimelineMatchDisplay = ({matches, competitions, selectedNation, setSelecte
 	)
 }
 
-export default TimelineMatchDisplay;
+export default MatchFeed;

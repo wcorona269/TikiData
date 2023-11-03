@@ -5,8 +5,9 @@ import LoadingMessage from '../util/loading/loading-screen';
 import { fetchMatches } from '../../actions/api_actions';
 import NoDataMessage from '../util/no-data/no-data-message';
 import { Grid, Paper } from '@mui/material';
+import HomeFixturesColumn from '../home/home-fixtures-column';
 
-const MatchesTimeline = ({apiKey}) => {
+const MatchFeedContainer = ({apiKey}) => {
 	const dispatch = useDispatch();
 	const matches = useSelector(state => state.matches.matches);
 	const competitions = new Set();
@@ -20,7 +21,10 @@ const MatchesTimeline = ({apiKey}) => {
 		const dateString = `${year}-${month}-${day}`
 
 		dispatch(fetchMatches(dateString))
-		window.scrollTo(0, 0);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
 	}, [date]);
 
 	const resetFilters = () => {
@@ -67,7 +71,10 @@ const MatchesTimeline = ({apiKey}) => {
 	
 	
 	useEffect(() => {
-		window.scrollTo(0, 0);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
 	}, [selectedNation])
 	
 
@@ -80,20 +87,25 @@ const MatchesTimeline = ({apiKey}) => {
 	}
 
 	return (
-		<Grid item xs={9}>
-			<TimelineMatchDisplay 
-				matches={sortedMatches} 
-				competitions={competitions}
-				selectedNation={selectedNation}
-				setSelectedNation={setSelectedNation}
-				nations={listOfNations}
-				nationsSet={nationsSet}
-				onTabSelect={handleTabSelect}
-				setDate={setDate}
-				date={date}
-				/>
-		</Grid>
+		<>
+			<Grid item xs={6}>
+				<TimelineMatchDisplay 
+					matches={sortedMatches} 
+					competitions={competitions}
+					selectedNation={selectedNation}
+					setSelectedNation={setSelectedNation}
+					nations={listOfNations}
+					nationsSet={nationsSet}
+					onTabSelect={handleTabSelect}
+					setDate={setDate}
+					date={date}
+					/>
+			</Grid>
+			<Grid item xs={3} sx={{ position: 'sticky', top: '3rem' }}>
+				<HomeFixturesColumn/>
+			</Grid>
+		</>
 	)
 }
 
-export default MatchesTimeline;
+export default MatchFeedContainer;

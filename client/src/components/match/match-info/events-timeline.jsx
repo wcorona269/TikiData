@@ -10,7 +10,7 @@ import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
-import SectionHeading from '../../util/section-heading';
+import Title from '../../util/section-heading';
 
 const EventsTimeline = ({match, header }) => {
 	const theme = useTheme();
@@ -66,7 +66,7 @@ const EventsTimeline = ({match, header }) => {
 
 	return (
 		<Paper elevation={1}>
-			<SectionHeading variant='h6' content='Match Timeline'/>
+			<Title variant='h6' content='Match Timeline'/>
 			{
 				!events.length ? <NoDataMessage/> :
 				<>

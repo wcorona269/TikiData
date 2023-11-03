@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import UserProfileHeader from './user-profile-header';
 import HomeFixturesColumn from '../home/home-fixtures-column';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { updateUser } from '../../actions/session_actions';
@@ -92,7 +92,7 @@ const UserUpdatePage = () => {
 						<Paper elevation={1}>
 							<UserProfileHeader />
 							<Box>
-								<SectionHeading variant='h6' content='Edit Profile' />
+								<Title variant='h6' content='Edit Profile' />
 								<Box sx={{ p: '1rem' }}>
 									<Stack spacing={2} sx={{paddingTop: 2}}>
 										<InputLabel>Change Password</InputLabel>

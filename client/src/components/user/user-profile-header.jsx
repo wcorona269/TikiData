@@ -3,7 +3,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 
@@ -22,7 +22,7 @@ const UserProfileHeader = () => {
 
 	return (
 		<Paper elevation={1}>
-			<SectionHeading variant='h6' content={username} back={true} />
+			<Title variant='h6' content={username} back={true} />
 			<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'flex-end', padding: 2, gap: 1 }} >
 				<Avatar sx={{ height: 100, width: 100, marginRight: 1 }} />
 				<Box display='flex' flexDirection='column'>

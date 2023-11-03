@@ -1,15 +1,14 @@
 import React from 'react'
 import shorthandMonthsOfYear from '../league/shorthandMonths';
 import { Box, Grid, IconButton, Paper, Table, TableBody, TableCell, Card, CardMedia, CardContent, TableContainer, TableRow, Typography, useTheme } from '@mui/material';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 
 const PlayerOverview = ({player}) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
-	const fullName = `${player.player.firstname} ${player.player.lastname}`
-
+	
 	const displayBirthDate = (birthInfo) => {
 		if (birthInfo === 'N/A') return 'N/A'
 
@@ -17,6 +16,7 @@ const PlayerOverview = ({player}) => {
 		return `${day} ${shorthandMonthsOfYear[Number(month)]} ${year}`
 	}
 
+	const fullName = `${player.player.firstname} ${player.player.lastname}`
 	const name = player.player.name || 'Name Unavailable';
 	const photo = player.player.photo;
 	const age = player.player.age || 'N/A';
@@ -35,11 +35,11 @@ const PlayerOverview = ({player}) => {
 
 	return (
 		<Paper elevation={1}>
-			<SectionHeading variant='h5' content={content} />
+			<Title variant='h6' content={content} />
 			<Grid container sx={{padding: 1}}>
 				<Grid item xs={4}>
 					<Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-						<Card sx={{height: 250}}>
+						<Card raised={true} sx={{height: 250}}>
 							<CardMedia
 								component="img"
 								image={photo}

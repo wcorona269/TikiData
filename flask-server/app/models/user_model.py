@@ -117,6 +117,10 @@ class User(UserMixin, db.Model):
 				user.set_password(password)
 				db.session.commit()
 				return True;
+			# if bio:
+			# 	user.set_bio(bio)
+			# 	db.session.commit()
+			# 	return True
 		else:
 			return False;
 

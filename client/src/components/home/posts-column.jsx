@@ -8,7 +8,7 @@ import PostContainer from './post-container';
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { useDispatch, useSelector } from 'react-redux';
 import HomeFixturesColumn from './home-fixtures-column';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const PostsTimeline = () => {
 	const theme = useTheme();
@@ -63,7 +63,7 @@ const PostsTimeline = () => {
 			<Grid item xs={6}>
 				<Stack spacing={2}>
 					<Paper elevation={1}>
-						<SectionHeading variant='h5' content='Home'/>
+						<Title variant='h5' content='Home'/>
 						<CreatePost/>
 					</Paper>
 					{combinedPosts.map((item, idx) => {

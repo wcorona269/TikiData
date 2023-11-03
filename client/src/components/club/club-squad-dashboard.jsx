@@ -3,7 +3,7 @@ import React from 'react';
 import ClubSquadListItem from './club-squad-list-item';
 import { Avatar, Box, Grid, Paper, Typography, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const ClubSquadDashboard = ({name, logo, squad}) => {
 	const theme = useTheme();
@@ -47,7 +47,7 @@ const ClubSquadDashboard = ({name, logo, squad}) => {
 
 	return (
 		<Paper elevation={1} sx={{marginTop: '1rem'}}>
-			<SectionHeading variant='h6' content={`${name} Squad`} img={logo} />
+			<Title variant='h6' content={`${name} Squad`} img={logo} />
 			<Box sx={{margin: '1rem'}}>
 				{displaySquad(squadPositions)}
 			</Box>

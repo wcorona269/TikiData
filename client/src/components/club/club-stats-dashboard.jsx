@@ -6,7 +6,7 @@ import { fetchClubStats } from '../../actions/api_actions';
 import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, useTheme, Paper, Typography } from '@mui/material';
 import YellowCard from '../../images/yellow.png';
 import RedCard from '../../images/red.png';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const ClubStatsDashboard = ({ name, logo, stats }) => {
 	const theme = useTheme(); 
@@ -101,7 +101,7 @@ const ClubStatsDashboard = ({ name, logo, stats }) => {
 
 	return (
 		<Paper elevation={1} sx={{marginTop: '1rem'}}>
-			<SectionHeading variant='h6' content={`${name} Stats`} img={logo} />
+			<Title variant='h6' content={`${name} Stats`} img={logo} />
 
 			<TableContainer>
 			<Table>

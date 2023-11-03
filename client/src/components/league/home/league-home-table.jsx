@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import SectionHeading from '../../util/section-heading';
+import Title from '../../util/section-heading';
 
 const LeagueHomeTable = ({table}) => {
 	const [showMore, setShowMore] = useState(false);
@@ -60,7 +60,7 @@ const LeagueHomeTable = ({table}) => {
 	
 	return (
 		<Paper className='home-paper' id='league-home-table' elevation={6}>
-			<SectionHeading variant='h6' content='Table'/>
+			<Title variant='h6' content='Table'/>
 			<div
 				style={{
 					height: showMore ? '700px' : '250px',

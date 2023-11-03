@@ -1,7 +1,7 @@
 import React from 'react'
 import NoDataMessage from '../util/no-data/no-data-message';
 import { Box, Paper, Table, TableBody, TableCell, TableHead, TableRow, useTheme } from '@mui/material';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 import YellowCard from '../../images/yellow.png'
 import RedCard from '../../images/red.png'
 
@@ -90,7 +90,7 @@ const PlayerStats = ({statistics}) => {
 
 	return (
 		<Paper elevation={1} >
-			<SectionHeading variant='h6' content='Player Statistics' />
+			<Title variant='h6' content='Player Statistics' />
 			<Table >
 				<TableHead sx={{ backgroundColor: theme.palette.action.hover }}>
 					<TableRow>

@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { useNavigate } from 'react-router-dom';
-import SectionHeading from '../../util/section-heading';
+import Title from '../../util/section-heading';
 
 const LeagueHomeStats = ({top_scorers}) => {
 	const theme = useTheme()
@@ -52,7 +52,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 
 	return (
 		<Paper elevation={1} sx={{marginBottom: 1}}>
-			<SectionHeading variant='h6' content='Top Scorers'  />
+			<Title variant='h6' content='Top Scorers'  />
 			<div
 				style={{
 					height: showMore ? '600px' : '250px',

@@ -3,7 +3,7 @@ import React from 'react'
 import ClubFixturesTable from './club-fixtures-table';
 import monthsOfYear from './monthsOfYear';
 import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const ClubFixturesDashboard = ({fixtures, name, logo}) => {
 	const theme = useTheme()
@@ -39,7 +39,7 @@ const ClubFixturesDashboard = ({fixtures, name, logo}) => {
 
 	return (
 		<Paper elevation={1} sx={{marginTop: '1rem'}}>
-			<SectionHeading variant='h6' content={`${name} Fixtures`} img={logo} size='2rem' />
+			<Title variant='h6' content={`${name} Fixtures`} img={logo} size='2rem' />
 			{/* <Typography variant='h6' sx={{ borderBottom: `2px solid ${theme.palette.divider}`, fontFamily: theme.typography.bold }} className='section-heading'>
 				<img src={logo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
 				{name} Fixtures

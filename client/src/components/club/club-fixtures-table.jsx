@@ -24,15 +24,11 @@ const ClubFixturesTable = ({fixtures}) => {
 	
 	const displayFixtures = (fixtures) => {
 		let result = [];
-
 		fixtures.map((fixture, idx) => {
-			let league = [fixture.league.name, fixture.league.logo];
-
 			result.push(
-				<MatchCard key={idx} fixture={fixture} league={league} />
-			)
+				<MatchCard key={idx} fixture={fixture} league={true} />
+				)
 		})
-
 		return result;
 	}
 

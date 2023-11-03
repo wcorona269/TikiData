@@ -10,7 +10,7 @@ import ClubSquadDashboard from './club-squad-dashboard';
 import ClubStatsDashboard from './club-stats-dashboard';
 import ClubHomeDashboard from './home/club-home-dashboard';
 import { Box, Grid, Paper, Typography, useTheme } from '@mui/material';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const ClubProfile = () => {
 	const { id } = useParams();
@@ -32,7 +32,11 @@ const ClubProfile = () => {
 	useEffect(() => {
 		let formattedSeason = season.split('/')[0]
 		dispatch(fetchClub(id, formattedSeason));
-	}, [season]);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		})
+	}, [id]);
 
 	if (isLoading || !club) {
 		return <LoadingMessage/>	
@@ -50,14 +54,14 @@ const ClubProfile = () => {
 
 	return (
 		<Grid item xs={9}>
-			<Paper>
-				<SectionHeading variant='h5' content={name} img={logo} back={true} />
-				<ClubProfileNavBar club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
-				{ selectedTab === 0 && <ClubHomeDashboard name={name} logo={logo} club={club} fixtures={fixtures} squad={squad} news={news} /> }
-				{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures} name={name} logo={logo} /> }
-				{ selectedTab === 2 && <ClubStatsDashboard stats={stats} name={name} logo={logo} /> }
-				{ selectedTab === 3 && <ClubSquadDashboard name={name} logo={logo} squad={squad[0].players}  /> }
+			<Paper sx={{ marginBottom: '1rem' }} elevation={1}>
+				<Title variant='h5' content={name} img={logo} back={true} />
+				<ClubProfileNavBar  club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
 			</Paper>
+			{ selectedTab === 0 && <ClubHomeDashboard name={name} logo={logo} club={club} fixtures={fixtures} squad={squad} news={news} /> }
+			{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures} name={name} logo={logo} /> }
+			{ selectedTab === 2 && <ClubStatsDashboard stats={stats} name={name} logo={logo} /> }
+			{ selectedTab === 3 && <ClubSquadDashboard name={name} logo={logo} squad={squad[0].players}  /> }
 		</Grid>
 	)
 }

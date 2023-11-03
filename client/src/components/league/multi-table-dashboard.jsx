@@ -1,6 +1,6 @@
 import { Paper, Table, Link, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme, Box } from '@mui/material';
 import React from 'react'
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 import { useNavigate } from 'react-router-dom';
 
 const MultiTableDashboard = ({ standings, name, logo }) => {
@@ -15,7 +15,7 @@ const MultiTableDashboard = ({ standings, name, logo }) => {
 
 	const displayIndividualTable = (table, idx) => {
 		const leagueInfo = table[0].group || table[0].description;
-		const columns = ['Position', 'Club', 'Played', 'Won', 'Drawn', 'Lost', 'GF', 'GC', 'GD', 'Points'];
+		const columns = ['Pos', 'Club', 'MP', 'W', 'D', 'L', 'GF', 'GC', 'GD', 'Points'];
 
 		return (
 			<TableContainer sx={{marginTop: 2}}>
@@ -26,7 +26,7 @@ const MultiTableDashboard = ({ standings, name, logo }) => {
 					<TableHead>
 						<TableRow>
 							{columns.map((column, idx) => (
-								<TableCell component='th' key={idx} sx={{ width: determineColumnWidth(idx) }} >{column}</TableCell>
+								<TableCell align={ idx === 1 ? 'left' : 'center' } component='th' key={idx} sx={{ width: determineColumnWidth(idx) }} >{column}</TableCell>
 							))}
 						</TableRow>
 					</TableHead>
@@ -42,8 +42,8 @@ const MultiTableDashboard = ({ standings, name, logo }) => {
 
 							return (
 							<TableRow key={idx} >
-								<TableCell>{rank}</TableCell>
-								<TableCell >
+								<TableCell align='center'>{rank}</TableCell>
+								<TableCell align='left' >
 									<Link onClick={() => navigate(`/club/${clubId}`)} sx={{ color: theme.palette.info.main }} >
 										<Typography variant='body1' sx={{ display: 'flex', alignItems: 'center' }} >
 											<img src={clubLogo} style={{height: '1.5rem', width: '1.5rem', marginRight: '.25rem'}} alt=''/>
@@ -70,7 +70,7 @@ const MultiTableDashboard = ({ standings, name, logo }) => {
 
 	return (
 		<Paper elevation={1} sx={{marginTop: 2}}>
-			<SectionHeading variant='h6' content={`${name} Standings`} img={logo} />
+			<Title variant='h6' content={`${name} Standings`} img={logo} />
 			<Box sx={{padding: 2}}>
 				{standings.map((group, idx) => (
 					displayIndividualTable(group, idx)

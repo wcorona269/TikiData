@@ -12,7 +12,7 @@ import LoadingMessage from '../util/loading/loading-screen';
 import NoDataMessage from '../util/no-data/no-data-message';
 import LeagueProfileHeader from './league-profile-header'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const LeagueProfile = () => {
 	const theme = useTheme();
@@ -41,7 +41,10 @@ const LeagueProfile = () => {
 	}, [season]);
 
 	useEffect(() => {
-		window.scrollTo(0, 0)
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		})
 	}, [isLoading]);
 
 	const handleChange = (newValue) => {
@@ -67,8 +70,8 @@ const LeagueProfile = () => {
 	return (
 		<Grid item xs={9}>
 			<Box>
-				<Paper elevation={1}>
-					<SectionHeading variant='h5' content={name} img={logo} back={true} />
+				<Paper elevation={1} sx={{marginBottom: '1rem'}}>
+					<Title variant='h5' content={name} img={logo} back={true} />
 						<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
 							<Tabs value={selectedTab}>
 								<Tab label='Home' onClick={() => handleChange(0)} />

@@ -2,7 +2,7 @@ import './lineups.scss';
 import React from 'react'
 import NoDataMessage from '../../util/no-data/no-data-message';
 import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableRow, useTheme } from '@mui/material';
-import SectionHeading from '../../util/section-heading';
+import Title from '../../util/section-heading';
 
 const Lineups = ({ lineups, header }) => {
 	const theme = useTheme();
@@ -56,7 +56,7 @@ const Lineups = ({ lineups, header }) => {
 
 	return (
 		<Paper elevation={1} >
-			<SectionHeading variant='h6' content='Lineups' />
+			<Title variant='h6' content='Lineups' />
 			{
 				!lineups.length ? <NoDataMessage/> :
 				<>

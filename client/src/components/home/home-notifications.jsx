@@ -1,14 +1,15 @@
-import { Avatar, Container, Divider, Grid, List, ListItem, ListItemAvatar, ListItemButton, Paper, Typography } from '@mui/material'
+import { Avatar, Box, Container, Divider, Grid, List, ListItem, ListItemAvatar, ListItemButton, Paper, Typography, useTheme } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { fetchNotifications } from '../../actions/notification_actions'
 import HomeFixturesColumn from './home-fixtures-column';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const Notifications = () => {
 	const dispatch = useDispatch()
 	const notifications = useSelector(state => state.notifications?.notifications)
+	const theme = useTheme();
 
 	const user_id = useSelector(state => state.session?.user?.id);
 
@@ -21,7 +22,13 @@ const Notifications = () => {
 	const displayNotifications = (notifications) => {
 		let result = [];
 
-		if (!notifications?.length) return ;
+		if (!notifications?.length) return (
+			<Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+				<Typography variant='h6' sx={{ margin: 'auto', marginTop: '5rem', textAlign: 'center', height: '100%', color: theme.palette.text.disabled}}>
+					No new notifications to show.
+				</Typography>
+			</Box>
+		)
 
 		for (let i = 0; i < notifications.length; i++) {
 			result.push(
@@ -46,8 +53,8 @@ const Notifications = () => {
 	return (
 		<>
 			<Grid item xs={6}>
-				<Paper elevation={1} sx={{minHeight: '40rem'}}>
-					<SectionHeading variant='h5' content='Notifications' />
+				<Paper elevation={1} sx={{minHeight: '20rem'}}>
+					<Title variant='h5' content='Notifications' />
 					<List>
 						{displayNotifications(notifications)}
 					</List>

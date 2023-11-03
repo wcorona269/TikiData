@@ -8,17 +8,7 @@ import { Box, Table, TableCell, TableHead, TableRow, Paper, Typography, TableCon
 import { tableCellClasses } from '@mui/material/TableCell';
 import StarIcon from '@mui/icons-material/Star';
 import { useNavigate } from 'react-router-dom';
-import SectionHeading from '../util/section-heading';
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-	[`&.${tableCellClasses.head}`]: {
-		backgroundColor: theme.palette.common.black,
-		color: theme.palette.common.white,
-	},
-	[`&.${tableCellClasses.body}`]: {
-		fontSize: 14,
-	},
-}));
+import Title from '../util/section-heading';
 
 const sortedLeaguesByCountry = Object.entries(leaguesByCountry)
 	.sort((a, b) => a[0].localeCompare(b[0]))
@@ -26,16 +16,6 @@ const sortedLeaguesByCountry = Object.entries(leaguesByCountry)
 		acc[key] = value;
 			return acc;
 }, {})
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-	'&:nth-of-type(odd)': {
-		backgroundColor: theme.palette.action.hover,
-	},
-	// hide last border
-	'&:last-child td, &:last-child th': {
-		border: 0,
-	},
-}));
 
 const Explore = () =>  {
 	const navigate = useNavigate();
@@ -113,15 +93,15 @@ const Explore = () =>  {
 		<Grid item xs={9}>
 			<Box>
 				<Paper elevation={1}>
-					<SectionHeading variant='h5' content='Explore' />
+					<Title variant='h5' content='Explore' />
 				</Paper>
 				<Stack spacing={2}>
 					<Paper elevation={1}>
-						<SectionHeading variant='h6' content='Top Leagues' />
+						<Title variant='h6' content='Top Leagues' />
 						{listTopLeagues()}
 					</Paper>
 					<Paper elevation={1}>
-						<SectionHeading variant='h6' content='All Leagues' />
+						<Title variant='h6' content='All Leagues' />
 						<TableContainer component={Paper}>
 							<Table sx={{ minWidth: 700 }} size='small' >
 								<TableHead>
@@ -147,4 +127,4 @@ const Explore = () =>  {
 	);
 }
 
-export default Explore
+export default Explore;

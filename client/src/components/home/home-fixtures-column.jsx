@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLiveMatches } from '../../actions/api_actions';
 import LiveFixturesDisplay from './live-fixtures-display';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const HomeFixturesColumn = () => {
 	const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const HomeFixturesColumn = () => {
 
 	return (
 		<Paper elevation={1} id='home-fixtures-paper' sx={{position: 'sticky', top: '2rem'}}>
-			<SectionHeading variant='h5' content='Live Fixtures' />
+			<Title variant='h5' content='Live Fixtures' />
 			{ isLoading ?
 				<Box sx={{height: '20rem', width: '100%', display: 'flex', alignItems: 'center' }}>
 					<CircularProgress

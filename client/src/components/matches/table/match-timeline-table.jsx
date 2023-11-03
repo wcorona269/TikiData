@@ -1,12 +1,12 @@
 import React from 'react';
 import DisplayTime from '../../util/display-time';
-import { styled, Box, Container, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Typography, Link, useTheme, Paper } from '@mui/material';
+import { styled, Box, Container, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Typography, Link, useTheme, Paper, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import SectionHeading from '../../util/section-heading';
-import ScrollToTopOnLoad from '../../util/scroll-to-top-on-load';
+import Title from '../../util/section-heading';
+import MatchCard from '../../league/match-card';
 
 
-const MatchTimelineTable = ({nation, matches}) => {
+const MatchFeedItem = ({nation, matches}) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
 	let flag;
@@ -37,24 +37,7 @@ const MatchTimelineTable = ({nation, matches}) => {
 		)
 	}
 
-	const StyledTableRow = styled(TableRow)(({ theme }) => ({
-		'&:nth-of-type(odd)': {
-			backgroundColor: theme.palette.action.hover,
-		},
-	}));
 
-	const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-    padding: '4px', // Add padding here
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-    padding: '4px', // Add padding here
-  },
-}));
-	
 	const displayScore = (match) => {
 		const status = match.fixture.status.short;
 
@@ -79,38 +62,43 @@ const MatchTimelineTable = ({nation, matches}) => {
 			if (flag === undefined) flag = match?.league?.flag;
 			
 			result.push(
-				<TableRow key={match.fixture.idsty}>
-					<TableCell sx={{ width: '50% !important', padding: '.25rem'}}>
-						{displayMatch(match)}
-					</TableCell>
-					<TableCell sx={{ width: '10% !important', padding: '.25rem'}}>
-						<DisplayTime match={match}/>
-					</TableCell>
-					<TableCell sx={{ width: '20% !important', padding: '.25rem'}}>
-						{match.league.name}
-					</TableCell>
-				</TableRow >
+				<MatchCard  fixture={match} league={true} />
+				// <TableRow key={match.fixture.idsty}>
+				// 	<TableCell sx={{ width: '50% !important'}}>
+				// 		{displayTeams(match)}
+				// 		{/* {displayMatch(match)} */}
+				// 	</TableCell>
+				// 	<TableCell sx={{ width: '10% !important'}}>
+				// 		<DisplayTime match={match}/>
+				// 	</TableCell>
+				// 	<TableCell sx={{ width: '20% !important'}}>
+				// 		{match.league.name}
+				// 	</TableCell>
+				// </TableRow >
 			)
 		}
 			
 		return (
-			<Paper elevation={1}>
-				<SectionHeading variant='h6' img={flag} content={nation} />
-				<TableContainer size='small'>
+			<Box elevation={1}>
+				<Title variant='h6' img={flag} content={nation} />
+				<Grid container columns={8} spacing={1} sx={{padding: 2}}>
+					{result}
+				</Grid>
+				{/* <TableContainer size='small'>
 					<Table size='small' aria-label='a dense table'>
 						<TableHead sx={{backgroundColor: theme.palette.action.hover}} >
 							<TableRow >
 							<TableCell sx={{width: '50% !important'}}>Match</TableCell>
-							<TableCell sx={{ width: '10% !important' }}>Time</TableCell>
-							<TableCell sx={{ width: '20% !important' }}>Competition</TableCell>
+							<TableCell align='left' sx={{ width: '10% !important' }}>Time</TableCell>
+							<TableCell align='left' sx={{ width: '20% !important' }}>Competition</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
 							{result}
 						</TableBody>
 					</Table>
-				</TableContainer>
-			</Paper>
+				</TableContainer> */}
+			</Box>
 		)
 	}
 
@@ -121,4 +109,4 @@ const MatchTimelineTable = ({nation, matches}) => {
 	)
 }
 
-export default MatchTimelineTable;
+export default MatchFeedItem;

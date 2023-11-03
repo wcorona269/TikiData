@@ -5,7 +5,7 @@ import MultiTableDashboard from './multi-table-dashboard';
 import Typography from '@mui/material/Typography';
 import { TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Link, Avatar, useTheme, Paper, Box } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const LeagueTableDashboard = ({table, name, logo }) => {
 	const theme = useTheme();
@@ -71,7 +71,7 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 
 	return (
 		<Paper elevation={1} sx={{marginTop: '1rem', mx: 'auto', marginTop: '1rem'}}>
-			<SectionHeading variant='h6' content={`${leagueName} Table`} img={leagueLogo} />
+			<Title variant='h6' content={`${leagueName} Table`} img={leagueLogo} />
 			<TableContainer>
 				<Table size='small' aria-label='a dense table' >
 					<TableHead>

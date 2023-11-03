@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchStandings } from '../../../actions/standings_actions';
 import { useNavigate } from 'react-router-dom';
 import LoadingMessage from '../../util/loading/loading-screen';
-import SectionHeading from '../../util/section-heading';
+import Title from '../../util/section-heading';
 import NoDataMessage from '../../util/no-data/no-data-message';
 
 const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
@@ -124,7 +124,7 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 
 	return (
 		<Paper elevation={1}>
-			<SectionHeading variant='subtitle1' content={`${league_name} Standings`} img={league_logo}/>
+			<Title variant='subtitle1' content={`${league_name} Standings`} img={league_logo}/>
 			{ isLoading ?
 				<Box sx={{ height: '20rem', width: '100%', display: 'flex', alignItems: 'center' }}>
 					<CircularProgress

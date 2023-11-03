@@ -4,7 +4,7 @@ import FixturesDisplay from './fixtures-display';
 import NoDataMessage from '../util/no-data/no-data-message';
 import Typography from '@mui/material/Typography';
 import { Box, Container, Paper } from '@mui/material';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const LeagueFixturesDashboard = ({fixtures, uniqueDates}) => {
 	
@@ -22,8 +22,8 @@ const LeagueFixturesDashboard = ({fixtures, uniqueDates}) => {
 	const leagueLogo = fixtures[0].league.logo
 
 	return (
-		<Paper elevation={1} sx={{ marginTop: '1rem', mx: 'auto', marginTop: '1rem' }}>
-			<SectionHeading variant='h6' img={leagueLogo} content={`${leagueName} Fixtures`} />
+		<Paper elevation={1} sx={{ marginTop: '1rem', mx: 'auto' }}>
+			<Title variant='h6' img={leagueLogo} content={`${leagueName} Fixtures`} />
 			<FixtureNavBar selectedDate={selectedDate} dates={uniqueDates} handleChange={handleChange} setSelectedDate={setSelectedDate}/>
 			<FixturesDisplay fixtures={fixtures} selectedDate={selectedDate} uniqueDates={uniqueDates}/>
 		</Paper>

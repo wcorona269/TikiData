@@ -7,7 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
 import HomeFixturesColumn from './home-fixtures-column';
 import Article from '../news/article';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const HomeNews = () => {
 	const theme = useTheme();
@@ -63,7 +63,7 @@ const HomeNews = () => {
 		<>
 			<Grid item xs={6}>
 				<Paper elevation={1} sx={{display: 'flex', flexDirection: 'column', minHeight: '40rem'}}>
-					<SectionHeading variant='h5' content='News' />
+					<Title variant='h5' content='News' />
 					<Box sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column', width: '100%', minHeight: '40rem'}}>
 						{ isLoading ?
 							<CircularProgress color='primary' sx={{marginTop: '3rem', margin: 'auto'}}/> :
@@ -84,7 +84,7 @@ const HomeNews = () => {
 					<ScrollToTopOnLoad />
 				</Paper>
 			</Grid>
-			<Grid item xs>
+			<Grid item xs={3} sx={{ position: 'sticky', top: '3rem' }}>
 				<HomeFixturesColumn/>
 			</Grid>
 		</>

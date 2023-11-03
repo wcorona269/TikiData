@@ -2,6 +2,7 @@ import { useTheme } from '@mui/material';
 import React from 'react';
 import { ListItem, ListItemButton, Grid, Box, Typography } from '@mui/material';
 
+
 const Article = ({article, idx}) => {
 	const theme = useTheme()
 	
@@ -36,5 +37,6 @@ const Article = ({article, idx}) => {
 		</ListItem>
 	)
 }
+
 
 export default Article;

@@ -6,7 +6,7 @@ import { fetchMatch } from '../../actions/api_actions';
 import MatchOverviewHeader from './match-overview-header';
 import MatchInfo from './match-info/match-info';
 import LoadingMessage from '../util/loading/loading-screen';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 import NoDataMessage from '../util/no-data/no-data-message';
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { Box, Grid, Paper, Stack, Typography } from '@mui/material';
@@ -50,15 +50,17 @@ const MatchOverview = () => {
 	return (
 		<>
 			<Grid item xs={6}>
-				<Paper>
-					<SectionHeading variant='h5' content='Match Summary' back={true} />
+				<Box>
+					<Paper elevation={1}>
+						<Title variant='h6' content='Match Summary' back={true} />
+					</Paper>
 					<Stack spacing={2} sx={{marginTop: 1}}>
 						<MatchOverviewHeader match={match[0]}/>
 						<MatchStats match={match[0]} header={header} />
 						<EventsTimeline match={match[0]} header={header} />
 						<Lineups lineups={match[0]?.lineups} header={header} />
 					</Stack>
-				</Paper>
+				</Box>
 			</Grid>
 			<Grid item xs={3} sx={{ position: 'sticky', top: '1rem' }}>
 				<Stack spacing={2}>

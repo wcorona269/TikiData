@@ -83,7 +83,7 @@ const UserProfile = () => {
 					</Box>
 				}
 			</Grid>
-			<Grid item xs={3}>
+			<Grid item xs={3} sx={{position: 'sticky', top: '3rem'}} >
 				<HomeFixturesColumn/>
 			</Grid>
 		</>

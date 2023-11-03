@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Tabs, Tab, Paper, Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import LeagueStatsTable from './LeagueStatsTable';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
 
 const LeagueStatsDashboard = ({top_scorers, top_assists}) => {
 	const [selectedTab, setSelectedTab] = useState(0);
@@ -17,8 +17,8 @@ const LeagueStatsDashboard = ({top_scorers, top_assists}) => {
 
 	
 	return (
-		<Paper elevation={1} sx={{ marginTop: '1rem', mx: 'auto', marginTop: '1rem' }}>
-			<SectionHeading variant='h6' content={`${leagueName} Stats`} img={leagueLogo} />
+		<Paper elevation={1} sx={{ mx: 'auto' }}>
+			<Title variant='h6' content={`${leagueName} Stats`} img={leagueLogo} />
 			<Box>
 				<Tabs value={selectedTab} onChange={handleChange} >
 					<Tab label='Goals'/>

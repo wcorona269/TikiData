@@ -1,7 +1,7 @@
 import React from 'react';
 import NoDataMessage from '../../util/no-data/no-data-message';
 import { Box, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
-import SectionHeading from '../../util/section-heading';
+import Title from '../../util/section-heading';
 
 const MatchStats = ({match, header}) => {
 	const theme = useTheme();
@@ -97,7 +97,7 @@ const MatchStats = ({match, header}) => {
 
 	return (
 		<Paper elevation={1} >
-			<SectionHeading variant='h6' content='Match Stats'/>
+			<Title variant='h6' content='Match Stats'/>
 			{!stats.length ? <NoDataMessage/> :
 			<>
 				{header}

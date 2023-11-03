@@ -10,14 +10,18 @@ import ListItemContent from '@mui/joy/ListItemContent';
 import PublicIcon from '@mui/icons-material/Public';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import React from 'react';
-import SectionHeading from '../util/section-heading';
+import Title from '../util/section-heading';
+import PersonIcon from '@mui/icons-material/Person';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import { useSelector } from 'react-redux';
 
 const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 	const theme = useTheme();
+	const username = useSelector(state => state.session?.user?.username);
 
 	const buttons = [
 		<ListItem key={0} disablepadding sx={{paddingLeft: '0px'}}>
-			<ListItemButton onClick={() => handleTabSelect(0, 'home')}>
+			<ListItemButton onClick={() => handleTabSelect(0, 'home')} sx={{ color: selectedTab === 0 ? theme.palette.primary.main : theme.palette.text.primary }}>
 				{ selectedTab === 0 ?
 					<HomeRoundedIcon fontSize='large'/> : <HomeOutlinedIcon fontSize='large'/>
 				}	
@@ -27,7 +31,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 			</ListItemButton>
 		</ListItem>,
 		<ListItem key={1} disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(1, 'notifications')}>
+			<ListItemButton onClick={() => handleTabSelect(1, 'notifications')} sx={{ color: selectedTab === 1 ? theme.palette.primary.main : theme.palette.text.primary }}>
 				{ selectedTab === 1 ?
 					<NotificationsIcon fontSize='large' /> : <NotificationsNoneIcon fontSize='large'/>
 				}	
@@ -37,7 +41,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 			</ListItemButton>
 		</ListItem>,
 		<ListItem key={2} disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(2, 'matches')}>
+			<ListItemButton onClick={() => handleTabSelect(2, 'matches')} sx={{ color: selectedTab === 2 ? theme.palette.primary.main : theme.palette.text.primary }}>
 				<SportsSoccerIcon fontSize='large' />
 				<ListItemContent sx={{marginLeft: '.5rem'}}>
 					<Typography sx={{ fontFamily: selectedTab === 2 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>Matches</Typography>
@@ -45,7 +49,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 			</ListItemButton>
 		</ListItem>,
 		<ListItem key={3} disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(3, 'explore')}>
+			<ListItemButton onClick={() => handleTabSelect(3, 'explore')} sx={{ color: selectedTab === 3 ? theme.palette.primary.main : theme.palette.text.primary }}>
 			{ selectedTab === 3 ?
 				<TravelExploreIcon fontSize='large'/> :
 				<PublicIcon fontSize='large' />
@@ -56,7 +60,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 			</ListItemButton>
 		</ListItem>,
 		<ListItem key={4} disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(4, 'news')}>
+			<ListItemButton onClick={() => handleTabSelect(4, 'news')} sx={{ color: selectedTab === 4 ? theme.palette.primary.main : theme.palette.text.primary }}>
 				{ selectedTab === 4 ?
 					<ArticleIcon fontSize='large'/> : <ArticleOutlinedIcon fontSize='large' />
 				}	
@@ -65,11 +69,27 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,
+		<ListItem key={5} disablepadding sx={{ paddingLeft: '0px' }}>
+			<ListItemButton onClick={() => handleTabSelect(5, `user/${username}`)} sx={{ color: selectedTab === 5 ? theme.palette.primary.main : theme.palette.text.primary }}>
+				{ selectedTab === 5 ?
+					<PersonIcon fontSize='large'/> : <PersonOutlineIcon fontSize='large' />
+				}
+				<ListItemContent sx={{marginLeft: '.5rem'}}>
+					<Typography sx={{ 
+						fontFamily: selectedTab === 5 ? theme.typography.bold : theme.typography.fontFamily,
+						}} 
+						variant='h5'
+					>
+							My Profile
+					</Typography>
+				</ListItemContent>
+			</ListItemButton>
+		</ListItem>,
 	]
 
 	return (
 		<>
-			<SectionHeading variant='h5' content='Dashboard' />
+			<Title variant='h5' content='Dashboard' />
 			<List>
 				{buttons}
 			</List>
