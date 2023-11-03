@@ -37,7 +37,6 @@ const Notifications = () => {
 					<ListItemButton>
 						<ListItemAvatar>
 							<Avatar>
-								
 							</Avatar>
 						</ListItemAvatar>
 						<Typography variant='body1'>
@@ -60,7 +59,7 @@ const Notifications = () => {
 					</List>
 				</Paper>
 			</Grid>
-			<Grid item xs>
+			<Grid item xs={3}>
 				<HomeFixturesColumn/>
 			</Grid>
 			<ScrollToTopOnLoad/>

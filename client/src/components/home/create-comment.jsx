@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Container, IconButton, TextField, useTheme } from '@mui/material';
+import { Avatar, Box, IconButton, TextField, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,8 +11,7 @@ const CreateComment = ({ post }) => {
 	const theme = useTheme();
 	const [comment, setComment] = useState('');
 	const [isValid, setIsValid] = useState(false);
-	const user_id = useSelector(state => state.session?.user?.id)
-	const username = useSelector(state => state.session?.user?.username)
+	const user_id = useSelector(state => state.session?.user?.id);
 
 	useEffect(() => {
 		if (comment.length > 0 && comment.length < 1000) {
@@ -36,8 +35,10 @@ const CreateComment = ({ post }) => {
 		const notif_info = {
 			'recipient_id': post.user_id,
 			'sender_id': user_id,
-			'message': `${username} commented on your post.`,
-			'post_id': post.id
+			'target_id': post.id,
+			'target_type': 'post_comment',
+			'read': false,
+			'created_at': new Date(),
 		}
 
 		dispatch(createComment(comment_data));

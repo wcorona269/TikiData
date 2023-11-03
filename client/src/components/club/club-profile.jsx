@@ -32,10 +32,7 @@ const ClubProfile = () => {
 	useEffect(() => {
 		let formattedSeason = season.split('/')[0]
 		dispatch(fetchClub(id, formattedSeason));
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth'
-		})
+		window.scrollTo(0, 0)
 	}, [id]);
 
 	if (isLoading || !club) {

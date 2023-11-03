@@ -1,22 +1,28 @@
 from .db import db
 from .user_model import User
+from enum import Enum
 from datetime import datetime
+
+class NotificationType(Enum):
+    POST_LIKE = 'post_like'
+    POST_COMMENT = 'post_comment'
+    COMMENT_LIKE = 'comment_like'
 
 class Notification(db.Model):
 	__tablename__ = 'notifications'
 	
-	id = db.Column(db.Integer, index=True, primary_key=True)
-	sender_id = db.Column(db.Integer, nullable=False)
+	id = db.Column(db.Integer, primary_key=True)
+	sender_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 	recipient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-	post_id = db.Column(db.Integer, nullable=False) 
-	created_at = db.Column(db.DateTime, default=datetime.utcnow)
-	message=db.Column(db.String, nullable=False, default='Someone liked your post')
-	is_read=db.Column(db.Boolean, nullable=False, default=False)
-     
-	recipient = db.relationship('User', back_populates='notifications', primaryjoin='Notification.recipient_id == User.id')
- 
-	def add_notification(recipient_id, sender_id, post_id, message): 
-		new_notif = Notification(recipient_id=recipient_id, sender_id=sender_id, post_id=post_id, message=message)
+	target_id = db.Column(db.Integer, nullable=False)  # ID of the target entity (e.g., post_id, comment_id)
+	target_type = db.Column(db.Enum(NotificationType), nullable=False)  # Type of the target entity
+	created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+	read = db.Column(db.Boolean, nullable=False, default=False)
+	sender = db.relationship('User', back_populates='notifications_sent', foreign_keys=[sender_id])
+	recipient = db.relationship('User', back_populates='notifications_received', foreign_keys=[recipient_id])
+
+	def add_notification(recipient_id, sender_id, target_type, target_id, created_at, read):
+		new_notif = Notification(recipient_id=recipient_id, sender_id=sender_id, target_type=target_type, target_id=target_id, created_at=created_at, read=read)
 		if new_notif:
 			db.session.add(new_notif)
 			db.session.commit()  
@@ -25,7 +31,7 @@ class Notification(db.Model):
 			return False
  
 	def delete_notification(id):
-		notif_to_delete = Notification.query.filter_by(id=id).first()
+		notif_to_delete = Notification.query.get(id)
 		if notif_to_delete:
 			db.session.delete(notif_to_delete)
 			db.session.commit()
@@ -38,11 +44,11 @@ class Notification(db.Model):
 			'id': self.id,
 			'sender_id': self.sender_id,
 			'recipient_id': self.recipient_id,
-			'post_id': self.post_id,
+			'target_id': self.target_id,
+			'target_type': self.target_type,
 			'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-			'message': self.message,
-			'is_read': self.is_read
-			# Add more fields if necessary
+			'read': self.read,
+   		'sender': self.sender.to_dict()
 		}
      
 	def __repr__(self):

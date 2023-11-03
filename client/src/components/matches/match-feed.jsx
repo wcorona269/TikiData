@@ -21,10 +21,7 @@ const MatchFeedContainer = ({apiKey}) => {
 		const dateString = `${year}-${month}-${day}`
 
 		dispatch(fetchMatches(dateString))
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth'
-		});
+window.scrollTo(0, 0);
 	}, [date]);
 
 	const resetFilters = () => {
@@ -71,10 +68,7 @@ const MatchFeedContainer = ({apiKey}) => {
 	
 	
 	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth'
-		});
+window.scrollTo(0, 0);
 	}, [selectedNation])
 	
 

@@ -41,10 +41,7 @@ const LeagueProfile = () => {
 	}, [season]);
 
 	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth'
-		})
+window.scrollTo(0, 0)
 	}, [isLoading]);
 
 	const handleChange = (newValue) => {

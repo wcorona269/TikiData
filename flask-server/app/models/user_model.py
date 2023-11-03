@@ -23,7 +23,8 @@ class User(UserMixin, db.Model):
 	posts = db.relationship('Post', back_populates='user')
 	likes = db.relationship('PostLike', back_populates='user')
 	comments = db.relationship('Comment', back_populates='user')
-	notifications = db.relationship('Notification', back_populates='recipient', lazy=True)
+	notifications_sent = db.relationship('Notification', back_populates='sender', primaryjoin='User.id == Notification.sender_id')
+	notifications_received = db.relationship('Notification', back_populates='recipient', primaryjoin='User.id == Notification.recipient_id')
  
 	# database constraints
 	__table_args__ = (

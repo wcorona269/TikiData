@@ -2,12 +2,11 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import React, { useEffect, useState } from 'react'
-import { Link, Route, Routes, Switch } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './util/route_util';
 import NavBar from './nav_bar/nav-bar';
 import Footer from './footer/footer'
-import Home from './home/home'
 import ModalContainer from './modal/modal';
 import Welcome from './home/welcome'
 import Explore from './home/explore';
@@ -17,12 +16,9 @@ import ClubProfile from './club/club-profile';
 import LeagueProfile from './league/league-profile';
 import PlayerProfile from './player/player-profile';
 import MatchOverview from './match/match-overview';
-import NewsTimeline from './news/news-timeline';
-import { Paper, createTheme, ThemeProvider, Container, Box } from '@mui/material';
-import { fetchCurrentUser } from '../actions/session_actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { createTheme, ThemeProvider, Container, Box } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import Notifications from './home/home-notifications';
-import PlayerOverview from './player/player-overview';
 import PostsTimeline from './home/posts-column';
 import HomeNews from './home/home-news';
 import PostShowPage from './post/post-show-page';

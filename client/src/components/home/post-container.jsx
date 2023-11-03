@@ -52,8 +52,10 @@ const PostContainer = ({ post, repost }) => {
 		const notif_info = {
 			'recipient_id': post.user_id,
 			'sender_id': user_id,
-			'message': `${username} liked your post`,
-			'post_id': post.id
+			'target_id': post.id,
+			'target_type': 'post_like',
+			'read': false,
+			'created_at': new Date(),
 		}
 
 		if (isLiked === true) {

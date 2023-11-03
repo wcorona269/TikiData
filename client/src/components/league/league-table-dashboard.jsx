@@ -77,7 +77,7 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 					<TableHead>
 						<TableRow>
 							{columns.map((column, idx) => (
-								<TableCell sx={{ width: idx === 1 ? '50%' : 'auto' }} key={idx} id={column}>
+								<TableCell sx={{ paddingRight: idx === 0 ? 0 : 1, width: idx === 1 ? '100%' : 'auto', color: theme.palette.text.secondary }} key={idx} id={column}>
 									<Typography variant='body1'>
 										{column}
 									</Typography>
@@ -98,8 +98,8 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 							
 							return (
 								<TableRow key={idx} className='league-table-row'>
-								<TableCell>{club['rank']}</TableCell>
-								<TableCell id='Club' >
+								<TableCell sx={{ paddingRight: 0, color: theme.palette.text.secondary}}>{club['rank']}</TableCell>
+								<TableCell sx={{ paddingLeft: 1 }} >
 									<Link underline='hover' sx={{ color: theme.palette.text.primary, display: 'flex', flexDirection: 'row' }} onClick={() => navigate(`/club/${clubId}`)} >
 										<img src={club['team']['logo']} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} alt=''/>
 										<Typography variant='body1'>{clubName}</Typography>

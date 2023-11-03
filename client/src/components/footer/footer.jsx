@@ -14,8 +14,8 @@ const Footer = ({ lightMode }) => {
 	}
 	
 	return (
-		<Paper elevation={1} sx={{
-			backgroundColor: lightMode ? theme.palette.primary.main : theme.palette.background.paper,
+		<Box elevation={1} sx={{
+			background: theme.palette.background.paper,
 			borderRadius: '0px',
 			width: "100%",
 			height: "auto",
@@ -64,7 +64,7 @@ const Footer = ({ lightMode }) => {
 					</Grid>
 				</Grid>
 			</Container>
-		</Paper>
+		</Box>
 	)
 }
 
