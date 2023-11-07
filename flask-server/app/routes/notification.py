@@ -49,13 +49,13 @@ def delete_notification(notifId):
 
 @bp.route('/fetch/<userId>', methods=['GET'])
 def fetchNotifications(userId):
-	user = User.query.get(userId)
+	user = User.query.get(int(userId))
 	if user is None:
 		return jsonify({
 			'message': 'User not found'
 		}), 404
 
-	notifications = Notification.query.filter_by(recipient_id=userId).all()
+	notifications = Notification.query.filter_by(recipient_id=int(userId)).all()
 	notifications_list = [notification.to_dict() for notification in notifications]
 
 	return jsonify({

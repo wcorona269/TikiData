@@ -8,6 +8,8 @@ class NotificationType(Enum):
     POST_COMMENT = 'post_comment'
     COMMENT_LIKE = 'comment_like'
 
+db.Enum(NotificationType, name='notificationtype')
+
 class Notification(db.Model):
 	__tablename__ = 'notifications'
 	

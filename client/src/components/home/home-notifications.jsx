@@ -55,7 +55,7 @@ const Notifications = () => {
 				<Paper elevation={1} sx={{minHeight: '20rem'}}>
 					<Title variant='h5' content='Notifications' />
 					<List>
-						{displayNotifications(notifications)}
+						{/* {displayNotifications(notifications)} */}
 					</List>
 				</Paper>
 			</Grid>
