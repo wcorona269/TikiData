@@ -10,7 +10,6 @@ const Notifications = () => {
 	const dispatch = useDispatch()
 	const notifications = useSelector(state => state.notifications?.notifications)
 	const theme = useTheme();
-
 	const user_id = useSelector(state => state.session?.user?.id);
 
 	useEffect(() => {

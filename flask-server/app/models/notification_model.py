@@ -1,7 +1,7 @@
 from .db import db
 from .user_model import User
 from enum import Enum
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 class NotificationType(Enum):
     POST_LIKE = 'post_like'
@@ -11,13 +11,15 @@ class NotificationType(Enum):
 
 class Notification(db.Model):
 	__tablename__ = 'notifications'
-	
+ 
+	server_timezone_offset = -5
+	local_time = datetime.now(timezone.utc) + timedelta(hours=server_timezone_offset)
 	id = db.Column(db.Integer, primary_key=True)
 	sender_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 	recipient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 	target_id = db.Column(db.Integer, nullable=False)  # ID of the target entity (e.g., post_id, comment_id)
 	target_type = db.Column(db.Enum(NotificationType), nullable=False)  # Type of the target entity
-	created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+	created_at = db.Column(db.DateTime, default=local_time, nullable=False)
 	read = db.Column(db.Boolean, nullable=False, default=False)
 	sender = db.relationship('User', back_populates='notifications_sent', foreign_keys=[sender_id])
 	recipient = db.relationship('User', back_populates='notifications_received', foreign_keys=[recipient_id])

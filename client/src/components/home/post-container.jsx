@@ -1,20 +1,18 @@
-import './post-container.scss'
-import { Avatar, Box, Button, ButtonGroup, Divider, Grid, Link, Paper, Typography } from '@mui/material'
+ import './post-container.scss';
+import { Avatar, Box, Button, Divider, Link, Paper, Typography } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import React, { useEffect, useState } from 'react';
-import { formatDistanceToNow } from 'date-fns';
 import CommentSection from './comment-section';
 import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { createLike, createRepost, deleteLike, deleteRepost, fetchPosts } from '../../actions/post_actions';
 import { createNotification, deleteNotification } from '../../actions/notification_actions';
-import { showModal } from '../../actions/modal_actions'
 import { useNavigate } from 'react-router-dom';
 import RepostButton from './repost-popper';
 import RepeatIcon from '@mui/icons-material/Repeat';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 const PostContainer = ({ post, repost }) => {
 	const dispatch = useDispatch();
@@ -36,13 +34,6 @@ const PostContainer = ({ post, repost }) => {
 		}
 	}, []);
 
-	const timeAgo = (date) => {
-		const timeAgo = formatDistanceToNow(new Date(date), { addSuffix: true });
-		return <span>{timeAgo.split(' ').slice(1, 3).map((ele, idx) => {
-			return idx === 1 ? ele.slice(0, 1) : ele
-		})}</span>;
-	};
-
 	const handleLike = () => {
 		const like_info = {
 			'post_id': post.id,
@@ -53,7 +44,7 @@ const PostContainer = ({ post, repost }) => {
 			'recipient_id': post.user_id,
 			'sender_id': user_id,
 			'target_id': post.id,
-			'target_type': 'post_like',
+			'target_type': 'POST_LIKE',
 			'read': false,
 			'created_at': new Date(),
 		}
@@ -92,58 +83,54 @@ const PostContainer = ({ post, repost }) => {
 		setIsReposted(!isReposted);
 	}
 
-
 	const buttons = [
-		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: showComments ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => setShowComments(!showComments)}>
+		<Button key={0} aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: showComments ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => setShowComments(!showComments)}>
 			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium'/>
 			{post.comments.length}
 		</Button>,
-		<RepostButton handleRepost={handleRepost} reposts={reposts} isReposted={isReposted} setIsReposted={setIsReposted} post={post} user_id={user_id}  />,
-		<Button aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isLiked ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={handleLike} >
+		<RepostButton key={1} handleRepost={handleRepost} reposts={reposts} isReposted={isReposted} setIsReposted={setIsReposted} post={post} user_id={user_id}  />,
+		<Button key={2} aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: isLiked ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={handleLike} >
 			{isLiked ? <FavoriteIcon sx={{ marginRight: '.25rem' }} fontSize='medium' /> : <FavoriteBorderIcon sx={{ marginRight: '.25rem' }} />  }
 			{postLikes}
 		</Button>,
 	];
 
 	return (
-		<>
-			<Paper elevation={1} key={post.id} sx={{ padding: 2, paddingBottom: 0, borderBottom: 'none !important'}}>
-				{repost &&
-					<Link onClick={() => navigate(`/user/${repost.user.username}`)} underline='hover' sx={{ color: theme.palette.grey['500'], display: 'flex', alignItems: 'center', marginBottom: 1 }} variant='caption'>
-						<RepeatIcon sx={{ marginRight: '.25rem' }} fontSize='small' />
-						Reposted by {repost.user.username}
-					</Link>
-				}
-				<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-					<Avatar sx={{ marginRight: '.5rem' }} />
-					<Box sx={{ display: 'flex', flexDirection: 'column'}}>
-						<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '.5rem'}}>
-							<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>
-								<Link underline='hover' onClick={() => navigate(`/user/${post.username}`)} >
-									{post.username}
-								</Link>
-							</Typography>
-							<Typography variant='caption' sx={{ color: 'var(--darkgray)' }}>
-								{moment(post.created_at).fromNow()}
-							</Typography>
-						</Box>
-						<Typography variant='body1' onClick={() => navigate(`/post/${post.id}`)} sx={{width: '100%'}} >
-							{post.text}
+		<Paper elevation={1} key={post.id} sx={{ padding: 2, paddingBottom: 0, borderBottom: 'none !important'}}>
+			{repost &&
+				<Link onClick={() => navigate(`/user/${repost.user.username}`)} underline='hover' sx={{ color: theme.palette.grey['500'], display: 'flex', alignItems: 'center', marginBottom: 1 }} variant='caption'>
+					<RepeatIcon sx={{ marginRight: '.25rem' }} fontSize='small' />
+					Reposted by {repost.user.username}
+				</Link>
+			}
+			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+				<Avatar sx={{ marginRight: '.5rem' }} />
+				<Box sx={{ display: 'flex', flexDirection: 'column'}}>
+					<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '.5rem'}}>
+						<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>
+							<Link underline='hover' onClick={() => navigate(`/user/${post.username}`)} >
+								{post.username}
+							</Link>
+						</Typography>
+						<Typography variant='caption' sx={{ color: 'var(--darkgray)' }}>
+							{moment(post.created_at).tz('America/New_York').fromNow()}
 						</Typography>
 					</Box>
+					<Typography variant='body1' onClick={() => navigate(`/post/${post.id}`)} sx={{width: '100%'}} >
+						{post.text}
+					</Typography>
 				</Box>
-				<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: '.5rem'}}>
-					{buttons}
-				</Box>
-				{showComments && 
-					[
-						<Divider/>,
-						<CommentSection comments={post.comments} post={post} />
-					]
-				}
-			</Paper>
-			<Divider/>
-		</>
+			</Box>
+			<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: '.5rem'}}>
+				{buttons}
+			</Box>
+			{showComments && 
+				[
+					<Divider/>,
+					<CommentSection comments={post.comments} post={post} />
+				]
+			}
+		</Paper>
 	)
 }
 

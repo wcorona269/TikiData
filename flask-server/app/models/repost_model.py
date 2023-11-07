@@ -1,16 +1,18 @@
 from .db import db
 from .user_model import User
 from .post_model import Post
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 class Repost(db.Model):
   __tablename__ = 'reposts'
   
+  server_timezone_offset = -5
+  local_time = datetime.now(timezone.utc) + timedelta(hours=server_timezone_offset)
   # repost table columns
   id = db.Column(db.Integer, primary_key=True, nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
-  created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+  created_at = db.Column(db.DateTime, default=local_time, nullable=False)
   # relationships
   user = db.relationship('User', backref='reposts', lazy='joined')
   post = db.relationship('Post', back_populates='reposts', lazy='joined')

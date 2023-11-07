@@ -1,16 +1,18 @@
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from .user_model import User
 from .db import db
 
 class Comment(db.Model):
 	__tablename__ = 'comments'
-
+ 
+	server_timezone_offset = -5
+	local_time = datetime.now(timezone.utc) + timedelta(hours=server_timezone_offset)
 	id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
 	post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), index=True, nullable=False)  # Define foreign key to 'posts.id'
 
 	text = db.Column(db.String(200), nullable=False)
-	created_at = db.Column(db.DateTime, default=datetime.utcnow)
+	created_at = db.Column(db.DateTime, default=local_time)
 	parent_id = db.Column(db.Integer, db.ForeignKey('comments.id'), default=None)
  
 	user = db.relationship('User', back_populates='comments')

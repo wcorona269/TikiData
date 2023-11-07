@@ -4,18 +4,21 @@ from datetime import timedelta
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from .db import db, bcrypt
 from flask import jsonify
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 class User(UserMixin, db.Model):
 	__tablename__ = 'users'
-
+ 
+	server_timezone_offset = -5
+	local_time = datetime.now(timezone.utc) + timedelta(hours=server_timezone_offset)
+ 
 	# table columns
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(64), index=True, unique=True, nullable=False)
 	bio = db.Column(db.String(200), default='', nullable=False)
 	email = db.Column(db.String(120), unique=True, nullable=False)
 	password_hash = db.Column(db.String(255), nullable=False)
-	created_at = db.Column(db.DateTime, default=datetime.utcnow)
+	created_at = db.Column(db.DateTime, default=local_time, nullable=False)
 	bio = db.Column(db.String, default='')
  
 	# table relationships

@@ -34,16 +34,15 @@ const CommentContainer = ({ comment, idx }) => {
 			'user_id': user_id,
 			'comment_id': comment.id
 		}
-		
 		const notif_info = {
 			'recipient_id': comment.user_id,
 			'sender_id': user_id,
 			'target_id': comment.id,
-			'target_type': 'comment_like',
+			'target_type': 'COMMENT_LIKE',
 			'read': false, // Initial read status, can be set to false for unread notifications
 			'created_at': new Date(),
 		}
-
+		
 		if (isLiked === true) {
 			dispatch(deleteLike(like_info));
 			setCommentLikes(commentLikes - 1)

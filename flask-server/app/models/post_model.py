@@ -1,15 +1,18 @@
 from .db import db
 from .user_model import User
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+
 
 class Post(db.Model):
   __tablename__ = 'posts'
   
+  server_timezone_offset = -5
+  local_time = datetime.now(timezone.utc) + timedelta(hours=server_timezone_offset)
   # posts table columns
   id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
   text = db.Column(db.String(200), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True, nullable=False)
-  created_at = db.Column(db.DateTime, default=datetime.utcnow)
+  created_at = db.Column(db.DateTime, default=local_time, nullable=False)
   # relationships
   user = db.relationship('User', back_populates='posts')
   likes = db.relationship('PostLike', back_populates='post')
