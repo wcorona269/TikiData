@@ -1,23 +1,42 @@
 from flask import Blueprint, request, jsonify
 from ..models.user_model import User
-from ..models.notification_model import Notification
+from ..models.notification_model import Notification, NotificationType
 
 bp = Blueprint('notification', __name__, url_prefix='/notifications')
+
+
+def map_target_type(target_type):
+    type_mapping = {
+        'POST_LIKE': NotificationType.POST_LIKE,
+        'POST_COMMENT': NotificationType.POST_COMMENT,
+        'COMMENT_LIKE': NotificationType.COMMENT_LIKE,
+    }
+    return type_mapping.get(target_type, None)
 
 @bp.route('/create', methods=['POST'])
 def add_notification():
   data = request.json
   recipient_id = data.get('recipient_id')
   sender_id = data.get('sender_id')
-  post_id = data.get('post_id')
-  message = data.get('message')
+  target_id = data.get('target_id')    
+  target_type_str = data['target_type']
+  read = data.get('read')
+  created_at = data.get('created_at')
+  target_type = map_target_type(target_type_str)
   
-  if not recipient_id and sender_id and post_id and message:
+  if not recipient_id or not sender_id or not target_id or not target_type:
     return jsonify({
 				'message': 'Invalid request data'
     }), 400
   
-  notification = Notification.add_notification(recipient_id, sender_id, post_id, message)
+  notification = Notification.add_notification(recipient_id,
+                                               sender_id,
+                                               target_type,
+                                               target_id,
+                                               created_at,
+                                               read,
+                                               )
+  
   if notification == True:
     return jsonify({
 				'message': 'Notification created successfully'
@@ -45,7 +64,7 @@ def delete_notification(notifId):
     return jsonify({
 			'message': 'Invalid request data'
 		}), 401
-    
+
 
 @bp.route('/fetch/<userId>', methods=['GET'])
 def fetchNotifications(userId):
