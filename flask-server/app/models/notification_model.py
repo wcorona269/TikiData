@@ -7,6 +7,7 @@ class NotificationType(Enum):
     POST_LIKE = 'post_like'
     POST_COMMENT = 'post_comment'
     COMMENT_LIKE = 'comment_like'
+    REPOST = 'repost'
 
 
 class Notification(db.Model):
