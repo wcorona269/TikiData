@@ -56,7 +56,7 @@ class Notification(db.Model):
 		if user:
 			for notif in user.notifications_received:
 				notif.read = True
-				return True
+			return True
 		else:
 			return False
  

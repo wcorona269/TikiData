@@ -4,7 +4,6 @@ from ..models.notification_model import Notification, NotificationType
 
 bp = Blueprint('notification', __name__, url_prefix='/notifications')
 
-
 def map_target_type(target_type):
     type_mapping = {
         'POST_LIKE': NotificationType.POST_LIKE,
@@ -45,8 +44,7 @@ def add_notification():
     return jsonify({
         'message': 'Invalid request data'
     }), 400
-  
-  
+    
 @bp.route('/delete/<notifId>', methods=['DELETE'])
 def delete_notification(notifId):
   if not notifId:
@@ -65,8 +63,7 @@ def delete_notification(notifId):
 			'message': 'Invalid request data'
 		}), 401
 
-
-@bp.route('/fetch/<userId>', methods=['GET'])
+@bp.route('/fetch/<int:userId>', methods=['GET'])
 def fetchNotifications(userId):
 	user = User.query.get(int(userId))
 	if user is None:
@@ -80,3 +77,27 @@ def fetchNotifications(userId):
 	return jsonify({
 		'notifications': notifications_list
 	}), 200
+ 
+@bp.route('/read_all/<int:userId>', methods=['POST'])
+def read_all_notifs(userId):
+  success = Notification.read_all(userId)
+  if success:
+    return jsonify({
+      'message': 'User notifications read successfully'
+    }), 200
+  else:
+    return jsonify({
+      'message': 'User not found or no notifications to mark as read'
+    }), 404
+    
+@bp.route('/read/<int:notifId>', methods=['POST'])
+def set_as_read(notifId):
+  success = Notification.set_as_read(notifId)
+  if success:
+    return jsonify({
+      'message': 'Notification read successfully'
+    }), 200
+  else:
+    return jsonify({
+      'message': 'Notification not found'
+    }), 404
