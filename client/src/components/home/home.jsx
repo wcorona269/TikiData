@@ -5,6 +5,7 @@ import {  Container, Grid } from '@mui/material';
 import HomeMenu from './home-menu';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNotifications } from '../../actions/notification_actions';
+import { fetchFavorites } from '../../actions/favorite_actions';
 
 const Home = () => {
 	const navigate = useNavigate();
@@ -16,7 +17,11 @@ const Home = () => {
 	const notifications = useSelector(state => state.notifications?.notifications)
 	const [unreadCount, setUnreadCount] = useState();
 
-	useEffect(() => { dispatch(fetchNotifications(user_id)) }, [])
+	useEffect(() => { 
+		dispatch(fetchNotifications(user_id))
+		dispatch(fetchFavorites(user_id))
+	}, [user_id])
+	
 	useEffect(() => {
 		if (location.pathname.includes('home')) {
 			setSelectedTab(0)

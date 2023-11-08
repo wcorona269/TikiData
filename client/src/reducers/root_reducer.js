@@ -13,6 +13,7 @@ import postsReducer from "./post_reducer";
 import notificationsReducer from "./notifications_reducer";
 import repostsReducer from "./repost_reducer";
 import standingsReducer from "./standings_reducer";
+import favoritesReducer from "./favorite_reducer";
 
 const rootReducer = combineReducers({
 	counter: counterReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
 	ui: uiReducer,
 	club: clubReducer,
 	competition: competitionReducer,
+	favorites: favoritesReducer,
 	match: matchReducer,
 	matches: matchesReducer,
 	player: playerReducer,

@@ -36,7 +36,7 @@ const PlayerOverview = ({player}) => {
 	return (
 		<Paper elevation={1}>
 			<Title variant='h6' content={content} />
-			<Grid container sx={{padding: 1}}>
+			<Grid container sx={{padding: 1}} spacing={2}>
 				<Grid item xs={4}>
 					<Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
 						<Card raised={true} sx={{height: 250}}>

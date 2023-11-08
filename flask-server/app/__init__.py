@@ -70,7 +70,8 @@ routes_list = [
     routes.notification.bp,
     routes.repost.bp,
     routes.user.bp,
-    routes.standings.bp
+    routes.standings.bp,
+    routes.favorite.bp
 ]
 
 for route in routes_list:

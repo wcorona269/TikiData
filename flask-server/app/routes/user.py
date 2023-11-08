@@ -14,4 +14,4 @@ def get_user_info(username):
   else:
     return jsonify({
 			'message': 'Invalid request data'
-		}), 404
+		}), 404 

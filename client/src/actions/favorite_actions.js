@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 // Fetch favorites for current user
 export const FETCH_FAVORITES_REQUEST = 'FETCH_FAVORITES_REQUEST'
 export const FETCH_FAVORITES_SUCCESS = 'FETCH_FAVORITES_SUCCESS'

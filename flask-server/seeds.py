@@ -1,3 +1,5 @@
+from app.models import FavoriteType
+
 post_seeds = [
     "Messi and Ronaldo could score blindfolded, change my mind.",
     "VAR has a secret crush on controversy. It just can't stay away.",
@@ -103,4 +105,17 @@ user_seeds = [
         'Gladiator in the arena of goals. Battling opponents, emerging victorious.'],
     ['SoccerMaestro', 'soccermaestro@example.com',
         'Maestro of the soccer world. Every move orchestrated to perfection.'],
+]
+
+favorite_seeds = [
+    ['Manchester City', FavoriteType.CLUB, 50],
+    ['Real Madrid', FavoriteType.CLUB, 541],
+    ['Barcelona', FavoriteType.CLUB, 529],
+    ['UEFA Champions League', FavoriteType.LEAGUE, 2],
+    ['Premier League', FavoriteType.LEAGUE, 39],
+    ['La Liga', FavoriteType.LEAGUE, 140],
+    ['Bundesliga', FavoriteType.LEAGUE, 78],
+    ['Ligue 1', FavoriteType.LEAGUE, 61],
+    ['E. Haaland', FavoriteType.PLAYER, 1100],
+    ['R. Lewandowski', FavoriteType.PLAYER, 521]
 ]

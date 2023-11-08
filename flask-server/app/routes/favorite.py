@@ -12,6 +12,7 @@ def map_target_type(target_type):
   
   return type_mapping.get(target_type, None)
 
+
 @bp.route('/fetch/<int:userId>', methods=['GET'])
 def fetch_user_favorites(userId):
     success, favorites = Favorite.get_user_favorites(userId)
@@ -27,27 +28,28 @@ def fetch_user_favorites(userId):
 
 @bp.route('/create', methods=['POST'])
 def add_favorite():
-  data = request.json
-  user_id, name, target_id, target_type = data.get('user_id'), data.get('name'), data.get('target_id'), data.get('target_type')
-  favorite = Favorite.add_favorite(user_id, name, target_type, target_id)
-  if favorite:
-    return jsonify({
-			'message': 'Favorite created successfully'
-		}), 200
-  else:
-    return jsonify({
-			'message': 'Invalid request data'
+    data = request.json
+    user_id, name, target_id, target_type_str = data.get('user_id'), data.get('name'), data.get('target_id'), data.get('target_type')
+    target_type = map_target_type(target_type_str)
+    favorite = Favorite.add_favorite(user_id, name, target_type, target_id)
+    if favorite:
+        return jsonify({
+                'message': 'Favorite created successfully'
+            }), 200
+    else:
+        return jsonify({
+                'message': 'Invalid request data'
 		}), 401
-    
+            
 @bp.route('/delete/<int:favId>', methods=['DELETE'])
 def delete_fav(favId):
-  fav = Favorite.query.get(favId)
-  if fav:
-    fav.delete_favorite()
-    return jsonify({
-			'message': 'Favorite deleted successfully'
-		}), 200
-  else:
-    return jsonify({
-			'message': 'Favorite not found - invalid request data'
-		}), 401
+    fav = Favorite.query.get(favId)
+    if fav:
+        fav.delete_favorite()
+        return jsonify({
+                'message': 'Favorite deleted successfully'
+            }), 200
+    else:
+        return jsonify({
+                'message': 'Favorite not found - invalid request data'
+            }), 401

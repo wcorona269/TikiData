@@ -135,7 +135,7 @@ class User(UserMixin, db.Model):
 			'username': self.username,
 			'email': self.email,
 			'bio': self.bio,
-			'favorites': [favorite.to_dict for favorite in self.favorites]
+			'favorites': [favorite.to_dict() for favorite in self.favorites]
 		}
 
 	# Print user object
