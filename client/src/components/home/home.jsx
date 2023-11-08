@@ -12,15 +12,21 @@ const Home = () => {
 	const location = useLocation();
 	const dispatch = useDispatch()
 	const [selectedTab, setSelectedTab] = useState(0);
+	const isUserLoading = useSelector(state => state.session.isLoading)
+	const isFavoritesLoading = useSelector(state => state.favorites.isLoading)
 	const username = useSelector(state => state.session.user?.username);
 	const user_id = useSelector(state => state.session?.user?.id);	
 	const notifications = useSelector(state => state.notifications?.notifications)
 	const [unreadCount, setUnreadCount] = useState();
 
-	useEffect(() => { 
-		dispatch(fetchNotifications(user_id))
-		dispatch(fetchFavorites(user_id))
-	}, [user_id])
+	useEffect(() => {
+		if (!isUserLoading) {
+			dispatch(fetchNotifications(user_id))
+		}
+		if (!isFavoritesLoading) {
+			dispatch(fetchFavorites(user_id))
+		}
+	}, [location])
 	
 	useEffect(() => {
 		if (location.pathname.includes('home')) {

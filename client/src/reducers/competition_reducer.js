@@ -13,19 +13,22 @@ const initialState = {
 };
 
 const competitionReducer = (state = initialState, action) => {
+	Object.freeze(state)
+
 	switch (action.type) {
 		case FETCH_COMPETITION_REQUEST:
 			return { ...state, isLoading: true, error: null };
 		case FETCH_COMPETITION_SUCCESS:
-			return { ...state, 
-				standings: action.payload['standings'],
-				top_scorers: action.payload['top scorers'],
-				top_assists: action.payload['top assists'],
-				fixtures: action.payload['fixtures'],
-				news: action.payload['news'],
-				isLoading: false, 
-				error: null 
-			};
+			const { standings, 'top scorers': topScorers, 'top assists': topAssists, fixtures, news } = action.payload;
+			return Object.assign({}, state, {
+				standings: [ ...standings ],
+				top_scorers: Array.isArray(topScorers) ? [...topScorers] : { ...topScorers },
+				top_assists: Array.isArray(topAssists) ? [...topAssists] : { ...topAssists },
+				fixtures: Array.isArray(fixtures) ? [...fixtures] : { ...fixtures },
+				news: Array.isArray(news) ? [...news] : { ...news },
+				isLoading: false,
+				error: null
+			});
 		case FETCH_COMPETITION_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
 		case REMOVE_COMPETITION:

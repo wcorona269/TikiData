@@ -26,34 +26,31 @@ def get_config():
     api_key = os.environ.get('API_KEY')
     return jsonify({'api_key': api_key})
 
-
 @app.route('/protected', methods=['GET'])
 def protected_route():
-  access_token_cookie = request.cookies.get('access_token')
-  if access_token_cookie:
-    try:
-      # Decode the access token from the cookie
-      decoded_token = jwt.decode(
-      access_token_cookie, app.config['SECRET_KEY'], algorithms=['HS256'])
-      username = decoded_token.get('username')
-      id = decoded_token.get('id')
+    access_token_cookie = request.cookies.get('access_token')
+    if access_token_cookie:
+        try:
+            # Decode the access token from the cookie
+            decoded_token = jwt.decode(
+            access_token_cookie, app.config['SECRET_KEY'], algorithms=['HS256'])
+            username = decoded_token.get('username')
+            id = decoded_token.get('id')
 
-      # Authentication successful, respond with data from the protected endpoint
-      return jsonify({
-          'message': 'Welcome! This is a protected route.',
-          'username': username,
-          'id': id
-        }), 200
-    except jwt.ExpiredSignatureError:
-      # Token has expired, respond with unauthorized status code
-      return jsonify({'message': 'Token has expired'}), 401
-    except jwt.InvalidTokenError:
-      # Invalid token, respond with unauthorized status code
-      return jsonify({'message': 'Invalid token'}), 401
-  else:
-    # Access token not found in the cookie, respond with unauthorized status code
-    return jsonify({'message': 'Access token not found'}), 401
-
+            # Authentication successful, respond with data from the protected endpoint
+            return jsonify({
+                'message': 'Welcome! This is a protected route.',
+                'username': username,
+                'id': id
+            }), 200
+        except jwt.ExpiredSignatureError:
+            # Token has expired, respond with unauthorized status code
+            return jsonify({'message': 'Token has expired'}), 401
+        except jwt.InvalidTokenError:
+            # Invalid token, respond with unauthorized status code
+            return jsonify({'message': 'Invalid token'}), 401
+    else:
+        return jsonify({'message': 'Access token not found'}), 401
 
 routes_list = [
     routes.main.bp,

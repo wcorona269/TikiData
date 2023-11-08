@@ -17,7 +17,7 @@ const favoritesReducer = (state = initialState, action) => {
 			return { ...state, isLoading: true, error: null };
 			break;
 		case FETCH_FAVORITES_SUCCESS:
-			return { ...state, favorites: action.payload['favorites'] };
+			return { ...state, isLoading: false, favorites: action.payload['favorites'] };
 			break;
 		case FETCH_FAVORITES_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };

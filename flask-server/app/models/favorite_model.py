@@ -3,7 +3,7 @@ from enum import Enum
 from .user_model import User
 
 class FavoriteType(Enum):
-    CLUB = 'club',
+    CLUB = 'club'
     PLAYER = 'player'
     LEAGUE = 'league'
 

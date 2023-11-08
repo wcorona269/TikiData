@@ -26,16 +26,9 @@ const PlayerOverview = ({player}) => {
 	const height = player.player.height || 'N/A';
 	const weight = player.player.weight || 'NA';
 
-	const content = [
-		<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate(-1)}>
-			<ArrowBackIcon />
-		</IconButton>,
-		name
-	]
-
 	return (
 		<Paper elevation={1}>
-			<Title variant='h6' content={content} />
+			<Title variant='h6' content={name} back={true} button={true} />
 			<Grid container sx={{padding: 1}} spacing={2}>
 				<Grid item xs={4}>
 					<Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>

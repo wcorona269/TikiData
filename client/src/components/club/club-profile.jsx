@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchClub, fetchClubSeasons, fetchClubStats, removeClub } from '../../actions/api_actions';
 import response from './response';
@@ -15,6 +15,7 @@ import Title from '../util/section-heading';
 const ClubProfile = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
+	const location = useLocation();
 	const theme = useTheme();
 
 	const [season, setSeason] = useState('2023/24');
@@ -31,7 +32,9 @@ const ClubProfile = () => {
 
 	useEffect(() => {
 		let formattedSeason = season.split('/')[0]
-		dispatch(fetchClub(id, formattedSeason));
+		if (!isLoading) {
+			dispatch(fetchClub(id, formattedSeason));
+		}
 		window.scrollTo(0, 0)
 	}, [id]);
 
@@ -52,7 +55,7 @@ const ClubProfile = () => {
 	return (
 		<Grid item xs={9}>
 			<Paper sx={{ marginBottom: '1rem' }} elevation={1}>
-				<Title variant='h5' content={name} img={logo} back={true} />
+				<Title variant='h5' content={name} img={logo} back={true} button={true} />
 				<ClubProfileNavBar  club={club} handleSeasonChange={handleSeasonChange} seasons={seasons} season={season} availableSeasons={seasons} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
 			</Paper>
 			{ selectedTab === 0 && <ClubHomeDashboard name={name} logo={logo} club={club} fixtures={fixtures} squad={squad} news={news} /> }

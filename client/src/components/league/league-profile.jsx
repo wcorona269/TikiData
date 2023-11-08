@@ -68,7 +68,7 @@ window.scrollTo(0, 0)
 		<Grid item xs={9}>
 			<Box>
 				<Paper elevation={1} sx={{marginBottom: '1rem'}}>
-					<Title variant='h5' content={name} img={logo} back={true} />
+					<Title variant='h5' content={name} img={logo} back={true} button={true} />
 						<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
 							<Tabs value={selectedTab}>
 								<Tab label='Home' onClick={() => handleChange(0)} />

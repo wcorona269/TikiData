@@ -1,9 +1,10 @@
-import { Typography, useTheme, IconButton } from '@mui/material';
+import { Typography, useTheme, IconButton, Box, Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import FavoriteButton from './favorite-btn';
 
-const Title = ({ variant, content, img, back }) => {
+const Title = ({ variant, content, img, back, button=false }) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
 	let size = variant === 'h5' ? '2rem' : '1.5rem';
@@ -19,19 +20,24 @@ const Title = ({ variant, content, img, back }) => {
 				fontFamily: theme.typography.bold,
 				display: 'flex',
 				flexDirection: 'row',
-				justifyContent: 'left',
+				justifyContent: 'space-between',
 				alignItems: 'center'
 			}}
 		>
-			{back &&
-				<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate(-1)}>
-					<ArrowBackIcon />
-				</IconButton>
-			}
-			{img && 
-				<img src={img} style={{ height: size, width: size, marginRight: mr }} />
-			}
-			{content}
+			<Box display='flex' alignItems='center'>
+				{back &&
+					<IconButton sx={{ p: 0, m: 0, marginRight: 2 }} onClick={() => navigate(-1)}>
+						<ArrowBackIcon />
+					</IconButton>
+				}
+				{img && 
+					<img src={img} style={{ height: size, width: size, marginRight: mr }} />
+				}
+				{content}
+			</Box>
+			<Box display='flex' alignItems='center'>
+				{button && <FavoriteButton name={content}/> }
+			</Box>
 		</Typography>
 	)
 }
