@@ -55,7 +55,6 @@ const CommentContainer = ({ comment, idx }) => {
 	};
 
 	return (
-		<>
 			<Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '.5rem' }} key={idx}>
 				<Grid container spacing={3}>
 					<Grid item xs="auto">
@@ -94,7 +93,6 @@ const CommentContainer = ({ comment, idx }) => {
 				</Grid>
 				<Divider/>
 			</Box>
-		</>
 	)
 }
 

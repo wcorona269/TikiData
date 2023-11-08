@@ -2,8 +2,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import React, { useState } from 'react'
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom';
 import ProtectedRoute from './util/route_util';
 import NavBar from './nav_bar/nav-bar';
 import Footer from './footer/footer'
@@ -41,7 +41,11 @@ getConfig();
 function App() {
   const dispatch = useDispatch();
   const [lightMode, setLightMode] = useState(false);
+  const location = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
 
   const theme = createTheme({
     palette: {

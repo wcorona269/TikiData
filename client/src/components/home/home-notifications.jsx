@@ -18,6 +18,26 @@ const Notifications = () => {
 
 	useEffect(() => {}, [notifications])
 
+	const determineMessage = (notification) => {
+		switch (notification.target_type) {
+			case 'comment_like':
+				return `${notification.sender.username} liked your commment`
+				break;
+			case 'post_like':
+				return `${notification.sender.username} liked your post`
+				break;
+			case 'post_comment':
+				return `${notification.sender.username} commented on your post`
+				break;
+			case 'repost':
+				return `${notification.sender.username} reposted your post`
+				break;
+			default:
+				return 'notification'
+				break;
+		}
+	}
+
 	const displayNotifications = (notifications) => {
 		let result = [];
 
@@ -30,16 +50,17 @@ const Notifications = () => {
 		)
 
 		for (let i = 0; i < notifications.length; i++) {
+			const notif = notifications[i]
+
 			result.push(
 				<ListItem disablePadding divider alignItems='flex-start' key={i}>
-					{/* TODO: onclick - take to post page */}
 					<ListItemButton>
 						<ListItemAvatar>
 							<Avatar>
 							</Avatar>
 						</ListItemAvatar>
 						<Typography variant='body1'>
-							{notifications[i]['message']}
+							{determineMessage(notif)}
 						</Typography> 
 					</ListItemButton>
 				</ListItem>,
@@ -54,7 +75,7 @@ const Notifications = () => {
 				<Paper elevation={1} sx={{minHeight: '20rem'}}>
 					<Title variant='h5' content='Notifications' />
 					<List>
-						{/* {displayNotifications(notifications)} */}
+						{displayNotifications(notifications)}
 					</List>
 				</Paper>
 			</Grid>

@@ -49,7 +49,7 @@ class Notification(db.Model):
 			'sender_id': self.sender_id,
 			'recipient_id': self.recipient_id,
 			'target_id': self.target_id,
-			'target_type': self.target_type,
+			'target_type': self.target_type.value,
 			'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
 			'read': self.read,
    		'sender': self.sender.to_dict()

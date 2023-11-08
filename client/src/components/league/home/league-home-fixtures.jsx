@@ -93,6 +93,8 @@ const HomeFixturesComponent = ({fixtures}) => {
 		return result;
 	}
 
+	if (!fixtures) return <>
+	</>
 
 	return (
 		<Paper

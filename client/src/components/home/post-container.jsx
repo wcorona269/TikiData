@@ -22,7 +22,6 @@ const PostContainer = ({ post, repost }) => {
 	const username = useSelector(state => state.session?.user?.username);
 	const [postLikes, setPostLikes] = useState(post.likes.length);
 	const [reposts, setReposts] = useState(post.reposts.length);
-	const [showComments, setShowComments] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
 	const [isReposted, setIsReposted] = useState(false);
 
@@ -30,6 +29,12 @@ const PostContainer = ({ post, repost }) => {
 		for (let like of post.likes) {
 			if (like.user_id === user_id) {
 				setIsLiked(true)
+			}
+		}
+
+		for (let repost of post.reposts) {
+			if (repost.user_id === user_id) {
+				setIsReposted(true)
 			}
 		}
 	}, []);
@@ -83,8 +88,12 @@ const PostContainer = ({ post, repost }) => {
 		setIsReposted(!isReposted);
 	}
 
+	const showPost = () => {
+		navigate(`/post/${post.id}`)
+	}
+
 	const buttons = [
-		<Button key={0} aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: showComments ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => setShowComments(!showComments)}>
+		<Button key={0} aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: theme.palette.grey['700'] }} onClick={() => showPost()}>
 			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium'/>
 			{post.comments.length}
 		</Button>,
@@ -116,7 +125,7 @@ const PostContainer = ({ post, repost }) => {
 							{moment(post.created_at).tz('America/New_York').fromNow()}
 						</Typography>
 					</Box>
-					<Typography variant='body1' onClick={() => navigate(`/post/${post.id}`)} sx={{width: '100%'}} >
+					<Typography variant='body1' onClick={() => showPost()} sx={{width: '100%'}} >
 						{post.text}
 					</Typography>
 				</Box>
@@ -124,12 +133,6 @@ const PostContainer = ({ post, repost }) => {
 			<Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: '.5rem'}}>
 				{buttons}
 			</Box>
-			{showComments && 
-				[
-					<Divider/>,
-					<CommentSection comments={post.comments} post={post} />
-				]
-			}
 		</Paper>
 	)
 }
