@@ -4,7 +4,7 @@ import { Box, Link, Container, Grid, Typography, Paper, Button, useTheme, ListIt
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '@emotion/react';
 
-const match_not_played = new Set([
+export const match_not_played = new Set([
 	'TBD',
 	'NS',
 	'PST',

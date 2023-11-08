@@ -43,7 +43,7 @@ const Home = () => {
 			}
 		}
 		setUnreadCount(count)
-	}, [location])
+	}, [notifications])
 
 	const handleTabSelect = (value, location) => {
 		setSelectedTab(value);

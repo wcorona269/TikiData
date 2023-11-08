@@ -4,7 +4,7 @@ import { formatDate } from '../../club/club-fixtures-table';
 import { Box, Link, Paper, Grid, Typography, List, ListItem, ListItemButton, Divider, useTheme } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 import Title from '../../util/section-heading';
-
+import { match_not_played } from '../match-card';
 
 const HomeFixturesComponent = ({fixtures}) => {
 	const theme = useTheme();
@@ -15,11 +15,14 @@ const HomeFixturesComponent = ({fixtures}) => {
 		let teams = fixture.teams;
 
 		for (let team of Object.keys(teams)) {
+			const team_id = teams[team].id;
 			const team_name = teams[team].name;
 			const team_logo = teams[team].logo;
-			const team_id = teams[team].id;
+			const team_goals = fixture.goals[team] || 0
+			const status = fixture.fixture.status.short;
 			const winner = teams[team].winner;
-			const num_goals = fixture.goals[team] || '-'
+			const started = !match_not_played.has(status);
+			const num_goals = started ? team_goals : '-';
 
 			result.unshift(
 				<Grid container className={winner === true ? 'winning team' : ''}>
