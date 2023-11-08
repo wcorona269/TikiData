@@ -5,38 +5,11 @@ import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { fetchNotifications } from '../../actions/notification_actions'
 import HomeFixturesColumn from './home-fixtures-column';
 import Title from '../util/section-heading';
+import NotificationContainer from './home-notification-container';
 
 const Notifications = () => {
-	const dispatch = useDispatch()
-	const notifications = useSelector(state => state.notifications?.notifications)
 	const theme = useTheme();
-	const user_id = useSelector(state => state.session?.user?.id);
-
-	useEffect(() => {
-		dispatch(fetchNotifications(user_id))
-	}, [])
-
-	useEffect(() => {}, [notifications])
-
-	const determineMessage = (notification) => {
-		switch (notification.target_type) {
-			case 'comment_like':
-				return `${notification.sender.username} liked your commment`
-				break;
-			case 'post_like':
-				return `${notification.sender.username} liked your post`
-				break;
-			case 'post_comment':
-				return `${notification.sender.username} commented on your post`
-				break;
-			case 'repost':
-				return `${notification.sender.username} reposted your post`
-				break;
-			default:
-				return 'notification'
-				break;
-		}
-	}
+	const notifications = useSelector(state => state.notifications?.notifications);
 
 	const displayNotifications = (notifications) => {
 		let result = [];
@@ -53,17 +26,7 @@ const Notifications = () => {
 			const notif = notifications[i]
 
 			result.push(
-				<ListItem disablePadding divider alignItems='flex-start' key={i}>
-					<ListItemButton>
-						<ListItemAvatar>
-							<Avatar>
-							</Avatar>
-						</ListItemAvatar>
-						<Typography variant='body1'>
-							{determineMessage(notif)}
-						</Typography> 
-					</ListItemButton>
-				</ListItem>,
+				<NotificationContainer notif={notif} idx={i} />
 			)
 		}
 		return result;

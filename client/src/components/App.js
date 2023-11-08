@@ -41,11 +41,6 @@ getConfig();
 function App() {
   const dispatch = useDispatch();
   const [lightMode, setLightMode] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
 
   const theme = createTheme({
     palette: {

@@ -57,3 +57,40 @@ export const fetchNotifications = (userId) => {
 			})
 	};
 };
+
+// Read all user notifications
+export const READ_USER_NOTIFICATIONS_REQUEST = 'READ_USER_NOTIFICATIONS_REQUEST';
+export const READ_USER_NOTIFICATIONS_SUCCESS = 'READ_USER_NOTIFICATIONS_SUCCESS';
+export const READ_USER_NOTIFICATIONS_FAILURE = 'READ_USER_NOTIFICATIONS_FAILURE';
+
+export const readUserNotificaions = (userId) => {
+	return (dispatch) => {
+		dispatch({ type: READ_USER_NOTIFICATIONS_REQUEST, userId: userId });
+		return axios.post(`/notifications/read-all/${userId}`)
+			.then((response) => {
+				dispatch({ type: READ_USER_NOTIFICATIONS_SUCCESS, payload: response.data });
+			})
+			.catch((error) => {
+				dispatch({ type: READ_USER_NOTIFICATIONS_FAILURE, payload: error.message });
+			})
+	};
+};
+
+
+// Read all user notifications
+export const READ_NOTIFICATIONS_REQUEST = 'READ_NOTIFICATIONS_REQUEST';
+export const READ_NOTIFICATIONS_SUCCESS = 'READ_NOTIFICATIONS_SUCCESS';
+export const READ_NOTIFICATIONS_FAILURE = 'READ_NOTIFICATIONS_FAILURE';
+
+export const setAsRead = (notifId) => {
+	return (dispatch) => {
+		dispatch({ type: READ_NOTIFICATIONS_REQUEST, notifId: notifId });
+		return axios.post(`/notifications/read/${notifId}`)
+			.then((response) => {
+				dispatch({ type: READ_NOTIFICATIONS_SUCCESS, payload: response.data });
+			})
+			.catch((error) => {
+				dispatch({ type: READ_NOTIFICATIONS_FAILURE, payload: error.message });
+			})
+	};
+};

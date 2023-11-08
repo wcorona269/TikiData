@@ -26,6 +26,10 @@ const PostsTimeline = () => {
 	}, []);
 
 	useEffect(() => {
+		
+	}, [])
+
+	useEffect(() => {
 		let result = [];
 
 		let i = 0;

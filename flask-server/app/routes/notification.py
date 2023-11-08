@@ -78,7 +78,7 @@ def fetchNotifications(userId):
 		'notifications': notifications_list
 	}), 200
  
-@bp.route('/read_all/<int:userId>', methods=['POST'])
+@bp.route('/read-all/<int:userId>', methods=['POST'])
 def read_all_notifs(userId):
   success = Notification.read_all(userId)
   if success:

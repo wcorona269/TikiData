@@ -5,7 +5,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArticleIcon from '@mui/icons-material/Article';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
-import { List, ListItem, ListItemButton, Menu, Paper, Typography, useTheme } from '@mui/material';
+import { Badge, List, ListItem, ListItemButton, Menu, Paper, Typography, useTheme } from '@mui/material';
 import ListItemContent from '@mui/joy/ListItemContent';
 import PublicIcon from '@mui/icons-material/Public';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
@@ -15,10 +15,10 @@ import PersonIcon from '@mui/icons-material/Person';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { useSelector } from 'react-redux';
 
-const HomeMenu = ({ selectedTab, handleTabSelect }) => {
+const HomeMenu = ({ selectedTab, handleTabSelect, unreadCount }) => {
 	const theme = useTheme();
 	const username = useSelector(state => state.session?.user?.username);
-
+	
 	const buttons = [
 		<ListItem key={0} disablepadding sx={{paddingLeft: '0px'}}>
 			<ListItemButton onClick={() => handleTabSelect(0, 'home')} sx={{ color: selectedTab === 0 ? theme.palette.primary.main : theme.palette.text.primary }}>
@@ -32,9 +32,11 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 		</ListItem>,
 		<ListItem key={1} disablepadding sx={{ paddingLeft: '0px' }}>
 			<ListItemButton onClick={() => handleTabSelect(1, 'notifications')} sx={{ color: selectedTab === 1 ? theme.palette.primary.main : theme.palette.text.primary }}>
-				{ selectedTab === 1 ?
-					<NotificationsIcon fontSize='large' /> : <NotificationsNoneIcon fontSize='large'/>
-				}	
+				<Badge badgeContent={unreadCount} color='primary' >
+					{ selectedTab === 1 ?
+						<NotificationsIcon fontSize='large' /> : <NotificationsNoneIcon fontSize='large'/>
+					}	
+				</Badge>
 				<ListItemContent sx={{marginLeft: '.5rem'}}>
 					<Typography sx={{ fontFamily: selectedTab === 1 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>Notifications</Typography>
 				</ListItemContent>

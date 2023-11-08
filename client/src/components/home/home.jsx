@@ -3,14 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import {  Container, Grid } from '@mui/material';
 import HomeMenu from './home-menu';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchNotifications } from '../../actions/notification_actions';
 
 const Home = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
+	const dispatch = useDispatch()
 	const [selectedTab, setSelectedTab] = useState(0);
 	const username = useSelector(state => state.session.user?.username);
+	const user_id = useSelector(state => state.session?.user?.id);	
+	const notifications = useSelector(state => state.notifications?.notifications)
+	const [unreadCount, setUnreadCount] = useState();
 
+	useEffect(() => { dispatch(fetchNotifications(user_id)) }, [])
 	useEffect(() => {
 		if (location.pathname.includes('home')) {
 			setSelectedTab(0)
@@ -25,20 +31,34 @@ const Home = () => {
 		} else {
 			setSelectedTab(2)
 		}
+
+		window.scrollTo(0, 0)
 	}, [location])
 
+	useEffect(() => {
+		let count = 0;
+		if (notifications) {
+			for (let notif of notifications) {
+				if (notif.read === false) count += 1;
+			}
+		}
+		setUnreadCount(count)
+	}, [location])
 
 	const handleTabSelect = (value, location) => {
 		setSelectedTab(value);
 		navigate(`/${location}`)
-window.scrollTo(0, 0)
 	}
 
 	return (
 		<Container className='home-container' sx={{paddingBottom: '5rem'}}>
 			<Grid container alignItems='flex-start' spacing={2}>
 				<Grid item xs={3} sx={{position: 'sticky', top: '2rem'}}>
-					<HomeMenu selectedTab={selectedTab} handleTabSelect={handleTabSelect}/>
+					<HomeMenu 
+						unreadCount={unreadCount}
+						selectedTab={selectedTab}
+						handleTabSelect={handleTabSelect}
+					/>
 				</Grid>
 				<Outlet/>
 			</Grid>

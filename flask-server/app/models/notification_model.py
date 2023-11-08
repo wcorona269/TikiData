@@ -47,6 +47,7 @@ class Notification(db.Model):
 		notif_to_read = Notification.query.get(id)
 		if notif_to_read:
 			notif_to_read.read = True
+			db.session.commit()  # Commit the changes to the database
 			return True
 		else:
 			return False
@@ -56,6 +57,7 @@ class Notification(db.Model):
 		if user:
 			for notif in user.notifications_received:
 				notif.read = True
+				db.session.commit()
 			return True
 		else:
 			return False
