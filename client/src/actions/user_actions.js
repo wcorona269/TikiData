@@ -32,7 +32,7 @@ export const registerUser = (userData) => {
 // Action types
 export const FETCH_USER_INFO_REQUEST = 'FETCH_USER_INFO_REQUEST';
 export const FETCH_USER_INFO_SUCCESS = 'FETCH_USER_INFO_SUCCESS';
-export const FETCH_USER_INFO_FAILURE = 'REGISTER_USER_FAILURE';
+export const FETCH_USER_INFO_FAILURE = 'FETCH_USER_INFO_FAILURE';
 
 export const fetchUserInfo = (username) => {
 	return (dispatch) => {

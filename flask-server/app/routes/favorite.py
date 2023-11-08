@@ -12,6 +12,19 @@ def map_target_type(target_type):
   
   return type_mapping.get(target_type, None)
 
+@bp.route('/fetch/<int:userId>', methods=['GET'])
+def fetch_user_favorites(userId):
+    success, favorites = Favorite.get_user_favorites(userId)
+    if success:
+        return jsonify({
+            'message': 'favorites fetched successfully',
+            'favorites': favorites
+        }), 200
+    else:
+        return jsonify({
+            'message': 'Favorites not found'
+        }), 404 
+
 @bp.route('/create', methods=['POST'])
 def add_favorite():
   data = request.json

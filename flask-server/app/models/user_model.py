@@ -55,7 +55,8 @@ class User(UserMixin, db.Model):
 					'posts': [post.to_dict() for post in user.posts],
 					'reposts': [repost.to_dict() for repost in user.reposts],
 					'bio': user.bio,
-					'created_at': user.created_at.strftime('%Y-%m-%d %H:%M:%S')
+					'created_at': user.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+					'favorites': [favorite.to_dict() for favorite in user.favorites]
 				# 'avatar': user.avatar
 			}
 		else:
@@ -134,6 +135,7 @@ class User(UserMixin, db.Model):
 			'username': self.username,
 			'email': self.email,
 			'bio': self.bio,
+			'favorites': [favorite.to_dict for favorite in self.favorites]
 		}
 
 	# Print user object

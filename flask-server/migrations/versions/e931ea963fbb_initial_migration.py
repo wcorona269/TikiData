@@ -1,8 +1,8 @@
 """Initial migration
 
-Revision ID: c8f10dd23ced
+Revision ID: e931ea963fbb
 Revises: 
-Create Date: 2023-11-07 10:41:26.481209
+Create Date: 2023-11-08 10:12:00.797861
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c8f10dd23ced'
+revision = 'e931ea963fbb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,7 +24,7 @@ def upgrade():
     sa.Column('bio', sa.String(), nullable=True),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password_hash', sa.String(length=255), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.CheckConstraint('length(password_hash) >= 8', name='password_length_check'),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
@@ -35,7 +35,9 @@ def upgrade():
     op.create_table('favorites',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('club', sa.String(length=64), nullable=False),
+    sa.Column('name', sa.String(), nullable=False),
+    sa.Column('target_id', sa.Integer(), nullable=False),
+    sa.Column('target_type', sa.Enum('CLUB', 'PLAYER', 'LEAGUE', name='favoritetype'), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -47,7 +49,7 @@ def upgrade():
     sa.Column('sender_id', sa.Integer(), nullable=False),
     sa.Column('recipient_id', sa.Integer(), nullable=False),
     sa.Column('target_id', sa.Integer(), nullable=False),
-    sa.Column('target_type', sa.Enum('POST_LIKE', 'POST_COMMENT', 'COMMENT_LIKE', name='notificationtype'), nullable=False),
+    sa.Column('target_type', sa.Enum('POST_LIKE', 'POST_COMMENT', 'COMMENT_LIKE', 'REPOST', name='notificationtype'), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('read', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['recipient_id'], ['users.id'], ),
@@ -58,7 +60,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('text', sa.String(length=200), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

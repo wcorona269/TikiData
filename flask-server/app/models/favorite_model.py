@@ -1,5 +1,6 @@
 from .db import db
 from enum import Enum
+from .user_model import User
 
 class FavoriteType(Enum):
     CLUB = 'club',
@@ -15,8 +16,16 @@ class Favorite(db.Model):
   name = db.Column(db.String, nullable=False)
 #   icon = db.Column(db.String, nullable=False)
   target_id = db.Column(db.Integer, nullable=False)
-  target_type = db.Column(db.Enum(FavoriteType), nullable=False)
+  target_type = db.Column(db.Enum(FavoriteType), nullable=False)  # Type of the target entity
   user = db.relationship('User', back_populates='favorites')
+  
+  def get_user_favorites(user_id):
+      user = User.query.get(user_id)
+      if user:
+          favorites = [favorite.to_dict() for favorite in user.favorites]
+          return True, favorites
+      else:
+          return False, None
   
   def add_favorite(user_id, name, target_type, target_id):
     new_fave = Favorite(user_id=user_id, name=name, target_type=target_type, target_id=target_id)
