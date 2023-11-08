@@ -41,21 +41,21 @@ const HomeMenu = ({ selectedTab, handleTabSelect }) => {
 			</ListItemButton>
 		</ListItem>,
 		<ListItem key={2} disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(2, 'matches')} sx={{ color: selectedTab === 2 ? theme.palette.primary.main : theme.palette.text.primary }}>
-				<SportsSoccerIcon fontSize='large' />
-				<ListItemContent sx={{marginLeft: '.5rem'}}>
-					<Typography sx={{ fontFamily: selectedTab === 2 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>Matches</Typography>
-				</ListItemContent>
-			</ListItemButton>
-		</ListItem>,
-		<ListItem key={3} disablepadding sx={{ paddingLeft: '0px' }}>
-			<ListItemButton onClick={() => handleTabSelect(3, 'explore')} sx={{ color: selectedTab === 3 ? theme.palette.primary.main : theme.palette.text.primary }}>
-			{ selectedTab === 3 ?
+			<ListItemButton onClick={() => handleTabSelect(2, 'explore')} sx={{ color: selectedTab === 2 ? theme.palette.primary.main : theme.palette.text.primary }}>
+			{ selectedTab === 2 ?
 				<TravelExploreIcon fontSize='large'/> :
 				<PublicIcon fontSize='large' />
 			}	
 				<ListItemContent sx={{marginLeft: '.5rem'}}>
 					<Typography sx={{ fontFamily: selectedTab === 3 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>Explore</Typography>
+				</ListItemContent>
+			</ListItemButton>
+		</ListItem>,
+		<ListItem key={3} disablepadding sx={{ paddingLeft: '0px' }}>
+			<ListItemButton onClick={() => handleTabSelect(3, 'matches')} sx={{ color: selectedTab === 3 ? theme.palette.primary.main : theme.palette.text.primary }}>
+				<SportsSoccerIcon fontSize='large' />
+				<ListItemContent sx={{marginLeft: '.5rem'}}>
+					<Typography sx={{ fontFamily: selectedTab === 3 ? theme.typography.bold : theme.typography.fontFamily }} variant='h5'>Matches</Typography>
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,

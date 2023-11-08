@@ -43,6 +43,23 @@ class Notification(db.Model):
 		else:
 			return False
  
+	def set_as_read(id):
+		notif_to_read = Notification.query.get(id)
+		if notif_to_read:
+			notif_to_read.read = True
+			return True
+		else:
+			return False
+ 
+	def read_all(user_id):
+		user = User.query.get(user_id)
+		if user:
+			for notif in user.notifications_received:
+				notif.read = True
+				return True
+		else:
+			return False
+ 
 	def to_dict(self):
 		return {
 			'id': self.id,

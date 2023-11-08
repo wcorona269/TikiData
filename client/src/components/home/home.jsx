@@ -17,13 +17,13 @@ const Home = () => {
 		} else if (location.pathname.includes('notifications')) {
 			setSelectedTab(1)
 		} else if (location.pathname.includes('matches')) {
-			setSelectedTab(2)
+			setSelectedTab(3)
 		} else if (location.pathname.includes('news')) {
 			setSelectedTab(4)
 		} else if (location.pathname.includes(username)) {
 			setSelectedTab(5)
 		} else {
-			setSelectedTab(3)
+			setSelectedTab(2)
 		}
 	}, [location])
 
