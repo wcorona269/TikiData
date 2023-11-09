@@ -19,16 +19,15 @@ class Repost(db.Model):
   
   @staticmethod
   def add_repost(user_id, post_id):
-    print(user_id)
     try:
       new_repost = Repost(user_id=user_id, post_id=post_id)
       db.session.add(new_repost)
       db.session.commit()
-      return True
+      return True, new_repost
     except Exception as e:
       db.session.rollback()  # Rollback the session in case of an error
       print(f"Error adding repost: {str(e)}")
-      return False
+      return False, None
     
   @staticmethod
   def delete_repost(user_id, post_id):
@@ -37,13 +36,13 @@ class Repost(db.Model):
       if repost_to_delete:
         db.session.delete(repost_to_delete)
         db.session.commit()
-        return True
+        return True, repost_to_delete.id
       else:
         return False
     except Exception as e:
       db.session.rollback()  # Rollback the session in case of an error
       print(f"Error deleting repost: {str(e)}")
-      return False
+      return False, None
     
   
   def user_info(self):

@@ -53,10 +53,6 @@ window.scrollTo(0, 0)
 	if (!competition || !table || !top_scorers || !top_assists) {
 		return <NoDataMessage/>
 	}
-	const handleSeasonChange = (event, newValue) => {
-		setShowSeason(false);
-		setSeason(newValue.props.value);
-	}
 
 	const leagueInfo = table[0]?.league;
 	const country = leagueInfo?.country;

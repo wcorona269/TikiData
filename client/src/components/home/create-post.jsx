@@ -28,7 +28,6 @@ const CreatePost = () => {
 	
 	const handleSubmit = () => {
 		dispatch(createPost(postData));
-		dispatch(fetchPosts());
 		setPost('');
 	}
 

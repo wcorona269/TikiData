@@ -17,7 +17,10 @@ def create_post():
   db.session.add(post)
   db.session.commit()
   
-  return jsonify({'message': 'Post created successfully'}), 201
+  return jsonify({
+    'message': 'Post created successfully',
+    'post': post.to_dict()
+    }), 201
 
 
 @bp.route('/delete/<postId>', methods=['DELETE'])

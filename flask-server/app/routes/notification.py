@@ -9,6 +9,7 @@ def map_target_type(target_type):
         'POST_LIKE': NotificationType.POST_LIKE,
         'POST_COMMENT': NotificationType.POST_COMMENT,
         'COMMENT_LIKE': NotificationType.COMMENT_LIKE,
+        'REPOST': NotificationType.REPOST
     }
     return type_mapping.get(target_type, None)
 
@@ -22,6 +23,8 @@ def add_notification():
   read = data.get('read')
   created_at = data.get('created_at')
   target_type = map_target_type(target_type_str)
+  
+  print(recipient_id, sender_id, target_type, target_id, created_at, read)
   
   if not recipient_id or not sender_id or not target_id or not target_type:
     return jsonify({

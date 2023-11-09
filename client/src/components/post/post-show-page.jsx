@@ -99,8 +99,10 @@ const PostShowPage = () => {
 			const notif_info = {
 				'recipient_id': post.user_id,
 				'sender_id': user_id,
-				'message': `${username} reposted your post`,
-				'post_id': post.id
+				'target_id': post.id,
+				'target_type': 'REPOST',
+				'read': false,
+				'created_at': new Date(),
 			}
 			dispatch(createRepost(repost_info));
 			dispatch(createNotification(notif_info));

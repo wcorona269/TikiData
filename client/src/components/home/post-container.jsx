@@ -20,8 +20,8 @@ const PostContainer = ({ post, repost }) => {
 	const theme = useTheme();
 	const user_id = useSelector(state => state.session?.user?.id);
 	const username = useSelector(state => state.session?.user?.username);
-	const [postLikes, setPostLikes] = useState(post.likes.length);
-	const [reposts, setReposts] = useState(post.reposts.length);
+	const [postLikes, setPostLikes] = useState(0);
+	const [reposts, setReposts] = useState(0);
 	const [isLiked, setIsLiked] = useState(false);
 	const [isReposted, setIsReposted] = useState(false);
 
@@ -37,7 +37,10 @@ const PostContainer = ({ post, repost }) => {
 				setIsReposted(true)
 			}
 		}
-	}, []);
+		
+		setPostLikes(post.likes.length)
+		setReposts(post.reposts.length)
+	}, [post]);
 
 	const handleLike = () => {
 		const like_info = {
@@ -78,8 +81,10 @@ const PostContainer = ({ post, repost }) => {
 			const notif_info = {
 				'recipient_id': post.user_id,
 				'sender_id': user_id,
-				'message': `${username} reposted your post`,
-				'post_id': post.id
+				'target_id': post.id,
+				'target_type': 'REPOST',
+				'read': false,
+				'created_at': new Date(),
 			}
 			dispatch(createRepost(repost_info));
 			dispatch(createNotification(notif_info));
