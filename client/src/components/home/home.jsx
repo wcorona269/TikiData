@@ -6,6 +6,7 @@ import HomeMenu from './home-menu';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNotifications } from '../../actions/notification_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
+import UserFavorites from './my-favorites';
 
 const Home = () => {
 	const navigate = useNavigate();
@@ -70,6 +71,7 @@ const Home = () => {
 						selectedTab={selectedTab}
 						handleTabSelect={handleTabSelect}
 					/>
+					<UserFavorites/>
 				</Grid>
 				<Outlet/>
 			</Grid>

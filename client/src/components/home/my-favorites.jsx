@@ -11,10 +11,6 @@ const UserFavorites = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const handleDelete = (id) => {
-		dispatch(deleteFavorite(id))
-	}
-
 	const handleClick = (favorite) => {
 		navigate(`/${favorite.target_type}/${favorite.target_id}`)
 	}
@@ -27,7 +23,6 @@ const UserFavorites = () => {
 					variant='outlined' 
 					color='primary'
 					label={favorite.name}
-					onDelete={() => handleDelete(favorite.id)}
 					onClick={() => handleClick(favorite)}
 					sx={{m: .5}}
 				/>
@@ -38,12 +33,12 @@ const UserFavorites = () => {
 
 	if (!favorites) return null;
 	return (
-		<Paper>
-			<Title variant='h6' content='My Favorites'/>
-			<Box>
+		<Box>
+			<Title variant='h5' content='My Favorites'/>
+			<Box sx={{paddingTop: 1}}>
 				{displayFavorites()}
 			</Box>
-		</Paper>
+		</Box>
 	)
 }
 

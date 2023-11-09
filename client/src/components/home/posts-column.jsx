@@ -97,7 +97,6 @@ const PostsTimeline = () => {
 			</Grid>
 			<Grid item xs={3} sx={{ position: 'sticky', top: '3rem' }}>
 				<Stack spacing={2}>
-					<UserFavorites/>
 					<HomeFixturesColumn/>
 				</Stack>
 			</Grid>
