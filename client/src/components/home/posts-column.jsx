@@ -9,6 +9,7 @@ import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { useDispatch, useSelector } from 'react-redux';
 import HomeFixturesColumn from './home-fixtures-column';
 import Title from '../util/section-heading';
+import UserFavorites from './my-favorites';
 
 const PostsTimeline = () => {
 	const theme = useTheme();
@@ -95,7 +96,10 @@ const PostsTimeline = () => {
 				</Stack>
 			</Grid>
 			<Grid item xs={3} sx={{ position: 'sticky', top: '3rem' }}>
-				<HomeFixturesColumn/>
+				<Stack spacing={2}>
+					<UserFavorites/>
+					<HomeFixturesColumn/>
+				</Stack>
 			</Grid>
 			<ScrollToTopOnLoad/>
 		</>

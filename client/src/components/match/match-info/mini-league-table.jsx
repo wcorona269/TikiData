@@ -76,7 +76,7 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 				let isPlayingTeam = ele['team']['name'] === homeTeam || ele['team']['name'] === awayTeam;
 
 				tbody.push(
-					<TableRow key={idx} sx={{ backgroundColor: isPlayingTeam ? theme.palette.primary.dark : '' }}>
+					<TableRow key={idx} sx={{ backgroundColor: isPlayingTeam ? theme.palette.action.hover : '' }}>
 						<TableCell align='left' sx={{ p: 1 }}>
 							<Typography variant='body2'>
 								{ele['rank']}

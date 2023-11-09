@@ -69,9 +69,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ backgroundColor: theme.palette.background.standard, color: theme.palette.text.primary, borderRadius: '0px', minHeight: '150vh' }} >
-        <ModalContainer/>
+      <Box sx={{ backgroundColor: theme.palette.background.standard, color: theme.palette.text.primary, borderRadius: '0px', minHeight: '100vw' }} >
         <NavBar lightMode={lightMode} setLightMode={setLightMode} />
+        <ModalContainer/>
         <Container sx={{paddingTop: '6rem'}} fixed >
           <Routes>
             <Route path='/' element={<ProtectedRoute/>} >

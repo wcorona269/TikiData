@@ -3,6 +3,7 @@ import { Box, Grid, List, ListItem, ListItemButton, Pagination, Paper, Stack, Li
 import { splitArticleIntoPages } from '../../news/sub-articles-timeline';
 import Article from '../../news/article';
 import Title from '../../util/section-heading';
+import NoDataMessage from '../../util/no-data/no-data-message';
 
 const LeagueHomeNews = ({ name, logo, news }) => {
 	const [page, setPage] = useState(1)
@@ -13,7 +14,7 @@ const LeagueHomeNews = ({ name, logo, news }) => {
 
 	const displayNews = (news) => {
 		let result = [];
-
+		if (!news) return <NoDataMessage/>
 		news.map((article, idx) => {
 			result.push(
 				<Article article={article} idx={idx} />

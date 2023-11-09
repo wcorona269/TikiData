@@ -9,7 +9,6 @@ class NotificationType(Enum):
     COMMENT_LIKE = 'comment_like'
     REPOST = 'repost'
 
-
 class Notification(db.Model):
 	__tablename__ = 'notifications'
  
@@ -26,6 +25,8 @@ class Notification(db.Model):
 	recipient = db.relationship('User', back_populates='notifications_received', foreign_keys=[recipient_id])
 
 	def add_notification(recipient_id, sender_id, target_type, target_id, created_at, read):
+		if sender_id == recipient_id:
+			return False
 		new_notif = Notification(recipient_id=recipient_id, sender_id=sender_id, target_type=target_type, target_id=target_id, created_at=created_at, read=read)
 		if new_notif:
 			db.session.add(new_notif)

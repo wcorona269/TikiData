@@ -76,7 +76,7 @@ const Explore = () =>  {
 			let [name, id] = league;
 
 			result.push(
-				<Chip onClick={() => handleChipClick(id)} label={name} sx={{backgroundColor: theme.palette.secondary.main, fontFamily: theme.typography.bold, color: theme.palette.text.primary }}/>
+				<Chip color='primary' variant='outlined' onClick={() => handleChipClick(id)} label={name}/>
 			)
 		});
 
@@ -97,7 +97,7 @@ const Explore = () =>  {
 				</Paper>
 				<Stack spacing={2}>
 					<Paper elevation={1}>
-						<Title variant='h6' content='Top Leagues' />
+						{/* <Title variant='h6' content='Top Leagues' /> */}
 						{listTopLeagues()}
 					</Paper>
 					<Paper elevation={1}>

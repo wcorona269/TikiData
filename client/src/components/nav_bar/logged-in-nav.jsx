@@ -1,18 +1,16 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../actions/session_actions';
-import AccountMenu from './account-menu';
+// import React from 'react';
+// import { useDispatch } from 'react-redux';
+// import { logoutUser } from '../../actions/session_actions';
 
-const LoggedInNav = ({ lightMode, setLightMode }) => {
-	const dispatch = useDispatch();
 
-	const handleClick = () => {
-		dispatch(logoutUser());
-	}
+// const LoggedInNav = ({ lightMode, setLightMode }) => {
+// 	const dispatch = useDispatch();
 
-	return (
-		<AccountMenu lightMode={lightMode} setLightMode={setLightMode} handleClick={handleClick} />
-	)
-}
+	
 
-export default LoggedInNav;
+// 	return (
+		
+// 	)
+// }
+
+// export default LoggedInNav;
