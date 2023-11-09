@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom'
-import { createFavorite, deleteFavorite, fetchFavorites } from '../../actions/favorite_actions';
+import { createFavorite, deleteFavorite } from '../../actions/favorite_actions';
 import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -26,7 +26,7 @@ const FavoriteButton = ({ name }) => {
 			}
 		}
 		setIsFavorite(fav_status)
-	}, [isLoading, isFavorite, user_favorites])
+	}, [id, location.pathname, isLoading, isFavorite, user_favorites])
 
 	const handleFavorite = () => {
 		if (isFavorite === false) {
@@ -45,7 +45,6 @@ const FavoriteButton = ({ name }) => {
 			}
 		}
 		setIsFavorite(!isFavorite)
-		// dispatch(fetchFavorites(user_id))
 	}
 
 	return isLoading === true ? null : (

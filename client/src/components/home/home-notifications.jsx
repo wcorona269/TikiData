@@ -1,8 +1,7 @@
-import { Avatar, Box, Container, Divider, Grid, List, ListItem, ListItemAvatar, ListItemButton, Paper, Typography, useTheme } from '@mui/material'
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { Box, Grid, List, Paper, Typography, useTheme } from '@mui/material'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
-import { fetchNotifications } from '../../actions/notification_actions'
 import HomeFixturesColumn from './home-fixtures-column';
 import Title from '../util/section-heading';
 import NotificationContainer from './home-notification-container';

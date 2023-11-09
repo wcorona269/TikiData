@@ -48,9 +48,9 @@ class Notification(db.Model):
 		if notif_to_read:
 			notif_to_read.read = True
 			db.session.commit()  # Commit the changes to the database
-			return True
+			return True, notif_to_read
 		else:
-			return False
+			return False, None
  
 	def read_all(user_id):
 		user = User.query.get(user_id)
@@ -58,7 +58,7 @@ class Notification(db.Model):
 			for notif in user.notifications_received:
 				notif.read = True
 				db.session.commit()
-			return True
+			return True, user.notifications_receieved
 		else:
 			return False
  

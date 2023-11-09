@@ -23,10 +23,8 @@ const favoritesReducer = (state = initialState, action) => {
 		case CREATE_FAVORITE_REQUEST:
 		case DELETE_FAVORITE_REQUEST:
 			return { ...state, isLoading: true, error: null };
-			break;
 		case FETCH_FAVORITES_SUCCESS:
 			return { ...state, isLoading: false, favorites: action.payload['favorites'] };
-			break;
 		case CREATE_FAVORITE_SUCCESS:
 			const newFavorite = action.payload['favorite']
 			return { ...state, favorites: [...state.favorites, newFavorite], isLoading: false };
@@ -40,10 +38,8 @@ const favoritesReducer = (state = initialState, action) => {
 		case CREATE_FAVORITE_FAILURE:
 		case DELETE_FAVORITE_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
-			break;
 		default:
 			return state;
-			break;
 	}
 };
 

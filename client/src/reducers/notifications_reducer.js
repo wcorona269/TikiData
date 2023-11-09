@@ -1,7 +1,11 @@
 import { 
 	FETCH_NOTIFICATIONS_FAILURE, 
 	FETCH_NOTIFICATIONS_REQUEST, 
-	FETCH_NOTIFICATIONS_SUCCESS } 
+	FETCH_NOTIFICATIONS_SUCCESS,
+	READ_NOTIFICATIONS_REQUEST,
+	READ_NOTIFICATIONS_SUCCESS,
+	READ_NOTIFICATIONS_FAILURE
+}
 from "../actions/notification_actions";
 
 const initialState = {
@@ -11,11 +15,19 @@ const initialState = {
 
 const notificationsReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case READ_NOTIFICATIONS_REQUEST:
 		case FETCH_NOTIFICATIONS_REQUEST:
 			return { ...state, isLoading: true, error: null};
 		case FETCH_NOTIFICATIONS_SUCCESS:
 			return { ...state, isLoading: false, error: null, notifications: action.payload['notifications'] };
+		case READ_NOTIFICATIONS_SUCCESS:
+			const readNotification = action.payload['notification']
+			const updatedNotifications = state.notifications.map((notification) => {
+				return notification.id !== readNotification.id ? notification : readNotification
+			})
+			return { ...state, notifications: updatedNotifications, isLoading: false, error: null }
 		case FETCH_NOTIFICATIONS_FAILURE:
+		case READ_NOTIFICATIONS_FAILURE:
 			return { ...state, isLoading: false, error: action.payload, notifications: null };
 		default:
 			return state;

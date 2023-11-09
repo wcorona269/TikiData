@@ -31,6 +31,7 @@ const NotificationContainer = ({notif, idx}) => {
 	}
 
 	const handleClick = () => {
+		debugger;
 		if (isRead === false) {
 			dispatch(setAsRead(notif.id))
 			setIsRead(true);

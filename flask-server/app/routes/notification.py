@@ -80,10 +80,11 @@ def fetchNotifications(userId):
  
 @bp.route('/read-all/<int:userId>', methods=['POST'])
 def read_all_notifs(userId):
-  success = Notification.read_all(userId)
+  success, notifs = Notification.read_all(userId)
   if success:
     return jsonify({
-      'message': 'User notifications read successfully'
+      'message': 'User notifications read successfully',
+      'notifications': [notif.to_dict() for notif in notifs]
     }), 200
   else:
     return jsonify({
@@ -92,10 +93,11 @@ def read_all_notifs(userId):
     
 @bp.route('/read/<int:notifId>', methods=['POST'])
 def set_as_read(notifId):
-  success = Notification.set_as_read(notifId)
+  success, notif = Notification.set_as_read(notifId)
   if success:
     return jsonify({
-      'message': 'Notification read successfully'
+      'message': 'Notification read successfully',
+      'notification': notif.to_dict()
     }), 200
   else:
     return jsonify({

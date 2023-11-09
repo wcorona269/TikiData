@@ -18,16 +18,16 @@ const Home = () => {
 	const isNotificationsLoading = useSelector(state => state.notifications.isLoading)
 	const notifications = useSelector(state => state.notifications?.notifications)
 	const [unreadCount, setUnreadCount] = useState();
-
+	
 	useEffect(() => {
+		if (!isFavoritesLoading) {
+			dispatch(fetchFavorites(user_id))
+		}
 		if (!isNotificationsLoading) {
 			dispatch(fetchNotifications(user_id))
 		}
-		// if (!isFavoritesLoading) {
-		// 	dispatch(fetchFavorites(user_id))
-		// }
-	}, [location])
-	
+	}, [user_id])
+
 	useEffect(() => {
 		if (location.pathname.includes('home')) {
 			setSelectedTab(0)

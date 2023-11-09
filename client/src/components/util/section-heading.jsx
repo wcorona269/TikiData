@@ -1,4 +1,4 @@
-import { Typography, useTheme, IconButton, Box, Button } from '@mui/material';
+import { Typography, useTheme, IconButton, Box } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +31,7 @@ const Title = ({ variant, content, img, back, button=false }) => {
 					</IconButton>
 				}
 				{img && 
-					<img src={img} style={{ height: size, width: size, marginRight: mr }} />
+					<img alt='' src={img} style={{ height: size, width: size, marginRight: mr }} />
 				}
 				{content}
 			</Box>

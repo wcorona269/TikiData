@@ -1,5 +1,5 @@
 import { Avatar, Box, Button, CircularProgress, Divider, Grid, Link, Paper, Typography, useTheme } from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchPost } from '../../actions/post_actions';
@@ -21,6 +21,7 @@ const PostShowPage = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const post = useSelector(state => state.posts?.post);
+	const post_id = post?.id;
 	const user_id = useSelector(state => state.session?.user?.id);
 	const isLoading = useSelector(state => state.posts.isLoading);
 	const username = useSelector(state => state.session?.user?.username);
@@ -43,13 +44,17 @@ const PostShowPage = () => {
 				setIsReposted(true)
 			}
 		}
-	}, [post]);
+	}, [post, user_id]);
+
+	const fetchPostCallback = useCallback(() => {
+		if (id !== post_id && !isLoading) {
+			dispatch(fetchPost(id))
+		}
+	}, [id])
 
 	useEffect(() => {
-		if (id !== post?.id && !isLoading) {
-			dispatch(fetchPost(id));
-		}
-	}, [id]);
+		fetchPostCallback()
+	}, [fetchPostCallback]);
 
 	const handleLike = () => {
 		if (!post || !post?.likes) {
