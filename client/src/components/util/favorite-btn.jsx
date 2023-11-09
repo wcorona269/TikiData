@@ -29,7 +29,6 @@ const FavoriteButton = ({ name }) => {
 	}, [isLoading, isFavorite, user_favorites])
 
 	const handleFavorite = () => {
-		debugger;
 		if (isFavorite === false) {
 			const fav_info = {
 				'user_id': user_id,
@@ -46,7 +45,7 @@ const FavoriteButton = ({ name }) => {
 			}
 		}
 		setIsFavorite(!isFavorite)
-		dispatch(fetchFavorites(user_id))
+		// dispatch(fetchFavorites(user_id))
 	}
 
 	return isLoading === true ? null : (

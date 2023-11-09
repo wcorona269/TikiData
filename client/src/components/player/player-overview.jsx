@@ -11,18 +11,21 @@ const PlayerOverview = ({player}) => {
 	
 	const displayBirthDate = (birthInfo) => {
 		if (birthInfo === 'N/A') return 'N/A'
+		// debugger;
 
+		let date = birthInfo?.date;
+		if (!date) return 'N/A';
 		let [year, month, day] = birthInfo.date.split('-');
 		return `${day} ${shorthandMonthsOfYear[Number(month)]} ${year}`
 	}
 
-	const fullName = `${player.player.firstname} ${player.player.lastname}`
 	const name = player.player.name || 'Name Unavailable';
+	const fullName = `${player.player.firstname || name} ${player.player.lastname || ''}`
 	const photo = player.player.photo;
 	const age = player.player.age || 'N/A';
 	const nationality = player.player.nationality || 'N/A';
 	const birth = player.player.birth || 'N/A';
-	const birthPlace = `${player.player.birth.place}, ${player.player.birth.country}`
+	const birthPlace = `${player.player.birth.place || 'N/A'}, ${player.player.birth.country || ''}`
 	const height = player.player.height || 'N/A';
 	const weight = player.player.weight || 'NA';
 

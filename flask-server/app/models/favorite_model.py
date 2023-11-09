@@ -32,9 +32,9 @@ class Favorite(db.Model):
         if new_fave:
             db.session.add(new_fave)
             db.session.commit()  
-            return True
+            return True, new_fave
         else:
-            return False
+            return False, None
 
     def delete_favorite(self):
         db.session.delete(self)

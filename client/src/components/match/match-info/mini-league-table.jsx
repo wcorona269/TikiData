@@ -14,7 +14,6 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 	const leagueId = match?.league?.id;
 	const isLoading = useSelector(state => state.standings.isLoading);
 	const standings = useSelector(state => state.standings?.standings?.[0]);
-	// debugger;
 	const standings_data = standings?.league?.standings || [];
 	const league_logo = standings?.league?.logo;
 	const league_name = standings?.league?.name || '';

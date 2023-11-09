@@ -17,7 +17,7 @@ def competitionInfo(playerId):
   }
 
   # Request club info
-  conn.request("GET", f"/players?id={playerId}&season=2022", headers=headers)
+  conn.request("GET", f"/players?id={playerId}&season=2023", headers=headers)
   res = conn.getresponse()
   data = res.read()
   result = data.decode("utf-8")

@@ -24,17 +24,18 @@ def fetch_user_favorites(userId):
     else:
         return jsonify({
             'message': 'Favorites not found'
-        }), 404 
+        }), 404
 
 @bp.route('/create', methods=['POST'])
 def add_favorite():
     data = request.json
     user_id, name, target_id, target_type_str = data.get('user_id'), data.get('name'), data.get('target_id'), data.get('target_type')
     target_type = map_target_type(target_type_str)
-    favorite = Favorite.add_favorite(user_id, name, target_type, target_id)
-    if favorite:
+    success, favorite = Favorite.add_favorite(user_id, name, target_type, target_id)
+    if success:
         return jsonify({
-                'message': 'Favorite created successfully'
+                'message': 'Favorite created successfully',
+                'favorite': favorite.to_dict()
             }), 200
     else:
         return jsonify({
@@ -47,7 +48,8 @@ def delete_fav(favId):
     if fav:
         fav.delete_favorite()
         return jsonify({
-                'message': 'Favorite deleted successfully'
+                'message': 'Favorite deleted successfully',
+                'id': favId
             }), 200
     else:
         return jsonify({
