@@ -12,15 +12,17 @@ const initialState = {
 };
 
 const playerReducer = (state = initialState, action) => {
+	Object.freeze(state);
+	let nextState = Object.assign({}, state)
 	switch (action.type) {
 		case FETCH_PLAYER_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case FETCH_PLAYER_SUCCESS:
-			return { ...state, player: action.payload, isLoading: false, error: null };
+			return { ...nextState, player: action.payload, isLoading: false, error: null };
 		case FETCH_PLAYER_FAILURE:
-			return { ...state, isLoading: false, error: action.payload };
+			return { ...nextState, isLoading: false, error: action.payload };
 		default:
-			return state;
+			return nextState;
 	}
 };
 

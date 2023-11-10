@@ -14,13 +14,14 @@ const initialState = {
 
 const competitionReducer = (state = initialState, action) => {
 	Object.freeze(state)
-
+	let nextState = Object.assign({}, state);
 	switch (action.type) {
 		case FETCH_COMPETITION_REQUEST:
 			return { ...state, isLoading: true, error: null };
 		case FETCH_COMPETITION_SUCCESS:
 			const { standings, 'top scorers': topScorers, 'top assists': topAssists, fixtures, news } = action.payload;
-			return Object.assign({}, state, {
+			return {
+				...nextState,
 				standings: [ ...standings ],
 				top_scorers: Array.isArray(topScorers) ? [...topScorers] : { ...topScorers },
 				top_assists: Array.isArray(topAssists) ? [...topAssists] : { ...topAssists },
@@ -28,7 +29,7 @@ const competitionReducer = (state = initialState, action) => {
 				news: Array.isArray(news) ? [...news] : { ...news },
 				isLoading: false,
 				error: null
-			});
+			};
 		case FETCH_COMPETITION_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
 		case REMOVE_COMPETITION:

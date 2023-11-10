@@ -17,22 +17,24 @@ const initialState = {
 };
 
 const usersReducer = (state = initialState, action) => {
+	Object.freeze(state);
+	let nextState = Object.assign({}, state);
 	switch (action.type) {
 		case REGISTER_USER_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case REGISTER_USER_SUCCESS:
-			return { ...state, isLoading: false, error: null };
+			return { ...nextState, isLoading: false, error: null };
 		case REGISTER_USER_FAILURE:
 		case FETCH_USER_INFO_FAILURE:
-			return { ...state, isLoading: false, error: action.payload };
+			return { ...nextState, isLoading: false, error: action.payload };
 		case REMOVE_USER_ERRORS:
-			return { ...state, isLoading: false, error: null };
+			return { ...nextState, isLoading: false, error: null };
 		case FETCH_USER_INFO_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case FETCH_USER_INFO_SUCCESS:
-			return { ...state, isLoading: false, users: action.payload }; 
+			return { ...nextState, isLoading: false, users: action.payload }; 
 		default:
-			return state;
+			return nextState;
 	}
 };
 

@@ -24,18 +24,20 @@ const initialState = {
 };
 
 const postsReducer = (state = initialState, action) => {
+	Object.freeze(state);
+	let nextState = Object.assign({}, state);
 	switch (action.type) {
 		case FETCH_ALL_POSTS_REQUEST:
 		case FETCH_POST_REQUEST:
 		case CREATE_POST_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case FETCH_ALL_POSTS_SUCCESS:
 			const newPosts = action.payload['posts']
-			return { ...state, 
+			return { ...nextState, 
 				isLoading: false, 
 				error: null, 
 				posts: {
-					...state.posts,
+					...nextState.posts,
 					...newPosts
 				}, // Concatenate old and new posts
 				total_pages: action.payload['total_pages'],
@@ -45,30 +47,30 @@ const postsReducer = (state = initialState, action) => {
 		case CREATE_POST_SUCCESS:
 			const createdPost = action.payload['post']
 			return {
-				...state,
+				...nextState,
 				isLoading: false,
 				error: null,
 				posts: {
-					...state.posts,
+					...nextState.posts,
 					[createdPost.id]: createdPost
 				}
 			}
 		case FETCH_ALL_POSTS_FAILURE:
-			return { ...state, isLoading: false, error: action.payload, posts: null };
+			return { ...nextState, isLoading: false, error: action.payload, posts: null };
 		case FETCH_USER_POSTS_REQUEST:
-			return { ...state, isLoading: true, error: null};
+			return { ...nextState, isLoading: true, error: null};
 		case FETCH_USER_POSTS_SUCCESS:
-			return { ...state, isLoading: false, error: null, posts: action.payload['posts']
+			return { ...nextState, isLoading: false, error: null, posts: action.payload['posts']
 			};
 		case FETCH_USER_POSTS_FAILURE:
-			return { ...state, isLoading: false, error: action.payload, posts: null }
+			return { ...nextState, isLoading: false, error: action.payload, posts: null }
 		case FETCH_POST_SUCCESS:
-			return { ...state, isLoading: false, error: null, post: action.payload['post'] }
+			return { ...nextState, isLoading: false, error: null, post: action.payload['post'] }
 		case FETCH_POST_FAILURE:
 		case CREATE_POST_FAILURE:
-			return { ...state, isLoading: false, error: action.payload, post: null }
+			return { ...nextState, isLoading: false, error: action.payload, post: null }
 		default:
-			return state;
+			return nextState;
 	}
 }
 

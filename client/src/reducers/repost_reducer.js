@@ -17,42 +17,44 @@ const initialState = {
 }
 
 const repostsReducer = (state = initialState, action) => {
+	Object.freeze(state);
+	let nextState = Object.assign({}, state);
 	switch (action.type) {
 		case FETCH_ALL_REPOSTS_REQUEST:
 		case CREATE_REPOST_REQUEST:
 		case DELETE_REPOST_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case CREATE_REPOST_SUCCESS:
 			const createdRepost = action.payload['repost']
 			return {
-				...state,
+				...nextState,
 				isLoading: false,
 				error: null,
 				reposts: {
-					...state.reposts,
+					...nextState.reposts,
 					[createdRepost.id]: createdRepost
 				}
 			}
 		case DELETE_REPOST_SUCCESS:
 			const deletedRepostId = action.payload['repostId']
-			const filteredReposts = state.reposts.filter((repost) => repost.id !== deletedRepostId)
-			return { ...state, isLoading: false, error: null, reposts: filteredReposts}
+			const filteredReposts = nextState.reposts.filter((repost) => repost.id !== deletedRepostId)
+			return { ...nextState, isLoading: false, error: null, reposts: filteredReposts}
 		case FETCH_ALL_REPOSTS_SUCCESS:
 			const newReposts = action.payload['reposts']
-			return { ...state, 
+			return { ...nextState, 
 				isLoading: false, 
 				error: null, 
 				reposts: {
-					...state.reposts,
+					...nextState.reposts,
 					...newReposts
 				}
 			};
 		case FETCH_ALL_REPOSTS_FAILURE:
 		case CREATE_REPOST_FAILURE:
 		case DELETE_REPOST_FAILURE:
-			return { ...state, isLoading: false, error: action.payload, reposts: null }
+			return { ...nextState, isLoading: false, error: action.payload, reposts: null }
 		default:
-			return state;
+			return nextState;
 	}
 }
 

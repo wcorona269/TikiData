@@ -5,14 +5,15 @@ import {
 
 const modalReducer = (oldState = {}, action) => {
 	Object.freeze(oldState);
+	let nextState = Object.assign({}, oldState)
 
 	switch (action.type) {
 		case SHOW_MODAL:
-			return { ...oldState, modal: action.modal }
+			return { ...nextState, modal: action.modal }
 		case CLOSE_MODAL:
 			return {}
 		default:
-			return oldState;
+			return nextState;
 	}
 }
 

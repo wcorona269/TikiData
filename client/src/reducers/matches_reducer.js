@@ -15,21 +15,23 @@ const initialState = {
 };
 
 const matchesReducer = (state = initialState, action) => {
+	Object.freeze(state);
+	let nextState = Object.assign({}, state);
 	switch (action.type) {
 		case FETCH_MATCHES_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case FETCH_MATCHES_SUCCESS:
-			return { ...state, matches: action.payload, isLoading: false, error: null };
+			return { ...nextState, matches: action.payload, isLoading: false, error: null };
 		case FETCH_MATCHES_FAILURE:
-			return { ...state, isLoading: false, error: action.payload };
+			return { ...nextState, isLoading: false, error: action.payload };
 		case FETCH_LIVE_MATCHES_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case FETCH_LIVE_MATCHES_SUCCESS:
-			return { ...state, live: action.payload, isLoading: false, error: null };
+			return { ...nextState, live: action.payload, isLoading: false, error: null };
 		case FETCH_LIVE_MATCHES_FAILURE:
-			return { ...state, isLoading: false, error: action.payload };
+			return { ...nextState, isLoading: false, error: action.payload };
 		default:
-			return state;
+			return nextState;
 	}
 };
 

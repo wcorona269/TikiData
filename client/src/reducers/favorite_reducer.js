@@ -17,29 +17,29 @@ const initialState = {
 
 const favoritesReducer = (state = initialState, action) => {
 	Object.freeze(state)
-
+	let nextState = Object.assign({}, state)
 	switch (action.type) {
 		case FETCH_FAVORITES_REQUEST:
 		case CREATE_FAVORITE_REQUEST:
 		case DELETE_FAVORITE_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case FETCH_FAVORITES_SUCCESS:
-			return { ...state, isLoading: false, favorites: action.payload['favorites'] };
+			return { ...nextState, isLoading: false, favorites: action.payload['favorites'] };
 		case CREATE_FAVORITE_SUCCESS:
 			const newFavorite = action.payload['favorite']
-			return { ...state, favorites: [...state.favorites, newFavorite], isLoading: false };
+			return { ...nextState, favorites: [...nextState.favorites, newFavorite], isLoading: false };
 		case DELETE_FAVORITE_SUCCESS:
 			const deletedFavoriteId = action.payload['id']
-			const updatedFavorites = state.favorites.filter(
+			const updatedFavorites = nextState.favorites.filter(
 				(favorite) => favorite.id !== deletedFavoriteId
 			);
-			return { ...state, favorites: updatedFavorites, isLoading: false };
+			return { ...nextState, favorites: updatedFavorites, isLoading: false };
 		case FETCH_FAVORITES_FAILURE:
 		case CREATE_FAVORITE_FAILURE:
 		case DELETE_FAVORITE_FAILURE:
-			return { ...state, isLoading: false, error: action.payload };
+			return { ...nextState, isLoading: false, error: action.payload };
 		default:
-			return state;
+			return nextState;
 	}
 };
 

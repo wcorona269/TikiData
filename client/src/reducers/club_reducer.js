@@ -13,12 +13,14 @@ const initialState = {
 };
 
 const clubReducer = (state = initialState, action) => {
+	Object.freeze(state);
+	let nextState = Object.assign({}, state)
 	switch (action.type) {
 		case FETCH_CLUB_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case FETCH_CLUB_SUCCESS:
 			return {
-				...state,
+				...nextState,
 				club: action.payload['club'],
 				squad: action.payload['squad'],
 				fixtures: [...action.payload['fixtures']], // Create a new array
@@ -29,11 +31,11 @@ const clubReducer = (state = initialState, action) => {
 				error: null
 			};
 		case FETCH_CLUB_FAILURE:
-			return { ...state, isLoading: false, error: action.payload };
+			return { ...nextState, isLoading: false, error: action.payload };
 		case REMOVE_CLUB:
-			return { ...state, isLoading: false, error: null }
+			return { ...nextState, isLoading: false, error: null }
 		default:
-			return state;
+			return nextState;
 	}
 };
 

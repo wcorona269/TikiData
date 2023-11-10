@@ -57,7 +57,6 @@ class User(UserMixin, db.Model):
 					'bio': user.bio,
 					'created_at': user.created_at.strftime('%Y-%m-%d %H:%M:%S'),
 					'favorites': [favorite.to_dict() for favorite in user.favorites]
-				# 'avatar': user.avatar
 			}
 		else:
 			return False

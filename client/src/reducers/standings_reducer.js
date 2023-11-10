@@ -6,20 +6,22 @@ const initialState = {
 };
 
 const standingsReducer = (state = initialState, action) => {
+	Object.freeze(state);
+	let nextState = Object.assign({}, state);
 	switch (action.type) {
 		case FETCH_STANDINGS_REQUEST:
-			return { ...state, isLoading: true, error: null };
+			return { ...nextState, isLoading: true, error: null };
 		case FETCH_STANDINGS_SUCCESS:
 			return {
-				...state,
+				...nextState,
 				standings: action.payload,
 				isLoading: false,
 				error: null
 			};
 		case FETCH_STANDINGS_FAILURE:
-			return { ...state, isLoading: false, error: action.payload };
+			return { ...nextState, isLoading: false, error: action.payload };
 		default:
-			return state;
+			return nextState;
 	}
 };
 
