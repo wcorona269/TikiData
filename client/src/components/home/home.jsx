@@ -30,6 +30,10 @@ const Home = () => {
 	}, [user_id])
 
 	useEffect(() => {
+		document.body.style.overflow = 'visible';
+	}, [])
+
+	useEffect(() => {
 		if (location.pathname.includes('home')) {
 			setSelectedTab(0)
 		} else if (location.pathname.includes('notifications')) {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {  Typography, Container, Grid, useTheme, Divider, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { showModal } from '../../actions/modal_actions';
@@ -14,6 +14,17 @@ const Welcome = () => {
 	const signupModal = (e) => {
 		dispatch(showModal('signup'))
 	}
+
+	useEffect(() => {
+		// Disable scroll when the component mounts
+		window.scrollTo(0, 0)
+		document.body.style.overflow = 'hidden';
+
+		// Re-enable scroll when the component unmounts
+		// return () => {
+			
+		// };
+	}, []);
 
 	return (
 		<Container>
