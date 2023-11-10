@@ -17,7 +17,7 @@ import {
 const initialState = {
 	isLoading: false,
 	error: null,
-	posts: [], 
+	posts: {}, 
 	total_pages: 1,
 	current_page: 1, 
 	total_posts: 0
@@ -30,10 +30,14 @@ const postsReducer = (state = initialState, action) => {
 		case CREATE_POST_REQUEST:
 			return { ...state, isLoading: true, error: null };
 		case FETCH_ALL_POSTS_SUCCESS:
+			const newPosts = action.payload['posts']
 			return { ...state, 
 				isLoading: false, 
 				error: null, 
-				posts: [...state['posts'], ...action.payload['posts']], // Concatenate old and new posts
+				posts: {
+					...state.posts,
+					...newPosts
+				}, // Concatenate old and new posts
 				total_pages: action.payload['total_pages'],
 				current_page: action.payload['current_page'],
 				total_posts: action.payload['total_posts'],
@@ -44,7 +48,10 @@ const postsReducer = (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				error: null,
-				posts: [ createdPost, ...state['posts'] ]
+				posts: {
+					...state.posts,
+					[createdPost.id]: createdPost
+				}
 			}
 		case FETCH_ALL_POSTS_FAILURE:
 			return { ...state, isLoading: false, error: action.payload, posts: null };

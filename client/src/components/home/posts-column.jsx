@@ -1,5 +1,5 @@
 import './posts-column.scss'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Button, Grid, Paper, Stack, Typography, useTheme, CircularProgress } from '@mui/material'
 import { fetchPosts, fetchReposts } from '../../actions/post_actions';
 import LoadingMessage from '../util/loading/loading-screen';
@@ -9,10 +9,8 @@ import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { useDispatch, useSelector } from 'react-redux';
 import HomeFixturesColumn from './home-fixtures-column';
 import Title from '../util/section-heading';
-import UserFavorites from './my-favorites';
 
 const PostsTimeline = () => {
-	const theme = useTheme();
 	const dispatch = useDispatch();
 	const posts = useSelector(state => state.posts?.posts || []);
 	const current_page = useSelector(state => state.posts?.current_page);
@@ -22,36 +20,19 @@ const PostsTimeline = () => {
 	const [combinedPosts, setCombinedPosts] = useState();
 
 	useEffect(() => {
-		dispatch(fetchPosts())
-		dispatch(fetchReposts())
+		if (!isPostsLoading) {
+			dispatch(fetchPosts())
+		}
+		if (!isRepostsLoading) {
+			dispatch(fetchReposts())
+		}
 	}, []);
 
 	useEffect(() => {
-		
-	}, [])
-
-	useEffect(() => {
-		let result = [];
-
-		let i = 0;
-		let j = 0;
-
-		while (i < posts.length && j < reposts.length) {
-			if (i === j) {
-				result.push(posts[i])
-				i++
-			} else {
-				result.push(reposts[j])
-				j++
-			}
-		}
-
-		let remainingPosts = posts?.slice(i) || [];
-		let remainingReposts = reposts?.slice(j) || [];
-		result.push(...remainingPosts);
-		result.push(...remainingReposts);
-
-		setCombinedPosts(result);
+		const postsArray = Object.values(posts);
+		const repostsArray = Object.values(reposts);
+		const sortedPosts = [...postsArray, ...repostsArray].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+		setCombinedPosts(sortedPosts);
 	}, [posts, reposts]);
 
 	const loadMorePosts = () => {

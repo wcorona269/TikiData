@@ -7,16 +7,13 @@ import Title from '../util/section-heading';
 
 const HomeFixturesColumn = () => {
 	const dispatch = useDispatch();
-	const matches = useSelector(state => state.matches.live);
+	const matches = useSelector(state => state.matches?.live);
 	const isLoading = useSelector(state => state.matches.isLoading);
 	useEffect(() => {
-		if (!matches) {
+		if (!isLoading && !matches) {
 			dispatch(fetchLiveMatches())
 		}
-	}, [])
-	
-	useEffect(() => {}, [isLoading])
-	
+	}, [matches, isLoading])
 
 	return (
 		<Paper elevation={1} id='home-fixtures-paper' sx={{position: 'sticky', top: '2rem'}}>

@@ -39,7 +39,6 @@ const getConfig = async () => {
 getConfig();
 
 function App() {
-  const dispatch = useDispatch();
   const [lightMode, setLightMode] = useState(false);
 
   const theme = createTheme({

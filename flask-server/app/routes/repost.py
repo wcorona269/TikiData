@@ -74,7 +74,7 @@ def get_all_reposts():
     if not reposts.items:
         return jsonify({'message': 'no posts found'}), 404
 
-    reposts_data = [repost.to_dict() for repost in reposts.items]
+    reposts_data = { repost.id: repost.to_dict() for repost in reposts.items }
 
 
     if reposts:

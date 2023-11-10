@@ -22,7 +22,8 @@ def create_comment():
     db.session.add(new_comment)
     db.session.commit()
     return jsonify({
-        'message': 'Comment created successfully'
+        'message': 'Comment created successfully',
+        'comment': new_comment.to_dict()
     }), 200
     
   if user_id and post_id and text and parent_id:

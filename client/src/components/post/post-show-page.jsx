@@ -34,20 +34,22 @@ const PostShowPage = () => {
 
 	useEffect(() => {
 		if (!post) return;
-		for (let like of post?.likes) {
+		for (let i = 0; i < post.likes.length; i++) {
+			const like = post.likes[i]
 			if (like.user_id === user_id) {
 				setIsLiked(true)
 			}
 		}
-		for (let repost of post?.reposts) {
+		for (let i = 0; i < post?.reposts.length; i++) {
+			const repost = post.reposts[i];
 			if (repost.user_id === user_id) {
 				setIsReposted(true)
 			}
 		}
-	}, [post, user_id]);
+	}, [post, reposts, postLikes, user_id]);
 
 	const fetchPostCallback = useCallback(() => {
-		if (id !== post_id && !isLoading) {
+		if (!isLoading) {
 			dispatch(fetchPost(id))
 		}
 	}, [id])
@@ -124,6 +126,7 @@ const PostShowPage = () => {
 		return result;
 	}
 
+	debugger;
 	const buttons = [
 		<Button key={0} aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: createComment ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => setCreateComment(!createComment)}>
 			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />
@@ -135,6 +138,7 @@ const PostShowPage = () => {
 			{postLikes}
 		</Button>,
 	];
+
 
 	return (
 		<>

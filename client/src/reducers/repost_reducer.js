@@ -13,7 +13,7 @@ import {
 const initialState = {
 	isLoading: false,
 	error: null,
-	reposts: []
+	reposts: {}
 }
 
 const repostsReducer = (state = initialState, action) => {
@@ -23,22 +23,29 @@ const repostsReducer = (state = initialState, action) => {
 		case DELETE_REPOST_REQUEST:
 			return { ...state, isLoading: true, error: null };
 		case CREATE_REPOST_SUCCESS:
-			const newRepost = action.payload['repost']
+			const createdRepost = action.payload['repost']
 			return {
 				...state,
 				isLoading: false,
 				error: null,
-				reposts: [ newRepost, ...state['reposts'] ] // Concatenate new post and old posts
+				reposts: {
+					...state.reposts,
+					[createdRepost.id]: createdRepost
+				}
 			}
 		case DELETE_REPOST_SUCCESS:
 			const deletedRepostId = action.payload['repostId']
 			const filteredReposts = state.reposts.filter((repost) => repost.id !== deletedRepostId)
 			return { ...state, isLoading: false, error: null, reposts: filteredReposts}
 		case FETCH_ALL_REPOSTS_SUCCESS:
+			const newReposts = action.payload['reposts']
 			return { ...state, 
 				isLoading: false, 
 				error: null, 
-				reposts: [...state['reposts'], ...action.payload['reposts']], // Concatenate old and new posts
+				reposts: {
+					...state.reposts,
+					...newReposts
+				}
 			};
 		case FETCH_ALL_REPOSTS_FAILURE:
 		case CREATE_REPOST_FAILURE:
