@@ -7,14 +7,14 @@ import Title from '../util/section-heading';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 
-const UserProfileHeader = () => {
+const UserShowPageHeader = () => {
 	const navigate = useNavigate();
 	const theme = useTheme();
 	const { username } = useParams();
 	const currentUser = useSelector(state => state.session.user?.username);
 	const created_at = useSelector(state => state.users.users?.user?.created_at);
 	const bio = useSelector(state => state.users.users?.user?.bio);
-	const isUserProfile = username == currentUser;
+	const isCurrentUser = username == currentUser;
 
 	const handleClick = () => {
 		navigate(`/edit-profile/${currentUser}`)
@@ -34,7 +34,7 @@ const UserProfileHeader = () => {
 					</Typography>
 				</Box>
 				{
-					isUserProfile &&
+					isCurrentUser &&
 					<Button onClick={handleClick} variant='contained' sx={{ marginLeft: 'auto', marginBottom: 'auto' }}>
 						<ManageAccountsIcon />
 						Edit Profile
@@ -49,4 +49,4 @@ const UserProfileHeader = () => {
 	)
 }
 
-export default UserProfileHeader;
+export default UserShowPageHeader;

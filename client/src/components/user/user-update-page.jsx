@@ -2,7 +2,7 @@ import { Box, Grid, Paper, OutlinedInput, InputAdornment, Snackbar, Alert, IconB
 import CloseIcon from '@mui/icons-material/Close';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import UserProfileHeader from './user-profile-header';
+import UserShowPageHeader from './user-show-page-header';
 import HomeFixturesColumn from '../home/home-fixtures-column';
 import Title from '../util/section-heading';
 import Visibility from '@mui/icons-material/Visibility';
@@ -90,7 +90,7 @@ const UserUpdatePage = () => {
 						/>
 						:
 						<Paper elevation={1}>
-							<UserProfileHeader />
+							<UserShowPageHeader />
 							<Box>
 								<Title variant='h6' content='Edit Profile' />
 								<Box sx={{ p: '1rem' }}>

@@ -48,19 +48,27 @@ def delete_repost():
                 'message': 'Repost deletion failed - Invalid request'
             }), 401
 
-@bp.route('/fetch/all/<userId>', methods=['GET'])
-def get_user_reposts(userId):
-    user_reposts = Repost.query.filter_by(user_id=userId).all()
-    reposts_data = [repost.to_dict() for repost in user_reposts],
-    if user_reposts:
-        return jsonify({
-                'message': 'Posts fetched successfully',
-                'reposts': reposts_data
-            }), 200
-    else:
-        return jsonify({
-                'message': 'No reposts found'
-            }), 401
+@bp.route('/fetch/<userId>', methods=['GET'])
+def fetch_user_reposts(userId):
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 10, type=int)
+
+    reposts = Repost.query.filter_by(user_id=userId).order_by(Repost.created_at.desc()).paginate(
+        page=page, per_page=per_page, error_out=False
+    )
+
+    if not reposts.items:
+        return jsonify({'message': 'no reposts found'}), 404
+
+    normalized_reposts = { repost.id: repost.to_dict() for repost in reposts.items }
+
+    return jsonify({
+        'message': 'All posts retrieved successfully',
+        'posts': normalized_reposts,
+        'total_pages': reposts.pages,
+        'current_page': reposts.page,
+        'total_reposts': reposts.total
+    }), 200
 
 @bp.route('/index', methods=['GET'])
 def get_all_reposts():

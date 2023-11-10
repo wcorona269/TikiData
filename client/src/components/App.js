@@ -22,7 +22,7 @@ import Notifications from './home/home-notifications';
 import PostsTimeline from './home/posts-column';
 import HomeNews from './home/home-news';
 import PostShowPage from './post/post-show-page';
-import UserProfile from './user/user-profile';
+import UserShowPage from './user/user-show-page';
 import UserUpdatePage from './user/user-update-page';
 
 let apiKey;
@@ -80,7 +80,7 @@ function App() {
               <Route path='/explore' element={<Explore/>} />
               <Route path='/news' element={<HomeNews/>} />
               <Route path='/match/:id' element={<MatchOverview/>} />
-              <Route path='/user/:username' element={<UserProfile/>}/>
+              <Route path='/user/:username' element={<UserShowPage/>}/>
               <Route path='/club/:id' element={<ClubProfile/>} />
               <Route path='/league/:id' element={<LeagueProfile/>} />
               <Route path='/player/:id' element={<PlayerProfile/>} />

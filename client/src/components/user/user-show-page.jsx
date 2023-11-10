@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo } from '../../actions/user_actions';
 import RepostContainer from '../home/repost-container';
 import HomeFixturesColumn from '../home/home-fixtures-column';
-import UserProfileHeader from './user-profile-header';
+import UserShowPageHeader from './user-show-page-header';
 
 
-const UserProfile = () => {
+const UserShowPage = () => {
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	const { username } = useParams();
@@ -27,12 +27,12 @@ const UserProfile = () => {
 				{username} hasn't posted yet.
 			</Typography>
 		</Container>
-)
+	)
 
 	const displayPosts = () => {
 		let result = [];
 
-		if (isLoading) return ;
+		if (isLoading) return;
 
 		if (selectedTab === 0) {
 			if (!posts?.length) return noPostsMessage;
@@ -72,7 +72,7 @@ const UserProfile = () => {
 						:
 					<Box>
 						<Paper elevation={1}>
-							<UserProfileHeader/>
+							<UserShowPageHeader/>
 							<Tabs onChange={handleChange} value={selectedTab} variant='fullWidth'>
 								<Tab label={'Posts'} />
 								<Tab label={'Reposts'} />
@@ -90,4 +90,4 @@ const UserProfile = () => {
 	)
 }
 
-export default UserProfile;
+export default UserShowPage;
