@@ -3,10 +3,7 @@ import Chip from '@mui/material/Chip';
 import leaguesByCountry from './leagues/leaguesByCountry';
 import { Container, useTheme, Grid, Link, Stack } from '@mui/material';
 import Flag from 'react-world-flags';
-import { styled } from '@mui/material/styles';
-import { Box, Table, TableCell, TableHead, TableRow, Paper, Typography, TableContainer, TableBody } from '@mui/material';
-import { tableCellClasses } from '@mui/material/TableCell';
-import StarIcon from '@mui/icons-material/Star';
+import { Box, Table, TableCell, TableHead, TableRow, Paper, TableContainer, TableBody } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Title from '../util/section-heading';
 

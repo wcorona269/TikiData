@@ -82,98 +82,98 @@ const leaguesByCountry = {
 	'Portugal': {
 		leagues: {
 			'Primeira Liga': 94,
-			'Liga Portugal 2': 95
+			'Segunda Liga': 95
 		},
 		countryCode: 'PT'
 	},
 	'Scotland': {
 		leagues: {
-			'Scottish Premiership': 149,
-			'Scottish Championship': 150
+			'Scottish Premiership': 179,
+			'Scottish Championship': 180,
 		},
 		countryCode: 'GB'
 	},
 	'Belgium': {
 		leagues: {
-			'Jupiler Pro League': 63,
-			'Proximus League': 105
+			'Jupiler Pro League': 144,
+			'Challenger Pro League': 145
 		},
 		countryCode: 'BE'
 	},
 	'Turkey': {
 		leagues: {
-			'Süper Lig': 147,
-			'TFF 1. Lig': 148
+			'Süper Lig': 203,
+			'TFF 1. Lig': 204
 		},
 		countryCode: 'TR'
 	},
 	'Russia': {
 		leagues: {
-			'Russian Premier League': 80,
-			'FNL': 81
+			'Russian Premier League': 235,
+			'First League': 236
 		},
 		countryCode: 'RU'
 	},
 	'Ukraine': {
 		leagues: {
-			'Ukrainian Premier League': 120,
-			'Persha Liga': 121
+			'Ukrainian Premier League': 333,
+			'Persha Liga': 334
 		},
 		countryCode: 'UA'
 	},
 	'Switzerland': {
 		leagues: {
-			'Swiss Super League': 84,
-			'Challenge League': 116
+			'Swiss Super League': 207,
+			'Challenge League': 208
 		},
 		countryCode: 'CH'
 	},
 	'Austria': {
 		leagues: {
-			'Tipico Bundesliga': 71,
-			'2. Liga': 72
+			'Tipico Bundesliga': 218,
+			'2. Liga': 219
 		},
 		countryCode: 'AT'
 	},
 	'Greece': {
 		leagues: {
-			'Super League Greece': 100,
-			'Football League': 101
+			'Super League 1': 197,
+			'Football League': 198
 		},
 		countryCode: 'GR'
 	},
 	'Denmark': {
 		leagues: {
-			'Danish Superliga': 56,
-			'1st Division': 57
+			'Superliga': 119,
+			'1. Division': 120
 		},
 		countryCode: 'DK'
 	},
 	'Sweden': {
 		leagues: {
-			'Allsvenskan': 81,
-			'Superettan': 82
+			'Allsvenskan': 113,
+			'Superettan': 114
 		},
 		countryCode: 'SE'
 	},
 	'Norway': {
 		leagues: {
-			'Eliteserien': 59,
-			'OBOS-ligaen': 60
+			'Eliteserien': 103,
+			'1. Division': 104
 		},
 		countryCode: 'NO'
 	},
 	'Croatia': {
 		leagues: {
-			'Prva HNL': 102,
-			'Druga HNL': 103
+			'Prva HNL': 210,
+			'First NL': 211
 		},
 		countryCode: 'HR'
 	},
 	'Poland': {
 		leagues: {
-			'Ekstraklasa': 67,
-			'I Liga': 68
+			'Ekstraklasa': 106,
+			'I Liga': 107
 		},
 		countryCode: 'PL'
 	},
@@ -185,7 +185,8 @@ const leaguesByCountry = {
 	},
 	'Mexico': {
 		leagues: {
-			'Liga MX': 135
+			'Liga MX': 262,
+			'Liga de Expansión MX': 263
 		},
 		countryCode: 'MX'
 	},
@@ -193,7 +194,7 @@ const leaguesByCountry = {
 		leagues: {
 			'UEFA Champions League': 2,
 			'UEFA Europa League': 3,
-			'UEFA Europa Conference League': 283
+			'UEFA Europa Conference League': 848
 		},
 		countryCode: 'EU'
 	},

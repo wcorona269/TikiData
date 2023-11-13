@@ -126,7 +126,6 @@ const PostShowPage = () => {
 		return result;
 	}
 
-	debugger;
 	const buttons = [
 		<Button key={0} aria-label="favorite" size="large" sx={{ borderRadius: '1rem', width: 'fit-content', color: createComment ? theme.palette.primary.main : theme.palette.grey['700'] }} onClick={() => setCreateComment(!createComment)}>
 			<ChatBubbleOutlineIcon sx={{ marginRight: '.25rem' }} fontSize='medium' />

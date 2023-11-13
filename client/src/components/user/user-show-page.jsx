@@ -8,7 +8,6 @@ import RepostContainer from '../home/repost-container';
 import HomeFixturesColumn from '../home/home-fixtures-column';
 import UserShowPageHeader from './user-show-page-header';
 
-
 const UserShowPage = () => {
 	const dispatch = useDispatch();
 	const theme = useTheme();
@@ -36,14 +35,16 @@ const UserShowPage = () => {
 
 		if (selectedTab === 0) {
 			if (!posts?.length) return noPostsMessage;
-			for (let post of posts) {
+			const sortedPosts = posts?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+			for (let post of sortedPosts) {
 				result.push(
 					<PostContainer post={post} />
 				)	
 			}
 		} else {
 			if (!reposts?.length) return noPostsMessage;
-			for (let i = 0; i < reposts.length; i++) {
+			const sortedReposts = reposts?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+			for (let i = 0; i < sortedReposts.length; i++) {
 				result.push(<RepostContainer post={reposts[i]} idx={i} />)
 			}
 		}
