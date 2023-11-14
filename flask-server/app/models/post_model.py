@@ -36,10 +36,12 @@ class Post(db.Model):
   def to_dict(self):
     user_instance = User.query.get(self.user_id)
     user_data = User.to_dict(user_instance) if user_instance else None
+    
     return {
 			'id': self.id,
 			'user_id': self.user_id,
 			'username': user_data['username'],
+      'avatar_url': user_data['avatar_url'],
 			'text': self.text,
 			'likes': [like.to_dict() for like in self.likes],
 			'comments': [comment.to_dict() for comment in self.comments],

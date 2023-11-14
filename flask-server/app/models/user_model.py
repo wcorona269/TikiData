@@ -19,6 +19,7 @@ class User(UserMixin, db.Model):
 	email = db.Column(db.String(120), unique=True, nullable=False)
 	password_hash = db.Column(db.String(255), nullable=False)
 	created_at = db.Column(db.DateTime, default=local_time, nullable=False)
+	avatar_url = db.Column(db.String(255), default='', nullable=True)
 	bio = db.Column(db.String, default='')
  
 	# table relationships
@@ -55,6 +56,7 @@ class User(UserMixin, db.Model):
 					'posts': [post.to_dict() for post in user.posts],
 					'reposts': [repost.to_dict() for repost in user.reposts],
 					'bio': user.bio,
+					'avatar_url': user.avatar_url,
 					'created_at': user.created_at.strftime('%Y-%m-%d %H:%M:%S'),
 					'favorites': [favorite.to_dict() for favorite in user.favorites]
 			}
@@ -134,6 +136,7 @@ class User(UserMixin, db.Model):
 			'username': self.username,
 			'email': self.email,
 			'bio': self.bio,
+			'avatar_url': self.avatar_url,
 			'favorites': [favorite.to_dict() for favorite in self.favorites]
 		}
 

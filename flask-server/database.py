@@ -15,9 +15,11 @@ def seed_database(app):
             username = user[0]
             email = user[1]
             bio = user[2]
-            new_user = User(username=username, email=email, bio=bio)
-            new_user.set_password('touchline')
+            avatar_url = user[3]
+            new_user = User(username=username, email=email, bio=bio, avatar_url=avatar_url)
+            new_user.set_password('touchline123')
             db.session.add(new_user)
+        
         db.session.commit()
         user_ids = [user.id for user in User.query.all()]
         

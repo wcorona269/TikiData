@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from sqlalchemy import create_engine
 from .config import Config
+from azure.storage.blob import BlobServiceClient
 from app import routes
 from flask_cors import CORS
 from .models.db import db
@@ -17,6 +18,13 @@ migrate = Migrate(app, db)
 jwt_manager = JWTManager(app)
 CORS(app)
 app.config.from_object(Config)
+# Access Azure Storage configuration
+storage_account_name = app.config["AZURE_STORAGE_ACCOUNT_NAME"]
+storage_account_key = app.config["AZURE_STORAGE_ACCOUNT_KEY"]
+
+# Use these values when establishing a connection to Azure Storage
+blob_service_client = BlobServiceClient(account_url=f"https://{storage_account_name}.blob.core.windows.net", credential=storage_account_key)
+
 app.config['CACHE_TYPE'] = 'simple'  # Use a simple in-memory cache
 cache = Cache(app)
 

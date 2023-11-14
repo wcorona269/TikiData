@@ -24,8 +24,6 @@ def add_notification():
   created_at = data.get('created_at')
   target_type = map_target_type(target_type_str)
   
-  print(recipient_id, sender_id, target_type, target_id, created_at, read)
-  
   if not recipient_id or not sender_id or not target_id or not target_type:
     return jsonify({
 				'message': 'Invalid request data'

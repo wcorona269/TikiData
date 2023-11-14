@@ -22,9 +22,9 @@ class Comment(db.Model):
 	comment_likes = db.relationship('CommentLike', back_populates='comment')
 
 	def to_dict(self):
-		user_instance = User()
-		username = user_instance.user_info(self.user_id)
-  
+		user_instance = User.query.get(self.user_id)
+		user = user_instance.to_dict()
+
 		return {
 			'id': self.id,
 			'user_id': self.user_id,
@@ -32,7 +32,8 @@ class Comment(db.Model):
 			'text': self.text,
 			'likes': [like.to_dict() for like in self.comment_likes],
 			'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-			'username': username,  # Include username of the comment user
+			'username': user['username'],
+			'avatar': user['avatar_url'],
 			'parent_id': self.parent_id,
 			# Add other fields as needed
 		}
