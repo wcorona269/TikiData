@@ -73,7 +73,7 @@ def fetchNotifications(userId):
 		}), 404
 
 	notifications = Notification.query.filter_by(recipient_id=int(userId)).all()
-	notifications_list = [notification.to_dict() for notification in notifications]
+	notifications_list = {[notification.id]: notification.to_dict() for notification in notifications}
 
 	return jsonify({
 		'notifications': notifications_list

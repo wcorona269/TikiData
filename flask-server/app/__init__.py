@@ -6,6 +6,7 @@ from flask_jwt_extended import JWTManager
 from sqlalchemy import create_engine
 from .config import Config
 from azure.storage.blob import BlobServiceClient
+from .models import User
 from app import routes
 from flask_cors import CORS
 from .models.db import db
@@ -44,12 +45,15 @@ def protected_route():
             access_token_cookie, app.config['SECRET_KEY'], algorithms=['HS256'])
             username = decoded_token.get('username')
             id = decoded_token.get('id')
+            user_instance = User.query.get(id)
+            user_info = user_instance.to_dict()
 
             # Authentication successful, respond with data from the protected endpoint
             return jsonify({
                 'message': 'Welcome! This is a protected route.',
                 'username': username,
-                'id': id
+                'id': id,
+                'avatar_url': user_info['avatar_url']
             }), 200
         except jwt.ExpiredSignatureError:
             # Token has expired, respond with unauthorized status code
