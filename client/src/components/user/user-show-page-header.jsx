@@ -14,6 +14,7 @@ const UserShowPageHeader = () => {
 	const currentUser = useSelector(state => state.session.user?.username);
 	const created_at = useSelector(state => state.users.users?.user?.created_at);
 	const bio = useSelector(state => state.users.users?.user?.bio);
+	const avatar_url = useSelector(state => state.users.users?.user?.avatar_url);
 	const isCurrentUser = username == currentUser;
 
 	const handleClick = () => {
@@ -24,7 +25,7 @@ const UserShowPageHeader = () => {
 		<Paper elevation={1}>
 			<Title variant='h6' content={username} back={true} />
 			<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'flex-end', padding: 2, gap: 1 }} >
-				<Avatar sx={{ height: 100, width: 100, marginRight: 1 }} />
+				<Avatar sx={{ height: 100, width: 100, marginRight: 1 }} src={avatar_url} />
 				<Box display='flex' flexDirection='column'>
 					<Typography variant='h6'>
 						{username}

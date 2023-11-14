@@ -150,7 +150,7 @@ const PostShowPage = () => {
 								<CircularProgress/>
 							</Box> :
 							[<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'left', width: '100%' }} >
-								<Avatar sx={{ marginRight: '.5rem', width: 50, height: 50 }}/>
+								<Avatar sx={{ marginRight: '.5rem', width: 50, height: 50 }} src={post.avatar_url}/>
 								<Box sx={{width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
 									<Link underline='hover' onClick={() => navigate(`/user/${post?.username}`)} >
 										<Typography variant='subtitle1' sx={{fontFamily: theme.typography.bold}} >

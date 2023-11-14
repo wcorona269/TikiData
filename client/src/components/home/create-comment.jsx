@@ -12,6 +12,7 @@ const CreateComment = ({ post }) => {
 	const [comment, setComment] = useState('');
 	const [isValid, setIsValid] = useState(false);
 	const user_id = useSelector(state => state.session?.user?.id);
+	const user_avatar = useSelector(state => state.session?.user?.avatar_url)
 
 	useEffect(() => {
 		if (comment.length > 0 && comment.length < 1000) {
@@ -50,7 +51,7 @@ const CreateComment = ({ post }) => {
 	return (
 		<>
 			<Box sx={{display: 'flex', flexDirection: 'row', marginBottom: '1rem'}}>
-				<Avatar sx={{marginRight: '.5rem'}}/>
+				<Avatar sx={{marginRight: '.5rem'}} src={user_avatar} />
 				<TextField
 					style={{ border: 'none', width: '100%', fontFamily: 'Ubuntu', borderRadius: '.5rem', paddingTop: '.5rem' }}
 					placeholder="leave a comment..."

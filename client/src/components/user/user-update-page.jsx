@@ -95,7 +95,7 @@ const UserUpdatePage = () => {
 								<Title variant='h6' content='Edit Profile' />
 								<Box sx={{ p: '1rem' }}>
 									<Stack spacing={2} sx={{paddingTop: 2}}>
-										<InputLabel>Change Password</InputLabel>
+										<InputLabel>New Password</InputLabel>
 										<OutlinedInput
 											id="outlined-adornment-password"
 											type={showPassword ? 'text' : 'password'}
@@ -116,7 +116,7 @@ const UserUpdatePage = () => {
 												</InputAdornment>
 											}
 										/>
-										<InputLabel>Change Password</InputLabel>
+										<InputLabel>Confirm New Password</InputLabel>
 										<OutlinedInput
 											id="outlined-adornment-password"
 											type={showConfirmPassword ? 'text' : 'password'}

@@ -24,6 +24,8 @@ const PostContainer = ({ post, repost }) => {
 	const [reposts, setReposts] = useState(0);
 	const [isLiked, setIsLiked] = useState(false);
 	const [isReposted, setIsReposted] = useState(false);
+	const avatar = post?.avatar_url
+	debugger;
 
 	useEffect(() => {
 		for (let like of post.likes) {
@@ -41,6 +43,7 @@ const PostContainer = ({ post, repost }) => {
 		setPostLikes(post.likes.length)
 		setReposts(post.reposts.length)
 	}, [post]);
+
 
 	const handleLike = () => {
 		const like_info = {
@@ -118,7 +121,7 @@ const PostContainer = ({ post, repost }) => {
 				</Link>
 			}
 			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-				<Avatar sx={{ marginRight: '.5rem' }} />
+				<Avatar sx={{ marginRight: '.5rem' }} src={avatar} />
 				<Box sx={{ display: 'flex', flexDirection: 'column'}}>
 					<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '.5rem'}}>
 						<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>

@@ -59,7 +59,7 @@ class Notification(db.Model):
 			for notif in user.notifications_received:
 				notif.read = True
 				db.session.commit()
-			return True, user.notifications_receieved
+			return True, user.notifications_received
 		else:
 			return False
  

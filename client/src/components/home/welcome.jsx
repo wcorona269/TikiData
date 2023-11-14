@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {  Typography, Container, Grid, useTheme, Divider, Button } from '@mui/material';
+import {  Typography, Container, Grid, useTheme, Divider, Button, Stack } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { showModal } from '../../actions/modal_actions';
 
@@ -26,35 +26,33 @@ const Welcome = () => {
 		// };
 	}, []);
 
+	const buttonCss = { width: 150, fontFamily: theme.typography.bold, margin: 'auto' }
+
 	return (
 		<Container>
-			<Grid container sx={{height: '100%'}}>
-				<Grid item xs={6}>
-					<Typography variant='h1' sx={{ color: theme.palette.primary.main }}>
-						touchline
-					</Typography>
-					<Divider sx={{ my: 2}}/>
-					<Typography variant='h4' sx={{ color: theme.palette.primary.main }} >
-						The everything app for soccer
-					</Typography>
-				</Grid>
-				<Grid item xs={6} sx={{display: 'flex', flexDirection: 'column', paddingTop: 4}}>
-					<Button 
-						variant='contained' 
-						onClick={loginModal}
-						sx={{width: '50%', borderRadius: '2rem', fontFamily: theme.typography.bold, margin: 'auto'}}
-					>
-						Log in
-					</Button>
-					<Button 
-						variant='outlined' 
-						onClick={signupModal}
-						sx={{ width: '50%', borderRadius: '2rem', fontFamily: theme.typography.bold, margin: 'auto' }} 
-					>
-						Sign up
-					</Button>
-				</Grid>
-			</Grid>
+			<Stack spacing={2} alignItems='center'>
+				<Typography variant='h1' sx={{ color: theme.palette.primary.main }}>
+					touchline
+				</Typography>
+				<Typography variant='h4' sx={{ color: theme.palette.primary.main }} >
+					The everything app for soccer.
+				</Typography>
+				<Divider/>
+				<Button 
+					variant='contained' 
+					onClick={loginModal}
+					sx={buttonCss}
+				>
+					Log in
+				</Button>
+				<Button 
+					variant='outlined' 
+					onClick={signupModal}
+					sx={buttonCss}
+				>
+					Sign up
+				</Button>
+			</Stack>
 		</Container>
 	)
 }

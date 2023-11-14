@@ -59,38 +59,37 @@ export const fetchNotifications = (userId) => {
 };
 
 // Read all user notifications
-export const READ_USER_NOTIFICATIONS_REQUEST = 'READ_USER_NOTIFICATIONS_REQUEST';
-export const READ_USER_NOTIFICATIONS_SUCCESS = 'READ_USER_NOTIFICATIONS_SUCCESS';
-export const READ_USER_NOTIFICATIONS_FAILURE = 'READ_USER_NOTIFICATIONS_FAILURE';
+export const READ_ALL_REQUEST = 'READ_ALL_REQUEST';
+export const READ_ALL_SUCCESS = 'READ_ALL_SUCCESS';
+export const READ_ALL_FAILURE = 'READ_ALL_FAILURE';
 
-export const readUserNotificaions = (userId) => {
+export const readAllNotifications = (userId) => {
 	return (dispatch) => {
-		dispatch({ type: READ_USER_NOTIFICATIONS_REQUEST, userId: userId });
+		dispatch({ type: READ_ALL_REQUEST, userId: userId });
 		return axios.post(`/notifications/read-all/${userId}`)
 			.then((response) => {
-				dispatch({ type: READ_USER_NOTIFICATIONS_SUCCESS, payload: response.data });
+				dispatch({ type: READ_ALL_SUCCESS, payload: response.data });
 			})
 			.catch((error) => {
-				dispatch({ type: READ_USER_NOTIFICATIONS_FAILURE, payload: error.message });
+				dispatch({ type: READ_ALL_FAILURE, payload: error.message });
 			})
 	};
 };
 
-
 // Read all user notifications
-export const READ_NOTIFICATIONS_REQUEST = 'READ_NOTIFICATIONS_REQUEST';
-export const READ_NOTIFICATIONS_SUCCESS = 'READ_NOTIFICATIONS_SUCCESS';
-export const READ_NOTIFICATIONS_FAILURE = 'READ_NOTIFICATIONS_FAILURE';
+export const READ_NOTIF_REQUEST = 'READ_NOTIF_REQUEST';
+export const READ_NOTIF_SUCCESS = 'READ_NOTIF_SUCCESS';
+export const READ_NOTIF_FAILURE = 'READ_NOTIF_FAILURE';
 
 export const setAsRead = (notifId) => {
 	return (dispatch) => {
-		dispatch({ type: READ_NOTIFICATIONS_REQUEST, notifId: notifId });
+		dispatch({ type: READ_NOTIF_REQUEST, notifId: notifId });
 		return axios.post(`/notifications/read/${notifId}`)
 			.then((response) => {
-				dispatch({ type: READ_NOTIFICATIONS_SUCCESS, payload: response.data });
+				dispatch({ type: READ_NOTIF_SUCCESS, payload: response.data });
 			})
 			.catch((error) => {
-				dispatch({ type: READ_NOTIFICATIONS_FAILURE, payload: error.message });
+				dispatch({ type: READ_NOTIF_FAILURE, payload: error.message });
 			})
 	};
 };

@@ -68,7 +68,8 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 		return <NoDataMessage/>
 	}
 
-
+	
+	
 	return (
 		<Paper elevation={1} sx={{marginTop: '1rem', mx: 'auto', marginTop: '1rem'}}>
 			<Title variant='h6' content={`${leagueName} Table`} img={leagueLogo} />
@@ -78,7 +79,7 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 						<TableRow>
 							{columns.map((column, idx) => (
 								<TableCell sx={{ paddingRight: idx === 0 ? 0 : 1, width: idx === 1 ? '100%' : 'auto', color: theme.palette.text.secondary }} key={idx} id={column}>
-									<Typography variant='body1'>
+									<Typography variant='body1' sx={{fontFamily: theme.typography.bold}}>
 										{column}
 									</Typography>
 								</TableCell>
@@ -95,53 +96,53 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 							const goalsDiff = club['goalsDiff'];
 							const points = club['points'];
 							const form = club['form']
-							
+														
 							return (
 								<TableRow key={idx} className='league-table-row'>
-								<TableCell sx={{ paddingRight: 0, color: theme.palette.text.secondary}}>{club['rank']}</TableCell>
+								<TableCell sx={{ paddingRight: 0, color: theme.palette.text.secondary}}>{rank}</TableCell>
 								<TableCell sx={{ paddingLeft: 1 }} >
-									<Link underline='hover' sx={{ color: theme.palette.text.primary, display: 'flex', flexDirection: 'row' }} onClick={() => navigate(`/club/${clubId}`)} >
-										<img src={club['team']['logo']} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} alt=''/>
-										<Typography variant='body1'>{clubName}</Typography>
+									<Link underline='hover' sx={{ color: theme.palette.secondary.main, display: 'flex', flexDirection: 'row' }} onClick={() => navigate(`/club/${clubId}`)} >
+										<img src={clubLogo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.5rem' }} alt=''/>
+										<Typography sx={{ fontFamily: theme.typography.bold }}  variant='body1'>{clubName}</Typography>
 									</Link>
 								</TableCell>
 								<TableCell>
-									<Typography variant='body1'>
+									<Typography align='center' sx={{fontFamily: theme.typography.light}} variant='body1'>
 										{clubData['played']}
 									</Typography>
 								</TableCell>
 								<TableCell>
-									<Typography variant='body1'>
+									<Typography align='center' sx={{fontFamily: theme.typography.light}} variant='body1'>
 										{clubData['win']}
 									</Typography>
 								</TableCell>
 								<TableCell>
-									<Typography variant='body1'>
+									<Typography align='center' sx={{fontFamily: theme.typography.light}} variant='body1'>
 										{clubData['lose']}
 									</Typography>
 								</TableCell>
 								<TableCell>
-									<Typography variant='body1'>
+									<Typography align='center' sx={{fontFamily: theme.typography.light}} variant='body1'>
 										{clubData['draw']}
 									</Typography>
 								</TableCell>
 								<TableCell>
-									<Typography variant='body1'>
+									<Typography align='center' sx={{fontFamily: theme.typography.light}} variant='body1'>
 										{clubData['goals']['for']}
 									</Typography>
 								</TableCell>
 								<TableCell>
-									<Typography variant='body1'>
+									<Typography align='center' sx={{fontFamily: theme.typography.light}} variant='body1'>
 										{clubData['goals']['against']}
 									</Typography>
 								</TableCell>
 								<TableCell>
-									<Typography variant='body1'>
+									<Typography align='center' sx={{fontFamily: theme.typography.light}} variant='body1'>
 										{goalsDiff}
 									</Typography>
 								</TableCell>
 								<TableCell>
-									<Typography variant='body1'>
+									<Typography align='center' variant='body1'>
 										{points}
 									</Typography>
 								</TableCell>

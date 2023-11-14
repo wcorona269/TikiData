@@ -25,6 +25,7 @@ const AccountMenu = ({ lightMode, setLightMode }) => {
 	const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
 	const username = useSelector(state => state?.session?.user?.username);
+	const avatar_url = useSelector(state => state?.session?.user?.avatar_url);
 	const open = Boolean(anchorEl);
 
 	const handleClick = (event) => {
@@ -55,7 +56,7 @@ const AccountMenu = ({ lightMode, setLightMode }) => {
 						aria-haspopup="true"
 						aria-expanded={open ? 'true' : undefined}
 					>
-						<Avatar sx={{ width: 32, height: 32 }}/>
+						<Avatar sx={{ width: 32, height: 32 }} src={avatar_url}/>
 					</IconButton>
 				</Tooltip>
 			</Box>

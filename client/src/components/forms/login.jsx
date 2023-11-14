@@ -21,8 +21,13 @@ const LoginForm = (props) => {
 		dispatch(showModal('signup'));
 	}
 
+	const boxCss = { width: 'fit-content', margin: 'auto', display: 'flex', flexDirection: 'column' }
+
 	return (
-		<Box sx={{ width: 'fit-content', margin: 'auto' }}>
+		<Box sx={boxCss}>
+			<Typography variant='h5' sx={{color: theme.palette.primary.main,margin:'auto', marginBottom: 2, fontFamily: theme.typography.bold}}>
+				Log in
+			</Typography>
 			<AuthForm
 				fields={fields}
 				onSubmit={onSubmit}

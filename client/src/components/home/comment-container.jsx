@@ -20,6 +20,8 @@ const CommentContainer = ({ comment, idx }) => {
 	const user_id = useSelector(state => state.session?.user?.id);
 	const username = useSelector(state => state.session?.user?.username);
 	const theme = useTheme();
+	debugger;
+
 
 	useEffect(() => {
 		for (let like of comment.likes) {
@@ -58,7 +60,7 @@ const CommentContainer = ({ comment, idx }) => {
 			<Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '.5rem' }} key={idx}>
 				<Grid container spacing={3}>
 					<Grid item xs="auto">
-						<Avatar />
+						<Avatar src={comment.avatar_url} />
 					</Grid>
 					<Grid item xs sx={{ display: 'flex', alignItems: 'left', flexDirection: 'column', alignItems: 'left', paddingLeft: '.5rem !important'}}>
 						<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>

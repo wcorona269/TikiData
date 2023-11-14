@@ -73,7 +73,7 @@ def fetchNotifications(userId):
 		}), 404
 
 	notifications = Notification.query.filter_by(recipient_id=int(userId)).all()
-	notifications_list = {[notification.id]: notification.to_dict() for notification in notifications}
+	notifications_list = {notification.id: notification.to_dict() for notification in notifications}
 
 	return jsonify({
 		'notifications': notifications_list
@@ -82,10 +82,12 @@ def fetchNotifications(userId):
 @bp.route('/read-all/<int:userId>', methods=['POST'])
 def read_all_notifs(userId):
   success, notifs = Notification.read_all(userId)
+  
+  notifications_list = {notification.id: notification.to_dict() for notification in notifs}
   if success:
     return jsonify({
       'message': 'User notifications read successfully',
-      'notifications': [notif.to_dict() for notif in notifs]
+      'notifications': notifications_list
     }), 200
   else:
     return jsonify({

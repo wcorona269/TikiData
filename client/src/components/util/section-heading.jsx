@@ -3,8 +3,9 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import FavoriteButton from './favorite-btn';
+import ReadAllButton from './read-all-btn';
 
-const Title = ({ variant, content, img, back, button=false }) => {
+const Title = ({ variant, content, img, back, button=false, notifs=false }) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
 	let size = variant === 'h5' ? '2rem' : '1.5rem';
@@ -37,6 +38,7 @@ const Title = ({ variant, content, img, back, button=false }) => {
 			</Box>
 			<Box display='flex' alignItems='center'>
 				{button && <FavoriteButton name={content}/> }
+				{notifs && <ReadAllButton/>}
 			</Box>
 		</Typography>
 	)
