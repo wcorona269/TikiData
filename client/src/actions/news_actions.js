@@ -19,3 +19,22 @@ export const fetchNews = () => {
 		})
 	}
 }
+// Action types
+// Fetch news
+export const FETCH_TOP_STORIES_REQUEST = 'FETCH_TOP_STORIES_REQUEST';
+export const FETCH_TOP_STORIES_SUCCESS = 'FETCH_TOP_STORIES_SUCCESS';
+export const FETCH_TOP_STORIES_FAILURE = 'FETCH_TOP_STORIES_FAILURE';
+
+// Action creators
+export const fetchTopStories = () => {
+	return (dispatch) => {
+		dispatch({ type: FETCH_TOP_STORIES_REQUEST });
+		return axios.get(`/news/top`)
+		.then((response) => {
+			dispatch({ type: FETCH_TOP_STORIES_SUCCESS, payload: response.data });
+		})
+		.catch((error) => {
+			dispatch({ type: FETCH_TOP_STORIES_FAILURE, payload: error.message })
+		})
+	}
+}

@@ -9,6 +9,7 @@ import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { useDispatch, useSelector } from 'react-redux';
 import HomeFixturesColumn from './home-fixtures-column';
 import Title from '../util/section-heading';
+import TopStories from './top-stories';
 
 const PostsTimeline = () => {
 	const dispatch = useDispatch();
@@ -78,6 +79,7 @@ const PostsTimeline = () => {
 			</Grid>
 			<Grid item xs={3} sx={{ position: 'sticky', top: '3rem' }}>
 				<Stack spacing={2}>
+					<TopStories/>
 					<HomeFixturesColumn/>
 				</Stack>
 			</Grid>

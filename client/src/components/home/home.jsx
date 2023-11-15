@@ -1,7 +1,6 @@
-import './home_templates/home.scss'
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import {  Container, Grid } from '@mui/material';
+import {  Container, Grid, Paper, Stack } from '@mui/material';
 import HomeMenu from './home-menu';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNotifications } from '../../actions/notification_actions';
@@ -52,15 +51,15 @@ const Home = () => {
 	}, [location])
 
 	useEffect(() => {
-		let count = 0;
-		if (!notifications || typeof notifications !== 'object') return; 
-		let notifs = Object.values(notifications)
-		if (notifications) {
-			for (let notif of notifs) {
-				if (notif.read === false) count += 1;
-			}
-		}
-		setUnreadCount(count)
+		// let count = 0;
+		// if (!notifications || typeof notifications !== 'object') return; 
+		// let notifs = Object.values(notifications)
+		// if (notifications) {
+		// 	for (let notif of notifs) {
+		// 		if (notif.read === false) count += 1;
+		// 	}
+		// }
+		// setUnreadCount(count)
 	}, [notifications])
 
 	const handleTabSelect = (value, location) => {
@@ -72,12 +71,19 @@ const Home = () => {
 		<Container className='home-container' sx={{paddingBottom: '5rem'}}>
 			<Grid container alignItems='flex-start' spacing={2}>
 				<Grid item xs={3} sx={{position: 'sticky', top: '2rem'}}>
-					<HomeMenu 
-						unreadCount={unreadCount}
-						selectedTab={selectedTab}
-						handleTabSelect={handleTabSelect}
-					/>
-					<UserFavorites/>
+					<Stack spacing={2}>
+						<Paper>
+						<HomeMenu 
+							unreadCount={unreadCount}
+							selectedTab={selectedTab}
+							handleTabSelect={handleTabSelect}
+						/>
+
+						</Paper>
+						<Paper>
+							<UserFavorites/>
+						</Paper>
+					</Stack>
 				</Grid>
 				<Outlet/>
 			</Grid>

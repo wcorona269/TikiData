@@ -1,4 +1,4 @@
-import { Box, Chip, Paper } from '@mui/material'
+import { Box, Chip, Paper, Typography, useTheme } from '@mui/material'
 import React from 'react'
 import Title from '../util/section-heading'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 const UserFavorites = () => {
 	const favorites = useSelector(state => state.favorites?.favorites);
-	const dispatch = useDispatch();
+	const theme = useTheme();
 	const navigate = useNavigate();
 
 	const handleClick = (favorite) => {
@@ -17,6 +17,15 @@ const UserFavorites = () => {
 
 	const displayFavorites = () => {
 		let result = [];
+
+		if (!favorites.length) {
+			return (
+				<Typography align='center' variant='subtitle2' sx={{ color: theme.palette.text.disabled, m: 3 }} >
+					Add favorites by visiting a club, league, or player profile page for easy access here.
+				</Typography>
+			) 
+		}
+
 		for (let favorite of favorites) {
 			result.push(
 				<Chip 
