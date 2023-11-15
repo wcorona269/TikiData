@@ -11,19 +11,21 @@ const Notifications = () => {
 	const notifications = useSelector(state => state.notifications?.notifications)
 
 	useEffect(() => {}, [notifications])
+	const noNotifsMessage = (
+		<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+			<Typography variant='h6' sx={{ margin: 'auto', marginTop: '5rem', textAlign: 'center', height: '100%', color: theme.palette.text.disabled }}>
+				No new notifications to show.
+			</Typography>
+		</Box>
+	)
 
 	const displayNotifications = () => {
 		let result = [];
 		if (!notifications || typeof notifications !== 'object') {
-			return (
-				<Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-					<Typography variant='h6' sx={{ margin: 'auto', marginTop: '5rem', textAlign: 'center', height: '100%', color: theme.palette.text.disabled}}>
-						No new notifications to show.
-					</Typography>
-				</Box>
-			)
+			return noNotifsMessage;
 		}
 		const notifsArray = notifications ? Object.values(notifications) : [];
+		if (!notifsArray.length) return noNotifsMessage;
 		const sortedNotifs = notifsArray.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
 		for (let i = 0; i < sortedNotifs.length; i++) {
 			const notif = sortedNotifs[i]

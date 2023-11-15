@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Tabs, Tab } from '@mui/material';
 import SeasonSelect from '../util/season-select/season-select';
-import './league-profile-header.scss';
+import './league-show-page-header.scss';
 
-const LeagueProfileHeader = ({ table, season, handleSeasonChange, showSeason, setShowSeason, selectedTab, handleChange }) => {
+const LeagueShowPageHeader = ({ table, season, handleSeasonChange, showSeason, setShowSeason, selectedTab, handleChange }) => {
 	const leagueInfo = table[0]?.league;
 	const country = leagueInfo?.country;
 	const flag = leagueInfo?.flag;
@@ -28,4 +28,4 @@ const LeagueProfileHeader = ({ table, season, handleSeasonChange, showSeason, se
 	)
 }
 
-export default LeagueProfileHeader;
+export default LeagueShowPageHeader;

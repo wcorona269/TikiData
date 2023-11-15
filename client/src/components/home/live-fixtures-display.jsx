@@ -61,7 +61,11 @@ const LiveFixturesDisplay = ({ matches }) => {
 
 
 	const displayLiveMatches = (matches) => {
-		if (!matches?.length) return 
+		if (!matches?.length) return (
+			<Typography align='center' variant='subtitle1' sx={{ p: 2, color: theme.palette.text.disabled}}>
+				No live matches at the moment.
+			</Typography>
+		)
 		let matchesByCompetition = {};
 		let result = [];
 

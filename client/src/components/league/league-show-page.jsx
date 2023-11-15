@@ -10,11 +10,11 @@ import response from './response';
 import { Tabs, Tab, Grid, Paper, Typography, Box, Divider, useTheme } from '@mui/material';
 import LoadingMessage from '../util/loading/loading-screen';
 import NoDataMessage from '../util/no-data/no-data-message';
-import LeagueProfileHeader from './league-profile-header'
+import LeagueShowPageHeader from './league-show-page-header'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import Title from '../util/section-heading';
 
-const LeagueProfile = () => {
+const LeagueShowPage = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();
 	const { id } = useParams();
@@ -23,7 +23,6 @@ const LeagueProfile = () => {
 	const isLoading = useSelector(state => state.competition.isLoading);
 
 	const [season, setSeason] = useState('2023/24');
-	const [showSeason, setShowSeason] = useState(false);
 	const [selectedTab, setSelectedTab] = useState(0);
 
 	const table = competition['standings'];
@@ -38,7 +37,7 @@ const LeagueProfile = () => {
 	useEffect(() => {
 		let selectedSeason = season.split('/')[0];
 		dispatch(fetchCompetition(id, selectedSeason))
-	}, [season]);
+	}, [id]);
 
 	useEffect(() => {
 window.scrollTo(0, 0)
@@ -92,5 +91,5 @@ window.scrollTo(0, 0)
 	)
 }
 
-export default LeagueProfile;
+export default LeagueShowPage;
 

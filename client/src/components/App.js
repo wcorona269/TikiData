@@ -13,7 +13,7 @@ import Explore from './home/explore';
 import axios from 'axios'
 import MatchFeed from './matches/match-feed';
 import ClubProfile from './club/club-profile';
-import LeagueProfile from './league/league-profile';
+import LeagueShowPage from './league/league-show-page';
 import PlayerProfile from './player/player-profile';
 import MatchOverview from './match/match-overview';
 import { createTheme, ThemeProvider, Container, Box } from '@mui/material';
@@ -82,7 +82,7 @@ function App() {
               <Route path='/match/:id' element={<MatchOverview/>} />
               <Route path='/user/:username' element={<UserShowPage/>}/>
               <Route path='/club/:id' element={<ClubProfile/>} />
-              <Route path='/league/:id' element={<LeagueProfile/>} />
+              <Route path='/league/:id' element={<LeagueShowPage/>} />
               <Route path='/player/:id' element={<PlayerProfile/>} />
               <Route path='/post/:id' element={<PostShowPage/>}/>
               <Route path='/edit-profile/:username' element={<UserUpdatePage/>}/>

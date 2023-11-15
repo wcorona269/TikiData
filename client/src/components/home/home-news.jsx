@@ -13,8 +13,8 @@ const HomeNews = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();
 	const news = useSelector(state => state.news?.news || []);
+	const favorites = useSelector(state => state.favorites?.favorites) || [];
 	const isLoading = useSelector(state => state.news?.isLoading);
-	// const isLoading = true
 
 	const [articleCount, setArticleCount] = useState(25)
 	const [showButton, setShowButton] = useState(true);
@@ -28,12 +28,14 @@ const HomeNews = () => {
 
 	// let isLoading = true;
 	useEffect(() => {
+		let favNames = favorites.map(favorite => favorite.name)
+		console.log({favNames})
+
 		if (news.length === 0) {
-			dispatch(fetchNews())
+			dispatch(fetchNews(favNames))
 		}
 	}, [])
 
-	
 	useEffect(() => {}, [news])
 	
 	const handleClick = () => {
@@ -42,8 +44,7 @@ const HomeNews = () => {
 			setIsLoadingMore(false)
 			setArticleCount(articleCount + 25)
 		}, 2000);
-	}
-	
+	}	
 
 	const displayNews = (articles) => {
 		let result = [];

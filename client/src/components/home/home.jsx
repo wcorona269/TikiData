@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import {  Container, Grid, Paper, Stack } from '@mui/material';
+import {  Box, Container, Grid, Paper, Stack } from '@mui/material';
 import HomeMenu from './home-menu';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNotifications } from '../../actions/notification_actions';
@@ -72,15 +72,14 @@ const Home = () => {
 			<Grid container alignItems='flex-start' spacing={2}>
 				<Grid item xs={3} sx={{position: 'sticky', top: '2rem'}}>
 					<Stack spacing={2}>
-						<Paper>
-						<HomeMenu 
-							unreadCount={unreadCount}
-							selectedTab={selectedTab}
-							handleTabSelect={handleTabSelect}
-						/>
-
-						</Paper>
-						<Paper>
+						<Box>
+							<HomeMenu 
+								unreadCount={unreadCount}
+								selectedTab={selectedTab}
+								handleTabSelect={handleTabSelect}
+							/>
+						</Box>
+						<Paper elevation={1}>
 							<UserFavorites/>
 						</Paper>
 					</Stack>

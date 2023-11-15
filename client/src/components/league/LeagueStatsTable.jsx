@@ -48,7 +48,7 @@ const LeagueStatsTable = ({data, category}) => {
 									{idx + 1}
 								</TableCell>
 								<TableCell sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}} ><Avatar sx={{ marginRight: '.25rem', height: '1.5rem', width: '1.5rem' }} src={icon} />
-									<Link underline='hover' onClick={() => navigate(`/player/${id}`)} sx={{color: theme.palette.text.primary }} >
+									<Link underline='hover' onClick={() => navigate(`/player/${id}`)} sx={{color: theme.palette.secondary.main, fontFamily: theme.typography.bold }} >
 										{name}
 									</Link>
 								</TableCell>

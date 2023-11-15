@@ -7,10 +7,10 @@ export const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS';
 export const FETCH_NEWS_FAILURE = 'FETCH_NEWS_FAILURE';
 
 // Action creators
-export const fetchNews = () => {
+export const fetchNews = (favorites) => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_NEWS_REQUEST });
-		return axios.get(`/news/all`)
+		return axios.post (`/news/all`, { favNames: favorites })
 		.then((response) => {
 			dispatch({ type: FETCH_NEWS_SUCCESS, payload: response.data });
 		})
@@ -29,7 +29,7 @@ export const FETCH_TOP_STORIES_FAILURE = 'FETCH_TOP_STORIES_FAILURE';
 export const fetchTopStories = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_TOP_STORIES_REQUEST });
-		return axios.get(`/news/top`)
+		return axios.post(`/news/top`)
 		.then((response) => {
 			dispatch({ type: FETCH_TOP_STORIES_SUCCESS, payload: response.data });
 		})

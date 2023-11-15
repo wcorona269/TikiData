@@ -53,10 +53,7 @@ def protected_route():
 
             # Authentication successful, respond with data from the protected endpoint
             return jsonify({
-                'message': 'Welcome! This is a protected route.',
-                'username': username,
-                'id': id,
-                'avatar_url': user_info['avatar_url']
+                'user': user_info
             }), 200
         except jwt.ExpiredSignatureError:
             # Token has expired, respond with unauthorized status code

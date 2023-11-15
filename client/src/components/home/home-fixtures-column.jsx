@@ -16,7 +16,7 @@ const HomeFixturesColumn = () => {
 	}, [matches, isLoading])
 
 	return (
-		<Paper elevation={1} id='home-fixtures-paper' sx={{position: 'sticky', top: '2rem'}}>
+		<Paper elevation={1} id='home-fixtures-paper' sx={{position: 'sticky !important', top: '2rem !important'}}>
 			<Title variant='h5' content='Live Fixtures' />
 			{ isLoading ?
 				<Box sx={{height: '20rem', width: '100%', display: 'flex', alignItems: 'center' }}>

@@ -31,7 +31,7 @@ const TopStories = () => {
 				<>
 					<ListItem disablePadding>
 						<ListItemButton
-							sx={{ m: 0 }}
+							sx={{ m: 0, maxHeight: 75 }}
 							component='a'
 							href={`https://${story.link}`} 
 							target="_blank" 

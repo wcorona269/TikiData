@@ -27,7 +27,7 @@ const sessionReducer = (state = initialState, action) => {
 		case LOGOUT_USER_REQUEST:
 			return { ...nextState, isLoading: true, error: null };
 		case FETCH_USER_SUCCESS:
-			return { ...nextState, user: action.payload, isLoading: false, error: null };
+			return { ...nextState, user: action.payload['user'], isLoading: false, error: null };
 		case LOGIN_USER_SUCCESS:
 			return { ...nextState, user: action.payload, isLoading: false, error: null };
 		case LOGOUT_USER_SUCCESS:

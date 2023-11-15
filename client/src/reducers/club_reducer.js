@@ -23,7 +23,7 @@ const clubReducer = (state = initialState, action) => {
 				...nextState,
 				club: action.payload['club'],
 				squad: action.payload['squad'],
-				fixtures: [...action.payload['fixtures']], // Create a new array
+				fixtures: action.payload['fixtures'],
 				seasons: action.payload['seasons'],
 				stats: action.payload['stats'],
 				news: action.payload['news'],

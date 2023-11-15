@@ -77,10 +77,10 @@ const PostsTimeline = () => {
 					}
 				</Stack>
 			</Grid>
-			<Grid item xs={3} sx={{ position: 'sticky', top: '3rem' }}>
+			<Grid item xs={3} sx={{ position: 'sticky', top: -450 }}  >
 				<Stack spacing={2}>
 					<TopStories/>
-					<HomeFixturesColumn/>
+					<HomeFixturesColumn />
 				</Stack>
 			</Grid>
 			<ScrollToTopOnLoad/>

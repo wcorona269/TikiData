@@ -44,7 +44,7 @@ const UserFavorites = () => {
 	return (
 		<Box>
 			<Title variant='h5' content='My Favorites'/>
-			<Box sx={{paddingTop: 1}}>
+			<Box sx={{p: 1}}>
 				{displayFavorites()}
 			</Box>
 		</Box>
