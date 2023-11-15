@@ -102,7 +102,7 @@ const AccountMenu = ({ lightMode, setLightMode }) => {
 					</Box>
 				</MenuItem>
 				<MenuItem onClick={handleClose} name='profile' >
-					<Avatar /> My Profile
+					<Avatar src={avatar_url} /> My Profile
 				</MenuItem>
 				<MenuItem onClick={handleClose} name='logout' >
 					<ListItemIcon>

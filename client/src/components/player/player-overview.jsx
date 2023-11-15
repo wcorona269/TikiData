@@ -11,7 +11,6 @@ const PlayerOverview = ({player}) => {
 	
 	const displayBirthDate = (birthInfo) => {
 		if (birthInfo === 'N/A') return 'N/A'
-		// debugger;
 
 		let date = birthInfo?.date;
 		if (!date) return 'N/A';

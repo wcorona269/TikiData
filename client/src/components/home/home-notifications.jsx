@@ -14,7 +14,6 @@ const Notifications = () => {
 
 	const displayNotifications = () => {
 		let result = [];
-		debugger;
 		if (!notifications || typeof notifications !== 'object') {
 			return (
 				<Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>

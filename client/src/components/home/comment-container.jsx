@@ -20,8 +20,6 @@ const CommentContainer = ({ comment, idx }) => {
 	const user_id = useSelector(state => state.session?.user?.id);
 	const username = useSelector(state => state.session?.user?.username);
 	const theme = useTheme();
-	debugger;
-
 
 	useEffect(() => {
 		for (let like of comment.likes) {

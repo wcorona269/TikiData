@@ -25,7 +25,6 @@ const PostContainer = ({ post, repost }) => {
 	const [isLiked, setIsLiked] = useState(false);
 	const [isReposted, setIsReposted] = useState(false);
 	const avatar = post?.avatar_url
-	debugger;
 
 	useEffect(() => {
 		for (let like of post.likes) {
