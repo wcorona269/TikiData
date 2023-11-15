@@ -6,6 +6,7 @@ import { showModal, closeModal } from '../../actions/modal_actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Box, Button, Modal, Typography, useTheme } from '@mui/material';
+import UploadPhoto from './upload-photo';
 
 const ModalContainer = () => {
 	const dispatch = useDispatch();
@@ -24,6 +25,10 @@ const ModalContainer = () => {
 				setComponent(<SignupForm/>)
 				setOpen(true)
 				break;
+			case 'photo':
+				setComponent(<UploadPhoto/>)
+				setOpen(true);
+				break;
 			default:
 				setComponent(<></>)
 				setOpen(false);
@@ -35,9 +40,6 @@ const ModalContainer = () => {
 		e.preventDefault();
 		dispatch(closeModal())
 	}
-
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
 	
 	return (
 		<div>

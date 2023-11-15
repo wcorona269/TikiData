@@ -43,7 +43,8 @@ const RepostButton = ({ handleRepost, reposts, isReposted, setIsReposted, user_i
 	const [anchorEl, setAnchorEl] = useState(null);
 
 	useEffect(() => {
-		for (let repost of post.reposts) {
+		if (!post?.reposts) return;
+		for (let repost of post?.reposts) {
 			if (repost.id === user_id) {
 				setIsReposted(true)
 			}

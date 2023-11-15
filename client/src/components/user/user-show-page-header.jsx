@@ -1,14 +1,17 @@
-import { useTheme, Avatar, IconButton, Divider, Typography, Box, Button, Paper } from '@mui/material';
+import { useTheme, Avatar, IconButton, Divider, Typography, Box, Button, Paper, Badge, Tooltip } from '@mui/material';
 import React from 'react' 
 import { useNavigate, useParams } from 'react-router-dom';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Title from '../util/section-heading';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import { showModal } from '../../actions/modal_actions';
 
 const UserShowPageHeader = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch(); 
 	const theme = useTheme();
 	const { username } = useParams();
 	const currentUser = useSelector(state => state.session.user?.username);
@@ -21,11 +24,36 @@ const UserShowPageHeader = () => {
 		navigate(`/edit-profile/${currentUser}`)
 	}
 
+	const handleModal = () => {
+		dispatch(showModal('photo'))
+	}
+
+	const displayAvatar = () => {
+		if (!isCurrentUser) return (
+			<Avatar sx={{ height: 100, width: 100, marginRight: 1 }} alt={username} src={avatar_url} />
+			)
+		return (
+			<Badge
+				overlap="circular"
+				anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+				badgeContent={
+					<Tooltip title='Update Avatar'>
+						<IconButton onClick={handleModal}>
+							<AddAPhotoIcon size='small' sx={{color: theme.palette.text.secondary}}/>
+						</IconButton>
+					</Tooltip>
+				}
+			>
+				<Avatar sx={{ height: 100, width: 100, marginRight: 1 }} alt={username} src={avatar_url} />
+			</Badge>
+		)
+	}
+
 	return (
 		<Paper elevation={1}>
 			<Title variant='h6' content={username} back={true} />
 			<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'flex-end', padding: 2, gap: 1 }} >
-				<Avatar sx={{ height: 100, width: 100, marginRight: 1 }} src={avatar_url} />
+				{displayAvatar()}
 				<Box display='flex' flexDirection='column'>
 					<Typography variant='h6'>
 						{username}

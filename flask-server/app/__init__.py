@@ -22,9 +22,12 @@ app.config.from_object(Config)
 # Access Azure Storage configuration
 storage_account_name = app.config["AZURE_STORAGE_ACCOUNT_NAME"]
 storage_account_key = app.config["AZURE_STORAGE_ACCOUNT_KEY"]
+container_name = app.config["AZURE_CONTAINER_NAME"]
 
 # Use these values when establishing a connection to Azure Storage
 blob_service_client = BlobServiceClient(account_url=f"https://{storage_account_name}.blob.core.windows.net", credential=storage_account_key)
+container_client = blob_service_client.get_container_client(container_name)
+
 
 app.config['CACHE_TYPE'] = 'simple'  # Use a simple in-memory cache
 cache = Cache(app)

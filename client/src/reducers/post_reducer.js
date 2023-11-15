@@ -13,11 +13,15 @@ import {
 	CREATE_POST_FAILURE
 } from '../actions/post_actions'
 
+import {
+	CREATE_COMMENT_SUCCESS
+} from '../actions/comment_actions'
 
 const initialState = {
 	isLoading: false,
 	error: null,
-	posts: {}, 
+	posts: {},
+	post: {},
 	total_pages: 1,
 	current_page: 1, 
 	total_posts: 0
@@ -55,6 +59,19 @@ const postsReducer = (state = initialState, action) => {
 					[createdPost.id]: createdPost
 				}
 			}
+		// case CREATE_COMMENT_SUCCESS:
+		// 	const createdComment = action.payload['comment']
+		// 	const postComments = nextState.comments
+		// 	return {
+		// 		...nextState,
+		// 		post: {
+		// 			...nextState.post,
+		// 			comments: [
+		// 				createdComment,
+		// 				...postComments,
+		// 			]
+		// 		}
+		// 	}
 		case FETCH_ALL_POSTS_FAILURE:
 			return { ...nextState, isLoading: false, error: action.payload, posts: null };
 		case FETCH_USER_POSTS_REQUEST:

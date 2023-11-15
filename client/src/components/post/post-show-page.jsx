@@ -33,7 +33,7 @@ const PostShowPage = () => {
 	const [isReposted, setIsReposted] = useState(false);
 
 	useEffect(() => {
-		if (!post) return;
+		if (post.likes || !post.reposts) return;
 		for (let i = 0; i < post.likes.length; i++) {
 			const like = post.likes[i]
 			if (like.user_id === user_id) {
@@ -46,7 +46,7 @@ const PostShowPage = () => {
 				setIsReposted(true)
 			}
 		}
-	}, [post, reposts, postLikes, user_id]);
+	}, [post, reposts, post.likes, post.reposts, user_id]);
 
 	const fetchPostCallback = useCallback(() => {
 		if (!isLoading) {

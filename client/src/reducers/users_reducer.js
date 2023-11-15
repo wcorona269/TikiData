@@ -5,7 +5,10 @@ import {
 	REMOVE_USER_ERRORS,
 	FETCH_USER_INFO_FAILURE,
 	FETCH_USER_INFO_REQUEST,
-	FETCH_USER_INFO_SUCCESS
+	FETCH_USER_INFO_SUCCESS,
+	UPDATE_AVATAR_FAILURE,
+	UPDATE_AVATAR_REQUEST,
+	UPDATE_AVATAR_SUCCESS
 } from '../actions/user_actions';
 
 
@@ -21,6 +24,7 @@ const usersReducer = (state = initialState, action) => {
 	let nextState = Object.assign({}, state);
 	switch (action.type) {
 		case REGISTER_USER_REQUEST:
+		case UPDATE_AVATAR_REQUEST:
 			return { ...nextState, isLoading: true, error: null };
 		case REGISTER_USER_SUCCESS:
 			return { ...nextState, isLoading: false, error: null };
@@ -32,6 +36,7 @@ const usersReducer = (state = initialState, action) => {
 		case FETCH_USER_INFO_REQUEST:
 			return { ...nextState, isLoading: true, error: null };
 		case FETCH_USER_INFO_SUCCESS:
+		case UPDATE_AVATAR_SUCCESS:
 			return { ...nextState, isLoading: false, users: action.payload }; 
 		default:
 			return nextState;

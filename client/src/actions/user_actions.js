@@ -46,3 +46,24 @@ export const fetchUserInfo = (username) => {
 			});
 	};
 };
+
+export const UPDATE_AVATAR_REQUEST = 'UPDATE_AVATAR_REQUEST'
+export const UPDATE_AVATAR_SUCCESS = 'UPDATE_AVATAR_SUCCESS'
+export const UPDATE_AVATAR_FAILURE = 'UPDATE_AVATAR_FAILURE'
+
+export const updateAvatar = (username, formData) => {
+  return (dispatch) => {
+    dispatch({ type: UPDATE_AVATAR_REQUEST });
+    axios.post(`/users/update-avatar/${username}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+      .then((response) => {
+        dispatch({ type: UPDATE_AVATAR_SUCCESS, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: UPDATE_AVATAR_FAILURE, payload: error.message });
+      });
+  };
+};
