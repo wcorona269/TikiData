@@ -120,7 +120,7 @@ const PostContainer = ({ post, repost }) => {
 				</Link>
 			}
 			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-				<Avatar sx={{ marginRight: '.5rem' }} src={avatar} />
+				<Avatar sx={{ marginRight: '.5rem' }} src={avatar} onClick={() => navigate(`/user/${post.username}`)} />
 				<Box sx={{ display: 'flex', flexDirection: 'column'}}>
 					<Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '.5rem'}}>
 						<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>

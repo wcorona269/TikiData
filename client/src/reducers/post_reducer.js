@@ -59,19 +59,19 @@ const postsReducer = (state = initialState, action) => {
 					[createdPost.id]: createdPost
 				}
 			}
-		// case CREATE_COMMENT_SUCCESS:
-		// 	const createdComment = action.payload['comment']
-		// 	const postComments = nextState.comments
-		// 	return {
-		// 		...nextState,
-		// 		post: {
-		// 			...nextState.post,
-		// 			comments: [
-		// 				createdComment,
-		// 				...postComments,
-		// 			]
-		// 		}
-		// 	}
+		case CREATE_COMMENT_SUCCESS:
+			const createdComment = action.payload['comment']
+			const postComments = nextState.post.comments
+			return {
+				...nextState,
+				post: {
+					...nextState.post,
+					comments: [
+						createdComment,
+						...postComments,
+					]
+				}
+			}
 		case FETCH_ALL_POSTS_FAILURE:
 			return { ...nextState, isLoading: false, error: action.payload, posts: null };
 		case FETCH_USER_POSTS_REQUEST:
