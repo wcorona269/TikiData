@@ -51,15 +51,15 @@ const Home = () => {
 	}, [location])
 
 	useEffect(() => {
-		// let count = 0;
-		// if (!notifications || typeof notifications !== 'object') return; 
-		// let notifs = Object.values(notifications)
-		// if (notifications) {
-		// 	for (let notif of notifs) {
-		// 		if (notif.read === false) count += 1;
-		// 	}
-		// }
-		// setUnreadCount(count)
+		let count = 0;
+		if (!notifications || typeof notifications !== 'object') return; 
+		let notifs = Object.values(notifications)
+		if (notifications) {
+			for (let notif of notifs) {
+				if (notif.read === false) count += 1;
+			}
+		}
+		setUnreadCount(count)
 	}, [notifications])
 
 	const handleTabSelect = (value, location) => {
