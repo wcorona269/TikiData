@@ -27,4 +27,3 @@ def MatchShowPage(matchId):
   json_data = json.loads(result)
   match = json_data["response"]
   return match
-
