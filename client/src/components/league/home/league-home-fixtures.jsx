@@ -3,7 +3,7 @@ import DisplayTime from '../../util/display-time';
 import { formatDate } from '../../club/club-fixtures-table';
 import { Box, Link, Paper, Grid, Typography, List, ListItem, ListItemButton, Divider, useTheme } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
-import Title from '../../util/section-heading';
+import Title from '../../util/title-util';
 import { match_not_played } from '../match-card';
 
 const HomeFixturesComponent = ({fixtures}) => {

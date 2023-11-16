@@ -1,0 +1,10 @@
+.match-overview-component {
+  border-radius: 0.5rem;
+  border: 1px solid var(--gray);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+}
+
+.match-nav-bar {
+  margin-bottom: 0.5rem;
+}/*# sourceMappingURL=match-info.css.map */

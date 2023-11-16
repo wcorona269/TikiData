@@ -4,7 +4,7 @@ import FixturesDisplay from './fixtures-display';
 import NoDataMessage from '../util/no-data/no-data-message';
 import Typography from '@mui/material/Typography';
 import { Box, Container, Paper } from '@mui/material';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 
 const LeagueFixturesDashboard = ({fixtures, uniqueDates}) => {
 	
@@ -18,8 +18,8 @@ const LeagueFixturesDashboard = ({fixtures, uniqueDates}) => {
 		return <NoDataMessage/>
 	}
 
-	const leagueName = fixtures[0].league.name
-	const leagueLogo = fixtures[0].league.logo
+	const leagueName = fixtures[0]?.league?.name
+	const leagueLogo = fixtures[0]?.league?.logo
 
 	return (
 		<Paper elevation={1} sx={{ marginTop: '1rem', mx: 'auto' }}>

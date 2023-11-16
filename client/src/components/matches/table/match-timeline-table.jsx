@@ -2,7 +2,7 @@ import React from 'react';
 import DisplayTime from '../../util/display-time';
 import { styled, Box, Container, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Typography, Link, useTheme, Paper, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import Title from '../../util/section-heading';
+import Title from '../../util/title-util';
 import MatchCard from '../../league/match-card';
 
 

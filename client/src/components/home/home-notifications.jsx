@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import HomeFixturesColumn from './home-fixtures-column';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import NotificationContainer from './home-notification-container';
 
 const Notifications = () => {

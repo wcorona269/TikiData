@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Paper, Box, Table, TableRow, TableCell, TableHead, TableContainer, TableBody, useTheme } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material';
-import Title from '../../util/section-heading';
+import Title from '../../util/title-util';
 
 const ClubHomeInfo = ({ club }) => {
 	const clubInfo = club[0];

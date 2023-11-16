@@ -1,6 +1,6 @@
 import { Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material'
 import React from 'react'
-import Title from '../../util/section-heading'
+import Title from '../../util/title-util'
 import DisplayTime from '../../util/display-time';
 
 const MatchInfoTable = ({ match }) => {

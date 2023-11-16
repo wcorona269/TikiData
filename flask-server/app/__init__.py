@@ -70,7 +70,7 @@ routes_list = [
     routes.match.bp,
     routes.news.bp,
     routes.auth.bp,
-    routes.competition.bp,
+    routes.league.bp,
     routes.club.bp,
     routes.player.bp,
     routes.post.bp,

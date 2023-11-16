@@ -1,6 +1,6 @@
 import { Paper, Table, Link, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme, Box } from '@mui/material';
 import React from 'react'
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import { useNavigate } from 'react-router-dom';
 
 const MultiTableDashboard = ({ standings, name, logo }) => {

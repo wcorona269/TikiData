@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Grid, List, ListItem, ListItemButton, Pagination, Paper, Stack, Link, Typography } from '@mui/material';
 import { splitArticleIntoPages } from '../../news/sub-articles-timeline';
 import Article from '../../news/article';
-import Title from '../../util/section-heading';
+import Title from '../../util/title-util';
 import NoDataMessage from '../../util/no-data/no-data-message';
 
 const LeagueHomeNews = ({ name, logo, news }) => {

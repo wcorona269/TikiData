@@ -5,7 +5,7 @@ import MultiTableDashboard from './multi-table-dashboard';
 import Typography from '@mui/material/Typography';
 import { TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Link, Avatar, useTheme, Paper, Box } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 
 const LeagueTableDashboard = ({table, name, logo }) => {
 	const theme = useTheme();

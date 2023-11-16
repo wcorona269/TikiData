@@ -11,7 +11,7 @@ api_key = os.getenv("API_KEY")
 bp = Blueprint('match', __name__, url_prefix='/match')
 
 @bp.route('/<matchId>', methods=['GET'])
-def matchOverview(matchId):
+def MatchShowPage(matchId):
   conn = http.client.HTTPSConnection("v3.football.api-sports.io")
   headers = {
       'x-rapidapi-host': "v3.football.api-sports.io",

@@ -10,7 +10,7 @@ import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
-import Title from '../../util/section-heading';
+import Title from '../../util/title-util';
 
 const EventsTimeline = ({match, header }) => {
 	const theme = useTheme();

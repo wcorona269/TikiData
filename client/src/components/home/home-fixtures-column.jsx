@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLiveMatches } from '../../actions/api_actions';
 import LiveFixturesDisplay from './live-fixtures-display';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 
 const HomeFixturesColumn = () => {
 	const dispatch = useDispatch();

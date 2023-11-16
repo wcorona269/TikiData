@@ -1,0 +1,22 @@
+.timeline-nav-bar {
+  position: sticky;
+  top: 0;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.timeline-nav-bar > div {
+  display: flex;
+  flex-direction: column;
+}
+.timeline-nav-bar > div:last-child {
+  width: 80%;
+}
+
+.reset-filters {
+  color: var(--darkgray) !important;
+  width: 100%;
+}/*# sourceMappingURL=timeline-nav-bar.css.map */

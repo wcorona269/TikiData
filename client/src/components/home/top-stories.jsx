@@ -1,6 +1,6 @@
 import { Box, Divider, Link, List, ListItem, ListItemButton, Paper, Typography, useTheme } from '@mui/material';
 import React, { useEffect } from 'react'
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTopStories } from '../../actions/news_actions';
 
@@ -25,7 +25,11 @@ const TopStories = () => {
 
 		if (!top_stories.length) return result;
 		for (let story of top_stories) {
-			let title = story.title.split(' ').slice(0, 10).join(' ')
+			let title = story.title;
+			let title_words = title.split(' ')
+			if (title_words.length > 10) {
+				title = title_words.slice(0, 10).join(' ') + ' ...'
+			}
 			if (result.length > 5) break;
 			result.push(
 				<>
@@ -37,13 +41,13 @@ const TopStories = () => {
 							target="_blank" 
 							rel="noopener noreferrer"
 						>
-							<Box sx={{display: 'flex', flexDirection: 'column', gap: 1, justifyContent: 'space-around'}}>
+							<Box sx={{display: 'flex', flexDirection: 'column', gap: 1, justifyContent: 'center'}}>
 								<Link>
-									<Typography underline='hover' sx={{fontSize: 14 }}>
-										{title} ...
+									<Typography underline='hover' sx={{fontSize: 14, lineHeight: '1.2' }}>
+										{title}
 									</Typography>
 								</Link>
-								<Typography sx={{color: theme.palette.text.secondary, fontSize: 10}}>
+								<Typography sx={{color: theme.palette.text.secondary, fontSize: 10}} variant='caption'>
 									{story.media}
 								</Typography>
 							</Box>

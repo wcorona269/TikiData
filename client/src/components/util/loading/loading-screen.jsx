@@ -2,7 +2,7 @@ import './loading-screen.scss';
 import React from 'react'
 import loadingGif from '../../../images/loading_gif.gif';
 import { Box, Grid, Typography, useTheme } from '@mui/material';
-import Title from '../section-heading';
+import Title from '../title-util';
 
 const LoadingMessage = () => {
 	const theme = useTheme();

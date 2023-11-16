@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchStandings } from '../../../actions/standings_actions';
 import { useNavigate } from 'react-router-dom';
 import LoadingMessage from '../../util/loading/loading-screen';
-import Title from '../../util/section-heading';
+import Title from '../../util/title-util';
 import NoDataMessage from '../../util/no-data/no-data-message';
 
 const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {

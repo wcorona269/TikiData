@@ -6,7 +6,7 @@ import { fetchClubStats } from '../../actions/api_actions';
 import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, useTheme, Paper, Typography } from '@mui/material';
 import YellowCard from '../../images/yellow.png';
 import RedCard from '../../images/red.png';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 
 const ClubStatsDashboard = ({ name, logo, stats }) => {
 	const theme = useTheme(); 

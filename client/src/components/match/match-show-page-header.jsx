@@ -5,7 +5,7 @@ import DisplayTime from '../util/display-time';
 import { Box, Divider, Grid, Link, Paper, Stack, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const MatchOverviewHeader = ({match}) => {
+const MatchShowPageHeader = ({match}) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
 	const leagueName = match?.league?.name;
@@ -54,4 +54,4 @@ const MatchOverviewHeader = ({match}) => {
 	)
 }
 
-export default MatchOverviewHeader;
+export default MatchShowPageHeader;

@@ -12,24 +12,24 @@ import LoadingMessage from '../util/loading/loading-screen';
 import NoDataMessage from '../util/no-data/no-data-message';
 import LeagueShowPageHeader from './league-show-page-header'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 
 const LeagueShowPage = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
-	const competition = useSelector(state => state.competition);
-	const isLoading = useSelector(state => state.competition.isLoading);
+	const leagues = useSelector(state => state.leagues);
+	const isLoading = useSelector(state => state.leagues.isLoading);
 
 	const [season, setSeason] = useState('2023/24');
 	const [selectedTab, setSelectedTab] = useState(0);
 
-	const table = competition['standings'];
-	const top_scorers = competition['top_scorers'];
-	const top_assists = competition['top_assists']; 
-	const fixtures = competition['fixtures'];
-	const news = competition['news'];
+	const table = leagues['standings'];
+	const top_scorers = leagues['top_scorers'];
+	const top_assists = leagues['top_assists']; 
+	const fixtures = leagues['fixtures'];
+	const news = leagues['news'];
 
 	fixtures?.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date))
 	const uniqueDates = [...new Set(fixtures?.map(fixture => fixture.fixture.date.split('T')[0]))];
@@ -49,7 +49,7 @@ window.scrollTo(0, 0)
 	if (isLoading) {
 		return <LoadingMessage/>
 	}
-	if (!competition || !table || !top_scorers || !top_assists) {
+	if (!leagues || !table || !top_scorers || !top_assists) {
 		return <NoDataMessage/>
 	}
 

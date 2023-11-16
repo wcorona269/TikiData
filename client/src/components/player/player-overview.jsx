@@ -1,7 +1,7 @@
 import React from 'react'
 import shorthandMonthsOfYear from '../league/shorthandMonths';
 import { Box, Grid, IconButton, Paper, Table, TableBody, TableCell, Card, CardMedia, CardContent, TableContainer, TableRow, Typography, useTheme } from '@mui/material';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 

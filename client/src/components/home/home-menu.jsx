@@ -10,7 +10,7 @@ import ListItemContent from '@mui/joy/ListItemContent';
 import PublicIcon from '@mui/icons-material/Public';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import React from 'react';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import PersonIcon from '@mui/icons-material/Person';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { useSelector } from 'react-redux';

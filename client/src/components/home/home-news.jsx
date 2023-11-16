@@ -7,7 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
 import HomeFixturesColumn from './home-fixtures-column';
 import Article from '../news/article';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 
 const HomeNews = () => {
 	const theme = useTheme();

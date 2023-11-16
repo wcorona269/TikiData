@@ -3,7 +3,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';

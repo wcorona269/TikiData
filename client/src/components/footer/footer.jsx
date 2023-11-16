@@ -5,17 +5,10 @@ import { withRouter } from 'react-router-dom';
 
 const Footer = ({ lightMode }) => {
 	const theme = useTheme();
-	const StyledTypography = (content, variant) => {
-		return (
-			<Typography variant={variant} sx={{ color: theme.palette.text.primary }}>
-				{content}
-			</Typography>
-		)
-	}
 	
 	return (
 		<Box elevation={1} sx={{
-			background: theme.palette.background.paper,
+			background: lightMode ? theme.palette.primary.main : theme.palette.background.paper,
 			borderRadius: '0px',
 			width: "100%",
 			height: "auto",
@@ -26,21 +19,23 @@ const Footer = ({ lightMode }) => {
 			<Container sx={{width: '100%'}}  >
 				<Grid container direction='row' sx={{width: '50%', margin: 'auto'}} >
 					<Grid item xs={6}>
-						{StyledTypography('Will Corona', 'h6')}
+						<Typography variant='h6' sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary }} >
+							Will Corona
+						</Typography>
 						<Typography variant='body1' >
-							<Link target="_blank" href="https://www.linkedin.com/in/william-corona/" sx={{ color: theme.palette.text.primary }} >
+							<Link target="_blank" href="https://www.linkedin.com/in/william-corona/" sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary }} >
 								<i style={{marginRight: '.5rem'}} className="fa-brands fa-linkedin"></i>
 								LinkedIn
 							</Link>
 						</Typography>
 						<Typography variant='body1' >
-							<Link target="_blank" href="https://github.com/wcorona269" sx={{ color: theme.palette.text.primary }} >
+							<Link target="_blank" href="https://github.com/wcorona269" sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary }} >
 								<i style={{marginRight: '.5rem'}} className="fa-brands fa-square-github"></i>
 								GitHub
 							</Link>
 						</Typography>
 						<Typography variant='body1' >
-							<Link target="_blank" href="https://will-corona.info/" sx={{ color: theme.palette.text.primary }} >
+							<Link target="_blank" href="https://will-corona.info/" sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary }} >
 								<i style={{marginRight: '.5rem'}} className="fa-solid fa-user"></i>
 								Website
 							</Link>
@@ -48,16 +43,16 @@ const Footer = ({ lightMode }) => {
 					</Grid>
 					<Grid item xs={6}>
 						<Container>
-							<Typography sx={{ color: theme.palette.text.primary }} variant='h6'>
+							<Typography sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary }} variant='h6'>
 								About Me
 							</Typography>
-							<Typography sx={{ color: theme.palette.text.primary }} variant='body1'>
+							<Typography sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary }} variant='body1'>
 								App Academy
 							</Typography>
-							<Typography sx={{ color: theme.palette.text.primary }} variant='body1'>
+							<Typography sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary }} variant='body1'>
 								Soccer enjoyer
 							</Typography>
-							<Typography sx={{ color: theme.palette.text.primary }} variant='body1'>
+							<Typography sx={{ fontFamily: theme.typography.light, color: theme.palette.text.secondary }} variant='body1'>
 								Music enjoyer
 							</Typography>
 						</Container>

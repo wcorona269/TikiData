@@ -10,7 +10,7 @@ import ClubSquadDashboard from './club-squad-dashboard';
 import ClubStatsDashboard from './club-stats-dashboard';
 import ClubHomeDashboard from './home/club-home-dashboard';
 import { Box, Grid, Paper, Typography, useTheme } from '@mui/material';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 
 const ClubProfile = () => {
 	const { id } = useParams();

@@ -2,7 +2,7 @@ import './lineups.scss';
 import React from 'react'
 import NoDataMessage from '../../util/no-data/no-data-message';
 import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableRow, useTheme } from '@mui/material';
-import Title from '../../util/section-heading';
+import Title from '../../util/title-util';
 
 const Lineups = ({ lineups, header }) => {
 	const theme = useTheme();

@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import Title from '../../util/section-heading';
+import Title from '../../util/title-util';
 
 const LeagueHomeTable = ({table}) => {
 	const [showMore, setShowMore] = useState(false);

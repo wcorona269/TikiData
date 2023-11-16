@@ -12,7 +12,7 @@ import { createNotification } from '../../actions/notification_actions';
 import CreateComment from '../home/create-comment';
 import CommentContainer from '../home/comment-container';
 import HomeFixturesColumn from '../home/home-fixtures-column';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import moment from 'moment';
 
 const PostShowPage = () => {

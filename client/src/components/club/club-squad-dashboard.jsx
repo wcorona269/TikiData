@@ -3,7 +3,7 @@ import React from 'react';
 import ClubSquadListItem from './club-squad-list-item';
 import { Avatar, Box, Grid, Paper, Typography, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 
 const ClubSquadDashboard = ({name, logo, squad}) => {
 	const theme = useTheme();

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import UserShowPageHeader from './user-show-page-header';
 import HomeFixturesColumn from '../home/home-fixtures-column';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { updateUser } from '../../actions/session_actions';

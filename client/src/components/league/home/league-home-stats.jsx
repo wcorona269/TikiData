@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { useNavigate } from 'react-router-dom';
-import Title from '../../util/section-heading';
+import Title from '../../util/title-util';
 
 const LeagueHomeStats = ({top_scorers}) => {
 	const theme = useTheme()
@@ -34,7 +34,7 @@ const LeagueHomeStats = ({top_scorers}) => {
 					<TableCell component="th" scope="row">
 						<Typography variant='body2' id='team-name'>
 							<Link underline='hover' onClick={() => navigate(`/player/${id}`)} 
-								sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'left', color: theme.palette.text.primary }}
+								sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'left', color: theme.palette.secondary.main, fontFamily: theme.typography.bold }}
 							>
 								<Avatar src={photo} sx={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
 								{name}
@@ -64,10 +64,12 @@ const LeagueHomeStats = ({top_scorers}) => {
 			>
 				<TableContainer>
 					<Table size='small' aria-label='a dense table'>
-						<TableHead sx={{backgroundColor: theme.palette.action.hover}} >
+						<TableHead 
+							// sx={{backgroundColor: theme.palette.action.hover}} 
+						>
 							<TableRow>
-								<TableCell align='left'>Player</TableCell>
-								<TableCell align='center'>Goals</TableCell>
+								<TableCell sx={{color: theme.palette.text.secondary, fontFamily: theme.typography.bold}} align='left'>Name</TableCell>
+								<TableCell sx={{color: theme.palette.text.secondary, fontFamily: theme.typography.bold}} align='center'>Goals</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>

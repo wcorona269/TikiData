@@ -1,4 +1,4 @@
-import { Typography, useTheme, IconButton, Box } from '@mui/material';
+import { Typography, useTheme, IconButton, Box, Card } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ const Title = ({ variant, content, img, back, button=false, notifs=false }) => {
 				display: 'flex',
 				flexDirection: 'row',
 				justifyContent: 'space-between',
-				alignItems: 'center'
+				alignItems: 'center',
 			}}
 		>
 			<Box display='flex' alignItems='center'>
@@ -32,7 +32,9 @@ const Title = ({ variant, content, img, back, button=false, notifs=false }) => {
 					</IconButton>
 				}
 				{img && 
-					<img alt='' src={img} style={{ height: size, width: size, marginRight: mr }} />
+					<Card sx={{height: size, width: size, m: 0, marginRight: mr, backgroundColor: theme.palette.grey['100'] }}>
+						<img alt='' src={img} style={{ height: size, width: size }} />
+					</Card>
 				}
 				{content}
 			</Box>

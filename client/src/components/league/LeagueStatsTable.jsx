@@ -23,7 +23,10 @@ const LeagueStatsTable = ({data, category}) => {
 
 							return (
 								<TableCell sx={{ width: width }} align={idx === 1 || idx === 3 ? 'left' : 'center'  } key={idx} >
-									<Typography variant='body1' sx={{ fontFamily: theme.typography.bold }}>
+									<Typography variant='body1' sx={{ 
+										fontFamily: theme.typography.bold,
+										color: theme.palette.text.secondary
+										}}>
 										{column}
 									</Typography>
 								</TableCell>
@@ -58,7 +61,7 @@ const LeagueStatsTable = ({data, category}) => {
 								<TableCell>
 									{nation}
 								</TableCell>
-								<TableCell align='center'>
+								<TableCell align='center' sx={{fontFamily: theme.typography.bold}}>
 									{category === 'Goals' ? goals : assists}
 								</TableCell>
 							</TableRow>

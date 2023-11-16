@@ -2,22 +2,21 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import React, { useEffect, useState } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './util/route_util';
 import NavBar from './nav_bar/nav-bar';
 import Footer from './footer/footer'
 import ModalContainer from './modal/modal';
 import Welcome from './home/welcome'
-import Explore from './home/explore';
+import LeagueIndex from './home/league-index';
 import axios from 'axios'
 import MatchFeed from './matches/match-feed';
 import ClubProfile from './club/club-profile';
 import LeagueShowPage from './league/league-show-page';
 import PlayerProfile from './player/player-profile';
-import MatchOverview from './match/match-overview';
+import MatchShowPage from './match/match-show-page';
 import { createTheme, ThemeProvider, Container, Box } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import Notifications from './home/home-notifications';
 import PostsTimeline from './home/posts-column';
 import HomeNews from './home/home-news';
@@ -47,7 +46,8 @@ function App() {
       primary: {
         main: '#00a672',
         light: '#00c49a',
-        dark: '#005a2c'
+        dark: '#005a2c',
+        darker: '#182C25',
       },
       secondary: {
         main: '#18ade5',
@@ -77,9 +77,9 @@ function App() {
               <Route path='/home' element={<PostsTimeline/>} />
               <Route path='/notifications' element={<Notifications/>} />
               <Route path='/matches' element={<MatchFeed/>} />
-              <Route path='/explore' element={<Explore/>} />
+              <Route path='/explore' element={<LeagueIndex/>} />
               <Route path='/news' element={<HomeNews/>} />
-              <Route path='/match/:id' element={<MatchOverview/>} />
+              <Route path='/match/:id' element={<MatchShowPage/>} />
               <Route path='/user/:username' element={<UserShowPage/>}/>
               <Route path='/club/:id' element={<ClubProfile/>} />
               <Route path='/league/:id' element={<LeagueShowPage/>} />

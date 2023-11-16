@@ -1,7 +1,7 @@
 import React from 'react'
 import NoDataMessage from '../util/no-data/no-data-message';
 import { Box, Paper, Table, TableBody, TableCell, TableHead, TableRow, useTheme } from '@mui/material';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import YellowCard from '../../images/yellow.png'
 import RedCard from '../../images/red.png'
 

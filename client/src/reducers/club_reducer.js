@@ -6,8 +6,6 @@ import {
 } from '../actions/api_actions';
 
 const initialState = {
-	users: [],
-	user: null,
 	isLoading: false,
 	error: null
 };

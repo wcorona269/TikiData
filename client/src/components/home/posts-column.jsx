@@ -8,7 +8,7 @@ import PostContainer from './post-container';
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { useDispatch, useSelector } from 'react-redux';
 import HomeFixturesColumn from './home-fixtures-column';
-import Title from '../util/section-heading';
+import Title from '../util/title-util';
 import TopStories from './top-stories';
 
 const PostsTimeline = () => {
