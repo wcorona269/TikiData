@@ -58,7 +58,7 @@ def liveMatches():
     ids = get_league_ids()
     filtered_matches = [match for match in live_matches if match['league']['id'] in ids]
     
-    if live_matches:
+    if live_matches:``
         return jsonify({
             'message': 'Matches fetched successfully',
             'matches': filtered_matches
