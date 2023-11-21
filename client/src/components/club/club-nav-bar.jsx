@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Tab, Tabs, Divider, Typography, useTheme } from '@mui/material';
 import Flag from 'react-world-flags';
 
-const ClubProfileNavBar = ({club, selectedTab, setSelectedTab}) => {
+const ClubNavBar = ({club, selectedTab, setSelectedTab}) => {
 	const clubInfo = club[0];
 	const theme = useTheme();
 	let name = clubInfo.team.name || 'N/A';
@@ -32,4 +32,4 @@ const ClubProfileNavBar = ({club, selectedTab, setSelectedTab}) => {
 	)
 }
 
-export default ClubProfileNavBar;
+export default ClubNavBar;

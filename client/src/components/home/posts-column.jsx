@@ -1,4 +1,4 @@
-import './posts-column.scss'
+// import './posts-column.scss'
 import React, { useEffect, useState } from 'react'
 import { Button, Grid, Paper, Stack, Typography, CircularProgress } from '@mui/material'
 import { fetchPosts, fetchReposts } from '../../actions/post_actions';

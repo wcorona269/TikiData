@@ -1,4 +1,3 @@
-import './lineups.scss';
 import React from 'react'
 import NoDataMessage from '../../util/no-data/no-data-message';
 import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableRow, useTheme } from '@mui/material';

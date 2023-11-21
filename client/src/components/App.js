@@ -12,7 +12,7 @@ import Welcome from './home/welcome'
 import LeagueIndex from './home/league-index';
 import axios from 'axios'
 import MatchFeed from './matches/match-feed';
-import ClubProfile from './club/club-profile';
+import ClubShowPage from './club/club-show-page';
 import LeagueShowPage from './league/league-show-page';
 import PlayerProfile from './player/player-profile';
 import MatchShowPage from './match/match-show-page';
@@ -68,7 +68,7 @@ function App() {
               <Route path='/news' element={<HomeNews/>} />
               <Route path='/match/:id' element={<MatchShowPage/>} />
               <Route path='/user/:username' element={<UserShowPage/>}/>
-              <Route path='/club/:id' element={<ClubProfile/>} />
+              <Route path='/club/:id' element={<ClubShowPage/>} />
               <Route path='/league/:id' element={<LeagueShowPage/>} />
               <Route path='/player/:id' element={<PlayerProfile/>} />
               <Route path='/post/:id' element={<PostShowPage/>}/>

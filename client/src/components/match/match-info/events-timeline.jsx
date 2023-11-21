@@ -1,4 +1,3 @@
-import './events-timeline.scss';
 import React from 'react'
 import YellowCard from '../../../images/yellow.png';
 import RedCard from '../../../images/red.png';

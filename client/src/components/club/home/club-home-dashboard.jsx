@@ -1,4 +1,3 @@
-import './club-home-dashboard.scss';
 import { Box, Grid } from '@mui/material';
 import React from 'react'
 import ClubHomeInfo from './club-home-info';

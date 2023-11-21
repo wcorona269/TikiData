@@ -1,4 +1,3 @@
-import './loading-screen.scss';
 import React from 'react'
 import loadingGif from '../../../images/loading_gif.gif';
 import { Box, Grid } from '@mui/material';

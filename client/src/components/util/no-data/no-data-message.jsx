@@ -1,12 +1,11 @@
 import { Typography, useTheme } from '@mui/material';
-import './no-data.scss';
 import React from 'react'
 
 const NoDataMessage = () => {
 	const theme = useTheme();
 
 	return (
-		<Typography sx={{ textAlign: 'center', fontFamily: theme.typography.bold, color: theme.palette.text.disabled }} className='no-data-message'>
+		<Typography sx={{ textAlign: 'center', fontFamily: theme.typography.bold, color: theme.palette.text.disabled, my: 5 }}>
 			Not Found
 			<br/>
 			<br/>

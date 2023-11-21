@@ -1,11 +1,10 @@
 import { Box, Button, TextField, Typography, useTheme } from '@mui/material';
-import './auth-form.scss';
 import React, { useState } from 'react';
 
 const AuthForm = ({fields, onSubmit}) => {
 	const theme = useTheme();
 	const [formState, setFormState] = useState({});
-	const [isValid, setIsValid] = useState(null);
+	const [isValid, setIsValid] = useState(true);
 	const [errors, setErrors] = useState([]);
 
 	const handleChange = (e) => {
@@ -30,8 +29,6 @@ const AuthForm = ({fields, onSubmit}) => {
 		let result = []
 		setIsValid(true);
 		for (let field of fields) {
-
-
 			if (!formState[field]) {
 				setIsValid(false);
 				result.push('All fields must be filled out');
@@ -61,7 +58,7 @@ const AuthForm = ({fields, onSubmit}) => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit} style={{width: 'fit-content'}} >
+		<form onSubmit={handleSubmit} style={{width: 'fit-content', display: 'flex', flexDirection: 'column', gap: 15}} >
 			{fields.map((field) => (
 				<TextField
 					sx={{width: 250}}
@@ -85,7 +82,7 @@ const AuthForm = ({fields, onSubmit}) => {
 			sx={{width: '100%'}}
 			variant='contained'
 			type="submit"
-			className={isValid === true ? 'auth-form-btn' : 'auth-form-btn error-btn' }
+			// disabled={!isValid}
 		>
 			submit
 		</Button>

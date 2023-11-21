@@ -1,4 +1,3 @@
-import './score-display.scss';
 import React from 'react';
 import DisplayTime from '../util/display-time';
 import { Box, Link, Paper, Stack, Typography, useTheme } from '@mui/material';

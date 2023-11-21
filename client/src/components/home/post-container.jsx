@@ -1,4 +1,4 @@
- import './post-container.scss';
+//  import './post-container.scss';
 import { Avatar, Box, Button, Link, Paper, Typography } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';

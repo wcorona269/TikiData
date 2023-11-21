@@ -1,4 +1,3 @@
-
 import React, {useEffect} from 'react'
 import NoDataMessage from '../util/no-data/no-data-message';
 import MultiTableDashboard from './multi-table-dashboard';

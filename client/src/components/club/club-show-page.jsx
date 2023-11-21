@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchClub } from '../../actions/api_actions';
 import LoadingMessage from '../util/loading/loading-screen';
-import ClubProfileNavBar from './club-profile-nav-bar';
+import ClubNavBar from './club-nav-bar';
 import ClubFixturesDashboard from './club-fixtures-dashboard';
 import ClubSquadDashboard from './club-squad-dashboard';
 import ClubStatsDashboard from './club-stats-dashboard';
@@ -11,7 +11,7 @@ import ClubHomeDashboard from './home/club-home-dashboard';
 import { Grid, Paper } from '@mui/material';
 import Title from '../util/title-util';
 
-const ClubProfile = () => {
+const ClubShowPage = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const isLoading = useSelector(state => state.club.isLoading);
@@ -43,7 +43,7 @@ const ClubProfile = () => {
 		<Grid item xs={9}>
 			<Paper sx={{ marginBottom: '1rem' }} elevation={1}>
 				<Title variant='h5' content={name} img={logo} back={true} button={true} />
-				<ClubProfileNavBar  club={club} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
+				<ClubNavBar  club={club} selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
 			</Paper>
 			{ selectedTab === 0 && <ClubHomeDashboard name={name} logo={logo} club={club} fixtures={fixtures} squad={squad} news={news} /> }
 			{ selectedTab === 1 && <ClubFixturesDashboard fixtures={fixtures} name={name} logo={logo} /> }
@@ -53,4 +53,4 @@ const ClubProfile = () => {
 	)
 }
 
-export default ClubProfile;
+export default ClubShowPage;

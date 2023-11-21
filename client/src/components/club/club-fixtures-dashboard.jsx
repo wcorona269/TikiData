@@ -1,4 +1,4 @@
-import './club-fixtures.scss';
+// import './club-fixtures.scss';
 import React from 'react'
 import ClubFixturesTable from './club-fixtures-table';
 import monthsOfYear from './monthsOfYear';
@@ -40,13 +40,8 @@ const ClubFixturesDashboard = ({fixtures, name, logo}) => {
 	return (
 		<Paper elevation={1} sx={{marginTop: '1rem'}}>
 			<Title variant='h6' content={`${name} Fixtures`} img={logo} size='2rem' />
-			{/* <Typography variant='h6' sx={{ borderBottom: `2px solid ${theme.palette.divider}`, fontFamily: theme.typography.bold }} className='section-heading'>
-				<img src={logo} style={{ height: '1.5rem', width: '1.5rem', marginRight: '.25rem' }} />
-				{name} Fixtures
-			</Typography> */}
 			{fixturesByDate.map(month_of_fixtures => {
 				let month = month_of_fixtures.shift();
-
 				return (
 					<Box sx={{ p: 1 }}>
 						<Box sx={{width: '100%'}}>
