@@ -6,7 +6,6 @@ import shorthandMonthsOfYear from './shorthandMonths';
 import { Divider } from '@mui/material';
 
 const FixtureNavBar = ({selectedDate, dates, handleChange, setSelectedDate}) => {
-
 	return (
 		<Box >
 			<Tabs
@@ -17,17 +16,14 @@ const FixtureNavBar = ({selectedDate, dates, handleChange, setSelectedDate}) => 
 				aria-label="scrollable auto tabs example"
 			>
 			{dates.map((date, idx) => {
-
 				let fullDate = new Date(date);
 				let today = new Date();
 
 				if (
-					fullDate.getFullYear() === today.getFullYear() &&
-					fullDate.getMonth() === today.getMonth() &&
-					fullDate.getDate() >= today.getDate() &&
-					selectedDate === 0
+						fullDate <= today &&
+						(selectedDate === 0 || fullDate > new Date(dates[selectedDate]))
 				) {
-					setSelectedDate(idx - 1)
+						setSelectedDate(idx - 1);
 				}
 
 				const dateInfo = date.split('-');
