@@ -22,8 +22,6 @@
 
 @import './styles/typeface/fonts.scss';
 @import './styles/base/reset.scss';
-@import './styles/layout/grid.scss';
-
 
 .App {
   text-align: center;
