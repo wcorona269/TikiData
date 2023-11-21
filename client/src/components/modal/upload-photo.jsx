@@ -3,7 +3,6 @@ import React from 'react'
 import Dropzone from 'react-dropzone';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAvatar } from '../../actions/user_actions';
-import { fetchCurrentUser } from '../../actions/session_actions';
 
 const UploadPhoto = () => {
 	const theme = useTheme();

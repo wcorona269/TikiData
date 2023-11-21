@@ -24,19 +24,6 @@ import PostShowPage from './post/post-show-page';
 import UserShowPage from './user/user-show-page';
 import UserUpdatePage from './user/user-update-page';
 
-let apiKey;
-
-const getConfig = async () => {
-  try {
-    const response = await axios.get('/api/config');
-    apiKey = response.data.api_key;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-getConfig();
-
 function App() {
   const [lightMode, setLightMode] = useState(false);
 

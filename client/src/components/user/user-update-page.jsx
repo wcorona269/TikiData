@@ -1,6 +1,5 @@
-import { Box, Grid, Paper, OutlinedInput, InputAdornment, Snackbar, Alert, IconButton, Skeleton, TextField, Stack, Button, InputLabel, useTheme, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import React, { useEffect, useState } from 'react'
+import { Box, Grid, Paper, OutlinedInput, InputAdornment, Snackbar, Alert, IconButton, Skeleton, Stack, Button, InputLabel, useTheme } from '@mui/material';
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import UserShowPageHeader from './user-show-page-header';
 import HomeFixturesColumn from '../home/home-fixtures-column';
@@ -8,11 +7,6 @@ import Title from '../util/title-util';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { updateUser } from '../../actions/session_actions';
-
-const initial_values = {
-	'Password': '',
-	'Confirm Password': ''
-}
 
 const UserUpdatePage = () => {
 	const theme = useTheme();
@@ -35,12 +29,8 @@ const UserUpdatePage = () => {
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
-		if (name == 'password') setPassword(value);
-		if (name == 'confirm') setConfirmPassword(value);
-	}
-
-	const handleClose = () => {
-		setOpen(false);
+		if (name === 'password') setPassword(value);
+		if (name === 'confirm') setConfirmPassword(value);
 	}
 
 	const handleSubmit = () => {
@@ -58,25 +48,6 @@ const UserUpdatePage = () => {
 	const handleMouseDownPassword = (event) => {
 		event.preventDefault();
 	};
-
-
-	const handleUpdateUser = () => {
-
-	}
-
-	const action = (
-		<React.Fragment>
-			<IconButton
-				size="small"
-				aria-label="close"
-				color="inherit"
-				onClick={handleClose}
-			>
-				<CloseIcon fontSize="small" />
-			</IconButton>
-		</React.Fragment>
-	);
-
 
 	return (
 		<>

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, removeSessionErrors } from '../../actions/session_actions';
+import React from 'react'
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../actions/session_actions';
 import AuthForm from './authForm';
 import { showModal, closeModal } from '../../actions/modal_actions';
 import { useNavigate } from 'react-router-dom';

@@ -5,7 +5,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArticleIcon from '@mui/icons-material/Article';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
-import { Badge, List, ListItem, ListItemButton, Menu, Paper, Typography, useTheme } from '@mui/material';
+import { Badge, List, ListItem, ListItemButton, Typography, useTheme } from '@mui/material';
 import ListItemContent from '@mui/joy/ListItemContent';
 import PublicIcon from '@mui/icons-material/Public';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
@@ -20,7 +20,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect, unreadCount }) => {
 	const username = useSelector(state => state.session?.user?.username);
 	
 	const buttons = [
-		<ListItem key={0} disablepadding sx={{paddingLeft: '0px'}}>
+		<ListItem key={0} sx={{paddingLeft: '0px'}}>
 			<ListItemButton onClick={() => handleTabSelect(0, 'home')} sx={{ color: selectedTab === 0 ? theme.palette.primary.main : theme.palette.text.primary }}>
 				{ selectedTab === 0 ?
 					<HomeRoundedIcon fontSize='large'/> : <HomeOutlinedIcon fontSize='large'/>
@@ -30,7 +30,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect, unreadCount }) => {
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,
-		<ListItem key={1} disablepadding sx={{ paddingLeft: '0px' }}>
+		<ListItem key={1} sx={{ paddingLeft: '0px' }}>
 			<ListItemButton onClick={() => handleTabSelect(1, 'notifications')} sx={{ color: selectedTab === 1 ? theme.palette.primary.main : theme.palette.text.primary }}>
 				<Badge badgeContent={unreadCount} color='primary' >
 					{ selectedTab === 1 ?
@@ -42,7 +42,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect, unreadCount }) => {
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,
-		<ListItem key={2} disablepadding sx={{ paddingLeft: '0px' }}>
+		<ListItem key={2} sx={{ paddingLeft: '0px' }}>
 			<ListItemButton onClick={() => handleTabSelect(2, 'explore')} sx={{ color: selectedTab === 2 ? theme.palette.primary.main : theme.palette.text.primary }}>
 			{ selectedTab === 2 ?
 				<TravelExploreIcon fontSize='large'/> :
@@ -53,7 +53,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect, unreadCount }) => {
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,
-		<ListItem key={3} disablepadding sx={{ paddingLeft: '0px' }}>
+		<ListItem key={3} sx={{ paddingLeft: '0px' }}>
 			<ListItemButton onClick={() => handleTabSelect(3, 'matches')} sx={{ color: selectedTab === 3 ? theme.palette.primary.main : theme.palette.text.primary }}>
 				<SportsSoccerIcon fontSize='large' />
 				<ListItemContent sx={{marginLeft: '.5rem'}}>
@@ -61,7 +61,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect, unreadCount }) => {
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,
-		<ListItem key={4} disablepadding sx={{ paddingLeft: '0px' }}>
+		<ListItem key={4} sx={{ paddingLeft: '0px' }}>
 			<ListItemButton onClick={() => handleTabSelect(4, 'news')} sx={{ color: selectedTab === 4 ? theme.palette.primary.main : theme.palette.text.primary }}>
 				{ selectedTab === 4 ?
 					<ArticleIcon fontSize='large'/> : <ArticleOutlinedIcon fontSize='large' />
@@ -71,7 +71,7 @@ const HomeMenu = ({ selectedTab, handleTabSelect, unreadCount }) => {
 				</ListItemContent>
 			</ListItemButton>
 		</ListItem>,
-		<ListItem key={5} disablepadding sx={{ paddingLeft: '0px' }}>
+		<ListItem key={5} sx={{ paddingLeft: '0px' }}>
 			<ListItemButton onClick={() => handleTabSelect(5, `user/${username}`)} sx={{ color: selectedTab === 5 ? theme.palette.primary.main : theme.palette.text.primary }}>
 				{ selectedTab === 5 ?
 					<PersonIcon fontSize='large'/> : <PersonOutlineIcon fontSize='large' />

@@ -2,10 +2,10 @@ import './modal.scss';
 import React, { useEffect } from 'react';
 import LoginForm from '../forms/login';
 import SignupForm from '../forms/signup';
-import { showModal, closeModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Box, Button, Modal, Typography, useTheme } from '@mui/material';
+import { Box, Modal, useTheme } from '@mui/material';
 import UploadPhoto from './upload-photo';
 
 const ModalContainer = () => {

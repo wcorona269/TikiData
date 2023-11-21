@@ -1,7 +1,6 @@
-import { Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material'
+import { Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography, useTheme } from '@mui/material'
 import React from 'react'
 import Title from '../../util/title-util'
-import DisplayTime from '../../util/display-time';
 
 const MatchInfoTable = ({ match }) => {
 	const theme = useTheme();
@@ -11,9 +10,7 @@ const MatchInfoTable = ({ match }) => {
 	const referee = match?.fixture?.referee;
 	const time_zone = match?.fixture?.timezone;
 	const venue = match?.fixture?.venue?.name;
-	const leagueLogo = match?.league?.logo;
 	const country = match?.league?.country;
-	const flag = match?.league?.flag;
 	const round = match?.league?.round;
 
 	const matchInfo = {
@@ -49,8 +46,6 @@ const MatchInfoTable = ({ match }) => {
 
 		return result;
 	}
-
-
 
 	return (
 		<Paper elevation={1}>

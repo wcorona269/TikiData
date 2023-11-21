@@ -50,6 +50,7 @@ const postsReducer = (state = initialState, action) => {
 			};
 		case CREATE_POST_SUCCESS:
 			const createdPost = action.payload['post']
+			debugger;
 			return {
 				...nextState,
 				isLoading: false,

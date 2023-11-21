@@ -2,7 +2,6 @@ import { useTheme, Avatar, IconButton, Divider, Typography, Box, Button, Paper, 
 import React from 'react' 
 import { useNavigate, useParams } from 'react-router-dom';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Title from '../util/title-util';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
@@ -18,7 +17,7 @@ const UserShowPageHeader = () => {
 	const created_at = useSelector(state => state.users.users?.user?.created_at);
 	const bio = useSelector(state => state.users.users?.user?.bio);
 	const avatar_url = useSelector(state => state.users.users?.user?.avatar_url);
-	const isCurrentUser = username == currentUser;
+	const isCurrentUser = username === currentUser;
 
 	const handleClick = () => {
 		navigate(`/edit-profile/${currentUser}`)

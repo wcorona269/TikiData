@@ -1,13 +1,11 @@
 import React from 'react';
-import { Typography, Paper, Box, Table, TableRow, TableCell, TableHead, TableContainer, TableBody, useTheme } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material';
+import { Typography, Paper, Box, Table, TableRow, TableCell, TableHead, TableContainer, TableBody } from '@mui/material';
 import Title from '../../util/title-util';
 
 const ClubHomeInfo = ({ club }) => {
 	const clubInfo = club[0];
 	let city = clubInfo.venue.city || 'N/A';
 	let country = clubInfo.team.country || 'N/A';
-	const theme = useTheme()
 
 	let clubDetails = {
 		'Logo': clubInfo.team.logo || 'N/A',
@@ -50,13 +48,12 @@ const ClubHomeInfo = ({ club }) => {
 	return (
 		<Paper elevation={1}  sx={{paddingBottom: 1, marginBottom: 1}} >
 			<Title variant='h6' content='Club Info' />
-
 			<Box sx={{ display: 'flex', justifyContent: 'center', padding: '.5rem' }}>
 				<Typography variant='caption' className='table-key'>
 					{clubDetails['Stadium']}
 				</Typography>
 			</Box>
-			<img src={clubDetails['Image']} style={{width: '90%', height: '90%', objectFit: 'cover', margin: 'auto', display: 'flex'}} />
+			<img alt='' src={clubDetails['Image']} style={{width: '90%', height: '90%', objectFit: 'cover', margin: 'auto', display: 'flex'}} />
 			<TableContainer >
 				<Table size='small' aria-label='a dense table'>
 					<TableHead>

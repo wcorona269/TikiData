@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import MatchCard from './match-card';
 import shorthandMonthsOfYear from './shorthandMonths';
-import { Box, Divider, Grid, List, Stack, Typography, useTheme } from '@mui/material';
-
-
+import { Box, Grid, Typography } from '@mui/material';
 
 // FIXTURE DISPLAY
 // Second component will show fixtures from selectedDate state variable
@@ -12,7 +10,6 @@ import { Box, Divider, Grid, List, Stack, Typography, useTheme } from '@mui/mate
 
 const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 	const dates = uniqueDates.slice(selectedDate, selectedDate + 7)
-	const theme = useTheme();
 	let fixturesByDate = {};
 
 	for (let date of dates) {
@@ -31,7 +28,7 @@ const FixturesDisplay = ({fixtures, selectedDate, uniqueDates}) => {
 
 		for (let date in fixturesByDate) {
 			let matchesOfTheDay = [];
-			fixturesByDate[date].map((fixture, idx) => {
+			fixturesByDate[date].forEach((fixture, idx) => {
 				matchesOfTheDay.push(
 					<MatchCard key={idx} fixture={fixture}/>
 				)

@@ -1,9 +1,7 @@
-import { Box, Chip, Paper, Typography, useTheme } from '@mui/material'
+import { Box, Chip, Typography, useTheme } from '@mui/material'
 import React from 'react'
 import Title from '../util/title-util'
-import { useDispatch, useSelector } from 'react-redux'
-import { deleteFavorite } from '../../actions/favorite_actions'
-import NoDataMessage from '../util/no-data/no-data-message'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const UserFavorites = () => {

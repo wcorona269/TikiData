@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser, removeUserErrors } from '../../actions/user_actions';
-import { loginUser } from '../../actions/session_actions';
 import { showModal, closeModal } from '../../actions/modal_actions';
 import AuthForm from './authForm';
 import { Box, Typography, useTheme } from '@mui/material';

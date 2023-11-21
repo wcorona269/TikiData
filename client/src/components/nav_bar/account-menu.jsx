@@ -4,16 +4,10 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
-import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { Switch } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../actions/session_actions';
@@ -33,10 +27,10 @@ const AccountMenu = ({ lightMode, setLightMode }) => {
 	};
 	const handleClose = (event) => {
 		const name = event.currentTarget.getAttribute('name');
-		if (name == 'profile') {
+		if (name === 'profile') {
 			navigate(`/user/${username}`)
 		}
-		if (name == 'logout') {
+		if (name === 'logout') {
 			dispatch(logoutUser());
 			navigate('/welcome')
 		}

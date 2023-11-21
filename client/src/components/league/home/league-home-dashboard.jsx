@@ -1,5 +1,5 @@
 import './league-home.scss'
-import { Paper, Typography, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import HomeFixturesComponent from './league-home-fixtures';
 import LeagueHomeNews from './league-home-news';
 import LeagueHomeStats from './league-home-stats';

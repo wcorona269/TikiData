@@ -14,19 +14,14 @@ const NotificationContainer = ({notif, idx}) => {
 		switch (notification.target_type) {
 			case 'comment_like':
 				return `${notification.sender.username} liked your commment`
-				break;
 			case 'post_like':
 				return `${notification.sender.username} liked your post`
-				break;
 			case 'post_comment':
 				return `${notification.sender.username} commented on your post`
-				break;
 			case 'repost':
 				return `${notification.sender.username} reposted your post`
-				break;
 			default:
 				return 'notification'
-				break;
 		}
 	}
 
@@ -35,7 +30,7 @@ const NotificationContainer = ({notif, idx}) => {
 			dispatch(setAsRead(notif.id))
 			setIsRead(true);
 		}
-		if (notif.target_type == 'post_like' || notif.target_type == 'post_comment' || notif.target_type == 'repost') {
+		if (notif.target_type === 'post_like' || notif.target_type === 'post_comment' || notif.target_type === 'repost') {
 			navigate(`/post/${notif.target_id}`)
 		}
 	}

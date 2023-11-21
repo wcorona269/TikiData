@@ -7,7 +7,6 @@ import { fetchTopStories } from '../../actions/news_actions';
 const TopStories = () => {
 	const dispatch = useDispatch();
 	const theme = useTheme();
-	const news = useSelector(state => state.news?.news);
 	const top_stories = useSelector(state => state.news?.top_stories) || [];
 	const isLoading = useSelector(state => state.news?.isLoading);
 
@@ -24,7 +23,8 @@ const TopStories = () => {
 		
 
 		if (!top_stories.length) return result;
-		for (let story of top_stories) {
+		for (let i = 0; i < top_stories.length; i++) {
+			const story = top_stories[i];
 			let title = story.title;
 			let title_words = title.split(' ')
 			if (title_words.length > 10) {
@@ -33,7 +33,7 @@ const TopStories = () => {
 			if (result.length > 5) break;
 			result.push(
 				<>
-					<ListItem disablePadding>
+					<ListItem disablePadding key={i}>
 						<ListItemButton
 							sx={{ m: 0, maxHeight: 75 }}
 							component='a'
@@ -42,11 +42,9 @@ const TopStories = () => {
 							rel="noopener noreferrer"
 						>
 							<Box sx={{display: 'flex', flexDirection: 'column', gap: 1, justifyContent: 'center'}}>
-								<Link>
-									<Typography underline='hover' sx={{fontSize: 14, lineHeight: '1.2' }}>
-										{title}
-									</Typography>
-								</Link>
+								<Typography underline='hover' sx={{fontSize: 14, lineHeight: '1.2', color: theme.palette.primary.main }}>
+									{title}
+								</Typography>
 								<Typography sx={{color: theme.palette.text.secondary, fontSize: 10}} variant='caption'>
 									{story.media}
 								</Typography>

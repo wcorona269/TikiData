@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Chip from '@mui/material/Chip';
+import React, { useEffect } from 'react';
 import leaguesByCountry from './leaguesByCountry';
-import { Container, useTheme, Grid, Link, Stack, CardMedia, CardContent, Typography, Card, Button, ListItem, ListItemButton, List, ButtonGroup } from '@mui/material';
+import { Container, useTheme, Grid, Link, Stack, Typography, Button, ListItem, ListItemButton, List, ButtonGroup, Skeleton } from '@mui/material';
 import Flag from 'react-world-flags';
 import { Box, Table, TableCell, TableHead, TableRow, Paper, TableContainer, TableBody } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +13,7 @@ const sortedLeaguesByCountry = Object.entries(leaguesByCountry)
 	.reduce((acc, [key, value]) => {
 		acc[key] = value;
 			return acc;
-}, {})
+	}, {})
 
 const LeagueIndex = () =>  {
 	const navigate = useNavigate();
@@ -22,7 +21,6 @@ const LeagueIndex = () =>  {
 	const dispatch = useDispatch();
 	const isLoading = useSelector(state => state.leagues.isLoading);
 	const top_leagues = useSelector(state => state.leagues?.top_leagues)
-	const all_leagues = useSelector(state => state.leagues?.index)
 
 	useEffect(() => {
 		window.scrollTo(0, 0) 
@@ -39,7 +37,7 @@ const LeagueIndex = () =>  {
 		];
 
 		{
-			Object.entries(info['leagues']).map(([league, id]) => {
+			Object.entries(info['leagues']).forEach(([league, id]) => {
 				result.push(
 					<TableCell>
 						<Link underline='hover' onClick={() => navigate(`/league/${id}`)} sx={{ color: theme.palette.secondary.main }} >
@@ -68,45 +66,59 @@ const LeagueIndex = () =>  {
 	}
 
 	const listTopLeagues = () => {
-		if (!top_leagues) return;
 		let result = [];
-		const leagues = Object.values(top_leagues)
-		leagues.map((league) => {
-			const id = league['league']['id'];
-			let name = league['league']['name'];
-			const logo = league['league']['logo'];
-			const flag = league['country']['flag'] || '';
-			const country = league['country']['name'] || '';
-			if (name === 'Premier League') name = 'EPL'
-			if (name.split(' ').length > 2) {
-				let words = name.split(' ')
-				let name_str = '';
-				for (let word of words) {
-					name_str += word[0]
-				}
-				name = name_str
+		if (!top_leagues || isLoading) {
+			for (let i = 0; i < 8; i++) {
+				result.push(
+					<Button variant='text' disablePadding elevation={3}
+						sx={{
+							mx: 2,
+							backgroundColor: theme.palette.background.paper,
+							borderColor: theme.palette.background.paper,
+							color: theme.palette.text.secondary,
+							padding: 0
+						}}
+					>
+						<Skeleton variant="rectangular" height={80} width={75} />
+					</Button>
+				)
 			}
-
-
-			result.push(
-				<Button variant='text' disablePadding onClick={() => handleClick(id)} elevation={3}
-					sx={{
-						backgroundColor: theme.palette.background.paper,
-						borderColor: theme.palette.background.paper,
-						color: theme.palette.text.secondary,
-						padding: 0
-					}}
-				>
-					<Paper sx={{height: '4rem', width: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', p: 2}} >
-						<img style={{ height: '2.5rem', width: '2.5rem', marginBottom: '.5rem' }} src={logo} title={name} />
-						<Typography align='center' variant='subtitle2' sx={{ fontSize: 12, fontFamily: theme.typography.light, whiteSpace: 'nowrap' }}>
-							{name}
-						</Typography>
-					</Paper>
-				</Button>
-			)
-		});
-
+		} else {
+			const leagues = Object.values(top_leagues)
+			leagues.forEach((league) => {
+				const id = league['league']['id'];
+				let name = league['league']['name'];
+				const logo = league['league']['logo'];
+				if (name === 'Premier League') name = 'EPL'
+				if (name.split(' ').length > 2) {
+					let words = name.split(' ')
+					let name_str = '';
+					for (let word of words) {
+						name_str += word[0]
+					}
+					name = name_str
+				}
+	
+	
+				result.push(
+					<Button variant='text' disablePadding onClick={() => handleClick(id)} elevation={3}
+						sx={{
+							backgroundColor: theme.palette.background.paper,
+							borderColor: theme.palette.background.paper,
+							color: theme.palette.text.secondary,
+							padding: 0
+						}}
+					>
+						<Paper sx={{height: '4rem', width: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', p: 2}} >
+							<img alt='' style={{ height: '2.5rem', width: '2.5rem', marginBottom: '.5rem' }} src={logo} title={name} />
+							<Typography align='center' variant='subtitle2' sx={{ fontSize: 12, fontFamily: theme.typography.light, whiteSpace: 'nowrap' }}>
+								{name}
+							</Typography>
+						</Paper>
+					</Button>
+				)
+			});
+		}
 		return (
 			<Container sx={{display: 'flex', flexDirection: 'column', padding: '1rem', gap: '1rem'}}> 
 				<Box sx={{display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
@@ -116,42 +128,6 @@ const LeagueIndex = () =>  {
 				</Box>
 			</Container>
 		)
-	}
-
-	const displayAllLeagues = () => {
-		if (!all_leagues) return;
-		let result = [];
-
-		for (let nation in all_leagues) {
-			let flag = null
-			let list_items = []
-			for (let id in all_leagues[nation]) {
-				const league = all_leagues[nation][id]
-				if (flag === null) flag = league?.country?.flag
-				list_items.push(
-					<ListItem disablePadding>
-						<ListItemButton onClick={() => navigate(`/league/${league['league']['id']}`)}>
-							{/* <img src={league['league']['logo']} style={{ marginRight: '.5rem', height: '1.25rem', width: '1.25rem' }} alt={league['league']['logo']} /> */}
-							<Link underline='hover' sx={{color: theme.palette.secondary.main}}>
-								{league['league']['name']}
-							</Link>
-						</ListItemButton>
-					</ListItem>
-				)
-			}
-			result.push(
-				<Grid item xs={4} align='center'>
-					<Paper elevation={1}>
-						<Title variant='h6' content={nation} img={flag} />
-						<List sx={{height: 100, overflowY: 'auto'}}>
-							{list_items}
-						</List>
-					</Paper>
-				</Grid>
-			)
-		}
-
-		return result;
 	}
 
 	return (
@@ -165,9 +141,6 @@ const LeagueIndex = () =>  {
 						<Title variant='h6' content='Top Leagues' />
 						{listTopLeagues()}
 					</Paper>
-					{/* <Grid container spacing={1}>
-						{displayAllLeagues()}
-					</Grid> */}
 					<Paper elevation={1}>
 						<Title variant='h6' content='All Leagues' />
 						<TableContainer component={Paper}>
@@ -188,7 +161,6 @@ const LeagueIndex = () =>  {
 							</Table>
 						</TableContainer>
 					</Paper>
-
 				</Stack>
 			</Box>
 		</Grid>

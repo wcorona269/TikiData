@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
@@ -16,10 +16,8 @@ const SubArticlesTimeline = ({subArticles, printArticles}) => {
 	const handleChange = (event, newValue) => {
 		setPage(newValue);
 	}
-
 	
 	const articlesByPage = splitArticleIntoPages(subArticles);
-
 	return (
 		<>
 			<div className='sub-articles'>

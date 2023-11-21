@@ -2,7 +2,7 @@ import './club-fixtures.scss';
 import React from 'react'
 import ClubFixturesTable from './club-fixtures-table';
 import monthsOfYear from './monthsOfYear';
-import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
+import { Box, Paper, Typography, useTheme } from '@mui/material';
 import Title from '../util/title-util';
 
 const ClubFixturesDashboard = ({fixtures, name, logo}) => {

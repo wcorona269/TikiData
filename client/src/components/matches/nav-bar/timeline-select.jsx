@@ -2,13 +2,11 @@ import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import React, { useEffect, useState } from 'react';
+import Select from '@mui/material/Select';
+import React, { useEffect } from 'react';
 
 const TimelineSelect = ({onTabSelect, nations, selectedNation}) => {
-
 	useEffect(() => {
-		
 	}, [selectedNation]);
 
 	return (

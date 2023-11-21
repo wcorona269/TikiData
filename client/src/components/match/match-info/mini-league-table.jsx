@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchStandings } from '../../../actions/standings_actions';
 import { useNavigate } from 'react-router-dom';
-import LoadingMessage from '../../util/loading/loading-screen';
 import Title from '../../util/title-util';
 import NoDataMessage from '../../util/no-data/no-data-message';
 
@@ -72,7 +71,7 @@ const MiniLeagueTable = ({ match, homeTeam, awayTeam }) => {
 				</TableRow>
 			)
 			
-			standings.map((ele, idx) => {
+			standings.forEach((ele, idx) => {
 				let isPlayingTeam = ele['team']['name'] === homeTeam || ele['team']['name'] === awayTeam;
 
 				tbody.push(

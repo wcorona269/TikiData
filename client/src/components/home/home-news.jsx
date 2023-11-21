@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchNews } from '../../actions/news_actions';
-import { Container, Typography, Box, List, ListItem, ListItemButton, Grid, useTheme, Button, Paper } from '@mui/material';
+import { Typography, Box, List, Grid, Button, Paper } from '@mui/material';
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
@@ -10,7 +10,6 @@ import Article from '../news/article';
 import Title from '../util/title-util';
 
 const HomeNews = () => {
-	const theme = useTheme();
 	const dispatch = useDispatch();
 	const news = useSelector(state => state.news?.news || []);
 	const favorites = useSelector(state => state.favorites?.favorites) || [];
@@ -26,7 +25,6 @@ const HomeNews = () => {
 		}
 	}, [articleCount]);
 
-	// let isLoading = true;
 	useEffect(() => {
 		let favNames = favorites.map(favorite => favorite.name)
 		console.log({favNames})
@@ -70,7 +68,7 @@ const HomeNews = () => {
 							<CircularProgress color='primary' sx={{marginTop: '3rem', margin: 'auto'}}/> :
 							displayNews(news)
 						}
-						{ isLoading ? <></> :
+						{ isLoading || !showButton ? <></> :
 							!isLoadingMore ?
 								<Button onClick={handleClick} variant="outlined" sx={{ height: '3rem', width: '100%' }}>
 									<Typography variant='subtitle1'>
@@ -92,4 +90,4 @@ const HomeNews = () => {
 	)
 	}
 
-export default HomeNews
+export default HomeNews;

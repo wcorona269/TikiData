@@ -1,19 +1,13 @@
 import './club-squad.scss';
 import React from 'react';
 import ClubSquadListItem from './club-squad-list-item';
-import { Avatar, Box, Grid, Paper, Typography, useTheme } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Grid, Paper, Typography } from '@mui/material';
 import Title from '../util/title-util';
 
 const ClubSquadDashboard = ({name, logo, squad}) => {
-	const theme = useTheme();
-	let columns = ['Name', 'Age', 'Pos'];
+	let squadPositions = {}
 
-	let squadPositions = {
-
-	}
-
-	squad.map(player => {
+	squad.forEach(player => {
 		const position = player.position
 		if (!(position in squadPositions)) {
 			squadPositions[position] = [];

@@ -1,7 +1,6 @@
-import { Box, Container, Grid, Link, Paper, Typography, useTheme } from '@mui/material';
+import { Box, Container, Grid, Link, Typography, useTheme } from '@mui/material';
 import './footer.scss';
-import React, { useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import React from 'react';
 
 const Footer = ({ lightMode }) => {
 	const theme = useTheme();

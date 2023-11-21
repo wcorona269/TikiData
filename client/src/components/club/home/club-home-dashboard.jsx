@@ -1,5 +1,5 @@
 import './club-home-dashboard.scss';
-import { Box, Grid, Paper } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import React from 'react'
 import ClubHomeInfo from './club-home-info';
 import HomeFixturesComponent from '../../league/home/league-home-fixtures';

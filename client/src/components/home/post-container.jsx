@@ -1,14 +1,13 @@
  import './post-container.scss';
-import { Avatar, Box, Button, Divider, Link, Paper, Typography } from '@mui/material';
+import { Avatar, Box, Button, Link, Paper, Typography } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import React, { useEffect, useState } from 'react';
-import CommentSection from './comment-section';
 import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { createLike, createRepost, deleteLike, deleteRepost, fetchPosts } from '../../actions/post_actions';
-import { createNotification, deleteNotification } from '../../actions/notification_actions';
+import { createLike, createRepost, deleteLike, deleteRepost } from '../../actions/post_actions';
+import { createNotification } from '../../actions/notification_actions';
 import { useNavigate } from 'react-router-dom';
 import RepostButton from './repost-popper';
 import RepeatIcon from '@mui/icons-material/Repeat';
@@ -19,7 +18,6 @@ const PostContainer = ({ post, repost }) => {
 	const navigate = useNavigate();
 	const theme = useTheme();
 	const user_id = useSelector(state => state.session?.user?.id);
-	const username = useSelector(state => state.session?.user?.username);
 	const [postLikes, setPostLikes] = useState(0);
 	const [reposts, setReposts] = useState(0);
 	const [isLiked, setIsLiked] = useState(false);
@@ -42,7 +40,6 @@ const PostContainer = ({ post, repost }) => {
 		setPostLikes(post.likes.length)
 		setReposts(post.reposts.length)
 	}, [post]);
-
 
 	const handleLike = () => {
 		const like_info = {

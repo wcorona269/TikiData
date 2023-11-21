@@ -1,16 +1,12 @@
 
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { fetchClubStats } from '../../actions/api_actions';
-import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, useTheme, Paper, Typography } from '@mui/material';
+import React from 'react';
+import { TableContainer, Table, TableHead, TableCell, TableRow, useTheme, Paper } from '@mui/material';
 import YellowCard from '../../images/yellow.png';
 import RedCard from '../../images/red.png';
 import Title from '../util/title-util';
 
 const ClubStatsDashboard = ({ name, logo, stats }) => {
 	const theme = useTheme(); 
-	let totals = {}
 	
 	const displayTeamStats = (stats) => {
 		let result = [];
@@ -63,7 +59,7 @@ const ClubStatsDashboard = ({ name, logo, stats }) => {
 			result.push(
 				<TableRow key={competition}>
 					<TableCell sx={{ display: 'flex', alignItems: 'center'}}>
-						<img src={logo} style={{ width: '1rem', height: '1rem', marginRight: '.5rem'}}/>
+						<img alt='' src={logo} style={{ width: '1rem', height: '1rem', marginRight: '.5rem'}}/>
 						{competition}
 					</TableCell>
 					<TableCell>{played}</TableCell>
@@ -115,8 +111,8 @@ const ClubStatsDashboard = ({ name, logo, stats }) => {
 						<TableCell sx={{ padding: '16px !important' }}>GF</TableCell>
 						<TableCell sx={{ padding: '16px !important' }}>GC</TableCell>
 						<TableCell sx={{ padding: '16px !important' }}>GD</TableCell>
-						<TableCell sx={{ padding: '16px !important' }}><img src={YellowCard} style={{ width: '1rem', height: '1rem'}}/></TableCell>
-							<TableCell sx={{ padding: '16px !important' }}><img src={RedCard} style={{ width: '1rem', height: '1rem' }} /></TableCell>
+						<TableCell sx={{ padding: '16px !important' }}><img alt='yellow cards' src={YellowCard} style={{ width: '1rem', height: '1rem'}}/></TableCell>
+							<TableCell sx={{ padding: '16px !important' }}><img alt='red cards' src={RedCard} style={{ width: '1rem', height: '1rem' }} /></TableCell>
 						<TableCell sx={{ padding: '16px !important' }}>Clean Sheets</TableCell>
 					</TableRow>
 				</TableHead>

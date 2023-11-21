@@ -6,10 +6,8 @@ import Title from '../../util/title-util';
 
 const Lineups = ({ lineups, header }) => {
 	const theme = useTheme();
-
 	let result = [];
-
-	lineups.map((lineup, idx) => {
+	lineups.forEach((lineup, idx) => {
 		const coach = lineup.coach.name;
 		const eleven = lineup.startXI;
 		const subs = lineup.substitutes;

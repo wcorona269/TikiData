@@ -6,11 +6,9 @@ import {
 	FETCH_USER_INFO_FAILURE,
 	FETCH_USER_INFO_REQUEST,
 	FETCH_USER_INFO_SUCCESS,
-	UPDATE_AVATAR_FAILURE,
 	UPDATE_AVATAR_REQUEST,
 	UPDATE_AVATAR_SUCCESS
 } from '../actions/user_actions';
-
 
 const initialState = {
 	users: [],
@@ -42,6 +40,5 @@ const usersReducer = (state = initialState, action) => {
 			return nextState;
 	}
 };
-
 
 export default usersReducer;

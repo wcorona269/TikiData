@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Paper, Box, Grid, Tabs, Tab, Container, Typography, Divider, useTheme, Skeleton, Stack } from '@mui/material';
 import PostContainer from '../home/post-container';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,6 @@ import RepostContainer from '../home/repost-container';
 import HomeFixturesColumn from '../home/home-fixtures-column';
 import UserShowPageHeader from './user-show-page-header';
 
-
 const UserShowPage = () => {
 	const dispatch = useDispatch();
 	const theme = useTheme();
@@ -16,9 +15,7 @@ const UserShowPage = () => {
 	const posts = useSelector(state => state.users.users?.user?.posts);
 	const reposts = useSelector(state => state.users.users?.user?.reposts);
 	const isLoading = useSelector(state => state.users.isLoading);
-
 	const [selectedTab, setSelectedTab] = useState(0);
-	
 	useEffect(() => {dispatch(fetchUserInfo(username))}, [username])
 
 	const noPostsMessage = (
@@ -60,7 +57,7 @@ const UserShowPage = () => {
 	const handleChange = (event, newValue) => {
 		setSelectedTab(newValue);
 	};
-
+	
 	return (
 		<>
 			<Grid item xs={6}>

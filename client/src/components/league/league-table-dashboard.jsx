@@ -3,7 +3,7 @@ import React, {useEffect} from 'react'
 import NoDataMessage from '../util/no-data/no-data-message';
 import MultiTableDashboard from './multi-table-dashboard';
 import Typography from '@mui/material/Typography';
-import { TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Link, Avatar, useTheme, Paper, Box } from '@mui/material'
+import { TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Link, useTheme, Paper, Box } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 import Title from '../util/title-util';
 
@@ -12,10 +12,8 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 	const navigate = useNavigate();
 	useEffect(() => {}, [table])
 	if (!table?.length) { return <NoDataMessage/> }
-
 	const leagueName = table[0]?.league?.name;
 	const leagueLogo = table[0]?.league?.logo;
-
 	
 	let leagueInfo = table[0]['league'];
 	let standings = leagueInfo['standings'];
@@ -29,7 +27,6 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 	if (!standings?.length) {
 		return <NoDataMessage/>
 	}
-
 
 	const columns = ['', 'Club', 'MP', 'W', 'D', 'L', 'GF', 'GC', 'GD', 'Pts', 'Form'];
 
@@ -68,10 +65,8 @@ const LeagueTableDashboard = ({table, name, logo }) => {
 		return <NoDataMessage/>
 	}
 
-	
-	
 	return (
-		<Paper elevation={1} sx={{marginTop: '1rem', mx: 'auto', marginTop: '1rem'}}>
+		<Paper elevation={1} sx={{ mx: 'auto', marginTop: '1rem'}}>
 			<Title variant='h6' content={`${leagueName} Table`} img={leagueLogo} />
 			<TableContainer>
 				<Table size='small' aria-label='a dense table' >

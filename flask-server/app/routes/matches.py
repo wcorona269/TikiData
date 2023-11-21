@@ -55,10 +55,13 @@ def liveMatches():
     result = data.decode("utf-8")
     json_data = json.loads(result)
     live_matches = json_data["response"]
+    ids = get_league_ids()
+    filtered_matches = [match for match in live_matches if match['league']['id'] in ids]
+    
     if live_matches:
         return jsonify({
             'message': 'Matches fetched successfully',
-            'matches': live_matches
+            'matches': filtered_matches
             }), 200
     else:
         return jsonify({

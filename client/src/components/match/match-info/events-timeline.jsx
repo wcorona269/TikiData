@@ -1,11 +1,9 @@
 import './events-timeline.scss';
-import React, { useState } from 'react'
+import React from 'react'
 import YellowCard from '../../../images/yellow.png';
 import RedCard from '../../../images/red.png';
-import Substitution from '../../../images/sub.png';
-import Goal from '../../../images/goal.png';
 import NoDataMessage from '../../util/no-data/no-data-message';
-import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography, useTheme } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography, useTheme } from '@mui/material';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
@@ -26,8 +24,8 @@ const EventsTimeline = ({match, header }) => {
 			if (event.detail.includes('Own')) return [<SportsSoccerIcon size='small' sx={{ color: theme.palette.error.main }} />, 'OG']
 			if (event.detail.includes('Missed')) return [<SportsSoccerIcon size='small' />, <CancelOutlinedIcon size='small'/> ]
 		} else if (event.type === 'Card') {
-			return (event.detail.includes('Yellow')) ? <img src={YellowCard} style={{ height: '1.25rem', width: '1rem', marginBottom: 'auto', marginTop: 'auto' }} /> :
-			<img src={RedCard} style={{ height: '1.25rem', width: '1rem', marginBottom: 'auto', marginTop: 'auto' }} />
+			return (event.detail.includes('Yellow')) ? <img alt='yellow card' src={YellowCard} style={{ height: '1.25rem', width: '1rem', marginBottom: 'auto', marginTop: 'auto' }} /> :
+			<img alt='red card' src={RedCard} style={{ height: '1.25rem', width: '1rem', marginBottom: 'auto', marginTop: 'auto' }} />
 		} else if (event.type === 'subst' || event.type === 'Subst') {
 			return <SwapHorizIcon size='small' />
 		} else if (event.type === 'Var' || event.type === 'var') {
@@ -53,7 +51,7 @@ const EventsTimeline = ({match, header }) => {
 			message = 'Second Half ET'
 		}
 		
-		return message == undefined ? '' : (
+		return message === undefined ? '' : (
 			<TableRow sx={{ }} >
 				<TableCell sx={{ p: '2px' }}>
 					<Typography variant='body1' sx={{ color: theme.palette.text.disabled, fontFamily: theme.typography.bold, textAlign: 'center' }}>

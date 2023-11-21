@@ -21,11 +21,8 @@ const PostShowPage = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const post = useSelector(state => state.posts?.post);
-	const post_id = post?.id;
 	const user_id = useSelector(state => state.session?.user?.id);
 	const isLoading = useSelector(state => state.posts.isLoading);
-	const username = useSelector(state => state.session?.user?.username);
-
 	const [postLikes, setPostLikes] = useState(post?.likes?.length);
 	const [reposts, setReposts] = useState(post?.reposts?.length);
 	const [createComment, setCreateComment] = useState(true);
@@ -116,8 +113,8 @@ const PostShowPage = () => {
 	const displayComments = (comments) => {
 		let result = [];
 		if (!comments) return;
-
-		comments.map((comment, idx) => {
+		
+		comments.forEach((comment, idx) => {
 			result.push(
 				<CommentContainer key={idx} comment={comment}/>
 			)

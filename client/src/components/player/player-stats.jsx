@@ -1,6 +1,6 @@
 import React from 'react'
 import NoDataMessage from '../util/no-data/no-data-message';
-import { Box, Paper, Table, TableBody, TableCell, TableHead, TableRow, useTheme } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableHead, TableRow, useTheme } from '@mui/material';
 import Title from '../util/title-util';
 import YellowCard from '../../images/yellow.png'
 import RedCard from '../../images/red.png'
@@ -30,7 +30,6 @@ const PlayerStats = ({statistics}) => {
 
 		for (let i of statistics) {
 			const competition = i.league.name || 0;
-			const team = i.team.name || 0;
 			const apps = i.games.appearences || 0;
 			const goals = i.goals.total || 0;
 			const assists = i.goals.assists || 0;
@@ -104,10 +103,10 @@ const PlayerStats = ({statistics}) => {
 						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >Tack.</TableCell>
 						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >Int.</TableCell>
 						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >
-							<img src={YellowCard} style={{ height: '1.25rem', width: '1rem'}}/>
+							<img alt='yellow cards' src={YellowCard} style={{ height: '1.25rem', width: '1rem'}}/>
 						</TableCell>
 						<TableCell sx={{ color: theme.palette.text.secondary, padding: 1, fontFamily: theme.typography.bold }} component='th' align='center' >
-							<img src={RedCard} style={{ height: '1.25rem', width: '1rem'}}/>
+							<img alt='red cards' src={RedCard} style={{ height: '1.25rem', width: '1rem'}}/>
 						</TableCell>
 					</TableRow>
 				</TableHead>

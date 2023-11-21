@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchMatch } from '../../actions/api_actions';
 import MatchShowPageHeader from './match-show-page-header';
-import MatchInfo from './match-info/match-info';
 import LoadingMessage from '../util/loading/loading-screen';
 import Title from '../util/title-util';
 import NoDataMessage from '../util/no-data/no-data-message';
-import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import { Box, Grid, Paper, Stack, Typography } from '@mui/material';
-import HomeFixturesColumn from '../home/home-fixtures-column';
 import Lineups from './match-info/lineups';
 import MatchStats from './match-info/match-stats';
 import EventsTimeline from './match-info/events-timeline'
@@ -36,12 +33,12 @@ const MatchShowPage = () => {
 	const header = (
 		<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', p: 1 }}>
 			<Typography variant='body1' sx={{ display: 'flex', alignItems: 'center' }} >
-				<img src={homeLogo} style={{ width: '2rem', height: '2rem', marginRight: '.25rem' }} />
+				<img alt='' src={homeLogo} style={{ width: '2rem', height: '2rem', marginRight: '.25rem' }} />
 				{homeTeam}
 			</Typography>
 			<Typography variant='body1' sx={{ display: 'flex', alignItems: 'center' }} >
 				{awayTeam}
-				<img src={awayLogo} style={{ width: '2rem', height: '2rem', marginLeft: '.25rem' }} />
+				<img alt='' src={awayLogo} style={{ width: '2rem', height: '2rem', marginLeft: '.25rem' }} />
 			</Typography>
 		</Box>
 	)

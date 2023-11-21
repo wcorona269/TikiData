@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import FixtureNavBar from './fixture-nav-bar';
 import FixturesDisplay from './fixtures-display';
 import NoDataMessage from '../util/no-data/no-data-message';
-import Typography from '@mui/material/Typography';
-import { Box, Container, Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 import Title from '../util/title-util';
 
 const LeagueFixturesDashboard = ({fixtures, uniqueDates}) => {
-	
 	const [selectedDate, setSelectedDate] = useState(0);
 
 	const handleChange = (event, date) => {
@@ -29,6 +27,5 @@ const LeagueFixturesDashboard = ({fixtures, uniqueDates}) => {
 		</Paper>
 	)
 }
-
 
 export default LeagueFixturesDashboard;

@@ -1,16 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LeagueHomeDashboard from './home/league-home-dashboard';
 import LeagueTableDashboard from './league-table-dashboard'
 import LeagueFixturesDashboard from './league-fixtures-dashboard'
 import LeagueStatsDashboard from './league-stats-dashboard';
-import { fetchCompetition, removeCompetition } from '../../actions/api_actions';
-import response from './response';
+import { fetchCompetition } from '../../actions/api_actions';
 import { Tabs, Tab, Grid, Paper, Typography, Box, Divider, useTheme } from '@mui/material';
 import LoadingMessage from '../util/loading/loading-screen';
 import NoDataMessage from '../util/no-data/no-data-message';
-import LeagueShowPageHeader from './league-show-page-header'
 import ScrollToTopOnLoad from '../util/scroll-to-top-on-load';
 import Title from '../util/title-util';
 
@@ -22,7 +20,7 @@ const LeagueShowPage = () => {
 	const leagues = useSelector(state => state.leagues);
 	const isLoading = useSelector(state => state.leagues.isLoading);
 
-	const [season, setSeason] = useState('2023/24');
+	const season = '2023/24';
 	const [selectedTab, setSelectedTab] = useState(0);
 
 	const table = leagues['standings'];
@@ -40,7 +38,7 @@ const LeagueShowPage = () => {
 	}, [id]);
 
 	useEffect(() => {
-window.scrollTo(0, 0)
+		window.scrollTo(0, 0)
 	}, [isLoading]);
 
 	const handleChange = (newValue) => {
@@ -76,7 +74,7 @@ window.scrollTo(0, 0)
 								<Typography variant='subtitle1'>{name}</Typography>
 								<Divider orientation="vertical" sx={{py: 3, mx: 2}}/>
 								<Typography variant='subtitle1' sx={{color: theme.palette.text.disabled }} >{country}</Typography>
-								<img src={flag} style={{ height: '2rem', width: '2rem', marginLeft: '.5rem' }} />
+								<img alt='' src={flag} style={{ height: '2rem', width: '2rem', marginLeft: '.5rem' }} />
 							</Box>
 						</Box>
 						<Divider/>
@@ -92,4 +90,3 @@ window.scrollTo(0, 0)
 }
 
 export default LeagueShowPage;
-

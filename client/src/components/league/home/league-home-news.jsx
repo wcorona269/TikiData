@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Grid, List, ListItem, ListItemButton, Pagination, Paper, Stack, Link, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { List, Pagination, Paper, Stack, Typography } from '@mui/material';
 import { splitArticleIntoPages } from '../../news/sub-articles-timeline';
 import Article from '../../news/article';
 import Title from '../../util/title-util';
@@ -15,7 +15,7 @@ const LeagueHomeNews = ({ name, logo, news }) => {
 	const displayNews = (news) => {
 		let result = [];
 		if (!news) return <NoDataMessage/>
-		news.map((article, idx) => {
+		news.forEach((article, idx) => {
 			result.push(
 				<Article article={article} idx={idx} />
 			)

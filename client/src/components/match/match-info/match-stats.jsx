@@ -1,6 +1,6 @@
 import React from 'react';
 import NoDataMessage from '../../util/no-data/no-data-message';
-import { Box, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
+import { Box, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography, useTheme } from '@mui/material';
 import Title from '../../util/title-util';
 
 const MatchStats = ({match, header}) => {

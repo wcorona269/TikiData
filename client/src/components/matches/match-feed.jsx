@@ -4,7 +4,7 @@ import TimelineMatchDisplay from './table/timeline-match-display';
 import LoadingMessage from '../util/loading/loading-screen';
 import { fetchMatches } from '../../actions/api_actions';
 import NoDataMessage from '../util/no-data/no-data-message';
-import { Grid, Paper } from '@mui/material';
+import { Grid } from '@mui/material';
 import HomeFixturesColumn from '../home/home-fixtures-column';
 
 const MatchFeedContainer = ({apiKey}) => {
@@ -21,13 +21,8 @@ const MatchFeedContainer = ({apiKey}) => {
 		const dateString = `${year}-${month}-${day}`
 
 		dispatch(fetchMatches(dateString))
-window.scrollTo(0, 0);
+		window.scrollTo(0, 0);
 	}, [date]);
-
-	const resetFilters = () => {
-		setDate(new Date());
-		setSelectedNation('All');
-	}
 
 	const sortMatches = () => {
 		if (!matches) return {}
@@ -59,18 +54,15 @@ window.scrollTo(0, 0);
 	const listOfNations = ['All', ...Object.keys(sortedMatches)];
 	const nationsSet = new Set(listOfNations);
 	const [selectedNation, setSelectedNation] = useState(listOfNations[0]);
-	const [filter, setFilter] = useState('');
-	
+
 	const handleTabSelect = (e) => {
 		const selectedValue = e.target.value
 		setSelectedNation(selectedValue);	
 	}
 	
-	
 	useEffect(() => {
-window.scrollTo(0, 0);
+		window.scrollTo(0, 0);
 	}, [selectedNation])
-	
 
 	if (isLoading || !matches) {
 		return (<LoadingMessage />)

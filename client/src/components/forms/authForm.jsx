@@ -1,7 +1,6 @@
 import { Box, Button, TextField, Typography, useTheme } from '@mui/material';
 import './auth-form.scss';
-import React, { useEffect, useState } from 'react';
-import { ThemeContext } from '@emotion/react';
+import React, { useState } from 'react';
 
 const AuthForm = ({fields, onSubmit}) => {
 	const theme = useTheme();

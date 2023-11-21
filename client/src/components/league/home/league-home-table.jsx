@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Paper, Button, Box, Typography, List, ListItem, Grid } from '@mui/material'
+import {Paper, Button, Typography } from '@mui/material'
 import { Link } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -39,7 +39,7 @@ const LeagueHomeTable = ({table}) => {
 					<TableCell component="th" scope="row">
 						<Typography variant='body2' id='team-name'>
 							<Link to={`/club/${team_id}`}>
-								<img src={logo} />
+								<img alt='' src={logo} />
 								{team}
 							</Link>
 						</Typography>

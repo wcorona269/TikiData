@@ -1,6 +1,6 @@
 import './posts-column.scss'
-import React, { useCallback, useEffect, useState } from 'react'
-import { Button, Grid, Paper, Stack, Typography, useTheme, CircularProgress } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Button, Grid, Paper, Stack, Typography, CircularProgress } from '@mui/material'
 import { fetchPosts, fetchReposts } from '../../actions/post_actions';
 import LoadingMessage from '../util/loading/loading-screen';
 import CreatePost from './create-post';

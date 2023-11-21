@@ -1,7 +1,7 @@
-import { Box, Button, CircularProgress, Container, Divider, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, CircularProgress, Divider, Paper, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createPost, fetchPosts } from '../../actions/post_actions';
+import { createPost } from '../../actions/post_actions';
 
 const CreatePost = () => {
 	const dispatch = useDispatch()
@@ -80,4 +80,4 @@ const CreatePost = () => {
 	)
 }
 
-export default CreatePost
+export default CreatePost;

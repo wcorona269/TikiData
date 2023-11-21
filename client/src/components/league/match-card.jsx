@@ -1,8 +1,7 @@
 import React from 'react';
 import DisplayTime from '../util/display-time';
-import { Box, Link, Container, Grid, Typography, Paper, Button, useTheme, ListItemButton } from '@mui/material';
+import { Box, Grid, Typography, Paper, useTheme, ListItemButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { ThemeContext } from '@emotion/react';
 
 export const match_not_played = new Set([
 	'TBD',
@@ -43,7 +42,7 @@ const MatchCard = ({fixture, key, league}) => {
 			result.unshift(
 				<Grid container className={winner === true ? 'winning team' : ''}>
 					<Grid item xs={10} align='left' sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-						<img src={team_logo} style={{height: '2rem', width: '2rem', marginRight: '.25rem'}} />
+						<img alt='' src={team_logo} style={{height: '2rem', width: '2rem', marginRight: '.25rem'}} />
 						<Typography variant='body2' sx={{ flexShrink: 1, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis'}} >
 							{team_name}
 						</Typography>
