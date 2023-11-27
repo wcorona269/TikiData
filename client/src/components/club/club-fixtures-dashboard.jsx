@@ -1,4 +1,3 @@
-// import './club-fixtures.scss';
 import React from 'react'
 import ClubFixturesTable from './club-fixtures-table';
 import monthsOfYear from './monthsOfYear';

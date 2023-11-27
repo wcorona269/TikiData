@@ -5,7 +5,6 @@ import HomeFixturesComponent from '../../league/home/league-home-fixtures';
 import LeagueHomeNews from '../../league/home/league-home-news';
 
 const ClubHomeDashboard = ({ name, logo, club, fixtures, squad, news }) => {
-
 	return (
 		<Box>
 			<Grid spacing={2} container>

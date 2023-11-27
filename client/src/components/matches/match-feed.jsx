@@ -6,6 +6,7 @@ import { fetchMatches } from '../../actions/api_actions';
 import NoDataMessage from '../util/no-data/no-data-message';
 import { Grid } from '@mui/material';
 import HomeFixturesColumn from '../home/home-fixtures-column';
+import TopStories from '../home/top-stories';
 
 const MatchFeedContainer = ({apiKey}) => {
 	const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const MatchFeedContainer = ({apiKey}) => {
 					/>
 			</Grid>
 			<Grid item xs={3} sx={{ position: 'sticky', top: '3rem' }}>
-				<HomeFixturesColumn/>
+				<TopStories/>
 			</Grid>
 		</>
 	)
