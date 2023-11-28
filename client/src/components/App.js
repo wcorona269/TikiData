@@ -10,7 +10,6 @@ import Footer from './footer/footer'
 import ModalContainer from './modal/modal';
 import Welcome from './home/welcome'
 import LeagueIndex from './home/league-index';
-import axios from 'axios'
 import MatchFeed from './matches/match-feed';
 import ClubShowPage from './club/club-show-page';
 import LeagueShowPage from './league/league-show-page';
