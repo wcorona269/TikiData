@@ -14,6 +14,7 @@ from database import seed_database
 import os
 import jwt
 
+
 app = Flask(__name__)
 migrate = Migrate(app, db)
 jwt_manager = JWTManager(app)
